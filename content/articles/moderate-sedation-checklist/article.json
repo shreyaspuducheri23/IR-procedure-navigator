@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "moderate-sedation-checklist",
+  "title": "Moderate Sedation Checklist",
+  "category": "reference",
+  "status": "complete",
+  "bleedRisk": null,
+  "keywords": [
+    "moderate",
+    "sedation",
+    "checklist",
+    "airway",
+    "npo",
+    "asa",
+    "mallampati",
+    "consent",
+    "monitoring"
+  ],
+  "summary": "Reference checklist for deciding whether a patient can tolerate moderate sedation.",
+  "lastReviewed": null,
+  "provenance": [
+    "Draft reference page, June 2026"
+  ],
+  "reviewNotes": [
+    "Confirm language with institutional moderate sedation policy.",
+    "Confirm anesthesia escalation criteria.",
+    "Confirm NPO and discharge requirements."
+  ],
+  "sections": [
+    {
+      "id": "moderate-sedation-screen",
+      "kind": "custom",
+      "title": "Moderate Sedation Screen",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use these buckets to decide whether moderate sedation is appropriate or anesthesia should be involved."
+        },
+        {
+          "type": "callout",
+          "variant": "contraindication",
+          "title": "Absolute / anesthesia required",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Unstable airway or unable to protect airway.",
+                "Obstructing neck/throat mass, stridor, severe airway edema/trismus.",
+                "Respiratory failure, severe hypoxia, escalating O2 requirement, BiPAP/vent dependence.",
+                "Hemodynamic instability, shock, unstable arrhythmia/angina.",
+                "Severe AMS, agitation, or intoxication preventing safe monitoring/cooperation.",
+                "Active vomiting/full stomach with high aspiration risk.",
+                "Prior severe reaction to planned sedation meds / no safe med option."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "variant": "caution",
+          "title": "Relative / consider anesthesia",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Known difficult airway, high Mallampati, limited mouth opening/neck extension, C-collar.",
+                "Severe OSA, severe COPD/asthma, pulmonary HTN, poor cardiopulmonary reserve.",
+                "Severe CHF/valvular disease, significant arrhythmia history, frailty/ASA IV.",
+                "Chronic opioid/benzo use or high sedation tolerance.",
+                "Not NPO, severe GERD/gastroparesis, pregnancy.",
+                "Prior difficult sedation or paradoxical reaction."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "variant": "note",
+          "title": "Things to note",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Dentures/partials, loose teeth.",
+                "Baseline O2 requirement, CPAP/BiPAP use.",
+                "Ability to lie flat/still and follow commands.",
+                "Last PO intake.",
+                "Allergies and prior sedation/anesthesia issues.",
+                "Current opioids, benzos, alcohol, recreational drugs.",
+                "Neck immobility/c-collar or positioning limitations."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

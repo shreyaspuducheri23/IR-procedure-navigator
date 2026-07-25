@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "id": "gastrostomy-gastrojejunostomy-jejunostomy-tube-exchange",
+  "title": "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange",
+  "category": "drain-tube",
+  "status": "complete",
+  "bleedRisk": "low",
+  "keywords": [
+    "g",
+    "tube",
+    "gj",
+    "j",
+    "feeding",
+    "exchange",
+    "replacement",
+    "malfunction",
+    "clogged",
+    "dislodged"
+  ],
+  "summary": "Gastrostomy/gastrojejunostomy/jejunostomy tube exchange guidance for routine exchange, malfunction, clogging, leakage, dislodgement, and tube-feed restart.",
+  "lastReviewed": null,
+  "provenance": [
+    "Imported from procedure orders PDF updated 4.15.26"
+  ],
+  "reviewNotes": [
+    "Confirm mature-tract exchange bleeding risk classification with local policy.",
+    "Confirm anticoagulation hold language with the final table.",
+    "Confirm local NPO requirement for local-only tube exchange.",
+    "Confirm feeding tube order language for G, GJ, and J tube exchanges.",
+    "Confirm 6-month routine exchange scheduling workflow."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Routine exchange or tube problem requiring replacement/repositioning."
+            },
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Routine scheduled exchange.",
+                "Clogged or poorly flushing tube.",
+                "Malpositioned or retracted tube.",
+                "Tube fracture, balloon failure, or connector/device issue.",
+                "Pericatheter leakage or skin irritation when tube position or fit is part of the problem.",
+                "Dislodged tube with a mature tract and appropriate urgency for tract salvage."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Clarify before booking"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Existing tube type: gastrostomy, gastrojejunostomy, or jejunostomy.",
+                "Current tube size and retention type if known.",
+                "When the tube was originally placed and whether the tract is mature.",
+                "Whether the tube is completely out, partially retracted, clogged, leaking, or due for routine exchange."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "None unless further indicated."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "SDC/outpatient with discharge.",
+                "Vital signs per routine.",
+                "Glucose point of care."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Low bleeding risk for routine mature-tract exchange; use the anticoagulation table for medication-specific guidance."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Low bleeding risk for routine exchange through a mature tract.",
+                    "Escalate to high-risk planning if the tract is immature, access may need to be re-established, or a new puncture is possible.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-guidelines"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Local only.",
+                "NPO per local-only exchange workflow."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "physical-exam",
+          "title": "Physical exam",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Inspect tube site and confirm the tube problem before exchange."
+            },
+            {
+              "type": "heading",
+              "text": "Tube/site exam"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Inspect stoma for erythema, skin breakdown, leakage, bleeding, purulence, buried bumper concern, or tract disruption.",
+                "Check tube position, external length, balloon/retention device if applicable, and whether the tube flushes.",
+                "Assess abdominal pain, peritoneal signs, fever, or instability before treating as a routine exchange."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm tube details, tract maturity, labs if needed, local-only plan, glucose POC, and discharge plan."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and current tube type.",
+                "Confirm tube size and replacement device availability.",
+                "Confirm tract is mature for routine exchange, or escalate if immature/uncertain.",
+                "No labs unless further indicated.",
+                "Patient is in SDC/outpatient workflow with discharge plan.",
+                "NPO per local-only exchange workflow.",
+                "Glucose point of care ordered."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Common exchange problems and first checks."
+            },
+            {
+              "type": "heading",
+              "text": "If tube is clogged"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confirm whether bedside declogging was attempted and whether the tube can be flushed safely.",
+                "Exchange if malfunction persists or tube integrity/position is uncertain."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If tube is dislodged"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clarify time out of tract and original placement date.",
+                "Do not assume a safe mature tract if early after placement or if the tract course is uncertain."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If position is uncertain"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Do not clear for use until intraluminal position is confirmed.",
+                "Use contrast confirmation and review images with the operator if there is concern for malposition."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause routine exchange or prompt escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate before routine exchange"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Immature tract, unknown original placement date, or tube fully out long enough that tract salvage is uncertain.",
+                    "Severe abdominal pain, peritoneal signs, fever, hypotension, or concern for intraperitoneal tube position.",
+                    "Purulent skin infection, bleeding, buried bumper concern, or inability to safely re-establish tract access."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Regular diet/tube feeds, routine vitals, immediate discharge if outpatient, AVS selection, and 6-month routine exchange."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "6 month routine exchange."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Notify MD/LIP - IR.",
+            "Regular diet - tube feeds.",
+            "Feeding tube: PEG and G tube.",
+            "Vital signs per unit routine."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If outpatient",
+          "items": [
+            "Discharge order with medication reconciliation prior - immediate.",
+            "After visit summary: .IRAVSGASTROSTOMYTUBEEXCHANGE or .IRAVSGJTUBEEXCHANGE or .IRAVSJTUBEEXCHANGE."
+          ]
+        }
+      ]
+    }
+  ]
+}

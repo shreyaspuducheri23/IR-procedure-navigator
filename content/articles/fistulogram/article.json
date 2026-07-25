@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "fistulogram",
+  "title": "Fistulogram",
+  "category": "vascular-access",
+  "status": "complete",
+  "bleedRisk": "low",
+  "keywords": [],
+  "summary": "Fistulogram guidance for dialysis access dysfunction, cannulation problems, prolonged bleeding, and abnormal access exam findings.",
+  "lastReviewed": null,
+  "provenance": [
+    "Imported from procedure orders PDF updated 4.15.26"
+  ],
+  "reviewNotes": [
+    "Confirm anticoagulation hold language with local policy.",
+    "Confirm INR and platelet thresholds with local policy.",
+    "Confirm outpatient AVS and POD1 suture removal workflow."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Dialysis access dysfunction, cannulation problems, prolonged bleeding, or abnormal exam."
+            },
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Poor dialysis function: low flow, high venous pressures, incomplete dialysis.",
+                "Cannulation problems: difficult access or failed fistula maturity.",
+                "Prolonged bleeding after dialysis.",
+                "Physical exam findings: swelling, absent thrill/pulse."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Low bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-guidelines"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "physical-exam",
+          "title": "Physical exam",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate fistula exam and access patency before the procedure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Evaluate fistula for thrill/pulse.",
+                "POC ultrasound to evaluate patency.",
+                "Formal vascular ultrasound to evaluate flows."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm indication, imaging, labs, NPO status if sedated, and moderate sedation tolerance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and review imaging.",
+                "Labs are appropriate.",
+                "Patient is NPO if moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as common fistulogram problems and first checks."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Poor access flow.",
+                    "Central venous stenosis.",
+                    "Difficult cannulation.",
+                    "Thrombosis.",
+                    "Prolonged bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as stop/escalate criteria."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Absent thrill/pulse with concern for thrombosis.",
+                    "Severe arm swelling or suspected central venous occlusion.",
+                    "Access site bleeding not controlled with pressure.",
+                    "Signs of access infection."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Diet, vitals, pain control, outpatient discharge, AVS, and suture device follow-up."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Remove suture device on POD1 if inpatient."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If outpatient procedure",
+          "items": [
+            "Discharge order with medication reconciliation.",
+            "After visit summary: .IRAVSFISTULOGRAM."
+          ]
+        }
+      ]
+    }
+  ]
+}

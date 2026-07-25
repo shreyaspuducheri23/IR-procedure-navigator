@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "id": "picc-placement",
+  "title": "PICC Placement",
+  "category": "vascular-access",
+  "status": "complete",
+  "bleedRisk": "low",
+  "keywords": [
+    "picc",
+    "central",
+    "venous",
+    "access",
+    "antibiotics",
+    "chemotherapy",
+    "tpn",
+    "vesicant",
+    "peripheral",
+    "lumens",
+    "av",
+    "fistula",
+    "graft",
+    "lymphedema"
+  ],
+  "summary": "PICC placement guidance for prolonged IV therapy, TPN or irritant/vesicant infusions, poor peripheral access, frequent blood draws, and reliable intermediate- to long-term central venous access.",
+  "lastReviewed": null,
+  "provenance": [
+    "Imported from procedure orders PDF updated 4.15.26"
+  ],
+  "reviewNotes": [
+    "Confirm low bleeding risk classification with local policy.",
+    "Confirm anticoagulation hold language with the final table.",
+    "Confirm dialysis access planning restrictions and escalation workflow.",
+    "Confirm whether BP control should remain in the PICC checklist.",
+    "Confirm outpatient AVS and discharge workflow."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Prolonged IV therapy, such as antibiotics or chemotherapy.",
+                "TPN or other irritant/vesicant infusions.",
+                "Poor peripheral venous access.",
+                "Frequent blood draws or recurrent IV medication administration.",
+                "Need for reliable intermediate- to long-term central venous access."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 3.0.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Low bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-guidelines"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Local."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm location.",
+                "Confirm duration and number of lumens.",
+                "DO NOT place in arm with AV fistula/graft or dialysis plan.",
+                "Review imaging with any prior axillary surgery or lymphedema.",
+                "Labs are appropriate.",
+                "Blood pressure is under control."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as common PICC placement problems and first checks."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No suitable peripheral vein.",
+                    "Difficult wire passage.",
+                    "Malpositioned tip.",
+                    "Arm swelling or suspected central venous stenosis.",
+                    "Line does not aspirate or flush."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as stop/escalate criteria."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Requested arm has AV fistula/graft or dialysis plan.",
+                    "Prior axillary surgery, lymphedema, or imaging concern that changes side/access planning.",
+                    "Active infection at planned insertion site.",
+                    "Severe arm swelling or suspected central venous occlusion.",
+                    "Arterial puncture, expanding hematoma, or new chest symptoms."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Diet, routine vitals, no bedrest, outpatient discharge instructions, AVS, and follow-up."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specifics."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs per unit routine.",
+            "No bedrest time needed."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If outpatient procedure",
+          "items": [
+            "Discharge order with medication reconciliation.",
+            "After visit summary: .IRAVSPICC."
+          ]
+        }
+      ]
+    }
+  ]
+}

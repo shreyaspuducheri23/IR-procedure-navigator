@@ -1,0 +1,92 @@
+/* Design tokens. Components reference these only — no raw colours in modules. */
+
+:root {
+  /* Neutrals: a cool slate ramp. */
+  --c-canvas: #f5f7fa;
+  --c-surface: #ffffff;
+  --c-surface-sunken: #f8fafc;
+  --c-surface-hover: #f1f5f9;
+  --c-border: #e2e8f0;
+  --c-border-strong: #cbd5e1;
+  --c-ink: #0f172a;
+  --c-ink-muted: #475569;
+  --c-ink-subtle: #64748b;
+  --c-ink-faint: #94a3b8;
+
+  /* Brand */
+  --c-brand: #1d4ed8;
+  --c-brand-strong: #1e40af;
+  --c-brand-soft: #eff6ff;
+  --c-focus: #2563eb;
+
+  /* Accents, used for categories and phase bars. */
+  --accent-blue: #2563eb;
+  --accent-blue-soft: #eff6ff;
+  --accent-violet: #7c3aed;
+  --accent-violet-soft: #f5f3ff;
+  --accent-teal: #0d9488;
+  --accent-teal-soft: #f0fdfa;
+  --accent-amber: #b45309;
+  --accent-amber-soft: #fffbeb;
+  --accent-cyan: #0891b2;
+  --accent-cyan-soft: #ecfeff;
+  --accent-rose: #be123c;
+  --accent-rose-soft: #fff1f2;
+  --accent-slate: #475569;
+  --accent-slate-soft: #f1f5f9;
+
+  /* Semantic */
+  --c-caution: #b45309;
+  --c-caution-bg: #fffbeb;
+  --c-caution-border: #fcd34d;
+  --c-danger: #b91c1c;
+  --c-danger-bg: #fef2f2;
+  --c-danger-border: #fca5a5;
+  --c-pearl: #0f766e;
+  --c-pearl-bg: #f0fdfa;
+  --c-pearl-border: #5eead4;
+  --c-note: #475569;
+  --c-note-bg: #f8fafc;
+  --c-note-border: #cbd5e1;
+  --c-success: #15803d;
+  --c-success-bg: #f0fdf4;
+  --c-success-border: #86efac;
+
+  /* Spacing scale */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* Elevation — kept restrained; borders do most of the separating. */
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.04);
+  --shadow-md: 0 1px 3px rgb(15 23 42 / 0.08), 0 1px 2px rgb(15 23 42 / 0.04);
+  --shadow-lg: 0 10px 24px rgb(15 23 42 / 0.10), 0 2px 6px rgb(15 23 42 / 0.06);
+
+  /* Type */
+  --font-sans:
+    "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+
+  /* Layout */
+  --header-height: 60px;
+  --content-max: 62rem;
+}

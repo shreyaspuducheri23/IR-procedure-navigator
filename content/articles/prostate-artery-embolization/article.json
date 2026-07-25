@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "id": "prostate-artery-embolization",
+  "title": "Prostate Artery Embolization",
+  "category": "vascular-intervention",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "prostate",
+    "artery",
+    "embolization",
+    "pae",
+    "bph",
+    "luts",
+    "hematuria",
+    "prostatic",
+    "origin",
+    "psa",
+    "urinalysis",
+    "urine",
+    "culture",
+    "bactrim",
+    "ciprofloxacin",
+    "levofloxacin"
+  ],
+  "summary": "Prostate artery embolization guidance for medically refractory LUTS from BPH, large prostate or poor surgical candidacy, desire to preserve sexual function, and refractory hematuria of prostatic origin.",
+  "lastReviewed": null,
+  "provenance": [
+    "Imported from procedure orders PDF updated 4.15.26"
+  ],
+  "reviewNotes": [
+    "Confirm high bleeding risk classification and anticoagulation hold timing with local policy.",
+    "Confirm antibiotic selection and timing with local protocol.",
+    "Confirm discharge medication package and which medications require prescriptions.",
+    "Confirm left-arm IV restriction rationale and whether it is universal.",
+    "Confirm follow-up clinic workflow."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Medically refractory LUTS from BPH and intolerance of BPH medications.",
+                "Large prostate / poor surgical candidate.",
+                "Desire to preserve sexual function.",
+                "Refractory hematuria of prostatic origin."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Platelets >50,000/uL.",
+                "INR < 1.5-1.8.",
+                "CBC, INR, and BMP within 30 days."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "High bleeding-risk procedure; use institutional anticoagulation table for hold timing."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "High bleeding-risk procedure.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-guidelines"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: 5 days.",
+                    "Heparin: 6-8 hours.",
+                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                    "DOACs: 48 hours.",
+                    "Plavix: 5 days.",
+                    "Aspirin: 5 days."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ],
+                "General anesthesia rarely required."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm indication and follow either the LUTS/BPH workflow or refractory hematuria workflow."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If for LUTS from BPH"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Urology evaluation completed.",
+                "Exclude prostate cancer as appropriate.",
+                "Review prostate size and pelvic arterial anatomy.",
+                "Check PSA and urinalysis/urine culture.",
+                "Labs are appropriate.",
+                "Treat active UTI before procedure.",
+                "NPO for moderate sedation.",
+                "Vital signs per routine.",
+                "Peripheral IV placement, NOT in left arm."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "To be ordered in clinic"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.",
+                "OR ciprofloxacin 500 mg BID x 10 days total.",
+                "If oral antibiotic not taken, give 1x dose of IV levofloxacin."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If for refractory hematuria of prostatic origin"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Review indication.",
+                "Labs are appropriate.",
+                "NPO for moderate sedation.",
+                "Resuscitation per primary team.",
+                "Review imaging and approach."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as common prostate artery embolization problems and first checks."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Difficult prostatic artery selection or variant pelvic arterial anatomy.",
+                    "Nontarget embolization concern.",
+                    "Urinary retention or severe post-embolization symptoms.",
+                    "Access-site bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as stop/escalate criteria."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Active untreated UTI before elective LUTS/BPH procedure.",
+                    "Inadequate prostate cancer exclusion when clinically indicated.",
+                    "Unstable hematuria patient requiring resuscitation/escalation.",
+                    "Severe pelvic pain, ischemic symptoms, urinary retention, access-site bleeding, or hemodynamic instability."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Routine orders, access recovery, monitoring, discharge instructions, discharge medications, and hematuria-specific orders."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "1 month clinic visit."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Tylenol 650 mg PRN.",
+            "Ibuprofen 800 mg Q6 PRN.",
+            "Nursing communication: due to void before discharge."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Femoral access",
+          "items": [
+            "Bedrest 2 hours with closure device; 6 hours with manual compression."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Radial access",
+          "items": [
+            "Remove radial artery compression device within 2 hours post procedure.",
+            "Activity per JH-HLM mobility goal."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Monitoring",
+          "items": [
+            "Monitor color of access site.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order with medication reconciliation prior: 2-6 hour.",
+            "After visit summary: .IRAVSPROSTATE."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If for refractory hematuria of prostatic origin",
+          "items": [
+            "Regular diet.",
+            "Vital signs per routine.",
+            "Tylenol 650 mg PRN.",
+            "If retention: Foley."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge medications if procedure for LUTS secondary to BPH",
+          "items": [
+            "Continue antibiotic prescribed pre-procedure.",
+            "Ibuprofen 200 mg q6 hrs PRN x 7 days (OTC).",
+            "Oxybutynin PRN for bladder spasm (OTC).",
+            "Omeprazole/esomeprazole 40 mg daily (OTC).",
+            "Docusate 250 mg daily x 7 days (OTC).",
+            "Phenazopyridine 200 mg TID x 3 days (OTC).",
+            "Toradol for pain PRN; not routine."
+          ]
+        }
+      ]
+    }
+  ]
+}

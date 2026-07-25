@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "anticoagulation-guidelines",
+  "title": "Anticoagulation Holds",
+  "category": "reference",
+  "status": "draft",
+  "bleedRisk": null,
+  "keywords": [
+    "anticoagulation",
+    "warfarin",
+    "heparin",
+    "lovenox",
+    "enoxaparin",
+    "doac",
+    "apixaban",
+    "rivaroxaban",
+    "plavix",
+    "clopidogrel",
+    "aspirin",
+    "hold",
+    "restart"
+  ],
+  "summary": "Hold and restart timing for anticoagulants and antiplatelets by procedure bleeding risk.",
+  "lastReviewed": null,
+  "provenance": [
+    "Assembled from the per-procedure anticoagulation guidance in the legacy navigator."
+  ],
+  "reviewNotes": [
+    "Confirm every hold interval against the institutional anticoagulation policy before use.",
+    "Add renal-function-adjusted DOAC holds.",
+    "Add restart timing and the owner responsible for restarting each agent."
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "kind": "overview",
+      "title": "Overview",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "caution",
+          "title": "Verify against local policy",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This table was assembled from procedure-level guidance in the legacy navigator and has not been reconciled with the institutional anticoagulation policy. Treat it as a starting point, not as the source of truth."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Each procedure article carries its own bleeding-risk designation. Use that designation to pick the column below."
+        }
+      ]
+    },
+    {
+      "id": "holds",
+      "kind": "custom",
+      "title": "Hold timing",
+      "subsections": [
+        {
+          "id": "by-bleeding-risk",
+          "title": "By procedure bleeding risk",
+          "defaultOpen": true,
+          "blocks": [
+            {
+              "type": "table",
+              "caption": "Pre-procedure hold intervals",
+              "header": [
+                "Agent",
+                "High bleeding risk",
+                "Low bleeding risk"
+              ],
+              "rows": [
+                [
+                  "Warfarin",
+                  "5 days",
+                  "No routine hold; confirm INR < 3"
+                ],
+                [
+                  "Heparin (IV)",
+                  "6–8 hours",
+                  "No routine hold"
+                ],
+                [
+                  "Lovenox (enoxaparin)",
+                  "24 hours; hold 1 dose prior if prophylactic",
+                  "No routine hold"
+                ],
+                [
+                  "DOACs",
+                  "48 hours",
+                  "No routine hold"
+                ],
+                [
+                  "Plavix (clopidogrel)",
+                  "5 days",
+                  "No routine hold"
+                ],
+                [
+                  "Aspirin",
+                  "5 days",
+                  "No routine hold"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "before-holding",
+          "title": "Before holding anything",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Document the indication for anticoagulation and the date and time of the last dose.",
+                "Weigh thrombotic risk against procedural bleeding risk — mechanical valves, recent VTE, and recent stents may not tolerate a hold.",
+                "Name the service responsible for restarting the agent and record it in the note."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

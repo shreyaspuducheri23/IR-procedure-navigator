@@ -1,0 +1,44 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-5) var(--sp-7);
+}
+
+.footer {
+  border-top: 1px solid var(--c-border);
+  background: var(--c-surface);
+  padding: var(--sp-5);
+}
+
+.footer p {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: var(--sp-4) var(--sp-4) var(--sp-6);
+  }
+}
+
+@media print {
+  .footer {
+    display: none;
+  }
+
+  .main {
+    padding: 0;
+    max-width: none;
+  }
+}

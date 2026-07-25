@@ -1,0 +1,160 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 38px;
+  padding: 0 var(--sp-3);
+  background: var(--c-surface-sunken);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.field:focus-within {
+  background: var(--c-surface);
+  border-color: var(--c-focus);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.12);
+}
+
+.icon {
+  flex: none;
+  color: var(--c-ink-faint);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: var(--text-base);
+}
+
+.input::placeholder {
+  color: var(--c-ink-faint);
+}
+
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.hint {
+  flex: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--c-ink-faint);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-sm);
+  padding: 0 var(--sp-2);
+  line-height: 1.4;
+}
+
+.clear {
+  flex: none;
+  color: var(--c-ink-subtle);
+  font-size: var(--text-lg);
+  line-height: 1;
+  padding: 0 var(--sp-1);
+  border-radius: var(--r-sm);
+}
+
+.clear:hover {
+  color: var(--c-ink);
+}
+
+.results {
+  position: absolute;
+  top: calc(100% + var(--sp-2));
+  left: 0;
+  right: 0;
+  z-index: 40;
+  list-style: none;
+  margin: 0;
+  padding: var(--sp-1);
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.empty {
+  padding: var(--sp-3);
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+}
+
+/* Column layout: procedure titles here are long and would squeeze the meta row. */
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  text-align: left;
+}
+
+.resultActive {
+  background: var(--c-brand-soft);
+}
+
+.resultTitle {
+  font-size: var(--text-base);
+  font-weight: 550;
+  line-height: 1.35;
+  color: var(--c-ink);
+}
+
+.resultMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--c-ink-faint);
+}
+
+.resultPath {
+  color: var(--c-ink-subtle);
+  font-weight: 550;
+}
+
+.excerpt {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--c-ink-subtle);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mark {
+  background: #fef08a;
+  color: var(--c-ink);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.resultActive .mark {
+  background: #fde047;
+}
+
+.draftTag {
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-sm);
+  padding: 0 var(--sp-1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.625rem;
+  font-weight: 600;
+}

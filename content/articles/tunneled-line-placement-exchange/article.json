@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "id": "tunneled-line-placement-exchange",
+  "title": "Tunneled Line Placement/Exchange",
+  "category": "vascular-access",
+  "status": "draft",
+  "bleedRisk": null,
+  "keywords": [
+    "tunneled",
+    "dialysis",
+    "catheter",
+    "tdc",
+    "permcath"
+  ],
+  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "lastReviewed": null,
+  "provenance": [
+    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
+    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
+    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
+    "Imported from procedure orders PDF updated 4.15.26"
+  ],
+  "reviewNotes": [
+    "Confirm that wrapped lines from the PDF were imported correctly.",
+    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
+    "Confirm order names match current EHR order set names."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "order-set",
+          "title": "Order set",
+          "blocks": [
+            {
+              "type": "checklist",
+              "items": [
+                "SDC/Outpatient with Discharge",
+                "NPO (moderate sedation)",
+                "Vital signs: Per routine",
+                "Peripheral Line Placement",
+                "Glucose Point of Care"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Needs completion",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "PDF lab guidance"
+            },
+            {
+              "type": "list",
+              "items": [
+                "HD pts VBG with lytes (K < 6 without hemolysis)"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Use the institutional anticoagulation table for hold and restart timing."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Needs structured table",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
+                    "Document last dose, indication for anticoagulation, and restart owner."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "focused-exam",
+          "title": "Focused exam",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
+            },
+            {
+              "type": "heading",
+              "text": "General checks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
+                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
+                "Use ultrasound or imaging review when relevant to confirm a safe target."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "to-build",
+          "title": "To build",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Add equipment, approach, general steps, and troubleshooting later."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Suggested buckets",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Equipment",
+                    "Approach",
+                    "General steps",
+                    "Troubleshooting",
+                    "Stop or escalate if"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "subsections": [
+        {
+          "id": "orders",
+          "title": "Orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Post-procedure orders extracted from the PDF."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Notify MD/LIP - IR",
+                "Regular diet",
+                "Vital signs – per unit routine",
+                "Tylenol 650 mg PRN",
+                "Discharge order (med rec prior) - 30 min",
+                "After visit summary: .IRAVSTUNNELEDCATHPLACEMENT1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "restart-meds",
+          "title": "Restart meds",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Assign procedure bleeding risk before using restart guidance."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Needs bleeding risk",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "This procedure does not yet have a high/low bleeding-risk override.",
+                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "follow-up",
+          "title": "Follow-up",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "PDF note"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Follow up: communicate with covering PA if follow up needs to be scheduled."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
