@@ -3,21 +3,34 @@
   "id": "thyroid-biopsy",
   "title": "Thyroid Biopsy",
   "category": "biopsy-ablation",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "low",
+  "keywords": [
+    "thyroid",
+    "biopsy",
+    "fna",
+    "core",
+    "tirads",
+    "ata",
+    "pet",
+    "avid",
+    "cervical",
+    "lymph",
+    "node",
+    "cytology",
+    "pathology",
+    "superficial"
+  ],
+  "summary": "Thyroid biopsy guidance for nodules meeting TI-RADS/ATA criteria, suspicious cervical lymph nodes, PET-avid thyroid nodules, and re-biopsy after nondiagnostic or concerning cytology.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm indication criteria with local thyroid biopsy workflow.",
+    "Confirm FNA versus core biopsy defaults.",
+    "Confirm pathology/cytology collection process.",
+    "Confirm AVS wording."
   ],
   "sections": [
     {
@@ -32,8 +45,7 @@
             {
               "type": "checklist",
               "items": [
-                "SDC/Outpatient with Discharge",
-                "Vital signs: Per routine"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -43,20 +55,16 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Nodule meeting TI-RADS/ATA criteria.",
+                "Suspicious cervical lymph node.",
+                "PET-avid thyroid nodule.",
+                "Re-biopsy after nondiagnostic or concerning cytology."
               ]
             }
           ]
@@ -66,13 +74,14 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
+              "type": "paragraph",
+              "text": "INR < 2-3 and platelets >20k."
             },
             {
               "type": "list",
               "items": [
-                "None needed unless further indicated Cytology present"
+                "Platelets >20,000/uL.",
+                "INR < 2-3."
               ]
             }
           ]
@@ -82,19 +91,36 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "Low bleeding-risk procedure.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
                   ]
                 }
               ]
@@ -102,23 +128,31 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Local anesthesia.",
+                "No sedation typically required."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication.",
+                "Review imaging and target.",
+                "Labs are appropriate.",
+                "Confirm cytology/pathology.",
+                "Confirm FNA vs core biopsy.",
+                "Confirm positioning."
               ]
             }
           ]
@@ -131,26 +165,51 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "To be built as common thyroid biopsy problems and first checks."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "Target difficult to visualize.",
+                    "Need to switch FNA/core approach.",
+                    "Specimen adequacy concern.",
+                    "Small hematoma or local bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as stop/escalate criteria."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Expanding neck hematoma.",
+                    "Airway symptoms, voice change, dyspnea, or dysphagia.",
+                    "Uncontrolled bleeding.",
+                    "Vasovagal episode or hemodynamic instability."
                   ]
                 }
               ]
@@ -163,66 +222,26 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Vital signs – per unit routine",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - immediate",
-                "AVS: .IRAVSBIOPSYSUPERFICIAL"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Regular diet, routine vitals, Tylenol, immediate discharge, and superficial biopsy AVS."
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order: immediate.",
+            "After visit summary: .IRAVSBIOPSYSUPERFICIAL."
           ]
         }
       ]

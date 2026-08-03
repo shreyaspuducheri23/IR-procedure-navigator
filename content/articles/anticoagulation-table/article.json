@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "anticoagulation-table",
+  "title": "Anticoagulation Table",
+  "category": "reference",
+  "status": "complete",
+  "bleedRisk": null,
+  "keywords": [
+    "anticoagulation",
+    "anticoagulant",
+    "antiplatelet",
+    "hold",
+    "resume",
+    "restart",
+    "high",
+    "bleeding",
+    "risk",
+    "low",
+    "warfarin",
+    "heparin",
+    "lovenox",
+    "doac",
+    "plavix",
+    "aspirin"
+  ],
+  "summary": "Draft medication hold and restart reference for procedure bleeding-risk planning.",
+  "lastReviewed": null,
+  "provenance": [
+    "Draft reference page, July 2026"
+  ],
+  "reviewNotes": [
+    "Confirm hold and restart times by medication, dose, renal function, and procedural bleeding risk.",
+    "Confirm whether aspirin should be held for each high-risk procedure at your institution.",
+    "Confirm restart ownership for bridging, high thrombosis risk, active bleeding, or difficult hemostasis."
+  ],
+  "sections": [
+    {
+      "id": "high-risk-hold",
+      "kind": "custom",
+      "title": "High-risk hold",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "caution",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Draft hold timing used by high-bleeding-risk procedure nodes."
+            },
+            {
+              "type": "heading",
+              "text": "High bleeding risk hold"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Warfarin: 5 days.",
+                "Heparin: 6-8 hours.",
+                "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                "DOACs: 48 hours.",
+                "Plavix: 5 days.",
+                "Aspirin: 5 days."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "high-risk-restart",
+      "kind": "custom",
+      "title": "High-risk restart",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Resume only after hemostasis is confirmed and there is no procedure-related bleeding concern."
+        },
+        {
+          "type": "heading",
+          "text": "High bleeding risk restart"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Warfarin: 24 hours postop.",
+            "Heparin: 6-8 hours postop.",
+            "Lovenox: 12 hours postop.",
+            "DOACs: 24 hours postop.",
+            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
+            "Aspirin: 24 hours postop.",
+            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "low-risk-procedures",
+      "kind": "custom",
+      "title": "Low-risk procedures",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Low-risk procedure nodes generally do not require anticoagulation holds."
+        },
+        {
+          "type": "heading",
+          "text": "Low bleeding risk"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No routine anticoagulation hold requirement for uncomplicated low-risk procedures.",
+            "If anticoagulation was held anyway, resume per local policy once hemostasis is confirmed.",
+            "Document who owns restart if there is active bleeding, access-site concern, or patient-specific thrombosis risk."
+          ]
+        }
+      ]
+    }
+  ]
+}

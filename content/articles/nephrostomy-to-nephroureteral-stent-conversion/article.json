@@ -1,40 +1,40 @@
 {
   "schemaVersion": 1,
-  "id": "liver-biopsy-fiducial-marker-placement",
-  "title": "Liver Biopsy/Fiducial Marker Placement",
-  "category": "biopsy-ablation",
-  "status": "complete",
+  "id": "nephrostomy-to-nephroureteral-stent-conversion",
+  "title": "Nephrostomy to Nephroureteral Stent Conversion",
+  "category": "drain-tube",
+  "status": "draft",
   "bleedRisk": "high",
   "keywords": [
+    "nephrostomy",
+    "tube",
+    "placement",
+    "pcn",
     "percutaneous",
-    "liver",
-    "biopsy",
-    "hepatic",
-    "focal",
-    "lesion",
-    "malignancy",
-    "abnormal",
-    "enzymes",
-    "fibrosis",
-    "cirrhosis",
-    "steatohepatitis",
-    "hepatitis",
-    "autoimmune",
-    "infiltrative",
-    "metabolic",
-    "infectious"
+    "urinary",
+    "decompression",
+    "obstruction",
+    "pyonephrosis",
+    "to",
+    "nephroureteral",
+    "stent",
+    "conversion",
+    "exchange",
+    "npu",
+    "catheter",
+    "internalization",
+    "ureteral"
   ],
-  "summary": "Percutaneous liver biopsy guidance for focal liver lesion characterization, suspected malignancy, abnormal liver enzymes, diffuse liver disease, fibrosis staging, and suspected autoimmune, infiltrative, metabolic, or infectious disease.",
+  "summary": "Future edit placeholder for conversion from an existing nephrostomy tube to nephroureteral stent/catheter drainage.",
   "lastReviewed": null,
   "provenance": [
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm high bleeding risk classification with local policy.",
-    "Confirm anticoagulation hold times with the final table.",
-    "Confirm local BP threshold before biopsy.",
-    "Confirm target versus non-target specimen handling and requested studies.",
-    "Confirm attending-specific right-side bedrest duration and discharge criteria."
+    "Add procedure-specific pre-procedure guidance.",
+    "Add procedure-specific post-procedure guidance.",
+    "Confirm anticoagulation and lab thresholds with local policy.",
+    "Confirm AVS and follow-up workflow."
   ],
   "sections": [
     {
@@ -60,19 +60,19 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Targeted lesion biopsy or non-target parenchymal biopsy for diffuse liver disease workup/staging."
+              "text": "Future edit: add procedure-specific indications and booking clarifications."
             },
             {
-              "type": "heading",
-              "text": "Indications"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Characterize a focal liver lesion or suspected malignancy.",
-                "Evaluate unexplained abnormal liver enzymes or diffuse liver disease.",
-                "Diagnose or stage fibrosis, cirrhosis, steatohepatitis, or hepatitis.",
-                "Evaluate suspected autoimmune, infiltrative, metabolic, or infectious disease."
+              "type": "callout",
+              "variant": "note",
+              "title": "Needs procedure-specific edit",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add indications, contraindications, and escalation triggers during faculty review."
+                  ]
+                }
               ]
             }
           ]
@@ -142,8 +142,7 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly.",
-                "Moderate sedation when needed.",
+                "Moderate sedation.",
                 [
                   {
                     "link": {
@@ -161,14 +160,16 @@
           "title": "Checklist",
           "blocks": [
             {
+              "type": "paragraph",
+              "text": "Future edit: add procedure-specific pre-procedure checklist."
+            },
+            {
               "type": "list",
               "items": [
-                "Confirm indication: target versus non-target.",
-                "Review imaging with appropriate window.",
-                "Labs are appropriate.",
-                "Blood pressure is under control.",
-                "Assess for ascites/infection.",
-                "Specimen requests confirmed."
+                "Confirm indication.",
+                "Review imaging and current tube/stent details.",
+                "Confirm labs and anticoagulation plan with local policy.",
+                "Confirm sedation/NPO requirements."
               ]
             }
           ]
@@ -186,21 +187,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "To be built as common liver biopsy problems and first checks."
+              "text": "Future edit: add procedure-specific troubleshooting."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "To build",
+              "title": "Needs procedure-specific edit",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "No safe biopsy window.",
-                    "Ascites affecting access.",
-                    "Poor lesion visualization.",
-                    "Insufficient specimen.",
-                    "Post-biopsy pain or suspected bleeding."
+                    "Add common problems and first checks."
                   ]
                 }
               ]
@@ -213,21 +210,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
+              "text": "Future edit: add procedure-specific stop/escalate criteria."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "To build",
+              "title": "Needs procedure-specific edit",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "No safe window.",
-                    "Uncontrolled blood pressure.",
-                    "Ascites or infection that makes percutaneous access unsafe.",
-                    "Hemodynamic instability, severe abdominal/right shoulder pain, expanding hematoma, or suspected hemorrhage after biopsy."
+                    "Add red flags and escalation criteria."
                   ]
                 }
               ]
@@ -242,35 +235,20 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, bedrest on right side, outpatient discharge instructions, AVS, and follow-up."
-        },
-        {
           "type": "heading",
           "text": "Follow up"
         },
         {
           "type": "list",
           "items": [
-            "No specifics."
+            "Future edit: add follow-up timing and ownership."
           ]
         },
         {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
-            "Tylenol 650 mg PRN.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2.",
-            "Bedrest order: varies per attending, however typically 2 hours laying on right side."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "If outpatient procedure",
-          "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSLIVERBX."
+            "Future edit: add procedure-specific post-procedure orders."
           ]
         },
         {

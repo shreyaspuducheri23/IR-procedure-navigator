@@ -1,12 +1,22 @@
 {
   "schemaVersion": 1,
-  "id": "cholecystostomy-biliary-drain-placement-exchange-internalization",
-  "title": "Cholecystostomy/Biliary Drain Placement/Exchange/Internalization",
+  "id": "nephrostomy-tube-placement",
+  "title": "Nephrostomy Tube Placement",
   "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "high",
-  "keywords": [],
-  "summary": "Cholecystostomy or biliary drain guidance for high-risk acute cholecystitis/source control, with high-risk anticoagulation management and drain follow-up.",
+  "keywords": [
+    "nephrostomy",
+    "tube",
+    "placement",
+    "pcn",
+    "percutaneous",
+    "urinary",
+    "decompression",
+    "obstruction",
+    "pyonephrosis"
+  ],
+  "summary": "Nephrostomy tube placement guidance for renal collecting system decompression, pyonephrosis, obstructive AKI, and high-risk anticoagulation management.",
   "lastReviewed": null,
   "provenance": [
     "Imported from procedure orders PDF updated 4.15.26"
@@ -14,8 +24,8 @@
   "reviewNotes": [
     "Confirm high bleeding risk classification with local policy.",
     "Confirm anticoagulation hold and restart times with the final table.",
-    "Confirm flush order wording.",
-    "Confirm 2-3 month drain check scheduling workflow."
+    "Confirm AVS selection by device/procedure type.",
+    "Confirm 3-month drain check scheduling workflow."
   ],
   "sections": [
     {
@@ -24,9 +34,25 @@
       "title": "Pre-procedure",
       "subsections": [
         {
+          "id": "order-set",
+          "title": "Order set",
+          "blocks": [
+            {
+              "type": "checklist",
+              "items": [
+                "Confirm sedation plan - patient can lie flat."
+              ]
+            }
+          ]
+        },
+        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Percutaneous nephrostomy tube placement for collecting system decompression."
+            },
             {
               "type": "heading",
               "text": "Indications"
@@ -34,39 +60,37 @@
             {
               "type": "list",
               "items": [
-                "Acute cholecystitis in a non-surgical/high risk candidate.",
-                "Sepsis from cholecystitis.",
-                "Failed non-operative management of acute cholecystitis.",
-                "Critically ill/septic patient needing source control.",
-                "Bridge to delayed cholecystectomy for calculous cholecystitis."
+                "Pyelonephritis with unstable vitals.",
+                "Pyonephrosis.",
+                "Renal decompression for obstruction with AKI.",
+                "Failed, contraindicated, or unavailable retrograde ureteral stent.",
+                "Urinary diversion when nephrostomy drainage is the intended endpoint."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Clarify before booking"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Side and level of obstruction.",
+                "Whether nephrostomy tube drainage is the intended endpoint.",
+                "Evidence of infection, sepsis, pyonephrosis, or obstructive AKI that changes urgency.",
+                "Current ureteral stents, urinary diversion anatomy, and relevant prior urologic surgery."
               ]
             }
           ]
         },
         {
-          "id": "labs-and-orders",
-          "title": "Labs and Orders",
+          "id": "labs",
+          "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Labs"
-            },
-            {
               "type": "list",
               "items": [
-                "CBC.",
                 "INR < 1.5-1.8.",
                 "Platelets >50k."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Orders"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Antibiotics with gram negative coverage."
               ]
             }
           ]
@@ -91,7 +115,7 @@
                       {
                         "link": {
                           "text": "Open anticoagulation table",
-                          "articleId": "anticoagulation-guidelines"
+                          "articleId": "anticoagulation-table"
                         }
                       }
                     ]
@@ -131,8 +155,7 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ],
-                "Local if high sedation risk, patient unstable, or intubated."
+                ]
               ]
             }
           ]
@@ -143,15 +166,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Confirm indication, imaging, labs, anticoagulation holds, access window, NPO status, and sedation tolerance."
+              "text": "Confirm target side, collecting system access, labs, anticoagulation holds, antibiotics, NPO status, and sedation tolerance."
             },
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
+                "Confirm indication, side, and intended nephrostomy tube endpoint.",
+                "Review CT/US for hydronephrosis, collecting system target, stone/mass level, and safe posterior calyx access.",
                 "Labs are appropriate.",
                 "Anticoagulation appropriately held.",
-                "Appropriate imaging window.",
+                "Appropriate percutaneous access window.",
+                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
                 "Patient is NPO if moderate sedation.",
                 [
                   {
@@ -178,23 +203,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "To be built as common cholecystostomy/biliary drain problems and first checks."
+              "text": "Common nephrostomy tube placement problems and first checks."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe access window.",
-                    "Gallbladder decompressed or difficult to target.",
-                    "Poor drainage.",
-                    "Tube obstruction.",
-                    "Tube dislodgement or leakage."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "No safe access window.",
+                "Difficult collecting system access.",
+                "Nondilated collecting system.",
+                "Bloody urine.",
+                "Tube obstruction.",
+                "Tube dislodgement or leakage."
               ]
             }
           ]
@@ -204,22 +223,26 @@
           "title": "Red Flags",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause the case or prompt urgent escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate if"
+                },
                 {
                   "type": "list",
                   "items": [
                     "Sepsis or unstable vitals.",
                     "No safe access window.",
                     "Uncorrected high-risk anticoagulation issue.",
-                    "Concern for bowel, vascular, liver, or pleural injury.",
-                    "Clinical deterioration after drainage."
+                    "Concern for vascular, bowel, pleural, or solid-organ injury.",
+                    "Heavy hematuria, clot obstruction, or hemodynamic change after access.",
+                    "Clinical deterioration after decompression."
                   ]
                 }
               ]
@@ -235,7 +258,19 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Diet, vitals, drain flush orders, pain control, anticoagulation restart, outpatient exchange discharge, AVS, and follow-up."
+          "text": "Diet, vitals, pain control, urine output/drain care, flush orders, anticoagulation restart, AVS, and follow-up."
+        },
+        {
+          "type": "heading",
+          "text": "Drain care"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm tube is to gravity drainage unless the operator gives a different plan.",
+            "Track output, urine color, fever, flank pain, and ability to flush before discharge.",
+            "Expect transient hematuria; escalate for heavy persistent bleeding, clots with obstruction, hypotension, or falling hemoglobin."
+          ]
         },
         {
           "type": "heading",
@@ -243,29 +278,8 @@
         },
         {
           "type": "list",
-          "items": []
-        },
-        {
-          "type": "heading",
-          "text": "Calculous cholecystitis"
-        },
-        {
-          "type": "list",
           "items": [
-            "Surgery manages and tube comes out with cholecystectomy."
-          ]
-        },
-        {
-          "type": "heading",
-          "text": "Acalculous cholecystitis"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Drain check in 2-3 months.",
-            "Tract is mature.",
-            "Passed capping trial/tube check.",
-            "Clinical improvement."
+            "Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."
           ]
         },
         {
@@ -275,7 +289,7 @@
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
-            "Pigtail drain - flush orders 10 mL daily."
+            "Drain flush: 10 mL BID while admitted, 10 mL daily while outpatient."
           ]
         },
         {
@@ -292,10 +306,10 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient exchange",
+          "title": "If outpatient",
           "items": [
             "Discharge order with medication reconciliation.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            "After visit summary: .IRAVSPCN1."
           ]
         }
       ]

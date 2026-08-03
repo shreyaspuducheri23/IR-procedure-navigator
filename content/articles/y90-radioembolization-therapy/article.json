@@ -3,21 +3,39 @@
   "id": "y90-radioembolization-therapy",
   "title": "Y90 Radioembolization Therapy",
   "category": "vascular-intervention",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "y90",
+    "therapy",
+    "radioembolization",
+    "hcc",
+    "metastatic",
+    "liver",
+    "disease",
+    "radiation",
+    "lobectomy",
+    "hypertrophy",
+    "transplant",
+    "resection",
+    "palliative",
+    "lung",
+    "shunt",
+    "sir-spheres",
+    "therasphere"
+  ],
+  "summary": "Y90 radioembolization therapy guidance for hepatic malignancy treatment, radiation lobectomy, bridge therapy, and palliative disease control.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm local Y90 activity and dosimetry workflow.",
+    "Confirm SIR-Sphere and TheraSphere lung shunt/lung dose policy.",
+    "Confirm nuclear medicine handoff and scheduling workflow.",
+    "Confirm radial/femoral recovery wording.",
+    "Confirm .IRAVSY901 after visit summary phrase.",
+    "Confirm one-month MRI liver mass and lab workflow."
   ],
   "sections": [
     {
@@ -32,17 +50,7 @@
             {
               "type": "checklist",
               "items": [
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation)",
-                "Pulse checks",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement - No IV in LEFT arm",
-                "Glucose Point of Care",
-                "Dexamethasone 8 mg IV",
-                "Ondansetron (Zofran) 4mg IV",
-                "Pepcid 20 mg PO",
-                "Cefazolin (Ancef) 2g if < 120kg, 3g if >120 kg",
-                "Metronidazole (Flagyl) 500mg IV"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -53,19 +61,20 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "text": "Hepatic malignancy treatment, bridge therapy, radiation lobectomy, or palliation."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Unresectable or recurrent HCC.",
+                "Metastatic disease to the liver.",
+                "Radiation lobectomy to treat tumor and induce contralateral hypertrophy.",
+                "Bridge to transplant/resection.",
+                "Palliative disease control."
               ]
             }
           ]
@@ -75,13 +84,14 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "CBC, INR, CMP and AFP if HCC day of always Separate consent for radiation done by attending No chemotherapy for 2 weeks prior"
+                "CBC.",
+                "INR.",
+                "CMP.",
+                "AFP.",
+                "Platelets >50k.",
+                "INR < 1.5-1.8."
               ]
             }
           ]
@@ -91,19 +101,40 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: 5 days.",
+                    "Heparin: 6-8 hours.",
+                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                    "DOACs: 48 hours.",
+                    "Plavix: 5 days.",
+                    "Aspirin: 5 days."
                   ]
                 }
               ]
@@ -111,23 +142,60 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm indication, mapping anatomy, labs, cone-beam CT, nuclear medicine scheduling, and lung shunt thresholds."
+            },
+            {
+              "type": "checklist",
+              "title": "Core checklist",
+              "items": [
+                "Confirm indication.",
+                "Review anatomy from Y90 mapping study.",
+                "Labs are appropriate.",
+                "CT cone beam available.",
+                "Nuclear medicine aware and scheduled."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "Lung shunt fraction from Tc-99m mapping scan",
+              "items": [
+                "< 10% - acceptable.",
+                "10-20% - elevated; calculate predicted lung dose and potentially reduce Y90 activity.",
+                "> 20% - contraindication for SIR-Sphere resin microspheres."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "TheraSphere glass microspheres",
+              "items": [
+                "No percentage cutoff for TheraSphere glass microspheres; lung dose is the metric.",
+                "< 30 Gy per treatment.",
+                "< 50 Gy cumulative."
               ]
             }
           ]
@@ -140,26 +208,56 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "Future edit: add Y90 therapy-specific troubleshooting."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "Variant hepatic arterial anatomy from mapping study.",
+                    "Unexpected non-target flow.",
+                    "Activity/dose delivery issue.",
+                    "Cone-beam CT or nuclear medicine coordination issue.",
+                    "Access-site bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause therapy or prompt escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate if"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Treatment indication or target anatomy is uncertain.",
+                    "Uncorrected high-risk anticoagulation issue.",
+                    "Lung shunt/lung dose exceeds acceptable threshold.",
+                    "Nuclear medicine schedule or Y90 activity is not confirmed.",
+                    "Access-site bleeding or hemodynamic instability."
                   ]
                 }
               ]
@@ -172,72 +270,63 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Activity:",
-                "FEMORAL: Bedrest, 2-6 hours LE extended",
-                "RADIAL: Activity per JH-HLM mobility goal.",
-                "Remove radial artery compression device",
-                "Monitor Color of Access Site",
-                "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - 2-6 hours",
-                "After visit summary: .IRAVSY901",
-                "Follow up: Clinic visit in 1 month with MRI liver mass and labs (CBC, INR, CMP, AFP if HCC)"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Routine orders, access recovery, anticoagulation restart, discharge, AVS, and one-month follow-up."
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Tylenol 650 mg PRN.",
+            "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
+          "type": "checklist",
+          "title": "Femoral access",
+          "items": [
+            "Bedrest for 2 hours with leg flat.",
+            "Monitor color of access site."
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Radial access",
+          "items": [
+            "Activity per JH-HLM mobility goal.",
+            "Monitor color of access site.",
+            "Remove radial artery compression device."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: 24 hours postop.",
+            "Heparin: 6-8 hours postop.",
+            "Lovenox: 12 hours postop.",
+            "DOACs: 24 hours postop.",
+            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
+            "Aspirin: 24 hours postop.",
+            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order with medication reconciliation prior - 2-6 hours.",
+            "After visit summary: .IRAVSY901."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow up",
+          "items": [
+            "Clinic visit in 1 month with MRI liver mass and labs: CBC, INR, CMP, AFP."
           ]
         }
       ]

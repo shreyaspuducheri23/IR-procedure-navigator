@@ -3,21 +3,38 @@
   "id": "y90-radioembolization-mapping",
   "title": "Y90 Radioembolization Mapping",
   "category": "vascular-intervention",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "y90",
+    "mapping",
+    "radioembolization",
+    "hepatic",
+    "arterial",
+    "anatomy",
+    "lung",
+    "shunt",
+    "non-target",
+    "embolization",
+    "dosimetry",
+    "spect",
+    "ct",
+    "nuclear",
+    "medicine",
+    "cone",
+    "beam"
+  ],
+  "summary": "Y90 mapping guidance for treatment planning before radioembolization, including hepatic arterial anatomy, lung shunt evaluation, non-target embolization risk, and dosimetry data.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm high bleeding risk classification and hold times with local policy.",
+    "Confirm whether AFP is required for all patients or HCC-specific workflow.",
+    "Confirm nuclear medicine coordination and SPECT/CT handoff.",
+    "Confirm radial/femoral recovery wording.",
+    "Confirm Y90 therapy scheduling workflow."
   ],
   "sections": [
     {
@@ -32,12 +49,7 @@
             {
               "type": "checklist",
               "items": [
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation)",
-                "Pulse checks",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement - No IV in LEFT arm",
-                "Glucose Point of Care"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -48,19 +60,20 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "text": "Required planning before Y90 radioembolization."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Required planning before Y90 embolization.",
+                "Define hepatic arterial anatomy.",
+                "Evaluate for shunts to the lungs.",
+                "Evaluate non-target embolization.",
+                "Obtain data for Y90 dosimetry."
               ]
             }
           ]
@@ -70,13 +83,14 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "CBC, INR, CMP and AFP if HCC day of always"
+                "CBC on day of arrival.",
+                "INR on day of arrival.",
+                "CMP on day of arrival.",
+                "AFP on day of arrival.",
+                "Platelets >50k.",
+                "INR < 1.5-1.8."
               ]
             }
           ]
@@ -86,19 +100,40 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: 5 days.",
+                    "Heparin: 6-8 hours.",
+                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                    "DOACs: 48 hours.",
+                    "Plavix: 5 days.",
+                    "Aspirin: 5 days."
                   ]
                 }
               ]
@@ -106,23 +141,37 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and candidacy.",
+                "Review imaging for hepatic arterial anatomy.",
+                "Labs are appropriate.",
+                "Coordination with nuclear medicine.",
+                "Cone-beam CT available."
               ]
             }
           ]
@@ -135,26 +184,56 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "Future edit: add Y90 mapping-specific troubleshooting."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "Variant hepatic arterial anatomy.",
+                    "Extrahepatic/non-target branches.",
+                    "Unexpected lung shunt concern.",
+                    "Unable to complete cone-beam CT or nuclear medicine coordination.",
+                    "Access-site bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause mapping or prompt escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate if"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Y90 candidacy is uncertain.",
+                    "Uncorrected high-risk anticoagulation issue.",
+                    "Non-target embolization risk cannot be addressed.",
+                    "Nuclear medicine or SPECT/CT pathway is not available.",
+                    "Access-site bleeding or hemodynamic instability."
                   ]
                 }
               ]
@@ -167,72 +246,72 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Activity:",
-                "FEMORAL: Bedrest, 2-6 hours LE extended",
-                "RADIAL: Activity per JH-HLM mobility goal.",
-                "Remove radial artery compression device",
-                "Monitor Color of Access Site",
-                "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - 2-6 hours",
-                "After visit summary: .IRAVSY90MAPPING",
-                "Follow up: Y90 therapy"
-              ]
-            }
-          ]
+          "type": "paragraph",
+          "text": "Routine orders, access recovery, anticoagulation restart, discharge, SPECT/CT, and Y90 therapy follow-up."
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "link": {
+                  "text": "Y90 Radioembolization Therapy",
+                  "articleId": "y90-radioembolization-therapy"
                 }
-              ]
-            }
+              }
+            ]
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Tylenol 650 mg PRN.",
+            "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Femoral access",
+          "items": [
+            "Bedrest for 2 hours with leg flat."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Radial access",
+          "items": [
+            "Activity per JH-HLM mobility goal.",
+            "Remove radial artery compression device."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: 24 hours postop.",
+            "Heparin: 6-8 hours postop.",
+            "Lovenox: 12 hours postop.",
+            "DOACs: 24 hours postop.",
+            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
+            "Aspirin: 24 hours postop.",
+            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge / next step",
+          "items": [
+            "Discharge order with medication reconciliation prior - 2-6 hours.",
+            "After visit summary: .IRAVSY90MAPPING.",
+            "Patient to be sent to SPECT/CT."
           ]
         }
       ]

@@ -3,21 +3,39 @@
   "id": "transjugular-intrahepatic-portosystemic-shunt-check-revision-tips",
   "title": "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)",
   "category": "vascular-access",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "tips",
+    "revision",
+    "check",
+    "stenosis",
+    "occlusion",
+    "recurrent",
+    "variceal",
+    "bleeding",
+    "ascites",
+    "portosystemic",
+    "gradient",
+    "shunt",
+    "dysfunction",
+    "doppler",
+    "ultrasound",
+    "over",
+    "correction",
+    "narrowing",
+    "upsizing"
+  ],
+  "summary": "TIPS check/revision guidance for stenosis or occlusion, recurrent variceal bleeding or ascites, elevated portosystemic gradient, shunt dysfunction on Doppler ultrasound, and over-correction.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm high bleeding risk anticoagulation guidance.",
+    "Confirm discharge timing for TIPS check/revision.",
+    "Confirm TIPS ultrasound and clinic follow-up workflow.",
+    "Confirm AVS wording."
   ],
   "sections": [
     {
@@ -32,11 +50,7 @@
             {
               "type": "checklist",
               "items": [
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation)",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement",
-                "Glucose Point of Care"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -46,20 +60,18 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "TIPS stenosis/occlusion.",
+                "Recurrent variceal bleeding.",
+                "Recurrent ascites.",
+                "Elevated portosystemic gradient.",
+                "Shunt dysfunction on Doppler US.",
+                "Over-correction now causing heart failure, hepatic encephalopathy, or hepatic failure."
               ]
             }
           ]
@@ -69,13 +81,13 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "CBC, INR, CMP day of always"
+                "Platelets >50,000/uL.",
+                "INR < 1.5-1.8.",
+                "CBC.",
+                "CMP: bilirubin and creatinine.",
+                "Type & screen."
               ]
             }
           ]
@@ -85,19 +97,40 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "High bleeding-risk procedure; use institutional anticoagulation table for hold timing."
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding-risk procedure.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: 5 days.",
+                    "Heparin: 6-8 hours.",
+                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                    "DOACs: 48 hours.",
+                    "Plavix: 5 days.",
+                    "Aspirin: 5 days."
                   ]
                 }
               ]
@@ -105,23 +138,54 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "General anesthesia, preferred.",
+                "Moderate sedation in select patients.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
+              "text": "Confirm indication, Doppler/prior TIPS imaging, stent details, labs, contraindications, infection status, and whether upsizing or narrowing changes the plan."
             },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Confirm indication.",
+                "Review imaging: Doppler and prior TIPS.",
+                "Review what size/type stent was used.",
+                "Labs are appropriate.",
+                "Consider changes depending on if upsizing or narrowing."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contraindications depend on revision goal.",
+                "Right heart failure.",
+                "Active infection."
               ]
             }
           ]
@@ -134,26 +198,51 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "To be built as common TIPS revision/check problems and first checks."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "Unable to cross stenosis or occlusion.",
+                    "Unexpected gradient findings.",
+                    "Need for upsizing, relining, extension, or narrowing.",
+                    "Access-site bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "To be built as stop/escalate criteria."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Active infection.",
+                    "Severe encephalopathy or worsening liver failure concern.",
+                    "Hemodynamic instability or bleeding.",
+                    "Concern for shunt thrombosis/occlusion with acute decompensation."
                   ]
                 }
               ]
@@ -166,69 +255,63 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Elevate HOB > 45 degrees x 1 hour",
-                "Monitor Color of Access Site",
-                "Vital signs - Every 15 minutes x 4",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - 1 hour",
-                "After visit summary: .IRAVSTIPS",
-                "Follow up: Clinic visit with TIPS US per MD"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Regular diet, timed vitals, Tylenol, IJ and femoral access recovery, 1-hour discharge, AVS, and TIPS ultrasound/clinic follow-up."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit with TIPS ultrasound per MD."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs every 15 minutes x 4.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "IJ access",
+          "items": [
+            "Elevate HOB >45 degrees x 1 hour."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Femoral access",
+          "items": [
+            "Bedrest with leg flat for 2 hours."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order: 1 hour.",
+            "After visit summary: .IRAVSTIPS."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: 24 hours postop.",
+            "Heparin: 6-8 hours postop.",
+            "Lovenox: 12 hours postop.",
+            "DOACs: 24 hours postop.",
+            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
+            "Aspirin: 24 hours postop.",
+            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
           ]
         }
       ]

@@ -73,10 +73,29 @@ One-time repository setting: **Settings → Pages → Source → GitHub Actions*
 The site is served from `/IR-procedure-navigator/` (see `base` in `vite.config.ts`) and uses
 hash routing, so deep links work without a redirect shim.
 
-## The legacy app
+## The legacy app and the upstream fork
 
 `legacy/` holds the original single-page app. Its 49 PDF-extracted procedures and the
-hand-authored enrichments layered on top of them were imported into `content/` by
+hand-authored enrichments layered on top of them are imported into `content/` by
 `scripts/migrate.mjs`, which evaluates the legacy sources to capture their post-enrichment
-runtime state. That import has already run — do not re-run it once articles have been
-edited by hand. `legacy/` can be deleted once the migrated content has been reviewed.
+runtime state.
+
+This repo was forked from [TBRUNDAGE35/IR-procedure-navigator](https://github.com/TBRUNDAGE35/IR-procedure-navigator),
+which still authors content in that vanilla-JS app. Pulling their content in is therefore
+a two-step merge:
+
+```bash
+git remote add upstream https://github.com/TBRUNDAGE35/IR-procedure-navigator.git  # once
+git fetch upstream && git merge upstream/main
+```
+
+Git's rename detection lands their `app.js` edits on `legacy/app.js`. Then re-import:
+
+```bash
+npm run migrate && npm run validate:content
+```
+
+`npm run migrate` **overwrites `content/articles/` wholesale**, so it is only safe while no
+article has been hand-edited here. Once articles are edited in this repo, `content/` becomes
+the source of truth, `legacy/` should be deleted, and upstream changes have to be ported by
+hand instead.

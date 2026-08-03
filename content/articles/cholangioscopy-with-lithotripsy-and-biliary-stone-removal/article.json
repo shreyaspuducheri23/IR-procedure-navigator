@@ -37,7 +37,8 @@
                 "Vital signs: Per routine",
                 "Peripheral Line Placement",
                 "Glucose Point of Care",
-                "Antibiotics per most recent biliary culture, if no recent culture, then per protocol"
+                "Antibiotics per most recent biliary culture, if no recent culture, then per protocol",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

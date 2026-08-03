@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "nerve-block",
+  "title": "Nerve Block",
+  "category": "ir-procedure",
+  "status": "draft",
+  "bleedRisk": null,
+  "keywords": [
+    "nerve",
+    "block",
+    "hypogastric",
+    "superior",
+    "pain",
+    "control",
+    "pelvic",
+    "ufe"
+  ],
+  "summary": "Future edit placeholder for nerve block planning, technique, medications, monitoring, and follow-up.",
+  "lastReviewed": null,
+  "provenance": [
+    "Future edit placeholder, July 2026"
+  ],
+  "reviewNotes": [],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add indication, anticoagulation, medication, sedation, and consent planning."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Confirm sedation plan - patient can lie flat."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add approach, medications, imaging guidance, and troubleshooting."
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add monitoring, expected effect, complications, and follow-up."
+        }
+      ]
+    }
+  ]
+}

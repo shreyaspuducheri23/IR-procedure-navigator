@@ -1,40 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "liver-biopsy-fiducial-marker-placement",
-  "title": "Liver Biopsy/Fiducial Marker Placement",
-  "category": "biopsy-ablation",
+  "id": "cholecystostomy-tube-placement-exchange",
+  "title": "Cholecystostomy Tube Placement/Exchange",
+  "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "high",
-  "keywords": [
-    "percutaneous",
-    "liver",
-    "biopsy",
-    "hepatic",
-    "focal",
-    "lesion",
-    "malignancy",
-    "abnormal",
-    "enzymes",
-    "fibrosis",
-    "cirrhosis",
-    "steatohepatitis",
-    "hepatitis",
-    "autoimmune",
-    "infiltrative",
-    "metabolic",
-    "infectious"
-  ],
-  "summary": "Percutaneous liver biopsy guidance for focal liver lesion characterization, suspected malignancy, abnormal liver enzymes, diffuse liver disease, fibrosis staging, and suspected autoimmune, infiltrative, metabolic, or infectious disease.",
+  "keywords": [],
+  "summary": "Cholecystostomy tube guidance for high-risk acute cholecystitis/source control, with high-risk anticoagulation management and drain follow-up.",
   "lastReviewed": null,
   "provenance": [
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
     "Confirm high bleeding risk classification with local policy.",
-    "Confirm anticoagulation hold times with the final table.",
-    "Confirm local BP threshold before biopsy.",
-    "Confirm target versus non-target specimen handling and requested studies.",
-    "Confirm attending-specific right-side bedrest duration and discharge criteria."
+    "Confirm anticoagulation hold and restart times with the final table.",
+    "Confirm flush order wording.",
+    "Confirm 2-3 month drain check scheduling workflow."
   ],
   "sections": [
     {
@@ -59,33 +40,45 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Targeted lesion biopsy or non-target parenchymal biopsy for diffuse liver disease workup/staging."
-            },
-            {
               "type": "heading",
               "text": "Indications"
             },
             {
               "type": "list",
               "items": [
-                "Characterize a focal liver lesion or suspected malignancy.",
-                "Evaluate unexplained abnormal liver enzymes or diffuse liver disease.",
-                "Diagnose or stage fibrosis, cirrhosis, steatohepatitis, or hepatitis.",
-                "Evaluate suspected autoimmune, infiltrative, metabolic, or infectious disease."
+                "Acute cholecystitis in a non-surgical/high risk candidate.",
+                "Sepsis from cholecystitis.",
+                "Failed non-operative management of acute cholecystitis.",
+                "Critically ill/septic patient needing source control.",
+                "Bridge to delayed cholecystectomy for calculous cholecystitis."
               ]
             }
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
+          "id": "labs-and-orders",
+          "title": "Labs and Orders",
           "blocks": [
+            {
+              "type": "heading",
+              "text": "Labs"
+            },
             {
               "type": "list",
               "items": [
+                "CBC.",
                 "INR < 1.5-1.8.",
                 "Platelets >50k."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Antibiotics with gram negative coverage."
               ]
             }
           ]
@@ -142,8 +135,7 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly.",
-                "Moderate sedation when needed.",
+                "Moderate sedation.",
                 [
                   {
                     "link": {
@@ -151,7 +143,8 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ]
+                ],
+                "Local if high sedation risk, patient unstable, or intubated."
               ]
             }
           ]
@@ -161,14 +154,25 @@
           "title": "Checklist",
           "blocks": [
             {
+              "type": "paragraph",
+              "text": "Confirm indication, imaging, labs, anticoagulation holds, access window, NPO status, and sedation tolerance."
+            },
+            {
               "type": "list",
               "items": [
-                "Confirm indication: target versus non-target.",
-                "Review imaging with appropriate window.",
+                "Confirm indication and review imaging.",
                 "Labs are appropriate.",
-                "Blood pressure is under control.",
-                "Assess for ascites/infection.",
-                "Specimen requests confirmed."
+                "Anticoagulation appropriately held.",
+                "Appropriate imaging window.",
+                "Patient is NPO if moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
               ]
             }
           ]
@@ -186,7 +190,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "To be built as common liver biopsy problems and first checks."
+              "text": "To be built as common cholecystostomy tube problems and first checks."
             },
             {
               "type": "callout",
@@ -196,11 +200,11 @@
                 {
                   "type": "list",
                   "items": [
-                    "No safe biopsy window.",
-                    "Ascites affecting access.",
-                    "Poor lesion visualization.",
-                    "Insufficient specimen.",
-                    "Post-biopsy pain or suspected bleeding."
+                    "No safe access window.",
+                    "Gallbladder decompressed or difficult to target.",
+                    "Poor drainage.",
+                    "Tube obstruction.",
+                    "Tube dislodgement or leakage."
                   ]
                 }
               ]
@@ -223,11 +227,11 @@
                 {
                   "type": "list",
                   "items": [
+                    "Sepsis or unstable vitals.",
+                    "No safe access window.",
                     "Uncorrected high-risk anticoagulation issue.",
-                    "No safe window.",
-                    "Uncontrolled blood pressure.",
-                    "Ascites or infection that makes percutaneous access unsafe.",
-                    "Hemodynamic instability, severe abdominal/right shoulder pain, expanding hematoma, or suspected hemorrhage after biopsy."
+                    "Concern for bowel, vascular, liver, or pleural injury.",
+                    "Clinical deterioration after drainage."
                   ]
                 }
               ]
@@ -243,7 +247,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Diet, vitals, pain control, bedrest on right side, outpatient discharge instructions, AVS, and follow-up."
+          "text": "Diet, vitals, drain flush orders, pain control, anticoagulation restart, outpatient exchange discharge, AVS, and follow-up."
         },
         {
           "type": "heading",
@@ -251,8 +255,29 @@
         },
         {
           "type": "list",
+          "items": []
+        },
+        {
+          "type": "heading",
+          "text": "Calculous cholecystitis"
+        },
+        {
+          "type": "list",
           "items": [
-            "No specifics."
+            "Surgery manages and tube comes out with cholecystectomy."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Acalculous cholecystitis"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Drain check in 2-3 months.",
+            "Tract is mature.",
+            "Passed capping trial/tube check.",
+            "Clinical improvement."
           ]
         },
         {
@@ -260,17 +285,9 @@
           "title": "Routine orders",
           "items": [
             "Regular diet.",
+            "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2.",
-            "Bedrest order: varies per attending, however typically 2 hours laying on right side."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "If outpatient procedure",
-          "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSLIVERBX."
+            "Pigtail drain - flush orders 10 mL daily."
           ]
         },
         {
@@ -282,8 +299,15 @@
             "Lovenox: 12 hours postop.",
             "DOACs: 24 hours postop.",
             "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
-            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+            "Aspirin: 24 hours postop."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If outpatient exchange",
+          "items": [
+            "Discharge order with medication reconciliation.",
+            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
           ]
         }
       ]

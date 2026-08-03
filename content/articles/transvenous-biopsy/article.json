@@ -47,7 +47,8 @@
                 "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2",
                 "Tylenol 650 mg PRN",
                 "Discharge order (med rec prior) - 1-2 hours",
-                "After visit summary: .IRAVSTRANSVENOUSBIOPSY"
+                "After visit summary: .IRAVSTRANSVENOUSBIOPSY",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

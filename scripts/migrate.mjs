@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 /**
- * One-time migration: legacy vanilla-JS procedure graph -> content/articles/<id>/article.json.
+ * Migration: legacy vanilla-JS procedure graph -> content/articles/<id>/article.json.
  *
  * The legacy app kept 49 PDF-extracted procedures in legacy/procedure-data.js and
- * then mutated ~21 of them in place with hand-authored enrichment functions in
- * legacy/app.js. The authoritative content is therefore the *runtime* state after
- * those enrichments run, not either file on its own.
+ * then mutated most of them in place with hand-authored enrichment functions in
+ * legacy/app.js, which also push a handful of extra articles (the reference pages,
+ * the nephrostomy variants, nerve block, UAE). The authoritative content is
+ * therefore the *runtime* state after those enrichments run, not either file alone.
  *
  * To capture it we evaluate both files in a Node vm. legacy/app.js is free of DOM
  * access up to `const els = {`, which is where the render layer begins, so we cut
  * the source there and let the data + enrichment half execute on its own.
  *
- * Safe to re-run: it overwrites content/articles/ from the legacy sources.
+ * Still the importer, not a one-shot: the upstream repo this was forked from keeps
+ * editing legacy/app.js, so merging upstream content means re-running this. It
+ * overwrites content/articles/ wholesale, which is only safe while no article has
+ * been hand-edited here.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -26,22 +30,48 @@ const outDir = path.join(rootDir, "content", "articles");
 /** Marks where legacy/app.js stops being pure data and starts touching the DOM. */
 const DOM_BOUNDARY = "const els = {";
 
+/**
+ * Legacy category labels -> the app's category slugs (src/content/categories.ts).
+ * The legacy list grew ad hoc, so several labels fold into one slug: the three
+ * reference flavours are one "Reference" filter here, and "Embolization" joins
+ * the other embolizations under vascular intervention. "Pain control" folds into
+ * the general IR bucket, where the other pain procedures (celiac plexus block,
+ * botox injection) already sit.
+ */
 const CATEGORY_MAP = {
   "IR procedure": "ir-procedure",
   "Vascular intervention": "vascular-intervention",
+  Embolization: "vascular-intervention",
   "Biopsy / ablation": "biopsy-ablation",
   "Drain / tube procedure": "drain-tube",
   "Central venous / vascular access": "vascular-access",
   "Fluid drainage": "fluid-drainage",
+  "Pain control": "ir-procedure",
   "Reference checklist": "reference",
+  "Reference calculator": "reference",
+  "Reference table": "reference",
 };
 
-/** Article created by this script to give the legacy dead links a real target. */
-const ANTICOAG_ARTICLE_ID = "anticoagulation-guidelines";
+/**
+ * Legacy ids are slugs of the original PDF titles. Where a procedure has since
+ * been retitled or split in two, the id stopped describing the article and would
+ * show up in the URL that way, so these get a clean slug. Link targets are mapped
+ * through the same table, since `procedureId` references still use the old id.
+ */
+const ID_OVERRIDES = {
+  "nephrostomy-nephroureteral-catheter-jj-stent-placement-exchange-conversion":
+    "nephrostomy-tube-placement",
+  "cholecystostomy-biliary-drain-placement-exchange-internalization":
+    "cholecystostomy-tube-placement-exchange",
+  "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set":
+    "catheter-directed-thrombolysis",
+};
+
+const articleIdFor = (legacyId) => ID_OVERRIDES[legacyId] ?? legacyId;
 
 /** Legacy in-page anchors, rewritten to internal article links. */
 const HREF_TO_ARTICLE = {
-  "#anticoagulation-table": ANTICOAG_ARTICLE_ID,
+  "#anticoagulation-table": "anticoagulation-table",
   "#moderate-sedation-checklist": "moderate-sedation-checklist",
 };
 
@@ -53,8 +83,10 @@ const PLACEHOLDER_KEYS = new Set([
   "Needs completion",
   "Needs structured table",
   "Needs bleeding risk",
+  "Needs procedure-specific edit",
   "To build",
   "Suggested buckets",
+  "Inputs to add",
 ]);
 
 const SUMMARY_STOPWORDS = new Set([
@@ -140,7 +172,7 @@ function convertItem(item, report) {
   if (item && typeof item === "object" && item.text) {
     if (item.procedureId) {
       report.internalLinks += 1;
-      return [{ link: { text: item.text, articleId: item.procedureId } }];
+      return [{ link: { text: item.text, articleId: articleIdFor(item.procedureId) } }];
     }
     const mapped = HREF_TO_ARTICLE[item.href];
     if (mapped) {
@@ -161,6 +193,17 @@ function plainText(item) {
   if (typeof item === "string") return item;
   if (item && typeof item === "object" && item.text) return item.text;
   return "";
+}
+
+/**
+ * `checklistSections` is written two ways in the legacy sources: an array of
+ * `{ title, items }` and a plain `{ title: items }` map. Normalise to the array.
+ */
+function checklistSectionsOf(node) {
+  const sections = node.checklistSections;
+  if (!sections) return [];
+  if (Array.isArray(sections)) return sections;
+  return Object.entries(sections).map(([title, items]) => ({ title, items }));
 }
 
 /**
@@ -188,7 +231,7 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   const allItemsText = [
     ...detailEntries.flatMap(([, items]) => items.map(plainText)),
     ...(node.checklist ?? []).map(plainText),
-    ...(node.checklistSections ?? []).flatMap((s) => s.items.map(plainText)),
+    ...checklistSectionsOf(node).flatMap((s) => s.items.map(plainText)),
   ].join(" ");
 
   if (!skipSummary && summaryAddsInformation(node.summary, allItemsText)) {
@@ -214,7 +257,7 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   if (node.checklist?.length) {
     blocks.push({ type: "checklist", items: node.checklist.map((i) => convertItem(i, report)) });
   }
-  for (const section of node.checklistSections ?? []) {
+  for (const section of checklistSectionsOf(node)) {
     blocks.push({
       type: "checklist",
       title: section.title,
@@ -251,7 +294,7 @@ function uniqueId(base, used) {
 
 /** Title for the subsection built from a phase node's own checklist/details. */
 function leadingSubsectionTitle(node, kind) {
-  const sections = node.checklistSections ?? [];
+  const sections = checklistSectionsOf(node);
   if (sections.length === 1 && sections[0].title) return sections[0].title;
   if (node.checklist?.length || sections.length) {
     return kind === "pre" ? "Order set" : "Orders";
@@ -352,19 +395,23 @@ function convertProcedure(procedure, hiddenTitles, report) {
   const category = CATEGORY_MAP[procedure.category];
   if (!category) report.problems.push(`${procedure.id}: unmapped category "${procedure.category}"`);
 
+  // Two flavours of unfinished article: the untouched PDF extraction, and the
+  // stubs the legacy authors added to reserve a slot for a procedure they had
+  // not written yet (the nephrostomy variants, nerve block, UAE).
   const isBoilerplate = /^PDF-derived pre-procedure and post-procedure order draft/.test(
     procedure.summary ?? "",
   );
+  const isStub = /^Future edit placeholder/i.test(procedure.summary ?? "");
   const isHidden = hiddenTitles.includes(procedure.title);
   // The sedation checklist is hidden from the legacy sidebar but is fully written.
   const forceComplete = procedure.id === "moderate-sedation-checklist";
 
   return {
     schemaVersion: SCHEMA_VERSION,
-    id: procedure.id,
+    id: articleIdFor(procedure.id),
     title: procedure.title,
     category: category ?? "reference",
-    status: !forceComplete && (isHidden || isBoilerplate) ? "draft" : "complete",
+    status: !forceComplete && (isHidden || isBoilerplate || isStub) ? "draft" : "complete",
     bleedRisk: procedure.bleedRisk ? procedure.bleedRisk.toLowerCase() : null,
     keywords: [...new Set(String(procedure.keywords ?? "").split(/\s+/).filter(Boolean))],
     summary: procedure.summary ?? "",
@@ -372,116 +419,6 @@ function convertProcedure(procedure, hiddenTitles, report) {
     provenance,
     reviewNotes,
     sections,
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Generated anticoagulation reference
-// ---------------------------------------------------------------------------
-
-/**
- * The legacy content links to "#anticoagulation-table" 22 times but no such page
- * was ever built. The hold/restart data it wanted lives inside the per-procedure
- * enrichments, so we lift it into one real article and point the links there.
- */
-function buildAnticoagulationArticle() {
-  const holdRow = (drug, high, low) => [drug, high, low];
-  return {
-    schemaVersion: SCHEMA_VERSION,
-    id: ANTICOAG_ARTICLE_ID,
-    title: "Anticoagulation Holds",
-    category: "reference",
-    status: "draft",
-    bleedRisk: null,
-    keywords: [
-      "anticoagulation", "warfarin", "heparin", "lovenox", "enoxaparin", "doac",
-      "apixaban", "rivaroxaban", "plavix", "clopidogrel", "aspirin", "hold", "restart",
-    ],
-    summary:
-      "Hold and restart timing for anticoagulants and antiplatelets by procedure bleeding risk.",
-    lastReviewed: null,
-    provenance: [
-      "Assembled from the per-procedure anticoagulation guidance in the legacy navigator.",
-    ],
-    reviewNotes: [
-      "Confirm every hold interval against the institutional anticoagulation policy before use.",
-      "Add renal-function-adjusted DOAC holds.",
-      "Add restart timing and the owner responsible for restarting each agent.",
-    ],
-    sections: [
-      {
-        id: "overview",
-        kind: "overview",
-        title: "Overview",
-        blocks: [
-          {
-            type: "callout",
-            variant: "caution",
-            title: "Verify against local policy",
-            blocks: [
-              {
-                type: "paragraph",
-                text:
-                  "This table was assembled from procedure-level guidance in the legacy navigator " +
-                  "and has not been reconciled with the institutional anticoagulation policy. " +
-                  "Treat it as a starting point, not as the source of truth.",
-              },
-            ],
-          },
-          {
-            type: "paragraph",
-            text:
-              "Each procedure article carries its own bleeding-risk designation. Use that " +
-              "designation to pick the column below.",
-          },
-        ],
-      },
-      {
-        id: "holds",
-        kind: "custom",
-        title: "Hold timing",
-        subsections: [
-          {
-            id: "by-bleeding-risk",
-            title: "By procedure bleeding risk",
-            defaultOpen: true,
-            blocks: [
-              {
-                type: "table",
-                caption: "Pre-procedure hold intervals",
-                header: ["Agent", "High bleeding risk", "Low bleeding risk"],
-                rows: [
-                  holdRow("Warfarin", "5 days", "No routine hold; confirm INR < 3"),
-                  holdRow("Heparin (IV)", "6–8 hours", "No routine hold"),
-                  holdRow(
-                    "Lovenox (enoxaparin)",
-                    "24 hours; hold 1 dose prior if prophylactic",
-                    "No routine hold",
-                  ),
-                  holdRow("DOACs", "48 hours", "No routine hold"),
-                  holdRow("Plavix (clopidogrel)", "5 days", "No routine hold"),
-                  holdRow("Aspirin", "5 days", "No routine hold"),
-                ],
-              },
-            ],
-          },
-          {
-            id: "before-holding",
-            title: "Before holding anything",
-            blocks: [
-              {
-                type: "list",
-                items: [
-                  "Document the indication for anticoagulation and the date and time of the last dose.",
-                  "Weigh thrombotic risk against procedural bleeding risk — mechanical valves, recent VTE, and recent stents may not tolerate a hold.",
-                  "Name the service responsible for restarting the agent and record it in the note.",
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
   };
 }
 
@@ -500,7 +437,6 @@ function main() {
   };
 
   const articles = procedures.map((p) => convertProcedure(p, hiddenProcedureTitles, report));
-  articles.push(buildAnticoagulationArticle());
 
   const knownIds = new Set(articles.map((a) => a.id));
   for (const article of articles) {

@@ -3,21 +3,40 @@
   "id": "uterine-fibroid-embolization-ufe",
   "title": "Uterine Fibroid Embolization (UFE)",
   "category": "vascular-intervention",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "uterine",
+    "fibroid",
+    "embolization",
+    "ufe",
+    "fibroids",
+    "menorrhagia",
+    "heavy",
+    "menstrual",
+    "bleeding",
+    "anemia",
+    "bulk",
+    "symptoms",
+    "dysmenorrhea",
+    "dyspareunia",
+    "hypogastric",
+    "nerve",
+    "block",
+    "pca"
+  ],
+  "summary": "Uterine fibroid embolization guidance for fibroid-related bleeding, anemia, bulk symptoms, pelvic pain, refractory symptoms, fertility-preservation goals, or non-surgical candidates.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm high bleeding risk classification and hold times with local policy.",
+    "Confirm UFE pre-medication dispense quantities.",
+    "Confirm Dr. Kim dexamethasone hold language.",
+    "Confirm pre-surgical pathway and GYN #3030 workflow.",
+    "Confirm discharge timing wording and outpatient prescriptions.",
+    "Confirm PCA settings and admission criteria."
   ],
   "sections": [
     {
@@ -32,30 +51,7 @@
             {
               "type": "checklist",
               "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Activity:",
-                "FEMORAL: Bedrest, 2-6 hours LE extended",
-                "RADIAL: Activity per JH-HLM mobility goal.",
-                "Remove radial artery compression device",
-                "Monitor Color of Access Site",
-                "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
-                "Toradol 30 mg IM (6 hours post 1st dose)",
-                "Tylenol 1000 mg PO (6 hours post 1st dose)",
-                "Oxycodone 5 mg tab 1 tab PO q4 PRN pain",
-                "Dilaudid 0.5-1 mg IV Q2 hrs PRN pain not responding to oral",
-                "Ondansetron (Zofran) 4mg IV PRN",
-                "Metoclopramide (Reglan) 10 mg IV Q6-8 PRN nausea not responding to Zofran",
-                "Promethazine (Phenergan) 25 mg PO/IV Q6 PRN nausea not responding to Reglan",
-                "Discharge order (med rec prior) - 2-6 hours",
-                "After visit summary: .IRAVSUFE",
-                "If admitted and requires PCA:",
-                "Patient Controlled Analgesia (ADULT) Hydromorphone o Loading dose: 0 mg o PCA dose: 0.2 mg o Lockout interval: 10 min o Continuous infusion rate: 0 mg/hr",
-                "One hour dose limit: 1.2 mg",
-                "Discharge Meds (Med Rec and confirm pharmacy):",
-                "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24) Prescribe only if needed",
-                "Promethazine (Phenergan) 25 mg Q4 hours PRN nausea if Zofran not working (Disp 8)",
-                "Follow up: Clinic visit in 1 month with MD"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -66,19 +62,20 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "text": "Symptomatic uterine fibroids with bleeding, anemia, bulk symptoms, pain, refractory symptoms, fertility-preservation goals, or non-surgical candidacy."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Heavy menstrual bleeding causing anemia or impaired quality of life.",
+                "Bulk symptoms: pressure, fullness, urinary frequency, constipation, hydronephrosis.",
+                "Dysmenorrhea, pelvic pain, dyspareunia.",
+                "Above symptoms refractory to conservative therapy.",
+                "Above symptoms and desire to preserve fertility or non-surgical candidate."
               ]
             }
           ]
@@ -89,16 +86,19 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "No lab guidance was extracted for this procedure."
+              "text": "Needed within 30 days: CBC, creatinine/GFR, INR <1.5-1.8, and platelets >50k."
             },
             {
               "type": "heading",
-              "text": "PDF lab guidance"
+              "text": "Labs within 30 days"
             },
             {
               "type": "list",
               "items": [
-                "No lab guidance extracted; verify local policy."
+                "CBC.",
+                "Creatinine/GFR.",
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
               ]
             }
           ]
@@ -108,19 +108,40 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: 5 days.",
+                    "Heparin: 6-8 hours.",
+                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
+                    "DOACs: 48 hours.",
+                    "Plavix: 5 days.",
+                    "Aspirin: 5 days."
                   ]
                 }
               ]
@@ -128,23 +149,116 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Usually moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Hypogastric nerve block",
+                      "articleId": "nerve-block"
+                    }
+                  }
+                ],
+                "Rarely done general."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and review prior interventions.",
+                "Review imaging on number, size, location of fibroids.",
+                "EXCLUDE pregnancy.",
+                "Labs are appropriate.",
+                "No active infection or malignancy.",
+                "Ensure patient goals align with procedure.",
+                "Confirm sedation plan, patient can lie flat.",
+                "Embolic agent."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-meds",
+          "title": "Pre-procedure meds",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Start 1 day prior to procedure; to be ordered in clinic."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Naproxen 500 mg BID (Disp 16).",
+                "Omeprazole 20 mg PO daily (Disp 8).",
+                "Hydroxyzine 25 mg PO nightly (Disp 8).",
+                "Colace 100 mg PO BID (Disp 16).",
+                "Tylenol 1000 mg PO Q6H begin at night (Disp 58).",
+                "Zofran 4 mg PO Q6H PRN for nausea post (Disp 8)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arrival-orders",
+          "title": "Arrival orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Orders when patient arrives."
+            },
+            {
+              "type": "checklist",
+              "title": "When patient arrives",
+              "items": [
+                "SDC/Outpatient with Discharge vs Bedded Outpatient.",
+                "NPO (moderate sedation).",
+                "Pulse checks.",
+                "Vital signs - Per unit routine.",
+                "Peripheral Line Placement - No IV in LEFT arm.",
+                "Glucose Point of Care.",
+                "Cefazolin (Ancef) 2g if <120kg, 3g if >120 kg.",
+                "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM).",
+                "Toradol 30 mg once IM.",
+                "Ondansetron (Zofran) 4 mg once IV.",
+                "Oxycodone 10 mg once PO.",
+                "Hx severe nausea: Scopolamine patch 1.5 mg apply to skin behind ear prior to procedure and leave in place x 72 hours; may cause anticholinergic side effects including dry mouth; may remove patch if these occur."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "If patient did not take home meds or if pre-surgical",
+              "items": [
+                "Pantoprazole 40 mg PO once.",
+                "Colace 100 mg PO once.",
+                "Acetaminophen 1000 mg PO once."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "If pre-surgical",
+              "items": [
+                "Place Foley.",
+                "No NSAIDs or dexamethasone.",
+                "Page GYN at #3030 when patient is in pre-op for consent."
               ]
             }
           ]
@@ -157,26 +271,56 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "Future edit: add UFE-specific troubleshooting."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "Difficult uterine artery selection.",
+                    "Variant pelvic arterial anatomy.",
+                    "Non-target embolization concern.",
+                    "Severe post-embolization pain or nausea.",
+                    "Access-site bleeding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause UFE or prompt escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate if"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Pregnancy not excluded.",
+                    "Active infection or malignancy concern.",
+                    "Patient goals do not align with procedure.",
+                    "Uncorrected high-risk anticoagulation issue.",
+                    "Severe uncontrolled post-procedure pain, fever/sepsis concern, access-site bleeding, or hemodynamic instability."
                   ]
                 }
               ]
@@ -189,76 +333,82 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "SDC/Outpatient with Discharge vs Bedded Outpatient (see below)",
-                "NPO (moderate sedation)",
-                "Pulse checks",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement - No IV in LEFT arm",
-                "Glucose Point of Care",
-                "Cefazolin (Ancef) 2g if < 120kg, 3g if >120 kg",
-                "Dexamethasone 8 mg IV (HOLD FOR KIM)",
-                "Toradol 30 mg once IM",
-                "Ondansetron (Zofran) 4mg once IV",
-                "Oxycodone 10 mg once PO",
-                "Hx severe nausea: Scopolamine patch 1.5 mg apply to skin behind ear prior to procedure and leave in place x 72 hours (may cause anticholinergic side effects including dry mouth; may remove patch if experience these) Prescribe if patient did not take home meds",
-                "Pantoprazole 40 mg PO once",
-                "Colace 100 mg PO once",
-                "Acetaminophen 1000 mg PO once",
-                "Labs: CBC and INR within 30 days If pre-surgical, place Foley, no NSAIDs or dexamethasone day of and page GYN (3030) and anesthesia when patient is in pre-op for consent Daly/Bader - hypogastric nerve block Ganguli – admit post procedure Ayyagari – generally admits post-procedure Kim – Hold pre procedure dexamethasone, intra- arterial dexamethasone and lidocaine (FYI)"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Routine orders, access recovery, pain/nausea plan, discharge prescriptions, admission PCA pathway, and follow-up."
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit in 1 month."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.",
+            "Toradol 30 mg IM (6 hours post 1st dose).",
+            "Tylenol 1000 mg PO (6 hours post 1st dose).",
+            "Oxycodone 5 mg tab x 1 PO q4 PRN pain.",
+            "Dilaudid 0.5-1 mg IV Q2 hrs PRN pain not responding to oral.",
+            "Antiemetic order set (ondansetron, metoclopramide, and promethazine)."
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: 24 hours postop.",
+            "Heparin: 6-8 hours postop.",
+            "Lovenox: 12 hours postop.",
+            "DOACs: 24 hours postop.",
+            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
+            "Aspirin: 24 hours postop.",
+            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Femoral access",
+          "items": [
+            "Bedrest, 2-6 hours with LE extended."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Radial access",
+          "items": [
+            "Activity per JH-HLM mobility goal.",
+            "Remove radial artery compression device.",
+            "Monitor color of access site."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If being discharged",
+          "items": [
+            "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
+            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
+            "Discharge order 2-6 hours prior.",
+            "After visit summary: .IRAVSUFE."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "If patient admitted - PCA adult order",
+          "items": [
+            "Hydromorphone - one hour dose limit: 1.2 mg.",
+            "Loading dose: 0 mg.",
+            "PCA dose: 0.2 mg.",
+            "Lockout interval: 10 min.",
+            "Continuous infusion rate: 0 mg/hr."
           ]
         }
       ]

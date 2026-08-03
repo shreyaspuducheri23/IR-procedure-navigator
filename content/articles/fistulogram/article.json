@@ -23,6 +23,18 @@
       "title": "Pre-procedure",
       "subsections": [
         {
+          "id": "order-set",
+          "title": "Order set",
+          "blocks": [
+            {
+              "type": "checklist",
+              "items": [
+                "Confirm sedation plan - patient can lie flat."
+              ]
+            }
+          ]
+        },
+        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -74,7 +86,7 @@
                       {
                         "link": {
                           "text": "Open anticoagulation table",
-                          "articleId": "anticoagulation-guidelines"
+                          "articleId": "anticoagulation-table"
                         }
                       }
                     ]
@@ -93,6 +105,16 @@
                     "DOACs: no holding requirement.",
                     "Plavix: no holding requirement.",
                     "Aspirin: no holding requirement."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Caveat"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Consider holding only if significant intervention is anticipated—large-bore access, thrombectomy/thrombolysis—or the patient has additional bleeding risks."
                   ]
                 }
               ]

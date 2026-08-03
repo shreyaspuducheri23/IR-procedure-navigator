@@ -91,6 +91,23 @@
               ]
             }
           ]
+        },
+        {
+          "type": "heading",
+          "text": "Related references"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "link": {
+                  "text": "MELD score reference",
+                  "articleId": "meld-score-reference"
+                }
+              }
+            ]
+          ]
         }
       ]
     }

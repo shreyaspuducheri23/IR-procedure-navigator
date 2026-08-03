@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "uterine-artery-embolization",
+  "title": "Uterine Artery Embolization",
+  "category": "vascular-intervention",
+  "status": "draft",
+  "bleedRisk": null,
+  "keywords": [
+    "uterine",
+    "artery",
+    "embolization",
+    "UAE",
+    "bleeding",
+    "postpartum",
+    "hemorrhage",
+    "pelvic",
+    "gynecologic"
+  ],
+  "summary": "Future edit placeholder for uterine artery embolization indications, pre-procedure planning, post-procedure orders, and follow-up.",
+  "lastReviewed": null,
+  "provenance": [
+    "Future edit placeholder, July 2026"
+  ],
+  "reviewNotes": [
+    "Add indication-specific pre-procedure guidance.",
+    "Add post-procedure medication and monitoring orders.",
+    "Confirm anticoagulation and lab thresholds with local policy.",
+    "Confirm gynecology/OB coordination and follow-up workflow."
+  ],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add indications, labs, anticoagulation, imaging, pregnancy/gynecology context, and sedation planning."
+        },
+        {
+          "type": "callout",
+          "variant": "note",
+          "title": "Needs procedure-specific edit",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Add indication-specific pathways before clinical use."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Confirm sedation plan - patient can lie flat."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add approach, embolic selection, endpoints, and troubleshooting."
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future edit: add post-procedure orders, pain/nausea plan, discharge criteria, AVS, and follow-up."
+        }
+      ]
+    }
+  ]
+}

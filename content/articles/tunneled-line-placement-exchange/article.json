@@ -3,27 +3,38 @@
   "id": "tunneled-line-placement-exchange",
   "title": "Tunneled Line Placement/Exchange",
   "category": "vascular-access",
-  "status": "draft",
-  "bleedRisk": null,
+  "status": "complete",
+  "bleedRisk": "low",
   "keywords": [
     "tunneled",
     "dialysis",
     "catheter",
     "tdc",
-    "permcath"
+    "permcath",
+    "line",
+    "apheresis",
+    "antibiotics",
+    "chemotherapy",
+    "tpn",
+    "transfusions",
+    "fibrin",
+    "sheath",
+    "exchange",
+    "malposition",
+    "bacteremia",
+    "infection"
   ],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "summary": "Tunneled line placement and exchange guidance for long-term central access, tunneled dialysis/apheresis access, poor peripheral access, catheter dysfunction, malposition, damage, or size/type conversion.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
+    "Confirm low bleeding risk classification with local policy.",
+    "Confirm anticoagulation language with the final table.",
+    "Confirm potassium threshold for TDC placement.",
+    "Confirm when exchange over wire is prohibited for bacteremia/line infection.",
+    "Confirm tunneled catheter AVS and follow-up workflow."
   ],
   "sections": [
     {
@@ -38,11 +49,7 @@
             {
               "type": "checklist",
               "items": [
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation)",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement",
-                "Glucose Point of Care"
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -52,20 +59,27 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Long-term central access for antibiotics, chemotherapy, TPN, transfusions, or frequent infusions.",
+                "Hemodialysis or apheresis when permanent access is unavailable, immature, or malfunctioning.",
+                "Poor peripheral access or when a PICC is unsuitable.",
+                "Exchange for catheter dysfunction, occlusion/fibrin sheath, damage, or leakage.",
+                "Exchange for malposition, retraction, partial dislodgment, or catheter-size/type conversion."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Do not"
+            },
+            {
+              "type": "list",
+              "items": [
+                "DO NOT exchange over wire if bacteremia/line infection."
               ]
             }
           ]
@@ -75,13 +89,11 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "HD pts VBG with lytes (K < 6 without hemolysis)"
+                "INR < 2-3.",
+                "Platelets >20k.",
+                "Potassium if TDC placement."
               ]
             }
           ]
@@ -91,19 +103,25 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Low bleeding risk; use the anticoagulation table for medication-specific guidance."
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "Low bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
@@ -111,23 +129,61 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Local.",
+                "Moderate sedation for special situations.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
+              "text": "Use the placement pathway for new lines and the replacement pathway for exchanges."
             },
             {
               "type": "heading",
-              "text": "General checks"
+              "text": "For placement"
             },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Confirm indication, expected duration, and required catheter: dialysis versus small-bore; single versus double lumen.",
+                "Determine new placement.",
+                "Review imaging; assess for central venous stenosis/thrombosis and implanted hardware.",
+                "Confirm no bacteremia/no active infection.",
+                "Labs are appropriate.",
+                "Confirm sedation plan and that patient can lie flat."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "For replacement"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Document the reason for exchange.",
+                "For dysfunction: check for kink/retraction, inability to aspirate versus flush, prior alteplase attempt, and suspected fibrin sheath.",
+                "Assess for fever, bacteremia, blood cultures, exit-site erythema, drainage, or tunnel tenderness; avoid over-wire exchange with tunnel infection.",
+                "Labs are appropriate.",
+                "Confirm sedation plan and that patient can lie flat."
               ]
             }
           ]
@@ -140,26 +196,55 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "to-build",
-          "title": "To build",
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "text": "Future edit: add common tunneled line placement/exchange problems and first checks."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "To build",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
+                    "No suitable access site.",
+                    "Central venous stenosis or thrombosis.",
+                    "Difficult aspiration/flush after placement or exchange.",
+                    "Suspected fibrin sheath.",
+                    "Malposition or retraction."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red-flags",
+          "title": "Red Flags",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Findings that should pause over-wire exchange or prompt escalation."
+                },
+                {
+                  "type": "heading",
+                  "text": "Escalate if"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Bacteremia or line infection: do not exchange over wire.",
+                    "Tunnel infection, exit-site drainage, tunnel tenderness, or uncontrolled active infection.",
+                    "No safe access site or suspected central venous occlusion.",
+                    "Arterial puncture, expanding hematoma, pneumothorax symptoms, arrhythmia, or hemodynamic instability."
                   ]
                 }
               ]
@@ -172,66 +257,26 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Vital signs – per unit routine",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - 30 min",
-                "After visit summary: .IRAVSTUNNELEDCATHPLACEMENT1"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Regular diet, routine vitals, pain control, outpatient discharge timing, and AVS."
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs - per unit routine.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "If outpatient",
+          "items": [
+            "Discharge order - 30 min.",
+            ".IRAVSTUNNELEDCATHPLACEMENT1."
           ]
         }
       ]

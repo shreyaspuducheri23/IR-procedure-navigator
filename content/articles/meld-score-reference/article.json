@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "meld-score-reference",
+  "title": "MELD Score Reference",
+  "category": "reference",
+  "status": "draft",
+  "bleedRisk": null,
+  "keywords": [
+    "meld",
+    "score",
+    "tips",
+    "bilirubin",
+    "inr",
+    "creatinine",
+    "sodium",
+    "albumin",
+    "mortality",
+    "risk"
+  ],
+  "summary": "Draft MELD reference page for TIPS risk stratification and future MELD calculation build-out.",
+  "lastReviewed": null,
+  "provenance": [
+    "Draft reference page, July 2026"
+  ],
+  "reviewNotes": [],
+  "sections": [
+    {
+      "id": "meld-risk-bands",
+      "kind": "custom",
+      "title": "MELD Risk Bands",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use MELD risk bands to frame TIPS risk discussions and attending review."
+        },
+        {
+          "type": "heading",
+          "text": "Risk bands"
+        },
+        {
+          "type": "list",
+          "items": [
+            "MELD <15: Low risk.",
+            "MELD 15-18: Moderate risk.",
+            "MELD >18-20: Significantly increased mortality; proceed with caution.",
+            "MELD >25-30: Often considered prohibitive except in salvage situations."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calculation-to-build",
+      "kind": "custom",
+      "title": "Calculation To Build",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Future calculator inputs: bilirubin, INR, creatinine, sodium, and albumin."
+        },
+        {
+          "type": "callout",
+          "variant": "note",
+          "title": "Inputs to add",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Bilirubin.",
+                "INR.",
+                "Creatinine.",
+                "Sodium.",
+                "Albumin."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

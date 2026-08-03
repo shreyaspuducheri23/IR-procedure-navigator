@@ -99,7 +99,7 @@ array form only when you need a link.
 ```jsonc
 { "type": "list", "items": [
   "A plain item.",
-  ["See the ", { "link": { "text": "hold table", "articleId": "anticoagulation-guidelines" } }, " first."],
+  ["See the ", { "link": { "text": "hold table", "articleId": "anticoagulation-table" } }, " first."],
   [{ "link": { "text": "SIR guidelines", "href": "https://www.sirweb.org/" } }]
 ] }
 ```
