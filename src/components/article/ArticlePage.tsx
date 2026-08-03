@@ -7,6 +7,7 @@ import { BleedRiskChip } from "./BleedRiskChip";
 import { Callout } from "./BlockRenderer";
 import { PhaseSection } from "./PhaseSection";
 import { NotFound } from "@/components/NotFound";
+import { FeedbackButton } from "@/components/feedback/FeedbackButton";
 import styles from "./ArticlePage.module.css";
 
 /** Canonical phase order, regardless of how the JSON happens to be ordered. */
@@ -171,6 +172,13 @@ function ArticleView({ article }: { article: Article }) {
           </ul>
         </footer>
       )}
+
+      <div className={styles.feedbackRow}>
+        <p>Something here wrong, unclear, or out of date?</p>
+        <FeedbackButton
+          article={{ id: article.id, title: article.title, status: article.status }}
+        />
+      </div>
     </article>
   );
 }

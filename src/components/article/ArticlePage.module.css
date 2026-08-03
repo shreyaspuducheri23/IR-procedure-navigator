@@ -129,6 +129,29 @@
   gap: var(--sp-1);
 }
 
+.feedbackRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+}
+
+.feedbackRow p {
+  margin: 0;
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+}
+
+@media print {
+  .feedbackRow {
+    display: none;
+  }
+}
+
 /* Loading placeholder ----------------------------------------------------- */
 
 .skeleton {

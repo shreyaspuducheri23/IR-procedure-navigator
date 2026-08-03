@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ir-procedure-navigator",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-01",
+  "observability": { "enabled": true },
+  "vars": {
+    "GITHUB_OWNER": "shreyaspuducheri23",
+    "GITHUB_REPO": "IR-procedure-navigator",
+    // The deployed site, plus the Vite dev server for local testing.
+    "ALLOWED_ORIGINS": "https://shreyaspuducheri23.github.io,http://localhost:5173"
+  }
+  // Secret, set out of band and never stored here:
+  //   npx wrangler secret put github_pat
+}

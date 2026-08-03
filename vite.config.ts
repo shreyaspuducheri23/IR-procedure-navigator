@@ -207,6 +207,11 @@ export default defineConfig({
   // GitHub Pages project site. Combined with hash routing, deep links work
   // without a 404.html redirect shim.
   base: "/IR-procedure-navigator/",
+  define: {
+    // Stamped into feedback reports so an issue points at the exact build the
+    // reader was looking at. GITHUB_SHA is set by Actions; "dev" locally.
+    __APP_VERSION__: JSON.stringify(process.env.GITHUB_SHA?.slice(0, 7) ?? "dev"),
+  },
   plugins: [react(), articleIndexPlugin()],
   resolve: {
     alias: {
