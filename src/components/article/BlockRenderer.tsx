@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Block, CalloutVariant, RichText as RichTextValue } from "@/schema/article";
 import { resolveImage } from "@/content/images";
+import { MeldCalculator } from "./MeldCalculator";
 import { RichText } from "./RichText";
 import styles from "./BlockRenderer.module.css";
 
@@ -16,6 +17,8 @@ export function Blocks({ blocks, articleId }: { blocks: Block[]; articleId: stri
 
 function BlockRenderer({ block, articleId }: { block: Block; articleId: string }) {
   switch (block.type) {
+    case "calculator":
+      return <MeldCalculator />;
     case "paragraph":
       return (
         <p className={styles.paragraph}>

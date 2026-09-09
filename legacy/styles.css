@@ -497,6 +497,142 @@ input {
   accent-color: var(--green);
 }
 
+.meld-calculator {
+  display: grid;
+  gap: 12px;
+}
+
+.meld-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.meld-input {
+  display: grid;
+  gap: 5px;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.meld-input input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.meld-input input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 159, 0.16);
+  outline: none;
+}
+
+.meld-toggle-row {
+  display: grid;
+  gap: 8px;
+}
+
+.meld-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #344044;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.meld-toggle input {
+  margin-top: 2px;
+  accent-color: var(--blue);
+}
+
+.meld-reference-block {
+  display: grid;
+  gap: 5px;
+  margin: -4px 0 0;
+}
+
+.meld-reference-block strong {
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: none;
+}
+
+.meld-reference-block p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.meld-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.meld-result-card {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.meld-result-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.meld-result-card strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.meld-survival-card {
+  padding: 12px;
+  border: 1px solid #b8d8c8;
+  border-radius: 8px;
+  background: var(--green-soft);
+}
+
+.meld-survival-card span {
+  display: block;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.meld-survival-card strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.meld-survival-card small {
+  display: block;
+  margin-top: 5px;
+  color: #344044;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .empty-state {
   padding: 40px 20px;
   color: var(--muted);
@@ -568,5 +704,10 @@ a {
   .bubble strong,
   .bubble span {
     max-width: none;
+  }
+
+  .meld-input-grid,
+  .meld-results {
+    grid-template-columns: 1fr;
   }
 }

@@ -43,10 +43,39 @@
       "id": "intra",
       "kind": "intra",
       "title": "Intra-procedure",
-      "blocks": [
+      "subsections": [
         {
-          "type": "paragraph",
-          "text": "Future edit: add approach, medications, imaging guidance, and troubleshooting."
+          "id": "anatomy",
+          "title": "Anatomy",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Key anatomy and landmarks for this procedure."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific access, device, imaging, and completion steps."
+            }
+          ]
         }
       ]
     },

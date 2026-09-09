@@ -19,7 +19,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import vm from "node:vm";
 import { articleSchema, SCHEMA_VERSION } from "../src/schema/article.ts";
 
@@ -85,6 +85,7 @@ const PLACEHOLDER_KEYS = new Set([
   "Needs bleeding risk",
   "Needs procedure-specific edit",
   "To build",
+  "To build out",
   "Suggested buckets",
   "Inputs to add",
 ]);
@@ -99,7 +100,7 @@ const SUMMARY_STOPWORDS = new Set([
 // Capture
 // ---------------------------------------------------------------------------
 
-function captureLegacyState() {
+export function captureLegacyState() {
   const dataSource = readFileSync(path.join(legacyDir, "procedure-data.js"), "utf8");
   const appSource = readFileSync(path.join(legacyDir, "app.js"), "utf8");
 
@@ -168,7 +169,14 @@ function summaryAddsInformation(summary, itemsText) {
 
 /** Legacy list items are strings or link objects; both become schema rich text. */
 function convertItem(item, report) {
-  if (typeof item === "string") return item;
+  if (typeof item === "string") {
+    const source = item.match(/^(.*) (https:\/\/\S+)$/);
+    if (source && /^(HRSA OPTN MELD|Kim WR et al\.)/.test(item)) {
+      report.externalLinks += 1;
+      return [{ link: { text: source[1], href: source[2] } }];
+    }
+    return item;
+  }
   if (item && typeof item === "object" && item.text) {
     if (item.procedureId) {
       report.internalLinks += 1;
@@ -225,6 +233,10 @@ function calloutVariantForKey(key, nodeType) {
 
 function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   const blocks = [];
+  if (node.calculator) {
+    if (node.calculator !== "meld") throw new Error(`Unsupported calculator: ${node.calculator}`);
+    blocks.push({ type: "calculator", calculator: "meld" });
+  }
   const details = node.details ?? {};
   const detailEntries = Object.entries(details).filter(([key]) => !PROVENANCE_KEYS.has(key));
 
@@ -302,7 +314,41 @@ function leadingSubsectionTitle(node, kind) {
   return "Overview";
 }
 
-function convertProcedure(procedure, hiddenTitles, report) {
+/** Validate before flattening so malformed graphs cannot silently lose content. */
+function validateGraph(procedure) {
+  const active = new Set();
+  const visited = new Set();
+  function visit(id) {
+    if (active.has(id)) throw new Error(`${procedure.id}: cycle at ${id}`);
+    const node = procedure.nodes[id];
+    if (!node) throw new Error(`${procedure.id}: missing node ${id}`);
+    if (node.calculator !== undefined && node.calculator !== "meld") {
+      throw new Error(`${procedure.id}: unsupported calculator ${node.calculator}`);
+    }
+    if (visited.has(id)) return;
+    active.add(id);
+    for (const child of node.children ?? []) visit(child);
+    active.delete(id);
+    visited.add(id);
+  }
+  visit(procedure.root);
+  for (const id of Object.keys(procedure.nodes)) visit(id);
+}
+
+/** Keep the existing one-level subsection UI, flattening deeper topics in order. */
+function descendantBlocks(nodes, id, report) {
+  const node = nodes[id];
+  return [
+    ...nodeToBlocks(node, node.title, report),
+    ...(node.children ?? []).flatMap((child) => [
+      { type: "heading", text: nodes[child].title },
+      ...descendantBlocks(nodes, child, report),
+    ]),
+  ];
+}
+
+export function convertProcedure(procedure, hiddenTitles, report) {
+  validateGraph(procedure);
   const nodes = procedure.nodes;
   const rootNode = nodes[procedure.root];
   const reviewNotes = [];
@@ -370,7 +416,7 @@ function convertProcedure(procedure, hiddenTitles, report) {
         subsections.push({
           id: uniqueId(slugify(childNode.title), usedSubIds),
           title: childNode.title,
-          blocks: nodeToBlocks(childNode, childNode.title, report),
+          blocks: descendantBlocks(nodes, id, report),
         });
       }
       section.subsections = subsections;
@@ -491,4 +537,4 @@ function main() {
   console.log("");
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main();

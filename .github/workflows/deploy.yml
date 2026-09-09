@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       - name: Validate content
         run: npm run validate:content
+      - name: Test scoring and migration
+        run: npm test
       - name: Build
         run: npm run build
       # Requires Pages to be enabled with the "GitHub Actions" source. The

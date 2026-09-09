@@ -5,6 +5,10 @@ const sources = {
     "ACR Appropriateness Criteria: Central Venous Access Device and Site Selection, 2023. https://pubmed.ncbi.nlm.nih.gov/37236750/",
   asaCva:
     "ASA Practice Guidelines for Central Venous Access, 2020 summary. https://www.guidelinecentral.com/guideline/8969/",
+  hrsaMeld:
+    "HRSA OPTN MELD Calculator, date last reviewed December 2025. https://www.hrsa.gov/optn/data-calculators/allocation-calculators/meld-calculator",
+  meld3:
+    "Kim WR et al. MELD 3.0: The Model for End-stage Liver Disease Updated for the Modern Era. Gastroenterology. 2021. https://pmc.ncbi.nlm.nih.gov/articles/PMC8608337/",
   portGuideline:
     "Japanese Society of Interventional Radiology: Guidelines for Central Venous Port Placement and Management, 2023. https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article",
 };
@@ -786,6 +790,7 @@ installUterineArteryEmbolizationPlaceholder();
 installUfeEdits();
 installY90MappingEdits();
 installY90TherapyEdits();
+installIntraprocedureSubblocks();
 installModerateSedationLinks();
 installRestartMedicationGuidance();
 installPreProcedureLieFlatChecks();
@@ -872,18 +877,25 @@ function installReferencePages() {
 
   procedures.push({
     id: "meld-score-reference",
-    title: "MELD Score Reference",
+    title: "MELD Calculator",
     category: "Reference calculator",
-    keywords: "meld score tips bilirubin inr creatinine sodium albumin mortality risk",
-    summary: "Draft MELD reference page for TIPS risk stratification and future MELD calculation build-out.",
-    lastReviewed: "Draft reference page, July 2026",
+    keywords: "meld meld-na meld 3.0 score tips bilirubin inr creatinine sodium albumin dialysis female mortality risk",
+    summary: "Calculate MELD-Na and MELD 3.0 for TIPS risk stratification, with bounded inputs and interpretation prompts.",
+    lastReviewed: "Formula references checked, September 2026",
     root: "meld-score-reference-root",
     nodes: {
       "meld-score-reference-root": {
-        title: "MELD Score Reference",
+        title: "MELD Calculator",
         type: "reference",
-        summary: "Risk bands for TIPS planning; calculator inputs will be added later.",
-        children: ["meld-score-risk-bands", "meld-score-calculation"],
+        summary: "Enter labs to calculate MELD-Na and MELD 3.0, then use the score to frame TIPS risk review.",
+        children: ["meld-score-calculator", "meld-score-risk-bands", "meld-score-formula-notes"],
+        calculator: "meld",
+      },
+      "meld-score-calculator": {
+        title: "MELD-Na / MELD 3.0",
+        type: "decision",
+        summary: "Enter bilirubin, INR, creatinine, sodium, albumin, sex, and dialysis status.",
+        calculator: "meld",
       },
       "meld-score-risk-bands": {
         title: "MELD Risk Bands",
@@ -898,12 +910,23 @@ function installReferencePages() {
           ],
         },
       },
-      "meld-score-calculation": {
-        title: "Calculation To Build",
+      "meld-score-formula-notes": {
+        title: "Formula Notes",
         type: "reference",
-        summary: "Future calculator inputs: bilirubin, INR, creatinine, sodium, and albumin.",
+        summary: "The calculator bounds labs before scoring and rounds final scores to the nearest integer.",
         details: {
-          "Inputs to add": ["Bilirubin.", "INR.", "Creatinine.", "Sodium.", "Albumin."],
+          "MELD 3.0 bounds": [
+            "Bilirubin, INR, and creatinine are set to at least 1.",
+            "Creatinine is capped at 3 mg/dL; qualifying dialysis sets creatinine to 3 mg/dL.",
+            "Sodium is bounded from 125 to 137 mEq/L.",
+            "Albumin is bounded from 1.5 to 3.5 g/dL.",
+          ],
+          "MELD-Na bounds": [
+            "Bilirubin, INR, and creatinine are set to at least 1.",
+            "Creatinine is capped at 4 mg/dL; qualifying dialysis sets creatinine to 4 mg/dL.",
+            "Sodium is bounded from 125 to 137 mEq/L.",
+          ],
+          Sources: [sources.hrsaMeld, sources.meld3],
         },
       },
     },
@@ -977,6 +1000,45 @@ function installReferencePages() {
         },
       },
     },
+  });
+}
+
+function installIntraprocedureSubblocks() {
+  procedures.forEach((procedure) => {
+    if (procedure.category && procedure.category.startsWith("Reference")) return;
+
+    Object.entries(procedure.nodes).forEach(([nodeId, node]) => {
+      if (node.title !== "Intraprocedure") return;
+
+      const anatomyId = `${nodeId}-anatomy`;
+      const proceduralStepsId = `${nodeId}-procedural-steps`;
+      const existingChildren = (node.children || []).filter((childId) => {
+        return childId !== anatomyId && childId !== proceduralStepsId;
+      });
+
+      if (!procedure.nodes[anatomyId]) {
+        procedure.nodes[anatomyId] = {
+          title: "Anatomy",
+          type: "reference",
+          summary: "Key anatomy and landmarks for this procedure.",
+          details: {
+            "To build out": [
+              "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks.",
+            ],
+          },
+        };
+      }
+
+      procedure.nodes[proceduralStepsId] = {
+        ...procedure.nodes[proceduralStepsId],
+        title: "Procedural steps",
+        type: "action",
+        summary: "Procedure-specific access, device, imaging, and completion steps.",
+        children: existingChildren,
+      };
+
+      node.children = [anatomyId, proceduralStepsId];
+    });
   });
 }
 
@@ -7069,11 +7131,255 @@ function renderChecklistSection(title, items) {
   return section;
 }
 
+function clampNumber(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function roundScore(value) {
+  return clampNumber(Math.round(value), 6, 40);
+}
+
+function formatScore(value) {
+  return Number.isFinite(value) ? String(value) : "--";
+}
+
+function meldInterpretation(score) {
+  if (!Number.isFinite(score)) return "Enter all required labs to calculate risk.";
+  if (score < 15) return "Lower TIPS risk band; still confirm indication and liver reserve.";
+  if (score <= 18) return "Moderate risk band; attending review is appropriate.";
+  if (score <= 25) return "High risk band; weigh urgency, alternatives, and anesthesia/post-procedure monitoring.";
+  return "Very high risk band; often prohibitive unless salvage or emergent context.";
+}
+
+function meldSurvivalEstimate(score) {
+  if (!Number.isFinite(score)) {
+    return {
+      survival: "--",
+      mortality: "--",
+      band: "Enter labs",
+    };
+  }
+  if (score < 9) {
+    return {
+      survival: "93.3-99.4%",
+      mortality: "0.6-6.7%",
+      band: "MELD 3.0 <9",
+    };
+  }
+  if (score <= 19) {
+    return {
+      survival: "96.0-98.8%",
+      mortality: "1.2-4.0%",
+      band: "MELD 3.0 10-19",
+    };
+  }
+  if (score <= 29) {
+    return {
+      survival: "80.0-95.3%",
+      mortality: "4.7-20%",
+      band: "MELD 3.0 20-29",
+    };
+  }
+  if (score <= 39) {
+    return {
+      survival: "52.0-88.5%",
+      mortality: "11.5-48%",
+      band: "MELD 3.0 30-39",
+    };
+  }
+  return {
+    survival: "40.0-75.0%",
+    mortality: "25-60%",
+    band: "MELD 3.0 >=40",
+  };
+}
+
+function calculateMeldScores(values) {
+  const bilirubin = Number(values.bilirubin);
+  const inr = Number(values.inr);
+  const creatinine = Number(values.creatinine);
+  const sodium = Number(values.sodium);
+  const albumin = Number(values.albumin);
+
+  if ([bilirubin, inr, creatinine, sodium, albumin].some((value) => !Number.isFinite(value) || value <= 0)) {
+    return null;
+  }
+
+  const biliBound = Math.max(bilirubin, 1);
+  const inrBound = Math.max(inr, 1);
+  const sodiumBound = clampNumber(sodium, 125, 137);
+  const albuminBound = clampNumber(albumin, 1.5, 3.5);
+  const meldNaCreatinine = values.dialysis ? 4 : clampNumber(creatinine, 1, 4);
+  const meld3Creatinine = values.dialysis ? 3 : clampNumber(creatinine, 1, 3);
+
+  const baseMeld =
+    9.57 * Math.log(meldNaCreatinine) +
+    3.78 * Math.log(biliBound) +
+    11.2 * Math.log(inrBound) +
+    6.43;
+  const meldNaRaw = baseMeld + 1.32 * (137 - sodiumBound) - 0.033 * baseMeld * (137 - sodiumBound);
+  const meld3Raw =
+    (values.female ? 1.33 : 0) +
+    4.56 * Math.log(biliBound) +
+    0.82 * (137 - sodiumBound) -
+    0.24 * (137 - sodiumBound) * Math.log(biliBound) +
+    9.09 * Math.log(inrBound) +
+    11.14 * Math.log(meld3Creatinine) +
+    1.85 * (3.5 - albuminBound) -
+    1.83 * (3.5 - albuminBound) * Math.log(meld3Creatinine) +
+    6;
+
+  const meldNa = roundScore(meldNaRaw);
+  const meld3 = roundScore(meld3Raw);
+
+  return {
+    meldNa,
+    meld3,
+    baseMeld: roundScore(baseMeld),
+    interpretation: meldInterpretation(Math.max(meldNa, meld3)),
+    bounds: {
+      bilirubin: biliBound,
+      inr: inrBound,
+      sodium: sodiumBound,
+      albumin: albuminBound,
+      meldNaCreatinine,
+      meld3Creatinine,
+    },
+  };
+}
+
+function createMeldInput(labelText, id, value, step, min) {
+  const label = document.createElement("label");
+  label.className = "meld-input";
+  label.setAttribute("for", id);
+
+  const span = document.createElement("span");
+  span.textContent = labelText;
+
+  const input = document.createElement("input");
+  input.id = id;
+  input.type = "number";
+  input.inputMode = "decimal";
+  input.step = step;
+  input.min = min;
+  input.value = value;
+
+  label.append(span, input);
+  return { label, input };
+}
+
+function renderMeldCalculator() {
+  const section = document.createElement("section");
+  section.className = "detail-section meld-calculator";
+
+  const heading = document.createElement("h4");
+  heading.textContent = "Calculator";
+  section.append(heading);
+
+  const grid = document.createElement("div");
+  grid.className = "meld-input-grid";
+
+  const inputs = [
+    createMeldInput("Bilirubin (mg/dL)", "meld-bilirubin", "2.0", "0.1", "0"),
+    createMeldInput("INR", "meld-inr", "1.5", "0.1", "0"),
+    createMeldInput("Creatinine (mg/dL)", "meld-creatinine", "1.0", "0.1", "0"),
+    createMeldInput("Sodium (mEq/L)", "meld-sodium", "135", "1", "0"),
+    createMeldInput("Albumin (g/dL)", "meld-albumin", "3.0", "0.1", "0"),
+  ];
+  inputs.forEach((item) => grid.append(item.label));
+  section.append(grid);
+
+  const toggles = document.createElement("div");
+  toggles.className = "meld-toggle-row";
+
+  const femaleLabel = document.createElement("label");
+  femaleLabel.className = "meld-toggle";
+  const femaleInput = document.createElement("input");
+  femaleInput.type = "checkbox";
+  femaleLabel.append(femaleInput, document.createTextNode("Female"));
+
+  const dialysisLabel = document.createElement("label");
+  dialysisLabel.className = "meld-toggle";
+  const dialysisInput = document.createElement("input");
+  dialysisInput.type = "checkbox";
+  dialysisLabel.append(dialysisInput, document.createTextNode("Dialysis criterion met"));
+
+  toggles.append(femaleLabel, dialysisLabel);
+  section.append(toggles);
+
+  const results = document.createElement("div");
+  results.className = "meld-results";
+  section.append(results);
+
+  const survival = document.createElement("div");
+  survival.className = "meld-survival-card";
+  section.append(survival);
+
+  const referenceBlock = document.createElement("div");
+  referenceBlock.className = "meld-reference-block";
+  const referenceHeading = document.createElement("strong");
+  referenceHeading.textContent = "For reference";
+  const dialysisCriterion = document.createElement("p");
+  dialysisCriterion.textContent =
+    "Dialysis criterion: dialysis at least twice in the last 7 days, or 24 hours of continuous veno-venous hemodialysis in the last 7 days.";
+  referenceBlock.append(referenceHeading, dialysisCriterion);
+  section.append(referenceBlock);
+
+  function updateCalculator() {
+    const values = {
+      bilirubin: inputs[0].input.value,
+      inr: inputs[1].input.value,
+      creatinine: inputs[2].input.value,
+      sodium: inputs[3].input.value,
+      albumin: inputs[4].input.value,
+      female: femaleInput.checked,
+      dialysis: dialysisInput.checked,
+    };
+    const scores = calculateMeldScores(values);
+
+    if (!scores) {
+      results.innerHTML = `
+        <div class="meld-result-card"><span>MELD-Na</span><strong>--</strong></div>
+        <div class="meld-result-card"><span>MELD 3.0</span><strong>--</strong></div>
+      `;
+      survival.innerHTML = `
+        <span>Estimated 3-month survival</span>
+        <strong>--</strong>
+        <small>Enter labs to estimate survival by MELD 3.0 band.</small>
+      `;
+      return;
+    }
+
+    const survivalEstimate = meldSurvivalEstimate(scores.meld3);
+    results.innerHTML = `
+      <div class="meld-result-card"><span>MELD-Na</span><strong>${formatScore(scores.meldNa)}</strong></div>
+      <div class="meld-result-card"><span>MELD 3.0</span><strong>${formatScore(scores.meld3)}</strong></div>
+    `;
+    survival.innerHTML = `
+      <span>Estimated 3-month survival</span>
+      <strong>${survivalEstimate.survival}</strong>
+      <small>${survivalEstimate.band}; mortality ${survivalEstimate.mortality}. Population estimate, not patient-specific prediction.</small>
+    `;
+  }
+
+  [...inputs.map((item) => item.input), femaleInput, dialysisInput].forEach((input) => {
+    input.addEventListener("input", updateCalculator);
+    input.addEventListener("change", updateCalculator);
+  });
+  updateCalculator();
+
+  return section;
+}
+
 function renderDetails() {
   const node = detailNode();
   els.detailTitle.textContent = node.title;
   els.detailBody.textContent = node.summary;
   els.detailSections.innerHTML = "";
+
+  if (node.calculator === "meld") {
+    els.detailSections.append(renderMeldCalculator());
+  }
 
   if (node.checklist) {
     els.detailSections.append(renderChecklist(node.checklist));

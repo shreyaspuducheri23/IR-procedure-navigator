@@ -1,12 +1,14 @@
 {
   "schemaVersion": 1,
   "id": "meld-score-reference",
-  "title": "MELD Score Reference",
+  "title": "MELD Calculator",
   "category": "reference",
-  "status": "draft",
+  "status": "complete",
   "bleedRisk": null,
   "keywords": [
     "meld",
+    "meld-na",
+    "3.0",
     "score",
     "tips",
     "bilirubin",
@@ -14,16 +16,33 @@
     "creatinine",
     "sodium",
     "albumin",
+    "dialysis",
+    "female",
     "mortality",
     "risk"
   ],
-  "summary": "Draft MELD reference page for TIPS risk stratification and future MELD calculation build-out.",
+  "summary": "Calculate MELD-Na and MELD 3.0 for TIPS risk stratification, with bounded inputs and interpretation prompts.",
   "lastReviewed": null,
   "provenance": [
-    "Draft reference page, July 2026"
+    "Formula references checked, September 2026"
   ],
   "reviewNotes": [],
   "sections": [
+    {
+      "id": "meld-na-meld-3-0",
+      "kind": "custom",
+      "title": "MELD-Na / MELD 3.0",
+      "blocks": [
+        {
+          "type": "calculator",
+          "calculator": "meld"
+        },
+        {
+          "type": "paragraph",
+          "text": "Enter bilirubin, INR, creatinine, sodium, albumin, sex, and dialysis status."
+        }
+      ]
+    },
     {
       "id": "meld-risk-bands",
       "kind": "custom",
@@ -49,29 +68,62 @@
       ]
     },
     {
-      "id": "calculation-to-build",
+      "id": "formula-notes",
       "kind": "custom",
-      "title": "Calculation To Build",
+      "title": "Formula Notes",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Future calculator inputs: bilirubin, INR, creatinine, sodium, and albumin."
+          "text": "The calculator bounds labs before scoring and rounds final scores to the nearest integer."
         },
         {
-          "type": "callout",
-          "variant": "note",
-          "title": "Inputs to add",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Bilirubin.",
-                "INR.",
-                "Creatinine.",
-                "Sodium.",
-                "Albumin."
-              ]
-            }
+          "type": "heading",
+          "text": "MELD 3.0 bounds"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bilirubin, INR, and creatinine are set to at least 1.",
+            "Creatinine is capped at 3 mg/dL; qualifying dialysis sets creatinine to 3 mg/dL.",
+            "Sodium is bounded from 125 to 137 mEq/L.",
+            "Albumin is bounded from 1.5 to 3.5 g/dL."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "MELD-Na bounds"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bilirubin, INR, and creatinine are set to at least 1.",
+            "Creatinine is capped at 4 mg/dL; qualifying dialysis sets creatinine to 4 mg/dL.",
+            "Sodium is bounded from 125 to 137 mEq/L."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Sources"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "link": {
+                  "text": "HRSA OPTN MELD Calculator, date last reviewed December 2025.",
+                  "href": "https://www.hrsa.gov/optn/data-calculators/allocation-calculators/meld-calculator"
+                }
+              }
+            ],
+            [
+              {
+                "link": {
+                  "text": "Kim WR et al. MELD 3.0: The Model for End-stage Liver Disease Updated for the Modern Era. Gastroenterology. 2021.",
+                  "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8608337/"
+                }
+              }
+            ]
           ]
         }
       ]
