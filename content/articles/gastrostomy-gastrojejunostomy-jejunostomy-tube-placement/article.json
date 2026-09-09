@@ -215,9 +215,40 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "troubleshooting",
-          "title": "Troubleshooting",
+          "id": "anatomy",
+          "title": "Anatomy",
           "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Key anatomy and landmarks for this procedure."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific access, device, imaging, and completion steps."
+            },
+            {
+              "type": "heading",
+              "text": "Troubleshooting"
+            },
             {
               "type": "paragraph",
               "text": "Common problems during or after tube placement and what to check first."
@@ -254,13 +285,11 @@
                 "Assess vitals, abdominal exam, tube position, dressing, and output.",
                 "Escalate for peritonitis, severe pain, fever, or hemodynamic change."
               ]
-            }
-          ]
-        },
-        {
-          "id": "red-flags",
-          "title": "Red Flags",
-          "blocks": [
+            },
+            {
+              "type": "heading",
+              "text": "Red Flags"
+            },
             {
               "type": "callout",
               "variant": "caution",

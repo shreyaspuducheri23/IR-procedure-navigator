@@ -88,7 +88,13 @@ const tableBlockSchema = z.object({
   rows: z.array(z.array(richTextSchema)),
 });
 
+const calculatorBlockSchema = z.object({
+  type: z.literal("calculator"),
+  calculator: z.literal("meld"),
+});
+
 export type Block =
+  | z.infer<typeof calculatorBlockSchema>
   | z.infer<typeof paragraphBlockSchema>
   | z.infer<typeof headingBlockSchema>
   | z.infer<typeof listBlockSchema>
@@ -116,6 +122,7 @@ const calloutBlockSchema = z.object({
 });
 
 export const blockSchema: z.ZodType<Block> = z.discriminatedUnion("type", [
+  calculatorBlockSchema,
   paragraphBlockSchema,
   headingBlockSchema,
   listBlockSchema,

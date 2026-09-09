@@ -239,21 +239,56 @@
       "id": "intra",
       "kind": "intra",
       "title": "Intra-procedure",
-      "blocks": [
+      "subsections": [
         {
-          "type": "paragraph",
-          "text": "Use the institutional thrombolysis order set and verify all infusion rates with the operator before leaving the room."
-        },
-        {
-          "type": "callout",
-          "variant": "note",
-          "title": "To build",
+          "id": "overview",
+          "title": "Overview",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Add access approach, catheter positioning, infusion start workflow, and handoff timing after faculty review."
+              "type": "callout",
+              "variant": "note",
+              "title": "To build",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add access approach, catheter positioning, infusion start workflow, and handoff timing after faculty review."
+                  ]
+                }
               ]
+            }
+          ]
+        },
+        {
+          "id": "anatomy",
+          "title": "Anatomy",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Key anatomy and landmarks for this procedure."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific access, device, imaging, and completion steps."
             }
           ]
         }

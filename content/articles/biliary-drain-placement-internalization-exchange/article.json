@@ -201,9 +201,40 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "troubleshooting",
-          "title": "Troubleshooting",
+          "id": "anatomy",
+          "title": "Anatomy",
           "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Key anatomy and landmarks for this procedure."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific access, device, imaging, and completion steps."
+            },
+            {
+              "type": "heading",
+              "text": "Troubleshooting"
+            },
             {
               "type": "paragraph",
               "text": "To be built as common biliary drain problems and first checks."
@@ -224,13 +255,11 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "red-flags",
-          "title": "Red Flags",
-          "blocks": [
+            },
+            {
+              "type": "heading",
+              "text": "Red Flags"
+            },
             {
               "type": "paragraph",
               "text": "To be built as stop/escalate criteria."
