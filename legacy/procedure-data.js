@@ -867,7 +867,7 @@ window.generatedProcedureData = [
   },
   {
     "id": "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set",
-    "title": "Catheter Directed Thrombolysis (PE/DVT/frostbite) - SEE ORDER SET",
+    "title": "Catheter Directed Thrombolysis - DVT Intervention",
     "category": "Vascular intervention",
     "keywords": "",
     "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
@@ -875,7 +875,7 @@ window.generatedProcedureData = [
     "root": "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set-root",
     "nodes": {
       "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set-root": {
-        "title": "Catheter Directed Thrombolysis (PE/DVT/frostbite) - SEE ORDER SET",
+        "title": "Catheter Directed Thrombolysis - DVT Intervention",
         "type": "reference",
         "summary": "Start with the pre-procedure checks or jump directly to post-procedure orders.",
         "children": [

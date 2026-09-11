@@ -8,7 +8,7 @@ The full raw extraction is in procedure-orders-extracted.txt.
 - Bone Biopsy
 - Botox Injection
 - Breast Ablation
-- Catheter Directed Thrombolysis (PE/DVT/frostbite) - SEE ORDER SET
+- Catheter Directed Thrombolysis - DVT Intervention
 - Celiac Plexus Block/Neurolysis
 - Chest Tube Placement
 - Cholecystostomy/Biliary Drain Placement/Exchange/Internalization

@@ -31,7 +31,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -45,9 +46,13 @@ input {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   padding: 28px 22px;
   border-right: 1px solid var(--line);
   background: #fbfcfa;
+  overflow: hidden;
 }
 
 .brand-block h1 {
@@ -92,6 +97,9 @@ input {
 .procedure-list {
   display: grid;
   gap: 8px;
+  min-height: 0;
+  padding-right: 4px;
+  overflow-y: auto;
 }
 
 .procedure-button {
@@ -483,6 +491,384 @@ input {
   margin-top: 8px;
 }
 
+.canvas-layout.anticoagulation-view {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.canvas-layout.anticoagulation-view .detail-panel,
+.canvas-layout.anticoagulation-view .toolbar {
+  display: none;
+}
+
+.canvas-layout.anticoagulation-view .node-focus {
+  max-width: none;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.canvas-layout.anticoagulation-view .node-focus .node-type {
+  justify-self: start;
+}
+
+.bubble-grid.anticoagulation-matrix-host {
+  display: block;
+}
+
+.anticoag-matrix {
+  display: grid;
+  gap: 14px;
+}
+
+.anticoag-source {
+  display: grid;
+  grid-template-columns: minmax(230px, auto) minmax(320px, 1fr) auto;
+  gap: 12px 18px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid #cfddd4;
+  border-left: 4px solid var(--green);
+  background: #f1f7f3;
+}
+
+.anticoag-source strong {
+  color: #245e47;
+  font-size: 13px;
+}
+
+.anticoag-source p {
+  margin: 0;
+  color: #465451;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.anticoag-source div {
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.anticoag-source a {
+  color: #245e47;
+  font-size: 12px;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.anticoag-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.anticoag-search {
+  display: grid;
+  gap: 6px;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.anticoag-search input {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+
+.anticoag-search input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 159, 0.16);
+}
+
+.anticoag-risk-filter {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(58px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.anticoag-risk-filter legend {
+  margin-bottom: 6px;
+  padding: 0;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.anticoag-risk-filter label {
+  position: relative;
+  cursor: pointer;
+}
+
+.anticoag-risk-filter input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.anticoag-risk-filter span {
+  display: grid;
+  place-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-right: 0;
+  color: #344044;
+  background: #f9fbfa;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.anticoag-risk-filter label:first-of-type span {
+  border-radius: 8px 0 0 8px;
+}
+
+.anticoag-risk-filter label:last-of-type span {
+  border-right: 1px solid var(--line);
+  border-radius: 0 8px 8px 0;
+}
+
+.anticoag-risk-filter input:checked + span {
+  border-color: var(--blue);
+  color: #17496d;
+  background: var(--blue-soft);
+}
+
+.anticoag-risk-filter input:focus-visible + span {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid rgba(47, 111, 159, 0.2);
+}
+
+.anticoag-context-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(155px, 1fr));
+  gap: 10px;
+}
+
+.anticoag-context-controls label {
+  display: grid;
+  gap: 6px;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.anticoag-context-controls select {
+  min-height: 40px;
+  padding: 0 30px 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+
+.anticoag-context-controls select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 159, 0.16);
+}
+
+.anticoag-selection {
+  display: grid;
+  gap: 4px;
+  min-height: 86px;
+  padding: 13px 15px;
+  border-left: 4px solid var(--blue);
+  background: #eef5f8;
+}
+
+.anticoag-selection > span {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.anticoag-selection > strong {
+  font-size: 15px;
+}
+
+.anticoag-selection p {
+  margin: 0;
+  color: #344044;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.anticoag-status,
+.anticoag-caveat {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.anticoag-status {
+  font-weight: 800;
+}
+
+.anticoag-table-wrap {
+  max-width: 100%;
+  max-height: 68vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.anticoag-table {
+  width: 100%;
+  min-width: 2260px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.anticoag-table th,
+.anticoag-table td {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.anticoag-table tr:last-child th,
+.anticoag-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.anticoag-table th:last-child,
+.anticoag-table td:last-child {
+  border-right: 0;
+}
+
+.anticoag-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 52px;
+  padding: 10px;
+  background: #eef1ef;
+  color: #344044;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.anticoag-table thead th:first-child {
+  left: 0;
+  z-index: 5;
+  width: 250px;
+}
+
+.anticoag-table tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 250px;
+  padding: 12px;
+  background: #fbfcfa;
+  text-align: left;
+}
+
+.anticoag-table tbody th strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.anticoag-risk-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  margin-top: 7px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.anticoag-risk-badge.high {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.anticoag-risk-badge.low {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.anticoag-risk-badge.conditional {
+  color: var(--amber);
+  background: var(--amber-soft);
+}
+
+.anticoag-risk-badge.review {
+  color: #586164;
+  background: #e8ecea;
+}
+
+.anticoag-table td {
+  padding: 0;
+  background: #ffffff;
+}
+
+.anticoag-cell {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  width: 100%;
+  min-height: 92px;
+  padding: 11px;
+  border: 0;
+  border-radius: 0;
+  color: var(--ink);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.anticoag-cell:hover,
+.anticoag-cell:focus-visible,
+.anticoag-cell.active {
+  background: var(--blue-soft);
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+
+.anticoag-cell strong {
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.anticoag-cell.low strong {
+  color: var(--green);
+}
+
+.anticoag-cell.conditional strong {
+  color: var(--amber);
+}
+
+.anticoag-cell.review strong {
+  color: #586164;
+}
+
+.anticoag-cell span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
 .check-item {
   display: flex;
   gap: 9px;
@@ -650,12 +1036,17 @@ a {
   }
 
   .sidebar {
+    position: static;
+    height: min(46vh, 430px);
     border-right: 0;
     border-bottom: 1px solid var(--line);
+    overflow-y: auto;
   }
 
   .procedure-list {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    padding-right: 0;
+    overflow: visible;
   }
 
   .safety-note {
@@ -665,6 +1056,11 @@ a {
   .algorithm-surface,
   .detail-panel {
     min-height: auto;
+  }
+
+  .anticoag-source,
+  .anticoag-controls {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -709,5 +1105,31 @@ a {
   .meld-input-grid,
   .meld-results {
     grid-template-columns: 1fr;
+  }
+
+  .anticoag-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .anticoag-risk-filter {
+    width: 100%;
+  }
+
+  .anticoag-risk-filter span {
+    padding: 0 4px;
+    font-size: 10px;
+  }
+
+  .anticoag-context-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .anticoag-table {
+    min-width: 2100px;
+  }
+
+  .anticoag-table thead th:first-child,
+  .anticoag-table tbody th {
+    width: 205px;
   }
 }

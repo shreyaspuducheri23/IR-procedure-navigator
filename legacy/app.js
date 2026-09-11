@@ -11,6 +11,10 @@ const sources = {
     "Kim WR et al. MELD 3.0: The Model for End-stage Liver Disease Updated for the Modern Era. Gastroenterology. 2021. https://pmc.ncbi.nlm.nih.gov/articles/PMC8608337/",
   portGuideline:
     "Japanese Society of Interventional Radiology: Guidelines for Central Venous Port Placement and Management, 2023. https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article",
+  sirAnticoagulation:
+    "SIR Consensus Guidelines for Periprocedural Management of Thrombotic and Bleeding Risk, Part II: Recommendations. JVIR. 2019;30:1168-1184. https://www.jvir.org/article/S1051-0443(19)30407-5/fulltext",
+  sirAnticoagulationStatus:
+    "SIR 2025 guidelines and statements topics: update of the 2019 periprocedural management guideline announced May 28, 2025. https://www.sirweb.org/publications/news/announcing-the-2025-guidelines-and-statements-topics/",
 };
 
 const procedures = [
@@ -738,22 +742,379 @@ const hiddenProcedureTitles = new Set([
 const anticoagulationTableLink = { text: "Open anticoagulation table", href: "#anticoagulation-table" };
 
 const highRiskAnticoagRestartItems = [
-  "Warfarin: 24 hours postop.",
-  "Heparin: 6-8 hours postop.",
-  "Lovenox: 12 hours postop.",
-  "DOACs: 24 hours postop.",
-  "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-  "Aspirin: 24 hours postop.",
-  "Confirm no procedure-related bleeding concern and defer to local policy/attending preference.",
+  "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
+  "IV unfractionated heparin: 6-8 hours after the procedure.",
+  "Enoxaparin: 12 hours after the procedure.",
+  "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
+  "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
+  "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
+  "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review.",
 ];
 
 const highRiskAnticoagHoldItems = [
-  "Warfarin: 5 days.",
-  "Heparin: 6-8 hours.",
-  "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-  "DOACs: 48 hours.",
-  "Plavix: 5 days.",
-  "Aspirin: 5 days.",
+  "Warfarin: hold 5 days and confirm INR <= 1.8.",
+  "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa level.",
+  "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+  "DOAC timing is agent-, dose-, and renal-function-specific; use the anticoagulation table.",
+  "Clopidogrel and ticagrelor: hold 5 days; prasugrel: hold 7 days.",
+  "Aspirin: hold 3-5 days.",
+];
+
+const anticoagulationAgents = [
+  {
+    id: "warfarin",
+    label: "Warfarin",
+    high: () => ({
+      hold: "Hold 5 days; INR <= 1.8",
+      restart: "Resume next day",
+      note: "Consider bridging only for high thrombosis risk with multidisciplinary management. Emergent reversal requires a separate plan.",
+    }),
+  },
+  {
+    id: "ufh",
+    label: "IV UFH",
+    high: () => ({
+      hold: "Hold 4-6 hours",
+      restart: "Restart after 6-8 hours",
+      note: "Check aPTT or anti-Xa level before the procedure. Subcutaneous BID/TID heparin has separate timing.",
+    }),
+  },
+  {
+    id: "enoxaparin",
+    label: "Enoxaparin",
+    high: ({ enoxaparinDose, crclBand }) => ({
+      hold: enoxaparinDose === "prophylactic" ? "Hold 1 dose" : "Hold 2 doses or 24 hours",
+      restart: "Restart after 12 hours",
+      note:
+        crclBand === "ge50"
+          ? `${enoxaparinDose === "prophylactic" ? "Prophylactic" : "Therapeutic"} dosing selected.`
+          : `${enoxaparinDose === "prophylactic" ? "Prophylactic" : "Therapeutic"} dosing selected. SIR advises checking anti-Xa activity when renal function is impaired.`,
+    }),
+  },
+  {
+    id: "apixaban",
+    label: "Apixaban",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50") {
+        return { hold: "Hold 4 doses", restart: "Restart after 24 hours", note: "CrCl >=50 mL/min selected." };
+      }
+      if (crclBand === "30to49") {
+        return {
+          hold: "Hold 6 doses",
+          restart: "Restart after 24 hours",
+          note: "CrCl 30-49 mL/min selected; consider checking anti-Xa activity or an apixaban level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <30 mL/min or unknown renal function; consider anti-Xa or an apixaban level.",
+      };
+    },
+  },
+  {
+    id: "rivaroxaban",
+    label: "Rivaroxaban",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50" || crclBand === "30to49") {
+        return {
+          hold: "Hold 2 doses",
+          restart: "Restart after 24 hours",
+          note: `${crclBand === "ge50" ? "CrCl >=50" : "CrCl 30-49"} mL/min selected.`,
+        };
+      }
+      if (crclBand === "15to29") {
+        return {
+          hold: "Hold 3 doses",
+          restart: "Restart after 24 hours",
+          note: "CrCl 15-29 mL/min selected; consider checking anti-Xa activity or a rivaroxaban level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <15 mL/min or unknown renal function; consider anti-Xa or a rivaroxaban level.",
+      };
+    },
+  },
+  {
+    id: "dabigatran",
+    label: "Dabigatran",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50") {
+        return { hold: "Hold 4 doses", restart: "Table 6: 24 hours", note: "CrCl >=50 mL/min selected." };
+      }
+      if (crclBand === "30to49") {
+        return {
+          hold: "Hold 6-8 doses",
+          restart: "Table 6: 24 hours",
+          note: "CrCl 30-49 mL/min selected; consider checking thrombin time or a dabigatran level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <30 mL/min or unknown renal function. Its narrative also cites at least 48 hours before full-dose restart after high-risk procedures; reconcile with local policy.",
+      };
+    },
+    note:
+      "SIR Table 6 lists restart at 24 hours, while the accompanying narrative cites at least 48 hours before full-dose dabigatran after high-risk procedures. Reconcile this discrepancy with local policy.",
+  },
+  {
+    id: "edoxaban",
+    label: "Edoxaban",
+    high: ({ crclBand }) => ({
+      hold: "Hold 2 doses",
+      restart: "Restart after 24 hours",
+      note:
+        crclBand === "ge50"
+          ? "Confirm dose and indication."
+          : "Renal impairment selected; SIR advises considering anti-Xa activity and individualized review.",
+    }),
+  },
+  {
+    id: "clopidogrel",
+    label: "Clopidogrel",
+    high: () => ({
+      hold: "Hold 5 days",
+      restart: "6 hours at 75 mg; 24 hours if loading",
+      note: "Coordinate loading-dose decisions and recent coronary/peripheral stent management with the prescribing team.",
+    }),
+  },
+  {
+    id: "ticagrelor",
+    label: "Ticagrelor",
+    high: () => ({ hold: "Hold 5 days", restart: "Resume next day" }),
+  },
+  {
+    id: "prasugrel",
+    label: "Prasugrel",
+    high: () => ({ hold: "Hold 7 days", restart: "Resume next day" }),
+  },
+  {
+    id: "aspirin",
+    label: "Aspirin",
+    high: () => ({ hold: "Hold 3-5 days", restart: "Resume next day" }),
+  },
+];
+
+const anticoagulationProcedureRules = [
+  {
+    procedureTitle: "Adrenal Vein Sampling",
+    label: "Adrenal Vein Sampling",
+    risk: "Low",
+    basis: "Mapped to SIR diagnostic venography/select venous interventions; confirm the local AVS classification.",
+  },
+  {
+    procedureTitle: "Biliary Drain Placement and Internalization/Exchange",
+    label: "Biliary drain placement/internalization",
+    risk: "High",
+    basis: "SIR Table 3: biliary interventions are high bleeding risk.",
+  },
+  {
+    procedureTitle: "Biliary Drain Placement and Internalization/Exchange",
+    label: "Biliary drain exchange",
+    risk: "Low",
+    basis: "SIR Table 3: biliary catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Catheter Directed Thrombolysis - DVT Intervention",
+    label: "Catheter Directed Thrombolysis - DVT Intervention",
+    risk: "High",
+    basis: "SIR Table 3: catheter-directed thrombolysis is high bleeding risk; technical and lytic-agent details still require individual review.",
+  },
+  {
+    procedureTitle: "Chest Tube Placement",
+    label: "Chest tube: nontunneled for pleural effusion",
+    risk: "Low",
+    basis: "This SIR low-risk category is limited to nontunneled chest tube placement for pleural effusion.",
+  },
+  {
+    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    label: "Cholecystostomy tube placement",
+    risk: "High",
+    basis: "SIR Table 3 explicitly lists cholecystostomy tube placement as high bleeding risk.",
+  },
+  {
+    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    label: "Cholecystostomy tube exchange",
+    risk: "Low",
+    basis: "Mapped to SIR catheter-exchange guidance; confirm local policy if new access or tract manipulation is expected.",
+  },
+  {
+    procedureTitle: "Drainage Catheter Placement/Exchange",
+    label: "Deep abscess drain placement",
+    risk: "High",
+    basis: "SIR Table 3: deep lung, abdominal, pelvic, or retroperitoneal abscess drainage is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Drainage Catheter Placement/Exchange",
+    label: "Existing abscess drain exchange",
+    risk: "Low",
+    basis: "SIR Table 3: abscess catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Fistulogram",
+    label: "Fistulogram/dialysis access intervention",
+    risk: "Low",
+    basis: "SIR Table 3: dialysis access interventions are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Foreign Body Removal",
+    label: "Foreign Body Removal",
+    risk: "Review",
+    basis: "No directly matching procedure category was identified in SIR Table 3; assign risk using site, access, and expected retrieval complexity.",
+  },
+  {
+    procedureTitle: "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange",
+    label: "G/GJ/J tube exchange",
+    risk: "Low",
+    basis: "SIR Table 3: gastrostomy and gastrojejunostomy catheter exchanges are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement",
+    label: "Gastrostomy/gastrojejunostomy placement",
+    risk: "High",
+    basis: "SIR Table 3: gastrostomy/gastrojejunostomy placement is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Hemorrhoid Artery Embolization",
+    label: "Hemorrhoid artery embolization",
+    risk: "Conditional",
+    basis: "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic or mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Placement",
+    label: "IVC filter placement",
+    risk: "Low",
+    basis: "SIR Table 3: IVC filter placement is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Removal",
+    label: "IVC filter removal: uncomplicated",
+    risk: "Low",
+    basis: "SIR Table 3: uncomplicated IVC filter removal is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Removal",
+    label: "IVC filter removal: complex",
+    risk: "High",
+    basis: "SIR Table 3: complex IVC filter removal is high bleeding risk; consider tilt, penetration, fracture, dwell time, and planned advanced techniques.",
+  },
+  {
+    procedureTitle: "Kidney Biopsy",
+    label: "Kidney Biopsy",
+    risk: "High",
+    basis: "SIR Table 3: solid-organ biopsies are high bleeding risk.",
+  },
+  {
+    procedureTitle: "Liver Biopsy/Fiducial Marker Placement",
+    label: "Percutaneous liver biopsy/fiducial placement",
+    risk: "High",
+    basis: "Mapped to SIR solid-organ biopsy/deep intervention guidance. Transjugular liver biopsy is a separate low-risk category.",
+  },
+  {
+    procedureTitle: "Lung Biopsy/Fiducial Marker Placement",
+    label: "Lung biopsy/fiducial placement",
+    risk: "High",
+    basis: "Mapped to SIR solid-organ biopsy/deep intervention guidance.",
+  },
+  {
+    procedureTitle: "Nephrostomy to Nephroureteral Stent Conversion",
+    label: "Nephrostomy to nephroureteral stent conversion",
+    risk: "High",
+    basis: "Mapped to SIR urinary-tract intervention guidance because ureteral manipulation/internalization is planned.",
+  },
+  {
+    procedureTitle: "Nephrostomy Tube Exchange",
+    label: "Nephrostomy tube exchange",
+    risk: "Low",
+    basis: "SIR Table 3: nephrostomy catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Nephrostomy Tube Placement",
+    label: "Nephrostomy tube placement",
+    risk: "High",
+    basis: "SIR Table 3: nephrostomy tube placement is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Paracentesis",
+    label: "Paracentesis",
+    risk: "Low",
+    basis: "SIR Table 3: paracentesis is low bleeding risk.",
+  },
+  {
+    procedureTitle: "PICC Placement",
+    label: "PICC placement",
+    risk: "Low",
+    basis: "SIR Table 3: nontunneled venous access, including PICC placement, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Port Placement",
+    label: "Port placement",
+    risk: "Low",
+    basis: "SIR Table 3: tunneled venous catheter placement, including ports, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Port Removal",
+    label: "Port removal",
+    risk: "Low",
+    basis: "SIR Table 3: tunneled venous catheter removal, including ports, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Prostate Artery Embolization",
+    label: "Prostate artery embolization",
+    risk: "Conditional",
+    basis: "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Thoracentesis",
+    label: "Thoracentesis",
+    risk: "Low",
+    basis: "SIR Table 3: thoracentesis is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Thyroid Biopsy",
+    label: "Thyroid biopsy",
+    risk: "Low",
+    basis: "SIR Table 3: superficial biopsy, including thyroid, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)",
+    label: "TIPS check/revision",
+    risk: "High",
+    basis: "Mapped to SIR TIPS/portal-venous intervention guidance; procedural scope should be confirmed.",
+  },
+  {
+    procedureTitle: "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)",
+    label: "TIPS creation",
+    risk: "High",
+    basis: "SIR Table 3: TIPS is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Tunneled Line Placement/Exchange",
+    label: "Tunneled venous line placement/exchange",
+    risk: "Low",
+    basis: "SIR Table 3: tunneled venous catheter placement/removal and catheter exchange are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Uterine Fibroid Embolization (UFE)",
+    label: "Uterine fibroid embolization",
+    risk: "Conditional",
+    basis: "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Y90 Radioembolization Mapping",
+    label: "Y90 mapping",
+    risk: "Conditional",
+    basis: "SIR lists diagnostic arteriography/embolotherapy with sheath <6 F as low risk, but mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Y90 Radioembolization Therapy",
+    label: "Y90 therapy",
+    risk: "Conditional",
+    basis: "SIR lists embolotherapy with sheath <6 F as low risk, but mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
 ];
 
 installReferencePages();
@@ -936,15 +1297,17 @@ function installReferencePages() {
     id: "anticoagulation-table",
     title: "Anticoagulation Table",
     category: "Reference table",
-    keywords: "anticoagulation anticoagulant antiplatelet hold resume restart high bleeding risk low bleeding risk warfarin heparin lovenox doac plavix aspirin",
-    summary: "Draft medication hold and restart reference for procedure bleeding-risk planning.",
-    lastReviewed: "Draft reference page, July 2026",
+    keywords:
+      "anticoagulation anticoagulant antiplatelet hold resume restart bleeding risk warfarin heparin enoxaparin apixaban rivaroxaban dabigatran edoxaban clopidogrel ticagrelor prasugrel aspirin SIR",
+    summary: "Compare published SIR 2019 hold and restart recommendations by procedure and antithrombotic agent.",
+    lastReviewed: "SIR 2019 baseline checked, September 2026",
     root: "anticoagulation-table-root",
     nodes: {
       "anticoagulation-table-root": {
         title: "Anticoagulation Table",
         type: "reference",
-        summary: "Use local policy and attending preference; this page collects the app's draft high-risk restart timing in one place.",
+        summary: "Find the procedure on the vertical axis and the medication on the horizontal axis, then select a cell for the complete SIR baseline recommendation.",
+        calculator: "anticoagulation",
         children: [
           "anticoagulation-table-high-risk-hold",
           "anticoagulation-table-high-risk-restart",
@@ -955,16 +1318,9 @@ function installReferencePages() {
       "anticoagulation-table-high-risk-hold": {
         title: "High-risk hold",
         type: "caution",
-        summary: "Draft hold timing used by high-bleeding-risk procedure nodes.",
+        summary: "Common high-risk medication holds from SIR Part II, Table 6.",
         details: {
-          "High bleeding risk hold": [
-            "Warfarin: 5 days.",
-            "Heparin: 6-8 hours.",
-            "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-            "DOACs: 48 hours.",
-            "Plavix: 5 days.",
-            "Aspirin: 5 days.",
-          ],
+          "High bleeding risk hold": highRiskAnticoagHoldItems,
         },
       },
       "anticoagulation-table-high-risk-restart": {
@@ -978,25 +1334,26 @@ function installReferencePages() {
       "anticoagulation-table-low-risk": {
         title: "Low-risk procedures",
         type: "reference",
-        summary: "Low-risk procedure nodes generally do not require anticoagulation holds.",
+        summary: "SIR Table 6 generally recommends not withholding the listed agents for low-risk procedures.",
         details: {
           "Low bleeding risk": [
-            "No routine anticoagulation hold requirement for uncomplicated low-risk procedures.",
-            "If anticoagulation was held anyway, resume per local policy once hemostasis is confirmed.",
-            "Document who owns restart if there is active bleeding, access-site concern, or patient-specific thrombosis risk.",
+            "Do not withhold the listed anticoagulant or antiplatelet agent solely for an uncomplicated low-risk procedure.",
+            "For warfarin, SIR Table 6 lists a target INR <= 3.0; arterial-access thresholds may be lower.",
+            "Patient bleeding factors, multi-agent therapy, renal or hepatic dysfunction, and unexpected procedural complexity can change the plan.",
           ],
         },
       },
       "anticoagulation-table-review": {
         title: "Needs review",
         type: "caution",
-        summary: "Confirm this draft table against the current institutional anticoagulation policy.",
+        summary: "Validate the published SIR baseline against the current institutional anticoagulation policy before clinical deployment.",
         details: {
           "Review checklist": [
-            "Confirm hold and restart times by medication, dose, renal function, and procedural bleeding risk.",
-            "Confirm whether aspirin should be held for each high-risk procedure at your institution.",
-            "Confirm restart ownership for bridging, high thrombosis risk, active bleeding, or difficult hemostasis.",
+            "SIR announced an update of the 2019 guideline as a 2025 guideline topic; replace these rules when a published update or approved institutional table is available.",
+            "Confirm medication, dose, renal function, indication, thrombotic risk, and procedure category for each patient.",
+            "Do not use this table alone for urgent/emergent procedures, neuraxial procedures, active bleeding, recent VTE/stroke, mechanical valves, recent stents, bridging, or combination therapy.",
           ],
+          Sources: [sources.sirAnticoagulation, sources.sirAnticoagulationStatus],
         },
       },
     },
@@ -1012,8 +1369,9 @@ function installIntraprocedureSubblocks() {
 
       const anatomyId = `${nodeId}-anatomy`;
       const proceduralStepsId = `${nodeId}-procedural-steps`;
+      const pitfallsSafetyId = `${nodeId}-pitfalls-safety`;
       const existingChildren = (node.children || []).filter((childId) => {
-        return childId !== anatomyId && childId !== proceduralStepsId;
+        return childId !== anatomyId && childId !== proceduralStepsId && childId !== pitfallsSafetyId;
       });
 
       if (!procedure.nodes[anatomyId]) {
@@ -1037,7 +1395,20 @@ function installIntraprocedureSubblocks() {
         children: existingChildren,
       };
 
-      node.children = [anatomyId, proceduralStepsId];
+      if (!procedure.nodes[pitfallsSafetyId]) {
+        procedure.nodes[pitfallsSafetyId] = {
+          title: "Pitfalls and safety",
+          type: "caution",
+          summary: "Procedure-specific pitfalls, structures at risk, and safety checks.",
+          details: {
+            "To build out": [
+              "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria.",
+            ],
+          },
+        };
+      }
+
+      node.children = [anatomyId, proceduralStepsId, pitfallsSafetyId];
     });
   });
 }
@@ -1111,12 +1482,12 @@ function installGastrostomyTubeHeaderPrototype() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -1434,10 +1805,10 @@ function installGastrostomyTubeExchangeEdits() {
 }
 
 function installCatheterDirectedThrombolysisEdits() {
-  const procedure = procedures.find((item) => item.title === "Catheter Directed Thrombolysis (PE/DVT/frostbite) - SEE ORDER SET");
+  const procedure = procedures.find((item) => item.title === "Catheter Directed Thrombolysis - DVT Intervention");
   if (!procedure) return;
 
-  procedure.title = "Catheter Directed Thrombolysis";
+  procedure.title = "Catheter Directed Thrombolysis - DVT Intervention";
   procedure.summary =
     "Catheter-directed thrombolysis guidance for acute limb ischemia, threatening iliofemoral DVT symptoms, phlegmasia, and acute thrombosed bypass graft.";
   procedure.keywords = [
@@ -1458,7 +1829,7 @@ function installCatheterDirectedThrombolysisEdits() {
   const id = procedure.id;
   procedure.nodes = {
     [`${id}-root`]: {
-      title: "Catheter Directed Thrombolysis",
+      title: "Catheter Directed Thrombolysis - DVT Intervention",
       type: "overview",
       summary: "Confirm indication, exclude contraindications, verify labs and order-set details, and plan ICU-level thrombolysis monitoring.",
       children: [`${id}-pre`, `${id}-intra`, `${id}-post`, `${id}-review`],
@@ -1473,6 +1844,7 @@ function installCatheterDirectedThrombolysisEdits() {
         `${id}-labs`,
         `${id}-anticoag`,
         `${id}-sedation`,
+        `${id}-pre-orders`,
         `${id}-checklist`,
       ],
     },
@@ -1507,12 +1879,11 @@ function installCatheterDirectedThrombolysisEdits() {
     [`${id}-labs`]: {
       title: "Labs",
       type: "orders",
-      summary: "Platelets >50k, INR <1.5-1.8, and fibrinogen.",
+      summary: "Platelets >50k and INR <1.5-1.8.",
       details: {
         Labs: [
           "Platelets >50k.",
           "INR <1.5-1.8.",
-          "Fibrinogen.",
         ],
       },
     },
@@ -1526,12 +1897,12 @@ function installCatheterDirectedThrombolysisEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -1547,27 +1918,25 @@ function installCatheterDirectedThrombolysisEdits() {
         ],
       },
     },
-    [`${id}-checklist`]: {
-      title: "Checklist",
-      type: "checklist",
-      summary: "Confirm indication, review imaging, exclude contraindications, and set up lysis infusion orders.",
-      checklistSections: {
-        Checklist: [
-          "Confirm indication.",
-          "Labs are appropriate.",
-          "Review imaging.",
-          "Exclude contraindications.",
+    [`${id}-pre-orders`]: {
+      title: "Pre-operative orders",
+      type: "orders",
+      summary: "Enter fasting, monitoring, laboratory, notification, urinary catheter, and infusion orders for the planned catheter and sheath configuration.",
+      details: {
+        "Routine orders": [
+          "NPO if moderate sedation is planned.",
+          "Anti-Xa q6h x 24 hours.",
+          "aPTT q6h x 24 hours.",
+          "CBC q6h x 24 hours.",
+          "Fibrinogen q6h x 24 hours.",
+          "PT/INR q6h x 24 hours.",
+          "Indwelling urinary catheter.",
         ],
-        "Pre-procedure orders": [
-          "Anti-Xa q6 x 24 hours.",
-          "APTT q6 x 24 hours.",
-          "CBC q6 x 24 hours.",
-          "Fibrinogen q6 x 24 hours.",
-          "INR q5 x 24 hours.",
-          "Notify MD/LIP: Fibrinogen <200 mg/dL.",
-          "Notify MD/LIP: APTT >50 sec.",
+        "Notification parameters": [
+          "Notify MD/LIP: fibrinogen <200 mg/dL.",
+          "Notify MD/LIP: aPTT >50 sec.",
           "Notify MD/LIP: INR >1.7.",
-          "Notify MD/LIP: Platelets <100,000/m3.",
+          "Notify MD/LIP: platelets <100,000/mm3.",
         ],
         "One infusion catheter and sheath": [
           "Heparin (FLAT RATE) at 500 units/hr: 1 order.",
@@ -1586,6 +1955,22 @@ function installCatheterDirectedThrombolysisEdits() {
         ],
       },
     },
+    [`${id}-checklist`]: {
+      title: "Checklist",
+      type: "checklist",
+      summary: "Confirm indication, thrombus anatomy, candidacy for thrombolysis, monitoring, access, and consent.",
+      checklist: [
+        "Confirm indication and symptom duration.",
+        "Review thrombus extent and central outflow.",
+        "No major contraindication to thrombolysis.",
+        "Labs appropriate: Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen.",
+        "Anticoagulation plan confirmed.",
+        "Sedation plan confirmed.",
+        "Venous access site planned.",
+        "Consent completed.",
+        "Monitored bed available if overnight lysis is planned.",
+      ],
+    },
     [`${id}-intra`]: {
       title: "Intraprocedure",
       type: "workflow",
@@ -1596,25 +1981,108 @@ function installCatheterDirectedThrombolysisEdits() {
         ],
       },
     },
+    [`${id}-intra-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy.",
+      details: {
+        Anatomy: [
+          {
+            label: "Thrombus extent",
+            text: "Define involvement from the popliteal/femoral venous system through the iliac veins and into the IVC.",
+          },
+          {
+            label: "Inflow",
+            text: "Preserved profunda and femoral venous inflow supports effective thrombus clearance and long-term patency.",
+          },
+          {
+            label: "Outflow",
+            text: "Assess the external/common iliac veins and iliocaval junction for central obstruction that may limit treatment success.",
+          },
+          {
+            label: "May-Thurner anatomy",
+            text: "The left common iliac vein courses beneath the right common iliac artery and may have significant compression.",
+          },
+          {
+            label: "Access anatomy",
+            text: "When using popliteal access, recognize the relationship of the popliteal vein to the adjacent artery and tibial nerve on ultrasound.",
+          },
+        ],
+      },
+    },
+    [`${id}-intra-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "Establish in-line venous access, cross and define the thrombus, initiate lysis, and reassess residual disease.",
+      details: {
+        "Basic steps": [
+          "1. Plan access and define thrombus extent using preprocedural imaging and ultrasound.",
+          "2. Obtain venous access that provides in-line access to the thrombosed segment.",
+          "3. Cross the thrombus with a wire and catheter and confirm true intraluminal position.",
+          "4. Perform venography to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis.",
+          "5. Position the infusion catheter across the target thrombus with the side-hole segment spanning the intended treatment zone.",
+          "6. Begin thrombolysis with appropriate anticoagulation and monitoring according to institutional protocol.",
+          "7. Repeat venography and treat residual disease as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis.",
+        ],
+      },
+    },
+    [`${id}-intra-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "Prevent rethrombosis, incomplete treatment, malpositioned infusion, bleeding, embolization, and ineffective lysis of chronic thrombus.",
+      details: {
+        "Pitfalls and safety": [
+          {
+            label: "Unrecognized outflow obstruction",
+            text: "Residual iliac stenosis or compression can lead to rapid rethrombosis despite successful thrombus clearance.",
+          },
+          {
+            label: "Incomplete thrombus coverage",
+            text: "Ensure the infusion segment spans the intended clot burden; untreated thrombus may limit inflow or outflow.",
+          },
+          {
+            label: "Extravascular/subintimal catheter position",
+            text: "Confirm intraluminal catheter position before initiating thrombolytic infusion.",
+          },
+          {
+            label: "Bleeding during lysis",
+            text: "Closely monitor access sites and clinical status and follow institutional laboratory/anticoagulation protocols.",
+          },
+          {
+            label: "Pulmonary embolization",
+            text: "Thrombus manipulation can embolize; promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration.",
+          },
+          {
+            label: "Chronic organized thrombus",
+            text: "Chronic post-thrombotic occlusion may respond poorly to lysis and may require mechanical thrombectomy, recanalization, or another strategy.",
+          },
+        ],
+      },
+    },
     [`${id}-post`]: {
       title: "Post-procedure",
       type: "orders",
-      summary: "Monitor access site, neurovascular status, vitals, infusion orders, and next-day return plan.",
-      checklistSections: {
-        "Routine orders": [
-          "Monitor color of access site.",
-          "Neurovascular checks q1hr x 6 hours, then q1hr for up to 24 hours.",
-          "Vital signs: q15 minutes x 4, q30 minutes x 2, q1 hour x 2, then q2 hours until completion of thrombolytic infusion.",
-          "Tylenol 650 mg PRN.",
-        ],
-        "To note": [
-          "Verify that infusion orders are appropriate.",
-        ],
-        "Sign out to primary team for removal the next day": [
-          "Place IR venous intervention order.",
-          "NPO at midnight.",
-        ],
-      },
+      summary: "Continue thrombolysis monitoring, apply access-specific bedrest, update infusion orders, and arrange the next-day catheter check or removal.",
+      checklistSections: [
+        {
+          title: "Routine orders",
+          items: [
+            "No diet.",
+            "Tylenol 650 mg PRN.",
+            "Neurovascular checks q1h x 6 hours, then q2h for up to 24 hours after completion.",
+            "Vital signs q15 minutes x 4, q30 minutes x 2, q1h x 2, then q2h until completion of the thrombolytic infusion.",
+            "If femoral access for an arterial case: bedrest for 6 hours, or 2 hours if a closure device was used.",
+            "Monitor color of access site.",
+          ],
+        },
+        {
+          title: "Follow-up",
+          items: [
+            "See pre-procedure orders; update them to reflect the infusion setup at the end of the procedure and laboratory parameters specified by the attending physician.",
+            "Sign out to the primary team to place the IR Venous Intervention Order and make the patient NPO at midnight for thrombolysis catheter check/removal the following day.",
+          ],
+        },
+      ],
     },
     [`${id}-review`]: {
       title: "Needs review",
@@ -1622,7 +2090,7 @@ function installCatheterDirectedThrombolysisEdits() {
       summary: "Confirm CDT order-set details, lab frequency, notification thresholds, monitoring level, and next-day return workflow.",
       details: {
         "Review checklist": [
-          "Confirm INR q5 versus q6 timing with the formal order set.",
+          "Confirm PT/INR q6h x 24 hours with the formal order set.",
           "Confirm exact heparin, alteplase, and saline defaults.",
           "Confirm required monitoring location and nursing requirements.",
           "Confirm next-day lysis check/removal order naming.",
@@ -2138,12 +2606,12 @@ function installDrainageCatheterEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -2196,12 +2664,12 @@ function installDrainageCatheterEdits() {
         {
           title: "Anticoagulation to resume",
           items: [
-            "Warfarin: 24 hours postop.",
-            "Heparin: 6-8 hours postop.",
-            "Lovenox: 12 hours postop.",
-            "DOACs: 24 hours postop.",
-            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
+            "Warfarin: resume the day after the procedure.",
+            "IV unfractionated heparin: restart after 6-8 hours.",
+            "Enoxaparin: restart after 12 hours.",
+            "DOACs: Table 6 generally lists 24 hours; confirm agent, renal function, and local policy.",
+            "Clopidogrel: restart after 6 hours at 75 mg or 24 hours if using a 300-600-mg loading dose.",
+            "Aspirin: resume the day after the procedure.",
           ],
         },
         {
@@ -2330,12 +2798,12 @@ function installNephrostomyEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -2390,12 +2858,12 @@ function installNephrostomyEdits() {
         {
           title: "Anticoagulation to resume",
           items: [
-            "Warfarin: 24 hours postop.",
-            "Heparin: 6-8 hours postop.",
-            "Lovenox: 12 hours postop.",
-            "DOACs: 24 hours postop.",
-            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
+            "Warfarin: resume the day after the procedure.",
+            "IV unfractionated heparin: restart after 6-8 hours.",
+            "Enoxaparin: restart after 12 hours.",
+            "DOACs: Table 6 generally lists 24 hours; confirm agent, renal function, and local policy.",
+            "Clopidogrel: restart after 6 hours at 75 mg or 24 hours if using a 300-600-mg loading dose.",
+            "Aspirin: resume the day after the procedure.",
           ],
         },
         {
@@ -2599,12 +3067,12 @@ function installCholecystostomyEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -2658,12 +3126,12 @@ function installCholecystostomyEdits() {
         {
           title: "Anticoagulation to resume",
           items: [
-            "Warfarin: 24 hours postop.",
-            "Heparin: 6-8 hours postop.",
-            "Lovenox: 12 hours postop.",
-            "DOACs: 24 hours postop.",
-            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
+            "Warfarin: resume the day after the procedure.",
+            "IV unfractionated heparin: restart after 6-8 hours.",
+            "Enoxaparin: restart after 12 hours.",
+            "DOACs: Table 6 generally lists 24 hours; confirm agent, renal function, and local policy.",
+            "Clopidogrel: restart after 6 hours at 75 mg or 24 hours if using a 300-600-mg loading dose.",
+            "Aspirin: resume the day after the procedure.",
           ],
         },
         {
@@ -2792,12 +3260,12 @@ function installBiliaryDrainEdits() {
             { text: "Open anticoagulation table", href: "#anticoagulation-table" },
           ],
           Hold: [
-            "Warfarin: 5 days.",
-            "Heparin: 6-8 hours.",
-            "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-            "DOACs: 48 hours.",
-            "Plavix: 5 days.",
-            "Aspirin: 5 days.",
+            "Warfarin: hold 5 days and confirm INR <= 1.8.",
+            "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+            "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+            "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+            "Clopidogrel: hold 5 days.",
+            "Aspirin: hold 3-5 days.",
           ],
         },
       },
@@ -2852,12 +3320,12 @@ function installBiliaryDrainEdits() {
           {
             title: "Anticoagulation to resume",
             items: [
-              "Warfarin: 24 hours postop.",
-              "Heparin: 6-8 hours postop.",
-              "Lovenox: 12 hours postop.",
-              "DOACs: 24 hours postop.",
-              "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-              "Aspirin: 24 hours postop.",
+              "Warfarin: resume the day after the procedure.",
+              "IV unfractionated heparin: restart after 6-8 hours.",
+              "Enoxaparin: restart after 12 hours.",
+              "DOACs: Table 6 generally lists 24 hours; confirm agent, renal function, and local policy.",
+              "Clopidogrel: restart after 6 hours at 75 mg or 24 hours if using a 300-600-mg loading dose.",
+              "Aspirin: resume the day after the procedure.",
             ],
           },
           {
@@ -3631,12 +4099,12 @@ function installKidneyBiopsyEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -3800,12 +4268,12 @@ function installLiverBiopsyEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -4318,12 +4786,12 @@ function installLungBiopsyEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -5222,12 +5690,12 @@ function installProstateArteryEmbolizationEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -5457,12 +5925,12 @@ function installTipsCreationEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -5656,12 +6124,12 @@ function installTipsRevisionEdits() {
           { text: "Open anticoagulation table", href: "#anticoagulation-table" },
         ],
         Hold: [
-          "Warfarin: 5 days.",
-          "Heparin: 6-8 hours.",
-          "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-          "DOACs: 48 hours.",
-          "Plavix: 5 days.",
-          "Aspirin: 5 days.",
+          "Warfarin: hold 5 days and confirm INR <= 1.8.",
+          "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+          "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+          "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+          "Clopidogrel: hold 5 days.",
+          "Aspirin: hold 3-5 days.",
         ],
       },
     },
@@ -6824,6 +7292,7 @@ function installPreProcedureLieFlatChecks() {
 const els = {
   search: document.querySelector("#procedure-search"),
   procedureList: document.querySelector("#procedure-list"),
+  canvas: document.querySelector(".canvas-layout"),
   category: document.querySelector("#procedure-category"),
   title: document.querySelector("#procedure-title"),
   summary: document.querySelector("#procedure-summary"),
@@ -6948,6 +7417,13 @@ function renderBubbles() {
   const node = currentNode();
   const children = node.children || [];
   els.bubbles.innerHTML = "";
+  const showAnticoagulationMatrix = procedure.id === "anticoagulation-table" && state.activeNodeId === procedure.root;
+  els.bubbles.classList.toggle("anticoagulation-matrix-host", showAnticoagulationMatrix);
+
+  if (showAnticoagulationMatrix) {
+    els.bubbles.append(renderAnticoagulationMatrix());
+    return;
+  }
 
   if (state.activeNodeId === procedure.root) {
     children.forEach((phaseId) => {
@@ -7035,6 +7511,13 @@ function openProcedure(procedureId) {
 }
 
 function appendListItemContent(container, item) {
+  if (typeof item === "object" && item !== null && item.label && item.text) {
+    const label = document.createElement("strong");
+    label.textContent = `${item.label}: `;
+    container.append(label, document.createTextNode(item.text));
+    return;
+  }
+
   if (typeof item === "object" && item !== null && item.procedureId) {
     const link = document.createElement("a");
     link.href = `#${item.procedureId}`;
@@ -7128,6 +7611,275 @@ function renderChecklist(items) {
 function renderChecklistSection(title, items) {
   const section = renderChecklist(items);
   section.querySelector("h4").textContent = title;
+  return section;
+}
+
+function anticoagulationRecommendation(procedureRule, agent, context) {
+  const highRecommendation = agent.high(context);
+  const sharedRestartNote =
+    "Restart timing assumes procedural bleeding risk is controlled and no patient-specific factor requires a longer interruption.";
+
+  if (procedureRule.risk === "High") {
+    return {
+      hold: highRecommendation.hold,
+      restart: highRecommendation.restart,
+      note: [procedureRule.basis, highRecommendation.note, agent.note, sharedRestartNote].filter(Boolean).join(" "),
+    };
+  }
+
+  if (procedureRule.risk === "Low") {
+    const lowNote =
+      agent.id === "warfarin"
+        ? "SIR Table 6 lists a target INR <= 3.0; low-risk arterial access has separate INR thresholds."
+        : "SIR Table 6 lists no routine interruption for this agent in uncomplicated low-risk procedures.";
+    return {
+      hold: "Do not withhold",
+      restart: "No interruption planned",
+      note: `${procedureRule.basis} ${lowNote} Reassess if patient bleeding risk, combination therapy, or technical complexity is increased.`,
+    };
+  }
+
+  if (procedureRule.risk === "Conditional") {
+    return {
+      hold: "Confirm risk category",
+      restart: "Then apply low/high rule",
+      note: `${procedureRule.basis} If low risk, SIR generally says do not withhold. If high risk: ${highRecommendation.hold}; ${highRecommendation.restart}. ${highRecommendation.note || agent.note || sharedRestartNote}`,
+    };
+  }
+
+  return {
+    hold: "Not categorized",
+    restart: "Use local policy",
+    note: `${procedureRule.basis} Do not infer a hold or restart interval from another procedure without attending or institutional review.`,
+  };
+}
+
+function renderAnticoagulationMatrix() {
+  const section = document.createElement("section");
+  section.className = "anticoag-matrix";
+
+  const sourceNotice = document.createElement("div");
+  sourceNotice.className = "anticoag-source";
+  const sourceHeading = document.createElement("strong");
+  sourceHeading.textContent = "Published baseline: SIR 2019 Part II, Tables 3 and 6";
+  const sourceText = document.createElement("p");
+  sourceText.textContent =
+    "SIR announced an update in May 2025, but this navigator does not treat an unpublished update as a clinical rule. Validate against the approved institutional table before deployment.";
+  const sourceLinks = document.createElement("div");
+  const guidelineLink = document.createElement("a");
+  guidelineLink.href = "https://www.jvir.org/article/S1051-0443(19)30407-5/fulltext";
+  guidelineLink.target = "_blank";
+  guidelineLink.rel = "noreferrer";
+  guidelineLink.textContent = "SIR guideline";
+  const statusLink = document.createElement("a");
+  statusLink.href = "https://www.sirweb.org/publications/news/announcing-the-2025-guidelines-and-statements-topics/";
+  statusLink.target = "_blank";
+  statusLink.rel = "noreferrer";
+  statusLink.textContent = "Update status";
+  sourceLinks.append(guidelineLink, statusLink);
+  sourceNotice.append(sourceHeading, sourceText, sourceLinks);
+  section.append(sourceNotice);
+
+  const controls = document.createElement("div");
+  controls.className = "anticoag-controls";
+
+  const searchLabel = document.createElement("label");
+  searchLabel.className = "anticoag-search";
+  const searchText = document.createElement("span");
+  searchText.textContent = "Find procedure";
+  const searchInput = document.createElement("input");
+  searchInput.type = "search";
+  searchInput.placeholder = "Search this table";
+  searchInput.autocomplete = "off";
+  searchLabel.append(searchText, searchInput);
+
+  const riskFilter = document.createElement("fieldset");
+  riskFilter.className = "anticoag-risk-filter";
+  const riskLegend = document.createElement("legend");
+  riskLegend.textContent = "Bleeding risk";
+  riskFilter.append(riskLegend);
+
+  const riskOptions = ["All", "High", "Low", "Conditional", "Review"];
+  riskOptions.forEach((option, index) => {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "anticoag-risk-filter";
+    input.value = option;
+    input.checked = index === 0;
+    const span = document.createElement("span");
+    span.textContent = option;
+    label.append(input, span);
+    riskFilter.append(label);
+  });
+
+  const contextControls = document.createElement("div");
+  contextControls.className = "anticoag-context-controls";
+
+  const renalLabel = document.createElement("label");
+  const renalText = document.createElement("span");
+  renalText.textContent = "Creatinine clearance";
+  const renalSelect = document.createElement("select");
+  [
+    ["ge50", "CrCl >=50 mL/min"],
+    ["30to49", "CrCl 30-49 mL/min"],
+    ["15to29", "CrCl 15-29 mL/min"],
+    ["unknown", "CrCl <15 or unknown"],
+  ].forEach(([value, label]) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = label;
+    renalSelect.append(option);
+  });
+  renalLabel.append(renalText, renalSelect);
+
+  const enoxaparinLabel = document.createElement("label");
+  const enoxaparinText = document.createElement("span");
+  enoxaparinText.textContent = "Enoxaparin dose";
+  const enoxaparinSelect = document.createElement("select");
+  [
+    ["therapeutic", "Therapeutic"],
+    ["prophylactic", "Prophylactic"],
+  ].forEach(([value, label]) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = label;
+    enoxaparinSelect.append(option);
+  });
+  enoxaparinLabel.append(enoxaparinText, enoxaparinSelect);
+  contextControls.append(renalLabel, enoxaparinLabel);
+
+  controls.append(searchLabel, riskFilter, contextControls);
+  section.append(controls);
+
+  const selection = document.createElement("div");
+  selection.className = "anticoag-selection";
+  selection.setAttribute("aria-live", "polite");
+  const selectionLabel = document.createElement("span");
+  selectionLabel.textContent = "Selected recommendation";
+  const selectionTitle = document.createElement("strong");
+  selectionTitle.textContent = "Choose a procedure and medication cell";
+  const selectionBody = document.createElement("p");
+  selectionBody.textContent = "The source-based hold, restart, and procedure-mapping notes will appear here.";
+  selection.append(selectionLabel, selectionTitle, selectionBody);
+  section.append(selection);
+
+  const status = document.createElement("p");
+  status.className = "anticoag-status";
+  section.append(status);
+
+  const tableWrap = document.createElement("div");
+  tableWrap.className = "anticoag-table-wrap";
+  const table = document.createElement("table");
+  table.className = "anticoag-table";
+  table.setAttribute("aria-label", "Procedure anticoagulation hold and restart recommendations");
+
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  const procedureHeader = document.createElement("th");
+  procedureHeader.scope = "col";
+  procedureHeader.textContent = "Procedure";
+  headerRow.append(procedureHeader);
+  anticoagulationAgents.forEach((agent) => {
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.textContent = agent.label;
+    headerRow.append(th);
+  });
+  thead.append(headerRow);
+  table.append(thead);
+
+  const tbody = document.createElement("tbody");
+  table.append(tbody);
+  tableWrap.append(table);
+  section.append(tableWrap);
+
+  const caveat = document.createElement("p");
+  caveat.className = "anticoag-caveat";
+  caveat.textContent =
+    "Educational reference, not a patient-specific order. Confirm dose, indication, renal and hepatic function, thrombotic risk, co-medications, hemostasis, and the current institutional policy before acting.";
+  section.append(caveat);
+
+  const tableProcedures = anticoagulationProcedureRules
+    .filter((rule) => procedures.some((procedure) => procedure.title === rule.procedureTitle))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  function renderRows() {
+    tbody.replaceChildren();
+    const context = {
+      crclBand: renalSelect.value,
+      enoxaparinDose: enoxaparinSelect.value,
+    };
+
+    tableProcedures.forEach((procedureRule) => {
+      const row = document.createElement("tr");
+      row.dataset.search = `${procedureRule.label} ${procedureRule.procedureTitle}`.toLowerCase();
+      row.dataset.risk = procedureRule.risk;
+
+      const rowHeader = document.createElement("th");
+      rowHeader.scope = "row";
+      const procedureName = document.createElement("strong");
+      procedureName.textContent = procedureRule.label;
+      const riskBadge = document.createElement("span");
+      riskBadge.className = `anticoag-risk-badge ${procedureRule.risk.toLowerCase()}`;
+      riskBadge.textContent = procedureRule.risk === "Review" ? "Needs review" : `${procedureRule.risk} risk`;
+      rowHeader.append(procedureName, riskBadge);
+      row.append(rowHeader);
+
+      anticoagulationAgents.forEach((agent) => {
+        const recommendation = anticoagulationRecommendation(procedureRule, agent, context);
+        const cell = document.createElement("td");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `anticoag-cell ${procedureRule.risk.toLowerCase()}`;
+        button.setAttribute(
+          "aria-label",
+          `${procedureRule.label}, ${agent.label}: ${recommendation.hold}; ${recommendation.restart}`,
+        );
+        const hold = document.createElement("strong");
+        hold.textContent = recommendation.hold;
+        const restart = document.createElement("span");
+        restart.textContent = recommendation.restart;
+        button.append(hold, restart);
+        button.addEventListener("click", () => {
+          table.querySelectorAll(".anticoag-cell.active").forEach((activeCell) => activeCell.classList.remove("active"));
+          button.classList.add("active");
+          selectionTitle.textContent = `${procedureRule.label} + ${agent.label}`;
+          selectionBody.textContent = `${recommendation.hold}. ${recommendation.restart}. ${recommendation.note}`;
+        });
+        cell.append(button);
+        row.append(cell);
+      });
+
+      tbody.append(row);
+    });
+
+    selectionTitle.textContent = "Choose a procedure and medication cell";
+    selectionBody.textContent = "The source-based hold, restart, and procedure-mapping notes will appear here.";
+    updateRows();
+  }
+
+  function updateRows() {
+    const query = searchInput.value.trim().toLowerCase();
+    const selectedRisk = riskFilter.querySelector("input:checked").value;
+    let visibleCount = 0;
+
+    tbody.querySelectorAll("tr").forEach((row) => {
+      const matchesSearch = !query || row.dataset.search.includes(query);
+      const matchesRisk = selectedRisk === "All" || row.dataset.risk === selectedRisk;
+      row.hidden = !(matchesSearch && matchesRisk);
+      if (!row.hidden) visibleCount += 1;
+    });
+
+    status.textContent = `${visibleCount} procedure${visibleCount === 1 ? "" : "s"} shown`;
+  }
+
+  searchInput.addEventListener("input", updateRows);
+  riskFilter.addEventListener("change", updateRows);
+  renalSelect.addEventListener("change", renderRows);
+  enoxaparinSelect.addEventListener("change", renderRows);
+  renderRows();
+
   return section;
 }
 
@@ -7404,6 +8156,9 @@ function renderControls() {
 }
 
 function render() {
+  const procedure = currentProcedure();
+  const showAnticoagulationMatrix = procedure.id === "anticoagulation-table" && state.activeNodeId === procedure.root;
+  els.canvas.classList.toggle("anticoagulation-view", showAnticoagulationMatrix);
   renderProcedureList();
   renderHeader();
   renderBreadcrumb();
