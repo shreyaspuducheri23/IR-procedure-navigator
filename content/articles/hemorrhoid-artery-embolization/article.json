@@ -280,6 +280,29 @@
               ]
             }
           ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },

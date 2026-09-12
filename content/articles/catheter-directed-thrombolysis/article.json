@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "catheter-directed-thrombolysis",
-  "title": "Catheter Directed Thrombolysis",
+  "title": "Catheter Directed Thrombolysis - DVT Intervention",
   "category": "vascular-intervention",
   "status": "complete",
   "bleedRisk": "high",
@@ -17,7 +17,7 @@
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm INR q5 versus q6 timing with the formal order set.",
+    "Confirm PT/INR q6h x 24 hours with the formal order set.",
     "Confirm exact heparin, alteplase, and saline defaults.",
     "Confirm required monitoring location and nursing requirements.",
     "Confirm next-day lysis check/removal order naming."
@@ -99,8 +99,7 @@
               "type": "list",
               "items": [
                 "Platelets >50k.",
-                "INR <1.5-1.8.",
-                "Fibrinogen."
+                "INR <1.5-1.8."
               ]
             }
           ]
@@ -113,10 +112,6 @@
               "type": "callout",
               "variant": "caution",
               "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "High bleeding-risk procedure. Use the anticoagulation table for hold and restart timing."
-                },
                 {
                   "type": "list",
                   "items": [
@@ -138,12 +133,12 @@
                 {
                   "type": "list",
                   "items": [
-                    "Warfarin: 5 days.",
-                    "Heparin: 6-8 hours.",
-                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-                    "DOACs: 48 hours.",
-                    "Plavix: 5 days.",
-                    "Aspirin: 5 days."
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+                    "Clopidogrel: hold 5 days.",
+                    "Aspirin: hold 3-5 days."
                   ]
                 }
               ]
@@ -176,37 +171,48 @@
           ]
         },
         {
-          "id": "checklist",
-          "title": "Checklist",
+          "id": "pre-operative-orders",
+          "title": "Pre-operative orders",
           "blocks": [
             {
-              "type": "checklist",
-              "title": "Checklist",
+              "type": "paragraph",
+              "text": "Enter fasting, monitoring, laboratory, notification, urinary catheter, and infusion orders for the planned catheter and sheath configuration."
+            },
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
               "items": [
-                "Confirm indication.",
-                "Labs are appropriate.",
-                "Review imaging.",
-                "Exclude contraindications."
+                "NPO if moderate sedation is planned.",
+                "Anti-Xa q6h x 24 hours.",
+                "aPTT q6h x 24 hours.",
+                "CBC q6h x 24 hours.",
+                "Fibrinogen q6h x 24 hours.",
+                "PT/INR q6h x 24 hours.",
+                "Indwelling urinary catheter."
               ]
             },
             {
-              "type": "checklist",
-              "title": "Pre-procedure orders",
+              "type": "heading",
+              "text": "Notification parameters"
+            },
+            {
+              "type": "list",
               "items": [
-                "Anti-Xa q6 x 24 hours.",
-                "APTT q6 x 24 hours.",
-                "CBC q6 x 24 hours.",
-                "Fibrinogen q6 x 24 hours.",
-                "INR q5 x 24 hours.",
-                "Notify MD/LIP: Fibrinogen <200 mg/dL.",
-                "Notify MD/LIP: APTT >50 sec.",
+                "Notify MD/LIP: fibrinogen <200 mg/dL.",
+                "Notify MD/LIP: aPTT >50 sec.",
                 "Notify MD/LIP: INR >1.7.",
-                "Notify MD/LIP: Platelets <100,000/m3."
+                "Notify MD/LIP: platelets <100,000/mm3."
               ]
             },
             {
-              "type": "checklist",
-              "title": "One infusion catheter and sheath",
+              "type": "heading",
+              "text": "One infusion catheter and sheath"
+            },
+            {
+              "type": "list",
               "items": [
                 "Heparin (FLAT RATE) at 500 units/hr: 1 order.",
                 "Sodium chloride infusion 20 mL/hr: 1 order.",
@@ -214,8 +220,11 @@
               ]
             },
             {
-              "type": "checklist",
-              "title": "Two infusion catheters and sheaths (Site A and Site B)",
+              "type": "heading",
+              "text": "Two infusion catheters and sheaths (Site A and Site B)"
+            },
+            {
+              "type": "list",
               "items": [
                 "Heparin (FLAT RATE) at 250 units/hr: 2 orders.",
                 "Sodium chloride infusion 20 mL/hr: 2 orders.",
@@ -223,12 +232,39 @@
               ]
             },
             {
-              "type": "checklist",
-              "title": "Two infusion catheters through one sheath",
+              "type": "heading",
+              "text": "Two infusion catheters through one sheath"
+            },
+            {
+              "type": "list",
               "items": [
                 "Heparin (FLAT RATE) at 500 units/hr: 1 order.",
                 "Sodium chloride infusion 20 mL/hr: 2 orders.",
                 "Alteplase 0.5 mg/hr: 2 orders."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Confirm indication, thrombus anatomy, candidacy for thrombolysis, monitoring, access, and consent."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Confirm indication and symptom duration.",
+                "Review thrombus extent and central outflow.",
+                "No major contraindication to thrombolysis.",
+                "Labs appropriate: Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen.",
+                "Anticoagulation plan confirmed.",
+                "Sedation plan confirmed.",
+                "Venous access site planned.",
+                "Consent completed.",
+                "Monitored bed available if overnight lysis is planned."
               ]
             }
           ]
@@ -265,19 +301,16 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "text": "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Define involvement from the popliteal/femoral venous system through the iliac veins and into the IVC.",
+                "Preserved profunda and femoral venous inflow supports effective thrombus clearance and long-term patency.",
+                "Assess the external/common iliac veins and iliocaval junction for central obstruction that may limit treatment success.",
+                "The left common iliac vein courses beneath the right common iliac artery and may have significant compression.",
+                "When using popliteal access, recognize the relationship of the popliteal vein to the adjacent artery and tibial nerve on ultrasound."
               ]
             }
           ]
@@ -289,6 +322,49 @@
             {
               "type": "paragraph",
               "text": "Procedure-specific access, device, imaging, and completion steps."
+            },
+            {
+              "type": "heading",
+              "text": "Basic steps"
+            },
+            {
+              "type": "list",
+              "items": [
+                "1. Plan access and define thrombus extent using preprocedural imaging and ultrasound.",
+                "2. Obtain venous access that provides in-line access to the thrombosed segment.",
+                "3. Cross the thrombus with a wire and catheter and confirm true intraluminal position.",
+                "4. Perform venography to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis.",
+                "5. Position the infusion catheter across the target thrombus with the side-hole segment spanning the intended treatment zone.",
+                "6. Begin thrombolysis with appropriate anticoagulation and monitoring according to institutional protocol.",
+                "7. Repeat venography and treat residual disease as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Prevent rethrombosis, incomplete treatment, malpositioned infusion, bleeding, embolization, and ineffective lysis of chronic thrombus."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Residual iliac stenosis or compression can lead to rapid rethrombosis despite successful thrombus clearance.",
+                    "Ensure the infusion segment spans the intended clot burden; untreated thrombus may limit inflow or outflow.",
+                    "Confirm intraluminal catheter position before initiating thrombolytic infusion.",
+                    "Closely monitor access sites and clinical status and follow institutional laboratory/anticoagulation protocols.",
+                    "Thrombus manipulation can embolize; promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration.",
+                    "Chronic post-thrombotic occlusion may respond poorly to lysis and may require mechanical thrombectomy, recanalization, or another strategy."
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -301,19 +377,39 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Monitor access site, neurovascular status, vitals, infusion orders, and next-day return plan."
+          "text": "Continue thrombolysis monitoring, apply access-specific bedrest, update infusion orders, and arrange the next-day catheter check or removal."
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "No diet.",
+            "Tylenol 650 mg PRN.",
+            "Neurovascular checks q1h x 6 hours, then q2h for up to 24 hours after completion.",
+            "Vital signs q15 minutes x 4, q30 minutes x 2, q1h x 2, then q2h until completion of the thrombolytic infusion.",
+            "If femoral access for an arterial case: bedrest for 6 hours, or 2 hours if a closure device was used.",
+            "Monitor color of access site."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow-up",
+          "items": [
+            "See pre-procedure orders; update them to reflect the infusion setup at the end of the procedure and laboratory parameters specified by the attending physician.",
+            "Sign out to the primary team to place the IR Venous Intervention Order and make the patient NPO at midnight for thrombolysis catheter check/removal the following day."
+          ]
         },
         {
           "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
-            "Warfarin: 24 hours postop.",
-            "Heparin: 6-8 hours postop.",
-            "Lovenox: 12 hours postop.",
-            "DOACs: 24 hours postop.",
-            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
-            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+            "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
+            "IV unfractionated heparin: 6-8 hours after the procedure.",
+            "Enoxaparin: 12 hours after the procedure.",
+            "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
+            "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
+            "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
+            "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
           ]
         }
       ]

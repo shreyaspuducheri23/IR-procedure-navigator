@@ -115,12 +115,12 @@
                 {
                   "type": "list",
                   "items": [
-                    "Warfarin: 5 days.",
-                    "Heparin: 6-8 hours.",
-                    "Lovenox: 24 hours; hold 1 dose prior if prophylactic.",
-                    "DOACs: 48 hours.",
-                    "Plavix: 5 days.",
-                    "Aspirin: 5 days."
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+                    "Clopidogrel: hold 5 days.",
+                    "Aspirin: hold 3-5 days."
                   ]
                 }
               ]
@@ -249,6 +249,29 @@
               ]
             }
           ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "To build out",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -293,13 +316,13 @@
           "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
-            "Warfarin: 24 hours postop.",
-            "Heparin: 6-8 hours postop.",
-            "Lovenox: 12 hours postop.",
-            "DOACs: 24 hours postop.",
-            "Plavix: 6 hours postop (75 mg) or 24 hours postop (300-600 mg).",
-            "Aspirin: 24 hours postop.",
-            "Confirm no procedure-related bleeding concern and defer to local policy/attending preference."
+            "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
+            "IV unfractionated heparin: 6-8 hours after the procedure.",
+            "Enoxaparin: 12 hours after the procedure.",
+            "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
+            "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
+            "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
+            "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
           ]
         }
       ]
