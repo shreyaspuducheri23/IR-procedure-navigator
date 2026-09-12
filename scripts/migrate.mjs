@@ -234,8 +234,11 @@ function calloutVariantForKey(key, nodeType) {
 function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   const blocks = [];
   if (node.calculator) {
-    if (node.calculator !== "meld") throw new Error(`Unsupported calculator: ${node.calculator}`);
-    blocks.push({ type: "calculator", calculator: "meld" });
+    if (node.calculator === "meld") {
+      blocks.push({ type: "calculator", calculator: "meld" });
+    } else if (node.calculator !== "anticoagulation") {
+      throw new Error(`Unsupported calculator: ${node.calculator}`);
+    }
   }
   const details = node.details ?? {};
   const detailEntries = Object.entries(details).filter(([key]) => !PROVENANCE_KEYS.has(key));
@@ -322,7 +325,7 @@ function validateGraph(procedure) {
     if (active.has(id)) throw new Error(`${procedure.id}: cycle at ${id}`);
     const node = procedure.nodes[id];
     if (!node) throw new Error(`${procedure.id}: missing node ${id}`);
-    if (node.calculator !== undefined && node.calculator !== "meld") {
+    if (node.calculator !== undefined && node.calculator !== "meld" && node.calculator !== "anticoagulation") {
       throw new Error(`${procedure.id}: unsupported calculator ${node.calculator}`);
     }
     if (visited.has(id)) return;

@@ -33,6 +33,9 @@ test('missing nodes, cycles and unsupported calculators abort conversion', () =>
   assert.throws(() => convert(cycle), /cycle/);
   const unknown = fixture(); unknown.nodes.root.calculator = 'unknown';
   assert.throws(() => convert(unknown), /unsupported calculator/);
+  const anticoagulation = fixture(); anticoagulation.nodes.root.calculator = 'anticoagulation';
+  const convertedAnticoagulation = convert(anticoagulation);
+  assert.equal(JSON.stringify(convertedAnticoagulation).includes('"type":"calculator"'), false);
 });
 test('real migration is deterministic and agrees with all committed articles', () => {
   const run = () => {
