@@ -1975,16 +1975,23 @@ function installCatheterDirectedThrombolysisEdits() {
       title: "Intraprocedure",
       type: "workflow",
       summary: "Use the institutional thrombolysis order set and verify all infusion rates with the operator before leaving the room.",
-      details: {
-        "To build": [
-          "Add access approach, catheter positioning, infusion start workflow, and handoff timing after faculty review.",
-        ],
-      },
     },
     [`${id}-intra-anatomy`]: {
       title: "Anatomy",
       type: "reference",
       summary: "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy.",
+      images: [
+        {
+          src: "images/deep-venous-anatomy.png",
+          alt: "Illustrated deep venous anatomy of the lower extremity from the calf veins through the popliteal, femoral, iliac veins, and inferior vena cava.",
+          caption: "Deep venous anatomy relevant to catheter-directed thrombolysis planning. Original educational schematic; not to scale. Confirm anatomy and variants on patient-specific imaging.",
+        },
+        {
+          src: "images/popliteal-access-ultrasound.png",
+          alt: "Synthetic transverse posterior popliteal-fossa ultrasound labeling the popliteal vein, popliteal artery, tibial nerve, and femur.",
+          caption: "Typical transverse popliteal-fossa relationship for posterior venous access. Synthetic educational ultrasound; confirm structures dynamically before access.",
+        },
+      ],
       details: {
         Anatomy: [
           {
@@ -2016,13 +2023,13 @@ function installCatheterDirectedThrombolysisEdits() {
       summary: "Establish in-line venous access, cross and define the thrombus, initiate lysis, and reassess residual disease.",
       details: {
         "Basic steps": [
-          "1. Plan access and define thrombus extent using preprocedural imaging and ultrasound.",
-          "2. Obtain venous access that provides in-line access to the thrombosed segment.",
-          "3. Cross the thrombus with a wire and catheter and confirm true intraluminal position.",
-          "4. Perform venography to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis.",
-          "5. Position the infusion catheter across the target thrombus with the side-hole segment spanning the intended treatment zone.",
-          "6. Begin thrombolysis with appropriate anticoagulation and monitoring according to institutional protocol.",
-          "7. Repeat venography and treat residual disease as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis.",
+          { strong: "1. Plan access and define thrombus extent", text: " using preprocedural imaging and ultrasound." },
+          { strong: "2. Obtain venous access", text: " that provides in-line access to the thrombosed segment." },
+          { strong: "3. Cross the thrombus", text: " with a wire and catheter and confirm true intraluminal position." },
+          { strong: "4. Perform venography", text: " to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis." },
+          { strong: "5. Position the infusion catheter across the target thrombus", text: " with the side-hole segment spanning the intended treatment zone." },
+          { strong: "6. Begin thrombolysis with appropriate anticoagulation and monitoring", text: " according to institutional protocol." },
+          { strong: "7. Repeat venography and treat residual disease", text: " as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis." },
         ],
       },
     },
@@ -5180,8 +5187,82 @@ function installHemorrhoidArteryEmbolizationEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the hemorrhoid artery embolization technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Review rectal arterial anatomy, embolize the superior rectal artery targets, and assess collateral supply.",
+      children: [
+        `${id}-intra-v2-anatomy`,
+        `${id}-intra-v2-procedural-steps`,
+        `${id}-intra-v2-pitfalls-safety`,
+      ],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      defaultOpen: true,
+      summary: "Understand the superior rectal artery target and the extensive collateral supply from the internal iliac system.",
+      images: [
+        {
+          src: "images/rectal-arterial-supply.png",
+          alt: "Anterior pelvic anatomy illustration labeling the inferior mesenteric, superior rectal, middle rectal, internal pudendal, and inferior rectal arteries.",
+          caption: "Arterial supply to the rectum. Original AI-generated educational illustration; confirm patient-specific anatomy and variants on procedural imaging.",
+        },
+        {
+          src: "images/inferior-mesenteric-superior-rectal-schematic.png",
+          alt: "Simplified angiographic-style illustration labeling the inferior mesenteric artery, superior rectal artery, and right and left terminal branches.",
+          caption: "Simplified IMA and superior rectal artery branching pattern. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail.",
+        },
+        {
+          src: "images/internal-iliac-rectal-supply-schematic.png",
+          alt: "Simplified angiographic-style illustration labeling internal iliac contributions to the middle and inferior rectal arteries.",
+          caption: "Simplified internal iliac contribution to rectal arterial supply. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail.",
+        },
+      ],
+      details: {
+        Anatomy: [
+          { strong: "IMA:", text: " commonly arises from the anterior aorta at approximately L3." },
+          { strong: "Superior rectal artery (SRA):", text: " terminal branch of the IMA and primary supply to internal hemorrhoids." },
+          { strong: "SRA terminal branches:", text: " divide into right and left branches supplying the hemorrhoidal plexus." },
+          { strong: "Middle rectal arteries:", text: " variable branches of the internal iliac system that may provide important collateral supply." },
+          { strong: "Inferior rectal arteries:", text: " arise from the internal pudendal arteries and supply the distal anal canal." },
+          { strong: "Rectal arterial anastomoses:", text: " provide extensive collateral perfusion between superior, middle, and inferior rectal territories." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "Select the IMA, embolize the distal SRA targets, and reassess for residual or collateral supply.",
+      details: {
+        "Basic steps": [
+          { strong: "1. Obtain arterial access", text: " and select the IMA." },
+          { strong: "2. Perform IMA angiography", text: " to define SRA anatomy and target branches." },
+          { strong: "3. Microcatheterize the SRA", text: " and advance into the distal hemorrhoidal branches." },
+          { strong: "4. Confirm target supply", text: " with selective angiography." },
+          { strong: "5. Embolize the target branches", text: " to near-stasis using the chosen embolic." },
+        ],
+        "Step 5: embolic selection": [
+          { strong: "Elective symptomatic hemorrhoids:", text: " most commonly microcoils, with particles used by some operators." },
+          { strong: "Emergent hemorrhoidal bleeding:", text: " commonly coils for focal bleeding; particles or Gelfoam may be used for more diffuse bleeding." },
+        ],
+        Completion: [
+          { strong: "6. Repeat angiography", text: " to assess residual hemorrhoidal supply." },
+          { strong: "7. Evaluate or treat collateral supply", text: " if significant persistent filling remains." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "Prevent missed collateral supply, nontarget embolization, incomplete treatment, reflux, and rectal ischemia.",
+      details: {
+        "Pitfalls and safety": [
+          { strong: "Missed collateral supply:", text: " persistent filling may arise from middle or inferior rectal arteries; reassess pelvic collaterals." },
+          { strong: "Nontarget embolization:", text: " confirm distal catheter position and exclude unintended branches before embolizing." },
+          { strong: "Vasospasm:", text: " can obscure true supply; pause, reposition, or use a vasodilator as appropriate before assuming treatment is complete." },
+          { strong: "Incomplete bilateral treatment:", text: " residual contralateral SRA supply can lead to persistent symptoms or bleeding." },
+          { strong: "Catheter instability or reflux:", text: " embolize slowly and maintain stable distal position to avoid proximal or nontarget delivery." },
+          { strong: "Rectal ischemia:", text: " uncommon because of rich collaterals, but avoid overly aggressive embolization of multiple rectal arterial territories." },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -5194,6 +5275,8 @@ function installHemorrhoidArteryEmbolizationEdits() {
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
+            "Monitor access site.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.",
           ],
         },
         {
@@ -5208,13 +5291,6 @@ function installHemorrhoidArteryEmbolizationEdits() {
           ],
         },
         {
-          title: "Monitoring",
-          items: [
-            "Monitor access site.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.",
-          ],
-        },
-        {
           title: "If outpatient procedure",
           items: [
             "Discharge order with medication reconciliation.",
@@ -5222,35 +5298,8 @@ function installHemorrhoidArteryEmbolizationEdits() {
           ],
         },
       ],
-      details: {
+      afterChecklistDetails: {
         "Follow up": ["1 month clinic follow up."],
-      },
-    },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common hemorrhoid artery embolization problems and first checks.",
-      details: {
-        "To build": [
-          "No clear bleeding source or non-internal hemorrhoid indication.",
-          "Difficult inferior mesenteric or superior rectal artery catheterization.",
-          "Variant rectal arterial anatomy.",
-          "Access-site bleeding.",
-          "Persistent or recurrent bleeding after embolization.",
-        ],
-      },
-    },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
-      details: {
-        "To build": [
-          "External hemorrhoids or alternate bleeding source without internal hemorrhoid target.",
-          "Unstable acute hemorrhage requiring resuscitation/escalation.",
-          "No GI or colorectal evaluation when diagnosis is uncertain.",
-          "Severe pelvic pain, ischemic concern, access-site bleeding, or hemodynamic instability after embolization.",
-        ],
       },
     },
     [`${id}-review-v2`]: {

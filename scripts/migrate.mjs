@@ -14,10 +14,9 @@
  *
  * Still the importer, not a one-shot: the upstream repo this was forked from keeps
  * editing legacy/app.js, so merging upstream content means re-running this. It
- * overwrites content/articles/ wholesale, which is only safe while no article has
- * been hand-edited here.
+ * rewrites each article.json while preserving adjacent article assets.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import vm from "node:vm";
@@ -177,6 +176,9 @@ function convertItem(item, report) {
     }
     return item;
   }
+  if (item && typeof item === "object" && item.strong) {
+    return [{ strong: item.strong }, item.text ?? ""];
+  }
   if (item && typeof item === "object" && item.text) {
     if (item.procedureId) {
       report.internalLinks += 1;
@@ -199,6 +201,9 @@ function convertItem(item, report) {
 
 function plainText(item) {
   if (typeof item === "string") return item;
+  if (item && typeof item === "object" && item.strong) {
+    return `${item.strong}${item.text ?? ""}`;
+  }
   if (item && typeof item === "object" && item.text) return item.text;
   return "";
 }
@@ -242,9 +247,11 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   }
   const details = node.details ?? {};
   const detailEntries = Object.entries(details).filter(([key]) => !PROVENANCE_KEYS.has(key));
+  const afterChecklistDetailEntries = Object.entries(node.afterChecklistDetails ?? {});
 
   const allItemsText = [
     ...detailEntries.flatMap(([, items]) => items.map(plainText)),
+    ...afterChecklistDetailEntries.flatMap(([, items]) => items.map(plainText)),
     ...(node.checklist ?? []).map(plainText),
     ...checklistSectionsOf(node).flatMap((s) => s.items.map(plainText)),
   ].join(" ");
@@ -253,21 +260,37 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
     blocks.push({ type: "paragraph", text: node.summary });
   }
 
+  for (const image of node.images ?? []) {
+    if (!image?.src || typeof image.alt !== "string") {
+      report.problems.push(`Invalid image block: ${JSON.stringify(image)}`);
+      continue;
+    }
+    blocks.push({
+      type: "image",
+      src: image.src,
+      alt: image.alt,
+      ...(image.caption ? { caption: image.caption } : {}),
+    });
+  }
+
   let calloutCount = 0;
-  for (const [key, items] of detailEntries) {
-    const list = { type: "list", items: items.map((item) => convertItem(item, report)) };
-    const variant = calloutVariantForKey(key, node.type);
-    if (variant) {
-      blocks.push({ type: "callout", variant, title: key, blocks: [list] });
-      calloutCount += 1;
-    } else if (normalizeText(key) === normalizeText(ownTitle)) {
-      // Heading would just repeat the subsection title above it.
-      blocks.push(list);
-    } else {
-      blocks.push({ type: "heading", text: key });
-      blocks.push(list);
+  function appendDetailEntries(entries) {
+    for (const [key, items] of entries) {
+      const list = { type: "list", items: items.map((item) => convertItem(item, report)) };
+      const variant = calloutVariantForKey(key, node.type);
+      if (variant) {
+        blocks.push({ type: "callout", variant, title: key, blocks: [list] });
+        calloutCount += 1;
+      } else if (normalizeText(key) === normalizeText(ownTitle)) {
+        // Heading would just repeat the subsection title above it.
+        blocks.push(list);
+      } else {
+        blocks.push({ type: "heading", text: key });
+        blocks.push(list);
+      }
     }
   }
+  appendDetailEntries(detailEntries);
 
   if (node.checklist?.length) {
     blocks.push({ type: "checklist", items: node.checklist.map((i) => convertItem(i, report)) });
@@ -279,6 +302,7 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
       items: section.items.map((item) => convertItem(item, report)),
     });
   }
+  appendDetailEntries(afterChecklistDetailEntries);
 
   // Caution nodes get one amber wrap, unless their detail buckets already became
   // callouts of their own (the moderate-sedation screen, for example) — nesting
@@ -423,6 +447,7 @@ export function convertProcedure(procedure, hiddenTitles, report) {
         subsections.push({
           id: uniqueId(slugify(childNode.title), usedSubIds),
           title: childNode.title,
+          ...(childNode.defaultOpen ? { defaultOpen: true } : {}),
           blocks: descendantBlocks(nodes, id, report),
         });
       }
@@ -507,7 +532,14 @@ function main() {
     process.exit(1);
   }
 
-  if (existsSync(outDir)) rmSync(outDir, { recursive: true });
+  if (existsSync(outDir)) {
+    for (const entry of readdirSync(outDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const dir = path.join(outDir, entry.name);
+      rmSync(path.join(dir, "article.json"), { force: true });
+      if (readdirSync(dir).length === 0) rmSync(dir, { recursive: true });
+    }
+  }
   mkdirSync(outDir, { recursive: true });
   for (const article of articles) {
     const dir = path.join(outDir, article.id);

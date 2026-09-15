@@ -33,6 +33,7 @@ export const externalLinkSchema = z.object({
 
 export const inlinePartSchema = z.union([
   z.string(),
+  z.object({ strong: z.string().min(1) }),
   z.object({ link: z.union([internalLinkSchema, externalLinkSchema]) }),
 ]);
 

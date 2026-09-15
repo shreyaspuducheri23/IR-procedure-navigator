@@ -8,19 +8,36 @@ const convert = (p) => convertProcedure(p, [], report());
 const fixture = () => ({ id: 'test', title: 'Test', category: 'IR procedure', root: 'root', nodes: {
   root: { title: 'Test', children: ['intra'] },
   intra: { title: 'Intraprocedure', children: ['anatomy', 'steps'] },
-  anatomy: { title: 'Anatomy', details: { 'To build out': ['Placeholder'] } },
+  anatomy: {
+    title: 'Anatomy',
+    images: [{ src: 'images/anatomy.png', alt: 'Anatomy', caption: 'Original teaching image.' }],
+    details: { 'To build out': ['Placeholder'] },
+  },
   steps: { title: 'Procedural steps', children: ['access'] },
-  access: { title: 'Access', checklist: ['Prepare access'], children: ['deep'] },
+  access: {
+    title: 'Access',
+    checklist: [{ strong: 'Prepare access', text: ' carefully.' }],
+    afterChecklistDetails: { 'Follow-up': ['Review results.'] },
+    children: ['deep'],
+  },
   deep: { title: 'Deep topic', details: { Guidance: [{ text: 'Reference', procedureId: 'other' }, 'Preserved detail'] } },
 } });
 test('descendants preserve order, checklists, links and placeholder callouts', () => {
   const result = convert(fixture());
   const [anatomy, steps] = result.sections[0].subsections;
-  assert.equal(anatomy.blocks[0].type, 'callout');
-  assert.equal(anatomy.blocks[0].variant, 'note');
+  assert.deepEqual(anatomy.blocks[0], {
+    type: 'image',
+    src: 'images/anatomy.png',
+    alt: 'Anatomy',
+    caption: 'Original teaching image.',
+  });
+  assert.equal(anatomy.blocks[1].type, 'callout');
+  assert.equal(anatomy.blocks[1].variant, 'note');
   assert.deepEqual(steps.blocks, [
     { type: 'heading', text: 'Access' },
-    { type: 'checklist', items: ['Prepare access'] },
+    { type: 'checklist', items: [[{ strong: 'Prepare access' }, ' carefully.']] },
+    { type: 'heading', text: 'Follow-up' },
+    { type: 'list', items: ['Review results.'] },
     { type: 'heading', text: 'Deep topic' },
     { type: 'heading', text: 'Guidance' },
     { type: 'list', items: [[{ link: { text: 'Reference', articleId: 'other' } }], 'Preserved detail'] },

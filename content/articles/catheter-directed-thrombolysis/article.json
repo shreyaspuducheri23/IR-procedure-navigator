@@ -277,31 +277,24 @@
       "title": "Intra-procedure",
       "subsections": [
         {
-          "id": "overview",
-          "title": "Overview",
-          "blocks": [
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add access approach, catheter positioning, infusion start workflow, and handoff timing after faculty review."
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": "anatomy",
           "title": "Anatomy",
           "blocks": [
             {
               "type": "paragraph",
               "text": "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy."
+            },
+            {
+              "type": "image",
+              "src": "images/deep-venous-anatomy.png",
+              "alt": "Illustrated deep venous anatomy of the lower extremity from the calf veins through the popliteal, femoral, iliac veins, and inferior vena cava.",
+              "caption": "Deep venous anatomy relevant to catheter-directed thrombolysis planning. Original educational schematic; not to scale. Confirm anatomy and variants on patient-specific imaging."
+            },
+            {
+              "type": "image",
+              "src": "images/popliteal-access-ultrasound.png",
+              "alt": "Synthetic transverse posterior popliteal-fossa ultrasound labeling the popliteal vein, popliteal artery, tibial nerve, and femur.",
+              "caption": "Typical transverse popliteal-fossa relationship for posterior venous access. Synthetic educational ultrasound; confirm structures dynamically before access."
             },
             {
               "type": "list",
@@ -330,13 +323,48 @@
             {
               "type": "list",
               "items": [
-                "1. Plan access and define thrombus extent using preprocedural imaging and ultrasound.",
-                "2. Obtain venous access that provides in-line access to the thrombosed segment.",
-                "3. Cross the thrombus with a wire and catheter and confirm true intraluminal position.",
-                "4. Perform venography to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis.",
-                "5. Position the infusion catheter across the target thrombus with the side-hole segment spanning the intended treatment zone.",
-                "6. Begin thrombolysis with appropriate anticoagulation and monitoring according to institutional protocol.",
-                "7. Repeat venography and treat residual disease as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis."
+                [
+                  {
+                    "strong": "1. Plan access and define thrombus extent"
+                  },
+                  " using preprocedural imaging and ultrasound."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain venous access"
+                  },
+                  " that provides in-line access to the thrombosed segment."
+                ],
+                [
+                  {
+                    "strong": "3. Cross the thrombus"
+                  },
+                  " with a wire and catheter and confirm true intraluminal position."
+                ],
+                [
+                  {
+                    "strong": "4. Perform venography"
+                  },
+                  " to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis."
+                ],
+                [
+                  {
+                    "strong": "5. Position the infusion catheter across the target thrombus"
+                  },
+                  " with the side-hole segment spanning the intended treatment zone."
+                ],
+                [
+                  {
+                    "strong": "6. Begin thrombolysis with appropriate anticoagulation and monitoring"
+                  },
+                  " according to institutional protocol."
+                ],
+                [
+                  {
+                    "strong": "7. Repeat venography and treat residual disease"
+                  },
+                  " as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis."
+                ]
               ]
             }
           ]

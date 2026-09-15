@@ -202,22 +202,65 @@
         {
           "id": "anatomy",
           "title": "Anatomy",
+          "defaultOpen": true,
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "image",
+              "src": "images/rectal-arterial-supply.png",
+              "alt": "Anterior pelvic anatomy illustration labeling the inferior mesenteric, superior rectal, middle rectal, internal pudendal, and inferior rectal arteries.",
+              "caption": "Arterial supply to the rectum. Original AI-generated educational illustration; confirm patient-specific anatomy and variants on procedural imaging."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "image",
+              "src": "images/inferior-mesenteric-superior-rectal-schematic.png",
+              "alt": "Simplified angiographic-style illustration labeling the inferior mesenteric artery, superior rectal artery, and right and left terminal branches.",
+              "caption": "Simplified IMA and superior rectal artery branching pattern. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail."
+            },
+            {
+              "type": "image",
+              "src": "images/internal-iliac-rectal-supply-schematic.png",
+              "alt": "Simplified angiographic-style illustration labeling internal iliac contributions to the middle and inferior rectal arteries.",
+              "caption": "Simplified internal iliac contribution to rectal arterial supply. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail."
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "IMA:"
+                  },
+                  " commonly arises from the anterior aorta at approximately L3."
+                ],
+                [
+                  {
+                    "strong": "Superior rectal artery (SRA):"
+                  },
+                  " terminal branch of the IMA and primary supply to internal hemorrhoids."
+                ],
+                [
+                  {
+                    "strong": "SRA terminal branches:"
+                  },
+                  " divide into right and left branches supplying the hemorrhoidal plexus."
+                ],
+                [
+                  {
+                    "strong": "Middle rectal arteries:"
+                  },
+                  " variable branches of the internal iliac system that may provide important collateral supply."
+                ],
+                [
+                  {
+                    "strong": "Inferior rectal arteries:"
+                  },
+                  " arise from the internal pudendal arteries and supply the distal anal canal."
+                ],
+                [
+                  {
+                    "strong": "Rectal arterial anastomoses:"
+                  },
+                  " provide extensive collateral perfusion between superior, middle, and inferior rectal territories."
+                ]
               ]
             }
           ]
@@ -232,51 +275,83 @@
             },
             {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common hemorrhoid artery embolization problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No clear bleeding source or non-internal hemorrhoid indication.",
-                    "Difficult inferior mesenteric or superior rectal artery catheterization.",
-                    "Variant rectal arterial anatomy.",
-                    "Access-site bleeding.",
-                    "Persistent or recurrent bleeding after embolization."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Obtain arterial access"
+                  },
+                  " and select the IMA."
+                ],
+                [
+                  {
+                    "strong": "2. Perform IMA angiography"
+                  },
+                  " to define SRA anatomy and target branches."
+                ],
+                [
+                  {
+                    "strong": "3. Microcatheterize the SRA"
+                  },
+                  " and advance into the distal hemorrhoidal branches."
+                ],
+                [
+                  {
+                    "strong": "4. Confirm target supply"
+                  },
+                  " with selective angiography."
+                ],
+                [
+                  {
+                    "strong": "5. Embolize the target branches"
+                  },
+                  " to near-stasis using the chosen embolic."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Step 5: embolic selection"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Elective symptomatic hemorrhoids:"
+                  },
+                  " most commonly microcoils, with particles used by some operators."
+                ],
+                [
+                  {
+                    "strong": "Emergent hemorrhoidal bleeding:"
+                  },
+                  " commonly coils for focal bleeding; particles or Gelfoam may be used for more diffuse bleeding."
+                ]
+              ]
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "External hemorrhoids or alternate bleeding source without internal hemorrhoid target.",
-                    "Unstable acute hemorrhage requiring resuscitation/escalation.",
-                    "No GI or colorectal evaluation when diagnosis is uncertain.",
-                    "Severe pelvic pain, ischemic concern, access-site bleeding, or hemodynamic instability after embolization."
-                  ]
-                }
+              "type": "heading",
+              "text": "Completion"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "6. Repeat angiography"
+                  },
+                  " to assess residual hemorrhoidal supply."
+                ],
+                [
+                  {
+                    "strong": "7. Evaluate or treat collateral supply"
+                  },
+                  " if significant persistent filling remains."
+                ]
               ]
             }
           ]
@@ -286,18 +361,48 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Missed collateral supply:"
+                      },
+                      " persistent filling may arise from middle or inferior rectal arteries; reassess pelvic collaterals."
+                    ],
+                    [
+                      {
+                        "strong": "Nontarget embolization:"
+                      },
+                      " confirm distal catheter position and exclude unintended branches before embolizing."
+                    ],
+                    [
+                      {
+                        "strong": "Vasospasm:"
+                      },
+                      " can obscure true supply; pause, reposition, or use a vasodilator as appropriate before assuming treatment is complete."
+                    ],
+                    [
+                      {
+                        "strong": "Incomplete bilateral treatment:"
+                      },
+                      " residual contralateral SRA supply can lead to persistent symptoms or bleeding."
+                    ],
+                    [
+                      {
+                        "strong": "Catheter instability or reflux:"
+                      },
+                      " embolize slowly and maintain stable distal position to avoid proximal or nontarget delivery."
+                    ],
+                    [
+                      {
+                        "strong": "Rectal ischemia:"
+                      },
+                      " uncommon because of rich collaterals, but avoid overly aggressive embolization of multiple rectal arterial territories."
+                    ]
                   ]
                 }
               ]
@@ -316,22 +421,14 @@
           "text": "Diet, routine vitals, access-site care, timed vitals, outpatient discharge instructions, AVS, and clinic follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "1 month clinic follow up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
             "Regular diet.",
             "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN."
+            "Tylenol 650 mg PRN.",
+            "Monitor access site.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
         },
         {
@@ -351,18 +448,20 @@
         },
         {
           "type": "checklist",
-          "title": "Monitoring",
-          "items": [
-            "Monitor access site.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "If outpatient procedure",
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSHEMORRHOID."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "1 month clinic follow up."
           ]
         }
       ]

@@ -5,8 +5,9 @@ import { staticContentSource } from "@/content/source";
 const knownArticleIds = new Set(staticContentSource.listArticles().map((a) => a.id));
 
 /**
- * Renders a schema rich-text value: a plain string, or a sequence of strings and
- * links. Internal links stay inside the router; external ones open in a new tab.
+ * Renders a schema rich-text value: a plain string, or a sequence of strings,
+ * emphasized text, and links. Internal links stay inside the router; external
+ * ones open in a new tab.
  */
 export function RichText({ value }: { value: RichTextValue }) {
   if (typeof value === "string") return <>{value}</>;
@@ -15,6 +16,7 @@ export function RichText({ value }: { value: RichTextValue }) {
     <>
       {value.map((part, index) => {
         if (typeof part === "string") return <span key={index}>{part}</span>;
+        if ("strong" in part) return <strong key={index}>{part.strong}</strong>;
 
         const { link } = part;
         if (isInternalLink(link)) {
