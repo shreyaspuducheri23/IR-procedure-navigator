@@ -234,9 +234,9 @@ function calloutVariantForKey(key, nodeType) {
 function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   const blocks = [];
   if (node.calculator) {
-    if (node.calculator === "meld") {
-      blocks.push({ type: "calculator", calculator: "meld" });
-    } else if (node.calculator !== "anticoagulation") {
+    if (node.calculator === "meld" || node.calculator === "anticoagulation") {
+      blocks.push({ type: "calculator", calculator: node.calculator });
+    } else {
       throw new Error(`Unsupported calculator: ${node.calculator}`);
     }
   }
@@ -364,6 +364,10 @@ export function convertProcedure(procedure, hiddenTitles, report) {
 
   const sections = [];
   const usedSectionIds = new Set();
+  if (rootNode.calculator === "anticoagulation") {
+    sections.push({ id: "matrix", kind: "overview", title: "Anticoagulation Table", blocks: [{ type: "calculator", calculator: "anticoagulation" }] });
+    usedSectionIds.add("matrix");
+  }
 
   for (const childId of rootNode.children ?? []) {
     const sectionNode = nodes[childId];

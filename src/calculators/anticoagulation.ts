@@ -1,0 +1,467 @@
+/** Ported verbatim from tbrundage35/IR-procedure-navigator.
+ * Upstream commit: 3832590521d3faa400fc5a781f7477ed82d886e9.
+ * Maintained in this fork; no runtime dependency on the parent or legacy app.
+ */
+export type Risk = "High" | "Low" | "Conditional" | "Review";
+export type Context = {
+  crclBand: "ge50" | "30to49" | "15to29" | "unknown";
+  enoxaparinDose: "therapeutic" | "prophylactic";
+};
+export type Recommendation = { hold: string; restart: string; note?: string };
+export type Agent = {
+  id: string;
+  label: string;
+  high: (context: Context) => Recommendation;
+  note?: string;
+};
+export type ProcedureRule = {
+  procedureTitle: string;
+  label: string;
+  risk: Risk;
+  basis: string;
+};
+export const upstreamCommit = "3832590521d3faa400fc5a781f7477ed82d886e9";
+
+export const anticoagulationAgents: Agent[] = [
+  {
+    id: "warfarin",
+    label: "Warfarin",
+    high: () => ({
+      hold: "Hold 5 days; INR <= 1.8",
+      restart: "Resume next day",
+      note: "Consider bridging only for high thrombosis risk with multidisciplinary management. Emergent reversal requires a separate plan.",
+    }),
+  },
+  {
+    id: "ufh",
+    label: "IV UFH",
+    high: () => ({
+      hold: "Hold 4-6 hours",
+      restart: "Restart after 6-8 hours",
+      note: "Check aPTT or anti-Xa level before the procedure. Subcutaneous BID/TID heparin has separate timing.",
+    }),
+  },
+  {
+    id: "enoxaparin",
+    label: "Enoxaparin",
+    high: ({ enoxaparinDose, crclBand }) => ({
+      hold:
+        enoxaparinDose === "prophylactic"
+          ? "Hold 1 dose"
+          : "Hold 2 doses or 24 hours",
+      restart: "Restart after 12 hours",
+      note:
+        crclBand === "ge50"
+          ? `${enoxaparinDose === "prophylactic" ? "Prophylactic" : "Therapeutic"} dosing selected.`
+          : `${enoxaparinDose === "prophylactic" ? "Prophylactic" : "Therapeutic"} dosing selected. SIR advises checking anti-Xa activity when renal function is impaired.`,
+    }),
+  },
+  {
+    id: "apixaban",
+    label: "Apixaban",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50") {
+        return {
+          hold: "Hold 4 doses",
+          restart: "Restart after 24 hours",
+          note: "CrCl >=50 mL/min selected.",
+        };
+      }
+      if (crclBand === "30to49") {
+        return {
+          hold: "Hold 6 doses",
+          restart: "Restart after 24 hours",
+          note: "CrCl 30-49 mL/min selected; consider checking anti-Xa activity or an apixaban level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <30 mL/min or unknown renal function; consider anti-Xa or an apixaban level.",
+      };
+    },
+  },
+  {
+    id: "rivaroxaban",
+    label: "Rivaroxaban",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50" || crclBand === "30to49") {
+        return {
+          hold: "Hold 2 doses",
+          restart: "Restart after 24 hours",
+          note: `${crclBand === "ge50" ? "CrCl >=50" : "CrCl 30-49"} mL/min selected.`,
+        };
+      }
+      if (crclBand === "15to29") {
+        return {
+          hold: "Hold 3 doses",
+          restart: "Restart after 24 hours",
+          note: "CrCl 15-29 mL/min selected; consider checking anti-Xa activity or a rivaroxaban level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <15 mL/min or unknown renal function; consider anti-Xa or a rivaroxaban level.",
+      };
+    },
+  },
+  {
+    id: "dabigatran",
+    label: "Dabigatran",
+    high: ({ crclBand }) => {
+      if (crclBand === "ge50") {
+        return {
+          hold: "Hold 4 doses",
+          restart: "Table 6: 24 hours",
+          note: "CrCl >=50 mL/min selected.",
+        };
+      }
+      if (crclBand === "30to49") {
+        return {
+          hold: "Hold 6-8 doses",
+          restart: "Table 6: 24 hours",
+          note: "CrCl 30-49 mL/min selected; consider checking thrombin time or a dabigatran level.",
+        };
+      }
+      return {
+        hold: "Specialist review",
+        restart: "Individualize",
+        note: "The SIR table does not give a standard interval for CrCl <30 mL/min or unknown renal function. Its narrative also cites at least 48 hours before full-dose restart after high-risk procedures; reconcile with local policy.",
+      };
+    },
+    note: "SIR Table 6 lists restart at 24 hours, while the accompanying narrative cites at least 48 hours before full-dose dabigatran after high-risk procedures. Reconcile this discrepancy with local policy.",
+  },
+  {
+    id: "edoxaban",
+    label: "Edoxaban",
+    high: ({ crclBand }) => ({
+      hold: "Hold 2 doses",
+      restart: "Restart after 24 hours",
+      note:
+        crclBand === "ge50"
+          ? "Confirm dose and indication."
+          : "Renal impairment selected; SIR advises considering anti-Xa activity and individualized review.",
+    }),
+  },
+  {
+    id: "clopidogrel",
+    label: "Clopidogrel",
+    high: () => ({
+      hold: "Hold 5 days",
+      restart: "6 hours at 75 mg; 24 hours if loading",
+      note: "Coordinate loading-dose decisions and recent coronary/peripheral stent management with the prescribing team.",
+    }),
+  },
+  {
+    id: "ticagrelor",
+    label: "Ticagrelor",
+    high: () => ({ hold: "Hold 5 days", restart: "Resume next day" }),
+  },
+  {
+    id: "prasugrel",
+    label: "Prasugrel",
+    high: () => ({ hold: "Hold 7 days", restart: "Resume next day" }),
+  },
+  {
+    id: "aspirin",
+    label: "Aspirin",
+    high: () => ({ hold: "Hold 3-5 days", restart: "Resume next day" }),
+  },
+];
+
+export const anticoagulationProcedureRules: ProcedureRule[] = [
+  {
+    procedureTitle: "Adrenal Vein Sampling",
+    label: "Adrenal Vein Sampling",
+    risk: "Low",
+    basis:
+      "Mapped to SIR diagnostic venography/select venous interventions; confirm the local AVS classification.",
+  },
+  {
+    procedureTitle: "Biliary Drain Placement and Internalization/Exchange",
+    label: "Biliary drain placement/internalization",
+    risk: "High",
+    basis: "SIR Table 3: biliary interventions are high bleeding risk.",
+  },
+  {
+    procedureTitle: "Biliary Drain Placement and Internalization/Exchange",
+    label: "Biliary drain exchange",
+    risk: "Low",
+    basis: "SIR Table 3: biliary catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Catheter Directed Thrombolysis - DVT Intervention",
+    label: "Catheter Directed Thrombolysis - DVT Intervention",
+    risk: "High",
+    basis:
+      "SIR Table 3: catheter-directed thrombolysis is high bleeding risk; technical and lytic-agent details still require individual review.",
+  },
+  {
+    procedureTitle: "Chest Tube Placement",
+    label: "Chest tube: nontunneled for pleural effusion",
+    risk: "Low",
+    basis:
+      "This SIR low-risk category is limited to nontunneled chest tube placement for pleural effusion.",
+  },
+  {
+    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    label: "Cholecystostomy tube placement",
+    risk: "High",
+    basis:
+      "SIR Table 3 explicitly lists cholecystostomy tube placement as high bleeding risk.",
+  },
+  {
+    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    label: "Cholecystostomy tube exchange",
+    risk: "Low",
+    basis:
+      "Mapped to SIR catheter-exchange guidance; confirm local policy if new access or tract manipulation is expected.",
+  },
+  {
+    procedureTitle: "Drainage Catheter Placement/Exchange",
+    label: "Deep abscess drain placement",
+    risk: "High",
+    basis:
+      "SIR Table 3: deep lung, abdominal, pelvic, or retroperitoneal abscess drainage is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Drainage Catheter Placement/Exchange",
+    label: "Existing abscess drain exchange",
+    risk: "Low",
+    basis: "SIR Table 3: abscess catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Fistulogram",
+    label: "Fistulogram/dialysis access intervention",
+    risk: "Low",
+    basis: "SIR Table 3: dialysis access interventions are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Foreign Body Removal",
+    label: "Foreign Body Removal",
+    risk: "Review",
+    basis:
+      "No directly matching procedure category was identified in SIR Table 3; assign risk using site, access, and expected retrieval complexity.",
+  },
+  {
+    procedureTitle: "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange",
+    label: "G/GJ/J tube exchange",
+    risk: "Low",
+    basis:
+      "SIR Table 3: gastrostomy and gastrojejunostomy catheter exchanges are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement",
+    label: "Gastrostomy/gastrojejunostomy placement",
+    risk: "High",
+    basis:
+      "SIR Table 3: gastrostomy/gastrojejunostomy placement is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Hemorrhoid Artery Embolization",
+    label: "Hemorrhoid artery embolization",
+    risk: "Conditional",
+    basis:
+      "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic or mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Placement",
+    label: "IVC filter placement",
+    risk: "Low",
+    basis: "SIR Table 3: IVC filter placement is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Removal",
+    label: "IVC filter removal: uncomplicated",
+    risk: "Low",
+    basis:
+      "SIR Table 3: uncomplicated IVC filter removal is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Inferior Vena Cava Filter Removal",
+    label: "IVC filter removal: complex",
+    risk: "High",
+    basis:
+      "SIR Table 3: complex IVC filter removal is high bleeding risk; consider tilt, penetration, fracture, dwell time, and planned advanced techniques.",
+  },
+  {
+    procedureTitle: "Kidney Biopsy",
+    label: "Kidney Biopsy",
+    risk: "High",
+    basis: "SIR Table 3: solid-organ biopsies are high bleeding risk.",
+  },
+  {
+    procedureTitle: "Liver Biopsy/Fiducial Marker Placement",
+    label: "Percutaneous liver biopsy/fiducial placement",
+    risk: "High",
+    basis:
+      "Mapped to SIR solid-organ biopsy/deep intervention guidance. Transjugular liver biopsy is a separate low-risk category.",
+  },
+  {
+    procedureTitle: "Lung Biopsy/Fiducial Marker Placement",
+    label: "Lung biopsy/fiducial placement",
+    risk: "High",
+    basis: "Mapped to SIR solid-organ biopsy/deep intervention guidance.",
+  },
+  {
+    procedureTitle: "Nephrostomy to Nephroureteral Stent Conversion",
+    label: "Nephrostomy to nephroureteral stent conversion",
+    risk: "High",
+    basis:
+      "Mapped to SIR urinary-tract intervention guidance because ureteral manipulation/internalization is planned.",
+  },
+  {
+    procedureTitle: "Nephrostomy Tube Exchange",
+    label: "Nephrostomy tube exchange",
+    risk: "Low",
+    basis: "SIR Table 3: nephrostomy catheter exchange is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Nephrostomy Tube Placement",
+    label: "Nephrostomy tube placement",
+    risk: "High",
+    basis: "SIR Table 3: nephrostomy tube placement is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Paracentesis",
+    label: "Paracentesis",
+    risk: "Low",
+    basis: "SIR Table 3: paracentesis is low bleeding risk.",
+  },
+  {
+    procedureTitle: "PICC Placement",
+    label: "PICC placement",
+    risk: "Low",
+    basis:
+      "SIR Table 3: nontunneled venous access, including PICC placement, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Port Placement",
+    label: "Port placement",
+    risk: "Low",
+    basis:
+      "SIR Table 3: tunneled venous catheter placement, including ports, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Port Removal",
+    label: "Port removal",
+    risk: "Low",
+    basis:
+      "SIR Table 3: tunneled venous catheter removal, including ports, is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Prostate Artery Embolization",
+    label: "Prostate artery embolization",
+    risk: "Conditional",
+    basis:
+      "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Thoracentesis",
+    label: "Thoracentesis",
+    risk: "Low",
+    basis: "SIR Table 3: thoracentesis is low bleeding risk.",
+  },
+  {
+    procedureTitle: "Thyroid Biopsy",
+    label: "Thyroid biopsy",
+    risk: "Low",
+    basis:
+      "SIR Table 3: superficial biopsy, including thyroid, is low bleeding risk.",
+  },
+  {
+    procedureTitle:
+      "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)",
+    label: "TIPS check/revision",
+    risk: "High",
+    basis:
+      "Mapped to SIR TIPS/portal-venous intervention guidance; procedural scope should be confirmed.",
+  },
+  {
+    procedureTitle:
+      "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)",
+    label: "TIPS creation",
+    risk: "High",
+    basis: "SIR Table 3: TIPS is high bleeding risk.",
+  },
+  {
+    procedureTitle: "Tunneled Line Placement/Exchange",
+    label: "Tunneled venous line placement/exchange",
+    risk: "Low",
+    basis:
+      "SIR Table 3: tunneled venous catheter placement/removal and catheter exchange are low bleeding risk.",
+  },
+  {
+    procedureTitle: "Uterine Fibroid Embolization (UFE)",
+    label: "Uterine fibroid embolization",
+    risk: "Conditional",
+    basis:
+      "SIR lists embolotherapy/peripheral arterial intervention with sheath <6 F as low risk, but pelvic arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Y90 Radioembolization Mapping",
+    label: "Y90 mapping",
+    risk: "Conditional",
+    basis:
+      "SIR lists diagnostic arteriography/embolotherapy with sheath <6 F as low risk, but mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
+  {
+    procedureTitle: "Y90 Radioembolization Therapy",
+    label: "Y90 therapy",
+    risk: "Conditional",
+    basis:
+      "SIR lists embolotherapy with sheath <6 F as low risk, but mesenteric arterial intervention and sheath >7 F as high risk.",
+  },
+];
+
+export function anticoagulationRecommendation(
+  procedureRule: ProcedureRule,
+  agent: Agent,
+  context: Context,
+): Recommendation {
+  const highRecommendation = agent.high(context);
+  const sharedRestartNote =
+    "Restart timing assumes procedural bleeding risk is controlled and no patient-specific factor requires a longer interruption.";
+
+  if (procedureRule.risk === "High") {
+    return {
+      hold: highRecommendation.hold,
+      restart: highRecommendation.restart,
+      note: [
+        procedureRule.basis,
+        highRecommendation.note,
+        agent.note,
+        sharedRestartNote,
+      ]
+        .filter(Boolean)
+        .join(" "),
+    };
+  }
+
+  if (procedureRule.risk === "Low") {
+    const lowNote =
+      agent.id === "warfarin"
+        ? "SIR Table 6 lists a target INR <= 3.0; low-risk arterial access has separate INR thresholds."
+        : "SIR Table 6 lists no routine interruption for this agent in uncomplicated low-risk procedures.";
+    return {
+      hold: "Do not withhold",
+      restart: "No interruption planned",
+      note: `${procedureRule.basis} ${lowNote} Reassess if patient bleeding risk, combination therapy, or technical complexity is increased.`,
+    };
+  }
+
+  if (procedureRule.risk === "Conditional") {
+    return {
+      hold: "Confirm risk category",
+      restart: "Then apply low/high rule",
+      note: `${procedureRule.basis} If low risk, SIR generally says do not withhold. If high risk: ${highRecommendation.hold}; ${highRecommendation.restart}. ${highRecommendation.note || agent.note || sharedRestartNote}`,
+    };
+  }
+
+  return {
+    hold: "Not categorized",
+    restart: "Use local policy",
+    note: `${procedureRule.basis} Do not infer a hold or restart interval from another procedure without attending or institutional review.`,
+  };
+}

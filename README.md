@@ -116,29 +116,34 @@ rate-limiting rule in the Cloudflare dashboard — no code change needed.
 
 Issues are **public**, so the form says so and warns against including patient information.
 
-## The legacy app and the upstream fork
+## Anticoagulation reference page
 
-`legacy/` holds the original single-page app. Its 49 PDF-extracted procedures and the
-hand-authored enrichments layered on top of them are imported into `content/` by
-`scripts/migrate.mjs`, which evaluates the legacy sources to capture their post-enrichment
-runtime state.
+The anticoagulation route (`#/article/anticoagulation-table`) uses the same shared header, search, breadcrumbs, and title styling as other
+procedure pages, with the parent’s interactive matrix below. The original hold/restart sections remain below the matrix,
+including their existing deep links.
 
-This repo was forked from [TBRUNDAGE35/IR-procedure-navigator](https://github.com/TBRUNDAGE35/IR-procedure-navigator),
-which still authors content in that vanilla-JS app. Pulling their content in is therefore
-a two-step merge:
+This fork is the maintained source of truth. The table has no runtime dependency
+on the parent site or `legacy/`. The port preserves the parent’s clinical wording;
+it does not constitute a new guideline review.
 
-```bash
-git remote add upstream https://github.com/TBRUNDAGE35/IR-procedure-navigator.git  # once
-git fetch upstream && git merge upstream/main
-```
+- `src/calculators/anticoagulation.ts` owns the 36 procedure mappings, 11 agents,
+  and context-dependent hold/restart recommendations.
+- `AnticoagulationPage` and `AnticoagulationMatrix` own the layout and interaction;
+  their stylesheet is scoped to `.anticoagulation-page`.
+- The article schema supports `{ "type": "calculator", "calculator": "anticoagulation" }`.
+  Migration now retains that marker instead of silently dropping it.
+- The frozen regression fixture in `tests/fixtures/anticoagulation-parent.js.txt`
+  comes from upstream commit `3832590521d3faa400fc5a781f7477ed82d886e9`.
+  Tests compare all 3,168 recommendations (including notes) with that baseline.
+  Deliberate future clinical changes require reviewed updates to those expectations.
 
-Git's rename detection lands their `app.js` edits on `legacy/app.js`. Then re-import:
+For a production preview, run `npm run build` then
+`npm run preview -- --host 127.0.0.1 --port 4173` and open
+`http://127.0.0.1:4173/IR-procedure-navigator/#/article/anticoagulation-table`.
 
-```bash
-npm run migrate && npm run validate:content
-```
+## Legacy import
 
-`npm run migrate` **overwrites `content/articles/` wholesale**, so it is only safe while no
-article has been hand-edited here. Once articles are edited in this repo, `content/` becomes
-the source of truth, `legacy/` should be deleted, and upstream changes have to be ported by
-hand instead.
+`legacy/` preserves the original vanilla-JS app for historical reference and
+migration regression tests. `npm run migrate` overwrites articles wholesale;
+do not run it over independently maintained content. Port future edits selectively
+into this fork’s content and TypeScript modules instead of merging the old UI.

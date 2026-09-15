@@ -35,7 +35,7 @@ test('missing nodes, cycles and unsupported calculators abort conversion', () =>
   assert.throws(() => convert(unknown), /unsupported calculator/);
   const anticoagulation = fixture(); anticoagulation.nodes.root.calculator = 'anticoagulation';
   const convertedAnticoagulation = convert(anticoagulation);
-  assert.equal(JSON.stringify(convertedAnticoagulation).includes('"type":"calculator"'), false);
+  assert.deepEqual(convertedAnticoagulation.sections[0].blocks, [{ type: "calculator", calculator: "anticoagulation" }]);
 });
 test('real migration is deterministic and agrees with all committed articles', () => {
   const run = () => {

@@ -1,0 +1,438 @@
+.anticoagulation-page {
+
+  color-scheme: light;
+  --bg: #f6f7f4;
+  --panel: #ffffff;
+  --ink: #182023;
+  --muted: #667174;
+  --line: #dce2df;
+  --blue: #2f6f9f;
+  --blue-soft: #dbeaf3;
+  --green: #2f7d5c;
+  --green-soft: #dff0e7;
+  --amber: #9f6a1d;
+  --amber-soft: #f5ead7;
+  --red: #ad4035;
+  --red-soft: #f4dfdc;
+  --violet: #6a5ca8;
+  --violet-soft: #e9e5f4;
+  --shadow: 0 18px 45px rgba(37, 50, 53, 0.12);
+}
+.anticoagulation-page .anticoag-matrix {
+
+  display: grid;
+  gap: 14px;
+}
+.anticoagulation-page .anticoag-source {
+
+  display: grid;
+  grid-template-columns: minmax(230px, auto) minmax(320px, 1fr) auto;
+  gap: 12px 18px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid #cfddd4;
+  border-left: 4px solid var(--green);
+  background: #f1f7f3;
+}
+.anticoagulation-page .anticoag-source strong {
+
+  color: #245e47;
+  font-size: 13px;
+}
+.anticoagulation-page .anticoag-source p {
+
+  margin: 0;
+  color: #465451;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.anticoagulation-page .anticoag-source div {
+
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
+}
+.anticoagulation-page .anticoag-source a {
+
+  color: #245e47;
+  font-size: 12px;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+.anticoagulation-page .anticoag-controls {
+
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 14px;
+  align-items: end;
+}
+.anticoagulation-page .anticoag-search {
+
+  display: grid;
+  gap: 6px;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-search input {
+
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+.anticoagulation-page .anticoag-search input:focus {
+
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 159, 0.16);
+}
+.anticoagulation-page .anticoag-risk-filter {
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(58px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.anticoagulation-page .anticoag-risk-filter legend {
+
+  margin-bottom: 6px;
+  padding: 0;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-risk-filter label {
+
+  position: relative;
+  cursor: pointer;
+}
+.anticoagulation-page .anticoag-risk-filter input {
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.anticoagulation-page .anticoag-risk-filter span {
+
+  display: grid;
+  place-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-right: 0;
+  color: #344044;
+  background: #f9fbfa;
+  font-size: 12px;
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-risk-filter label:first-of-type span {
+
+  border-radius: 8px 0 0 8px;
+}
+.anticoagulation-page .anticoag-risk-filter label:last-of-type span {
+
+  border-right: 1px solid var(--line);
+  border-radius: 0 8px 8px 0;
+}
+.anticoagulation-page .anticoag-risk-filter input:checked + span {
+
+  border-color: var(--blue);
+  color: #17496d;
+  background: var(--blue-soft);
+}
+.anticoagulation-page .anticoag-risk-filter input:focus-visible + span {
+
+  position: relative;
+  z-index: 1;
+  outline: 3px solid rgba(47, 111, 159, 0.2);
+}
+.anticoagulation-page .anticoag-context-controls {
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(155px, 1fr));
+  gap: 10px;
+}
+.anticoagulation-page .anticoag-context-controls label {
+
+  display: grid;
+  gap: 6px;
+  color: #344044;
+  font-size: 12px;
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-context-controls select {
+
+  min-height: 40px;
+  padding: 0 30px 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+.anticoagulation-page .anticoag-context-controls select:focus {
+
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 159, 0.16);
+}
+.anticoagulation-page .anticoag-selection {
+
+  display: grid;
+  gap: 4px;
+  min-height: 86px;
+  padding: 13px 15px;
+  border-left: 4px solid var(--blue);
+  background: #eef5f8;
+}
+.anticoagulation-page .anticoag-selection > span {
+
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.anticoagulation-page .anticoag-selection > strong {
+
+  font-size: 15px;
+}
+.anticoagulation-page .anticoag-selection p {
+
+  margin: 0;
+  color: #344044;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.anticoagulation-page .anticoag-status,
+.anticoagulation-page .anticoag-caveat {
+
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.anticoagulation-page .anticoag-status {
+
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-table-wrap {
+
+  max-width: 100%;
+  max-height: 68vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.anticoagulation-page .anticoag-table {
+
+  width: 100%;
+  min-width: 2260px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+.anticoagulation-page .anticoag-table th,
+.anticoagulation-page .anticoag-table td {
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.anticoagulation-page .anticoag-table tr:last-child th,
+.anticoagulation-page .anticoag-table tr:last-child td {
+
+  border-bottom: 0;
+}
+.anticoagulation-page .anticoag-table th:last-child,
+.anticoagulation-page .anticoag-table td:last-child {
+
+  border-right: 0;
+}
+.anticoagulation-page .anticoag-table thead th {
+
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 52px;
+  padding: 10px;
+  background: #eef1ef;
+  color: #344044;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+}
+.anticoagulation-page .anticoag-table thead th:first-child {
+
+  left: 0;
+  z-index: 5;
+  width: 250px;
+}
+.anticoagulation-page .anticoag-table tbody th {
+
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 250px;
+  padding: 12px;
+  background: #fbfcfa;
+  text-align: left;
+}
+.anticoagulation-page .anticoag-table tbody th strong {
+
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.anticoagulation-page .anticoag-risk-badge {
+
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  margin-top: 7px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.anticoagulation-page .anticoag-risk-badge.high {
+
+  color: var(--red);
+  background: var(--red-soft);
+}
+.anticoagulation-page .anticoag-risk-badge.low {
+
+  color: var(--green);
+  background: var(--green-soft);
+}
+.anticoagulation-page .anticoag-risk-badge.conditional {
+
+  color: var(--amber);
+  background: var(--amber-soft);
+}
+.anticoagulation-page .anticoag-risk-badge.review {
+
+  color: #586164;
+  background: #e8ecea;
+}
+.anticoagulation-page .anticoag-table td {
+
+  padding: 0;
+  background: #ffffff;
+}
+.anticoagulation-page .anticoag-cell {
+
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  width: 100%;
+  min-height: 92px;
+  padding: 11px;
+  border: 0;
+  border-radius: 0;
+  color: var(--ink);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.anticoagulation-page .anticoag-cell:hover,
+.anticoagulation-page .anticoag-cell:focus-visible,
+.anticoagulation-page .anticoag-cell.active {
+
+  background: var(--blue-soft);
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+.anticoagulation-page .anticoag-cell strong {
+
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.anticoagulation-page .anticoag-cell.low strong {
+
+  color: var(--green);
+}
+.anticoagulation-page .anticoag-cell.conditional strong {
+
+  color: var(--amber);
+}
+.anticoagulation-page .anticoag-cell.review strong {
+
+  color: #586164;
+}
+.anticoagulation-page .anticoag-cell span {
+
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+@media (max-width: 1020px) {
+.anticoagulation-page .anticoag-source,
+  .anticoagulation-page .anticoag-controls {
+
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 620px) {
+.anticoagulation-page .anticoag-controls {
+
+    grid-template-columns: 1fr;
+  }
+.anticoagulation-page .anticoag-risk-filter {
+
+    width: 100%;
+  }
+.anticoagulation-page .anticoag-risk-filter span {
+
+    padding: 0 4px;
+    font-size: 10px;
+  }
+.anticoagulation-page .anticoag-context-controls {
+
+    grid-template-columns: 1fr;
+  }
+.anticoagulation-page .anticoag-table {
+
+    min-width: 2100px;
+  }
+.anticoagulation-page .anticoag-table thead th:first-child,
+  .anticoagulation-page .anticoag-table tbody th {
+
+    width: 205px;
+  }
+}
+.anticoagulation-page .anticoag-source a {
+
+  text-decoration: underline;
+}
+@media (max-width: 620px) {
+.anticoagulation-page .anticoag-risk-filter {
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+.anticoagulation-page .anticoag-risk-filter span {
+
+    padding-inline: 2px;
+    font-size: 9px;
+  }
+}
+
+.anticoagulation-page {
+  min-width: 0;
+  color: var(--ink);
+  line-height: normal;
+}
+.anticoagulation-page input,
+.anticoagulation-page select { font: inherit; }
+.anticoagulation-page .anticoag-controls { grid-template-columns: minmax(0, 1fr); }
+.anticoagulation-page .anticoag-source { grid-template-columns: minmax(0, 1fr); }
+.anticoagulation-page .anticoag-instructions { color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
+.anticoag-supplementary { overflow-wrap: anywhere; margin-top: 28px; }
+.anticoag-supplementary > h2 { margin-bottom: 20px; font-size: 20px; }

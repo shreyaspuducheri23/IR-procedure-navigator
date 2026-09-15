@@ -41,6 +41,17 @@
   ],
   "sections": [
     {
+      "id": "matrix",
+      "kind": "overview",
+      "title": "Anticoagulation Table",
+      "blocks": [
+        {
+          "type": "calculator",
+          "calculator": "anticoagulation"
+        }
+      ]
+    },
+    {
       "id": "high-risk-hold",
       "kind": "custom",
       "title": "High-risk hold",

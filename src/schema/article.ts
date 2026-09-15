@@ -90,7 +90,7 @@ const tableBlockSchema = z.object({
 
 const calculatorBlockSchema = z.object({
   type: z.literal("calculator"),
-  calculator: z.literal("meld"),
+  calculator: z.enum(["meld", "anticoagulation"]),
 });
 
 export type Block =

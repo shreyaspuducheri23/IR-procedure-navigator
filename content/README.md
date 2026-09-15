@@ -171,3 +171,7 @@ invalid inputs, dialysis, sex, and the MELD-Na threshold. Migration tests check
 recursive preservation, malformed graphs, calculator uniqueness, schema rejection,
 and deterministic generation. Existing search indexing reads the flattened
 headings and content, linking to the enclosing Procedural steps subsection.
+
+### Anticoagulation matrix
+
+Use `{ "type": "calculator", "calculator": "anticoagulation" }` for the interactive reference. The dedicated anticoagulation page renders the matrix above its supplementary article sections. Medication rules and procedure mappings are maintained in `src/calculators/anticoagulation.ts`.

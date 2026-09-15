@@ -1,11 +1,22 @@
+import { AnticoagulationMatrix } from "./AnticoagulationMatrix";
 import { useState } from "react";
-import type { Block, CalloutVariant, RichText as RichTextValue } from "@/schema/article";
+import type {
+  Block,
+  CalloutVariant,
+  RichText as RichTextValue,
+} from "@/schema/article";
 import { resolveImage } from "@/content/images";
 import { MeldCalculator } from "./MeldCalculator";
 import { RichText } from "./RichText";
 import styles from "./BlockRenderer.module.css";
 
-export function Blocks({ blocks, articleId }: { blocks: Block[]; articleId: string }) {
+export function Blocks({
+  blocks,
+  articleId,
+}: {
+  blocks: Block[];
+  articleId: string;
+}) {
   return (
     <>
       {blocks.map((block, index) => (
@@ -15,10 +26,22 @@ export function Blocks({ blocks, articleId }: { blocks: Block[]; articleId: stri
   );
 }
 
-function BlockRenderer({ block, articleId }: { block: Block; articleId: string }) {
+function BlockRenderer({
+  block,
+  articleId,
+}: {
+  block: Block;
+  articleId: string;
+}) {
   switch (block.type) {
     case "calculator":
-      return <MeldCalculator />;
+      return block.calculator === "anticoagulation" ? (
+        <div className="anticoagulation-page">
+          <AnticoagulationMatrix />
+        </div>
+      ) : (
+        <MeldCalculator />
+      );
     case "paragraph":
       return (
         <p className={styles.paragraph}>
@@ -74,7 +97,13 @@ function ListItems({ items }: { items: RichTextValue[] }) {
  * Tick state is deliberately component-local and not persisted — these are
  * "did I do this on this patient" checklists, not saved documents.
  */
-function Checklist({ title, items }: { title?: string; items: RichTextValue[] }) {
+function Checklist({
+  title,
+  items,
+}: {
+  title?: string;
+  items: RichTextValue[];
+}) {
   const [checked, setChecked] = useState<Set<number>>(() => new Set());
 
   function toggle(index: number) {
@@ -92,7 +121,11 @@ function Checklist({ title, items }: { title?: string; items: RichTextValue[] })
         <div className={styles.checklistHead}>
           {title && <h4 className={styles.checklistTitle}>{title}</h4>}
           {checked.size > 0 && (
-            <button type="button" className={styles.reset} onClick={() => setChecked(new Set())}>
+            <button
+              type="button"
+              className={styles.reset}
+              onClick={() => setChecked(new Set())}
+            >
               Reset ({checked.size})
             </button>
           )}
@@ -107,7 +140,9 @@ function Checklist({ title, items }: { title?: string; items: RichTextValue[] })
                 checked={checked.has(index)}
                 onChange={() => toggle(index)}
               />
-              <span className={checked.has(index) ? styles.checkedText : undefined}>
+              <span
+                className={checked.has(index) ? styles.checkedText : undefined}
+              >
                 <RichText value={item} />
               </span>
             </label>
@@ -138,7 +173,9 @@ export function Callout({
     <aside className={styles.callout} data-variant={variant}>
       <div className={styles.calloutHead}>
         <CalloutIcon variant={variant} />
-        <span className={styles.calloutLabel}>{title ?? CALLOUT_LABELS[variant]}</span>
+        <span className={styles.calloutLabel}>
+          {title ?? CALLOUT_LABELS[variant]}
+        </span>
       </div>
       <div className={styles.calloutBody}>{children}</div>
     </aside>
@@ -205,7 +242,9 @@ function ArticleImage({
   return (
     <figure className={styles.figure}>
       <img src={src} alt={block.alt} loading="lazy" />
-      {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
+      {block.caption && (
+        <figcaption className={styles.caption}>{block.caption}</figcaption>
+      )}
     </figure>
   );
 }
@@ -243,7 +282,9 @@ function ArticleTable({ block }: { block: Extract<Block, { type: "table" }> }) {
           </tbody>
         </table>
       </div>
-      {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
+      {block.caption && (
+        <figcaption className={styles.caption}>{block.caption}</figcaption>
+      )}
     </figure>
   );
 }
