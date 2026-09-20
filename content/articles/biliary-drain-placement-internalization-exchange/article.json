@@ -39,18 +39,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -71,29 +59,15 @@
           ]
         },
         {
-          "id": "labs-and-orders",
-          "title": "Labs and Orders",
+          "id": "labs",
+          "title": "Labs",
           "blocks": [
-            {
-              "type": "heading",
-              "text": "Labs"
-            },
             {
               "type": "list",
               "items": [
                 "CBC.",
                 "INR < 1.5-1.8.",
                 "Platelets >50k."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Orders"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Antibiotics with gram negative coverage."
               ]
             }
           ]
@@ -181,6 +155,7 @@
                 "Anticoagulation appropriately held.",
                 "Review biliary anatomy and access plan.",
                 "Patient is NPO if moderate sedation.",
+                "Confirm patient can lie flat.",
                 [
                   {
                     "link": {
@@ -206,19 +181,108 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "text": "Review hilar ductal anatomy, portal triad relationships, peripheral access targets, the obstruction, and the existing transhepatic tract when present."
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "image",
+              "src": "images/biliary-anatomy.png",
+              "alt": "Illustrated biliary anatomy labeling the right anterior and posterior sectoral ducts, right and left hepatic ducts, hilar confluence, common hepatic duct, cystic duct, common bile duct, ampulla, gallbladder, and duodenum.",
+              "caption": "Biliary anatomy relevant to percutaneous drain placement. AI-generated educational schematic; simplified and not to scale. Confirm ductal anatomy and variants on patient-specific imaging."
+            },
+            {
+              "type": "heading",
+              "text": "Initial biliary drain placement"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Right and left hepatic ducts:"
+                  },
+                  " converge at the hilum."
+                ],
+                [
+                  {
+                    "strong": "Right anterior and posterior ducts:"
+                  },
+                  " have variable confluence."
+                ],
+                [
+                  {
+                    "strong": "Portal vein and hepatic artery:"
+                  },
+                  " run closely with the bile ducts in the portal triads."
+                ],
+                [
+                  {
+                    "strong": "Peripheral ducts:"
+                  },
+                  " are preferred for access when feasible."
+                ],
+                [
+                  {
+                    "strong": "CBD to ampulla to duodenum:"
+                  },
+                  " is the route for internal drainage if the obstruction can be crossed."
+                ],
+                [
+                  {
+                    "strong": "Right-sided access:"
+                  },
+                  " usually lateral intercostal or subcostal; assess pleural proximity and intercostal vessels."
+                ],
+                [
+                  {
+                    "strong": "Left-sided access:"
+                  },
+                  " usually anterior subxiphoid or epigastric; assess for intervening stomach or bowel."
+                ],
+                [
+                  {
+                    "strong": "Target selection:"
+                  },
+                  " both approaches are transhepatic. Hilar obstruction may isolate the right and left systems, requiring separate drainage."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Biliary drain internalization or exchange"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Existing transhepatic tract:"
+                  },
+                  " is the access route and should be preserved."
+                ],
+                [
+                  {
+                    "strong": "Obstruction level:"
+                  },
+                  " determines whether the drain can be internalized."
+                ],
+                [
+                  {
+                    "strong": "CBD and duodenum:"
+                  },
+                  " are the distal targets for internal-external drainage."
+                ],
+                [
+                  {
+                    "strong": "Side-hole position:"
+                  },
+                  " must span the obstructed segment without draining into the peritoneal tract."
+                ],
+                [
+                  {
+                    "strong": "Portal and hepatic arterial branches:"
+                  },
+                  " remain adjacent to the biliary tract."
+                ]
               ]
             }
           ]
@@ -233,52 +297,104 @@
             },
             {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Initial biliary drain placement"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common biliary drain problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe access window.",
-                    "Unable to cross obstruction.",
-                    "Poor drainage.",
-                    "Tube obstruction.",
-                    "Tube dislodgement or leakage."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Plan right- or left-sided access"
+                  },
+                  " based on the ducts requiring drainage and a safe imaging window, then access a peripheral intrahepatic duct with ultrasound and fluoroscopic guidance."
+                ],
+                [
+                  {
+                    "strong": "2. Perform cholangiography"
+                  },
+                  " to define ductal anatomy and the obstruction."
+                ],
+                [
+                  {
+                    "strong": "3. Advance the wire and catheter centrally"
+                  },
+                  " toward the obstruction."
+                ],
+                [
+                  {
+                    "strong": "4. Cross the obstruction"
+                  },
+                  " into the distal CBD and duodenum when possible."
+                ],
+                [
+                  {
+                    "strong": "5. Dilate the tract"
+                  },
+                  " as needed."
+                ],
+                [
+                  {
+                    "strong": "6. Place an external or internal-external drain"
+                  },
+                  " with the side holes appropriately positioned."
+                ],
+                [
+                  {
+                    "strong": "7. Confirm drainage and secure the catheter."
+                  },
+                  ""
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Biliary drain internalization or exchange"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Sepsis or unstable vitals.",
-                    "No safe access window.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Concern for bowel, vascular, liver, or pleural injury.",
-                    "Clinical deterioration after drainage."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Inject the existing drain gently"
+                  },
+                  " to confirm its position and the biliary anatomy."
+                ],
+                [
+                  {
+                    "strong": "2. Advance a wire through the drain"
+                  },
+                  " and secure intrabiliary access."
+                ],
+                [
+                  {
+                    "strong": "3. Remove the old catheter over the wire."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "4. Cross the obstruction into the bowel"
+                  },
+                  " if internalization is needed."
+                ],
+                [
+                  {
+                    "strong": "5. Advance the new drain"
+                  },
+                  " over the wire."
+                ],
+                [
+                  {
+                    "strong": "6. Position the side holes across the obstruction"
+                  },
+                  " with the distal loop in the duodenum."
+                ],
+                [
+                  {
+                    "strong": "7. Confirm drainage and secure the catheter"
+                  },
+                  "; then determine external versus capped drainage."
+                ]
               ]
             }
           ]
@@ -288,18 +404,101 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Protect ductal access, avoid vascular or pleural injury and high-pressure injection, and verify effective catheter positioning and decompression."
+                },
+                {
+                  "type": "heading",
+                  "text": "Initial biliary drain placement"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "No duct access:"
+                      },
+                      " target a more peripheral or dilated duct, or adjust the trajectory."
+                    ],
+                    [
+                      {
+                        "strong": "Vascular entry or hemobilia:"
+                      },
+                      " stop manipulation and assess for portal or hepatic arterial injury."
+                    ],
+                    [
+                      {
+                        "strong": "High-pressure cholangiography:"
+                      },
+                      " avoid forceful injection in an obstructed or infected system."
+                    ],
+                    [
+                      {
+                        "strong": "Cannot cross the obstruction:"
+                      },
+                      " leave external drainage and reattempt after decompression."
+                    ],
+                    [
+                      {
+                        "strong": "Pleural transgression:"
+                      },
+                      " avoid unnecessarily high right-sided access."
+                    ],
+                    [
+                      {
+                        "strong": "Poor drainage:"
+                      },
+                      " check catheter position, kinking, occlusion, and side-hole location."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Biliary drain internalization or exchange"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Loss of access:"
+                      },
+                      " maintain stable wire position before removing the old catheter."
+                    ],
+                    [
+                      {
+                        "strong": "Wire dislodgement:"
+                      },
+                      " regain biliary access before proceeding with the exchange."
+                    ],
+                    [
+                      {
+                        "strong": "Cannot cross the obstruction:"
+                      },
+                      " avoid forceful manipulation and leave external drainage if needed."
+                    ],
+                    [
+                      {
+                        "strong": "Incorrect side-hole position:"
+                      },
+                      " reposition if holes lie outside the ducts or fail to span the obstruction."
+                    ],
+                    [
+                      {
+                        "strong": "Catheter kinking or occlusion:"
+                      },
+                      " assess with gentle injection and exchange if needed."
+                    ],
+                    [
+                      {
+                        "strong": "Post-exchange cholangitis or sepsis:"
+                      },
+                      " minimize high-pressure injection and ensure adequate decompression."
+                    ]
                   ]
                 }
               ]
@@ -316,16 +515,6 @@
         {
           "type": "paragraph",
           "text": "Diet, vitals, drain flush orders, pain control, anticoagulation restart, outpatient exchange discharge, AVS, and follow-up."
-        },
-        {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Confirm exchange/internalization follow-up plan with attending."
-          ]
         },
         {
           "type": "checklist",
@@ -355,6 +544,16 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm exchange/internalization follow-up plan with attending."
           ]
         }
       ]

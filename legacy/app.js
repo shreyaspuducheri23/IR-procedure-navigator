@@ -3249,12 +3249,11 @@ function installBiliaryDrainEdits() {
         },
       },
       "biliary-drain-labs-v2": {
-        title: "Labs and Orders",
+        title: "Labs",
         type: "decision",
-        summary: "CBC, INR <1.5-1.8, platelets >50k, and antibiotics with gram negative coverage.",
+        summary: "CBC, INR <1.5-1.8, and platelets >50k.",
         details: {
           Labs: ["CBC.", "INR < 1.5-1.8.", "Platelets >50k."],
-          Orders: ["Antibiotics with gram negative coverage."],
         },
       },
       "biliary-drain-anticoag-v2": {
@@ -3300,6 +3299,7 @@ function installBiliaryDrainEdits() {
             "Anticoagulation appropriately held.",
             "Review biliary anatomy and access plan.",
             "Patient is NPO if moderate sedation.",
+            "Confirm patient can lie flat.",
             { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
           ],
         },
@@ -3307,8 +3307,91 @@ function installBiliaryDrainEdits() {
       "biliary-drain-intra-v2": {
         title: "Intraprocedure",
         type: "reference",
-        summary: "To be built as the biliary drain placement/exchange/internalization technique section.",
-        children: ["biliary-drain-troubleshooting-v2", "biliary-drain-red-flags-v2"],
+        summary: "Review anatomy, procedural steps, and safety considerations for initial biliary drain placement and subsequent internalization or exchange.",
+        children: [
+          "biliary-drain-intra-v2-anatomy",
+          "biliary-drain-intra-v2-procedural-steps",
+          "biliary-drain-intra-v2-pitfalls-safety",
+        ],
+      },
+      "biliary-drain-intra-v2-anatomy": {
+        title: "Anatomy",
+        type: "reference",
+        summary: "Review hilar ductal anatomy, portal triad relationships, peripheral access targets, the obstruction, and the existing transhepatic tract when present.",
+        images: [
+          {
+            src: "images/biliary-anatomy.png",
+            alt: "Illustrated biliary anatomy labeling the right anterior and posterior sectoral ducts, right and left hepatic ducts, hilar confluence, common hepatic duct, cystic duct, common bile duct, ampulla, gallbladder, and duodenum.",
+            caption: "Biliary anatomy relevant to percutaneous drain placement. AI-generated educational schematic; simplified and not to scale. Confirm ductal anatomy and variants on patient-specific imaging.",
+          },
+        ],
+        details: {
+          "Initial biliary drain placement": [
+            { strong: "Right and left hepatic ducts:", text: " converge at the hilum." },
+            { strong: "Right anterior and posterior ducts:", text: " have variable confluence." },
+            { strong: "Portal vein and hepatic artery:", text: " run closely with the bile ducts in the portal triads." },
+            { strong: "Peripheral ducts:", text: " are preferred for access when feasible." },
+            { strong: "CBD to ampulla to duodenum:", text: " is the route for internal drainage if the obstruction can be crossed." },
+            { strong: "Right-sided access:", text: " usually lateral intercostal or subcostal; assess pleural proximity and intercostal vessels." },
+            { strong: "Left-sided access:", text: " usually anterior subxiphoid or epigastric; assess for intervening stomach or bowel." },
+            { strong: "Target selection:", text: " both approaches are transhepatic. Hilar obstruction may isolate the right and left systems, requiring separate drainage." },
+          ],
+          "Biliary drain internalization or exchange": [
+            { strong: "Existing transhepatic tract:", text: " is the access route and should be preserved." },
+            { strong: "Obstruction level:", text: " determines whether the drain can be internalized." },
+            { strong: "CBD and duodenum:", text: " are the distal targets for internal-external drainage." },
+            { strong: "Side-hole position:", text: " must span the obstructed segment without draining into the peritoneal tract." },
+            { strong: "Portal and hepatic arterial branches:", text: " remain adjacent to the biliary tract." },
+          ],
+        },
+      },
+      "biliary-drain-intra-v2-procedural-steps": {
+        title: "Procedural steps",
+        type: "action",
+        summary: "Establish or preserve biliary access, define the obstruction, cross it when feasible, and position the drainage catheter for effective decompression.",
+        details: {
+          "Initial biliary drain placement": [
+            { strong: "1. Plan right- or left-sided access", text: " based on the ducts requiring drainage and a safe imaging window, then access a peripheral intrahepatic duct with ultrasound and fluoroscopic guidance." },
+            { strong: "2. Perform cholangiography", text: " to define ductal anatomy and the obstruction." },
+            { strong: "3. Advance the wire and catheter centrally", text: " toward the obstruction." },
+            { strong: "4. Cross the obstruction", text: " into the distal CBD and duodenum when possible." },
+            { strong: "5. Dilate the tract", text: " as needed." },
+            { strong: "6. Place an external or internal-external drain", text: " with the side holes appropriately positioned." },
+            { strong: "7. Confirm drainage and secure the catheter.", text: "" },
+          ],
+          "Biliary drain internalization or exchange": [
+            { strong: "1. Inject the existing drain gently", text: " to confirm its position and the biliary anatomy." },
+            { strong: "2. Advance a wire through the drain", text: " and secure intrabiliary access." },
+            { strong: "3. Remove the old catheter over the wire.", text: "" },
+            { strong: "4. Cross the obstruction into the bowel", text: " if internalization is needed." },
+            { strong: "5. Advance the new drain", text: " over the wire." },
+            { strong: "6. Position the side holes across the obstruction", text: " with the distal loop in the duodenum." },
+            { strong: "7. Confirm drainage and secure the catheter", text: "; then determine external versus capped drainage." },
+          ],
+        },
+      },
+      "biliary-drain-intra-v2-pitfalls-safety": {
+        title: "Pitfalls and safety",
+        type: "caution",
+        summary: "Protect ductal access, avoid vascular or pleural injury and high-pressure injection, and verify effective catheter positioning and decompression.",
+        details: {
+          "Initial biliary drain placement": [
+            { strong: "No duct access:", text: " target a more peripheral or dilated duct, or adjust the trajectory." },
+            { strong: "Vascular entry or hemobilia:", text: " stop manipulation and assess for portal or hepatic arterial injury." },
+            { strong: "High-pressure cholangiography:", text: " avoid forceful injection in an obstructed or infected system." },
+            { strong: "Cannot cross the obstruction:", text: " leave external drainage and reattempt after decompression." },
+            { strong: "Pleural transgression:", text: " avoid unnecessarily high right-sided access." },
+            { strong: "Poor drainage:", text: " check catheter position, kinking, occlusion, and side-hole location." },
+          ],
+          "Biliary drain internalization or exchange": [
+            { strong: "Loss of access:", text: " maintain stable wire position before removing the old catheter." },
+            { strong: "Wire dislodgement:", text: " regain biliary access before proceeding with the exchange." },
+            { strong: "Cannot cross the obstruction:", text: " avoid forceful manipulation and leave external drainage if needed." },
+            { strong: "Incorrect side-hole position:", text: " reposition if holes lie outside the ducts or fail to span the obstruction." },
+            { strong: "Catheter kinking or occlusion:", text: " assess with gentle injection and exchange if needed." },
+            { strong: "Post-exchange cholangitis or sepsis:", text: " minimize high-pressure injection and ensure adequate decompression." },
+          ],
+        },
       },
       "biliary-drain-post-v2": {
         title: "Post-procedure",
@@ -3343,36 +3426,8 @@ function installBiliaryDrainEdits() {
             ],
           },
         ],
-        details: {
+        afterChecklistDetails: {
           "Follow up": ["Confirm exchange/internalization follow-up plan with attending."],
-        },
-      },
-      "biliary-drain-troubleshooting-v2": {
-        title: "Troubleshooting",
-        type: "decision",
-        summary: "To be built as common biliary drain problems and first checks.",
-        details: {
-          "To build": [
-            "No safe access window.",
-            "Unable to cross obstruction.",
-            "Poor drainage.",
-            "Tube obstruction.",
-            "Tube dislodgement or leakage.",
-          ],
-        },
-      },
-      "biliary-drain-red-flags-v2": {
-        title: "Red Flags",
-        type: "caution",
-        summary: "To be built as stop/escalate criteria.",
-        details: {
-          "To build": [
-            "Sepsis or unstable vitals.",
-            "No safe access window.",
-            "Uncorrected high-risk anticoagulation issue.",
-            "Concern for bowel, vascular, liver, or pleural injury.",
-            "Clinical deterioration after drainage.",
-          ],
         },
       },
       "biliary-drain-review-v2": {
@@ -7326,7 +7381,11 @@ function installPreProcedureLieFlatChecks() {
   procedures.forEach((procedure) => {
     Object.values(procedure.nodes).forEach((node) => {
       if (node.title !== "Pre-procedure") return;
-      if (JSON.stringify(node).toLowerCase().includes("patient can lie flat")) return;
+      const childNodes = (node.children || [])
+        .map((childId) => procedure.nodes[childId])
+        .filter(Boolean);
+      const preProcedureContent = JSON.stringify([node, ...childNodes]).toLowerCase();
+      if (preProcedureContent.includes("patient can lie flat")) return;
 
       if (!Array.isArray(node.checklist)) {
         node.checklist = [];

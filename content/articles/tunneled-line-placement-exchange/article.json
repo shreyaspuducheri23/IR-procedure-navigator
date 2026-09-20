@@ -43,18 +43,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
