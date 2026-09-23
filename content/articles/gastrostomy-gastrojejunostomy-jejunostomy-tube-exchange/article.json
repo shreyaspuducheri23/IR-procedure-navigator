@@ -209,20 +209,36 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "G-tube exchange"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Existing tract:"
+                  },
+                  " connects skin to stomach; maturity determines whether routine exchange is safe."
+                ],
+                [
+                  {
+                    "strong": "Retention device:"
+                  },
+                  " the balloon or bumper belongs inside the stomach, not the tract."
+                ],
+                [
+                  {
+                    "strong": "Tube fit:"
+                  },
+                  " match device type, diameter, and stoma length for low-profile tubes."
+                ],
+                [
+                  {
+                    "strong": "Pylorus:"
+                  },
+                  " distal tube migration can obstruct gastric emptying."
+                ]
               ]
             }
           ]
@@ -232,74 +248,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
-            },
-            {
-              "type": "paragraph",
-              "text": "Common exchange problems and first checks."
-            },
-            {
-              "type": "heading",
-              "text": "If tube is clogged"
+              "text": "G-tube exchange"
             },
             {
               "type": "list",
               "items": [
-                "Confirm whether bedside declogging was attempted and whether the tube can be flushed safely.",
-                "Exchange if malfunction persists or tube integrity/position is uncertain."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If tube is dislodged"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Clarify time out of tract and original placement date.",
-                "Do not assume a safe mature tract if early after placement or if the tract course is uncertain."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If position is uncertain"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Do not clear for use until intraluminal position is confirmed.",
-                "Use contrast confirmation and review images with the operator if there is concern for malposition."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause routine exchange or prompt escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate before routine exchange"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Immature tract, unknown original placement date, or tube fully out long enough that tract salvage is uncertain.",
-                    "Severe abdominal pain, peritoneal signs, fever, hypotension, or concern for intraperitoneal tube position.",
-                    "Purulent skin infection, bleeding, buried bumper concern, or inability to safely re-establish tract access."
-                  ]
-                }
+                [
+                  {
+                    "strong": "1. Confirm the setup."
+                  },
+                  " Check tract maturity, tube type, and reason for exchange."
+                ],
+                [
+                  {
+                    "strong": "2. Confirm gastric access."
+                  },
+                  " Inject contrast gently; a retracted tube may no longer be intragastric."
+                ],
+                [
+                  {
+                    "strong": "3. Preserve the tract."
+                  },
+                  " Secure wire access in the stomach before removal when feasible."
+                ],
+                [
+                  {
+                    "strong": "4. Exchange without force."
+                  },
+                  " Deflate the balloon or release retention per device instructions; advance the replacement."
+                ],
+                [
+                  {
+                    "strong": "5. Seat the device."
+                  },
+                  " Confirm intragastric retention; fill the balloon per manufacturer instructions without excessive tension."
+                ],
+                [
+                  {
+                    "strong": "6. Verify before use."
+                  },
+                  " Confirm gastric contrast filling without leak; document fit, external length, and clearance."
+                ]
               ]
             }
           ]
@@ -309,18 +299,69 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "G-tube exchange"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Immature or uncertain tract:"
+                      },
+                      " no blind replacement; early dislodgement needs image-guided or endoscopic planning."
+                    ],
+                    [
+                      {
+                        "strong": "False passage:"
+                      },
+                      " stop for pain, resistance, or extravasation. Do not use until position is confirmed."
+                    ],
+                    [
+                      {
+                        "strong": "Lost access:"
+                      },
+                      " the tract can narrow quickly; arrange prompt assessment, not forceful re-entry."
+                    ],
+                    [
+                      {
+                        "strong": "Buried bumper:"
+                      },
+                      " pain or an immobile tube needs evaluation, not forceful traction."
+                    ],
+                    [
+                      {
+                        "strong": "Poor fit or leakage:"
+                      },
+                      " avoid tight bolsters and routine upsizing; check position, retention, and skin first."
+                    ],
+                    [
+                      {
+                        "strong": "Peritonitis or bleeding:"
+                      },
+                      " worsening pain, guarding, fever, instability, or significant bleeding needs urgent evaluation."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Gastrostomy replacement and complication guidance",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10393568/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

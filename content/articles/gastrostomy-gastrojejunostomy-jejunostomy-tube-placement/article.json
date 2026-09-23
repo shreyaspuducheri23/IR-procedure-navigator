@@ -219,20 +219,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "G-tube placement"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Target:"
+                  },
+                  " an accessible anterior gastric body apposed to the abdominal wall."
+                ],
+                [
+                  {
+                    "strong": "Structures to avoid:"
+                  },
+                  " transverse colon, small bowel, left hepatic lobe, and abdominal-wall vessels."
+                ],
+                [
+                  {
+                    "strong": "Gastric vessels:"
+                  },
+                  " major vessels follow the curvatures; choose a safe body-wall puncture site."
+                ],
+                [
+                  {
+                    "strong": "Pylorus:"
+                  },
+                  " keep the retention device inside the stomach without obstructing the outlet."
+                ],
+                [
+                  {
+                    "strong": "Altered anatomy:"
+                  },
+                  " prior surgery, ascites, or a high stomach may change or eliminate the safe window."
+                ]
               ]
             }
           ]
@@ -242,84 +264,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
-            },
-            {
-              "type": "paragraph",
-              "text": "Common problems during or after tube placement and what to check first."
-            },
-            {
-              "type": "heading",
-              "text": "If no safe window"
+              "text": "G-tube placement - direct radiologic technique"
             },
             {
               "type": "list",
               "items": [
-                "Re-review CT/US/fluoro anatomy, reposition patient, insufflate stomach if appropriate, and reassess colon/liver interposition.",
-                "Escalate to senior operator if anatomy is unfavorable or if surgical/endoscopic access may be safer."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If tube position is uncertain"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Do not clear for use until intraluminal position is confirmed.",
-                "Use contrast confirmation and review images with the operator if there is concern for malposition."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If early pain or leakage"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Assess vitals, abdominal exam, tube position, dressing, and output.",
-                "Escalate for peritonitis, severe pain, fever, or hemodynamic change."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause the case or prompt urgent escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Before placement"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe percutaneous window, uncontrolled coagulopathy per local policy, active abdominal wall infection at access site, inability to consent without surrogate, or unstable patient for planned sedation.",
-                    "Large-volume ascites, suspected peritonitis, severe ileus/obstruction, or anatomy altered enough that percutaneous access may be unsafe."
-                  ]
-                },
-                {
-                  "type": "heading",
-                  "text": "After placement"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Severe or worsening abdominal pain, peritoneal signs, fever, hypotension, bleeding, respiratory deterioration, tube dislodgement, or concern for intraperitoneal placement.",
-                    "Do not use tube until cleared according to the post-procedure plan."
-                  ]
-                }
+                [
+                  {
+                    "strong": "1. Map a safe window."
+                  },
+                  " Review imaging and identify the stomach, colon, liver, and access trajectory."
+                ],
+                [
+                  {
+                    "strong": "2. Prepare and distend."
+                  },
+                  " Confirm antibiotics and airway plan; insufflate through a verified gastric catheter."
+                ],
+                [
+                  {
+                    "strong": "3. Recheck and appose."
+                  },
+                  " Reassess the window after distention; place gastropexy anchors for the selected technique."
+                ],
+                [
+                  {
+                    "strong": "4. Enter the stomach."
+                  },
+                  " Confirm intragastric needle position, then secure a guidewire in the lumen."
+                ],
+                [
+                  {
+                    "strong": "5. Place the tube."
+                  },
+                  " Dilate over the wire; position and deploy the retention device inside the stomach."
+                ],
+                [
+                  {
+                    "strong": "6. Confirm and secure."
+                  },
+                  " Check contrast filling without leak; avoid excessive tension and document feeding clearance and anchor care."
+                ]
               ]
             }
           ]
@@ -329,18 +315,69 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "G-tube placement"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Bowel or liver interposition:"
+                      },
+                      " no safe window means no puncture; reposition or choose another approach."
+                    ],
+                    [
+                      {
+                        "strong": "Intraperitoneal placement:"
+                      },
+                      " confirm access before dilation and tube position before use."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " avoid visible vessels; promptly assess bloody output, expanding hematoma, or instability."
+                    ],
+                    [
+                      {
+                        "strong": "Leak or early dislodgement:"
+                      },
+                      " stop feeds and urgently assess severe pain, guarding, fever, or displacement. No blind reinsertion."
+                    ],
+                    [
+                      {
+                        "strong": "Aspiration:"
+                      },
+                      " gastric access does not remove aspiration risk; monitor airway and tolerance of insufflation."
+                    ],
+                    [
+                      {
+                        "strong": "Pressure injury or infection:"
+                      },
+                      " avoid overtight bolsters or anchors; assess skin pain, erythema, and purulence."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Radiologic gastrostomy techniques and complications",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2989547/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

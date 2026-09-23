@@ -1391,7 +1391,7 @@ function installIntraprocedureSubblocks() {
         ...procedure.nodes[proceduralStepsId],
         title: "Procedural steps",
         type: "action",
-        summary: ["Catheter Directed Thrombolysis - DVT Intervention", "Cholecystostomy Tube Placement/Exchange"].includes(procedure.title) ? "" : "Procedure-specific access, device, imaging, and completion steps.",
+        summary: ["Catheter Directed Thrombolysis - DVT Intervention", "Cholecystostomy Tube Placement/Exchange", "Fistulogram", "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange", "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement"].includes(procedure.title) ? "" : "Procedure-specific access, device, imaging, and completion steps.",
         children: existingChildren,
       };
 
@@ -1533,8 +1533,43 @@ function installGastrostomyTubeHeaderPrototype() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the gastrostomy/gastrojejunostomy tube placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { "G-tube placement": [
+        { strong: "Target:", text: " an accessible anterior gastric body apposed to the abdominal wall." },
+        { strong: "Structures to avoid:", text: " transverse colon, small bowel, left hepatic lobe, and abdominal-wall vessels." },
+        { strong: "Gastric vessels:", text: " major vessels follow the curvatures; choose a safe body-wall puncture site." },
+        { strong: "Pylorus:", text: " keep the retention device inside the stomach without obstructing the outlet." },
+        { strong: "Altered anatomy:", text: " prior surgery, ascites, or a high stomach may change or eliminate the safe window." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "G-tube placement - direct radiologic technique": [
+        { strong: "1. Map a safe window.", text: " Review imaging and identify the stomach, colon, liver, and access trajectory." },
+        { strong: "2. Prepare and distend.", text: " Confirm antibiotics and airway plan; insufflate through a verified gastric catheter." },
+        { strong: "3. Recheck and appose.", text: " Reassess the window after distention; place gastropexy anchors for the selected technique." },
+        { strong: "4. Enter the stomach.", text: " Confirm intragastric needle position, then secure a guidewire in the lumen." },
+        { strong: "5. Place the tube.", text: " Dilate over the wire; position and deploy the retention device inside the stomach." },
+        { strong: "6. Confirm and secure.", text: " Check contrast filling without leak; avoid excessive tension and document feeding clearance and anchor care." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: {
+        "G-tube placement": [
+          { strong: "Bowel or liver interposition:", text: " no safe window means no puncture; reposition or choose another approach." },
+          { strong: "Intraperitoneal placement:", text: " confirm access before dilation and tube position before use." },
+          { strong: "Bleeding:", text: " avoid visible vessels; promptly assess bloody output, expanding hematoma, or instability." },
+          { strong: "Leak or early dislodgement:", text: " stop feeds and urgently assess severe pain, guarding, fever, or displacement. No blind reinsertion." },
+          { strong: "Aspiration:", text: " gastric access does not remove aspiration risk; monitor airway and tolerance of insufflation." },
+          { strong: "Pressure injury or infection:", text: " avoid overtight bolsters or anchors; assess skin pain, erythema, and purulence." },
+        ],
+        References: [{ text: "Radiologic gastrostomy techniques and complications", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2989547/" }],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -1727,8 +1762,42 @@ function installGastrostomyTubeExchangeEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "Confirm tract access, exchange tube, and verify intraluminal position before clearing for use.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { "G-tube exchange": [
+        { strong: "Existing tract:", text: " connects skin to stomach; maturity determines whether routine exchange is safe." },
+        { strong: "Retention device:", text: " the balloon or bumper belongs inside the stomach, not the tract." },
+        { strong: "Tube fit:", text: " match device type, diameter, and stoma length for low-profile tubes." },
+        { strong: "Pylorus:", text: " distal tube migration can obstruct gastric emptying." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "G-tube exchange": [
+        { strong: "1. Confirm the setup.", text: " Check tract maturity, tube type, and reason for exchange." },
+        { strong: "2. Confirm gastric access.", text: " Inject contrast gently; a retracted tube may no longer be intragastric." },
+        { strong: "3. Preserve the tract.", text: " Secure wire access in the stomach before removal when feasible." },
+        { strong: "4. Exchange without force.", text: " Deflate the balloon or release retention per device instructions; advance the replacement." },
+        { strong: "5. Seat the device.", text: " Confirm intragastric retention; fill the balloon per manufacturer instructions without excessive tension." },
+        { strong: "6. Verify before use.", text: " Confirm gastric contrast filling without leak; document fit, external length, and clearance." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: {
+        "G-tube exchange": [
+          { strong: "Immature or uncertain tract:", text: " no blind replacement; early dislodgement needs image-guided or endoscopic planning." },
+          { strong: "False passage:", text: " stop for pain, resistance, or extravasation. Do not use until position is confirmed." },
+          { strong: "Lost access:", text: " the tract can narrow quickly; arrange prompt assessment, not forceful re-entry." },
+          { strong: "Buried bumper:", text: " pain or an immobile tube needs evaluation, not forceful traction." },
+          { strong: "Poor fit or leakage:", text: " avoid tight bolsters and routine upsizing; check position, retention, and skin first." },
+          { strong: "Peritonitis or bleeding:", text: " worsening pain, guarding, fever, instability, or significant bleeding needs urgent evaluation." },
+        ],
+        References: [{ text: "Gastrostomy replacement and complication guidance", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10393568/" }],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -3760,8 +3829,59 @@ function installFistulogramEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the fistulogram/intervention technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
+      details: {
+        Anatomy: [
+          { strong: "The circuit:", text: " artery > anastomosis > fistula/graft > outflow veins > SVC." },
+          { strong: "Know the configuration:", text: " radiocephalic, brachiocephalic, transposed brachiobasilic, or graft. Confirm flow direction; loop shape can mislead." },
+          { strong: "Stenosis hotspots:", text: " radiocephalic: near the anastomosis; brachiocephalic: cephalic arch; graft: graft-vein junction." },
+          { strong: "Central veins:", text: " axillary > subclavian > brachiocephalic > SVC. Collaterals may signal obstruction." },
+          { strong: "Before puncture:", text: " locate aneurysms, thrombus, stents, and usable access segments." },
+          { strong: "Check the hand:", text: " a patent access does not guarantee adequate distal perfusion." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
+      details: {
+        "Basic steps": [
+          { strong: "1. Define the problem.", text: " Match dialysis symptoms with exam, ultrasound, and prior interventions." },
+          { strong: "2. Access with a plan.", text: " Use ultrasound; choose a site and direction that reach the suspected lesion." },
+          { strong: "3. Image the whole circuit.", text: " Include arterial inflow, anastomosis, access, and central outflow." },
+          { strong: "4. Find the cause.", text: " Stenosis, clot, poor maturation, or hand ischemia? Treat what explains the dysfunction." },
+          { strong: "5. Treat selectively.", text: " Angioplasty for culprit stenosis; declot plus lesion treatment for thrombosis. Escalate to stent-graft or surgery when appropriate." },
+          { strong: "6. Confirm the result.", text: " Check completion imaging, thrill, and hand perfusion; exclude residual obstruction, leak, or clot." },
+          { strong: "7. Close and hand off.", text: " Preserve flow during hemostasis. Tell dialysis staff about usability, puncture restrictions, and suture removal." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Pitfalls and safety": [
+          { strong: "Bleeding:", text: " avoid compromised skin and pseudoaneurysms; stop bleeding without eliminating the thrill." },
+          { strong: "Rupture:", text: " avoid oversized balloons and forceful wires. New leak or expanding swelling: assess promptly; preserve wire access." },
+          { strong: "Thrombosis:", text: " avoid prolonged occlusion or excessive compression. Lost thrill needs immediate reassessment." },
+          { strong: "Declot embolization:", text: " never force-inject clot. New cold/painful hand, neurologic deficit, hypoxia, or chest pain needs urgent evaluation." },
+          { strong: "Wrong target:", text: " check inflow and central outflow. Treat the clinical problem, not every narrowing." },
+          { strong: "Future access:", text: " do not let a stent-graft compromise key veins, cannulation zones, or surgical options." },
+          { strong: "Infection:", text: " avoid infected skin and routine declotting of infected access; coordinate an infection/access plan." },
+        ],
+        References: [
+          { text: "KDOQI vascular access guidelines and clinical tools", href: "https://www.kidney.org/professionals/kdoqi/guidelines-and-commentaries/vascular-access" },
+          { text: "Reported complications of dialysis access intervention (Kim et al.)", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2685043/" },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",

@@ -197,20 +197,44 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "The circuit:"
+                  },
+                  " artery > anastomosis > fistula/graft > outflow veins > SVC."
+                ],
+                [
+                  {
+                    "strong": "Know the configuration:"
+                  },
+                  " radiocephalic, brachiocephalic, transposed brachiobasilic, or graft. Confirm flow direction; loop shape can mislead."
+                ],
+                [
+                  {
+                    "strong": "Stenosis hotspots:"
+                  },
+                  " radiocephalic: near the anastomosis; brachiocephalic: cephalic arch; graft: graft-vein junction."
+                ],
+                [
+                  {
+                    "strong": "Central veins:"
+                  },
+                  " axillary > subclavian > brachiocephalic > SVC. Collaterals may signal obstruction."
+                ],
+                [
+                  {
+                    "strong": "Before puncture:"
+                  },
+                  " locate aneurysms, thrombus, stents, and usable access segments."
+                ],
+                [
+                  {
+                    "strong": "Check the hand:"
+                  },
+                  " a patent access does not guarantee adequate distal perfusion."
+                ]
               ]
             }
           ]
@@ -220,56 +244,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common fistulogram problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Poor access flow.",
-                    "Central venous stenosis.",
-                    "Difficult cannulation.",
-                    "Thrombosis.",
-                    "Prolonged bleeding."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Absent thrill/pulse with concern for thrombosis.",
-                    "Severe arm swelling or suspected central venous occlusion.",
-                    "Access site bleeding not controlled with pressure.",
-                    "Signs of access infection."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Define the problem."
+                  },
+                  " Match dialysis symptoms with exam, ultrasound, and prior interventions."
+                ],
+                [
+                  {
+                    "strong": "2. Access with a plan."
+                  },
+                  " Use ultrasound; choose a site and direction that reach the suspected lesion."
+                ],
+                [
+                  {
+                    "strong": "3. Image the whole circuit."
+                  },
+                  " Include arterial inflow, anastomosis, access, and central outflow."
+                ],
+                [
+                  {
+                    "strong": "4. Find the cause."
+                  },
+                  " Stenosis, clot, poor maturation, or hand ischemia? Treat what explains the dysfunction."
+                ],
+                [
+                  {
+                    "strong": "5. Treat selectively."
+                  },
+                  " Angioplasty for culprit stenosis; declot plus lesion treatment for thrombosis. Escalate to stent-graft or surgery when appropriate."
+                ],
+                [
+                  {
+                    "strong": "6. Confirm the result."
+                  },
+                  " Check completion imaging, thrill, and hand perfusion; exclude residual obstruction, leak, or clot."
+                ],
+                [
+                  {
+                    "strong": "7. Close and hand off."
+                  },
+                  " Preserve flow during hemostasis. Tell dialysis staff about usability, puncture restrictions, and suture removal."
+                ]
               ]
             }
           ]
@@ -279,18 +301,79 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " avoid compromised skin and pseudoaneurysms; stop bleeding without eliminating the thrill."
+                    ],
+                    [
+                      {
+                        "strong": "Rupture:"
+                      },
+                      " avoid oversized balloons and forceful wires. New leak or expanding swelling: assess promptly; preserve wire access."
+                    ],
+                    [
+                      {
+                        "strong": "Thrombosis:"
+                      },
+                      " avoid prolonged occlusion or excessive compression. Lost thrill needs immediate reassessment."
+                    ],
+                    [
+                      {
+                        "strong": "Declot embolization:"
+                      },
+                      " never force-inject clot. New cold/painful hand, neurologic deficit, hypoxia, or chest pain needs urgent evaluation."
+                    ],
+                    [
+                      {
+                        "strong": "Wrong target:"
+                      },
+                      " check inflow and central outflow. Treat the clinical problem, not every narrowing."
+                    ],
+                    [
+                      {
+                        "strong": "Future access:"
+                      },
+                      " do not let a stent-graft compromise key veins, cannulation zones, or surgical options."
+                    ],
+                    [
+                      {
+                        "strong": "Infection:"
+                      },
+                      " avoid infected skin and routine declotting of infected access; coordinate an infection/access plan."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "KDOQI vascular access guidelines and clinical tools",
+                          "href": "https://www.kidney.org/professionals/kdoqi/guidelines-and-commentaries/vascular-access"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Reported complications of dialysis access intervention (Kim et al.)",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2685043/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
