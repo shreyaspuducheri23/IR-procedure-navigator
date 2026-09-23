@@ -1391,7 +1391,7 @@ function installIntraprocedureSubblocks() {
         ...procedure.nodes[proceduralStepsId],
         title: "Procedural steps",
         type: "action",
-        summary: "Procedure-specific access, device, imaging, and completion steps.",
+        summary: ["Catheter Directed Thrombolysis - DVT Intervention", "Cholecystostomy Tube Placement/Exchange"].includes(procedure.title) ? "" : "Procedure-specific access, device, imaging, and completion steps.",
         children: existingChildren,
       };
 
@@ -2020,48 +2020,48 @@ function installCatheterDirectedThrombolysisEdits() {
     [`${id}-intra-procedural-steps`]: {
       title: "Procedural steps",
       type: "action",
-      summary: "Establish in-line venous access, cross and define the thrombus, initiate lysis, and reassess residual disease.",
+      summary: "",
       details: {
         "Basic steps": [
           { strong: "1. Plan access and define thrombus extent", text: " using preprocedural imaging and ultrasound." },
-          { strong: "2. Obtain venous access", text: " that provides in-line access to the thrombosed segment." },
-          { strong: "3. Cross the thrombus", text: " with a wire and catheter and confirm true intraluminal position." },
-          { strong: "4. Perform venography", text: " to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis." },
-          { strong: "5. Position the infusion catheter across the target thrombus", text: " with the side-hole segment spanning the intended treatment zone." },
-          { strong: "6. Begin thrombolysis with appropriate anticoagulation and monitoring", text: " according to institutional protocol." },
-          { strong: "7. Repeat venography and treat residual disease", text: " as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis." },
+          { strong: "2. Obtain venous access", text: " in line with the thrombosed segment." },
+          { strong: "3. Cross the thrombus", text: " with a wire and catheter; confirm intraluminal position." },
+          { strong: "4. Perform venography", text: " to assess thrombus, inflow, outflow, collaterals, and stenosis." },
+          { strong: "5. Position the infusion catheter", text: " with side holes spanning the target thrombus." },
+          { strong: "6. Begin thrombolysis", text: " with anticoagulation and monitoring per institutional protocol." },
+          { strong: "7. Repeat venography", text: " and address residual thrombus or significant underlying stenosis as appropriate." },
         ],
       },
     },
     [`${id}-intra-pitfalls-safety`]: {
       title: "Pitfalls and safety",
       type: "caution",
-      summary: "Prevent rethrombosis, incomplete treatment, malpositioned infusion, bleeding, embolization, and ineffective lysis of chronic thrombus.",
+      summary: "",
       details: {
         "Pitfalls and safety": [
           {
-            label: "Unrecognized outflow obstruction",
-            text: "Residual iliac stenosis or compression can lead to rapid rethrombosis despite successful thrombus clearance.",
+            strong: "Outflow obstruction:",
+            text: " Residual iliac stenosis or compression may cause early rethrombosis.",
           },
           {
-            label: "Incomplete thrombus coverage",
-            text: "Ensure the infusion segment spans the intended clot burden; untreated thrombus may limit inflow or outflow.",
+            strong: "Incomplete coverage:",
+            text: " Ensure the infusion segment spans the target thrombus to avoid limiting inflow or outflow.",
           },
           {
-            label: "Extravascular/subintimal catheter position",
-            text: "Confirm intraluminal catheter position before initiating thrombolytic infusion.",
+            strong: "Catheter malposition:",
+            text: " Confirm intraluminal position before starting lysis.",
           },
           {
-            label: "Bleeding during lysis",
-            text: "Closely monitor access sites and clinical status and follow institutional laboratory/anticoagulation protocols.",
+            strong: "Bleeding:",
+            text: " Monitor access sites, clinical status, and labs per institutional protocol.",
           },
           {
-            label: "Pulmonary embolization",
-            text: "Thrombus manipulation can embolize; promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration.",
+            strong: "Embolization:",
+            text: " Promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration.",
           },
           {
-            label: "Chronic organized thrombus",
-            text: "Chronic post-thrombotic occlusion may respond poorly to lysis and may require mechanical thrombectomy, recanalization, or another strategy.",
+            strong: "Chronic thrombus:",
+            text: " May respond poorly to lysis; consider thrombectomy, recanalization, or an alternative strategy.",
           },
         ],
       },
@@ -3113,8 +3113,55 @@ function installCholecystostomyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the cholecystostomy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
+      details: {
+        "Initial tube placement": [
+          { strong: "Gallbladder:", text: " lies along the inferior liver surface; identify the fundus, body, and neck." },
+          { strong: "Cystic duct:", text: " connects the gallbladder neck to the extrahepatic biliary tree; neck or duct obstruction can prevent drainage." },
+          { strong: "Transhepatic access:", text: " traverses liver before entering the gallbladder; assess intervening hepatic vessels." },
+          { strong: "Transperitoneal access:", text: " enters the gallbladder without traversing liver; requires a safe window without intervening bowel." },
+          { strong: "Access tradeoff:", text: " transhepatic access carries greater bleeding risk but may help contain bile leakage. Transperitoneal access avoids liver traversal but has a theoretical greater bile-leak/biloma risk; comparative studies have not consistently shown a difference in leakage. Choose the safest patient-specific route." },
+          { strong: "Adjacent structures:", text: " map the colon, duodenum, pleura, and vessels along the planned trajectory." },
+          { strong: "Respiratory motion:", text: " the gallbladder and liver move with breathing; confirm the access window dynamically." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
+      details: {
+        "Initial tube placement - Seldinger technique": [
+          { strong: "1. Plan the access route", text: " using ultrasound and prior imaging; choose a safe transhepatic or transperitoneal window." },
+          { strong: "2. Prepare and anesthetize", text: " the access site using sterile technique; confirm antibiotic coverage." },
+          { strong: "3. Access the gallbladder", text: " under ultrasound guidance, using CT when ultrasound does not provide a safe window." },
+          { strong: "4. Confirm intraluminal access", text: " by imaging and bile aspiration; send bile for culture." },
+          { strong: "5. Coil a guidewire", text: " within the gallbladder and dilate the tract while maintaining access." },
+          { strong: "6. Place a locking pigtail drain", text: " with the loop and all drainage side holes inside the gallbladder." },
+          { strong: "7. Confirm position and drainage", text: " with imaging and gentle contrast injection if needed; lock, secure, and connect to gravity drainage." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Initial tube placement": [
+          { strong: "Unsafe trajectory:", text: " avoid bowel, pleura, and vessels; reassess guidance or drainage strategy if no safe window exists." },
+          { strong: "Loss of access:", text: " maintain wire purchase during dilation; avoid excessive manipulation or premature decompression." },
+          { strong: "Bile leak or perforation:", text: " avoid forceful wire advancement and confirm all side holes are intraluminal." },
+          { strong: "Bleeding:", text: " assess new bloody output, worsening pain, or instability for vascular injury." },
+          { strong: "Sepsis:", text: " avoid forceful injection or overdistention; promptly assess rigors, hypotension, or clinical deterioration." },
+          { strong: "Poor drainage or dislodgement:", text: " check kinking, obstruction, and catheter position; secure the tube and avoid blind reinsertion through an immature tract." },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",

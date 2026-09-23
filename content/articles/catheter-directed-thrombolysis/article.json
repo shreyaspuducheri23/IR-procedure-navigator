@@ -313,10 +313,6 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
               "text": "Basic steps"
             },
@@ -333,37 +329,37 @@
                   {
                     "strong": "2. Obtain venous access"
                   },
-                  " that provides in-line access to the thrombosed segment."
+                  " in line with the thrombosed segment."
                 ],
                 [
                   {
                     "strong": "3. Cross the thrombus"
                   },
-                  " with a wire and catheter and confirm true intraluminal position."
+                  " with a wire and catheter; confirm intraluminal position."
                 ],
                 [
                   {
                     "strong": "4. Perform venography"
                   },
-                  " to assess thrombus burden, inflow, outflow, collaterals, and underlying stenosis."
+                  " to assess thrombus, inflow, outflow, collaterals, and stenosis."
                 ],
                 [
                   {
-                    "strong": "5. Position the infusion catheter across the target thrombus"
+                    "strong": "5. Position the infusion catheter"
                   },
-                  " with the side-hole segment spanning the intended treatment zone."
+                  " with side holes spanning the target thrombus."
                 ],
                 [
                   {
-                    "strong": "6. Begin thrombolysis with appropriate anticoagulation and monitoring"
+                    "strong": "6. Begin thrombolysis"
                   },
-                  " according to institutional protocol."
+                  " with anticoagulation and monitoring per institutional protocol."
                 ],
                 [
                   {
-                    "strong": "7. Repeat venography and treat residual disease"
+                    "strong": "7. Repeat venography"
                   },
-                  " as appropriate, including additional thrombus removal or treatment of significant underlying venous stenosis."
+                  " and address residual thrombus or significant underlying stenosis as appropriate."
                 ]
               ]
             }
@@ -378,18 +374,44 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Prevent rethrombosis, incomplete treatment, malpositioned infusion, bleeding, embolization, and ineffective lysis of chronic thrombus."
-                },
-                {
                   "type": "list",
                   "items": [
-                    "Residual iliac stenosis or compression can lead to rapid rethrombosis despite successful thrombus clearance.",
-                    "Ensure the infusion segment spans the intended clot burden; untreated thrombus may limit inflow or outflow.",
-                    "Confirm intraluminal catheter position before initiating thrombolytic infusion.",
-                    "Closely monitor access sites and clinical status and follow institutional laboratory/anticoagulation protocols.",
-                    "Thrombus manipulation can embolize; promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration.",
-                    "Chronic post-thrombotic occlusion may respond poorly to lysis and may require mechanical thrombectomy, recanalization, or another strategy."
+                    [
+                      {
+                        "strong": "Outflow obstruction:"
+                      },
+                      " Residual iliac stenosis or compression may cause early rethrombosis."
+                    ],
+                    [
+                      {
+                        "strong": "Incomplete coverage:"
+                      },
+                      " Ensure the infusion segment spans the target thrombus to avoid limiting inflow or outflow."
+                    ],
+                    [
+                      {
+                        "strong": "Catheter malposition:"
+                      },
+                      " Confirm intraluminal position before starting lysis."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " Monitor access sites, clinical status, and labs per institutional protocol."
+                    ],
+                    [
+                      {
+                        "strong": "Embolization:"
+                      },
+                      " Promptly evaluate new hypoxia, chest pain, or hemodynamic deterioration."
+                    ],
+                    [
+                      {
+                        "strong": "Chronic thrombus:"
+                      },
+                      " May respond poorly to lysis; consider thrombectomy, recanalization, or an alternative strategy."
+                    ]
                   ]
                 }
               ]

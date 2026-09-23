@@ -189,20 +189,54 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Initial tube placement"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Gallbladder:"
+                  },
+                  " lies along the inferior liver surface; identify the fundus, body, and neck."
+                ],
+                [
+                  {
+                    "strong": "Cystic duct:"
+                  },
+                  " connects the gallbladder neck to the extrahepatic biliary tree; neck or duct obstruction can prevent drainage."
+                ],
+                [
+                  {
+                    "strong": "Transhepatic access:"
+                  },
+                  " traverses liver before entering the gallbladder; assess intervening hepatic vessels."
+                ],
+                [
+                  {
+                    "strong": "Transperitoneal access:"
+                  },
+                  " enters the gallbladder without traversing liver; requires a safe window without intervening bowel."
+                ],
+                [
+                  {
+                    "strong": "Access tradeoff:"
+                  },
+                  " transhepatic access carries greater bleeding risk but may help contain bile leakage. Transperitoneal access avoids liver traversal but has a theoretical greater bile-leak/biloma risk; comparative studies have not consistently shown a difference in leakage. Choose the safest patient-specific route."
+                ],
+                [
+                  {
+                    "strong": "Adjacent structures:"
+                  },
+                  " map the colon, duodenum, pleura, and vessels along the planned trajectory."
+                ],
+                [
+                  {
+                    "strong": "Respiratory motion:"
+                  },
+                  " the gallbladder and liver move with breathing; confirm the access window dynamically."
+                ]
               ]
             }
           ]
@@ -212,57 +246,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Initial tube placement - Seldinger technique"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common cholecystostomy tube problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe access window.",
-                    "Gallbladder decompressed or difficult to target.",
-                    "Poor drainage.",
-                    "Tube obstruction.",
-                    "Tube dislodgement or leakage."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Sepsis or unstable vitals.",
-                    "No safe access window.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Concern for bowel, vascular, liver, or pleural injury.",
-                    "Clinical deterioration after drainage."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Plan the access route"
+                  },
+                  " using ultrasound and prior imaging; choose a safe transhepatic or transperitoneal window."
+                ],
+                [
+                  {
+                    "strong": "2. Prepare and anesthetize"
+                  },
+                  " the access site using sterile technique; confirm antibiotic coverage."
+                ],
+                [
+                  {
+                    "strong": "3. Access the gallbladder"
+                  },
+                  " under ultrasound guidance, using CT when ultrasound does not provide a safe window."
+                ],
+                [
+                  {
+                    "strong": "4. Confirm intraluminal access"
+                  },
+                  " by imaging and bile aspiration; send bile for culture."
+                ],
+                [
+                  {
+                    "strong": "5. Coil a guidewire"
+                  },
+                  " within the gallbladder and dilate the tract while maintaining access."
+                ],
+                [
+                  {
+                    "strong": "6. Place a locking pigtail drain"
+                  },
+                  " with the loop and all drainage side holes inside the gallbladder."
+                ],
+                [
+                  {
+                    "strong": "7. Confirm position and drainage"
+                  },
+                  " with imaging and gentle contrast injection if needed; lock, secure, and connect to gravity drainage."
+                ]
               ]
             }
           ]
@@ -272,18 +303,52 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Initial tube placement"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Unsafe trajectory:"
+                      },
+                      " avoid bowel, pleura, and vessels; reassess guidance or drainage strategy if no safe window exists."
+                    ],
+                    [
+                      {
+                        "strong": "Loss of access:"
+                      },
+                      " maintain wire purchase during dilation; avoid excessive manipulation or premature decompression."
+                    ],
+                    [
+                      {
+                        "strong": "Bile leak or perforation:"
+                      },
+                      " avoid forceful wire advancement and confirm all side holes are intraluminal."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " assess new bloody output, worsening pain, or instability for vascular injury."
+                    ],
+                    [
+                      {
+                        "strong": "Sepsis:"
+                      },
+                      " avoid forceful injection or overdistention; promptly assess rigors, hypotension, or clinical deterioration."
+                    ],
+                    [
+                      {
+                        "strong": "Poor drainage or dislodgement:"
+                      },
+                      " check kinking, obstruction, and catheter position; secure the tube and avoid blind reinsertion through an immature tract."
+                    ]
                   ]
                 }
               ]
