@@ -23,18 +23,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -51,19 +39,6 @@
                 "Empyema/complicated parapneumonic effusion.",
                 "Hemothorax.",
                 "Postoperative/posttraumatic pleural collection."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 3.",
-                "Platelets >20k."
               ]
             }
           ]
@@ -115,6 +90,35 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Patient is NPO if moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -140,16 +144,12 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging, labs, access window, and NPO status if moderate sedation is planned."
-            },
-            {
               "type": "list",
               "items": [
                 "Confirm indication and review imaging.",
                 "Labs are appropriate.",
                 "Appropriate imaging window.",
-                "Patient is NPO if moderate sedation."
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

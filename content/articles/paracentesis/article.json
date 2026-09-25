@@ -24,18 +24,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -73,19 +61,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >50k."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -109,6 +84,29 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },
@@ -137,15 +135,14 @@
               "items": [
                 "Indication is appropriate.",
                 "Labs are appropriate.",
-                "Check what primary team has ordered fluid to be sent for: cell count with differential, albumin + total protein, cultures, cytology, etc."
+                "Check what primary team has ordered fluid to be sent for: cell count with differential, albumin + total protein, cultures, cytology, etc.",
+                "Confirm sedation plan - patient can lie flat."
               ]
-            }
-          ]
-        },
-        {
-          "id": "consult-questions",
-          "title": "Consult Questions",
-          "blocks": [
+            },
+            {
+              "type": "heading",
+              "text": "Consult Questions"
+            },
             {
               "type": "paragraph",
               "text": "None if the pre-procedure indication, labs, anticoagulation, and fluid-study checklist are answered."
@@ -170,20 +167,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Paracentesis"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Ascites pocket:"
+                  },
+                  " free fluid collects dependently in the lower abdomen and pelvis; choose a pocket with adequate depth and a short abdominal-wall path."
+                ],
+                [
+                  {
+                    "strong": "Bowel and solid organs:"
+                  },
+                  " scan in multiple planes to separate fluid from mobile bowel, liver, spleen, and the urinary bladder."
+                ],
+                [
+                  {
+                    "strong": "Abdominal-wall vessels:"
+                  },
+                  " use color Doppler to avoid the inferior epigastric vessels, collateral veins, and other vessels along the planned tract."
+                ],
+                [
+                  {
+                    "strong": "Skin and scars:"
+                  },
+                  " avoid infected skin, surgical scars, abdominal-wall masses, and prominent varices when possible."
+                ],
+                [
+                  {
+                    "strong": "Position matters:"
+                  },
+                  " fluid and bowel shift when the patient moves; mark immediately before access and keep the patient in the same position."
+                ]
               ]
             }
           ]
@@ -193,57 +212,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Paracentesis"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common paracentesis problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe pocket.",
-                    "Poor drainage.",
-                    "Persistent leak.",
-                    "Unexpected bloody fluid.",
-                    "Patient discomfort."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Hemodynamic instability.",
-                    "Peritoneal signs or severe pain.",
-                    "Concern for bowel injury.",
-                    "Unexpected hemorrhagic output.",
-                    "No safe window."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the plan:"
+                  },
+                  " diagnostic versus therapeutic drainage, requested studies, and the intended volume."
+                ],
+                [
+                  {
+                    "strong": "Find the pocket:"
+                  },
+                  " use ultrasound in multiple planes to assess fluid depth, abdominal-wall thickness, and nearby organs."
+                ],
+                [
+                  {
+                    "strong": "Check the tract:"
+                  },
+                  " apply color Doppler and select a site without abdominal-wall vessels."
+                ],
+                [
+                  {
+                    "strong": "Prep and anesthetize:"
+                  },
+                  " maintain the mapped position and anesthetize through the abdominal wall to the peritoneum."
+                ],
+                [
+                  {
+                    "strong": "Enter the fluid:"
+                  },
+                  " use real-time ultrasound for a small or difficult pocket, confirm free return, and advance the catheter without forcing it."
+                ],
+                [
+                  {
+                    "strong": "Collect and drain:"
+                  },
+                  " fill the requested specimen tubes first, then drain while monitoring pain, flow, and hemodynamics."
+                ],
+                [
+                  {
+                    "strong": "Finish cleanly:"
+                  },
+                  " remove the catheter, dress the site, document volume and appearance, and follow the albumin plan for large-volume drainage."
+                ]
               ]
             }
           ]
@@ -253,18 +269,77 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Paracentesis"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "No safe pocket:"
+                      },
+                      " do not attempt a landmark-only puncture when fluid is small, loculated, or obscured by bowel; reposition or use real-time guidance."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " avoid abdominal-wall vessels and varices; stop and reassess unexpected bloody return, an enlarging hematoma, hypotension, or increasing pain."
+                    ],
+                    [
+                      {
+                        "strong": "Bowel or organ injury:"
+                      },
+                      " confirm the tract in multiple planes and stop for severe pain, peritoneal signs, or concern for enteric return."
+                    ],
+                    [
+                      {
+                        "strong": "Poor drainage:"
+                      },
+                      " check for catheter kinking, side holes against the wall, loculated fluid, or a shifted pocket before replacing access."
+                    ],
+                    [
+                      {
+                        "strong": "Persistent leak:"
+                      },
+                      " use a small tract, remove the catheter promptly after drainage, and manage ongoing leakage with positioning and an occlusive dressing."
+                    ],
+                    [
+                      {
+                        "strong": "Post-paracentesis instability:"
+                      },
+                      " slow or stop drainage for hypotension or symptoms and follow the albumin protocol after large-volume paracentesis."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Society of Hospital Medicine Position Statement on Ultrasound-Guided Paracentesis",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8021127/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "AASLD Practice Guidance on Ascites and Spontaneous Bacterial Peritonitis",
+                          "href": "https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.31884"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

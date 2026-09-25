@@ -40,18 +40,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -67,19 +55,6 @@
                 "Poor peripheral venous access.",
                 "Frequent blood draws or recurrent IV medication administration.",
                 "Need for reliable intermediate- to long-term central venous access."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 3.0.",
-                "Platelets >20k."
               ]
             }
           ]
@@ -126,6 +101,29 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 3.0.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -149,7 +147,8 @@
                 "DO NOT place in arm with AV fistula/graft or dialysis plan.",
                 "Review imaging with any prior axillary surgery or lymphedema.",
                 "Labs are appropriate.",
-                "Blood pressure is under control."
+                "Blood pressure is under control.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -166,20 +165,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "PICC placement"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Upper-arm veins:"
+                  },
+                  " assess the basilic, paired brachial, and cephalic veins; choose a patent vein large enough for the smallest suitable catheter."
+                ],
+                [
+                  {
+                    "strong": "Nearby structures:"
+                  },
+                  " brachial veins travel close to the brachial artery and median nerve; identify all three before puncture."
+                ],
+                [
+                  {
+                    "strong": "Central course:"
+                  },
+                  " the catheter passes through the axillary, subclavian, and brachiocephalic veins into the SVC."
+                ],
+                [
+                  {
+                    "strong": "Target tip:"
+                  },
+                  " the lower SVC or cavoatrial junction provides high flow without placing the tip deep in the heart."
+                ],
+                [
+                  {
+                    "strong": "Vein preservation:"
+                  },
+                  " protect potential dialysis-access veins and avoid an arm with an AV access, active lymphedema, or significant venous obstruction."
+                ]
               ]
             }
           ]
@@ -189,57 +210,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "PICC placement"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common PICC placement problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No suitable peripheral vein.",
-                    "Difficult wire passage.",
-                    "Malpositioned tip.",
-                    "Arm swelling or suspected central venous stenosis.",
-                    "Line does not aspirate or flush."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Requested arm has AV fistula/graft or dialysis plan.",
-                    "Prior axillary surgery, lymphedema, or imaging concern that changes side/access planning.",
-                    "Active infection at planned insertion site.",
-                    "Severe arm swelling or suspected central venous occlusion.",
-                    "Arterial puncture, expanding hematoma, or new chest symptoms."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the device plan:"
+                  },
+                  " indication, duration, required lumens, catheter size, and preferred arm."
+                ],
+                [
+                  {
+                    "strong": "Survey the veins:"
+                  },
+                  " use ultrasound to confirm patency, size, depth, and separation from the artery and nerve."
+                ],
+                [
+                  {
+                    "strong": "Prep with full barrier:"
+                  },
+                  " maintain maximal sterile technique and anesthetize the selected site."
+                ],
+                [
+                  {
+                    "strong": "Obtain venous access:"
+                  },
+                  " puncture with real-time ultrasound, pass the wire gently, and confirm its central course."
+                ],
+                [
+                  {
+                    "strong": "Advance the catheter:"
+                  },
+                  " measure the required length and guide the catheter centrally with fluoroscopy, ECG, or approved tip-navigation technology."
+                ],
+                [
+                  {
+                    "strong": "Confirm function and tip:"
+                  },
+                  " verify lower-SVC/cavoatrial position, then aspirate and flush every lumen."
+                ],
+                [
+                  {
+                    "strong": "Secure and document:"
+                  },
+                  " apply the stabilization device and sterile dressing; record vein, length, tip position, and readiness for use."
+                ]
               ]
             }
           ]
@@ -249,18 +267,77 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "PICC placement"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Artery or nerve injury:"
+                      },
+                      " identify the brachial artery and median nerve before access; stop for arterial blood, severe pain, or paresthesia."
+                    ],
+                    [
+                      {
+                        "strong": "Thrombosis:"
+                      },
+                      " use the smallest adequate catheter in a sufficiently large vein and avoid unnecessary lumens."
+                    ],
+                    [
+                      {
+                        "strong": "Tip malposition:"
+                      },
+                      " check for internal-jugular, contralateral, azygos, or high-SVC placement before clearing the line."
+                    ],
+                    [
+                      {
+                        "strong": "Tip too deep:"
+                      },
+                      " ectopy during advancement suggests right-atrial or ventricular entry; withdraw and reconfirm position."
+                    ],
+                    [
+                      {
+                        "strong": "Vein loss:"
+                      },
+                      " avoid arms needed for dialysis access and reconsider placement with severe swelling, thrombosis, or central stenosis."
+                    ],
+                    [
+                      {
+                        "strong": "Infection or dislodgement:"
+                      },
+                      " use maximal sterile barriers, secure without tension, and document the external length for later comparison."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Association of Anaesthetists Guidelines: Safe Vascular Access 2025",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12519924/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Society of Hospital Medicine Position Statement on Ultrasound-Guided Vascular Access",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10193861/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

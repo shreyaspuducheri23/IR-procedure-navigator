@@ -44,18 +44,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -71,29 +59,6 @@
                 "Hepatic hydrothorax.",
                 "Budd-Chiari syndrome.",
                 "Portal vein thrombosis, selected patients."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Platelets >50,000/uL.",
-                "INR < 1.5-1.8.",
-                "CBC.",
-                [
-                  {
-                    "link": {
-                      "text": "MELD score <18 unless emergent.",
-                      "articleId": "meld-score-reference"
-                    }
-                  }
-                ],
-                "Type & screen/crossmatch."
               ]
             }
           ]
@@ -136,6 +101,39 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Platelets >50,000/uL.",
+                "INR < 1.5-1.8.",
+                "CBC.",
+                [
+                  {
+                    "link": {
+                      "text": "MELD score <18 unless emergent.",
+                      "articleId": "meld-score-reference"
+                    }
+                  }
+                ],
+                "Type & screen/crossmatch."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },
@@ -183,7 +181,8 @@
                 ],
                 "Review echocardiogram.",
                 "Review BUN.",
-                "Consent for possible embolization."
+                "Consent for possible embolization.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             },
             {
@@ -214,20 +213,60 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "TIPS creation"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Systemic access route:"
+                  },
+                  " the right internal jugular vein provides a direct path through the SVC, right atrium, and IVC to the hepatic veins."
+                ],
+                [
+                  {
+                    "strong": "Hepatic veins:"
+                  },
+                  " the right hepatic vein is the usual launch point; the middle or left hepatic vein may be used when patency or puncture geometry is better."
+                ],
+                [
+                  {
+                    "strong": "Portal target:"
+                  },
+                  " a right portal vein branch is commonly selected to create a short, straight, fully intrahepatic tract with reliable inflow."
+                ],
+                [
+                  {
+                    "strong": "Puncture geometry:"
+                  },
+                  " the right portal branch usually lies anterior and caudal to the right hepatic vein, but cirrhosis and anatomic variation can distort this relationship."
+                ],
+                [
+                  {
+                    "strong": "Portal triad:"
+                  },
+                  " portal veins travel with hepatic arteries and bile ducts, which are the key structures at risk during needle passes."
+                ],
+                [
+                  {
+                    "strong": "Liver capsule:"
+                  },
+                  " keep the needle and tract within hepatic parenchyma; extrahepatic portal access or capsular transgression can cause major hemoperitoneum."
+                ],
+                [
+                  {
+                    "strong": "Shunt endpoints:"
+                  },
+                  " with a dedicated partially covered stent, the uncovered portal segment sits in the portal vein, the covered segment begins at the parenchymal entry, and the hepatic end reaches the hepatic vein-IVC junction."
+                ],
+                [
+                  {
+                    "strong": "Portosystemic collaterals:"
+                  },
+                  " coronary, short gastric, paraesophageal, and other varices may persist after decompression and sometimes require embolization."
+                ]
               ]
             }
           ]
@@ -237,56 +276,84 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "TIPS creation"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common TIPS creation problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Difficult portal access.",
-                    "Portal/hepatic vein patency or anatomy issue.",
-                    "Need for adjunctive variceal embolization.",
-                    "Hemodynamic instability or bleeding concern."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Severe hepatic encephalopathy.",
-                    "Pulmonary hypertension or heart failure concern.",
-                    "Acute liver failure.",
-                    "Active infection.",
-                    "High MELD outside acceptable range unless emergent/salvage."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm the route:"
+                  },
+                  " review cross-sectional imaging, then choose the hepatic vein, portal target, and backup strategy."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain venous access:"
+                  },
+                  " use right IJ access in most cases; obtain a second venous access if needed for IVUS."
+                ],
+                [
+                  {
+                    "strong": "3. Record systemic pressures:"
+                  },
+                  " document right atrial and free hepatic vein or IVC pressures before creating the shunt."
+                ],
+                [
+                  {
+                    "strong": "4. Select the hepatic vein:"
+                  },
+                  " advance the TIPS set into the chosen vein and perform venography to confirm position and patency."
+                ],
+                [
+                  {
+                    "strong": "5. Align the puncture:"
+                  },
+                  " orient the needle toward the planned portal branch using fluoroscopy plus US, IVUS, CO2, or another available targeting method."
+                ],
+                [
+                  {
+                    "strong": "6. Access the portal vein:"
+                  },
+                  " use controlled needle passes and confirm true portal position before advancing the wire or dilating the tract."
+                ],
+                [
+                  {
+                    "strong": "7. Secure portal access:"
+                  },
+                  " advance a catheter and stable wire into the main portal vein, SMV, or splenic vein, then perform portography."
+                ],
+                [
+                  {
+                    "strong": "8. Measure the baseline gradient:"
+                  },
+                  " record portal pressure and calculate the portosystemic gradient against the free hepatic vein or IVC pressure."
+                ],
+                [
+                  {
+                    "strong": "9. Size the tract:"
+                  },
+                  " measure the hepatic-to-portal course and mark portal and hepatic landing zones before stent deployment."
+                ],
+                [
+                  {
+                    "strong": "10. Create the shunt:"
+                  },
+                  " dilate as needed and deploy a controlled-expansion covered stent across the intrahepatic tract."
+                ],
+                [
+                  {
+                    "strong": "11. Optimize flow:"
+                  },
+                  " balloon incrementally and remeasure after each expansion. For variceal bleeding, a common goal is a post-TIPS gradient <12 mmHg or at least a 20% reduction; ascites treatment often targets about 8 mmHg, but the ideal endpoint is patient-specific."
+                ],
+                [
+                  {
+                    "strong": "12. Complete the study:"
+                  },
+                  " assess shunt inflow and outflow, embolize persistent high-risk varices when indicated, and exclude extravasation before removing access."
+                ]
               ]
             }
           ]
@@ -296,18 +363,123 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Portal puncture"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Repeated or uncertain passes:"
+                      },
+                      " re-check the trajectory and add US or IVUS guidance; confirm portal position before dilation."
+                    ],
+                    [
+                      {
+                        "strong": "Capsular injury:"
+                      },
+                      " hypotension, abdominal distention, or extravasation suggests hemoperitoneum; stop and evaluate."
+                    ],
+                    [
+                      {
+                        "strong": "Arterial or biliary injury:"
+                      },
+                      " watch for arterial extravasation, hemobilia, biliary-shunt fistula, or unexpected sepsis."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Stent position"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Portal end:"
+                      },
+                      " covered stent in the main portal vein can block branch inflow; uncovered stent left in the tract promotes stenosis or thrombosis."
+                    ],
+                    [
+                      {
+                        "strong": "Hepatic end too short:"
+                      },
+                      " stopping before the hepatic vein-IVC junction invites outflow stenosis and shunt occlusion."
+                    ],
+                    [
+                      {
+                        "strong": "Hepatic end too long or misplaced:"
+                      },
+                      " avoid covering nearby hepatic-vein drainage or extending unnecessarily into the IVC or right atrium."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hemodynamics and completion"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Over-shunting:"
+                      },
+                      " <5 mmHg is a warning threshold. A 5-8 mmHg gradient may be intentional, but reassess encephalopathy, liver, and cardiac risk before further expansion."
+                    ],
+                    [
+                      {
+                        "strong": "Under-shunting or poor flow:"
+                      },
+                      " persistent pressure or varices may reflect underexpansion, kink, thrombosis, poor inflow or outflow, or a collateral needing selective embolization."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "North American Practice-Based Recommendations for TIPS in Portal Hypertension",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8760361/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE Standards of Practice on TIPS",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/39550753/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "AASLD Practice Guidance on TIPS",
+                          "href": "https://www.aasld.org/practice-guidelines/transjugular-intrahepatic-portosystemic-shunt-tips"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Comprehensive Review of TIPS-Related Complications",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10159729/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

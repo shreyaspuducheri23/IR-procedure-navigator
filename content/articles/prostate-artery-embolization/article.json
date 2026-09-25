@@ -42,18 +42,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -68,20 +56,6 @@
                 "Large prostate / poor surgical candidate.",
                 "Desire to preserve sexual function.",
                 "Refractory hematuria of prostatic origin."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Platelets >50,000/uL.",
-                "INR < 1.5-1.8.",
-                "CBC, INR, and BMP within 30 days."
               ]
             }
           ]
@@ -128,6 +102,60 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Platelets >50,000/uL.",
+                "INR < 1.5-1.8.",
+                "CBC, INR, and BMP within 30 days."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "If for LUTS from BPH"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO for moderate sedation.",
+                "Vital signs per routine.",
+                "Peripheral IV placement, NOT in left arm."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If for LUTS from BPH - to be ordered in clinic"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.",
+                "OR ciprofloxacin 500 mg BID x 10 days total.",
+                "If oral antibiotic not taken, give 1x dose of IV levofloxacin."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If for refractory hematuria of prostatic origin"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO for moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -153,13 +181,10 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication and follow either the LUTS/BPH workflow or refractory hematuria workflow."
-            },
-            {
               "type": "list",
               "items": [
-                "Confirm indication."
+                "Confirm indication.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             },
             {
@@ -174,22 +199,7 @@
                 "Review prostate size and pelvic arterial anatomy.",
                 "Check PSA and urinalysis/urine culture.",
                 "Labs are appropriate.",
-                "Treat active UTI before procedure.",
-                "NPO for moderate sedation.",
-                "Vital signs per routine.",
-                "Peripheral IV placement, NOT in left arm."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "To be ordered in clinic"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.",
-                "OR ciprofloxacin 500 mg BID x 10 days total.",
-                "If oral antibiotic not taken, give 1x dose of IV levofloxacin."
+                "Treat active UTI before procedure."
               ]
             },
             {
@@ -201,7 +211,6 @@
               "items": [
                 "Review indication.",
                 "Labs are appropriate.",
-                "NPO for moderate sedation.",
                 "Resuscitation per primary team.",
                 "Review imaging and approach."
               ]
@@ -220,20 +229,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Variable origins:"
+                  },
+                  " prostatic arteries commonly arise from the internal pudendal, obturator, or a shared superior vesical trunk."
+                ],
+                [
+                  {
+                    "strong": "Gland supply:"
+                  },
+                  " anteromedial branches supply the central gland; posterolateral branches supply the peripheral gland and capsule."
+                ],
+                [
+                  {
+                    "strong": "BPH target:"
+                  },
+                  " transition-zone enlargement surrounds the prostatic urethra, just below the bladder neck."
+                ],
+                [
+                  {
+                    "strong": "Dangerous connections:"
+                  },
+                  " bladder, rectal, and penile collaterals can carry embolic outside the prostate."
+                ],
+                [
+                  {
+                    "strong": "Bilateral supply:"
+                  },
+                  " accessory feeders and cross-midline connections can sustain symptoms or bleeding after incomplete treatment."
+                ]
               ]
             }
           ]
@@ -243,55 +270,90 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common prostate artery embolization problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Difficult prostatic artery selection or variant pelvic arterial anatomy.",
-                    "Nontarget embolization concern.",
-                    "Urinary retention or severe post-embolization symptoms.",
-                    "Access-site bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Obtain arterial access"
+                  },
+                  " via radial or femoral approach; select the internal iliac artery."
+                ],
+                [
+                  {
+                    "strong": "2. Map the prostatic supply"
+                  },
+                  " with selective angiography; identify accessory feeders and pelvic collaterals."
+                ],
+                [
+                  {
+                    "strong": "3. Microcatheterize the target"
+                  },
+                  " and confirm prostate perfusion with selective angiography and cone-beam CT when needed."
+                ],
+                [
+                  {
+                    "strong": "4. Protect nontarget branches"
+                  },
+                  " by advancing beyond unsafe connections or selectively protecting them when appropriate."
+                ],
+                [
+                  {
+                    "strong": "5. Embolize slowly"
+                  },
+                  " using the indication-specific plan below; reassess flow and stop for reflux."
+                ],
+                [
+                  {
+                    "strong": "6. Assess the opposite side"
+                  },
+                  " and treat remaining prostatic supply when safely accessible."
+                ],
+                [
+                  {
+                    "strong": "7. Confirm the endpoint"
+                  },
+                  " with final angiography; document residual supply and obtain access-site hemostasis."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "If for LUTS from BPH"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Elective gland treatment:"
+                  },
+                  " deliver particles to the prostatic bed to near-stasis per protocol; aim for bilateral treatment when safe."
+                ]
+              ]
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Active untreated UTI before elective LUTS/BPH procedure.",
-                    "Inadequate prostate cancer exclusion when clinically indicated.",
-                    "Unstable hematuria patient requiring resuscitation/escalation.",
-                    "Severe pelvic pain, ischemic symptoms, urinary retention, access-site bleeding, or hemodynamic instability."
-                  ]
-                }
+              "type": "heading",
+              "text": "If for refractory hematuria of prostatic origin"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Hemostasis first:"
+                  },
+                  " target the bleeding supply; extravasation may be absent. Diffuse prostatic bleeding often needs bilateral embolization; focal arterial injury may need coils or another targeted agent."
+                ],
+                [
+                  {
+                    "strong": "Continue supportive care:"
+                  },
+                  " coordinate resuscitation and bladder drainage/clot management with the primary and urology teams."
+                ]
               ]
             }
           ]
@@ -301,18 +363,99 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Nontarget ischemia:"
+                      },
+                      " exclude bladder, rectal, and penile supply before embolization; reassess if flow changes."
+                    ],
+                    [
+                      {
+                        "strong": "Spasm or dissection:"
+                      },
+                      " avoid forceful wire advancement or injection; poor flow is not always a true embolization endpoint."
+                    ],
+                    [
+                      {
+                        "strong": "Missed feeders:"
+                      },
+                      " reassess accessory and contralateral supply, but do not pursue unsafe catheterization."
+                    ],
+                    [
+                      {
+                        "strong": "Post-embolization symptoms:"
+                      },
+                      " mild pelvic pain and dysuria are expected; severe pain, fever, or retention needs evaluation for ischemia, infection, or obstruction."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "If for LUTS from BPH"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Delayed benefit:"
+                      },
+                      " symptom improvement takes time; edema can temporarily worsen obstruction. Confirm a voiding/catheter plan."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "If for refractory hematuria of prostatic origin"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Persistent bleeding:"
+                      },
+                      " reassess the source, residual feeders, and coagulopathy; a quiet angiogram does not prove clinical hemostasis."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "PAE anatomy, technique, and complications (Radiographics)",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9394104/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Standardized PAE technique: Delphi consensus",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/41173451/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Embolization for refractory hematuria of prostatic origin",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9349008/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

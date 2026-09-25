@@ -26,23 +26,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation vs local)",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement",
-                "Glucose Point of Care",
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -61,22 +44,6 @@
                     "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
-              "type": "list",
-              "items": [
-                "None unless further indicated"
               ]
             }
           ]
@@ -106,8 +73,54 @@
           ]
         },
         {
-          "id": "focused-exam",
-          "title": "Focused exam",
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "PDF lab guidance"
+            },
+            {
+              "type": "list",
+              "items": [
+                "None unless further indicated"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "SDC/Outpatient with Discharge",
+                "NPO (moderate sedation vs local)",
+                "Vital signs: Per routine",
+                "Peripheral Line Placement",
+                "Glucose Point of Care"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sedation guidance has not yet been documented in this guide."
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
           "blocks": [
             {
               "type": "paragraph",
@@ -123,6 +136,12 @@
                 "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
                 "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
                 "Use ultrasound or imaging review when relevant to confirm a safe target."
+              ]
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

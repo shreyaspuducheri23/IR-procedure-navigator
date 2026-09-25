@@ -34,18 +34,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -78,19 +66,6 @@
                 "Whether nephrostomy tube drainage is the intended endpoint.",
                 "Evidence of infection, sepsis, pyonephrosis, or obstructive AKI that changes urgency.",
                 "Current ureteral stents, urinary diversion anatomy, and relevant prior urologic surgery."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -141,6 +116,36 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
+                "Patient is NPO if moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -165,10 +170,6 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm target side, collecting system access, labs, anticoagulation holds, antibiotics, NPO status, and sedation tolerance."
-            },
-            {
               "type": "list",
               "items": [
                 "Confirm indication, side, and intended nephrostomy tube endpoint.",
@@ -176,8 +177,6 @@
                 "Labs are appropriate.",
                 "Anticoagulation appropriately held.",
                 "Appropriate percutaneous access window.",
-                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
-                "Patient is NPO if moderate sedation.",
                 [
                   {
                     "link": {
@@ -185,7 +184,8 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ]
+                ],
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -202,20 +202,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Nephrostomy tube placement"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Collecting system:"
+                  },
+                  " map the posterior calyces, renal pelvis, ureter, and level of obstruction."
+                ],
+                [
+                  {
+                    "strong": "Preferred target:"
+                  },
+                  " a posterior mid- or lower-pole calyx provides a straight papillary tract with lower vascular risk."
+                ],
+                [
+                  {
+                    "strong": "Brodel's line:"
+                  },
+                  " approach through this relatively avascular posterolateral plane; target the calyceal papilla and avoid direct pelvic or infundibular puncture."
+                ],
+                [
+                  {
+                    "strong": "Adjacent structures:"
+                  },
+                  " map the pleura and lung, colon, bowel, right-sided liver, and left-sided spleen."
+                ],
+                [
+                  {
+                    "strong": "Access angle:"
+                  },
+                  " favor a subcostal route when feasible; a higher supracostal path carries greater pleural risk."
+                ]
               ]
             }
           ]
@@ -225,55 +247,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
-            },
-            {
-              "type": "paragraph",
-              "text": "Common nephrostomy tube placement problems and first checks."
+              "text": "Nephrostomy tube placement"
             },
             {
               "type": "list",
               "items": [
-                "No safe access window.",
-                "Difficult collecting system access.",
-                "Nondilated collecting system.",
-                "Bloody urine.",
-                "Tube obstruction.",
-                "Tube dislodgement or leakage."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause the case or prompt urgent escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate if"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Sepsis or unstable vitals.",
-                    "No safe access window.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Concern for vascular, bowel, pleural, or solid-organ injury.",
-                    "Heavy hematuria, clot obstruction, or hemodynamic change after access.",
-                    "Clinical deterioration after decompression."
-                  ]
-                }
+                [
+                  {
+                    "strong": "Confirm the plan:"
+                  },
+                  " side, obstruction level, urgency, antibiotics, and the intended drainage endpoint."
+                ],
+                [
+                  {
+                    "strong": "Map the kidney:"
+                  },
+                  " use ultrasound and Doppler to find a safe posterior calyx and avoid vessels or adjacent organs."
+                ],
+                [
+                  {
+                    "strong": "Access the calyx:"
+                  },
+                  " puncture the central papilla under image guidance; confirm urine return before gentle contrast."
+                ],
+                [
+                  {
+                    "strong": "Sample infected urine:"
+                  },
+                  " send cultures promptly and avoid pressurizing an infected system."
+                ],
+                [
+                  {
+                    "strong": "Secure wire access:"
+                  },
+                  " advance into the pelvis or ureter and stabilize the wire before dilation."
+                ],
+                [
+                  {
+                    "strong": "Place the catheter:"
+                  },
+                  " dilate the tract and form the locking loop fully within the collecting system."
+                ],
+                [
+                  {
+                    "strong": "Confirm drainage:"
+                  },
+                  " use gentle contrast, connect to gravity, secure the tube, and document the output."
+                ]
               ]
             }
           ]
@@ -283,18 +304,77 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Nephrostomy tube placement"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Sepsis:"
+                      },
+                      " the key acute risk in infected obstruction. Give antibiotics, limit contrast and manipulation, and escalate rigors or hypotension."
+                    ],
+                    [
+                      {
+                        "strong": "Hemorrhage:"
+                      },
+                      " use a posterior calyx; heavy or persistent hematuria with instability suggests vascular injury."
+                    ],
+                    [
+                      {
+                        "strong": "Pleural or visceral injury:"
+                      },
+                      " avoid an unnecessarily high route and keep pleura, colon, bowel, liver, and spleen outside the tract."
+                    ],
+                    [
+                      {
+                        "strong": "Nondilated system:"
+                      },
+                      " optimize ultrasound or CT guidance rather than repeatedly redirecting blindly."
+                    ],
+                    [
+                      {
+                        "strong": "Wire or tract loss:"
+                      },
+                      " stabilize the wire before dilation; never advance against resistance or suspected extravasation."
+                    ],
+                    [
+                      {
+                        "strong": "Poor drainage:"
+                      },
+                      " confirm intrarenal side holes, then check for kinking, clot, malposition, or dislodgement before forceful flushing."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE Standards of Practice on Nephrostomy and Ureteric Stent Placement and Exchange",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12963180/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "SIR Quality Improvement Guidelines for Percutaneous Nephrostomy",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/14514833/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

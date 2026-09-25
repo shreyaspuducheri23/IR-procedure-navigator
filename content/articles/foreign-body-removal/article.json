@@ -43,18 +43,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -84,19 +72,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -120,6 +95,29 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },
@@ -155,7 +153,8 @@
                 "Review imaging with access.",
                 "Labs are appropriate.",
                 "Confirm access approach.",
-                "If venous, have snare/retrieval tools available."
+                "If venous, have snare/retrieval tools available.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

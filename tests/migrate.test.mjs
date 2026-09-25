@@ -94,3 +94,72 @@ test('every legacy intraprocedure descendant is represented in generated blocks'
     for (const child of intra.children ?? []) visit(child);
   }
 });
+
+test('all procedures have six consistent pre-procedure tabs and positioning in Checklist', () => {
+  const { procedures } = captureLegacyState();
+  let count = 0;
+  for (const p of procedures) {
+    const pre = convert(p).sections.find((s) => s.kind === 'pre');
+    if (!pre) continue;
+    count += 1;
+    assert.deepEqual(pre.subsections.map((s) => s.title), [
+      'Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist',
+    ], p.title);
+    assert.match(JSON.stringify(pre.subsections.at(-1).blocks), /lie flat/i, p.title);
+    assert.doesNotMatch(JSON.stringify(pre.subsections[3].blocks), /Confirm sedation plan - patient can lie flat/, p.title);
+    assert.ok(!pre.blocks?.length, p.title);
+  }
+  assert.equal(count, 54);
+});
+
+test('order relocation preserves infusion setups, medication timing and conditional orders', () => {
+  const { procedures } = captureLegacyState();
+  const articles = procedures.map(convert);
+  const topic = (id, title) => articles.find((a) => a.id === id).sections
+    .find((s) => s.kind === 'pre').subsections.find((s) => s.title === title);
+  const orders = (id) => topic(id, 'Pre-procedure orders').blocks;
+
+  const avs = JSON.stringify(orders('adrenal-vein-sampling'));
+  assert.ok(avs.includes('250 mcg IV cosyntropin in 250 ml @ 50 mcg/hour to start 30-60 min prior to procedure. Lay flat after start of infusion.'));
+  assert.doesNotMatch(JSON.stringify(topic('adrenal-vein-sampling', 'Labs')), /cosyntropin|PIV|Glucose/);
+
+  const lysis = orders('catheter-directed-thrombolysis');
+  const groups = [
+    ['One infusion catheter and sheath', [
+      'Heparin (FLAT RATE) at 500 units/hr: 1 order.',
+      'Sodium chloride infusion 20 mL/hr: 1 order.',
+      'Alteplase 1 mg/hr: 1 order.',
+    ]],
+    ['Two infusion catheters and sheaths (Site A and Site B)', [
+      'Heparin (FLAT RATE) at 250 units/hr: 2 orders.',
+      'Sodium chloride infusion 20 mL/hr: 2 orders.',
+      'Alteplase 0.5 mg/hr: 2 orders.',
+    ]],
+    ['Two infusion catheters through one sheath', [
+      'Heparin (FLAT RATE) at 500 units/hr: 1 order.',
+      'Sodium chloride infusion 20 mL/hr: 2 orders.',
+      'Alteplase 0.5 mg/hr: 2 orders.',
+    ]],
+  ];
+  for (const [heading, items] of groups) {
+    const index = lysis.findIndex((b) => b.type === 'heading' && b.text === heading);
+    assert.ok(index >= 0, heading);
+    assert.deepEqual(lysis[index + 1].items, items, heading);
+  }
+  const indication = topic('catheter-directed-thrombolysis', 'Indication');
+  assert.ok(indication.blocks.some((b) => b.type === 'callout' && b.variant === 'contraindication'));
+
+  const ufe = orders('uterine-fibroid-embolization-ufe');
+  assert.ok(ufe.some((b) => b.type === 'paragraph' && b.text === 'Start 1 day prior to procedure; to be ordered in clinic.'));
+  const surgical = ufe.find((b) => b.type === 'checklist' && b.title === 'If pre-surgical');
+  assert.ok(surgical.items.includes('No NSAIDs or dexamethasone.'));
+
+  const pae = orders('prostate-artery-embolization');
+  const clinicIndex = pae.findIndex((b) => b.type === 'heading' && b.text === 'If for LUTS from BPH - to be ordered in clinic');
+  assert.ok(clinicIndex >= 0);
+  assert.ok(pae[clinicIndex + 1].items.includes('Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.'));
+
+  const gTube = 'gastrostomy-gastrojejunostomy-jejunostomy-tube-placement';
+  assert.match(JSON.stringify(orders(gTube)), /Barium order to be administered ENTIRE bottle the night prior/);
+  assert.doesNotMatch(JSON.stringify(topic(gTube, 'Checklist')), /Barium order to be administered|Ancef 2 g/);
+});

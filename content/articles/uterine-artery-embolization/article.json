@@ -32,28 +32,84 @@
       "id": "pre",
       "kind": "pre",
       "title": "Pre-procedure",
-      "blocks": [
+      "subsections": [
         {
-          "type": "paragraph",
-          "text": "Future edit: add indications, labs, anticoagulation, imaging, pregnancy/gynecology context, and sedation planning."
-        },
-        {
-          "type": "callout",
-          "variant": "note",
-          "title": "Needs procedure-specific edit",
+          "id": "indication",
+          "title": "Indication",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Add indication-specific pathways before clinical use."
-              ]
+              "type": "paragraph",
+              "text": "Indication guidance has not yet been documented in this guide."
             }
           ]
         },
         {
-          "type": "checklist",
-          "items": [
-            "Confirm sedation plan - patient can lie flat."
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Anticoagulation guidance has not yet been documented in this guide."
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Labs guidance has not yet been documented in this guide."
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sedation guidance has not yet been documented in this guide."
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Future edit: add indications, labs, anticoagulation, imaging, pregnancy/gynecology context, and sedation planning."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Needs procedure-specific edit",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Add indication-specific pathways before clinical use."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Confirm sedation plan - patient can lie flat."
+              ]
+            }
           ]
         }
       ]

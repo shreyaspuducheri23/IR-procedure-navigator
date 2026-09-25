@@ -43,18 +43,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -73,19 +61,6 @@
                 "Evaluate unexplained abnormal liver enzymes or diffuse liver disease.",
                 "Diagnose or stage fibrosis, cirrhosis, steatohepatitis, or hepatitis.",
                 "Evaluate suspected autoimmune, infiltrative, metabolic, or infectious disease."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -136,6 +111,29 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -168,7 +166,8 @@
                 "Labs are appropriate.",
                 "Blood pressure is under control.",
                 "Assess for ascites/infection.",
-                "Specimen requests confirmed."
+                "Specimen requests confirmed.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -185,20 +184,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Liver biopsy"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Biopsy target:"
+                  },
+                  " distinguish a focal-lesion biopsy from a non-targeted parenchymal biopsy before choosing the route and specimen plan."
+                ],
+                [
+                  {
+                    "strong": "Portal structures:"
+                  },
+                  " portal veins, hepatic arteries, and bile ducts travel together; keep the biopsy path away from visible central branches."
+                ],
+                [
+                  {
+                    "strong": "Hepatic veins:"
+                  },
+                  " map the major hepatic veins and IVC before advancing into a deep or central target."
+                ],
+                [
+                  {
+                    "strong": "Access route:"
+                  },
+                  " right-lobe access is often intercostal, while left-lobe access may be subcostal or epigastric; choose the shortest safe route with a parenchymal margin when feasible."
+                ],
+                [
+                  {
+                    "strong": "Structures to avoid:"
+                  },
+                  " lung and pleura, gallbladder, bowel, kidney, and abdominal-wall vessels. For an intercostal route, enter over the superior rib margin."
+                ]
               ]
             }
           ]
@@ -208,57 +229,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Liver biopsy"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common liver biopsy problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe biopsy window.",
-                    "Ascites affecting access.",
-                    "Poor lesion visualization.",
-                    "Insufficient specimen.",
-                    "Post-biopsy pain or suspected bleeding."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "No safe window.",
-                    "Uncontrolled blood pressure.",
-                    "Ascites or infection that makes percutaneous access unsafe.",
-                    "Hemodynamic instability, severe abdominal/right shoulder pain, expanding hematoma, or suspected hemorrhage after biopsy."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the biopsy plan:"
+                  },
+                  " targeted versus non-targeted, required cores, and pathology or microbiology containers."
+                ],
+                [
+                  {
+                    "strong": "Map a safe trajectory:"
+                  },
+                  " use ultrasound or CT to identify the target, capsule, vessels, adjacent organs, and a reproducible breath-hold."
+                ],
+                [
+                  {
+                    "strong": "Anesthetize the tract:"
+                  },
+                  " extend local anesthesia through the skin, abdominal wall, and liver capsule."
+                ],
+                [
+                  {
+                    "strong": "Advance the biopsy system:"
+                  },
+                  " place the coaxial introducer under image guidance and confirm the tip before sampling."
+                ],
+                [
+                  {
+                    "strong": "Obtain the cores:"
+                  },
+                  " sample viable tissue, limit passes, and avoid the necrotic center of a lesion when possible."
+                ],
+                [
+                  {
+                    "strong": "Confirm specimen adequacy:"
+                  },
+                  " inspect the cores and route them to the correct studies before ending the procedure."
+                ],
+                [
+                  {
+                    "strong": "Complete safely:"
+                  },
+                  " withdraw with tract management as indicated, then assess for immediate bleeding or adjacent-organ injury."
+                ]
               ]
             }
           ]
@@ -268,18 +286,77 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Liver biopsy"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Hemorrhage:"
+                      },
+                      " the major complication. Avoid visible vessels and escalate severe or increasing abdominal/right-shoulder pain, tachycardia, hypotension, or a falling hemoglobin."
+                    ],
+                    [
+                      {
+                        "strong": "No safe percutaneous route:"
+                      },
+                      " do not force a window through lung, bowel, gallbladder, large vessels, or substantial ascites; consider an alternate target or transvenous approach."
+                    ],
+                    [
+                      {
+                        "strong": "Nondiagnostic tissue:"
+                      },
+                      " confirm the exact target and specimen plan; sample the viable solid edge rather than necrosis when feasible."
+                    ],
+                    [
+                      {
+                        "strong": "Pleural transgression:"
+                      },
+                      " avoid an unnecessarily high intercostal path and confirm the lung base before puncture."
+                    ],
+                    [
+                      {
+                        "strong": "Biliary injury or hemobilia:"
+                      },
+                      " avoid central portal structures and evaluate new biliary pain, jaundice, or gastrointestinal bleeding."
+                    ],
+                    [
+                      {
+                        "strong": "Too many passes:"
+                      },
+                      " balance tissue needs against rising bleeding risk and stop when the diagnostic goal is met."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "ACR-SIR-SPR Practice Parameter for Image-Guided Percutaneous Needle Biopsy",
+                          "href": "https://gravitas.acr.org/PPTS/GetDocumentView?docId=3"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "BSG/RCR/RCP Guidelines on Liver Biopsy in Clinical Practice",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7398479/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

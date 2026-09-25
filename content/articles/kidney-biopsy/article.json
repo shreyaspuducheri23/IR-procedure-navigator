@@ -38,18 +38,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -65,19 +53,6 @@
                 "Hematuria with proteinuria, impaired renal function, or suspected glomerulonephritis.",
                 "Suspected systemic renal disease, such as lupus, vasculitis, or amyloidosis.",
                 "Renal mass characterization or transplant dysfunction, including suspected rejection or recurrent disease."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -128,6 +103,29 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -155,7 +153,8 @@
                 "Blood pressure is under control.",
                 "No active UTI/pyelonephritis or skin infection over site.",
                 "Kidneys are at least 9 cm, recommended.",
-                "Specimen requests confirmed."
+                "Specimen requests confirmed.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

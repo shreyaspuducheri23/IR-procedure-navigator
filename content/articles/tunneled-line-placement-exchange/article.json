@@ -73,20 +73,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k.",
-                "Potassium if TDC placement."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -113,6 +99,30 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k.",
+                "Potassium if TDC placement."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },

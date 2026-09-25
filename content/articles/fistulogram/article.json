@@ -23,18 +23,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -53,19 +41,6 @@
                 "Cannulation problems: difficult access or failed fistula maturity.",
                 "Prolonged bleeding after dialysis.",
                 "Physical exam findings: swelling, absent thrill/pulse."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
               ]
             }
           ]
@@ -122,6 +97,35 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Patient is NPO if moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -142,9 +146,29 @@
           ]
         },
         {
-          "id": "physical-exam",
-          "title": "Physical exam",
+          "id": "checklist",
+          "title": "Checklist",
           "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and review imaging.",
+                "Labs are appropriate.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ],
+                "Confirm sedation plan - patient can lie flat."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Physical exam"
+            },
             {
               "type": "paragraph",
               "text": "Evaluate fistula exam and access patency before the procedure."
@@ -155,32 +179,6 @@
                 "Evaluate fistula for thrill/pulse.",
                 "POC ultrasound to evaluate patency.",
                 "Formal vascular ultrasound to evaluate flows."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "checklist",
-          "title": "Checklist",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging, labs, NPO status if sedated, and moderate sedation tolerance."
-            },
-            {
-              "type": "list",
-              "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
-                "Patient is NPO if moderate sedation.",
-                [
-                  {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ]
               ]
             }
           ]

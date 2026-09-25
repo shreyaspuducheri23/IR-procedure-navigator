@@ -36,18 +36,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -86,30 +74,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "None unless further indicated."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Orders"
-            },
-            {
-              "type": "list",
-              "items": [
-                "SDC/outpatient with discharge.",
-                "Vital signs per routine.",
-                "Glucose point of care."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -141,22 +105,68 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "None unless further indicated."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "SDC/outpatient with discharge.",
+                "Vital signs per routine.",
+                "Glucose point of care.",
+                "NPO per local-only exchange workflow.",
+                "Glucose point of care ordered."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
             {
               "type": "list",
               "items": [
-                "Local only.",
-                "NPO per local-only exchange workflow."
+                "Local only."
               ]
             }
           ]
         },
         {
-          "id": "physical-exam",
-          "title": "Physical exam",
+          "id": "checklist",
+          "title": "Checklist",
           "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Confirm indication and current tube type.",
+                "Confirm tube size and replacement device availability.",
+                "Confirm tract is mature for routine exchange, or escalate if immature/uncertain.",
+                "No labs unless further indicated.",
+                "Patient is in SDC/outpatient workflow with discharge plan.",
+                "Confirm sedation plan - patient can lie flat."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Physical exam"
+            },
             {
               "type": "paragraph",
               "text": "Inspect tube site and confirm the tube problem before exchange."
@@ -171,28 +181,6 @@
                 "Inspect stoma for erythema, skin breakdown, leakage, bleeding, purulence, buried bumper concern, or tract disruption.",
                 "Check tube position, external length, balloon/retention device if applicable, and whether the tube flushes.",
                 "Assess abdominal pain, peritoneal signs, fever, or instability before treating as a routine exchange."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "checklist",
-          "title": "Checklist",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm tube details, tract maturity, labs if needed, local-only plan, glucose POC, and discharge plan."
-            },
-            {
-              "type": "list",
-              "items": [
-                "Confirm indication and current tube type.",
-                "Confirm tube size and replacement device availability.",
-                "Confirm tract is mature for routine exchange, or escalate if immature/uncertain.",
-                "No labs unless further indicated.",
-                "Patient is in SDC/outpatient workflow with discharge plan.",
-                "NPO per local-only exchange workflow.",
-                "Glucose point of care ordered."
               ]
             }
           ]

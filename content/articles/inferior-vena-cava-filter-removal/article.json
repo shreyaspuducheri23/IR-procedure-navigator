@@ -34,18 +34,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -60,33 +48,6 @@
                 "Anticoagulation resumed.",
                 "Filter-related complication.",
                 "Retrievable filter no longer needed."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "INR < 2-3 and platelets >20k; if complicated removal, CBC and INR within 30 days."
-            },
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If complicated removal"
-            },
-            {
-              "type": "list",
-              "items": [
-                "CBC and INR within 30 days."
               ]
             }
           ]
@@ -144,6 +105,49 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "INR < 2-3 and platelets >20k; if complicated removal, CBC and INR within 30 days."
+            },
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If complicated removal"
+            },
+            {
+              "type": "list",
+              "items": [
+                "CBC and INR within 30 days."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO if moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -174,7 +178,7 @@
                 "Review type of filter and dwell time.",
                 "Review imaging and procedural planning.",
                 "Labs are appropriate.",
-                "NPO if moderate sedation."
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

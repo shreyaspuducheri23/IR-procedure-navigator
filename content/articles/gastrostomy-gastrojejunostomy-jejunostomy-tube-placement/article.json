@@ -31,18 +31,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -74,19 +62,6 @@
                 "Gastroparesis.",
                 "Gastric outlet obstruction.",
                 "Failed G-tube."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -137,6 +112,38 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Patient is NPO if moderate sedation.",
+                "Barium order to be administered ENTIRE bottle the night prior.",
+                "NG tube in place if inpatient.",
+                "Ancef 2 g if <120 kg, 3 g if >120 kg."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -162,36 +169,16 @@
           ]
         },
         {
-          "id": "physical-exam",
-          "title": "Physical exam",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm target skin site is usable."
-            },
-            {
-              "type": "list",
-              "items": [
-                "Target skin site without active infection or overlying medical machinery, such as leads, pacers, etc."
-              ]
-            }
-          ]
-        },
-        {
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging, labs, access window, NPO status, barium, NG tube if inpatient, and antibiotics."
-            },
             {
               "type": "list",
               "items": [
                 "Confirm indication and review imaging.",
                 "Labs are appropriate.",
                 "Appropriate window on imaging.",
-                "Patient is NPO if moderate sedation.",
+                "Assess the planned abdominal skin site for active infection or overlying medical devices, such as leads or pacers.",
                 [
                   {
                     "link": {
@@ -200,9 +187,7 @@
                     }
                   }
                 ],
-                "Barium order to be administered ENTIRE bottle the night prior.",
-                "NG tube in place if inpatient.",
-                "Ancef 2 g if <120 kg, 3 g if >120 kg."
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

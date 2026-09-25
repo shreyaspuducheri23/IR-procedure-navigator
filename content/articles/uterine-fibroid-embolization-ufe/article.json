@@ -69,29 +69,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Needed within 30 days: CBC, creatinine/GFR, INR <1.5-1.8, and platelets >50k."
-            },
-            {
-              "type": "heading",
-              "text": "Labs within 30 days"
-            },
-            {
-              "type": "list",
-              "items": [
-                "CBC.",
-                "Creatinine/GFR.",
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -132,6 +109,98 @@
                     "Aspirin: hold 3-5 days."
                   ]
                 }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Needed within 30 days: CBC, creatinine/GFR, INR <1.5-1.8, and platelets >50k."
+            },
+            {
+              "type": "heading",
+              "text": "Labs within 30 days"
+            },
+            {
+              "type": "list",
+              "items": [
+                "CBC.",
+                "Creatinine/GFR.",
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Pre-procedure meds"
+            },
+            {
+              "type": "paragraph",
+              "text": "Start 1 day prior to procedure; to be ordered in clinic."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Naproxen 500 mg BID (Disp 16).",
+                "Omeprazole 20 mg PO daily (Disp 8).",
+                "Hydroxyzine 25 mg PO nightly (Disp 8).",
+                "Colace 100 mg PO BID (Disp 16).",
+                "Tylenol 1000 mg PO Q6H begin at night (Disp 58).",
+                "Zofran 4 mg PO Q6H PRN for nausea post (Disp 8)."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Arrival orders"
+            },
+            {
+              "type": "paragraph",
+              "text": "Orders when patient arrives."
+            },
+            {
+              "type": "checklist",
+              "title": "When patient arrives",
+              "items": [
+                "SDC/Outpatient with Discharge vs Bedded Outpatient.",
+                "NPO (moderate sedation).",
+                "Pulse checks.",
+                "Vital signs - Per unit routine.",
+                "Peripheral Line Placement - No IV in LEFT arm.",
+                "Glucose Point of Care.",
+                "Cefazolin (Ancef) 2g if <120kg, 3g if >120 kg.",
+                "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM).",
+                "Toradol 30 mg once IM.",
+                "Ondansetron (Zofran) 4 mg once IV.",
+                "Oxycodone 10 mg once PO.",
+                "Hx severe nausea: Scopolamine patch 1.5 mg apply to skin behind ear prior to procedure and leave in place x 72 hours; may cause anticholinergic side effects including dry mouth; may remove patch if these occur."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "If patient did not take home meds or if pre-surgical",
+              "items": [
+                "Pantoprazole 40 mg PO once.",
+                "Colace 100 mg PO once.",
+                "Acetaminophen 1000 mg PO once."
+              ]
+            },
+            {
+              "type": "checklist",
+              "title": "If pre-surgical",
+              "items": [
+                "Place Foley.",
+                "No NSAIDs or dexamethasone.",
+                "Page GYN at #3030 when patient is in pre-op for consent."
               ]
             }
           ]
@@ -183,73 +252,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "pre-procedure-meds",
-          "title": "Pre-procedure meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Start 1 day prior to procedure; to be ordered in clinic."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Naproxen 500 mg BID (Disp 16).",
-                "Omeprazole 20 mg PO daily (Disp 8).",
-                "Hydroxyzine 25 mg PO nightly (Disp 8).",
-                "Colace 100 mg PO BID (Disp 16).",
-                "Tylenol 1000 mg PO Q6H begin at night (Disp 58).",
-                "Zofran 4 mg PO Q6H PRN for nausea post (Disp 8)."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "arrival-orders",
-          "title": "Arrival orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Orders when patient arrives."
-            },
-            {
-              "type": "checklist",
-              "title": "When patient arrives",
-              "items": [
-                "SDC/Outpatient with Discharge vs Bedded Outpatient.",
-                "NPO (moderate sedation).",
-                "Pulse checks.",
-                "Vital signs - Per unit routine.",
-                "Peripheral Line Placement - No IV in LEFT arm.",
-                "Glucose Point of Care.",
-                "Cefazolin (Ancef) 2g if <120kg, 3g if >120 kg.",
-                "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM).",
-                "Toradol 30 mg once IM.",
-                "Ondansetron (Zofran) 4 mg once IV.",
-                "Oxycodone 10 mg once PO.",
-                "Hx severe nausea: Scopolamine patch 1.5 mg apply to skin behind ear prior to procedure and leave in place x 72 hours; may cause anticholinergic side effects including dry mouth; may remove patch if these occur."
-              ]
-            },
-            {
-              "type": "checklist",
-              "title": "If patient did not take home meds or if pre-surgical",
-              "items": [
-                "Pantoprazole 40 mg PO once.",
-                "Colace 100 mg PO once.",
-                "Acetaminophen 1000 mg PO once."
-              ]
-            },
-            {
-              "type": "checklist",
-              "title": "If pre-surgical",
-              "items": [
-                "Place Foley.",
-                "No NSAIDs or dexamethasone.",
-                "Page GYN at #3030 when patient is in pre-op for consent."
-              ]
-            }
-          ]
         }
       ]
     },
@@ -263,20 +265,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Uterine fibroid embolization"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Pelvic arterial route:"
+                  },
+                  " the uterine artery usually arises from the anterior division of the internal iliac artery, but its origin and branching pattern are highly variable."
+                ],
+                [
+                  {
+                    "strong": "Uterine artery branches:"
+                  },
+                  " the descending segment supplies the cervix and vagina; transverse and ascending branches supply the uterine body and fibroids."
+                ],
+                [
+                  {
+                    "strong": "Fibroid supply:"
+                  },
+                  " hypertrophied bilateral uterine arteries form tortuous perifibroid vessels and a characteristic fibroid blush."
+                ],
+                [
+                  {
+                    "strong": "Uterine-ovarian connection:"
+                  },
+                  " ovarian arteries arise near the renal arteries and commonly anastomose with uterine branches, creating both collateral supply and a route for nontarget embolization."
+                ],
+                [
+                  {
+                    "strong": "Structures to protect:"
+                  },
+                  " identify cervicovaginal and ovarian supply plus less common bladder, rectal, muscular, external-iliac, or mesenteric collaterals."
+                ]
               ]
             }
           ]
@@ -286,60 +310,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Uterine fibroid embolization"
             },
             {
-              "type": "paragraph",
-              "text": "Future edit: add UFE-specific troubleshooting."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Difficult uterine artery selection.",
-                    "Variant pelvic arterial anatomy.",
-                    "Non-target embolization concern.",
-                    "Severe post-embolization pain or nausea.",
-                    "Access-site bleeding."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause UFE or prompt escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate if"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Pregnancy not excluded.",
-                    "Active infection or malignancy concern.",
-                    "Patient goals do not align with procedure.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Severe uncontrolled post-procedure pain, fever/sepsis concern, access-site bleeding, or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm the plan:"
+                  },
+                  " review MRI or pelvic imaging for fibroid burden, vascularity, necrosis, adenomyosis, and possible ovarian supply."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain access and map the pelvis:"
+                  },
+                  " use radial or femoral access, then define the internal iliac, anterior division, uterine origin, and variant branches."
+                ],
+                [
+                  {
+                    "strong": "3. Select the first uterine artery:"
+                  },
+                  " advance a microcatheter into the transverse segment beyond cervicovaginal supply when feasible."
+                ],
+                [
+                  {
+                    "strong": "4. Confirm the target:"
+                  },
+                  " verify fibroid blush, catheter stability, uterine-ovarian anastomoses, and absence of concerning AV shunting."
+                ],
+                [
+                  {
+                    "strong": "5. Embolize to near-stasis:"
+                  },
+                  " inject slowly under fluoroscopy; 500-700 micrometer microspheres are common. Aim for a pruned-tree appearance and contrast persisting about five heartbeats, then pause 2-5 minutes and recheck."
+                ],
+                [
+                  {
+                    "strong": "6. Treat the other side:"
+                  },
+                  " embolize the contralateral uterine artery to a matched endpoint."
+                ],
+                [
+                  {
+                    "strong": "7. Complete the study:"
+                  },
+                  " confirm bilateral reduction of fibroid blush and selectively evaluate ovarian or other collateral supply if treatment appears incomplete."
+                ]
               ]
             }
           ]
@@ -349,18 +367,85 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Uterine fibroid embolization"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Unilateral or incomplete treatment:"
+                      },
+                      " untreated contralateral uterine or ovarian supply is a common reason for persistent symptoms or recurrence."
+                    ],
+                    [
+                      {
+                        "strong": "Vasospasm:"
+                      },
+                      " can mimic stasis and produce undertreatment; pause, reduce manipulation, and treat spasm before accepting the endpoint."
+                    ],
+                    [
+                      {
+                        "strong": "Reflux and nontarget embolization:"
+                      },
+                      " inject slowly and stop with reflux, loss of antegrade flow, or catheter instability."
+                    ],
+                    [
+                      {
+                        "strong": "Uterine-ovarian anastomosis:"
+                      },
+                      " particles reaching the ovarian bed can impair ovarian function; define flow direction and adjust position, particle strategy, or treatment plan."
+                    ],
+                    [
+                      {
+                        "strong": "AV shunting:"
+                      },
+                      " rapid venous filling raises systemic particle-embolization risk; stop and reassess the embolic strategy."
+                    ],
+                    [
+                      {
+                        "strong": "Overembolization:"
+                      },
+                      " do not chase complete uterine arterial occlusion; excessive ischemia increases uterine necrosis, infection, and sepsis risk."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Japanese Society of Interventional Radiology UAE Guidelines",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12460036/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Australia and New Zealand Quality Care Guidelines for UAE",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9545349/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Uterine Artery Embolization Technique and Safety Review",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3036449/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

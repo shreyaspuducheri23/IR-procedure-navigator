@@ -39,18 +39,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -65,23 +53,6 @@
                 "Suspicious cervical lymph node.",
                 "PET-avid thyroid nodule.",
                 "Re-biopsy after nondiagnostic or concerning cytology."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "INR < 2-3 and platelets >20k."
-            },
-            {
-              "type": "list",
-              "items": [
-                "Platelets >20,000/uL.",
-                "INR < 2-3."
               ]
             }
           ]
@@ -128,6 +99,33 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "INR < 2-3 and platelets >20k."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Platelets >20,000/uL.",
+                "INR < 2-3."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -152,7 +150,8 @@
                 "Labs are appropriate.",
                 "Confirm cytology/pathology.",
                 "Confirm FNA vs core biopsy.",
-                "Confirm positioning."
+                "Confirm positioning.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

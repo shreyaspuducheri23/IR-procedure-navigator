@@ -1154,7 +1154,7 @@ installY90TherapyEdits();
 installIntraprocedureSubblocks();
 installModerateSedationLinks();
 installRestartMedicationGuidance();
-installPreProcedureLieFlatChecks();
+installPreProcedureTabs();
 
 const visibleProcedures = procedures.filter((procedure) => !hiddenProcedureTitles.has(procedure.title));
 
@@ -1391,7 +1391,24 @@ function installIntraprocedureSubblocks() {
         ...procedure.nodes[proceduralStepsId],
         title: "Procedural steps",
         type: "action",
-        summary: ["Catheter Directed Thrombolysis - DVT Intervention", "Cholecystostomy Tube Placement/Exchange", "Fistulogram", "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange", "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement"].includes(procedure.title) ? "" : "Procedure-specific access, device, imaging, and completion steps.",
+        summary: [
+          "Adrenal Vein Sampling",
+          "Catheter Directed Thrombolysis - DVT Intervention",
+          "Cholecystostomy Tube Placement/Exchange",
+          "Fistulogram",
+          "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange",
+          "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement",
+          "Liver Biopsy/Fiducial Marker Placement",
+          "Lung Biopsy/Fiducial Marker Placement",
+          "Nephrostomy Tube Placement",
+          "Paracentesis",
+          "PICC Placement",
+          "Prostate Artery Embolization",
+          "Thoracentesis",
+          "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)",
+          "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)",
+          "Uterine Fibroid Embolization (UFE)",
+        ].includes(procedure.title) ? "" : "Procedure-specific access, device, imaging, and completion steps.",
         children: existingChildren,
       };
 
@@ -1441,7 +1458,6 @@ function installGastrostomyTubeHeaderPrototype() {
         `${id}-labs-v2`,
         `${id}-anticoag-v2`,
         `${id}-sedation-v2`,
-        `${id}-physical-exam-v2`,
         `${id}-checklist-v2`,
       ],
     },
@@ -1503,25 +1519,16 @@ function installGastrostomyTubeHeaderPrototype() {
         ],
       },
     },
-    [`${id}-physical-exam-v2`]: {
-      title: "Physical exam",
-      type: "decision",
-      summary: "Confirm target skin site is usable.",
-      details: {
-        "Physical exam": [
-          "Target skin site without active infection or overlying medical machinery, such as leads, pacers, etc.",
-        ],
-      },
-    },
     [`${id}-checklist-v2`]: {
       title: "Checklist",
       type: "decision",
-      summary: "Confirm indication, imaging, labs, access window, NPO status, barium, NG tube if inpatient, and antibiotics.",
+      summary: "Confirm indication, imaging, labs, access window and skin site, NPO status, barium, NG tube if inpatient, and antibiotics.",
       details: {
         Checklist: [
           "Confirm indication and review imaging.",
           "Labs are appropriate.",
           "Appropriate window on imaging.",
+          "Assess the planned abdominal skin site for active infection or overlying medical devices, such as leads or pacers.",
           "Patient is NPO if moderate sedation.",
           { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
           "Barium order to be administered ENTIRE bottle the night prior.",
@@ -2257,6 +2264,65 @@ function installAdrenalVeinSamplingEdits() {
     };
   }
 
+  nodes[`${id}-intra`] = {
+    title: "Intraprocedure",
+    type: "reference",
+    summary: "",
+    children: [`${id}-intra-anatomy`, `${id}-intra-procedural-steps`, `${id}-intra-pitfalls-safety`],
+  };
+  delete nodes[`${id}-intra-placeholder`];
+
+  nodes[`${id}-intra-anatomy`] = {
+    title: "Anatomy",
+    type: "reference",
+    summary: "",
+    details: {
+      "Adrenal vein sampling": [
+        { strong: "Right adrenal vein:", text: " short and small; enters the posterolateral IVC, often near T11-T12 and above the right renal vein." },
+        { strong: "Left adrenal vein:", text: " usually joins the inferior phrenic vein; their common trunk enters the superior aspect of the left renal vein." },
+        { strong: "Hepatic mimics:", text: " small accessory hepatic veins near the right adrenal ostium can look similar on venography." },
+        { strong: "Variant drainage:", text: " duplicated adrenal veins or a shared hepatic-adrenal trunk can alter sampling and dilute hormone concentrations." },
+        { strong: "Peripheral reference:", text: " an infrarenal IVC or peripheral venous sample provides the comparator for adrenal hormone measurements." },
+      ],
+    },
+  };
+  nodes[`${id}-intra-procedural-steps`] = {
+    title: "Procedural steps",
+    type: "action",
+    summary: "",
+    details: {
+      "Adrenal vein sampling": [
+        { strong: "Confirm the sampling plan:", text: " review venous imaging, cosyntropin timing, collection tubes, and the laboratory's labeling and rapid-cortisol workflow." },
+        { strong: "Obtain venous access:", text: " use ultrasound-guided femoral access and prepare the IVC/peripheral reference sampling route." },
+        { strong: "Select the right adrenal vein:", text: " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy." },
+        { strong: "Select the left adrenal vein:", text: " enter through the left renal vein and confirm the common adrenal-phrenic trunk." },
+        { strong: "Collect matched samples:", text: " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status." },
+        { strong: "Confirm selectivity:", text: " use rapid cortisol when available; adrenal/reference cortisol ratio is commonly >=5 with cosyntropin or >=2 without it. Apply local criteria and resample if inadequate." },
+        { strong: "Complete and hand off:", text: " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation." },
+      ],
+    },
+  };
+  nodes[`${id}-intra-pitfalls-safety`] = {
+    title: "Pitfalls and safety",
+    type: "caution",
+    summary: "",
+    details: {
+      "Adrenal vein sampling": [
+        { strong: "Wrong vein:", text: " an accessory hepatic vein can mimic the right adrenal vein; confirm selectivity rather than trusting the venogram alone." },
+        { strong: "Rupture or hemorrhage:", text: " avoid forceful injection and deep wedging; stop and assess new flank/back pain, extravasation, or instability." },
+        { strong: "Overly selective sampling:", text: " a deep tributary may miss tumor drainage and falsely suggest the opposite side; sample representative gland outflow." },
+        { strong: "Poor blood return:", text: " strong suction can collapse the vein; aspirate gently and reassess catheter position instead of pulling harder." },
+        { strong: "Sample mix-ups or dilution:", text: " clear contrast/flush dead space, label tubes immediately, and keep sampling times and cosyntropin status consistent." },
+        { strong: "Misleading lateralization:", text: " confirm bilateral selectivity first; compare aldosterone/cortisol ratios, not raw aldosterone. Cortisol cosecretion can confound interpretation." },
+      ],
+      References: [
+        { text: "Australian and New Zealand AVS Working Group recommendations", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11612544/" },
+        { text: "Adrenal vein sampling: technique and protocol, a systematic review", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8093361/" },
+        { text: "Anatomical variations encountered during adrenal venous sampling", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11009137/" },
+      ],
+    },
+  };
+
   if (nodes[`${id}-post-orders`]) {
     nodes[`${id}-post-orders`].summary =
       "Post-procedure orders grouped by whether adrenal vein sampling lab results have returned.";
@@ -2405,8 +2471,8 @@ function installParacentesisEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the paracentesis procedural technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -2437,25 +2503,52 @@ function installParacentesisEdits() {
         },
       ],
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common paracentesis problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": ["No safe pocket.", "Poor drainage.", "Persistent leak.", "Unexpected bloody fluid.", "Patient discomfort."],
+        Paracentesis: [
+          { strong: "Ascites pocket:", text: " free fluid collects dependently in the lower abdomen and pelvis; choose a pocket with adequate depth and a short abdominal-wall path." },
+          { strong: "Bowel and solid organs:", text: " scan in multiple planes to separate fluid from mobile bowel, liver, spleen, and the urinary bladder." },
+          { strong: "Abdominal-wall vessels:", text: " use color Doppler to avoid the inferior epigastric vessels, collateral veins, and other vessels along the planned tract." },
+          { strong: "Skin and scars:", text: " avoid infected skin, surgical scars, abdominal-wall masses, and prominent varices when possible." },
+          { strong: "Position matters:", text: " fluid and bowel shift when the patient moves; mark immediately before access and keep the patient in the same position." },
+        ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Hemodynamic instability.",
-          "Peritoneal signs or severe pain.",
-          "Concern for bowel injury.",
-          "Unexpected hemorrhagic output.",
-          "No safe window.",
+        Paracentesis: [
+          { strong: "Confirm the plan:", text: " diagnostic versus therapeutic drainage, requested studies, and the intended volume." },
+          { strong: "Find the pocket:", text: " use ultrasound in multiple planes to assess fluid depth, abdominal-wall thickness, and nearby organs." },
+          { strong: "Check the tract:", text: " apply color Doppler and select a site without abdominal-wall vessels." },
+          { strong: "Prep and anesthetize:", text: " maintain the mapped position and anesthetize through the abdominal wall to the peritoneum." },
+          { strong: "Enter the fluid:", text: " use real-time ultrasound for a small or difficult pocket, confirm free return, and advance the catheter without forcing it." },
+          { strong: "Collect and drain:", text: " fill the requested specimen tubes first, then drain while monitoring pain, flow, and hemodynamics." },
+          { strong: "Finish cleanly:", text: " remove the catheter, dress the site, document volume and appearance, and follow the albumin plan for large-volume drainage." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        Paracentesis: [
+          { strong: "No safe pocket:", text: " do not attempt a landmark-only puncture when fluid is small, loculated, or obscured by bowel; reposition or use real-time guidance." },
+          { strong: "Bleeding:", text: " avoid abdominal-wall vessels and varices; stop and reassess unexpected bloody return, an enlarging hematoma, hypotension, or increasing pain." },
+          { strong: "Bowel or organ injury:", text: " confirm the tract in multiple planes and stop for severe pain, peritoneal signs, or concern for enteric return." },
+          { strong: "Poor drainage:", text: " check for catheter kinking, side holes against the wall, loculated fluid, or a shifted pocket before replacing access." },
+          { strong: "Persistent leak:", text: " use a small tract, remove the catheter promptly after drainage, and manage ongoing leakage with positioning and an occlusive dressing." },
+          { strong: "Post-paracentesis instability:", text: " slow or stop drainage for hypotension or symptoms and follow the albumin protocol after large-volume paracentesis." },
+        ],
+        References: [
+          { text: "Society of Hospital Medicine Position Statement on Ultrasound-Guided Paracentesis", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8021127/" },
+          { text: "AASLD Practice Guidance on Ascites and Spontaneous Bacterial Peritonitis", href: "https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.31884" },
         ],
       },
     },
@@ -2556,8 +2649,8 @@ function installThoracentesisEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the thoracentesis procedural technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -2582,26 +2675,53 @@ function installThoracentesisEdits() {
         },
       ],
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common thoracentesis problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": ["No safe pocket.", "Dry tap.", "Cough or chest discomfort.", "Persistent air leak concern.", "Unexpected bloody fluid."],
+        Thoracentesis: [
+          { strong: "Pleural space:", text: " fluid lies between parietal and visceral pleura; confirm a true pocket rather than consolidated lung." },
+          { strong: "Lung and diaphragm:", text: " identify lung excursion above and the diaphragm below throughout respiration." },
+          { strong: "Below the diaphragm:", text: " the liver is right-sided and the spleen is left-sided; keep both outside the planned tract." },
+          { strong: "Intercostal bundle:", text: " the vein, artery, and nerve run along the inferior rib margin; enter over the superior rib margin." },
+          { strong: "Complex effusions:", text: " loculations, adhesions, and non-expandable lung can limit drainage and change the expected result." },
+        ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Hemodynamic instability.",
-          "Respiratory distress.",
-          "New severe chest pain.",
-          "Concern for pneumothorax.",
-          "Unexpected hemorrhagic output.",
-          "No safe window.",
+        Thoracentesis: [
+          { strong: "Confirm the plan:", text: " side, diagnostic versus therapeutic goal, specimen studies, and intended drainage volume." },
+          { strong: "Map the pocket:", text: " scan in the procedure position and mark fluid depth, lung, diaphragm, and adjacent organs." },
+          { strong: "Choose the tract:", text: " typical landmarks are the 6th-8th intercostal spaces at the midaxillary line (supine) or posterior midscapular line (seated). Ultrasound determines the safe site above the diaphragm; use Doppler as needed and enter over the superior rib margin." },
+          { strong: "Prep and anesthetize:", text: " extend local anesthesia to the parietal pleura and confirm fluid return." },
+          { strong: "Place the catheter:", text: " advance into the pleural space without forcing it and collect diagnostic samples first." },
+          { strong: "Drain slowly:", text: " use manual aspiration or gravity rather than vacuum bottles or wall suction." },
+          { strong: "Stop for symptoms:", text: " end drainage for chest tightness, pain, persistent cough, or worsening breathlessness; document volume and appearance." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        Thoracentesis: [
+          { strong: "No safe pocket:", text: " do not use landmarks alone; reposition or use real-time ultrasound for small or loculated fluid." },
+          { strong: "Pneumothorax:", text: " keep the needle tip controlled and reassess new dyspnea, hypoxia, or chest pain." },
+          { strong: "Bleeding:", text: " enter over the rib, avoid Doppler-visible vessels, and escalate bloody output with instability or an enlarging hematoma." },
+          { strong: "Organ injury:", text: " confirm the diaphragm and abdominal organs before access, especially with a small or subpulmonic effusion." },
+          { strong: "Re-expansion symptoms:", text: " drain slowly, generally limit one attempt to 1.5 L, and stop for pain, cough, tightness, or breathlessness." },
+          { strong: "Non-expandable lung:", text: " a post-drainage pneumothorax may be ex vacuo; correlate with symptoms and imaging before reflex chest-tube placement." },
+        ],
+        References: [
+          { text: "British Thoracic Society Clinical Statement on Pleural Procedures", href: "https://thorax.bmj.com/content/78/Suppl_3/s43" },
+          { text: "British Thoracic Society Guideline for Pleural Disease", href: "https://thorax.bmj.com/content/78/11/1143" },
+          { text: "Thoracentesis: anatomy and approach landmarks (StatPearls)", href: "https://www.ncbi.nlm.nih.gov/books/NBK441866/" },
         ],
       },
     },
@@ -2914,8 +3034,8 @@ function installNephrostomyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the nephrostomy tube placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -2959,33 +3079,52 @@ function installNephrostomyEdits() {
         "Follow up": ["Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "Common nephrostomy tube placement problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        Troubleshooting: [
-          "No safe access window.",
-          "Difficult collecting system access.",
-          "Nondilated collecting system.",
-          "Bloody urine.",
-          "Tube obstruction.",
-          "Tube dislodgement or leakage.",
+        "Nephrostomy tube placement": [
+          { strong: "Collecting system:", text: " map the posterior calyces, renal pelvis, ureter, and level of obstruction." },
+          { strong: "Preferred target:", text: " a posterior mid- or lower-pole calyx provides a straight papillary tract with lower vascular risk." },
+          { strong: "Brodel's line:", text: " approach through this relatively avascular posterolateral plane; target the calyceal papilla and avoid direct pelvic or infundibular puncture." },
+          { strong: "Adjacent structures:", text: " map the pleura and lung, colon, bowel, right-sided liver, and left-sided spleen." },
+          { strong: "Access angle:", text: " favor a subcostal route when feasible; a higher supracostal path carries greater pleural risk." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "Findings that should pause the case or prompt urgent escalation.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "Escalate if": [
-          "Sepsis or unstable vitals.",
-          "No safe access window.",
-          "Uncorrected high-risk anticoagulation issue.",
-          "Concern for vascular, bowel, pleural, or solid-organ injury.",
-          "Heavy hematuria, clot obstruction, or hemodynamic change after access.",
-          "Clinical deterioration after decompression.",
+        "Nephrostomy tube placement": [
+          { strong: "Confirm the plan:", text: " side, obstruction level, urgency, antibiotics, and the intended drainage endpoint." },
+          { strong: "Map the kidney:", text: " use ultrasound and Doppler to find a safe posterior calyx and avoid vessels or adjacent organs." },
+          { strong: "Access the calyx:", text: " puncture the central papilla under image guidance; confirm urine return before gentle contrast." },
+          { strong: "Sample infected urine:", text: " send cultures promptly and avoid pressurizing an infected system." },
+          { strong: "Secure wire access:", text: " advance into the pelvis or ureter and stabilize the wire before dilation." },
+          { strong: "Place the catheter:", text: " dilate the tract and form the locking loop fully within the collecting system." },
+          { strong: "Confirm drainage:", text: " use gentle contrast, connect to gravity, secure the tube, and document the output." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Nephrostomy tube placement": [
+          { strong: "Sepsis:", text: " the key acute risk in infected obstruction. Give antibiotics, limit contrast and manipulation, and escalate rigors or hypotension." },
+          { strong: "Hemorrhage:", text: " use a posterior calyx; heavy or persistent hematuria with instability suggests vascular injury." },
+          { strong: "Pleural or visceral injury:", text: " avoid an unnecessarily high route and keep pleura, colon, bowel, liver, and spleen outside the tract." },
+          { strong: "Nondilated system:", text: " optimize ultrasound or CT guidance rather than repeatedly redirecting blindly." },
+          { strong: "Wire or tract loss:", text: " stabilize the wire before dilation; never advance against resistance or suspected extravasation." },
+          { strong: "Poor drainage:", text: " confirm intrarenal side holes, then check for kinking, clot, malposition, or dislodgement before forceful flushing." },
+        ],
+        References: [
+          { text: "CIRSE Standards of Practice on Nephrostomy and Ureteric Stent Placement and Exchange", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12963180/" },
+          { text: "SIR Quality Improvement Guidelines for Percutaneous Nephrostomy", href: "https://pubmed.ncbi.nlm.nih.gov/14514833/" },
         ],
       },
     },
@@ -3036,13 +3175,29 @@ function installNephrostomyEdits() {
     };
 
     variant.nodes[`${id}-intra-v2`].summary = "Future edit: add procedure-specific technique notes.";
-    variant.nodes[`${id}-troubleshooting-v2`].summary = "Future edit: add procedure-specific troubleshooting.";
-    variant.nodes[`${id}-troubleshooting-v2`].details = {
-      "Needs procedure-specific edit": ["Add common problems and first checks."],
+    variant.nodes[`${id}-intra-v2-anatomy`] = {
+      title: "Anatomy",
+      type: "reference",
+      summary: "Future edit: add procedure-specific anatomy and access landmarks.",
+      details: {
+        "Needs procedure-specific edit": ["Add anatomy, access route, and structures to avoid."],
+      },
     };
-    variant.nodes[`${id}-red-flags-v2`].summary = "Future edit: add procedure-specific stop/escalate criteria.";
-    variant.nodes[`${id}-red-flags-v2`].details = {
-      "Needs procedure-specific edit": ["Add red flags and escalation criteria."],
+    variant.nodes[`${id}-intra-v2-procedural-steps`] = {
+      title: "Procedural steps",
+      type: "action",
+      summary: "Future edit: add procedure-specific steps.",
+      details: {
+        "Needs procedure-specific edit": ["Add the major procedural steps and completion checks."],
+      },
+    };
+    variant.nodes[`${id}-intra-v2-pitfalls-safety`] = {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "Future edit: add procedure-specific pitfalls and escalation criteria.",
+      details: {
+        "Needs procedure-specific edit": ["Add common problems, safety checks, and escalation criteria."],
+      },
     };
     variant.nodes[`${id}-post-v2`].summary = "Future edit: add procedure-specific post-procedure orders, AVS, and follow-up.";
     variant.nodes[`${id}-post-v2`].checklistSections = [
@@ -4536,8 +4691,8 @@ function installLiverBiopsyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the percutaneous liver biopsy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -4565,31 +4720,52 @@ function installLiverBiopsyEdits() {
         "Follow up": ["No specifics."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common liver biopsy problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "No safe biopsy window.",
-          "Ascites affecting access.",
-          "Poor lesion visualization.",
-          "Insufficient specimen.",
-          "Post-biopsy pain or suspected bleeding.",
+        "Liver biopsy": [
+          { strong: "Biopsy target:", text: " distinguish a focal-lesion biopsy from a non-targeted parenchymal biopsy before choosing the route and specimen plan." },
+          { strong: "Portal structures:", text: " portal veins, hepatic arteries, and bile ducts travel together; keep the biopsy path away from visible central branches." },
+          { strong: "Hepatic veins:", text: " map the major hepatic veins and IVC before advancing into a deep or central target." },
+          { strong: "Access route:", text: " right-lobe access is often intercostal, while left-lobe access may be subcostal or epigastric; choose the shortest safe route with a parenchymal margin when feasible." },
+          { strong: "Structures to avoid:", text: " lung and pleura, gallbladder, bowel, kidney, and abdominal-wall vessels. For an intercostal route, enter over the superior rib margin." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Uncorrected high-risk anticoagulation issue.",
-          "No safe window.",
-          "Uncontrolled blood pressure.",
-          "Ascites or infection that makes percutaneous access unsafe.",
-          "Hemodynamic instability, severe abdominal/right shoulder pain, expanding hematoma, or suspected hemorrhage after biopsy.",
+        "Liver biopsy": [
+          { strong: "Confirm the biopsy plan:", text: " targeted versus non-targeted, required cores, and pathology or microbiology containers." },
+          { strong: "Map a safe trajectory:", text: " use ultrasound or CT to identify the target, capsule, vessels, adjacent organs, and a reproducible breath-hold." },
+          { strong: "Anesthetize the tract:", text: " extend local anesthesia through the skin, abdominal wall, and liver capsule." },
+          { strong: "Advance the biopsy system:", text: " place the coaxial introducer under image guidance and confirm the tip before sampling." },
+          { strong: "Obtain the cores:", text: " sample viable tissue, limit passes, and avoid the necrotic center of a lesion when possible." },
+          { strong: "Confirm specimen adequacy:", text: " inspect the cores and route them to the correct studies before ending the procedure." },
+          { strong: "Complete safely:", text: " withdraw with tract management as indicated, then assess for immediate bleeding or adjacent-organ injury." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Liver biopsy": [
+          { strong: "Hemorrhage:", text: " the major complication. Avoid visible vessels and escalate severe or increasing abdominal/right-shoulder pain, tachycardia, hypotension, or a falling hemoglobin." },
+          { strong: "No safe percutaneous route:", text: " do not force a window through lung, bowel, gallbladder, large vessels, or substantial ascites; consider an alternate target or transvenous approach." },
+          { strong: "Nondiagnostic tissue:", text: " confirm the exact target and specimen plan; sample the viable solid edge rather than necrosis when feasible." },
+          { strong: "Pleural transgression:", text: " avoid an unnecessarily high intercostal path and confirm the lung base before puncture." },
+          { strong: "Biliary injury or hemobilia:", text: " avoid central portal structures and evaluate new biliary pain, jaundice, or gastrointestinal bleeding." },
+          { strong: "Too many passes:", text: " balance tissue needs against rising bleeding risk and stop when the diagnostic goal is met." },
+        ],
+        References: [
+          { text: "ACR-SIR-SPR Practice Parameter for Image-Guided Percutaneous Needle Biopsy", href: "https://gravitas.acr.org/PPTS/GetDocumentView?docId=3" },
+          { text: "BSG/RCR/RCP Guidelines on Liver Biopsy in Clinical Practice", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7398479/" },
         ],
       },
     },
@@ -4706,8 +4882,8 @@ function installPiccPlacementEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the PICC placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -4734,31 +4910,52 @@ function installPiccPlacementEdits() {
         "Follow up": ["No specifics."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common PICC placement problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "No suitable peripheral vein.",
-          "Difficult wire passage.",
-          "Malpositioned tip.",
-          "Arm swelling or suspected central venous stenosis.",
-          "Line does not aspirate or flush.",
+        "PICC placement": [
+          { strong: "Upper-arm veins:", text: " assess the basilic, paired brachial, and cephalic veins; choose a patent vein large enough for the smallest suitable catheter." },
+          { strong: "Nearby structures:", text: " brachial veins travel close to the brachial artery and median nerve; identify all three before puncture." },
+          { strong: "Central course:", text: " the catheter passes through the axillary, subclavian, and brachiocephalic veins into the SVC." },
+          { strong: "Target tip:", text: " the lower SVC or cavoatrial junction provides high flow without placing the tip deep in the heart." },
+          { strong: "Vein preservation:", text: " protect potential dialysis-access veins and avoid an arm with an AV access, active lymphedema, or significant venous obstruction." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Requested arm has AV fistula/graft or dialysis plan.",
-          "Prior axillary surgery, lymphedema, or imaging concern that changes side/access planning.",
-          "Active infection at planned insertion site.",
-          "Severe arm swelling or suspected central venous occlusion.",
-          "Arterial puncture, expanding hematoma, or new chest symptoms.",
+        "PICC placement": [
+          { strong: "Confirm the device plan:", text: " indication, duration, required lumens, catheter size, and preferred arm." },
+          { strong: "Survey the veins:", text: " use ultrasound to confirm patency, size, depth, and separation from the artery and nerve." },
+          { strong: "Prep with full barrier:", text: " maintain maximal sterile technique and anesthetize the selected site." },
+          { strong: "Obtain venous access:", text: " puncture with real-time ultrasound, pass the wire gently, and confirm its central course." },
+          { strong: "Advance the catheter:", text: " measure the required length and guide the catheter centrally with fluoroscopy, ECG, or approved tip-navigation technology." },
+          { strong: "Confirm function and tip:", text: " verify lower-SVC/cavoatrial position, then aspirate and flush every lumen." },
+          { strong: "Secure and document:", text: " apply the stabilization device and sterile dressing; record vein, length, tip position, and readiness for use." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "PICC placement": [
+          { strong: "Artery or nerve injury:", text: " identify the brachial artery and median nerve before access; stop for arterial blood, severe pain, or paresthesia." },
+          { strong: "Thrombosis:", text: " use the smallest adequate catheter in a sufficiently large vein and avoid unnecessary lumens." },
+          { strong: "Tip malposition:", text: " check for internal-jugular, contralateral, azygos, or high-SVC placement before clearing the line." },
+          { strong: "Tip too deep:", text: " ectopy during advancement suggests right-atrial or ventricular entry; withdraw and reconfirm position." },
+          { strong: "Vein loss:", text: " avoid arms needed for dialysis access and reconsider placement with severe swelling, thrombosis, or central stenosis." },
+          { strong: "Infection or dislodgement:", text: " use maximal sterile barriers, secure without tension, and document the external length for later comparison." },
+        ],
+        References: [
+          { text: "Association of Anaesthetists Guidelines: Safe Vascular Access 2025", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12519924/" },
+          { text: "Society of Hospital Medicine Position Statement on Ultrasound-Guided Vascular Access", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10193861/" },
         ],
       },
     },
@@ -5053,8 +5250,8 @@ function installLungBiopsyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the lung biopsy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -5097,31 +5294,52 @@ function installLungBiopsyEdits() {
         "Follow up": ["No specifics."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common lung biopsy problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "No safe path to lesion.",
-          "Lesion motion or inability to breath-hold.",
-          "Pneumothorax on immediate or delayed CXR.",
-          "Pulmonary hemorrhage or hemoptysis.",
-          "Insufficient specimen.",
+        "Lung biopsy": [
+          { strong: "Target:", text: " define the viable solid component and its relationship to the pleura, fissures, bronchi, and pulmonary vessels." },
+          { strong: "Pleural path:", text: " favor the shortest route through aerated lung and cross the pleura once when feasible." },
+          { strong: "Structures to avoid:", text: " fissures, bullae, emphysematous lung, visible vessels, central airways, and the diaphragm." },
+          { strong: "Intercostal bundle:", text: " the vein, artery, and nerve run along the inferior rib margin; enter over the superior rib margin." },
+          { strong: "Respiratory motion:", text: " lower-lobe and juxtadiaphragmatic targets move most; use a repeatable respiratory phase throughout the biopsy." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Poor cardiopulmonary reserve for biopsy risk.",
-          "No safe path or unavoidable fissure crossing.",
-          "Uncorrected high-risk anticoagulation issue.",
-          "Respiratory distress, enlarging pneumothorax, significant hemoptysis, or hemodynamic instability.",
-          "Need for chest tube placement after biopsy.",
+        "Lung biopsy": [
+          { strong: "Confirm the biopsy plan:", text: " target, required tissue, molecular testing, microbiology, and specimen containers." },
+          { strong: "Position the patient:", text: " create the shortest stable path and rehearse a consistent breath-hold or quiet-breathing instruction." },
+          { strong: "Plan the trajectory:", text: " use CT to avoid fissures, bullae, vessels, major bronchi, and the diaphragm." },
+          { strong: "Anesthetize to the pleura:", text: " then advance the coaxial introducer incrementally with imaging confirmation." },
+          { strong: "Sample the target:", text: " place the tip in viable tissue, minimize pleural passes, and obtain only the cores needed." },
+          { strong: "Confirm specimen adequacy:", text: " inspect and route tissue before removing access, especially when molecular testing is required." },
+          { strong: "Check for complications:", text: " inspect the needle tract and obtain immediate imaging for pneumothorax and pulmonary hemorrhage." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Lung biopsy": [
+          { strong: "Pneumothorax:", text: " the most common complication. Minimize aerated-lung distance, fissure or bulla crossing, and repeated pleural passes; treat according to size, symptoms, and cardiopulmonary reserve." },
+          { strong: "Pulmonary hemorrhage or hemoptysis:", text: " avoid visible vessels, monitor oxygenation, place the biopsy side down when appropriate, and escalate significant bleeding." },
+          { strong: "Air embolism:", text: " rare but critical. Keep the biopsy system closed and treat sudden neurologic or cardiovascular change as an emergency." },
+          { strong: "Target motion:", text: " inconsistent breathing can move the lesion off-axis; repeat the same respiratory instruction before every advancement." },
+          { strong: "Nondiagnostic tissue:", text: " target viable solid tissue, avoid necrosis, and confirm specimen requirements before ending access." },
+          { strong: "No safe path:", text: " reconsider the approach when a fissure, bulla, central vessel, or poor cardiopulmonary reserve makes the planned route unsafe." },
+        ],
+        References: [
+          { text: "ACR-SIR-SPR Practice Parameter for Image-Guided Percutaneous Needle Biopsy", href: "https://gravitas.acr.org/PPTS/GetDocumentView?docId=3" },
+          { text: "Korean Society of Thoracic Radiology Guideline for Percutaneous Transthoracic Needle Biopsy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7817630/" },
         ],
       },
     },
@@ -6016,8 +6234,69 @@ function installProstateArteryEmbolizationEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the prostate artery embolization technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
+      details: {
+        Anatomy: [
+          { strong: "Variable origins:", text: " prostatic arteries commonly arise from the internal pudendal, obturator, or a shared superior vesical trunk." },
+          { strong: "Gland supply:", text: " anteromedial branches supply the central gland; posterolateral branches supply the peripheral gland and capsule." },
+          { strong: "BPH target:", text: " transition-zone enlargement surrounds the prostatic urethra, just below the bladder neck." },
+          { strong: "Dangerous connections:", text: " bladder, rectal, and penile collaterals can carry embolic outside the prostate." },
+          { strong: "Bilateral supply:", text: " accessory feeders and cross-midline connections can sustain symptoms or bleeding after incomplete treatment." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
+      details: {
+        "Basic steps": [
+          { strong: "1. Obtain arterial access", text: " via radial or femoral approach; select the internal iliac artery." },
+          { strong: "2. Map the prostatic supply", text: " with selective angiography; identify accessory feeders and pelvic collaterals." },
+          { strong: "3. Microcatheterize the target", text: " and confirm prostate perfusion with selective angiography and cone-beam CT when needed." },
+          { strong: "4. Protect nontarget branches", text: " by advancing beyond unsafe connections or selectively protecting them when appropriate." },
+          { strong: "5. Embolize slowly", text: " using the indication-specific plan below; reassess flow and stop for reflux." },
+          { strong: "6. Assess the opposite side", text: " and treat remaining prostatic supply when safely accessible." },
+          { strong: "7. Confirm the endpoint", text: " with final angiography; document residual supply and obtain access-site hemostasis." },
+        ],
+        "If for LUTS from BPH": [
+          { strong: "Elective gland treatment:", text: " deliver particles to the prostatic bed to near-stasis per protocol; aim for bilateral treatment when safe." },
+        ],
+        "If for refractory hematuria of prostatic origin": [
+          { strong: "Hemostasis first:", text: " target the bleeding supply; extravasation may be absent. Diffuse prostatic bleeding often needs bilateral embolization; focal arterial injury may need coils or another targeted agent." },
+          { strong: "Continue supportive care:", text: " coordinate resuscitation and bladder drainage/clot management with the primary and urology teams." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Pitfalls and safety": [
+          { strong: "Nontarget ischemia:", text: " exclude bladder, rectal, and penile supply before embolization; reassess if flow changes." },
+          { strong: "Spasm or dissection:", text: " avoid forceful wire advancement or injection; poor flow is not always a true embolization endpoint." },
+          { strong: "Missed feeders:", text: " reassess accessory and contralateral supply, but do not pursue unsafe catheterization." },
+          { strong: "Post-embolization symptoms:", text: " mild pelvic pain and dysuria are expected; severe pain, fever, or retention needs evaluation for ischemia, infection, or obstruction." },
+        ],
+        "If for LUTS from BPH": [
+          { strong: "Delayed benefit:", text: " symptom improvement takes time; edema can temporarily worsen obstruction. Confirm a voiding/catheter plan." },
+        ],
+        "If for refractory hematuria of prostatic origin": [
+          { strong: "Persistent bleeding:", text: " reassess the source, residual feeders, and coagulopathy; a quiet angiogram does not prove clinical hemostasis." },
+        ],
+        References: [
+          { text: "PAE anatomy, technique, and complications (Radiographics)", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9394104/" },
+          { text: "Standardized PAE technique: Delphi consensus", href: "https://pubmed.ncbi.nlm.nih.gov/41173451/" },
+          { text: "Embolization for refractory hematuria of prostatic origin", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9349008/" },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -6242,8 +6521,12 @@ function installTipsCreationEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the TIPS creation technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [
+        `${id}-intra-v2-anatomy`,
+        `${id}-intra-v2-procedural-steps`,
+        `${id}-intra-v2-pitfalls-safety`,
+      ],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -6282,30 +6565,68 @@ function installTipsCreationEdits() {
         "Follow up": ["Clinic visit in 1 month with TIPS ultrasound."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common TIPS creation problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "Difficult portal access.",
-          "Portal/hepatic vein patency or anatomy issue.",
-          "Need for adjunctive variceal embolization.",
-          "Hemodynamic instability or bleeding concern.",
+        "TIPS creation": [
+          { strong: "Systemic access route:", text: " the right internal jugular vein provides a direct path through the SVC, right atrium, and IVC to the hepatic veins." },
+          { strong: "Hepatic veins:", text: " the right hepatic vein is the usual launch point; the middle or left hepatic vein may be used when patency or puncture geometry is better." },
+          { strong: "Portal target:", text: " a right portal vein branch is commonly selected to create a short, straight, fully intrahepatic tract with reliable inflow." },
+          { strong: "Puncture geometry:", text: " the right portal branch usually lies anterior and caudal to the right hepatic vein, but cirrhosis and anatomic variation can distort this relationship." },
+          { strong: "Portal triad:", text: " portal veins travel with hepatic arteries and bile ducts, which are the key structures at risk during needle passes." },
+          { strong: "Liver capsule:", text: " keep the needle and tract within hepatic parenchyma; extrahepatic portal access or capsular transgression can cause major hemoperitoneum." },
+          { strong: "Shunt endpoints:", text: " with a dedicated partially covered stent, the uncovered portal segment sits in the portal vein, the covered segment begins at the parenchymal entry, and the hepatic end reaches the hepatic vein-IVC junction." },
+          { strong: "Portosystemic collaterals:", text: " coronary, short gastric, paraesophageal, and other varices may persist after decompression and sometimes require embolization." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Severe hepatic encephalopathy.",
-          "Pulmonary hypertension or heart failure concern.",
-          "Acute liver failure.",
-          "Active infection.",
-          "High MELD outside acceptable range unless emergent/salvage.",
+        "TIPS creation": [
+          { strong: "1. Confirm the route:", text: " review cross-sectional imaging, then choose the hepatic vein, portal target, and backup strategy." },
+          { strong: "2. Obtain venous access:", text: " use right IJ access in most cases; obtain a second venous access if needed for IVUS." },
+          { strong: "3. Record systemic pressures:", text: " document right atrial and free hepatic vein or IVC pressures before creating the shunt." },
+          { strong: "4. Select the hepatic vein:", text: " advance the TIPS set into the chosen vein and perform venography to confirm position and patency." },
+          { strong: "5. Align the puncture:", text: " orient the needle toward the planned portal branch using fluoroscopy plus US, IVUS, CO2, or another available targeting method." },
+          { strong: "6. Access the portal vein:", text: " use controlled needle passes and confirm true portal position before advancing the wire or dilating the tract." },
+          { strong: "7. Secure portal access:", text: " advance a catheter and stable wire into the main portal vein, SMV, or splenic vein, then perform portography." },
+          { strong: "8. Measure the baseline gradient:", text: " record portal pressure and calculate the portosystemic gradient against the free hepatic vein or IVC pressure." },
+          { strong: "9. Size the tract:", text: " measure the hepatic-to-portal course and mark portal and hepatic landing zones before stent deployment." },
+          { strong: "10. Create the shunt:", text: " dilate as needed and deploy a controlled-expansion covered stent across the intrahepatic tract." },
+          { strong: "11. Optimize flow:", text: " balloon incrementally and remeasure after each expansion. For variceal bleeding, a common goal is a post-TIPS gradient <12 mmHg or at least a 20% reduction; ascites treatment often targets about 8 mmHg, but the ideal endpoint is patient-specific." },
+          { strong: "12. Complete the study:", text: " assess shunt inflow and outflow, embolize persistent high-risk varices when indicated, and exclude extravasation before removing access." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Portal puncture": [
+          { strong: "Repeated or uncertain passes:", text: " re-check the trajectory and add US or IVUS guidance; confirm portal position before dilation." },
+          { strong: "Capsular injury:", text: " hypotension, abdominal distention, or extravasation suggests hemoperitoneum; stop and evaluate." },
+          { strong: "Arterial or biliary injury:", text: " watch for arterial extravasation, hemobilia, biliary-shunt fistula, or unexpected sepsis." },
+        ],
+        "Stent position": [
+          { strong: "Portal end:", text: " covered stent in the main portal vein can block branch inflow; uncovered stent left in the tract promotes stenosis or thrombosis." },
+          { strong: "Hepatic end too short:", text: " stopping before the hepatic vein-IVC junction invites outflow stenosis and shunt occlusion." },
+          { strong: "Hepatic end too long or misplaced:", text: " avoid covering nearby hepatic-vein drainage or extending unnecessarily into the IVC or right atrium." },
+        ],
+        "Hemodynamics and completion": [
+          { strong: "Over-shunting:", text: " <5 mmHg is a warning threshold. A 5-8 mmHg gradient may be intentional, but reassess encephalopathy, liver, and cardiac risk before further expansion." },
+          { strong: "Under-shunting or poor flow:", text: " persistent pressure or varices may reflect underexpansion, kink, thrombosis, poor inflow or outflow, or a collateral needing selective embolization." },
+        ],
+        References: [
+          { text: "North American Practice-Based Recommendations for TIPS in Portal Hypertension", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8760361/" },
+          { text: "CIRSE Standards of Practice on TIPS", href: "https://pubmed.ncbi.nlm.nih.gov/39550753/" },
+          { text: "AASLD Practice Guidance on TIPS", href: "https://www.aasld.org/practice-guidelines/transjugular-intrahepatic-portosystemic-shunt-tips" },
+          { text: "Comprehensive Review of TIPS-Related Complications", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10159729/" },
         ],
       },
     },
@@ -6438,8 +6759,12 @@ function installTipsRevisionEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the TIPS check/revision technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [
+        `${id}-intra-v2-anatomy`,
+        `${id}-intra-v2-procedural-steps`,
+        `${id}-intra-v2-pitfalls-safety`,
+      ],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -6474,29 +6799,63 @@ function installTipsRevisionEdits() {
         "Follow up": ["Clinic visit with TIPS ultrasound per MD."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "To be built as common TIPS revision/check problems and first checks.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "Unable to cross stenosis or occlusion.",
-          "Unexpected gradient findings.",
-          "Need for upsizing, relining, extension, or narrowing.",
-          "Access-site bleeding.",
+        "Failure map": [
+          { strong: "Portal inflow:", text: " assess portal-vein patency, the uncovered portal end, and inflow into the shunt." },
+          { strong: "Shunt body:", text: " look for underexpansion, kink, focal stenosis, thrombus, or incomplete tract coverage." },
+          { strong: "Hepatic outflow:", text: " the hepatic vein-IVC junction is a common site of edge stenosis and intimal hyperplasia." },
+          { strong: "Pressure circuit:", text: " calculate the gradient from main portal pressure to a consistent systemic reference at the free hepatic vein or IVC." },
+          { strong: "Collateral pathways:", text: " persistent varices can maintain bleeding risk; large spontaneous shunts can worsen encephalopathy." },
+          { strong: "Rescue routes:", text: " chronic occlusion or severe angulation may require transhepatic or transsplenic access for through-and-through control." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "To be built as stop/escalate criteria.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "To build": [
-          "Active infection.",
-          "Severe encephalopathy or worsening liver failure concern.",
-          "Hemodynamic instability or bleeding.",
-          "Concern for shunt thrombosis/occlusion with acute decompensation.",
+        "Diagnostic pass": [
+          { strong: "1. Define the problem:", text: " review symptoms, Doppler and prior imaging, stent type and diameter, and earlier gradients." },
+          { strong: "2. Access and cross the shunt:", text: " select the hepatic end from the IJ and secure a wire in the portal system." },
+          { strong: "3. Map the shunt:", text: " perform venography from portal inflow through the stent and hepatic outflow; identify focal lesions and collaterals." },
+          { strong: "4. Measure the gradient:", text: " record portal and free hepatic vein or IVC pressures before treatment using one systemic reference." },
+        ],
+        "Match treatment to failure": [
+          { strong: "Stenosis:", text: " angioplasty a focal lesion; reline or extend recurrent, resistant, intrastent, or edge disease." },
+          { strong: "Occlusion:", text: " clear thrombus, then fix the stenosis, kink, or uncovered segment that caused it." },
+          { strong: "Under-shunting:", text: " expand incrementally, improve inflow or outflow, and selectively embolize persistent high-risk varices when indicated." },
+          { strong: "Over-shunting:", text: " after medical optimization, use a controlled hourglass, parallel, or tapered reduction rather than routine complete occlusion." },
+        ],
+        Completion: [
+          { strong: "5. Recheck the endpoint:", text: " repeat portography and pressures; document final flow, gradient, branch preservation, and no extravasation." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Revision-specific pitfalls": [
+          { strong: "Treating Doppler alone:", text: " abnormal velocity raises suspicion but is not the final diagnosis; correlate with symptoms, venography, and direct pressure measurements." },
+          { strong: "Inconsistent pressure reference:", text: " switching between right atrial, free hepatic, and IVC pressure can create a false gradient change; use the same reference before and after revision." },
+          { strong: "False passage or lost access:", text: " confirm the wire is intraluminal and maintain stable portal purchase before ballooning, thrombectomy, or relining." },
+          { strong: "Clearing thrombus without fixing the cause:", text: " untreated edge stenosis, kink, underexpansion, or poor inflow and outflow invites rapid rethrombosis." },
+          { strong: "Unsafe stent extension:", text: " avoid covering major portal branches or adjacent hepatic-vein drainage and avoid unnecessary extension into the IVC or right atrium." },
+          { strong: "Embolization during thrombectomy:", text: " liberated thrombus can pass directly to the pulmonary circulation; monitor hemodynamics and use an appropriate clot-management strategy." },
+          { strong: "Reduction imbalance:", text: " too much narrowing restores bleeding or ascites; too little may not improve encephalopathy or cardiac overload. Recheck flow and gradient after each adjustment." },
+          { strong: "Alternative-access injury:", text: " transhepatic or transsplenic rescue adds capsular bleeding risk; plan tract closure and confirm hemostasis." },
+        ],
+        References: [
+          { text: "North American Practice-Based Recommendations for TIPS in Portal Hypertension", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8760361/" },
+          { text: "Australian Best Practice Recommendations for TIPS", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13121398/" },
+          { text: "TIPS Dysfunction: Doppler, Clinical Findings, and Shunt Venography", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4977976/" },
+          { text: "TIPS Reduction Techniques", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10159697/" },
         ],
       },
     },
@@ -6942,8 +7301,12 @@ function installUfeEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "Future UFE technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [
+        `${id}-intra-v2-anatomy`,
+        `${id}-intra-v2-procedural-steps`,
+        `${id}-intra-v2-pitfalls-safety`,
+      ],
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -7002,31 +7365,53 @@ function installUfeEdits() {
         "Follow up": ["Clinic visit in 1 month."],
       },
     },
-    [`${id}-troubleshooting-v2`]: {
-      title: "Troubleshooting",
-      type: "decision",
-      summary: "Future edit: add UFE-specific troubleshooting.",
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy",
+      type: "reference",
+      summary: "",
       details: {
-        "To build": [
-          "Difficult uterine artery selection.",
-          "Variant pelvic arterial anatomy.",
-          "Non-target embolization concern.",
-          "Severe post-embolization pain or nausea.",
-          "Access-site bleeding.",
+        "Uterine fibroid embolization": [
+          { strong: "Pelvic arterial route:", text: " the uterine artery usually arises from the anterior division of the internal iliac artery, but its origin and branching pattern are highly variable." },
+          { strong: "Uterine artery branches:", text: " the descending segment supplies the cervix and vagina; transverse and ascending branches supply the uterine body and fibroids." },
+          { strong: "Fibroid supply:", text: " hypertrophied bilateral uterine arteries form tortuous perifibroid vessels and a characteristic fibroid blush." },
+          { strong: "Uterine-ovarian connection:", text: " ovarian arteries arise near the renal arteries and commonly anastomose with uterine branches, creating both collateral supply and a route for nontarget embolization." },
+          { strong: "Structures to protect:", text: " identify cervicovaginal and ovarian supply plus less common bladder, rectal, muscular, external-iliac, or mesenteric collaterals." },
         ],
       },
     },
-    [`${id}-red-flags-v2`]: {
-      title: "Red Flags",
-      type: "caution",
-      summary: "Findings that should pause UFE or prompt escalation.",
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps",
+      type: "action",
+      summary: "",
       details: {
-        "Escalate if": [
-          "Pregnancy not excluded.",
-          "Active infection or malignancy concern.",
-          "Patient goals do not align with procedure.",
-          "Uncorrected high-risk anticoagulation issue.",
-          "Severe uncontrolled post-procedure pain, fever/sepsis concern, access-site bleeding, or hemodynamic instability.",
+        "Uterine fibroid embolization": [
+          { strong: "1. Confirm the plan:", text: " review MRI or pelvic imaging for fibroid burden, vascularity, necrosis, adenomyosis, and possible ovarian supply." },
+          { strong: "2. Obtain access and map the pelvis:", text: " use radial or femoral access, then define the internal iliac, anterior division, uterine origin, and variant branches." },
+          { strong: "3. Select the first uterine artery:", text: " advance a microcatheter into the transverse segment beyond cervicovaginal supply when feasible." },
+          { strong: "4. Confirm the target:", text: " verify fibroid blush, catheter stability, uterine-ovarian anastomoses, and absence of concerning AV shunting." },
+          { strong: "5. Embolize to near-stasis:", text: " inject slowly under fluoroscopy; 500-700 micrometer microspheres are common. Aim for a pruned-tree appearance and contrast persisting about five heartbeats, then pause 2-5 minutes and recheck." },
+          { strong: "6. Treat the other side:", text: " embolize the contralateral uterine artery to a matched endpoint." },
+          { strong: "7. Complete the study:", text: " confirm bilateral reduction of fibroid blush and selectively evaluate ovarian or other collateral supply if treatment appears incomplete." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety",
+      type: "caution",
+      summary: "",
+      details: {
+        "Uterine fibroid embolization": [
+          { strong: "Unilateral or incomplete treatment:", text: " untreated contralateral uterine or ovarian supply is a common reason for persistent symptoms or recurrence." },
+          { strong: "Vasospasm:", text: " can mimic stasis and produce undertreatment; pause, reduce manipulation, and treat spasm before accepting the endpoint." },
+          { strong: "Reflux and nontarget embolization:", text: " inject slowly and stop with reflux, loss of antegrade flow, or catheter instability." },
+          { strong: "Uterine-ovarian anastomosis:", text: " particles reaching the ovarian bed can impair ovarian function; define flow direction and adjust position, particle strategy, or treatment plan." },
+          { strong: "AV shunting:", text: " rapid venous filling raises systemic particle-embolization risk; stop and reassess the embolic strategy." },
+          { strong: "Overembolization:", text: " do not chase complete uterine arterial occlusion; excessive ischemia increases uterine necrosis, infection, and sepsis risk." },
+        ],
+        References: [
+          { text: "Japanese Society of Interventional Radiology UAE Guidelines", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12460036/" },
+          { text: "Australia and New Zealand Quality Care Guidelines for UAE", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9545349/" },
+          { text: "Uterine Artery Embolization Technique and Safety Review", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3036449/" },
         ],
       },
     },
@@ -7542,24 +7927,127 @@ function installRestartMedicationGuidance() {
   });
 }
 
-function installPreProcedureLieFlatChecks() {
+function installPreProcedureTabs() {
   const lieFlatCheck = "Confirm sedation plan - patient can lie flat.";
+  const orderTitles = new Set(["Pre-procedure orders", "Pre-operative orders", "Pre-procedure meds", "Arrival orders"]);
+  const orderItems = new Set([
+    "NPO if moderate sedation.",
+    "NPO for moderate sedation.",
+    "NPO per local-only exchange workflow.",
+    "Patient is NPO.",
+    "Patient is NPO if moderate sedation.",
+    "Barium order to be administered ENTIRE bottle the night prior.",
+    "NG tube in place if inpatient.",
+    "Ancef 2 g if <120 kg, 3 g if >120 kg.",
+    "Antibiotics with gram negative coverage are ordered.",
+    "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
+    "Vital signs per routine.",
+    "Peripheral IV placement, NOT in left arm.",
+    "Glucose point of care ordered.",
+  ]);
+
+  const appendDetails = (node, title, items) => {
+    if (!items.length) return;
+    node.details = node.details || {};
+    const existing = node.details[title] || [];
+    const seen = new Set(existing.map((item) => JSON.stringify(item)));
+    node.details[title] = [...existing, ...items.filter((item) => {
+      const key = JSON.stringify(item);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })];
+  };
 
   procedures.forEach((procedure) => {
-    Object.values(procedure.nodes).forEach((node) => {
-      if (node.title !== "Pre-procedure") return;
-      const childNodes = (node.children || [])
-        .map((childId) => procedure.nodes[childId])
-        .filter(Boolean);
-      const preProcedureContent = JSON.stringify([node, ...childNodes]).toLowerCase();
-      if (preProcedureContent.includes("patient can lie flat")) return;
+    const nodes = procedure.nodes;
+    const pre = Object.values(nodes).find((node) => node.title === "Pre-procedure");
+    if (!pre) return;
+    const originalChildren = [...(pre.children || [])];
+    const findOrCreate = (slug, title, aliases = []) => {
+      const id = originalChildren.find((childId) => [title, ...aliases].includes(nodes[childId].title))
+        || `${procedure.id}-pre-${slug}`;
+      nodes[id] = nodes[id] || { title, type: "reference", summary: "" };
+      nodes[id].title = title;
+      return id;
+    };
+    const indicationId = findOrCreate("indication", "Indication");
+    const anticoagId = findOrCreate("anticoagulation", "Anticoagulation");
+    const labsId = findOrCreate("labs", "Labs", ["Labs and Orders"]);
+    const ordersId = findOrCreate("orders", "Pre-procedure orders", ["Pre-operative orders"]);
+    const sedationId = findOrCreate("sedation", "Sedation");
+    const checklistId = findOrCreate("checklist", "Checklist", ["Focused exam"]);
+    const orderedIds = [indicationId, anticoagId, labsId, ordersId, sedationId, checklistId];
+    const orders = nodes[ordersId];
+    const checklist = nodes[checklistId];
 
-      if (!Array.isArray(node.checklist)) {
-        node.checklist = [];
-      }
-
-      node.checklist.push(lieFlatCheck);
+    // Keep nested headings and cautions while presenting the same six tabs.
+    originalChildren.filter((id) => !orderedIds.includes(id)).forEach((id) => {
+      const title = nodes[id].title;
+      let target;
+      if (orderTitles.has(title)) target = orders;
+      else if (title === "Contraindications") target = nodes[indicationId];
+      else if (["Physical exam", "Focused exam", "Consult Questions"].includes(title)) target = checklist;
+      else throw new Error(`Unmapped pre-procedure topic: ${procedure.title}: ${title}`);
+      target.children = [...(target.children || []), id];
     });
+
+    const parentTargets = {
+      Workflow: indicationId,
+      Indication: indicationId,
+      Indications: indicationId,
+      Labs: labsId,
+      Anticoagulation: anticoagId,
+      Sedation: sedationId,
+      Checklist: checklistId,
+    };
+    Object.entries(pre.details || {}).forEach(([title, items]) => {
+      appendDetails(nodes[parentTargets[title] || checklistId], title, items);
+    });
+    const parentChecks = pre.checklist || [];
+    appendDetails(orders, "Orders", parentChecks.filter((item) => item !== lieFlatCheck));
+    if (pre.checklistSections) {
+      const sections = Array.isArray(pre.checklistSections)
+        ? pre.checklistSections
+        : Object.entries(pre.checklistSections).map(([title, items]) => ({ title, items }));
+      orders.checklistSections = [...(orders.checklistSections || []), ...sections];
+    }
+    if (!originalChildren.length && pre.summary) checklist.summary = pre.summary;
+    delete pre.details;
+    delete pre.checklist;
+    delete pre.checklistSections;
+
+    // Move explicitly identified order groups and items without rewriting doses.
+    [nodes[labsId], nodes[sedationId], checklist].forEach((node) => {
+      Object.entries(node.details || {}).forEach(([title, items]) => {
+        const isOrderGroup = title === "Orders" || title === "To be ordered in clinic";
+        const moving = isOrderGroup ? items : items.filter((item) => orderItems.has(item));
+        if (!moving.length) return;
+        const orderHeading = title === "To be ordered in clinic"
+          ? "If for LUTS from BPH - to be ordered in clinic"
+          : ["Checklist", "Sedation"].includes(title) ? "Orders" : title;
+        appendDetails(orders, orderHeading, moving);
+        node.details[title] = items.filter((item) => !moving.includes(item));
+        if (!node.details[title].length) delete node.details[title];
+        node.summary = "";
+      });
+    });
+
+    if (!JSON.stringify(checklist).toLowerCase().includes("lie flat")) {
+      if (checklist.details?.Checklist) appendDetails(checklist, "Checklist", [lieFlatCheck]);
+      else checklist.checklist = [...(checklist.checklist || []), lieFlatCheck];
+    }
+
+    orderedIds.forEach((id) => {
+      const node = nodes[id];
+      if (!node.summary && !Object.keys(node.details || {}).length && !node.checklist?.length
+        && !node.checklistSections?.length && !node.children?.length) {
+        node.summary = id === ordersId
+          ? "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+          : `${node.title} guidance has not yet been documented in this guide.`;
+      }
+    });
+    pre.children = orderedIds;
   });
 }
 

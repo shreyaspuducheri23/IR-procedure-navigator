@@ -39,18 +39,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -79,20 +67,6 @@
                 "Increased fiber/hydration.",
                 "Bowel-habit optimization.",
                 "Topical or medical therapy."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "CBC and INR within 30 days.",
-                "INR < 2-3.",
-                "Platelets >20k."
               ]
             }
           ]
@@ -148,6 +122,30 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "CBC and INR within 30 days.",
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -187,7 +185,8 @@
                     }
                   }
                 ],
-                "Access approach and embolic choice."
+                "Access approach and embolic choice.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

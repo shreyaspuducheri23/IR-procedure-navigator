@@ -42,18 +42,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -69,19 +57,6 @@
                 "Obtain tissue for molecular testing when it will guide treatment.",
                 "Evaluate suspected infection or inflammatory disease when noninvasive workup is insufficient.",
                 "Biopsy an accessible pleural, chest-wall, or mediastinal lesion when appropriate."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -132,6 +107,29 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -164,7 +162,8 @@
                 "Labs are appropriate.",
                 "Blood pressure is under control.",
                 "Assess cardiopulmonary reserve.",
-                "Specimen requests confirmed."
+                "Specimen requests confirmed.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -181,20 +180,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Lung biopsy"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Target:"
+                  },
+                  " define the viable solid component and its relationship to the pleura, fissures, bronchi, and pulmonary vessels."
+                ],
+                [
+                  {
+                    "strong": "Pleural path:"
+                  },
+                  " favor the shortest route through aerated lung and cross the pleura once when feasible."
+                ],
+                [
+                  {
+                    "strong": "Structures to avoid:"
+                  },
+                  " fissures, bullae, emphysematous lung, visible vessels, central airways, and the diaphragm."
+                ],
+                [
+                  {
+                    "strong": "Intercostal bundle:"
+                  },
+                  " the vein, artery, and nerve run along the inferior rib margin; enter over the superior rib margin."
+                ],
+                [
+                  {
+                    "strong": "Respiratory motion:"
+                  },
+                  " lower-lobe and juxtadiaphragmatic targets move most; use a repeatable respiratory phase throughout the biopsy."
+                ]
               ]
             }
           ]
@@ -204,57 +225,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Lung biopsy"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common lung biopsy problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe path to lesion.",
-                    "Lesion motion or inability to breath-hold.",
-                    "Pneumothorax on immediate or delayed CXR.",
-                    "Pulmonary hemorrhage or hemoptysis.",
-                    "Insufficient specimen."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Poor cardiopulmonary reserve for biopsy risk.",
-                    "No safe path or unavoidable fissure crossing.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Respiratory distress, enlarging pneumothorax, significant hemoptysis, or hemodynamic instability.",
-                    "Need for chest tube placement after biopsy."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the biopsy plan:"
+                  },
+                  " target, required tissue, molecular testing, microbiology, and specimen containers."
+                ],
+                [
+                  {
+                    "strong": "Position the patient:"
+                  },
+                  " create the shortest stable path and rehearse a consistent breath-hold or quiet-breathing instruction."
+                ],
+                [
+                  {
+                    "strong": "Plan the trajectory:"
+                  },
+                  " use CT to avoid fissures, bullae, vessels, major bronchi, and the diaphragm."
+                ],
+                [
+                  {
+                    "strong": "Anesthetize to the pleura:"
+                  },
+                  " then advance the coaxial introducer incrementally with imaging confirmation."
+                ],
+                [
+                  {
+                    "strong": "Sample the target:"
+                  },
+                  " place the tip in viable tissue, minimize pleural passes, and obtain only the cores needed."
+                ],
+                [
+                  {
+                    "strong": "Confirm specimen adequacy:"
+                  },
+                  " inspect and route tissue before removing access, especially when molecular testing is required."
+                ],
+                [
+                  {
+                    "strong": "Check for complications:"
+                  },
+                  " inspect the needle tract and obtain immediate imaging for pneumothorax and pulmonary hemorrhage."
+                ]
               ]
             }
           ]
@@ -264,18 +282,77 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Lung biopsy"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Pneumothorax:"
+                      },
+                      " the most common complication. Minimize aerated-lung distance, fissure or bulla crossing, and repeated pleural passes; treat according to size, symptoms, and cardiopulmonary reserve."
+                    ],
+                    [
+                      {
+                        "strong": "Pulmonary hemorrhage or hemoptysis:"
+                      },
+                      " avoid visible vessels, monitor oxygenation, place the biopsy side down when appropriate, and escalate significant bleeding."
+                    ],
+                    [
+                      {
+                        "strong": "Air embolism:"
+                      },
+                      " rare but critical. Keep the biopsy system closed and treat sudden neurologic or cardiovascular change as an emergency."
+                    ],
+                    [
+                      {
+                        "strong": "Target motion:"
+                      },
+                      " inconsistent breathing can move the lesion off-axis; repeat the same respiratory instruction before every advancement."
+                    ],
+                    [
+                      {
+                        "strong": "Nondiagnostic tissue:"
+                      },
+                      " target viable solid tissue, avoid necrosis, and confirm specimen requirements before ending access."
+                    ],
+                    [
+                      {
+                        "strong": "No safe path:"
+                      },
+                      " reconsider the approach when a fissure, bulla, central vessel, or poor cardiopulmonary reserve makes the planned route unsafe."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "ACR-SIR-SPR Practice Parameter for Image-Guided Percutaneous Needle Biopsy",
+                          "href": "https://gravitas.acr.org/PPTS/GetDocumentView?docId=3"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Korean Society of Thoracic Radiology Guideline for Percutaneous Transthoracic Needle Biopsy",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7817630/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

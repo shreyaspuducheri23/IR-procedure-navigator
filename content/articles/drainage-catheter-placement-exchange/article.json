@@ -24,18 +24,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -51,33 +39,6 @@
                 "Persistent clinical symptoms despite antibiotics.",
                 "Collection causing obstruction or mass effect.",
                 "Bridge to surgery."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs-and-orders",
-          "title": "Labs and Orders",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "Labs"
-            },
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Orders"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Antibiotics with gram negative coverage, if not already ordered."
               ]
             }
           ]
@@ -128,6 +89,36 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Antibiotics with gram negative coverage, if not already ordered.",
+                "Patient is NPO."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -152,17 +143,12 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication, formed collection, labs, anticoagulation holds, imaging window, NPO status, and sedation tolerance."
-            },
-            {
               "type": "list",
               "items": [
                 "Confirm indication and imaging demonstrates formed collection.",
                 "Labs are appropriate.",
                 "Anticoagulation appropriately held.",
                 "Appropriate imaging window.",
-                "Patient is NPO.",
                 [
                   {
                     "link": {
@@ -170,7 +156,8 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ]
+                ],
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

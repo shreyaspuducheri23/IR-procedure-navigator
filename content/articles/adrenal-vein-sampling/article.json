@@ -26,18 +26,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -47,38 +35,6 @@
                 "Biochemically confirmed primary hyperaldosteronism.",
                 "Patient is a candidate for adrenalectomy.",
                 "Goal is to lateralize aldosterone secretion before operative planning."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs-and-orders",
-          "title": "Labs and Orders",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "Labs"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Potassium",
-                "PT/INR",
-                "Platelets"
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Orders"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Vital signs: per unit routine.",
-                "PIV access.",
-                "Glucose POC.",
-                "250 mcg IV cosyntropin in 250 ml @ 50 mcg/hour to start 30-60 min prior to procedure. Lay flat after start of infusion.",
-                "E-Consult to Endocrinology: Adrenal Disorders - ask patient for consent."
               ]
             }
           ]
@@ -114,6 +70,40 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Potassium",
+                "PT/INR",
+                "Platelets"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs: per unit routine.",
+                "PIV access.",
+                "Glucose POC.",
+                "250 mcg IV cosyntropin in 250 ml @ 50 mcg/hour to start 30-60 min prior to procedure. Lay flat after start of infusion.",
+                "E-Consult to Endocrinology: Adrenal Disorders - ask patient for consent."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -139,7 +129,8 @@
                 "Imaging is available, if obtained. Imaging is not required.",
                 "Potassium corrected.",
                 "Patient has held beta blockers, ACE-I/ARBs, and MRAs for at least 2 weeks.",
-                "BP reasonably controlled."
+                "BP reasonably controlled.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -156,20 +147,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Adrenal vein sampling"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Right adrenal vein:"
+                  },
+                  " short and small; enters the posterolateral IVC, often near T11-T12 and above the right renal vein."
+                ],
+                [
+                  {
+                    "strong": "Left adrenal vein:"
+                  },
+                  " usually joins the inferior phrenic vein; their common trunk enters the superior aspect of the left renal vein."
+                ],
+                [
+                  {
+                    "strong": "Hepatic mimics:"
+                  },
+                  " small accessory hepatic veins near the right adrenal ostium can look similar on venography."
+                ],
+                [
+                  {
+                    "strong": "Variant drainage:"
+                  },
+                  " duplicated adrenal veins or a shared hepatic-adrenal trunk can alter sampling and dilute hormone concentrations."
+                ],
+                [
+                  {
+                    "strong": "Peripheral reference:"
+                  },
+                  " an infrarenal IVC or peripheral venous sample provides the comparator for adrenal hormone measurements."
+                ]
               ]
             }
           ]
@@ -179,32 +192,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "To build"
+              "text": "Adrenal vein sampling"
             },
             {
-              "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Suggested buckets",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the sampling plan:"
+                  },
+                  " review venous imaging, cosyntropin timing, collection tubes, and the laboratory's labeling and rapid-cortisol workflow."
+                ],
+                [
+                  {
+                    "strong": "Obtain venous access:"
+                  },
+                  " use ultrasound-guided femoral access and prepare the IVC/peripheral reference sampling route."
+                ],
+                [
+                  {
+                    "strong": "Select the right adrenal vein:"
+                  },
+                  " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy."
+                ],
+                [
+                  {
+                    "strong": "Select the left adrenal vein:"
+                  },
+                  " enter through the left renal vein and confirm the common adrenal-phrenic trunk."
+                ],
+                [
+                  {
+                    "strong": "Collect matched samples:"
+                  },
+                  " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status."
+                ],
+                [
+                  {
+                    "strong": "Confirm selectivity:"
+                  },
+                  " use rapid cortisol when available; adrenal/reference cortisol ratio is commonly >=5 with cosyntropin or >=2 without it. Apply local criteria and resample if inadequate."
+                ],
+                [
+                  {
+                    "strong": "Complete and hand off:"
+                  },
+                  " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation."
+                ]
               ]
             }
           ]
@@ -214,18 +249,85 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Adrenal vein sampling"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Wrong vein:"
+                      },
+                      " an accessory hepatic vein can mimic the right adrenal vein; confirm selectivity rather than trusting the venogram alone."
+                    ],
+                    [
+                      {
+                        "strong": "Rupture or hemorrhage:"
+                      },
+                      " avoid forceful injection and deep wedging; stop and assess new flank/back pain, extravasation, or instability."
+                    ],
+                    [
+                      {
+                        "strong": "Overly selective sampling:"
+                      },
+                      " a deep tributary may miss tumor drainage and falsely suggest the opposite side; sample representative gland outflow."
+                    ],
+                    [
+                      {
+                        "strong": "Poor blood return:"
+                      },
+                      " strong suction can collapse the vein; aspirate gently and reassess catheter position instead of pulling harder."
+                    ],
+                    [
+                      {
+                        "strong": "Sample mix-ups or dilution:"
+                      },
+                      " clear contrast/flush dead space, label tubes immediately, and keep sampling times and cosyntropin status consistent."
+                    ],
+                    [
+                      {
+                        "strong": "Misleading lateralization:"
+                      },
+                      " confirm bilateral selectivity first; compare aldosterone/cortisol ratios, not raw aldosterone. Cortisol cosecretion can confound interpretation."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Australian and New Zealand AVS Working Group recommendations",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11612544/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Adrenal vein sampling: technique and protocol, a systematic review",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8093361/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Anatomical variations encountered during adrenal venous sampling",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11009137/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

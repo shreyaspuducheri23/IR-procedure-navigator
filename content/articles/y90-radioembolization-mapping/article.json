@@ -43,18 +43,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -74,23 +62,6 @@
                 "Evaluate for shunts to the lungs.",
                 "Evaluate non-target embolization.",
                 "Obtain data for Y90 dosimetry."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "CBC on day of arrival.",
-                "INR on day of arrival.",
-                "CMP on day of arrival.",
-                "AFP on day of arrival.",
-                "Platelets >50k.",
-                "INR < 1.5-1.8."
               ]
             }
           ]
@@ -141,6 +112,33 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "CBC on day of arrival.",
+                "INR on day of arrival.",
+                "CMP on day of arrival.",
+                "AFP on day of arrival.",
+                "Platelets >50k.",
+                "INR < 1.5-1.8."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -171,7 +169,8 @@
                 "Review imaging for hepatic arterial anatomy.",
                 "Labs are appropriate.",
                 "Coordination with nuclear medicine.",
-                "Cone-beam CT available."
+                "Cone-beam CT available.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

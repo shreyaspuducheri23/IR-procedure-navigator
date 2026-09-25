@@ -43,18 +43,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -73,19 +61,6 @@
                     "Add indications, contraindications, and escalation triggers during faculty review."
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 1.5-1.8.",
-                "Platelets >50k."
               ]
             }
           ]
@@ -136,6 +111,29 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -169,7 +167,8 @@
                 "Confirm indication.",
                 "Review imaging and current tube/stent details.",
                 "Confirm labs and anticoagulation plan with local policy.",
-                "Confirm sedation/NPO requirements."
+                "Confirm sedation/NPO requirements.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -187,17 +186,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "text": "Future edit: add procedure-specific anatomy and access landmarks."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "To build out",
+              "title": "Needs procedure-specific edit",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
+                    "Add anatomy, access route, and structures to avoid."
                   ]
                 }
               ]
@@ -213,14 +212,6 @@
               "text": "Procedure-specific access, device, imaging, and completion steps."
             },
             {
-              "type": "heading",
-              "text": "Troubleshooting"
-            },
-            {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific troubleshooting."
-            },
-            {
               "type": "callout",
               "variant": "note",
               "title": "Needs procedure-specific edit",
@@ -228,28 +219,7 @@
                 {
                   "type": "list",
                   "items": [
-                    "Add common problems and first checks."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs procedure-specific edit",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add red flags and escalation criteria."
+                    "Add the major procedural steps and completion checks."
                   ]
                 }
               ]
@@ -262,17 +232,17 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
+              "text": "Future edit: add procedure-specific pitfalls and escalation criteria."
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "To build out",
+              "title": "Needs procedure-specific edit",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    "Add common problems, safety checks, and escalation criteria."
                   ]
                 }
               ]

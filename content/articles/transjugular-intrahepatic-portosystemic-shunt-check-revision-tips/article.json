@@ -44,18 +44,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -72,22 +60,6 @@
                 "Elevated portosystemic gradient.",
                 "Shunt dysfunction on Doppler US.",
                 "Over-correction now causing heart failure, hepatic encephalopathy, or hepatic failure."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Platelets >50,000/uL.",
-                "INR < 1.5-1.8.",
-                "CBC.",
-                "CMP: bilirubin and creatinine.",
-                "Type & screen."
               ]
             }
           ]
@@ -134,6 +106,32 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Platelets >50,000/uL.",
+                "INR < 1.5-1.8.",
+                "CBC.",
+                "CMP: bilirubin and creatinine.",
+                "Type & screen."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -159,17 +157,14 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication, Doppler/prior TIPS imaging, stent details, labs, contraindications, infection status, and whether upsizing or narrowing changes the plan."
-            },
-            {
               "type": "list",
               "items": [
                 "Confirm indication.",
                 "Review imaging: Doppler and prior TIPS.",
                 "Review what size/type stent was used.",
                 "Labs are appropriate.",
-                "Consider changes depending on if upsizing or narrowing."
+                "Consider changes depending on if upsizing or narrowing.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             },
             {
@@ -198,20 +193,48 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Failure map"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Portal inflow:"
+                  },
+                  " assess portal-vein patency, the uncovered portal end, and inflow into the shunt."
+                ],
+                [
+                  {
+                    "strong": "Shunt body:"
+                  },
+                  " look for underexpansion, kink, focal stenosis, thrombus, or incomplete tract coverage."
+                ],
+                [
+                  {
+                    "strong": "Hepatic outflow:"
+                  },
+                  " the hepatic vein-IVC junction is a common site of edge stenosis and intimal hyperplasia."
+                ],
+                [
+                  {
+                    "strong": "Pressure circuit:"
+                  },
+                  " calculate the gradient from main portal pressure to a consistent systemic reference at the free hepatic vein or IVC."
+                ],
+                [
+                  {
+                    "strong": "Collateral pathways:"
+                  },
+                  " persistent varices can maintain bleeding risk; large spontaneous shunts can worsen encephalopathy."
+                ],
+                [
+                  {
+                    "strong": "Rescue routes:"
+                  },
+                  " chronic occlusion or severe angulation may require transhepatic or transsplenic access for through-and-through control."
+                ]
               ]
             }
           ]
@@ -221,55 +244,84 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Diagnostic pass"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common TIPS revision/check problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Unable to cross stenosis or occlusion.",
-                    "Unexpected gradient findings.",
-                    "Need for upsizing, relining, extension, or narrowing.",
-                    "Access-site bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Define the problem:"
+                  },
+                  " review symptoms, Doppler and prior imaging, stent type and diameter, and earlier gradients."
+                ],
+                [
+                  {
+                    "strong": "2. Access and cross the shunt:"
+                  },
+                  " select the hepatic end from the IJ and secure a wire in the portal system."
+                ],
+                [
+                  {
+                    "strong": "3. Map the shunt:"
+                  },
+                  " perform venography from portal inflow through the stent and hepatic outflow; identify focal lesions and collaterals."
+                ],
+                [
+                  {
+                    "strong": "4. Measure the gradient:"
+                  },
+                  " record portal and free hepatic vein or IVC pressures before treatment using one systemic reference."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Match treatment to failure"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Stenosis:"
+                  },
+                  " angioplasty a focal lesion; reline or extend recurrent, resistant, intrastent, or edge disease."
+                ],
+                [
+                  {
+                    "strong": "Occlusion:"
+                  },
+                  " clear thrombus, then fix the stenosis, kink, or uncovered segment that caused it."
+                ],
+                [
+                  {
+                    "strong": "Under-shunting:"
+                  },
+                  " expand incrementally, improve inflow or outflow, and selectively embolize persistent high-risk varices when indicated."
+                ],
+                [
+                  {
+                    "strong": "Over-shunting:"
+                  },
+                  " after medical optimization, use a controlled hourglass, parallel, or tapered reduction rather than routine complete occlusion."
+                ]
+              ]
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Active infection.",
-                    "Severe encephalopathy or worsening liver failure concern.",
-                    "Hemodynamic instability or bleeding.",
-                    "Concern for shunt thrombosis/occlusion with acute decompensation."
-                  ]
-                }
+              "type": "heading",
+              "text": "Completion"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "5. Recheck the endpoint:"
+                  },
+                  " repeat portography and pressures; document final flow, gradient, branch preservation, and no extravasation."
+                ]
               ]
             }
           ]
@@ -279,18 +331,105 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Revision-specific pitfalls"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Treating Doppler alone:"
+                      },
+                      " abnormal velocity raises suspicion but is not the final diagnosis; correlate with symptoms, venography, and direct pressure measurements."
+                    ],
+                    [
+                      {
+                        "strong": "Inconsistent pressure reference:"
+                      },
+                      " switching between right atrial, free hepatic, and IVC pressure can create a false gradient change; use the same reference before and after revision."
+                    ],
+                    [
+                      {
+                        "strong": "False passage or lost access:"
+                      },
+                      " confirm the wire is intraluminal and maintain stable portal purchase before ballooning, thrombectomy, or relining."
+                    ],
+                    [
+                      {
+                        "strong": "Clearing thrombus without fixing the cause:"
+                      },
+                      " untreated edge stenosis, kink, underexpansion, or poor inflow and outflow invites rapid rethrombosis."
+                    ],
+                    [
+                      {
+                        "strong": "Unsafe stent extension:"
+                      },
+                      " avoid covering major portal branches or adjacent hepatic-vein drainage and avoid unnecessary extension into the IVC or right atrium."
+                    ],
+                    [
+                      {
+                        "strong": "Embolization during thrombectomy:"
+                      },
+                      " liberated thrombus can pass directly to the pulmonary circulation; monitor hemodynamics and use an appropriate clot-management strategy."
+                    ],
+                    [
+                      {
+                        "strong": "Reduction imbalance:"
+                      },
+                      " too much narrowing restores bleeding or ascites; too little may not improve encephalopathy or cardiac overload. Recheck flow and gradient after each adjustment."
+                    ],
+                    [
+                      {
+                        "strong": "Alternative-access injury:"
+                      },
+                      " transhepatic or transsplenic rescue adds capsular bleeding risk; plan tract closure and confirm hemostasis."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "North American Practice-Based Recommendations for TIPS in Portal Hypertension",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8760361/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Australian Best Practice Recommendations for TIPS",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13121398/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "TIPS Dysfunction: Doppler, Clinical Findings, and Shunt Venography",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4977976/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "TIPS Reduction Techniques",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10159697/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

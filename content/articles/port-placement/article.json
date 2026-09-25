@@ -40,103 +40,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "Workflow"
-            },
-            {
-              "type": "list",
-              "items": [
-                "ALWAYS DONE AS OUTPATIENT."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Indications"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Long term chemotherapy.",
-                "Frequent blood transfusions/draw.",
-                "Long term IV antibiotics or TPN.",
-                "Softer indication for need for intermittent central access."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Labs"
-            },
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Anticoagulation"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Low bleeding risk.",
-                [
-                  {
-                    "link": {
-                      "text": "Open anticoagulation table",
-                      "articleId": "anticoagulation-table"
-                    }
-                  }
-                ],
-                "No requirement to hold anticoagulation."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Sedation"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Mostly moderate sedation.",
-                [
-                  {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ]
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Checklist"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Confirm indication.",
-                "Review imaging with access.",
-                "Labs are appropriate.",
-                "Access approach.",
-                "Sedation requirements."
-              ]
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -170,19 +73,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -206,6 +96,29 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },
@@ -240,7 +153,8 @@
                 "Review imaging with access.",
                 "Labs are appropriate.",
                 "Access approach.",
-                "Sedation requirements."
+                "Sedation requirements.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

@@ -29,18 +29,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -60,13 +48,11 @@
                 "Phlegmasia cerulea dolens.",
                 "Acute thrombosed bypass graft."
               ]
-            }
-          ]
-        },
-        {
-          "id": "contraindications",
-          "title": "Contraindications",
-          "blocks": [
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
             {
               "type": "paragraph",
               "text": "Exclude major bleeding, intracranial, neurologic, and severe hypertension risks before lysis."
@@ -87,19 +73,6 @@
                     "Severe uncontrolled hypertension."
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Platelets >50k.",
-                "INR <1.5-1.8."
               ]
             }
           ]
@@ -146,33 +119,21 @@
           ]
         },
         {
-          "id": "sedation",
-          "title": "Sedation",
+          "id": "labs",
+          "title": "Labs",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Moderate sedation or general anesthesia depending on patient acuity and airway/procedure needs."
-            },
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
-                [
-                  {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                "General anesthesia."
+                "Platelets >50k.",
+                "INR <1.5-1.8."
               ]
             }
           ]
         },
         {
-          "id": "pre-operative-orders",
-          "title": "Pre-operative orders",
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
           "blocks": [
             {
               "type": "paragraph",
@@ -246,6 +207,31 @@
           ]
         },
         {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Moderate sedation or general anesthesia depending on patient acuity and airway/procedure needs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Moderate sedation.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ],
+                "General anesthesia."
+              ]
+            }
+          ]
+        },
+        {
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
@@ -264,7 +250,8 @@
                 "Sedation plan confirmed.",
                 "Venous access site planned.",
                 "Consent completed.",
-                "Monitored bed available if overnight lysis is planned."
+                "Monitored bed available if overnight lysis is planned.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

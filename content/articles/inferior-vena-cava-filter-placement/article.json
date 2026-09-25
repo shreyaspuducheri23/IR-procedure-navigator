@@ -23,18 +23,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -53,19 +41,6 @@
                 "Acute DVT/PE with failed anticoagulation trial.",
                 "Stopping anticoagulation in high-risk VTE patient.",
                 "+/- prophylaxis in high-risk patients: trauma, pregnancy, surgical."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >20k."
               ]
             }
           ]
@@ -112,6 +87,35 @@
           ]
         },
         {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >20k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Patient is NPO if moderate sedation."
+              ]
+            }
+          ]
+        },
+        {
           "id": "sedation",
           "title": "Sedation",
           "blocks": [
@@ -136,15 +140,10 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging, labs, NPO status, and moderate sedation tolerance."
-            },
-            {
               "type": "list",
               "items": [
                 "Confirm indication and review imaging.",
                 "Labs are appropriate.",
-                "Patient is NPO if moderate sedation.",
                 [
                   {
                     "link": {
@@ -152,7 +151,8 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ]
+                ],
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]

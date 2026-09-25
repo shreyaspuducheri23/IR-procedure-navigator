@@ -24,18 +24,6 @@
       "title": "Pre-procedure",
       "subsections": [
         {
-          "id": "order-set",
-          "title": "Order set",
-          "blocks": [
-            {
-              "type": "checklist",
-              "items": [
-                "Confirm sedation plan - patient can lie flat."
-              ]
-            }
-          ]
-        },
-        {
           "id": "indication",
           "title": "Indication",
           "blocks": [
@@ -69,19 +57,6 @@
           ]
         },
         {
-          "id": "labs",
-          "title": "Labs",
-          "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "INR < 2-3.",
-                "Platelets >50k."
-              ]
-            }
-          ]
-        },
-        {
           "id": "anticoagulation",
           "title": "Anticoagulation",
           "blocks": [
@@ -105,6 +80,29 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 2-3.",
+                "Platelets >50k."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
             }
           ]
         },
@@ -133,7 +131,8 @@
               "items": [
                 "Confirm indication.",
                 "Confirm labs.",
-                "Check what lab studies primary team requested: cell count with differential, cultures, cytology, LDH, glucose, pH, etc."
+                "Check what lab studies primary team requested: cell count with differential, cultures, cytology, LDH, glucose, pH, etc.",
+                "Confirm sedation plan - patient can lie flat."
               ]
             }
           ]
@@ -150,20 +149,42 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
+              "type": "heading",
+              "text": "Thoracentesis"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Pleural space:"
+                  },
+                  " fluid lies between parietal and visceral pleura; confirm a true pocket rather than consolidated lung."
+                ],
+                [
+                  {
+                    "strong": "Lung and diaphragm:"
+                  },
+                  " identify lung excursion above and the diaphragm below throughout respiration."
+                ],
+                [
+                  {
+                    "strong": "Below the diaphragm:"
+                  },
+                  " the liver is right-sided and the spleen is left-sided; keep both outside the planned tract."
+                ],
+                [
+                  {
+                    "strong": "Intercostal bundle:"
+                  },
+                  " the vein, artery, and nerve run along the inferior rib margin; enter over the superior rib margin."
+                ],
+                [
+                  {
+                    "strong": "Complex effusions:"
+                  },
+                  " loculations, adhesions, and non-expandable lung can limit drainage and change the expected result."
+                ]
               ]
             }
           ]
@@ -173,58 +194,54 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Thoracentesis"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common thoracentesis problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe pocket.",
-                    "Dry tap.",
-                    "Cough or chest discomfort.",
-                    "Persistent air leak concern.",
-                    "Unexpected bloody fluid."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Hemodynamic instability.",
-                    "Respiratory distress.",
-                    "New severe chest pain.",
-                    "Concern for pneumothorax.",
-                    "Unexpected hemorrhagic output.",
-                    "No safe window."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm the plan:"
+                  },
+                  " side, diagnostic versus therapeutic goal, specimen studies, and intended drainage volume."
+                ],
+                [
+                  {
+                    "strong": "Map the pocket:"
+                  },
+                  " scan in the procedure position and mark fluid depth, lung, diaphragm, and adjacent organs."
+                ],
+                [
+                  {
+                    "strong": "Choose the tract:"
+                  },
+                  " typical landmarks are the 6th-8th intercostal spaces at the midaxillary line (supine) or posterior midscapular line (seated). Ultrasound determines the safe site above the diaphragm; use Doppler as needed and enter over the superior rib margin."
+                ],
+                [
+                  {
+                    "strong": "Prep and anesthetize:"
+                  },
+                  " extend local anesthesia to the parietal pleura and confirm fluid return."
+                ],
+                [
+                  {
+                    "strong": "Place the catheter:"
+                  },
+                  " advance into the pleural space without forcing it and collect diagnostic samples first."
+                ],
+                [
+                  {
+                    "strong": "Drain slowly:"
+                  },
+                  " use manual aspiration or gravity rather than vacuum bottles or wall suction."
+                ],
+                [
+                  {
+                    "strong": "Stop for symptoms:"
+                  },
+                  " end drainage for chest tightness, pain, persistent cough, or worsening breathlessness; document volume and appearance."
+                ]
               ]
             }
           ]
@@ -234,18 +251,85 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Thoracentesis"
+                },
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "No safe pocket:"
+                      },
+                      " do not use landmarks alone; reposition or use real-time ultrasound for small or loculated fluid."
+                    ],
+                    [
+                      {
+                        "strong": "Pneumothorax:"
+                      },
+                      " keep the needle tip controlled and reassess new dyspnea, hypoxia, or chest pain."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " enter over the rib, avoid Doppler-visible vessels, and escalate bloody output with instability or an enlarging hematoma."
+                    ],
+                    [
+                      {
+                        "strong": "Organ injury:"
+                      },
+                      " confirm the diaphragm and abdominal organs before access, especially with a small or subpulmonic effusion."
+                    ],
+                    [
+                      {
+                        "strong": "Re-expansion symptoms:"
+                      },
+                      " drain slowly, generally limit one attempt to 1.5 L, and stop for pain, cough, tightness, or breathlessness."
+                    ],
+                    [
+                      {
+                        "strong": "Non-expandable lung:"
+                      },
+                      " a post-drainage pneumothorax may be ex vacuo; correlate with symptoms and imaging before reflex chest-tube placement."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "British Thoracic Society Clinical Statement on Pleural Procedures",
+                          "href": "https://thorax.bmj.com/content/78/Suppl_3/s43"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "British Thoracic Society Guideline for Pleural Disease",
+                          "href": "https://thorax.bmj.com/content/78/11/1143"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Thoracentesis: anatomy and approach landmarks (StatPearls)",
+                          "href": "https://www.ncbi.nlm.nih.gov/books/NBK441866/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
