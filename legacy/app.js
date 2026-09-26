@@ -1399,10 +1399,22 @@ function installIntraprocedureSubblocks() {
           "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange",
           "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement",
           "Liver Biopsy/Fiducial Marker Placement",
+          "Kidney Biopsy",
+          "Chest Tube Placement",
+          "Drainage Catheter Placement/Exchange",
+          "Inferior Vena Cava Filter Placement",
+          "Inferior Vena Cava Filter Removal",
+          "Port Placement",
+          "Port Removal",
+          "Tunneled Line Placement/Exchange",
+          "Foreign Body Removal",
+          "Thyroid Biopsy",
           "Lung Biopsy/Fiducial Marker Placement",
           "Nephrostomy Tube Placement",
           "Paracentesis",
           "PICC Placement",
+          "Y90 Radioembolization Mapping",
+          "Y90 Radioembolization Therapy",
           "Prostate Artery Embolization",
           "Thoracentesis",
           "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)",
@@ -2840,8 +2852,43 @@ function installDrainageCatheterEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the drainage catheter technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Access the collection or preserve the existing tract, then confirm effective drainage.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Collection:", text: " define size, depth, loculations, and a drainable fluid component." },
+        { strong: "Access route:", text: " map bowel, vessels, solid organs, and pleura before choosing a tract." },
+        { strong: "Dependent pocket:", text: " position the loop and side holes within the cavity for effective drainage." },
+        { strong: "Existing tract:", text: " preserve it during exchange; a recent tract may not tolerate loss of wire access." },
+        { strong: "Fistulous connections:", text: " bowel, biliary, or urinary communication may explain persistent output." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Review the target", text: " and choose catheter size and access using US or CT." },
+        { strong: "2. Prep and anesthetize", text: " the planned tract; confirm antibiotic coverage for an infected collection." },
+        { strong: "3. Establish access", text: " for placement, puncture and aspirate the collection; for exchange, gently inject the existing catheter to define the cavity." },
+        { strong: "4. Secure a wire in the cavity", text: " before tract dilation or removal of the old catheter; release its locking mechanism first." },
+        { strong: "5. Place the new catheter", text: " with the loop and all drainage side holes inside the collection; confirm by imaging." },
+        { strong: "6. Aspirate, secure, and connect", text: " to drainage; send fresh aspirate for requested studies and specify flushing and follow-up." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Unsafe window:", text: " avoid unintended bowel, vessel, or pleural traversal; reconsider the route if none is safe." },
+        { strong: "Sepsis:", text: " minimize manipulation and forceful injection; escalating rigors or hypotension need prompt treatment." },
+        { strong: "Lost access:", text: " keep a stable wire in the cavity before removing the old drain; do not blindly probe a lost tract." },
+        { strong: "Poor output:", text: " check kinking, blockage, side-hole position, and undrained loculations before upsizing." },
+        { strong: "New bloody output:", text: " suspect vascular injury; stop manipulation and assess before removing the catheter." },
+        { strong: "Persistent enteric or high output:", text: " consider a fistula; clarify the source before catheter removal." },
+      ], References: [
+        { text: "CIRSE: Percutaneous Fluid and Abscess Drainage", href: "https://www.cirse.org/wp-content/uploads/2025/03/cirse_PIB_2025_percutaneous_fluid_and_abscess_drainage_EN.pdf" },
+        { text: "CIRSE Clinical Practice Manual", href: "https://www.cirse.org/wp-content/uploads/2021/07/Mahnken2021_Article_CIRSEClinicalPracticeManual.pdf" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -3819,8 +3866,42 @@ function installChestTubeEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the chest tube placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Image-guided pleural access, catheter placement, and controlled drainage.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Pleural space:", text: " lies between chest wall and lung; target the air or fluid pocket, not lung parenchyma." },
+        { strong: "Triangle of safety:", text: " between pectoralis major and latissimus dorsi, above the fifth intercostal space and below the axilla; imaging determines the actual entry site." },
+        { strong: "Intercostal bundle:", text: " runs beneath each rib; enter just above the rib and assess vessels when needed." },
+        { strong: "Diaphragm and upper abdomen:", text: " identify the diaphragm, liver, and spleen throughout respiration before access." },
+        { strong: "Air versus fluid:", text: " air tends to rise and fluid layers dependently; loculations may require a targeted route." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Select the target and tube", text: " using imaging and the indication; hemothorax or a substantial air leak may require a larger drain." },
+        { strong: "2. Position, prep, and anesthetize", text: " through the chest wall to the parietal pleura." },
+        { strong: "3. Enter the pleural space", text: " above the rib under imaging guidance and confirm air or fluid aspiration." },
+        { strong: "4. Advance the wire and dilate", text: " only after confirming intrapleural position; limit dilator depth." },
+        { strong: "5. Place and secure the tube", text: " with every side hole intrapleural; connect to the prescribed drainage system." },
+        { strong: "6. Confirm position and function", text: " with completion imaging; document drainage limits and water-seal or suction orders." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Lung or abdominal injury:", text: " confirm the wire is pleural and avoid deep dilator advancement." },
+        { strong: "Intercostal bleeding:", text: " avoid the rib's inferior margin; new bloody drainage or instability needs urgent assessment." },
+        { strong: "Rapid fluid drainage:", text: " control the rate; pause for chest pain, persistent cough, or worsening dyspnea and assess for re-expansion edema." },
+        { strong: "Tension pneumothorax:", text: " do not routinely clamp a bubbling drain or obstruct its air outlet." },
+        { strong: "Poor drainage or ongoing air leak:", text: " check connections, kinks, occlusion, and side holes outside the pleural space." },
+        { strong: "Dislodgement:", text: " secure the tube; do not push an exposed segment back through the skin." },
+      ], References: [
+        { text: "BTS Clinical Statement on Pleural Procedures", href: "https://thorax.bmj.com/content/78/Suppl_3/s43" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -4190,8 +4271,43 @@ function installIvcFilterPlacementEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the IVC filter placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Define caval anatomy, deploy the filter accurately, and establish retrieval follow-up.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Infrarenal IVC:", text: " the usual landing zone lies below the lowest renal vein and above the iliac confluence." },
+        { strong: "Renal veins:", text: " identify their actual entry sites, including accessory veins; do not rely on vertebral level alone." },
+        { strong: "Caval diameter:", text: " measure at the planned landing zone and compare with the selected device's limits." },
+        { strong: "Variants:", text: " duplicated or left-sided IVC can change the protection strategy and landing zone." },
+        { strong: "Access veins:", text: " jugular or femoral access must provide a patent route; check for thrombus along the path." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Confirm indication and device", text: " including access-compatible delivery system and a retrieval plan when appropriate." },
+        { strong: "2. Obtain venous access", text: " under ultrasound and advance the catheter into the IVC." },
+        { strong: "3. Perform cavography", text: " to define renal veins, iliac confluence, diameter, variants, and thrombus." },
+        { strong: "4. Position the delivery sheath", text: " at the planned landing zone; confirm orientation and device-specific deployment landmarks." },
+        { strong: "5. Deploy under fluoroscopy", text: " following the device instructions while maintaining stable, centered positioning." },
+        { strong: "6. Confirm and document", text: " filter level, expansion, and tilt; remove the sheath, obtain hemostasis, and arrange retrieval follow-up." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Wrong landing zone:", text: " identify the lowest renal vein before release; suprarenal placement requires a specific plan." },
+        { strong: "Missed duplicated IVC:", text: " a second channel may bypass the filter; review cross-sectional imaging and cavography." },
+        { strong: "Caval or access thrombus:", text: " avoid deploying into clot or advancing through a thrombosed route; reassess the approach." },
+        { strong: "Device mismatch:", text: " verify caval diameter, access route, and filter orientation before loading or release." },
+        { strong: "Tilt or maldeployment:", text: " stabilize the sheath and confirm alignment before release; do not force a deployed filter." },
+        { strong: "Forgotten retrieval:", text: " assign follow-up ownership; prolonged dwell can lead to thrombosis, penetration, fracture, or difficult removal." },
+      ], References: [
+        { text: "SIR Clinical Practice Guideline: IVC Filters", href: "https://www.cirse.org/wp-content/uploads/2020/09/PIIS1051044320305315.pdf" },
+        { text: "Anatomic and Technical Considerations: IVC Filter Placement", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4862848/" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -4357,8 +4473,37 @@ function installIvcFilterRemovalEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the IVC filter removal technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Assess retrievability, capture and sheath the filter, and check caval integrity.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Retrieval hook:", text: " identify its orientation, tilt, and possible embedding in the caval wall." },
+        { strong: "Filter and cava:", text: " assess trapped thrombus, caval patency, and suspected strut penetration or fracture." },
+        { strong: "Retrieval route:", text: " choose access compatible with the filter design; many standard filters are retrieved from the jugular vein." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Confirm removal is appropriate", text: " and review filter type, dwell time, and available imaging for complexity." },
+        { strong: "2. Obtain access and perform cavography", text: " to assess thrombus and filter position before retrieval." },
+        { strong: "3. Capture the retrieval hook", text: " and collapse the filter into the sheath under fluoroscopy, following device instructions." },
+        { strong: "4. Remove and inspect", text: " for an intact filter; check completion cavography for injury, then obtain access-site hemostasis." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Significant trapped thrombus:", text: " pause retrieval and reassess embolic risk and the anticoagulation plan." },
+        { strong: "Embedded hook or resistance:", text: " avoid forceful traction; escalate to a planned advanced retrieval strategy." },
+        { strong: "Caval injury:", text: " new pain, extravasation, or instability requires immediate assessment and hemorrhage control." },
+        { strong: "Missing strut:", text: " compare the retrieved device with its expected design and localize any retained or embolized fragment." },
+      ], References: [
+        { text: "SIR Clinical Practice Guideline: IVC Filters", href: "https://www.cirse.org/wp-content/uploads/2020/09/PIIS1051044320305315.pdf" },
+        { text: "IVC Filter Retrievals: Standard and Novel Techniques", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5220200/" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -4518,8 +4663,46 @@ function installKidneyBiopsyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the kidney biopsy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Target the cortex or renal mass, obtain diagnostic tissue, and monitor for bleeding.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Renal cortex:", text: " contains glomeruli; the target for medical renal biopsy." },
+        { strong: "Native kidney:", text: " posterior lower-pole cortex usually offers a practical route away from the hilum." },
+        { strong: "Renal sinus:", text: " contains major vessels and the collecting system; keep the needle throw clear." },
+        { strong: "Adjacent structures:", text: " check for colon, liver, spleen, and pleura along the entire tract." },
+        { strong: "Transplant kidney:", text: " usually lies superficially in the iliac fossa; map vessels and choose an accessible cortical pole." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Confirm the target", text: " and specimen plan: renal cortex for medical disease, viable solid tissue for a mass." },
+        { strong: "2. Position and map the route", text: " with US/Doppler or CT; native kidneys are often approached prone, transplants supine." },
+        { strong: "3. Prep and anesthetize", text: " the skin and planned tract under imaging guidance." },
+        { strong: "4. Advance the biopsy needle", text: " with the tip visible; confirm the full throw stays within the intended target." },
+        { strong: "5. Obtain and assess cores", text: " using a coached breath-hold when needed; confirm adequacy and correct specimen handling." },
+        { strong: "6. Check for bleeding", text: " on completion imaging, then monitor pain, vitals, and urine during recovery." },
+      ], "Specimen handling": [
+        { strong: "Medical renal biopsy:", text: " coordinate tissue for light microscopy, immunofluorescence, and electron microscopy; do not place all cores in formalin." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Bleeding:", text: " the main complication; worsening flank pain, hypotension, or gross hematuria needs prompt assessment." },
+        { strong: "Deep needle throw:", text: " avoid the sinus and collecting system; check depth before every pass." },
+        { strong: "Respiratory motion:", text: " rehearse breath-holds and recheck the target before firing." },
+        { strong: "Poor yield:", text: " medulla lacks glomeruli; for masses, avoid necrotic or purely cystic areas." },
+        { strong: "Unsafe tract:", text: " reposition if bowel, pleura, or a major vessel blocks access; do not force the window." },
+        { strong: "Delayed vascular injury:", text: " recurrent hematuria or falling hemoglobin may signal pseudoaneurysm or AV fistula." },
+      ], References: [
+        { text: "NIDDK: Kidney Biopsy", href: "https://www.niddk.nih.gov/health-information/diagnostic-tests/kidney-biopsy" },
+        { text: "KHA-CARI: Renal Biopsy Guideline", href: "https://www.cariguidelines.org/wp-content/uploads/2020/07/Kidney-Biopsy-guideline-summary.pdf" },
+        { text: "EAU: Renal Mass Biopsy", href: "https://uroweb.org/guidelines/renal-cell-carcinoma/chapter/diagnostic-evaluation" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -5082,8 +5265,46 @@ function installTunneledLineEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "Future technique section for tunneled line placement/exchange.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Plan central access, tunnel the catheter, and confirm tip position and function.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Right internal jugular:", text: " often provides the most direct central route; map the vein and adjacent carotid with ultrasound." },
+        { strong: "Central veins:", text: " assess brachiocephalic/SVC patency and prior devices; preserve future dialysis access when selecting the site." },
+        { strong: "Tip target:", text: " infusion lines generally end at the lower SVC/cavoatrial junction; tunneled dialysis tips usually target the mid right atrium per device guidance." },
+        { strong: "Tunnel and cuff:", text: " create a smooth subcutaneous course with the cuff buried at the device-specified distance from the exit." },
+        { strong: "Existing catheter:", text: " for exchange, assess cuff fixation, tip position, and possible fibrin sheath or central stenosis." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Placement": [
+        { strong: "1. Select the line and route", text: " based on dialysis versus infusion needs, venous patency, and required length." },
+        { strong: "2. Prep and obtain access", text: " with full sterile precautions, local anesthesia, and ultrasound; confirm venous wire position before dilation." },
+        { strong: "3. Create the tunnel", text: " from the planned exit site with a gentle curve and appropriate cuff position." },
+        { strong: "4. Advance the catheter", text: " through the introducer under fluoroscopy; keep the open system occluded and set the device-specific tip position." },
+        { strong: "5. Test every lumen", text: " for blood return and easy flushing; correct kinks or malposition before finishing." },
+        { strong: "6. Secure and dress", text: " the catheter, lock each lumen per protocol, and document tip position and readiness for use." },
+      ], "Exchange only": [
+        { strong: "Preserve access:", text: " secure a wire centrally and free the cuff before removing the old catheter; evaluate the cause of malfunction, then confirm the replacement's position and function." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Arterial injury:", text: " confirm vein and wire before dilation; large-bore arterial cannulation needs specialist assessment before removal." },
+        { strong: "Air embolism:", text: " occlude open hubs and sheaths; minimize open-system time." },
+        { strong: "Wire or tip too deep:", text: " new ectopy warrants repositioning; avoid contact with the atrial wall or tricuspid valve." },
+        { strong: "Poor flow:", text: " check tip depth, kinks, thrombus, and fibrin sheath; do not force flushing or advancement." },
+        { strong: "Infected line:", text: " suspected bloodstream or tunnel infection requires a specific removal/exchange and antibiotic plan, not an automatic wire exchange." },
+        { strong: "Difficult exchange:", text: " maintain wire control and release the cuff without cutting the catheter; stop traction if centrally adherent." },
+      ], References: [
+        { text: "CIRSE: Tunnelled Cuffed Catheters", href: "https://www.cirse.org/wp-content/uploads/2025/03/cirse_PIB_2025_central_venous_catheter_insertion_tunnelled_cuffed_catheters_EN.pdf" },
+        { text: "UK Kidney Association: Vascular Access Guideline", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12351868/" },
+        { text: "CDC: Catheter Infection Prevention and Replacement", href: "https://www.cdc.gov/infection-control/hcp/intravascular-catheter-related-infection/prevention-strategies.html" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -5454,8 +5675,39 @@ function installForeignBodyRemovalEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the foreign body retrieval technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Localize, capture, and safely remove the object; confirm complete retrieval.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Object location:", text: " define its full length, orientation, and whether a free end is available." },
+        { strong: "Retrieval path:", text: " identify vessel caliber, bends, and a sheath route that can accommodate the captured object." },
+        { strong: "Adjacent structures:", text: " assess contact with vessel walls, cardiac valves, or other implanted devices before traction." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Intravascular retrieval": [
+        { strong: "1. Localize and plan", text: " using imaging; select access, retrieval tool, and a sheath large enough for the object." },
+        { strong: "2. Obtain access and approach", text: " under imaging, minimizing contact that could displace the object." },
+        { strong: "3. Capture a free end", text: " with a snare when feasible; use an alternative planned technique if no end is accessible." },
+        { strong: "4. Align and withdraw", text: " the object into the sheath under fluoroscopy; stop if resistance or unsafe deformation develops." },
+        { strong: "5. Confirm complete removal", text: " by inspecting the object and completion imaging; assess injury and obtain hemostasis." },
+      ], "Other locations": [
+        "Biliary, urinary, and soft-tissue foreign bodies require a location-specific access and retrieval plan.",
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Further migration:", text: " secure capture before withdrawal and avoid pushing the object downstream." },
+        { strong: "Vessel or valve injury:", text: " do not pull an embedded or entangled object against resistance; reassess with experienced or surgical support." },
+        { strong: "Arrhythmia:", text: " monitor during intracardiac manipulation and pause if sustained ectopy develops." },
+        { strong: "Incomplete retrieval:", text: " check for fracture or missing fragments; localize any residual pieces before concluding." },
+      ], References: [
+        { text: "CIRSE: Foreign Body Retrieval", href: "https://www.cirse.org/patients/general-information/ir-procedures/foreign-body-retrieval/" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -5873,8 +6125,42 @@ function installPortPlacementEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the port placement technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Obtain central venous access, create the pocket and tunnel, and confirm port function.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Internal jugular vein:", text: " commonly used for chest ports; map its relationship to the carotid with ultrasound." },
+        { strong: "Central venous route:", text: " confirm a patent path through the brachiocephalic vein into the SVC." },
+        { strong: "Catheter tip:", text: " generally targets the lower SVC/cavoatrial junction; avoid deep intracardiac positioning." },
+        { strong: "Port pocket:", text: " place in healthy subcutaneous chest tissue with adequate coverage and an accessible septum." },
+        { strong: "Tunnel:", text: " use a smooth course without sharp bends; a medial subclavian route risks costoclavicular compression." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Plan the vein and pocket", text: " considering patency, skin condition, prior devices, and treatment needs." },
+        { strong: "2. Prep, anesthetize, and access", text: " the vein under ultrasound with full sterile precautions; confirm venous wire position." },
+        { strong: "3. Create the pocket and tunnel", text: " with a smooth catheter course and enough tissue to cover the reservoir." },
+        { strong: "4. Position and connect the catheter", text: " using fluoroscopy to set tip depth; trim and assemble per device instructions." },
+        { strong: "5. Confirm function", text: " by aspirating blood and flushing through a noncoring needle; check for kinks, leaks, and tip position." },
+        { strong: "6. Secure, close, and document", text: " hemostasis, final imaging, device details, and readiness for use; lock per local protocol." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Arterial access:", text: " confirm vein and wire before dilation; large-bore arterial cannulation needs specialist management before removal." },
+        { strong: "Air embolism:", text: " keep hubs occluded and minimize open-sheath time during catheter insertion." },
+        { strong: "Arrhythmia or perforation:", text: " avoid excessive intracardiac wire or catheter advancement; reassess new ectopy or instability." },
+        { strong: "Pneumothorax:", text: " keep the access needle visualized; assess new chest pain, hypoxia, or respiratory distress." },
+        { strong: "Malfunction:", text: " correct kinking, malposition, or a loose connection before closure; never force a resistant flush." },
+        { strong: "Pocket complications:", text: " achieve hemostasis and avoid excessive tension, thin coverage, or infected skin." },
+      ], References: [
+        { text: "JSIR Guidelines for Central Venous Port Placement and Management", href: "https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -6045,8 +6331,36 @@ function installPortRemovalEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the port removal technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Free the reservoir, remove the system intact, and manage the pocket according to infection status.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Pocket capsule:", text: " fibrous tissue and fixation sutures may tether the reservoir." },
+        { strong: "Catheter course:", text: " identify the connector and tunnel before dissection to avoid cutting the catheter." },
+        { strong: "Venous attachment:", text: " long-standing catheters can adhere centrally; resistance may reflect more than pocket scarring." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Assess the pocket", text: " for infection or erosion and confirm the device and reason for removal." },
+        { strong: "2. Prep, anesthetize, and reopen", text: " the pocket; release fixation sutures and free the reservoir with controlled dissection." },
+        { strong: "3. Withdraw the system gently", text: " maintaining control of the catheter; use positioning and breathing precautions per local central-line removal protocol." },
+        { strong: "4. Inspect and manage the wound", text: " confirm the entire catheter is intact, obtain hemostasis, and close a clean pocket; infected pockets need a tailored culture and wound-care plan." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Stuck catheter:", text: " stop forceful traction; assess under imaging and plan further removal with experienced support." },
+        { strong: "Fracture or embolization:", text: " avoid sharp dissection against the catheter; a missing segment requires localization and a retrieval plan." },
+        { strong: "Air entry or bleeding:", text: " promptly compress and occlude the tract after withdrawal, then apply an occlusive dressing." },
+        { strong: "Pocket infection:", text: " do not routinely close over purulence; arrange drainage, wound care, and antimicrobial management." },
+      ], References: [
+        { text: "JSIR Guidelines for Central Venous Port Placement and Management", href: "https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -6970,8 +7284,45 @@ function installThyroidBiopsyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "To be built as the thyroid biopsy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "Confirm the nodule, sample under ultrasound, and assess adequacy and hemostasis.",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+        { strong: "Thyroid lobes and isthmus:", text: " sit anterior and lateral to the trachea beneath the strap muscles." },
+        { strong: "Carotid and jugular:", text: " lie lateral to the gland; map them before choosing the tract." },
+        { strong: "Thyroid vessels:", text: " use Doppler to avoid vessels along the route and within the nodule." },
+        { strong: "Posterior danger zone:", text: " the esophagus and recurrent laryngeal nerve region lie behind the gland; avoid overshooting the capsule." },
+        { strong: "Nodule target:", text: " sample the suspicious solid component rather than cyst fluid alone." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: { "Basic steps": [
+        { strong: "1. Confirm the correct nodule", text: " against prior imaging; document side, location, and size." },
+        { strong: "2. Position and scan", text: " supine with comfortable neck extension; map vessels and choose a visible needle path." },
+        { strong: "3. Prep and anesthetize", text: " as needed; ask the patient to avoid swallowing or talking during each pass." },
+        { strong: "4. Sample under ultrasound", text: " keeping the tip visible within the solid target; use short controlled FNA movements." },
+        { strong: "5. Check specimen adequacy", text: " with on-site cytology when available; sample additional areas as needed and label each nodule separately." },
+        { strong: "6. Apply pressure and reassess", text: " for swelling, bleeding, voice change, or breathing difficulty before discharge." },
+      ], "If core biopsy is selected": [
+        { strong: "Confirm a safe throw:", text: " keep the entire sampling notch and needle excursion within the planned target, clear of posterior structures." },
+      ] },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: { "Pitfalls and safety": [
+        { strong: "Wrong nodule:", text: " match landmarks and labels, especially in a multinodular gland." },
+        { strong: "Nondiagnostic sample:", text: " target solid tissue; cyst fluid or heavily calcified areas may yield few cells." },
+        { strong: "Bloody aspirate:", text: " reduce suction and avoid visible vessels; excess blood can obscure cytology." },
+        { strong: "Lost needle tip:", text: " stop and regain visualization before advancing or sampling." },
+        { strong: "Neck hematoma:", text: " apply pressure; rapidly expanding swelling, dysphagia, or dyspnea requires urgent airway assessment." },
+        { strong: "Voice change or deep pain:", text: " stop and assess for posterior injury or hematoma; avoid overshooting the gland." },
+      ], References: [
+        { text: "American Thyroid Association: Thyroid FNA", href: "https://www.thyroid.org/fna-thyroid-nodules/" },
+        { text: "Korean Society of Thyroid Radiology: US-guided FNA Consensus", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4347275/" },
+      ] },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -7531,8 +7882,54 @@ function installY90MappingEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "Future Y90 mapping technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+          { strong: "Hepatic arteries:", text: " trace the celiac-to-hepatic pathway; variants include a right hepatic artery from the SMA or left hepatic artery from the left gastric." },
+          { strong: "Tumor feeders:", text: " identify every artery supplying the target; segmental branches define the liver territory treated." },
+          { strong: "Nontarget branches:", text: " look for gastric, gastroduodenal, cystic, and falciform branches near the planned injection site." },
+          { strong: "Dual liver supply:", text: " tumors often depend on hepatic arteries; normal liver also receives portal blood, but still receives radiation." },
+          { strong: "Lung pathway:", text: " abnormal artery-to-vein connections can let particles pass through the liver to the lungs." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: {
+        "Basic steps": [
+          { strong: "1. Review imaging and the treatment goal", text: " to select the tumor-bearing segment or lobe and assess liver reserve." },
+          { strong: "2. Obtain arterial access and map feeders", text: " with selective angiography and cone-beam CT as needed." },
+          { strong: "3. Establish a safe injection position", text: " beyond unsafe branches; selectively embolize connections only when needed." },
+          { strong: "4. Inject Tc-99m MAA", text: " from each planned treatment position and document catheter location and flow." },
+          { strong: "5. Obtain nuclear medicine imaging", text: " promptly per protocol; SPECT/CT localizes tracer, and lung imaging measures shunting." },
+          { strong: "6. Review distribution and plan the dose", text: " with nuclear medicine/physics; resolve unsafe uptake or poor coverage before scheduling therapy." },
+        ],
+        "Nuclear medicine in plain language": [
+          { strong: "MAA = test particles:", text: " technetium-labeled albumin helps predict where treatment particles may travel; it is not the Y90 treatment." },
+          { strong: "Lung shunt = escape fraction:", text: " the estimated percentage reaching the lungs. Safety depends on predicted lung dose and product-specific limits, not the percentage alone." },
+          { strong: "Dosimetry = dose planning:", text: " estimate radiation to tumor, normal liver, and lungs to balance treatment with safety." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: {
+        "Pitfalls and safety": [
+          { strong: "Unsafe gut uptake:", text: " investigate stomach or bowel activity; correct the route and repeat mapping when needed before treatment." },
+          { strong: "Mapping is an estimate:", text: " MAA and Y90 may distribute differently; reproduce catheter position and flow at therapy." },
+          { strong: "Missed supply:", text: " accessory or extrahepatic feeders can leave part of the tumor untreated." },
+          { strong: "High lung shunt:", text: " have nuclear medicine/physics review lung dose and imaging method; do not automatically clear treatment." },
+          { strong: "Changed flow:", text: " spasm, dissection, or a wedged catheter can distort the map; resolve before tracer injection." },
+          { strong: "Poor liver reserve:", text: " a favorable map does not override liver dysfunction or excessive normal-liver exposure." },
+        ],
+        References: [
+          { text: "EANM radioembolization procedure guideline", href: "https://link.springer.com/article/10.1007/s00259-021-05600-z" },
+          { text: "AAPM Y90 microsphere practice guideline", href: "https://pubmed.ncbi.nlm.nih.gov/37820316/" },
+          { text: "EANM mapping and treatment dosimetry", href: "https://link.springer.com/article/10.1186/s40658-021-00394-3" },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",
@@ -7739,8 +8136,54 @@ function installY90TherapyEdits() {
     [`${id}-intra-v2`]: {
       title: "Intraprocedure",
       type: "reference",
-      summary: "Future Y90 therapy technique section.",
-      children: [`${id}-troubleshooting-v2`, `${id}-red-flags-v2`],
+      summary: "",
+      children: [`${id}-intra-v2-anatomy`, `${id}-intra-v2-procedural-steps`, `${id}-intra-v2-pitfalls-safety`],
+    },
+    [`${id}-intra-v2-anatomy`]: {
+      title: "Anatomy", type: "reference", summary: "",
+      details: { Anatomy: [
+          { strong: "Mapped treatment territory:", text: " match the planned segment or lobe and all intended tumor feeders." },
+          { strong: "Catheter position:", text: " reproduce the mapping location relative to arterial branches; small shifts can change distribution." },
+          { strong: "Nearby off-target vessels:", text: " recheck gastric, duodenal, and cystic branches; collateral flow may have changed." },
+          { strong: "Liver to lung connections:", text: " shunted particles can irradiate lungs; use the approved mapping-based plan." },
+          { strong: "Untreated liver:", text: " preserve adequate functioning liver; lobar and segmental treatment expose different volumes." },
+      ] },
+    },
+    [`${id}-intra-v2-procedural-steps`]: {
+      title: "Procedural steps", type: "action", summary: "",
+      details: {
+        "Basic steps": [
+          { strong: "1. Confirm readiness and the prescription", text: " review interval labs, mapping, product, treatment territory, and approved dose plan." },
+          { strong: "2. Perform the radiation time-out", text: " verify patient, vial/activity, calibration time, and intended artery with the authorized team." },
+          { strong: "3. Recreate the mapped catheter position", text: " and confirm target perfusion and safe forward flow with angiography." },
+          { strong: "4. Deliver Y90 microspheres", text: " through the product-specific system; monitor flow and stop for reflux or stasis." },
+          { strong: "5. Complete delivery and radiation checks", text: " per protocol; measure residual activity to document what was actually delivered." },
+          { strong: "6. Verify treatment distribution", text: " with Y90 PET/CT or bremsstrahlung SPECT/CT per local protocol; secure arterial hemostasis." },
+        ],
+        "Nuclear medicine in plain language": [
+          { strong: "Y90 = treatment particles:", text: " microspheres lodge in small vessels and release short-range beta radiation; the main effect is radiation, not simply blocking blood flow." },
+          { strong: "Activity is not absorbed dose:", text: " GBq describes radioactivity administered; Gy describes energy absorbed by tissue. Distribution links the two." },
+          { strong: "The scan checks delivery:", text: " post-treatment imaging shows where the particles went, not whether the tumor has already responded." },
+        ],
+      },
+    },
+    [`${id}-intra-v2-pitfalls-safety`]: {
+      title: "Pitfalls and safety", type: "caution", summary: "",
+      details: {
+        "Pitfalls and safety": [
+          { strong: "Changed anatomy or flow:", text: " do not use the old plan blindly; reassess and remap if the intended delivery no longer matches." },
+          { strong: "Reflux or early stasis:", text: " stop and reassess; never force the remaining activity through a poorly flowing catheter." },
+          { strong: "Wrong vial or territory:", text: " independently verify each planned administration; glass and resin systems are not interchangeable." },
+          { strong: "Off-target radiation:", text: " persistent abdominal pain or GI bleeding warrants evaluation for radiation injury, not just routine post-treatment symptoms." },
+          { strong: "Liver or lung toxicity:", text: " new jaundice, ascites, cough, or dyspnea may be delayed; escalate and assess radiation-related injury." },
+          { strong: "Incomplete delivery or contamination:", text: " document residual activity and follow radiation-safety procedures for leaks, spills, and disposal." },
+        ],
+        References: [
+          { text: "EANM radioembolization procedure guideline", href: "https://link.springer.com/article/10.1007/s00259-021-05600-z" },
+          { text: "AAPM Y90 microsphere practice guideline", href: "https://pubmed.ncbi.nlm.nih.gov/37820316/" },
+          { text: "EANM mapping and treatment dosimetry", href: "https://link.springer.com/article/10.1186/s40658-021-00394-3" },
+        ],
+      },
     },
     [`${id}-post-v2`]: {
       title: "Post-procedure",

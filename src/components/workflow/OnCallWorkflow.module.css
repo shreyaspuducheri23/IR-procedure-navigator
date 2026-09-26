@@ -1,0 +1,28 @@
+.workflow { max-width: 720px; margin: 32px auto 64px; letter-spacing: 0; }
+.titleRow { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.titleRow h1 { font-size: 30px; margin: 4px 0; letter-spacing: 0; }
+.eyebrow { font-size: 12px; color: var(--c-ink-muted); margin: 0 0 8px; }
+.reset, .back { background: transparent; border: 0; color: var(--c-ink-muted); padding: 12px 0; cursor: pointer; }
+.path { list-style: none; padding: 0; margin: 0; }
+.path > li { position: relative; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 20px; padding-bottom: 24px; }
+.path > li:not(:last-child)::before { content: ""; position: absolute; top: 36px; bottom: 0; left: 17px; width: 2px; background: var(--c-border-strong); }
+.dot { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c-pearl-bg); color: var(--c-pearl); border: 1px solid var(--c-pearl-border); font-size: 14px; }
+.completed button { text-align: left; background: none; border: 0; padding: 0; cursor: pointer; color: var(--c-ink); }
+.completed button span { display: block; font-size: 14px; font-weight: 600; }
+.completed small { color: var(--c-ink-muted); display: block; margin-top: 4px; }
+.active > .dot { background: var(--c-brand); color: white; border-color: var(--c-brand); box-shadow: 0 0 14px #0891b233; }
+.step { min-width: 0; padding: 4px 0 16px; }
+.step h2 { font-size: 24px; line-height: 1.3; margin: 0 0 20px; letter-spacing: 0; scroll-margin-top: 130px; }
+.step h2:focus { outline: none; }
+.step ul { padding-left: 18px; margin: 0 0 24px; }
+.step li { padding-left: 4px; margin-bottom: 12px; line-height: 1.6; color: var(--c-ink-muted); overflow-wrap: anywhere; }
+.step .pager { font-size: 28px; font-weight: 700; color: var(--c-ink); list-style: none; padding: 0; }
+.choices { display: flex; flex-direction: column; gap: 10px; }
+.choices button, .nextConsult { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 14px 18px; background: var(--c-surface); border: 1px solid var(--c-border-strong); border-radius: 8px; color: var(--c-ink); font: inherit; font-weight: 600; text-align: left; cursor: pointer; }
+.choices button:hover { border-color: var(--accent-teal); background: var(--accent-teal-soft); }
+.choices button:only-child, .nextConsult { background: var(--c-brand); border-color: var(--c-brand); color: white; }
+.choices button span { flex-shrink: 0; }
+.back { display: block; margin-top: 12px; }
+.resetPrompt { padding: 16px 0; border-block: 1px solid var(--c-border); margin-bottom: 24px; }
+.resetPrompt button { margin: 8px 16px 8px 0; padding: 10px; cursor: pointer; }
+@media (max-width: 600px) { .workflow { margin-top: 20px; } .path > li { gap: 12px; } .step h2 { font-size: 21px; } }

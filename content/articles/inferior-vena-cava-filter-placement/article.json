@@ -169,20 +169,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Infrarenal IVC:"
+                  },
+                  " the usual landing zone lies below the lowest renal vein and above the iliac confluence."
+                ],
+                [
+                  {
+                    "strong": "Renal veins:"
+                  },
+                  " identify their actual entry sites, including accessory veins; do not rely on vertebral level alone."
+                ],
+                [
+                  {
+                    "strong": "Caval diameter:"
+                  },
+                  " measure at the planned landing zone and compare with the selected device's limits."
+                ],
+                [
+                  {
+                    "strong": "Variants:"
+                  },
+                  " duplicated or left-sided IVC can change the protection strategy and landing zone."
+                ],
+                [
+                  {
+                    "strong": "Access veins:"
+                  },
+                  " jugular or femoral access must provide a patent route; check for thrombus along the path."
+                ]
               ]
             }
           ]
@@ -192,55 +210,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common IVC filter placement problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Difficult caval access.",
-                    "Filter tilt.",
-                    "Unexpected caval anatomy.",
-                    "Renal vein level uncertainty."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No appropriate indication or no retrieval plan when needed.",
-                    "Duplicated/interrupted IVC anatomy not understood.",
-                    "Concern for caval thrombus or occlusion.",
-                    "Access site bleeding or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm indication and device"
+                  },
+                  " including access-compatible delivery system and a retrieval plan when appropriate."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain venous access"
+                  },
+                  " under ultrasound and advance the catheter into the IVC."
+                ],
+                [
+                  {
+                    "strong": "3. Perform cavography"
+                  },
+                  " to define renal veins, iliac confluence, diameter, variants, and thrombus."
+                ],
+                [
+                  {
+                    "strong": "4. Position the delivery sheath"
+                  },
+                  " at the planned landing zone; confirm orientation and device-specific deployment landmarks."
+                ],
+                [
+                  {
+                    "strong": "5. Deploy under fluoroscopy"
+                  },
+                  " following the device instructions while maintaining stable, centered positioning."
+                ],
+                [
+                  {
+                    "strong": "6. Confirm and document"
+                  },
+                  " filter level, expansion, and tilt; remove the sheath, obtain hemostasis, and arrange retrieval follow-up."
+                ]
               ]
             }
           ]
@@ -250,18 +261,73 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Wrong landing zone:"
+                      },
+                      " identify the lowest renal vein before release; suprarenal placement requires a specific plan."
+                    ],
+                    [
+                      {
+                        "strong": "Missed duplicated IVC:"
+                      },
+                      " a second channel may bypass the filter; review cross-sectional imaging and cavography."
+                    ],
+                    [
+                      {
+                        "strong": "Caval or access thrombus:"
+                      },
+                      " avoid deploying into clot or advancing through a thrombosed route; reassess the approach."
+                    ],
+                    [
+                      {
+                        "strong": "Device mismatch:"
+                      },
+                      " verify caval diameter, access route, and filter orientation before loading or release."
+                    ],
+                    [
+                      {
+                        "strong": "Tilt or maldeployment:"
+                      },
+                      " stabilize the sheath and confirm alignment before release; do not force a deployed filter."
+                    ],
+                    [
+                      {
+                        "strong": "Forgotten retrieval:"
+                      },
+                      " assign follow-up ownership; prolonged dwell can lead to thrombosis, penetration, fracture, or difficult removal."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "SIR Clinical Practice Guideline: IVC Filters",
+                          "href": "https://www.cirse.org/wp-content/uploads/2020/09/PIIS1051044320305315.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Anatomic and Technical Considerations: IVC Filter Placement",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4862848/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

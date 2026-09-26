@@ -171,20 +171,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Renal cortex:"
+                  },
+                  " contains glomeruli; the target for medical renal biopsy."
+                ],
+                [
+                  {
+                    "strong": "Native kidney:"
+                  },
+                  " posterior lower-pole cortex usually offers a practical route away from the hilum."
+                ],
+                [
+                  {
+                    "strong": "Renal sinus:"
+                  },
+                  " contains major vessels and the collecting system; keep the needle throw clear."
+                ],
+                [
+                  {
+                    "strong": "Adjacent structures:"
+                  },
+                  " check for colon, liver, spleen, and pleura along the entire tract."
+                ],
+                [
+                  {
+                    "strong": "Transplant kidney:"
+                  },
+                  " usually lies superficially in the iliac fossa; map vessels and choose an accessible cortical pole."
+                ]
               ]
             }
           ]
@@ -194,57 +212,63 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common kidney biopsy problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe biopsy window.",
-                    "Poor blood pressure control.",
-                    "Insufficient specimen.",
-                    "Post-biopsy pain.",
-                    "Hematuria or suspected bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm the target"
+                  },
+                  " and specimen plan: renal cortex for medical disease, viable solid tissue for a mass."
+                ],
+                [
+                  {
+                    "strong": "2. Position and map the route"
+                  },
+                  " with US/Doppler or CT; native kidneys are often approached prone, transplants supine."
+                ],
+                [
+                  {
+                    "strong": "3. Prep and anesthetize"
+                  },
+                  " the skin and planned tract under imaging guidance."
+                ],
+                [
+                  {
+                    "strong": "4. Advance the biopsy needle"
+                  },
+                  " with the tip visible; confirm the full throw stays within the intended target."
+                ],
+                [
+                  {
+                    "strong": "5. Obtain and assess cores"
+                  },
+                  " using a coached breath-hold when needed; confirm adequacy and correct specimen handling."
+                ],
+                [
+                  {
+                    "strong": "6. Check for bleeding"
+                  },
+                  " on completion imaging, then monitor pain, vitals, and urine during recovery."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Specimen handling"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Uncontrolled hypertension.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Active UTI/pyelonephritis or skin infection over the site.",
-                    "No safe window or kidney size concern.",
-                    "Hemodynamic instability, severe flank pain, expanding hematoma, or gross hematuria after biopsy."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Medical renal biopsy:"
+                  },
+                  " coordinate tissue for light microscopy, immunofluorescence, and electron microscopy; do not place all cores in formalin."
+                ]
               ]
             }
           ]
@@ -254,18 +278,81 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Bleeding:"
+                      },
+                      " the main complication; worsening flank pain, hypotension, or gross hematuria needs prompt assessment."
+                    ],
+                    [
+                      {
+                        "strong": "Deep needle throw:"
+                      },
+                      " avoid the sinus and collecting system; check depth before every pass."
+                    ],
+                    [
+                      {
+                        "strong": "Respiratory motion:"
+                      },
+                      " rehearse breath-holds and recheck the target before firing."
+                    ],
+                    [
+                      {
+                        "strong": "Poor yield:"
+                      },
+                      " medulla lacks glomeruli; for masses, avoid necrotic or purely cystic areas."
+                    ],
+                    [
+                      {
+                        "strong": "Unsafe tract:"
+                      },
+                      " reposition if bowel, pleura, or a major vessel blocks access; do not force the window."
+                    ],
+                    [
+                      {
+                        "strong": "Delayed vascular injury:"
+                      },
+                      " recurrent hematuria or falling hemoglobin may signal pseudoaneurysm or AV fistula."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "NIDDK: Kidney Biopsy",
+                          "href": "https://www.niddk.nih.gov/health-information/diagnostic-tests/kidney-biopsy"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "KHA-CARI: Renal Biopsy Guideline",
+                          "href": "https://www.cariguidelines.org/wp-content/uploads/2020/07/Kidney-Biopsy-guideline-summary.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "EAU: Renal Mass Biopsy",
+                          "href": "https://uroweb.org/guidelines/renal-cell-carcinoma/chapter/diagnostic-evaluation"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

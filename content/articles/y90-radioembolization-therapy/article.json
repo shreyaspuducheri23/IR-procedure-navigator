@@ -216,20 +216,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Mapped treatment territory:"
+                  },
+                  " match the planned segment or lobe and all intended tumor feeders."
+                ],
+                [
+                  {
+                    "strong": "Catheter position:"
+                  },
+                  " reproduce the mapping location relative to arterial branches; small shifts can change distribution."
+                ],
+                [
+                  {
+                    "strong": "Nearby off-target vessels:"
+                  },
+                  " recheck gastric, duodenal, and cystic branches; collateral flow may have changed."
+                ],
+                [
+                  {
+                    "strong": "Liver to lung connections:"
+                  },
+                  " shunted particles can irradiate lungs; use the approved mapping-based plan."
+                ],
+                [
+                  {
+                    "strong": "Untreated liver:"
+                  },
+                  " preserve adequate functioning liver; lobar and segmental treatment expose different volumes."
+                ]
               ]
             }
           ]
@@ -239,60 +257,75 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "Future edit: add Y90 therapy-specific troubleshooting."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Variant hepatic arterial anatomy from mapping study.",
-                    "Unexpected non-target flow.",
-                    "Activity/dose delivery issue.",
-                    "Cone-beam CT or nuclear medicine coordination issue.",
-                    "Access-site bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm readiness and the prescription"
+                  },
+                  " review interval labs, mapping, product, treatment territory, and approved dose plan."
+                ],
+                [
+                  {
+                    "strong": "2. Perform the radiation time-out"
+                  },
+                  " verify patient, vial/activity, calibration time, and intended artery with the authorized team."
+                ],
+                [
+                  {
+                    "strong": "3. Recreate the mapped catheter position"
+                  },
+                  " and confirm target perfusion and safe forward flow with angiography."
+                ],
+                [
+                  {
+                    "strong": "4. Deliver Y90 microspheres"
+                  },
+                  " through the product-specific system; monitor flow and stop for reflux or stasis."
+                ],
+                [
+                  {
+                    "strong": "5. Complete delivery and radiation checks"
+                  },
+                  " per protocol; measure residual activity to document what was actually delivered."
+                ],
+                [
+                  {
+                    "strong": "6. Verify treatment distribution"
+                  },
+                  " with Y90 PET/CT or bremsstrahlung SPECT/CT per local protocol; secure arterial hemostasis."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Nuclear medicine in plain language"
             },
             {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause therapy or prompt escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate if"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Treatment indication or target anatomy is uncertain.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Lung shunt/lung dose exceeds acceptable threshold.",
-                    "Nuclear medicine schedule or Y90 activity is not confirmed.",
-                    "Access-site bleeding or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Y90 = treatment particles:"
+                  },
+                  " microspheres lodge in small vessels and release short-range beta radiation; the main effect is radiation, not simply blocking blood flow."
+                ],
+                [
+                  {
+                    "strong": "Activity is not absorbed dose:"
+                  },
+                  " GBq describes radioactivity administered; Gy describes energy absorbed by tissue. Distribution links the two."
+                ],
+                [
+                  {
+                    "strong": "The scan checks delivery:"
+                  },
+                  " post-treatment imaging shows where the particles went, not whether the tumor has already responded."
+                ]
               ]
             }
           ]
@@ -302,18 +335,81 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Changed anatomy or flow:"
+                      },
+                      " do not use the old plan blindly; reassess and remap if the intended delivery no longer matches."
+                    ],
+                    [
+                      {
+                        "strong": "Reflux or early stasis:"
+                      },
+                      " stop and reassess; never force the remaining activity through a poorly flowing catheter."
+                    ],
+                    [
+                      {
+                        "strong": "Wrong vial or territory:"
+                      },
+                      " independently verify each planned administration; glass and resin systems are not interchangeable."
+                    ],
+                    [
+                      {
+                        "strong": "Off-target radiation:"
+                      },
+                      " persistent abdominal pain or GI bleeding warrants evaluation for radiation injury, not just routine post-treatment symptoms."
+                    ],
+                    [
+                      {
+                        "strong": "Liver or lung toxicity:"
+                      },
+                      " new jaundice, ascites, cough, or dyspnea may be delayed; escalate and assess radiation-related injury."
+                    ],
+                    [
+                      {
+                        "strong": "Incomplete delivery or contamination:"
+                      },
+                      " document residual activity and follow radiation-safety procedures for leaks, spills, and disposal."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "EANM radioembolization procedure guideline",
+                          "href": "https://link.springer.com/article/10.1007/s00259-021-05600-z"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "AAPM Y90 microsphere practice guideline",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/37820316/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "EANM mapping and treatment dosimetry",
+                          "href": "https://link.springer.com/article/10.1186/s40658-021-00394-3"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

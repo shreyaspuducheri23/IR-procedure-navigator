@@ -166,20 +166,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Pleural space:"
+                  },
+                  " lies between chest wall and lung; target the air or fluid pocket, not lung parenchyma."
+                ],
+                [
+                  {
+                    "strong": "Triangle of safety:"
+                  },
+                  " between pectoralis major and latissimus dorsi, above the fifth intercostal space and below the axilla; imaging determines the actual entry site."
+                ],
+                [
+                  {
+                    "strong": "Intercostal bundle:"
+                  },
+                  " runs beneath each rib; enter just above the rib and assess vessels when needed."
+                ],
+                [
+                  {
+                    "strong": "Diaphragm and upper abdomen:"
+                  },
+                  " identify the diaphragm, liver, and spleen throughout respiration before access."
+                ],
+                [
+                  {
+                    "strong": "Air versus fluid:"
+                  },
+                  " air tends to rise and fluid layers dependently; loculations may require a targeted route."
+                ]
               ]
             }
           ]
@@ -189,57 +207,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common chest tube problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe window.",
-                    "Poor drainage.",
-                    "Tube kink/occlusion.",
-                    "Air leak.",
-                    "Tube malposition."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Respiratory distress.",
-                    "Hemodynamic instability.",
-                    "Concern for tension pneumothorax.",
-                    "Unexpected hemorrhagic output.",
-                    "Concern for lung, vascular, or abdominal injury."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Select the target and tube"
+                  },
+                  " using imaging and the indication; hemothorax or a substantial air leak may require a larger drain."
+                ],
+                [
+                  {
+                    "strong": "2. Position, prep, and anesthetize"
+                  },
+                  " through the chest wall to the parietal pleura."
+                ],
+                [
+                  {
+                    "strong": "3. Enter the pleural space"
+                  },
+                  " above the rib under imaging guidance and confirm air or fluid aspiration."
+                ],
+                [
+                  {
+                    "strong": "4. Advance the wire and dilate"
+                  },
+                  " only after confirming intrapleural position; limit dilator depth."
+                ],
+                [
+                  {
+                    "strong": "5. Place and secure the tube"
+                  },
+                  " with every side hole intrapleural; connect to the prescribed drainage system."
+                ],
+                [
+                  {
+                    "strong": "6. Confirm position and function"
+                  },
+                  " with completion imaging; document drainage limits and water-seal or suction orders."
+                ]
               ]
             }
           ]
@@ -249,18 +258,65 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Lung or abdominal injury:"
+                      },
+                      " confirm the wire is pleural and avoid deep dilator advancement."
+                    ],
+                    [
+                      {
+                        "strong": "Intercostal bleeding:"
+                      },
+                      " avoid the rib's inferior margin; new bloody drainage or instability needs urgent assessment."
+                    ],
+                    [
+                      {
+                        "strong": "Rapid fluid drainage:"
+                      },
+                      " control the rate; pause for chest pain, persistent cough, or worsening dyspnea and assess for re-expansion edema."
+                    ],
+                    [
+                      {
+                        "strong": "Tension pneumothorax:"
+                      },
+                      " do not routinely clamp a bubbling drain or obstruct its air outlet."
+                    ],
+                    [
+                      {
+                        "strong": "Poor drainage or ongoing air leak:"
+                      },
+                      " check connections, kinks, occlusion, and side holes outside the pleural space."
+                    ],
+                    [
+                      {
+                        "strong": "Dislodgement:"
+                      },
+                      " secure the tube; do not push an exposed segment back through the skin."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "BTS Clinical Statement on Pleural Procedures",
+                          "href": "https://thorax.bmj.com/content/78/Suppl_3/s43"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

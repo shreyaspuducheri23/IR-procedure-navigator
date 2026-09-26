@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SearchBar } from "./SearchBar";
 import styles from "./AppHeader.module.css";
 
@@ -27,6 +27,10 @@ export function AppHeader() {
           </Link>
         </div>
       </div>
+      <nav className={styles.navigation} aria-label="Main navigation">
+        <NavLink to="/" end>Procedure guides</NavLink>
+        <NavLink to="/on-call">On-Call Workflow</NavLink>
+      </nav>
     </header>
   );
 }

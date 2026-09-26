@@ -187,20 +187,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Hepatic arteries:"
+                  },
+                  " trace the celiac-to-hepatic pathway; variants include a right hepatic artery from the SMA or left hepatic artery from the left gastric."
+                ],
+                [
+                  {
+                    "strong": "Tumor feeders:"
+                  },
+                  " identify every artery supplying the target; segmental branches define the liver territory treated."
+                ],
+                [
+                  {
+                    "strong": "Nontarget branches:"
+                  },
+                  " look for gastric, gastroduodenal, cystic, and falciform branches near the planned injection site."
+                ],
+                [
+                  {
+                    "strong": "Dual liver supply:"
+                  },
+                  " tumors often depend on hepatic arteries; normal liver also receives portal blood, but still receives radiation."
+                ],
+                [
+                  {
+                    "strong": "Lung pathway:"
+                  },
+                  " abnormal artery-to-vein connections can let particles pass through the liver to the lungs."
+                ]
               ]
             }
           ]
@@ -210,60 +228,75 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "Future edit: add Y90 mapping-specific troubleshooting."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Variant hepatic arterial anatomy.",
-                    "Extrahepatic/non-target branches.",
-                    "Unexpected lung shunt concern.",
-                    "Unable to complete cone-beam CT or nuclear medicine coordination.",
-                    "Access-site bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Review imaging and the treatment goal"
+                  },
+                  " to select the tumor-bearing segment or lobe and assess liver reserve."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain arterial access and map feeders"
+                  },
+                  " with selective angiography and cone-beam CT as needed."
+                ],
+                [
+                  {
+                    "strong": "3. Establish a safe injection position"
+                  },
+                  " beyond unsafe branches; selectively embolize connections only when needed."
+                ],
+                [
+                  {
+                    "strong": "4. Inject Tc-99m MAA"
+                  },
+                  " from each planned treatment position and document catheter location and flow."
+                ],
+                [
+                  {
+                    "strong": "5. Obtain nuclear medicine imaging"
+                  },
+                  " promptly per protocol; SPECT/CT localizes tracer, and lung imaging measures shunting."
+                ],
+                [
+                  {
+                    "strong": "6. Review distribution and plan the dose"
+                  },
+                  " with nuclear medicine/physics; resolve unsafe uptake or poor coverage before scheduling therapy."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Nuclear medicine in plain language"
             },
             {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause mapping or prompt escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate if"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Y90 candidacy is uncertain.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Non-target embolization risk cannot be addressed.",
-                    "Nuclear medicine or SPECT/CT pathway is not available.",
-                    "Access-site bleeding or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "MAA = test particles:"
+                  },
+                  " technetium-labeled albumin helps predict where treatment particles may travel; it is not the Y90 treatment."
+                ],
+                [
+                  {
+                    "strong": "Lung shunt = escape fraction:"
+                  },
+                  " the estimated percentage reaching the lungs. Safety depends on predicted lung dose and product-specific limits, not the percentage alone."
+                ],
+                [
+                  {
+                    "strong": "Dosimetry = dose planning:"
+                  },
+                  " estimate radiation to tumor, normal liver, and lungs to balance treatment with safety."
+                ]
               ]
             }
           ]
@@ -273,18 +306,81 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Unsafe gut uptake:"
+                      },
+                      " investigate stomach or bowel activity; correct the route and repeat mapping when needed before treatment."
+                    ],
+                    [
+                      {
+                        "strong": "Mapping is an estimate:"
+                      },
+                      " MAA and Y90 may distribute differently; reproduce catheter position and flow at therapy."
+                    ],
+                    [
+                      {
+                        "strong": "Missed supply:"
+                      },
+                      " accessory or extrahepatic feeders can leave part of the tumor untreated."
+                    ],
+                    [
+                      {
+                        "strong": "High lung shunt:"
+                      },
+                      " have nuclear medicine/physics review lung dose and imaging method; do not automatically clear treatment."
+                    ],
+                    [
+                      {
+                        "strong": "Changed flow:"
+                      },
+                      " spasm, dissection, or a wedged catheter can distort the map; resolve before tracer injection."
+                    ],
+                    [
+                      {
+                        "strong": "Poor liver reserve:"
+                      },
+                      " a favorable map does not override liver dysfunction or excessive normal-liver exposure."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "EANM radioembolization procedure guideline",
+                          "href": "https://link.springer.com/article/10.1007/s00259-021-05600-z"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "AAPM Y90 microsphere practice guideline",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/37820316/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "EANM mapping and treatment dosimetry",
+                          "href": "https://link.springer.com/article/10.1186/s40658-021-00394-3"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

@@ -174,20 +174,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Collection:"
+                  },
+                  " define size, depth, loculations, and a drainable fluid component."
+                ],
+                [
+                  {
+                    "strong": "Access route:"
+                  },
+                  " map bowel, vessels, solid organs, and pleura before choosing a tract."
+                ],
+                [
+                  {
+                    "strong": "Dependent pocket:"
+                  },
+                  " position the loop and side holes within the cavity for effective drainage."
+                ],
+                [
+                  {
+                    "strong": "Existing tract:"
+                  },
+                  " preserve it during exchange; a recent tract may not tolerate loss of wire access."
+                ],
+                [
+                  {
+                    "strong": "Fistulous connections:"
+                  },
+                  " bowel, biliary, or urinary communication may explain persistent output."
+                ]
               ]
             }
           ]
@@ -197,57 +215,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common drain placement/exchange problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No safe window.",
-                    "Collection too small or not formed.",
-                    "Poor drainage.",
-                    "Thick debris or loculations.",
-                    "Drain dislodgement or leakage."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Hemodynamic instability.",
-                    "No safe access window.",
-                    "Uncorrected high-risk anticoagulation issue.",
-                    "Concern for bowel, vascular, or solid-organ injury.",
-                    "Sepsis or clinical deterioration requiring urgent escalation."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Review the target"
+                  },
+                  " and choose catheter size and access using US or CT."
+                ],
+                [
+                  {
+                    "strong": "2. Prep and anesthetize"
+                  },
+                  " the planned tract; confirm antibiotic coverage for an infected collection."
+                ],
+                [
+                  {
+                    "strong": "3. Establish access"
+                  },
+                  " for placement, puncture and aspirate the collection; for exchange, gently inject the existing catheter to define the cavity."
+                ],
+                [
+                  {
+                    "strong": "4. Secure a wire in the cavity"
+                  },
+                  " before tract dilation or removal of the old catheter; release its locking mechanism first."
+                ],
+                [
+                  {
+                    "strong": "5. Place the new catheter"
+                  },
+                  " with the loop and all drainage side holes inside the collection; confirm by imaging."
+                ],
+                [
+                  {
+                    "strong": "6. Aspirate, secure, and connect"
+                  },
+                  " to drainage; send fresh aspirate for requested studies and specify flushing and follow-up."
+                ]
               ]
             }
           ]
@@ -257,18 +266,73 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Unsafe window:"
+                      },
+                      " avoid unintended bowel, vessel, or pleural traversal; reconsider the route if none is safe."
+                    ],
+                    [
+                      {
+                        "strong": "Sepsis:"
+                      },
+                      " minimize manipulation and forceful injection; escalating rigors or hypotension need prompt treatment."
+                    ],
+                    [
+                      {
+                        "strong": "Lost access:"
+                      },
+                      " keep a stable wire in the cavity before removing the old drain; do not blindly probe a lost tract."
+                    ],
+                    [
+                      {
+                        "strong": "Poor output:"
+                      },
+                      " check kinking, blockage, side-hole position, and undrained loculations before upsizing."
+                    ],
+                    [
+                      {
+                        "strong": "New bloody output:"
+                      },
+                      " suspect vascular injury; stop manipulation and assess before removing the catheter."
+                    ],
+                    [
+                      {
+                        "strong": "Persistent enteric or high output:"
+                      },
+                      " consider a fistula; clarify the source before catheter removal."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE: Percutaneous Fluid and Abscess Drainage",
+                          "href": "https://www.cirse.org/wp-content/uploads/2025/03/cirse_PIB_2025_percutaneous_fluid_and_abscess_drainage_EN.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE Clinical Practice Manual",
+                          "href": "https://www.cirse.org/wp-content/uploads/2021/07/Mahnken2021_Article_CIRSEClinicalPracticeManual.pdf"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

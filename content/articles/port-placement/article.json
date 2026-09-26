@@ -171,20 +171,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Internal jugular vein:"
+                  },
+                  " commonly used for chest ports; map its relationship to the carotid with ultrasound."
+                ],
+                [
+                  {
+                    "strong": "Central venous route:"
+                  },
+                  " confirm a patent path through the brachiocephalic vein into the SVC."
+                ],
+                [
+                  {
+                    "strong": "Catheter tip:"
+                  },
+                  " generally targets the lower SVC/cavoatrial junction; avoid deep intracardiac positioning."
+                ],
+                [
+                  {
+                    "strong": "Port pocket:"
+                  },
+                  " place in healthy subcutaneous chest tissue with adequate coverage and an accessible septum."
+                ],
+                [
+                  {
+                    "strong": "Tunnel:"
+                  },
+                  " use a smooth course without sharp bends; a medial subclavian route risks costoclavicular compression."
+                ]
               ]
             }
           ]
@@ -194,56 +212,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common port placement problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No suitable venous access.",
-                    "Difficult wire passage or central venous stenosis.",
-                    "Pocket site issue.",
-                    "Tip position uncertainty.",
-                    "Port does not aspirate or flush."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Active infection or bacteremia concern before elective placement.",
-                    "No safe access or pocket site.",
-                    "Severe coagulopathy outside low-risk thresholds.",
-                    "Arterial puncture, expanding hematoma, pneumothorax symptoms, or unstable vitals."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Plan the vein and pocket"
+                  },
+                  " considering patency, skin condition, prior devices, and treatment needs."
+                ],
+                [
+                  {
+                    "strong": "2. Prep, anesthetize, and access"
+                  },
+                  " the vein under ultrasound with full sterile precautions; confirm venous wire position."
+                ],
+                [
+                  {
+                    "strong": "3. Create the pocket and tunnel"
+                  },
+                  " with a smooth catheter course and enough tissue to cover the reservoir."
+                ],
+                [
+                  {
+                    "strong": "4. Position and connect the catheter"
+                  },
+                  " using fluoroscopy to set tip depth; trim and assemble per device instructions."
+                ],
+                [
+                  {
+                    "strong": "5. Confirm function"
+                  },
+                  " by aspirating blood and flushing through a noncoring needle; check for kinks, leaks, and tip position."
+                ],
+                [
+                  {
+                    "strong": "6. Secure, close, and document"
+                  },
+                  " hemostasis, final imaging, device details, and readiness for use; lock per local protocol."
+                ]
               ]
             }
           ]
@@ -253,18 +263,65 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Arterial access:"
+                      },
+                      " confirm vein and wire before dilation; large-bore arterial cannulation needs specialist management before removal."
+                    ],
+                    [
+                      {
+                        "strong": "Air embolism:"
+                      },
+                      " keep hubs occluded and minimize open-sheath time during catheter insertion."
+                    ],
+                    [
+                      {
+                        "strong": "Arrhythmia or perforation:"
+                      },
+                      " avoid excessive intracardiac wire or catheter advancement; reassess new ectopy or instability."
+                    ],
+                    [
+                      {
+                        "strong": "Pneumothorax:"
+                      },
+                      " keep the access needle visualized; assess new chest pain, hypoxia, or respiratory distress."
+                    ],
+                    [
+                      {
+                        "strong": "Malfunction:"
+                      },
+                      " correct kinking, malposition, or a loose connection before closure; never force a resistant flush."
+                    ],
+                    [
+                      {
+                        "strong": "Pocket complications:"
+                      },
+                      " achieve hemostasis and avoid excessive tension, thin coverage, or infected skin."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "JSIR Guidelines for Central Venous Port Placement and Management",
+                          "href": "https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

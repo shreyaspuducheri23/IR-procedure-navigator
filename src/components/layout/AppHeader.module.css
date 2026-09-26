@@ -6,6 +6,10 @@
   border-bottom: 1px solid var(--c-border);
 }
 
+.navigation { display: flex; gap: 24px; max-width: 84rem; margin: auto; padding: 0 24px; }
+.navigation a { padding: 12px 0; font-size: 14px; color: var(--c-ink-muted); text-decoration: none; border-bottom: 3px solid transparent; }
+.navigation a[aria-current="page"] { color: var(--c-brand); border-color: var(--c-brand); font-weight: 650; }
+
 .inner {
   height: var(--header-height);
   max-width: 84rem;

@@ -195,20 +195,26 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Retrieval hook:"
+                  },
+                  " identify its orientation, tilt, and possible embedding in the caval wall."
+                ],
+                [
+                  {
+                    "strong": "Filter and cava:"
+                  },
+                  " assess trapped thrombus, caval patency, and suspected strut penetration or fracture."
+                ],
+                [
+                  {
+                    "strong": "Retrieval route:"
+                  },
+                  " choose access compatible with the filter design; many standard filters are retrieved from the jugular vein."
+                ]
               ]
             }
           ]
@@ -218,56 +224,36 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common IVC filter removal problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Long dwell time or embedded hook.",
-                    "Filter tilt.",
-                    "Strut penetration.",
-                    "Caval thrombus or occlusion.",
-                    "Need for advanced retrieval technique."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Large thrombus in or around the filter.",
-                    "Concern for caval injury.",
-                    "Severe filter tilt, fracture, migration, or penetration requiring advanced planning.",
-                    "Access-site bleeding or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm removal is appropriate"
+                  },
+                  " and review filter type, dwell time, and available imaging for complexity."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain access and perform cavography"
+                  },
+                  " to assess thrombus and filter position before retrieval."
+                ],
+                [
+                  {
+                    "strong": "3. Capture the retrieval hook"
+                  },
+                  " and collapse the filter into the sheath under fluoroscopy, following device instructions."
+                ],
+                [
+                  {
+                    "strong": "4. Remove and inspect"
+                  },
+                  " for an intact filter; check completion cavography for injury, then obtain access-site hemostasis."
+                ]
               ]
             }
           ]
@@ -277,18 +263,61 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Significant trapped thrombus:"
+                      },
+                      " pause retrieval and reassess embolic risk and the anticoagulation plan."
+                    ],
+                    [
+                      {
+                        "strong": "Embedded hook or resistance:"
+                      },
+                      " avoid forceful traction; escalate to a planned advanced retrieval strategy."
+                    ],
+                    [
+                      {
+                        "strong": "Caval injury:"
+                      },
+                      " new pain, extravasation, or instability requires immediate assessment and hemorrhage control."
+                    ],
+                    [
+                      {
+                        "strong": "Missing strut:"
+                      },
+                      " compare the retrieved device with its expected design and localize any retained or embolized fragment."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "SIR Clinical Practice Guideline: IVC Filters",
+                          "href": "https://www.cirse.org/wp-content/uploads/2020/09/PIIS1051044320305315.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "IVC Filter Retrievals: Standard and Novel Techniques",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5220200/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

@@ -171,20 +171,26 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Object location:"
+                  },
+                  " define its full length, orientation, and whether a free end is available."
+                ],
+                [
+                  {
+                    "strong": "Retrieval path:"
+                  },
+                  " identify vessel caliber, bends, and a sheath route that can accommodate the captured object."
+                ],
+                [
+                  {
+                    "strong": "Adjacent structures:"
+                  },
+                  " assess contact with vessel walls, cardiac valves, or other implanted devices before traction."
+                ]
               ]
             }
           ]
@@ -194,56 +200,52 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Intravascular retrieval"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common foreign body retrieval problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Foreign body not visible or location uncertain.",
-                    "Fragment migrates during retrieval.",
-                    "Snare cannot engage fragment.",
-                    "Access approach does not provide a workable angle.",
-                    "Fragment is adherent, thrombosed, or fractured further."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Localize and plan"
+                  },
+                  " using imaging; select access, retrieval tool, and a sheath large enough for the object."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain access and approach"
+                  },
+                  " under imaging, minimizing contact that could displace the object."
+                ],
+                [
+                  {
+                    "strong": "3. Capture a free end"
+                  },
+                  " with a snare when feasible; use an alternative planned technique if no end is accessible."
+                ],
+                [
+                  {
+                    "strong": "4. Align and withdraw"
+                  },
+                  " the object into the sheath under fluoroscopy; stop if resistance or unsafe deformation develops."
+                ],
+                [
+                  {
+                    "strong": "5. Confirm complete removal"
+                  },
+                  " by inspecting the object and completion imaging; assess injury and obtain hemostasis."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Other locations"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Intracardiac or pulmonary arterial location with arrhythmia, hemodynamic change, or respiratory symptoms.",
-                    "Infected or thrombosed foreign body.",
-                    "High migration risk or interval migration on imaging.",
-                    "Vascular injury, uncontrolled access-site bleeding, or inability to safely retrieve."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Biliary, urinary, and soft-tissue foreign bodies require a location-specific access and retrieval plan."
               ]
             }
           ]
@@ -253,18 +255,53 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Further migration:"
+                      },
+                      " secure capture before withdrawal and avoid pushing the object downstream."
+                    ],
+                    [
+                      {
+                        "strong": "Vessel or valve injury:"
+                      },
+                      " do not pull an embedded or entangled object against resistance; reassess with experienced or surgical support."
+                    ],
+                    [
+                      {
+                        "strong": "Arrhythmia:"
+                      },
+                      " monitor during intracardiac manipulation and pause if sustained ectopy develops."
+                    ],
+                    [
+                      {
+                        "strong": "Incomplete retrieval:"
+                      },
+                      " check for fracture or missing fragments; localize any residual pieces before concluding."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE: Foreign Body Retrieval",
+                          "href": "https://www.cirse.org/patients/general-information/ir-procedures/foreign-body-retrieval/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

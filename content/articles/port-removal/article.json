@@ -179,20 +179,26 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Pocket capsule:"
+                  },
+                  " fibrous tissue and fixation sutures may tether the reservoir."
+                ],
+                [
+                  {
+                    "strong": "Catheter course:"
+                  },
+                  " identify the connector and tunnel before dissection to avoid cutting the catheter."
+                ],
+                [
+                  {
+                    "strong": "Venous attachment:"
+                  },
+                  " long-standing catheters can adhere centrally; resistance may reflect more than pocket scarring."
+                ]
               ]
             }
           ]
@@ -202,55 +208,36 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common port removal problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Port catheter is adherent or difficult to remove.",
-                    "Catheter fracture or retained fragment.",
-                    "Pocket infection or purulence.",
-                    "Bleeding from pocket or venotomy tract."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Red Flags"
-            },
-            {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Bacteremia or pocket infection requiring culture and antibiotics coordination.",
-                    "Catheter fracture, migration, or retained fragment.",
-                    "Uncontrolled pocket bleeding or expanding hematoma.",
-                    "Hemodynamic instability or concern for vascular injury."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Assess the pocket"
+                  },
+                  " for infection or erosion and confirm the device and reason for removal."
+                ],
+                [
+                  {
+                    "strong": "2. Prep, anesthetize, and reopen"
+                  },
+                  " the pocket; release fixation sutures and free the reservoir with controlled dissection."
+                ],
+                [
+                  {
+                    "strong": "3. Withdraw the system gently"
+                  },
+                  " maintaining control of the catheter; use positioning and breathing precautions per local central-line removal protocol."
+                ],
+                [
+                  {
+                    "strong": "4. Inspect and manage the wound"
+                  },
+                  " confirm the entire catheter is intact, obtain hemostasis, and close a clean pocket; infected pockets need a tailored culture and wound-care plan."
+                ]
               ]
             }
           ]
@@ -260,18 +247,53 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Stuck catheter:"
+                      },
+                      " stop forceful traction; assess under imaging and plan further removal with experienced support."
+                    ],
+                    [
+                      {
+                        "strong": "Fracture or embolization:"
+                      },
+                      " avoid sharp dissection against the catheter; a missing segment requires localization and a retrieval plan."
+                    ],
+                    [
+                      {
+                        "strong": "Air entry or bleeding:"
+                      },
+                      " promptly compress and occlude the tract after withdrawal, then apply an occlusive dressing."
+                    ],
+                    [
+                      {
+                        "strong": "Pocket infection:"
+                      },
+                      " do not routinely close over purulence; arrange drainage, wound care, and antimicrobial management."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "JSIR Guidelines for Central Venous Port Placement and Management",
+                          "href": "https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

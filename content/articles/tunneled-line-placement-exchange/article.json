@@ -198,20 +198,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Right internal jugular:"
+                  },
+                  " often provides the most direct central route; map the vein and adjacent carotid with ultrasound."
+                ],
+                [
+                  {
+                    "strong": "Central veins:"
+                  },
+                  " assess brachiocephalic/SVC patency and prior devices; preserve future dialysis access when selecting the site."
+                ],
+                [
+                  {
+                    "strong": "Tip target:"
+                  },
+                  " infusion lines generally end at the lower SVC/cavoatrial junction; tunneled dialysis tips usually target the mid right atrium per device guidance."
+                ],
+                [
+                  {
+                    "strong": "Tunnel and cuff:"
+                  },
+                  " create a smooth subcutaneous course with the cuff buried at the device-specified distance from the exit."
+                ],
+                [
+                  {
+                    "strong": "Existing catheter:"
+                  },
+                  " for exchange, assess cuff fixation, tip position, and possible fibrin sheath or central stenosis."
+                ]
               ]
             }
           ]
@@ -221,59 +239,63 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Placement"
             },
             {
-              "type": "paragraph",
-              "text": "Future edit: add common tunneled line placement/exchange problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "No suitable access site.",
-                    "Central venous stenosis or thrombosis.",
-                    "Difficult aspiration/flush after placement or exchange.",
-                    "Suspected fibrin sheath.",
-                    "Malposition or retraction."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Select the line and route"
+                  },
+                  " based on dialysis versus infusion needs, venous patency, and required length."
+                ],
+                [
+                  {
+                    "strong": "2. Prep and obtain access"
+                  },
+                  " with full sterile precautions, local anesthesia, and ultrasound; confirm venous wire position before dilation."
+                ],
+                [
+                  {
+                    "strong": "3. Create the tunnel"
+                  },
+                  " from the planned exit site with a gentle curve and appropriate cuff position."
+                ],
+                [
+                  {
+                    "strong": "4. Advance the catheter"
+                  },
+                  " through the introducer under fluoroscopy; keep the open system occluded and set the device-specific tip position."
+                ],
+                [
+                  {
+                    "strong": "5. Test every lumen"
+                  },
+                  " for blood return and easy flushing; correct kinks or malposition before finishing."
+                ],
+                [
+                  {
+                    "strong": "6. Secure and dress"
+                  },
+                  " the catheter, lock each lumen per protocol, and document tip position and readiness for use."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "Exchange only"
             },
             {
-              "type": "callout",
-              "variant": "caution",
-              "blocks": [
-                {
-                  "type": "paragraph",
-                  "text": "Findings that should pause over-wire exchange or prompt escalation."
-                },
-                {
-                  "type": "heading",
-                  "text": "Escalate if"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Bacteremia or line infection: do not exchange over wire.",
-                    "Tunnel infection, exit-site drainage, tunnel tenderness, or uncontrolled active infection.",
-                    "No safe access site or suspected central venous occlusion.",
-                    "Arterial puncture, expanding hematoma, pneumothorax symptoms, arrhythmia, or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Preserve access:"
+                  },
+                  " secure a wire centrally and free the cuff before removing the old catheter; evaluate the cause of malfunction, then confirm the replacement's position and function."
+                ]
               ]
             }
           ]
@@ -283,18 +305,81 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Arterial injury:"
+                      },
+                      " confirm vein and wire before dilation; large-bore arterial cannulation needs specialist assessment before removal."
+                    ],
+                    [
+                      {
+                        "strong": "Air embolism:"
+                      },
+                      " occlude open hubs and sheaths; minimize open-system time."
+                    ],
+                    [
+                      {
+                        "strong": "Wire or tip too deep:"
+                      },
+                      " new ectopy warrants repositioning; avoid contact with the atrial wall or tricuspid valve."
+                    ],
+                    [
+                      {
+                        "strong": "Poor flow:"
+                      },
+                      " check tip depth, kinks, thrombus, and fibrin sheath; do not force flushing or advancement."
+                    ],
+                    [
+                      {
+                        "strong": "Infected line:"
+                      },
+                      " suspected bloodstream or tunnel infection requires a specific removal/exchange and antibiotic plan, not an automatic wire exchange."
+                    ],
+                    [
+                      {
+                        "strong": "Difficult exchange:"
+                      },
+                      " maintain wire control and release the cuff without cutting the catheter; stop traction if centrally adherent."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE: Tunnelled Cuffed Catheters",
+                          "href": "https://www.cirse.org/wp-content/uploads/2025/03/cirse_PIB_2025_central_venous_catheter_insertion_tunnelled_cuffed_catheters_EN.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "UK Kidney Association: Vascular Access Guideline",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12351868/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "CDC: Catheter Infection Prevention and Replacement",
+                          "href": "https://www.cdc.gov/infection-control/hcp/intravascular-catheter-related-infection/prevention-strategies.html"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]

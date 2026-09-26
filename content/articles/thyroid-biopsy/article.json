@@ -168,20 +168,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Thyroid lobes and isthmus:"
+                  },
+                  " sit anterior and lateral to the trachea beneath the strap muscles."
+                ],
+                [
+                  {
+                    "strong": "Carotid and jugular:"
+                  },
+                  " lie lateral to the gland; map them before choosing the tract."
+                ],
+                [
+                  {
+                    "strong": "Thyroid vessels:"
+                  },
+                  " use Doppler to avoid vessels along the route and within the nodule."
+                ],
+                [
+                  {
+                    "strong": "Posterior danger zone:"
+                  },
+                  " the esophagus and recurrent laryngeal nerve region lie behind the gland; avoid overshooting the capsule."
+                ],
+                [
+                  {
+                    "strong": "Nodule target:"
+                  },
+                  " sample the suspicious solid component rather than cyst fluid alone."
+                ]
               ]
             }
           ]
@@ -191,55 +209,63 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "Troubleshooting"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as common thyroid biopsy problems and first checks."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Target difficult to visualize.",
-                    "Need to switch FNA/core approach.",
-                    "Specimen adequacy concern.",
-                    "Small hematoma or local bleeding."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Confirm the correct nodule"
+                  },
+                  " against prior imaging; document side, location, and size."
+                ],
+                [
+                  {
+                    "strong": "2. Position and scan"
+                  },
+                  " supine with comfortable neck extension; map vessels and choose a visible needle path."
+                ],
+                [
+                  {
+                    "strong": "3. Prep and anesthetize"
+                  },
+                  " as needed; ask the patient to avoid swallowing or talking during each pass."
+                ],
+                [
+                  {
+                    "strong": "4. Sample under ultrasound"
+                  },
+                  " keeping the tip visible within the solid target; use short controlled FNA movements."
+                ],
+                [
+                  {
+                    "strong": "5. Check specimen adequacy"
+                  },
+                  " with on-site cytology when available; sample additional areas as needed and label each nodule separately."
+                ],
+                [
+                  {
+                    "strong": "6. Apply pressure and reassess"
+                  },
+                  " for swelling, bleeding, voice change, or breathing difficulty before discharge."
+                ]
               ]
             },
             {
               "type": "heading",
-              "text": "Red Flags"
+              "text": "If core biopsy is selected"
             },
             {
-              "type": "paragraph",
-              "text": "To be built as stop/escalate criteria."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Expanding neck hematoma.",
-                    "Airway symptoms, voice change, dyspnea, or dysphagia.",
-                    "Uncontrolled bleeding.",
-                    "Vasovagal episode or hemodynamic instability."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm a safe throw:"
+                  },
+                  " keep the entire sampling notch and needle excursion within the planned target, clear of posterior structures."
+                ]
               ]
             }
           ]
@@ -249,18 +275,73 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Wrong nodule:"
+                      },
+                      " match landmarks and labels, especially in a multinodular gland."
+                    ],
+                    [
+                      {
+                        "strong": "Nondiagnostic sample:"
+                      },
+                      " target solid tissue; cyst fluid or heavily calcified areas may yield few cells."
+                    ],
+                    [
+                      {
+                        "strong": "Bloody aspirate:"
+                      },
+                      " reduce suction and avoid visible vessels; excess blood can obscure cytology."
+                    ],
+                    [
+                      {
+                        "strong": "Lost needle tip:"
+                      },
+                      " stop and regain visualization before advancing or sampling."
+                    ],
+                    [
+                      {
+                        "strong": "Neck hematoma:"
+                      },
+                      " apply pressure; rapidly expanding swelling, dysphagia, or dyspnea requires urgent airway assessment."
+                    ],
+                    [
+                      {
+                        "strong": "Voice change or deep pain:"
+                      },
+                      " stop and assess for posterior injury or hematoma; avoid overshooting the gland."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "American Thyroid Association: Thyroid FNA",
+                          "href": "https://www.thyroid.org/fna-thyroid-nodules/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Korean Society of Thyroid Radiology: US-guided FNA Consensus",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4347275/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
