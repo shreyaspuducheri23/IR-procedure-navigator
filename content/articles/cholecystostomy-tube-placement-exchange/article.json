@@ -147,10 +147,30 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
-                "Anticoagulation appropriately held.",
-                "Appropriate imaging window.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review imaging."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Anticoagulation appropriately held"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Appropriate imaging window"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -159,7 +179,24 @@
                     }
                   }
                 ],
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -403,14 +440,6 @@
         },
         {
           "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": []
-        },
-        {
-          "type": "heading",
           "text": "Calculous cholecystitis"
         },
         {
@@ -461,6 +490,14 @@
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
           ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": []
         }
       ]
     }

@@ -133,10 +133,54 @@
             {
               "type": "list",
               "items": [
-                "Indication is appropriate.",
-                "Labs are appropriate.",
-                "Check what primary team has ordered fluid to be sent for: cell count with differential, albumin + total protein, cultures, cytology, etc.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Indication is appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Check what primary team has ordered"
+                  },
+                  " fluid to be sent for: cell count with differential, albumin + total protein, cultures, cytology, etc."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {

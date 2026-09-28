@@ -170,36 +170,114 @@
             {
               "type": "checklist",
               "items": [
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ]
               ]
             },
             {
               "type": "checklist",
               "title": "Core checklist",
               "items": [
-                "Confirm indication.",
-                "Review anatomy from Y90 mapping study.",
-                "Labs are appropriate.",
-                "CT cone beam available.",
-                "Nuclear medicine aware and scheduled."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review anatomy"
+                  },
+                  " from Y90 mapping study."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "CT cone beam available"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Nuclear medicine aware and scheduled"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
               "type": "checklist",
               "title": "Lung shunt fraction from Tc-99m mapping scan",
               "items": [
-                "< 10% - acceptable.",
-                "10-20% - elevated; calculate predicted lung dose and potentially reduce Y90 activity.",
-                "> 20% - contraindication for SIR-Sphere resin microspheres."
+                [
+                  {
+                    "strong": "< 10% - acceptable."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "10-20% - elevated"
+                  },
+                  "; calculate predicted lung dose and potentially reduce Y90 activity."
+                ],
+                [
+                  {
+                    "strong": "> 20% - contraindication for SIR-Sphere resin microspheres."
+                  },
+                  ""
+                ]
               ]
             },
             {
               "type": "checklist",
               "title": "TheraSphere glass microspheres",
               "items": [
-                "No percentage cutoff for TheraSphere glass microspheres; lung dose is the metric.",
-                "< 30 Gy per treatment.",
-                "< 50 Gy cumulative."
+                [
+                  {
+                    "strong": "No percentage cutoff for TheraSphere glass microspheres"
+                  },
+                  "; lung dose is the metric."
+                ],
+                [
+                  {
+                    "strong": "< 30 Gy per treatment."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "< 50 Gy cumulative."
+                  },
+                  ""
+                ]
               ]
             }
           ]

@@ -139,15 +139,59 @@
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                [
+                  {
+                    "strong": "Confirm ability to consent"
+                  },
+                  ", ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns."
+                ],
+                [
+                  {
+                    "strong": "Inspect the planned access or treatment site"
+                  },
+                  " for infection, wounds, prior scars, devices, or anatomy that changes the approach."
+                ],
+                [
+                  {
+                    "strong": "Use ultrasound or imaging review"
+                  },
+                  " when relevant to confirm a safe target."
+                ],
+                [
+                  {
+                    "strong": "Confirm indication:"
+                  },
+                  " verify the procedure, target, and relevant contraindications."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ]
               ]
             },
             {
               "type": "checklist",
               "items": [
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ]
               ]
             }
           ]

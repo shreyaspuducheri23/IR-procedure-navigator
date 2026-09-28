@@ -149,12 +149,60 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging with access.",
-                "Labs are appropriate.",
-                "Access approach.",
-                "Sedation requirements.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " with access."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Access approach"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Sedation requirements"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -389,16 +437,6 @@
           "text": "Diet, routine vitals, pain control, outpatient discharge instructions, AVS, and follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "No specifics."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -413,6 +451,16 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSPORTPLACEMENT."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specifics."
           ]
         }
       ]

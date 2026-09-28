@@ -126,11 +126,66 @@
             {
               "type": "list",
               "items": [
-                "Imaging is available, if obtained. Imaging is not required.",
-                "Potassium corrected.",
-                "Patient has held beta blockers, ACE-I/ARBs, and MRAs for at least 2 weeks.",
-                "BP reasonably controlled.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Imaging is available"
+                  },
+                  ", if obtained. Imaging is not required."
+                ],
+                [
+                  {
+                    "strong": "Potassium corrected"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Patient has held"
+                  },
+                  " beta blockers, ACE-I/ARBs, and MRAs for at least 2 weeks."
+                ],
+                [
+                  {
+                    "strong": "BP reasonably controlled"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm indication:"
+                  },
+                  " verify the procedure, target, and relevant contraindications."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -395,16 +450,6 @@
           "text": "Review orders and follow-up after adrenal vein sampling."
         },
         {
-          "type": "heading",
-          "text": "Follow-up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Communicate with covering PA if follow-up needs to be scheduled."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Before lab results have returned",
           "items": [
@@ -426,6 +471,16 @@
             "Restart antihypertensives",
             "Discharge order (med rec prior) - 2 hours",
             "After visit summary: .IRAVSVENOGRAM"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow-up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Communicate with covering PA if follow-up needs to be scheduled."
           ]
         }
       ]

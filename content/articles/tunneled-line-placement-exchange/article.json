@@ -162,12 +162,60 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication, expected duration, and required catheter: dialysis versus small-bore; single versus double lumen.",
-                "Determine new placement.",
-                "Review imaging; assess for central venous stenosis/thrombosis and implanted hardware.",
-                "Confirm no bacteremia/no active infection.",
-                "Labs are appropriate.",
-                "Confirm sedation plan and that patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  ", expected duration, and required catheter: dialysis versus small-bore; single versus double lumen."
+                ],
+                [
+                  {
+                    "strong": "Determine new placement"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  "; assess for central venous stenosis/thrombosis and implanted hardware."
+                ],
+                [
+                  {
+                    "strong": "Confirm no bacteremia/no active infection"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " and that patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
@@ -177,11 +225,36 @@
             {
               "type": "list",
               "items": [
-                "Document the reason for exchange.",
-                "For dysfunction: check for kink/retraction, inability to aspirate versus flush, prior alteplase attempt, and suspected fibrin sheath.",
-                "Assess for fever, bacteremia, blood cultures, exit-site erythema, drainage, or tunnel tenderness; avoid over-wire exchange with tunnel infection.",
-                "Labs are appropriate.",
-                "Confirm sedation plan and that patient can lie flat."
+                [
+                  {
+                    "strong": "Document the reason for exchange"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "For dysfunction"
+                  },
+                  ": check for kink/retraction, inability to aspirate versus flush, prior alteplase attempt, and suspected fibrin sheath."
+                ],
+                [
+                  {
+                    "strong": "Assess for fever"
+                  },
+                  ", bacteremia, blood cultures, exit-site erythema, drainage, or tunnel tenderness; avoid over-wire exchange with tunnel infection."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " and that patient can lie flat."
+                ]
               ]
             }
           ]

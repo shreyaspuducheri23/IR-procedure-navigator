@@ -30,6 +30,7 @@ export function AppHeader() {
       <nav className={styles.navigation} aria-label="Main navigation">
         <NavLink to="/" end>Procedure guides</NavLink>
         <NavLink to="/on-call">On-Call Workflow</NavLink>
+        <NavLink to="/faq">General FAQ</NavLink>
       </nav>
     </header>
   );

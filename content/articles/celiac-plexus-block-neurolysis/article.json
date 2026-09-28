@@ -4,7 +4,7 @@
   "title": "Celiac Plexus Block/Neurolysis",
   "category": "ir-procedure",
   "status": "draft",
-  "bleedRisk": null,
+  "bleedRisk": "high",
   "keywords": [],
   "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
   "lastReviewed": null,
@@ -30,20 +30,24 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "type": "heading",
+              "text": "Neurolysis"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Refractory upper-abdominal visceral pain, commonly secondary to malignancy or nodal disease."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Block"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chronic pancreatitis-associated pain.",
+                "Diagnostic block before neurolysis."
               ]
             }
           ]
@@ -53,19 +57,36 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa level.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOAC timing is agent-, dose-, and renal-function-specific; use the anticoagulation table.",
+                    "Clopidogrel and ticagrelor: hold 5 days; prasugrel: hold 7 days.",
+                    "Aspirin: hold 3-5 days."
                   ]
                 }
               ]
@@ -77,13 +98,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "CBC and INR within 30 days"
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/uL."
               ]
             }
           ]
@@ -113,8 +131,18 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Sedation guidance has not yet been documented in this guide."
+              "type": "list",
+              "items": [
+                "Usually local anesthesia; moderate sedation in select patients.",
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
             }
           ]
         },
@@ -123,25 +151,101 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-            },
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm indication and assess contraindications:"
+                  },
+                  " block vs neurolysis; pain pattern compatible with celiac plexus-mediated visceral pain."
+                ],
+                [
+                  {
+                    "strong": "Review cross-sectional imaging:"
+                  },
+                  " target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach."
+                ],
+                [
+                  {
+                    "strong": "Verify labs/coagulation appropriate:"
+                  },
+                  " CBC, INR, and other labs as indicated; anticoagulant/antiplatelet plan reviewed."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status and moderate sedation plan"
+                  },
+                  " if sedation is being used."
+                ],
+                [
+                  {
+                    "strong": "Assess clinical status:"
+                  },
+                  " infection/sepsis, hemodynamic instability, bowel obstruction, and uncorrectable coagulopathy."
+                ],
+                [
+                  {
+                    "strong": "Patient is consented:"
+                  },
+                  " include hypotension, diarrhea, bleeding, infection, neurologic injury, and pneumothorax/organ injury depending on approach."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
             {
               "type": "heading",
-              "text": "General checks"
+              "text": "Procedure"
             },
             {
               "type": "list",
               "items": [
-                "Confirm ability to consent, ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns.",
-                "Inspect the planned access or treatment site for infection, wounds, prior scars, devices, or anatomy that changes the approach.",
-                "Use ultrasound or imaging review when relevant to confirm a safe target."
+                "Celiac Plexus Block/Neurolysis"
               ]
             },
             {
-              "type": "checklist",
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
               "items": [
-                "Confirm sedation plan - patient can lie flat."
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hypotension.",
+                "Diarrhea.",
+                "Neurologic injury.",
+                "Incomplete or failed treatment."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Consent discussion"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."
               ]
             }
           ]
@@ -158,20 +262,38 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Celiac plexus:"
+                  },
+                  " surrounds the celiac origin near T12-L1, anterior to the diaphragmatic crura and aorta."
+                ],
+                [
+                  {
+                    "strong": "Celiac ganglia:"
+                  },
+                  " lie along the anterolateral aorta; position and symmetry vary."
+                ],
+                [
+                  {
+                    "strong": "Splanchnic nerves:"
+                  },
+                  " run behind the crura; retrocrural targeting is distinct from direct celiac plexus injection."
+                ],
+                [
+                  {
+                    "strong": "Nearby structures:"
+                  },
+                  " map the aorta, celiac/SMA origins, kidneys, pancreas, bowel, and pleura before choosing a path."
+                ],
+                [
+                  {
+                    "strong": "Tumor and prior surgery:"
+                  },
+                  " can distort the target and limit injectate spread; review cross-sectional imaging."
+                ]
               ]
             }
           ]
@@ -181,32 +303,48 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
-              "text": "To build"
+              "text": "Basic steps"
             },
             {
-              "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Suggested buckets",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Plan the target and approach:"
+                  },
+                  " confirm block vs neurolysis and choose a safe CT-guided needle path."
+                ],
+                [
+                  {
+                    "strong": "Position and prepare:"
+                  },
+                  " establish monitoring/IV access, sterile prep, and local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Advance the needle:"
+                  },
+                  " use interval CT to reach the planned target while avoiding vessels and adjacent organs."
+                ],
+                [
+                  {
+                    "strong": "Confirm position and spread:"
+                  },
+                  " aspirate and inject contrast; exclude vascular or neuraxial spread before treatment."
+                ],
+                [
+                  {
+                    "strong": "Deliver the planned agent:"
+                  },
+                  " local anesthetic for block; neurolytic agent for neurolysis after appropriate test injection, per attending protocol."
+                ],
+                [
+                  {
+                    "strong": "Reassess and observe:"
+                  },
+                  " check pain response, blood pressure, and neurologic status before recovery/discharge."
+                ]
               ]
             }
           ]
@@ -216,18 +354,81 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Hypotension:"
+                      },
+                      " sympathetic blockade can lower BP; monitor and manage fluids according to clinical status."
+                    ],
+                    [
+                      {
+                        "strong": "Diarrhea and pain flare:"
+                      },
+                      " commonly transient; counsel and reassess persistent or severe symptoms."
+                    ],
+                    [
+                      {
+                        "strong": "Neurologic injury:"
+                      },
+                      " rare but serious; avoid spinal canal/foraminal spread and stop for new weakness or sensory change."
+                    ],
+                    [
+                      {
+                        "strong": "Intravascular injection:"
+                      },
+                      " negative aspiration alone is insufficient; confirm contrast spread before injecting."
+                    ],
+                    [
+                      {
+                        "strong": "Organ or pleural injury:"
+                      },
+                      " reassess the entire needle path; new dyspnea or severe pain warrants evaluation."
+                    ],
+                    [
+                      {
+                        "strong": "Incomplete relief:"
+                      },
+                      " poor spread or nonvisceral pain may limit benefit; do not compensate with blind additional injection."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "SIR Resident Survival Guide: Celiac Plexus Block",
+                          "href": "https://rfs.sirweb.org/wp-content/uploads/Celiac-Plexus-Block-Survival-Guide.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Celiac Plexus Block and Neurolysis: technique and complications",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5730442/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Percutaneous Neurolytic Celiac Plexus Block",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3773031/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
@@ -240,68 +441,47 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Vital signs – Every 15 minutes x 4",
-                "Wound care/treatment",
-                "Tylenol 650 mg PRN",
-                "Admit to inpatient (see work flow sheet)",
-                "After visit summary: .IRAVSNEUROLYSIS",
-                "Follow up: PPD1 check and 1 month clinic or per MD"
-              ]
-            }
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every hour x 1.",
+            "Activity: bedrest with bathroom privileges.",
+            "Wound care as needed.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge at 3 hours; complete medication reconciliation before discharge.",
+            "After visit summary: IRAVSNEUROLYSIS."
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
+            "IV unfractionated heparin: 6-8 hours after the procedure.",
+            "Enoxaparin: 12 hours after the procedure.",
+            "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
+            "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
+            "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
+            "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit per MD."
           ]
         }
       ]

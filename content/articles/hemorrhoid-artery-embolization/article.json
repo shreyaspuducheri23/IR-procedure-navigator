@@ -172,11 +172,36 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication is INTERNAL hemorrhoids.",
-                "Review prior evaluation with GI or colorectal surgery.",
-                "Review imaging.",
-                "CTA if acute.",
-                "Labs are appropriate.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " is INTERNAL hemorrhoids."
+                ],
+                [
+                  {
+                    "strong": "Review prior evaluation"
+                  },
+                  " with GI or colorectal surgery."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "CTA if acute"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -185,8 +210,36 @@
                     }
                   }
                 ],
-                "Access approach and embolic choice.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Access approach and embolic choice"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]

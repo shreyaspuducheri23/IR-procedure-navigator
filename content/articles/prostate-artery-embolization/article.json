@@ -183,8 +183,36 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
@@ -194,12 +222,42 @@
             {
               "type": "list",
               "items": [
-                "Urology evaluation completed.",
-                "Exclude prostate cancer as appropriate.",
-                "Review prostate size and pelvic arterial anatomy.",
-                "Check PSA and urinalysis/urine culture.",
-                "Labs are appropriate.",
-                "Treat active UTI before procedure."
+                [
+                  {
+                    "strong": "Urology evaluation completed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Exclude prostate cancer"
+                  },
+                  " as appropriate."
+                ],
+                [
+                  {
+                    "strong": "Review prostate size"
+                  },
+                  " and pelvic arterial anatomy."
+                ],
+                [
+                  {
+                    "strong": "Check PSA"
+                  },
+                  " and urinalysis/urine culture."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Treat active UTI"
+                  },
+                  " before procedure."
+                ]
               ]
             },
             {
@@ -209,10 +267,30 @@
             {
               "type": "list",
               "items": [
-                "Review indication.",
-                "Labs are appropriate.",
-                "Resuscitation per primary team.",
-                "Review imaging and approach."
+                [
+                  {
+                    "strong": "Review indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Resuscitation per primary team"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " and approach."
+                ]
               ]
             }
           ]
@@ -523,16 +601,6 @@
           "text": "Routine orders, access recovery, monitoring, discharge instructions, discharge medications, and hematuria-specific orders."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "1 month clinic visit."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -607,6 +675,16 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "1 month clinic visit."
           ]
         }
       ]

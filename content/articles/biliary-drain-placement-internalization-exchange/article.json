@@ -162,11 +162,36 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
-                "Anticoagulation appropriately held.",
-                "Review biliary anatomy and access plan.",
-                "Confirm patient can lie flat.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review imaging."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Anticoagulation appropriately held"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review biliary anatomy and access plan."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Confirm patient can lie flat"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -174,6 +199,18 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
                 ]
               ]
             }

@@ -241,14 +241,72 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review prior interventions.",
-                "Review imaging on number, size, location of fibroids.",
-                "EXCLUDE pregnancy.",
-                "Labs are appropriate.",
-                "No active infection or malignancy.",
-                "Ensure patient goals align with procedure.",
-                "Confirm sedation plan, patient can lie flat.",
-                "Embolic agent."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review prior interventions."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " on number, size, location of fibroids."
+                ],
+                [
+                  {
+                    "strong": "EXCLUDE pregnancy"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "No active infection or malignancy"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Ensure patient goals"
+                  },
+                  " align with procedure."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  ", patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Embolic agent"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -515,16 +573,6 @@
           "text": "Routine orders, access recovery, pain/nausea plan, discharge prescriptions, admission PCA pathway, and follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Clinic visit in 1 month."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -585,6 +633,16 @@
             "PCA dose: 0.2 mg.",
             "Lockout interval: 10 min.",
             "Continuous infusion rate: 0 mg/hr."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit in 1 month."
           ]
         }
       ]

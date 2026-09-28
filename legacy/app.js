@@ -1152,9 +1152,11 @@ installUfeEdits();
 installY90MappingEdits();
 installY90TherapyEdits();
 installIntraprocedureSubblocks();
+installCeliacOrders();
 installModerateSedationLinks();
 installRestartMedicationGuidance();
 installPreProcedureTabs();
+installChecklistFormatting();
 installConsentSections();
 
 const visibleProcedures = procedures.filter((procedure) => !hiddenProcedureTitles.has(procedure.title));
@@ -2901,7 +2903,7 @@ function installDrainageCatheterEdits() {
           items: [
             "Regular diet.",
             "Vital signs per unit routine.",
-            "Pigtail drain flush orders: once daily 10 mL.",
+            "Pigtail drain flush orders: 10 mL twice daily (BID).",
             "Tylenol 650 mg PRN.",
           ],
         },
@@ -8371,8 +8373,174 @@ function installRestartMedicationGuidance() {
   });
 }
 
+function installCeliacOrders() {
+  const procedure = procedures.find(item => item.id === "celiac-plexus-block-neurolysis");
+  if (!procedure) return;
+  procedure.bleedRisk = "High";
+  const id = procedure.id;
+  const intra = procedure.nodes[`${id}-intra`];
+  intra.children = ["anatomy", "procedural-steps", "pitfalls-safety"].map(part => `${id}-intra-${part}`);
+  intra.summary = "";
+  procedure.nodes[`${id}-intra-anatomy`] = {
+    title: "Anatomy", type: "reference", summary: "",
+    details: { Anatomy: [
+      { strong: "Celiac plexus:", text: " surrounds the celiac origin near T12-L1, anterior to the diaphragmatic crura and aorta." },
+      { strong: "Celiac ganglia:", text: " lie along the anterolateral aorta; position and symmetry vary." },
+      { strong: "Splanchnic nerves:", text: " run behind the crura; retrocrural targeting is distinct from direct celiac plexus injection." },
+      { strong: "Nearby structures:", text: " map the aorta, celiac/SMA origins, kidneys, pancreas, bowel, and pleura before choosing a path." },
+      { strong: "Tumor and prior surgery:", text: " can distort the target and limit injectate spread; review cross-sectional imaging." },
+    ] },
+  };
+  procedure.nodes[`${id}-intra-procedural-steps`] = {
+    title: "Procedural steps", type: "action", summary: "",
+    details: { "Basic steps": [
+      { strong: "Plan the target and approach:", text: " confirm block vs neurolysis and choose a safe CT-guided needle path." },
+      { strong: "Position and prepare:", text: " establish monitoring/IV access, sterile prep, and local anesthesia." },
+      { strong: "Advance the needle:", text: " use interval CT to reach the planned target while avoiding vessels and adjacent organs." },
+      { strong: "Confirm position and spread:", text: " aspirate and inject contrast; exclude vascular or neuraxial spread before treatment." },
+      { strong: "Deliver the planned agent:", text: " local anesthetic for block; neurolytic agent for neurolysis after appropriate test injection, per attending protocol." },
+      { strong: "Reassess and observe:", text: " check pain response, blood pressure, and neurologic status before recovery/discharge." },
+    ] },
+  };
+  procedure.nodes[`${id}-intra-pitfalls-safety`] = {
+    title: "Pitfalls and safety", type: "caution", summary: "",
+    details: { "Pitfalls and safety": [
+      { strong: "Hypotension:", text: " sympathetic blockade can lower BP; monitor and manage fluids according to clinical status." },
+      { strong: "Diarrhea and pain flare:", text: " commonly transient; counsel and reassess persistent or severe symptoms." },
+      { strong: "Neurologic injury:", text: " rare but serious; avoid spinal canal/foraminal spread and stop for new weakness or sensory change." },
+      { strong: "Intravascular injection:", text: " negative aspiration alone is insufficient; confirm contrast spread before injecting." },
+      { strong: "Organ or pleural injury:", text: " reassess the entire needle path; new dyspnea or severe pain warrants evaluation." },
+      { strong: "Incomplete relief:", text: " poor spread or nonvisceral pain may limit benefit; do not compensate with blind additional injection." },
+    ], References: [
+      { text: "SIR Resident Survival Guide: Celiac Plexus Block", href: "https://rfs.sirweb.org/wp-content/uploads/Celiac-Plexus-Block-Survival-Guide.pdf" },
+      { text: "Celiac Plexus Block and Neurolysis: technique and complications", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5730442/" },
+      { text: "Percutaneous Neurolytic Celiac Plexus Block", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3773031/" },
+    ] },
+  };
+  procedure.nodes[`${id}-pre-sedation`] = {
+    title: "Sedation", type: "reference", summary: "",
+    details: { Sedation: ["Usually local anesthesia; moderate sedation in select patients."] },
+  };
+  procedure.nodes[`${id}-anticoag`] = {
+    title: "Anticoagulation", type: "caution", summary: "High bleeding risk.",
+    details: {
+      Anticoagulation: ["High bleeding risk.", { text: "Open anticoagulation table", href: "#anticoagulation-table" }],
+      Hold: highRiskAnticoagHoldItems,
+    },
+  };
+  procedure.nodes[`${id}-indication`] = {
+    title: "Indication", type: "decision", summary: "",
+    details: {
+      Neurolysis: ["Refractory upper-abdominal visceral pain, commonly secondary to malignancy or nodal disease."],
+      Block: ["Chronic pancreatitis-associated pain.", "Diagnostic block before neurolysis."],
+    },
+  };
+  procedure.nodes[`${id}-exam`] = {
+    title: "Checklist", type: "decision", summary: "",
+    details: { Checklist: [
+      { strong: "Confirm indication and assess contraindications:", text: " block vs neurolysis; pain pattern compatible with celiac plexus-mediated visceral pain." },
+      { strong: "Review cross-sectional imaging:", text: " target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach." },
+      { strong: "Verify labs/coagulation appropriate:", text: " CBC, INR, and other labs as indicated; anticoagulant/antiplatelet plan reviewed." },
+      { strong: "Confirm NPO status and moderate sedation plan", text: " if sedation is being used." },
+      { strong: "Assess clinical status:", text: " infection/sepsis, hemodynamic instability, bowel obstruction, and uncorrectable coagulopathy." },
+      { strong: "Patient is consented:", text: " include hypotension, diarrhea, bleeding, infection, neurologic injury, and pneumothorax/organ injury depending on approach." },
+    ] },
+  };
+  procedure.nodes[`${id}-labs`] = {
+    title: "Labs", type: "decision", summary: "",
+    details: { Labs: ["INR < 1.5-1.8.", "Platelets >50,000/uL."] },
+  };
+  procedure.nodes[`${id}-post`] = {
+    title: "Post-procedure", type: "action", summary: "",
+    checklistSections: [
+      { title: "Routine orders", items: [
+        "Regular diet.",
+        "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every hour x 1.",
+        "Activity: bedrest with bathroom privileges.",
+        "Wound care as needed.",
+        "Tylenol 650 mg PRN.",
+      ] },
+      { title: "Discharge", items: [
+        "Discharge at 3 hours; complete medication reconciliation before discharge.",
+        "After visit summary: IRAVSNEUROLYSIS.",
+      ] },
+    ],
+    afterChecklistDetails: { "Follow up": ["Clinic visit per MD."] },
+  };
+}
+
+function installChecklistFormatting() {
+  const textOf = item => typeof item === "string" ? item : `${item.strong || ""}${item.text || ""}`;
+  const leadIns = [
+    "Confirm indication and assess contraindications", "Confirm indication", "Review cross-sectional imaging",
+    "Review imaging", "Review anatomy", "Verify labs/coagulation appropriate", "Labs are appropriate",
+    "Confirm labs", "No labs", "Confirm sedation plan", "Confirm patient can lie flat", "Confirm NPO status",
+    "Anticoagulation appropriately held", "Anticoagulation plan confirmed", "Sedation plan confirmed",
+    "Consent completed", "Review thrombus extent", "No major contraindication", "Venous access site planned",
+    "Monitored bed available", "Appropriate imaging window", "Appropriate window on imaging",
+    "Appropriate percutaneous access window", "Assess the planned abdominal skin site", "Confirm tube size",
+    "Confirm tract is mature", "Patient is in SDC/outpatient workflow", "Review prior evaluation", "CTA if acute",
+    "Access approach and embolic choice", "Confirm access approach", "If venous", "Review type of filter",
+    "Blood pressure is under control", "No active UTI/pyelonephritis", "Kidneys are at least 9 cm",
+    "Specimen requests confirmed", "Assess for ascites/infection", "Assess cardiopulmonary reserve",
+    "Indication is appropriate", "Confirm location", "Confirm duration", "DO NOT place in arm",
+    "Access approach", "Sedation requirements", "Review port location", "Assess for pocket infection",
+    "Determine whether catheter-tip culture is needed", "Urology evaluation completed", "Exclude prostate cancer",
+    "Review prostate size", "Check PSA", "Treat active UTI", "Review indication", "Resuscitation per primary team",
+    "Confirm cytology/pathology", "Confirm FNA vs core biopsy", "Confirm positioning", "Review echocardiogram",
+    "Review BUN", "Consent for possible embolization", "Review what size/type stent", "Consider changes",
+    "Determine new placement", "Confirm no bacteremia/no active infection", "Document the reason for exchange",
+    "For dysfunction", "Assess for fever", "EXCLUDE pregnancy", "No active infection or malignancy",
+    "Ensure patient goals", "Embolic agent", "Coordination with nuclear medicine", "Cone-beam CT available",
+    "CT cone beam available", "Nuclear medicine aware and scheduled", "Imaging is available",
+    "Potassium corrected", "Patient has held", "BP reasonably controlled", "Confirm ability to consent",
+    "Inspect the planned access or treatment site", "Use ultrasound or imaging review",
+    "Check what primary team has ordered", "Check what lab studies primary team requested",
+  ].sort((a, b) => b.length - a.length);
+  const format = item => {
+    // Preserve existing emphasis and working reference links.
+    if (typeof item !== "string") return item;
+    const lead = leadIns.find(prefix => item.startsWith(prefix));
+    const end = lead ? lead.length : item.search(/[:;]/);
+    if (end > 0) return { strong: item.slice(0, end), text: item.slice(end) };
+    return { strong: item, text: "" };
+  };
+  procedures.forEach(procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    const checklist = pre?.children?.map(id => procedure.nodes[id]).find(node => node.title === "Checklist");
+    if (!checklist) return;
+    const items = [
+      ...Object.values(checklist.details || {}).flat(),
+      ...(checklist.checklist || []),
+      ...(checklist.checklistSections || []).flatMap(section => section.items),
+    ];
+    const text = items.map(textOf).join(" ");
+    const additions = [];
+    if (!/indication/i.test(text)) additions.push({ strong: "Confirm indication:", text: " verify the procedure, target, and relevant contraindications." });
+    if (!/imag|anatomy|ultrasound|\bCT\b|\bMRI\b/i.test(text)) additions.push({ strong: "Review imaging:", text: " when applicable, confirm the target and planned approach." });
+    if (!/labs|CBC|coagulation|\bINR\b/i.test(text)) additions.push({ strong: "Verify labs:", text: " confirm procedure-specific requirements and review results when indicated; see the Labs tab." });
+    if (!/anticoag|antiplatelet/i.test(text)) additions.push({ strong: "Review anticoagulation:", text: " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab." });
+    if (!/\bNPO\b/i.test(text)) additions.push({ strong: "Confirm NPO status:", text: " follow fasting requirements if sedation/anesthesia is planned." });
+    if (!/consent/i.test(text)) additions.push({ strong: "Confirm consent:", text: " discuss the procedure and patient-specific risks; identify a surrogate if needed." });
+    if (checklist.checklistSections) {
+      checklist.checklistSections = checklist.checklistSections.map(section => ({ ...section, items: section.items.map(format) }));
+      checklist.checklistSections[0].items.push(...additions);
+    } else if (checklist.details) {
+      const key = Object.hasOwn(checklist.details, "Checklist") ? "Checklist" : Object.keys(checklist.details)[0];
+      checklist.details[key].push(...additions);
+    } else {
+      checklist.checklist = [...(checklist.checklist || []), ...additions];
+    }
+    if (checklist.details) {
+      checklist.details = Object.fromEntries(Object.entries(checklist.details).map(([title, entries]) => [title, entries.map(format)]));
+    }
+    if (checklist.checklist) checklist.checklist = checklist.checklist.map(format);
+  });
+}
+
 function installConsentSections() {
   const risks = {
+    "Celiac Plexus Block/Neurolysis": ["Hypotension.", "Diarrhea.", "Neurologic injury.", "Incomplete or failed treatment."],
     "Adrenal Vein Sampling": ["Adrenal vein rupture or adrenal hemorrhage.", "Nondiagnostic sampling requiring repeat sampling."],
     "Biliary Drain Placement and Internalization/Exchange": ["Bile leak or biloma.", "Sepsis or abscess."],
     "Catheter Directed Thrombolysis - DVT Intervention": ["Major hemorrhage, including intracranial hemorrhage.", "Pulmonary embolism.", "Vessel dissection or rupture."],
@@ -8416,6 +8584,9 @@ function installConsentSections() {
     if (risks[procedure.title].length) details["Procedure-specific risks"] = risks[procedure.title];
     if (procedure.title === "Fistulogram") {
       details["Additional consent"] = ["Discuss and obtain consent for possible dialysis catheter placement if the fistula/graft may be unusable afterward. Select tunneled versus temporary access according to the anticipated need."];
+    }
+    if (procedure.title === "Lung Biopsy/Fiducial Marker Placement") {
+      details["Additional consent"] = ["Discuss and obtain consent for possible chest tube placement if a pneumothorax requires drainage."];
     }
     details["Consent discussion"] = ["Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."];
     procedure.nodes[consentId] = { title: "Consent", type: "reference", summary: "", details };

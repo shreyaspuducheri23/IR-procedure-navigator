@@ -88,7 +88,48 @@
             {
               "type": "checklist",
               "items": [
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm indication:"
+                  },
+                  " verify the procedure, target, and relevant contraindications."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]

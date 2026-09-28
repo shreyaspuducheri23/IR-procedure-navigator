@@ -129,10 +129,54 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Confirm labs.",
-                "Check what lab studies primary team requested: cell count with differential, cultures, cytology, LDH, glucose, pH, etc.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm labs"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Check what lab studies primary team requested"
+                  },
+                  ": cell count with differential, cultures, cytology, LDH, glucose, pH, etc."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]

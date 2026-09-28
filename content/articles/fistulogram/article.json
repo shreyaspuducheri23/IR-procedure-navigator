@@ -152,8 +152,18 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review imaging."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -162,7 +172,30 @@
                     }
                   }
                 ],
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
@@ -449,16 +482,6 @@
           "text": "Diet, vitals, pain control, outpatient discharge, AVS, and suture device follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Remove suture device on POD1 if inpatient."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -473,6 +496,16 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSFISTULOGRAM."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Remove suture device on POD1 if inpatient."
           ]
         }
       ]

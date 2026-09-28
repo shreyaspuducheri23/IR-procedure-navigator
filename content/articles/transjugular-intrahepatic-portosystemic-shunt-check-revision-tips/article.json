@@ -159,12 +159,60 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging: Doppler and prior TIPS.",
-                "Review what size/type stent was used.",
-                "Labs are appropriate.",
-                "Consider changes depending on if upsizing or narrowing.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  ": Doppler and prior TIPS."
+                ],
+                [
+                  {
+                    "strong": "Review what size/type stent"
+                  },
+                  " was used."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Consider changes"
+                  },
+                  " depending on if upsizing or narrowing."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
@@ -174,9 +222,24 @@
             {
               "type": "list",
               "items": [
-                "Contraindications depend on revision goal.",
-                "Right heart failure.",
-                "Active infection."
+                [
+                  {
+                    "strong": "Contraindications depend on revision goal."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Right heart failure."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Active infection."
+                  },
+                  ""
+                ]
               ]
             }
           ]
@@ -497,16 +560,6 @@
           "text": "Regular diet, timed vitals, Tylenol, IJ and femoral access recovery, 1-hour discharge, AVS, and TIPS ultrasound/clinic follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Clinic visit with TIPS ultrasound per MD."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -548,6 +601,16 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit with TIPS ultrasound per MD."
           ]
         }
       ]

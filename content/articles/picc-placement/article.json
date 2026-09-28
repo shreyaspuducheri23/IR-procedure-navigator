@@ -142,13 +142,72 @@
             {
               "type": "list",
               "items": [
-                "Confirm location.",
-                "Confirm duration and number of lumens.",
-                "DO NOT place in arm with AV fistula/graft or dialysis plan.",
-                "Review imaging with any prior axillary surgery or lymphedema.",
-                "Labs are appropriate.",
-                "Blood pressure is under control.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm location"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm duration"
+                  },
+                  " and number of lumens."
+                ],
+                [
+                  {
+                    "strong": "DO NOT place in arm"
+                  },
+                  " with AV fistula/graft or dialysis plan."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " with any prior axillary surgery or lymphedema."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Blood pressure is under control"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm indication:"
+                  },
+                  " verify the procedure, target, and relevant contraindications."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -404,16 +463,6 @@
           "text": "Diet, routine vitals, no bedrest, outpatient discharge instructions, AVS, and follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "No specifics."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -428,6 +477,16 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSPICC."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specifics."
           ]
         }
       ]

@@ -155,12 +155,66 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and current tube type.",
-                "Confirm tube size and replacement device availability.",
-                "Confirm tract is mature for routine exchange, or escalate if immature/uncertain.",
-                "No labs unless further indicated.",
-                "Patient is in SDC/outpatient workflow with discharge plan.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and current tube type."
+                ],
+                [
+                  {
+                    "strong": "Confirm tube size"
+                  },
+                  " and replacement device availability."
+                ],
+                [
+                  {
+                    "strong": "Confirm tract is mature"
+                  },
+                  " for routine exchange, or escalate if immature/uncertain."
+                ],
+                [
+                  {
+                    "strong": "No labs"
+                  },
+                  " unless further indicated."
+                ],
+                [
+                  {
+                    "strong": "Patient is in SDC/outpatient workflow"
+                  },
+                  " with discharge plan."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             },
             {
@@ -417,16 +471,6 @@
           "text": "Regular diet/tube feeds, routine vitals, immediate discharge if outpatient, AVS selection, and 6-month routine exchange."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "6 month routine exchange."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -442,6 +486,16 @@
           "items": [
             "Discharge order with medication reconciliation prior - immediate.",
             "After visit summary: .IRAVSGASTROSTOMYTUBEEXCHANGE or .IRAVSGJTUBEEXCHANGE or .IRAVSJTUBEEXCHANGE."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "6 month routine exchange."
           ]
         }
       ]

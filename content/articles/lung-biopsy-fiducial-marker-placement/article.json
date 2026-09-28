@@ -157,13 +157,66 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging with appropriate window: no fissures, shortest path to lesion.",
-                "Labs are appropriate.",
-                "Blood pressure is under control.",
-                "Assess cardiopulmonary reserve.",
-                "Specimen requests confirmed.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " with appropriate window: no fissures, shortest path to lesion."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Blood pressure is under control"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Assess cardiopulmonary reserve"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Specimen requests confirmed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -203,6 +256,16 @@
               "items": [
                 "Pneumothorax.",
                 "Air embolism."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Additional consent"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss and obtain consent for possible chest tube placement if a pneumothorax requires drainage."
               ]
             },
             {
@@ -420,16 +483,6 @@
           "text": "CXR sequence, staged diet advancement, vitals, pain control, outpatient discharge, and chest tube escalation plan."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "No specifics."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -482,6 +535,16 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specifics."
           ]
         }
       ]

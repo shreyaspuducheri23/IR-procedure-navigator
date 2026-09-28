@@ -374,6 +374,16 @@ function descendantBlocks(nodes, id, report) {
   ];
 }
 
+function followUpLast(blocks) {
+  const groups = [];
+  for (const block of blocks) {
+    if (!groups.length || ["heading", "checklist", "callout"].includes(block.type)) groups.push([]);
+    groups.at(-1).push(block);
+  }
+  const isFollowUp = (group) => /^follow[ -]?up$/i.test(group[0].text ?? group[0].title ?? "");
+  return [...groups.filter(group => !isFollowUp(group)), ...groups.filter(isFollowUp)].flat();
+}
+
 export function convertProcedure(procedure, hiddenTitles, report) {
   validateGraph(procedure);
   const nodes = procedure.nodes;
@@ -454,6 +464,13 @@ export function convertProcedure(procedure, hiddenTitles, report) {
       section.subsections = subsections;
     }
 
+    if (kind === "post") {
+      if (section.blocks) section.blocks = followUpLast(section.blocks);
+      if (section.subsections) {
+        section.subsections.forEach(subsection => { subsection.blocks = followUpLast(subsection.blocks); });
+        section.subsections.sort((a, b) => Number(/^follow[ -]?up$/i.test(a.title)) - Number(/^follow[ -]?up$/i.test(b.title)));
+      }
+    }
     sections.push(section);
   }
 

@@ -146,10 +146,48 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
-                "Appropriate imaging window.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review imaging."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Appropriate imaging window"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -384,6 +422,15 @@
           "text": "Diet, vitals, pain control, and follow-up imaging consideration."
         },
         {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
           "type": "heading",
           "text": "Follow up"
         },
@@ -391,15 +438,6 @@
           "type": "list",
           "items": [
             "+/- CXR."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Routine orders",
-          "items": [
-            "Regular diet.",
-            "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN."
           ]
         }
       ]

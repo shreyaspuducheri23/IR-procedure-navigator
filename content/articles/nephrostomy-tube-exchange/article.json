@@ -161,11 +161,42 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging and current tube/stent details.",
-                "Confirm labs and anticoagulation plan with local policy.",
-                "Confirm sedation/NPO requirements.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " and current tube/stent details."
+                ],
+                [
+                  {
+                    "strong": "Confirm labs"
+                  },
+                  " and anticoagulation plan with local policy."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation/NPO requirements."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -254,16 +285,6 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Future edit: add follow-up timing and ownership."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -281,6 +302,16 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Future edit: add follow-up timing and ownership."
           ]
         }
       ]

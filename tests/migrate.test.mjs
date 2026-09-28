@@ -113,6 +113,55 @@ test('procedures preserve standard pre-procedure tabs with optional final Consen
   assert.equal(count, 54);
 });
 
+test('post-procedure follow-up is last and drainage flush is BID', () => {
+  const { procedures } = captureLegacyState();
+  const articles = procedures.map(convert);
+  for (const article of articles) {
+    const post = article.sections.find(s => s.kind === 'post');
+    if (!post) continue;
+    for (const blocks of [post.blocks ?? [], ...(post.subsections ?? []).map(s => s.blocks)]) {
+      let follow = false;
+      for (const block of blocks) {
+        if (!['heading', 'checklist', 'callout'].includes(block.type)) continue;
+        const isFollow = /^follow[ -]?up$/i.test(block.text ?? block.title ?? '');
+        assert.ok(!follow || isFollow, article.id);
+        follow ||= isFollow;
+      }
+    }
+    const followIndex = post.subsections?.findIndex(s => /^follow[ -]?up$/i.test(s.title)) ?? -1;
+    if (followIndex >= 0) assert.equal(followIndex, post.subsections.length - 1, article.id);
+  }
+  const drainage = articles.find(a => a.id === 'drainage-catheter-placement-exchange');
+  assert.match(JSON.stringify(drainage), /10 mL twice daily \(BID\)/);
+  assert.match(JSON.stringify(drainage.sections.find(s => s.kind === 'post').blocks.at(-1)), /CT and drain check in 2 weeks/);
+});
+
+test('procedure checklists use emphasis and cover shared preprocedure checks', () => {
+  let count = 0;
+  for (const procedure of captureLegacyState().procedures) {
+    const pre = Object.values(procedure.nodes).find(node => node.title === 'Pre-procedure');
+    const checklist = pre?.children?.map(id => procedure.nodes[id]).find(node => node.title === 'Checklist');
+    if (!checklist) continue;
+    count++;
+    const items = [...Object.values(checklist.details || {}).flat(), ...(checklist.checklist || []),
+      ...(checklist.checklistSections || []).flatMap(section => section.items)];
+    for (const item of items) assert.ok(item.strong || item.href || item.procedureId, `${procedure.title}: ${JSON.stringify(item)}`);
+    const text = items.map(item => `${item.strong || ''}${item.text || ''}`).join(' ');
+    for (const pattern of [/indication/i, /imag|anatomy|ultrasound|\bCT\b|\bMRI\b/i, /labs|CBC|coagulation/i, /anticoag/i, /NPO/i, /consent/i]) {
+      assert.match(text, pattern, procedure.title);
+    }
+  }
+  assert.equal(count, 54);
+  const articles = captureLegacyState().procedures.map(convert);
+  const exchange = articles.find(a => a.id === 'gastrostomy-gastrojejunostomy-jejunostomy-tube-exchange');
+  assert.match(JSON.stringify(exchange), /unless further indicated/);
+  const celiac = articles.find(a => a.id === 'celiac-plexus-block-neurolysis');
+  const intra = celiac.sections.find(s => s.kind === 'intra');
+  assert.deepEqual(intra.subsections.map(s => s.title), ['Anatomy', 'Procedural steps', 'Pitfalls and safety']);
+  assert.doesNotMatch(JSON.stringify(intra), /To build|Future edit/);
+  assert.match(JSON.stringify(intra), /neuraxial/);
+});
+
 test('order relocation preserves infusion setups, medication timing and conditional orders', () => {
   const { procedures } = captureLegacyState();
   const articles = procedures.map(convert);

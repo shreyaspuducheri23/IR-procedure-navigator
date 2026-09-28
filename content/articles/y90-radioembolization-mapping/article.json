@@ -165,12 +165,60 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and candidacy.",
-                "Review imaging for hepatic arterial anatomy.",
-                "Labs are appropriate.",
-                "Coordination with nuclear medicine.",
-                "Cone-beam CT available.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and candidacy."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " for hepatic arterial anatomy."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Coordination with nuclear medicine"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Cone-beam CT available"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -437,23 +485,6 @@
           "text": "Routine orders, access recovery, anticoagulation restart, discharge, SPECT/CT, and Y90 therapy follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            [
-              {
-                "link": {
-                  "text": "Y90 Radioembolization Therapy",
-                  "articleId": "y90-radioembolization-therapy"
-                }
-              }
-            ]
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -497,6 +528,23 @@
             "Discharge order with medication reconciliation prior - 2-6 hours.",
             "After visit summary: .IRAVSY90MAPPING.",
             "Patient to be sent to SPECT/CT."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "link": {
+                  "text": "Y90 Radioembolization Therapy",
+                  "articleId": "y90-radioembolization-therapy"
+                }
+              }
+            ]
           ]
         }
       ]

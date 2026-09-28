@@ -172,11 +172,36 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication, side, and intended nephrostomy tube endpoint.",
-                "Review CT/US for hydronephrosis, collecting system target, stone/mass level, and safe posterior calyx access.",
-                "Labs are appropriate.",
-                "Anticoagulation appropriately held.",
-                "Appropriate percutaneous access window.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  ", side, and intended nephrostomy tube endpoint."
+                ],
+                [
+                  {
+                    "strong": "Review CT/US for hydronephrosis, collecting system target, stone/mass level, and safe posterior calyx access."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Anticoagulation appropriately held"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Appropriate percutaneous access window"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -185,7 +210,24 @@
                     }
                   }
                 ],
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -453,16 +495,6 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -490,6 +522,16 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSPCN1."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."
           ]
         }
       ]

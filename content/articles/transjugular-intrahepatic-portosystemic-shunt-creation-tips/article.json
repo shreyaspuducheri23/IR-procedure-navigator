@@ -169,8 +169,18 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging: portal/hepatic vein patency, anatomy, and access.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  ": portal/hepatic vein patency, anatomy, and access."
+                ],
                 [
                   {
                     "link": {
@@ -179,10 +189,48 @@
                     }
                   }
                 ],
-                "Review echocardiogram.",
-                "Review BUN.",
-                "Consent for possible embolization.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Review echocardiogram"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review BUN"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Consent for possible embolization"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ]
               ]
             },
             {
@@ -192,11 +240,36 @@
             {
               "type": "list",
               "items": [
-                "Severe hepatic encephalopathy.",
-                "Pulmonary hypertension.",
-                "Heart failure.",
-                "Acute liver failure.",
-                "Active infection."
+                [
+                  {
+                    "strong": "Severe hepatic encephalopathy."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Pulmonary hypertension."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Heart failure."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Acute liver failure."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Active infection."
+                  },
+                  ""
+                ]
               ]
             }
           ]
@@ -547,16 +620,6 @@
           "text": "Inpatient admission, regular diet, cirrhosis-adjusted Tylenol maximum, IJ access recovery, monitoring, and AVS."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Clinic visit in 1 month with TIPS ultrasound."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -600,6 +663,16 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Clinic visit in 1 month with TIPS ultrasound."
           ]
         }
       ]

@@ -157,12 +157,60 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review port location and prior imaging.",
-                "Assess for pocket infection or bacteremia.",
-                "Labs are appropriate.",
-                "Determine whether catheter-tip culture is needed.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review port location"
+                  },
+                  " and prior imaging."
+                ],
+                [
+                  {
+                    "strong": "Assess for pocket infection"
+                  },
+                  " or bacteremia."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Determine whether catheter-tip culture is needed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -350,16 +398,6 @@
           "text": "Regular diet, routine vitals, pain control, immediate discharge, AVS, and no specific follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "No specific follow up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -374,6 +412,16 @@
           "items": [
             "Discharge order: immediate.",
             "After visit summary: .IRAVSPORTREMOVAL."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specific follow up."
           ]
         }
       ]

@@ -242,16 +242,78 @@
             {
               "type": "checklist",
               "items": [
-                "Confirm indication and symptom duration.",
-                "Review thrombus extent and central outflow.",
-                "No major contraindication to thrombolysis.",
-                "Labs appropriate: Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen.",
-                "Anticoagulation plan confirmed.",
-                "Sedation plan confirmed.",
-                "Venous access site planned.",
-                "Consent completed.",
-                "Monitored bed available if overnight lysis is planned.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and symptom duration."
+                ],
+                [
+                  {
+                    "strong": "Review thrombus extent"
+                  },
+                  " and central outflow."
+                ],
+                [
+                  {
+                    "strong": "No major contraindication"
+                  },
+                  " to thrombolysis."
+                ],
+                [
+                  {
+                    "strong": "Labs appropriate"
+                  },
+                  ": Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen."
+                ],
+                [
+                  {
+                    "strong": "Anticoagulation plan confirmed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Sedation plan confirmed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Venous access site planned"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Consent completed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Monitored bed available"
+                  },
+                  " if overnight lysis is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ]
               ]
             }
           ]
@@ -480,14 +542,6 @@
         },
         {
           "type": "checklist",
-          "title": "Follow-up",
-          "items": [
-            "See pre-procedure orders; update them to reflect the infusion setup at the end of the procedure and laboratory parameters specified by the attending physician.",
-            "Sign out to the primary team to place the IR Venous Intervention Order and make the patient NPO at midnight for thrombolysis catheter check/removal the following day."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
             "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
@@ -497,6 +551,14 @@
             "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
             "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
             "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow-up",
+          "items": [
+            "See pre-procedure orders; update them to reflect the infusion setup at the end of the procedure and laboratory parameters specified by the attending physician.",
+            "Sign out to the primary team to place the IR Venous Intervention Order and make the patient NPO at midnight for thrombolysis catheter check/removal the following day."
           ]
         }
       ]

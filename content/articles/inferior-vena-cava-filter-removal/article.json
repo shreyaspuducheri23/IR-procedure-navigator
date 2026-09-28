@@ -174,11 +174,54 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review type of filter and dwell time.",
-                "Review imaging and procedural planning.",
-                "Labs are appropriate.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review type of filter"
+                  },
+                  " and dwell time."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " and procedural planning."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -385,16 +428,6 @@
           "text": "Regular diet, routine vitals, Tylenol, discharge after 30 minutes, and venogram AVS."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "No specifics."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -403,6 +436,16 @@
             "Tylenol 650 mg PRN.",
             "Discharge order: 30 min.",
             "After visit summary: .IRAVSVENOGRAM."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No specifics."
           ]
         }
       ]

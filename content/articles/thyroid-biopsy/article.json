@@ -145,13 +145,66 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication.",
-                "Review imaging and target.",
-                "Labs are appropriate.",
-                "Confirm cytology/pathology.",
-                "Confirm FNA vs core biopsy.",
-                "Confirm positioning.",
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " and target."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm cytology/pathology"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm FNA vs core biopsy"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm positioning"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]

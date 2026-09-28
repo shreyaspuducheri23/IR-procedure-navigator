@@ -142,8 +142,18 @@
             {
               "type": "list",
               "items": [
-                "Confirm indication and review imaging.",
-                "Labs are appropriate.",
+                [
+                  {
+                    "strong": "Confirm indication"
+                  },
+                  " and review imaging."
+                ],
+                [
+                  {
+                    "strong": "Labs are appropriate"
+                  },
+                  "."
+                ],
                 [
                   {
                     "link": {
@@ -152,7 +162,30 @@
                     }
                   }
                 ],
-                "Confirm sedation plan - patient can lie flat."
+                [
+                  {
+                    "strong": "Confirm sedation plan"
+                  },
+                  " - patient can lie flat."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm NPO status:"
+                  },
+                  " follow fasting requirements if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
               ]
             }
           ]
@@ -396,17 +429,6 @@
           "text": "Diet, vitals, pain control, head-of-bed order, outpatient discharge, AVS, and retrieval follow-up."
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": [
-            "3 month clinic visit.",
-            "Tentative plan for removal."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -422,6 +444,17 @@
           "items": [
             "Discharge order with medication reconciliation.",
             "After visit summary: .IRAVSVENOGRAM."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Follow up"
+        },
+        {
+          "type": "list",
+          "items": [
+            "3 month clinic visit.",
+            "Tentative plan for removal."
           ]
         }
       ]
