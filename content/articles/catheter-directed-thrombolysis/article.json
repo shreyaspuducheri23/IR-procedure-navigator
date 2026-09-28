@@ -255,6 +255,56 @@
               ]
             }
           ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Catheter Directed Thrombolysis - DVT Intervention"
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Major hemorrhage, including intracranial hemorrhage.",
+                "Pulmonary embolism.",
+                "Vessel dissection or rupture."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Consent discussion"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."
+              ]
+            }
+          ]
         }
       ]
     },

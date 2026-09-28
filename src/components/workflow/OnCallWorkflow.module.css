@@ -1,4 +1,10 @@
 .workflow { max-width: 720px; margin: 32px auto 64px; letter-spacing: 0; }
+.procedurePicker { margin-bottom: 24px; display: grid; gap: 10px; }
+.procedurePicker label { font-weight: 600; }
+.procedurePicker input, .procedurePicker select { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid var(--c-border-strong); border-radius: 6px; background: var(--c-surface); color: var(--c-ink); font: inherit; }
+.consentInfo { padding: 16px 0; border-bottom: 1px solid var(--c-border); overflow-wrap: anywhere; }
+.consentInfo h3 { margin: 0; font-size: 18px; }
+.consentInfo p { font-size: 14px; line-height: 1.6; }
 .titleRow { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
 .titleRow h1 { font-size: 30px; margin: 4px 0; letter-spacing: 0; }
 .eyebrow { font-size: 12px; color: var(--c-ink-muted); margin: 0 0 8px; }

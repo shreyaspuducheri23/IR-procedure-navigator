@@ -1155,6 +1155,7 @@ installIntraprocedureSubblocks();
 installModerateSedationLinks();
 installRestartMedicationGuidance();
 installPreProcedureTabs();
+installConsentSections();
 
 const visibleProcedures = procedures.filter((procedure) => !hiddenProcedureTitles.has(procedure.title));
 
@@ -8367,6 +8368,58 @@ function installRestartMedicationGuidance() {
         ],
       };
     });
+  });
+}
+
+function installConsentSections() {
+  const risks = {
+    "Adrenal Vein Sampling": ["Adrenal vein rupture or adrenal hemorrhage.", "Nondiagnostic sampling requiring repeat sampling."],
+    "Biliary Drain Placement and Internalization/Exchange": ["Bile leak or biloma.", "Sepsis or abscess."],
+    "Catheter Directed Thrombolysis - DVT Intervention": ["Major hemorrhage, including intracranial hemorrhage.", "Pulmonary embolism.", "Vessel dissection or rupture."],
+    "Chest Tube Placement": ["Pneumothorax.", "Re-expansion pulmonary edema, particularly with large effusion drainage."],
+    "Cholecystostomy Tube Placement/Exchange": ["Bile leak or biloma."],
+    "Drainage Catheter Placement/Exchange": [],
+    "Fistulogram": ["Distal ischemia.", "Fistula/graft injury or loss of usable dialysis access."],
+    "Foreign Body Removal": [],
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange": ["Bowel injury.", "Intraperitoneal leakage and peritonitis, especially with malposition or an immature tract."],
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement": ["Bowel injury.", "Intraperitoneal leakage and peritonitis."],
+    "Hemorrhoid Artery Embolization": ["Bowel/rectal ischemia.", "Anal incontinence."],
+    "Inferior Vena Cava Filter Placement": ["Venous/caval thrombosis or filter migration.", "Filter fracture or caval penetration.", "Potential inability to retrieve the filter later."],
+    "Inferior Vena Cava Filter Removal": ["Unsuccessful or incomplete retrieval.", "Filter fragment embolization."],
+    "Kidney Biopsy": [],
+    "Liver Biopsy/Fiducial Marker Placement": [],
+    "Lung Biopsy/Fiducial Marker Placement": ["Pneumothorax.", "Air embolism."],
+    "Nephrostomy Tube Placement": ["Urosepsis."],
+    "Paracentesis": [],
+    "PICC Placement": ["Venous thrombosis."],
+    "Port Placement": ["Venous thrombosis.", "Pneumothorax or air embolism with chest/neck access."],
+    "Port Removal": [],
+    "Prostate Artery Embolization": ["Post-embolization urinary urgency and frequency.", "Bladder or bowel ischemia."],
+    "Thoracentesis": ["Pneumothorax.", "Re-expansion pulmonary edema, particularly with large effusion drainage."],
+    "Thyroid Biopsy": ["Airway compromise from neck swelling or hematoma."],
+    "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)": ["Hepatic encephalopathy.", "Liver failure or heart failure."],
+    "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)": ["Hepatic encephalopathy.", "Liver failure or heart failure."],
+    "Tunneled Line Placement/Exchange": ["Venous thrombosis.", "Pneumothorax or air embolism with chest/neck access."],
+    "Uterine Fibroid Embolization (UFE)": ["Abscess or endometritis.", "Ovarian insufficiency and possible effects on fertility or future pregnancy.", "Fibroid expulsion requiring intervention.", "Rare uterine necrosis or infection requiring hysterectomy."],
+    "Y90 Radioembolization Mapping": [],
+    "Y90 Radioembolization Therapy": ["Liver failure.", "Nontarget embolization, including gastric/duodenal ulceration."],
+  };
+  procedures.forEach((procedure) => {
+    if (!Object.prototype.hasOwnProperty.call(risks, procedure.title)) return;
+    const pre = Object.values(procedure.nodes).find((node) => node.title === "Pre-procedure");
+    if (!pre) return;
+    const consentId = `${procedure.id}-consent`;
+    const details = {
+      "Procedure": [procedure.title],
+      "Common risks": ["Infection.", "Bleeding.", "Injury to nearby structures."],
+    };
+    if (risks[procedure.title].length) details["Procedure-specific risks"] = risks[procedure.title];
+    if (procedure.title === "Fistulogram") {
+      details["Additional consent"] = ["Discuss and obtain consent for possible dialysis catheter placement if the fistula/graft may be unusable afterward. Select tunneled versus temporary access according to the anticipated need."];
+    }
+    details["Consent discussion"] = ["Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."];
+    procedure.nodes[consentId] = { title: "Consent", type: "reference", summary: "", details };
+    pre.children = [...pre.children, consentId];
   });
 }
 

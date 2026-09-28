@@ -95,17 +95,18 @@ test('every legacy intraprocedure descendant is represented in generated blocks'
   }
 });
 
-test('all procedures have six consistent pre-procedure tabs and positioning in Checklist', () => {
+test('procedures preserve standard pre-procedure tabs with optional final Consent', () => {
   const { procedures } = captureLegacyState();
   let count = 0;
   for (const p of procedures) {
     const pre = convert(p).sections.find((s) => s.kind === 'pre');
     if (!pre) continue;
     count += 1;
-    assert.deepEqual(pre.subsections.map((s) => s.title), [
+    assert.deepEqual(pre.subsections.slice(0, 6).map((s) => s.title), [
       'Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist',
     ], p.title);
-    assert.match(JSON.stringify(pre.subsections.at(-1).blocks), /lie flat/i, p.title);
+    assert.ok(pre.subsections.length === 6 || (pre.subsections.length === 7 && pre.subsections[6].title === 'Consent'), p.title);
+    assert.match(JSON.stringify(pre.subsections[5].blocks), /lie flat/i, p.title);
     assert.doesNotMatch(JSON.stringify(pre.subsections[3].blocks), /Confirm sedation plan - patient can lie flat/, p.title);
     assert.ok(!pre.blocks?.length, p.title);
   }

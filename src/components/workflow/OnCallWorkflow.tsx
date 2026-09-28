@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./OnCallWorkflow.module.css";
+import { Link } from "react-router-dom";
+import { staticContentSource } from "@/content/source";
+
+const procedures = staticContentSource.listArticles()
+  .filter(article => article.status === "complete" && !article.category.startsWith("reference"))
+  .sort((a, b) => a.title.localeCompare(b.title));
 
 type Answer = { step: string; label: string; next: string };
 type Choice = { label: string; next: string };
@@ -45,6 +51,15 @@ function restore(): Answer[] {
 export function OnCallWorkflow() {
   const [history, setHistory] = useState<Answer[]>(restore);
   const [resetting, setResetting] = useState(false);
+  const [query, setQuery] = useState("");
+  const [procedureId, setProcedureId] = useState(() => {
+    try { return sessionStorage.getItem(`${key}-procedure`) || ""; } catch { return ""; }
+  });
+  const selected = procedures.find(procedure => procedure.id === procedureId);
+  const matches = procedures.filter(procedure => `${procedure.title} ${procedure.keywords.join(" ")}`.toLowerCase().includes(query.toLowerCase().trim()));
+  useEffect(() => {
+    try { sessionStorage.setItem(`${key}-procedure`, procedureId); } catch { /* Keep selection in memory. */ }
+  }, [procedureId]);
   const heading = useRef<HTMLHeadingElement>(null);
   const current = history.at(-1)?.next || "consult";
   const step = stepFor(current, history);
@@ -60,7 +75,7 @@ export function OnCallWorkflow() {
     </div>
     {resetting && <div className={styles.resetPrompt} role="alert">
       <p>Clear this workflow and start a new consult?</p>
-      <button onClick={() => { setHistory([]); setResetting(false); }}>Start new consult</button>
+      <button onClick={() => { setHistory([]); setProcedureId(""); setQuery(""); setResetting(false); }}>Start new consult</button>
       <button onClick={() => setResetting(false)}>Keep current consult</button>
     </div>}
     <ol className={styles.path} aria-label="Consult progress">
@@ -73,6 +88,21 @@ export function OnCallWorkflow() {
         <div className={styles.step}>
           <p className={styles.eyebrow}>{current === "done" ? "Complete" : "Current step"}</p>
           <h2 ref={heading} tabIndex={-1}>{step.title}</h2>
+          {current === "consent" && <div className={styles.procedurePicker}>
+            <label htmlFor="consent-procedure-search">Procedure for consent</label>
+            <input id="consent-procedure-search" type="search" placeholder="Search procedures" value={query} onChange={event => setQuery(event.target.value)} />
+            <select aria-label="Select procedure for consent" value={procedureId} onChange={event => setProcedureId(event.target.value)}>
+              <option value="">Select a procedure</option>
+              {selected && !matches.some(item => item.id === selected.id) && <option value={selected.id}>{selected.title}</option>}
+              {matches.map(procedure => <option key={procedure.id} value={procedure.id}>{procedure.title}</option>)}
+            </select>
+            {matches.length === 0 && <p role="status">No matching procedures.</p>}
+            {selected && <div className={styles.consentInfo}>
+              <h3>{selected.title}</h3>
+              <Link to={`/article/${selected.id}#pre/consent`}>Review consent information →</Link>
+            </div>}
+          </div>}
+          {selected && ["page", "protocol", "snapboard"].includes(current) && <p><strong>Procedure:</strong> {selected.title}</p>}
           {step.lines.length > 0 && <ul>{step.lines.map(line => <li key={line} className={line === "7676767" ? styles.pager : undefined}>{line}</li>)}</ul>}
           <div className={styles.choices}>{step.choices.map(choice => <button key={choice.label} onClick={() => setHistory([...history, { step: current, ...choice }])}>{choice.label}<span aria-hidden="true">→</span></button>)}</div>
           {current === "done" && <button className={styles.nextConsult} onClick={() => setResetting(true)}>Start new consult</button>}
