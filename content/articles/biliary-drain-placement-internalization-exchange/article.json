@@ -55,6 +55,30 @@
                 "Existing biliary drain dysfunction, exchange, or internalization.",
                 "Need for internal/external biliary drainage or conversion/internalization when clinically appropriate."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe biliary access route.",
+                    "Unmanageable bleeding risk (relative; weigh urgent decompression needs).",
+                    "Large-volume ascites increases leakage/infection risk; optimize when feasible.",
+                    "Do not internalize across an obstruction that cannot be crossed safely; external drainage may still be appropriate."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -110,9 +134,9 @@
             {
               "type": "list",
               "items": [
-                "CBC.",
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL.",
+                "CBC."
               ]
             }
           ]
@@ -123,13 +147,16 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Antibiotics with gram negative coverage are ordered.",
-                "Patient is NPO if moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Antibiotics with gram negative coverage are ordered."
               ]
             }
           ]
@@ -141,7 +168,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -150,7 +182,12 @@
                     }
                   }
                 ],
-                "Local if high sedation risk, patient unstable, or intubated."
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " local anesthesia when sedation risk is high, the patient is unstable, or already intubated; individualize the plan."
+                ]
               ]
             }
           ]
@@ -164,21 +201,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and planned approach."
                 ],
                 [
                   {
-                    "strong": "Anticoagulation appropriately held"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -188,23 +231,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm patient can lie flat"
+                    "strong": "Confirm sedation plan:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -637,18 +666,25 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient exchange",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            [
+              {
+                "strong": "If outpatient exchange:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient exchange:"
+              },
+              " After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            ]
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Confirm exchange/internalization follow-up plan with attending."
           ]

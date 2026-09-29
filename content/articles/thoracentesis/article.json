@@ -53,6 +53,30 @@
                 "Large or symptomatic effusion.",
                 "Effusion refractory to treatment."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe ultrasound window for fluid aspiration.",
+                    "Skin infection at the selected site: choose another site.",
+                    "Inability to cooperate or tolerate positioning (relative).",
+                    "Significant bleeding risk or positive-pressure ventilation requires individualized assessment (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -91,7 +115,7 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -113,7 +137,12 @@
             {
               "type": "list",
               "items": [
-                "Local."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ]
               ]
             }
           ]
@@ -131,27 +160,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm labs"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Check what lab studies primary team requested"
-                  },
-                  ": cell count with differential, cultures, cytology, LDH, glucose, pH, etc."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  ""
                 ],
                 [
                   {
@@ -161,15 +172,27 @@
                 ],
                 [
                   {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Check what lab studies primary team requested"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  ": cell count with differential, cultures, cytology, LDH, glucose, pH, etc."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -452,10 +475,20 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation prior.",
-            "After visit summary: .IRAVSTHORACENTESIS."
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " Discharge order with medication reconciliation prior."
+            ],
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " After visit summary: .IRAVSTHORACENTESIS."
+            ]
           ]
         }
       ]

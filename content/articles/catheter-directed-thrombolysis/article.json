@@ -55,7 +55,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Exclude major bleeding, intracranial, neurologic, and severe hypertension risks before lysis."
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -65,10 +65,8 @@
                 {
                   "type": "list",
                   "items": [
-                    "Active bleeding.",
-                    "Recent intracranial hemorrhage.",
-                    "Recent ischemic stroke.",
-                    "Intracranial neoplasm/AVM.",
+                    "Active bleeding or recent intracranial hemorrhage.",
+                    "Recent ischemic stroke or intracranial neoplasm/AVM.",
                     "Recent major intracranial or spinal surgery.",
                     "Severe uncontrolled hypertension."
                   ]
@@ -125,8 +123,8 @@
             {
               "type": "list",
               "items": [
-                "Platelets >50k.",
-                "INR <1.5-1.8."
+                "INR <1.5-1.8.",
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -136,17 +134,16 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Enter fasting, monitoring, laboratory, notification, urinary catheter, and infusion orders for the planned catheter and sheath configuration."
-            },
-            {
               "type": "heading",
               "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "NPO if moderate sedation is planned.",
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
                 "Anti-Xa q6h x 24 hours.",
                 "aPTT q6h x 24 hours.",
                 "CBC q6h x 24 hours.",
@@ -165,7 +162,7 @@
                 "Notify MD/LIP: fibrinogen <200 mg/dL.",
                 "Notify MD/LIP: aPTT >50 sec.",
                 "Notify MD/LIP: INR >1.7.",
-                "Notify MD/LIP: platelets <100,000/mm3."
+                "Notify MD/LIP: platelets <100,000/µL."
               ]
             },
             {
@@ -211,13 +208,14 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Moderate sedation or general anesthesia depending on patient acuity and airway/procedure needs."
-            },
-            {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Options:"
+                  },
+                  " moderate sedation or general anesthesia; select according to acuity, airway, and procedural needs."
+                ],
                 [
                   {
                     "link": {
@@ -225,8 +223,7 @@
                       "articleId": "moderate-sedation-checklist"
                     }
                   }
-                ],
-                "General anesthesia."
+                ]
               ]
             }
           ]
@@ -240,19 +237,31 @@
               "text": "Confirm indication, thrombus anatomy, candidacy for thrombolysis, monitoring, access, and consent."
             },
             {
-              "type": "checklist",
+              "type": "list",
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  " and symptom duration."
+                  " symptom duration."
                 ],
                 [
                   {
-                    "strong": "Review thrombus extent"
+                    "strong": "Review imaging:"
                   },
-                  " and central outflow."
+                  " assess thrombus extent and central outflow."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -262,31 +271,7 @@
                 ],
                 [
                   {
-                    "strong": "Labs appropriate"
-                  },
-                  ": Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen."
-                ],
-                [
-                  {
-                    "strong": "Anticoagulation plan confirmed"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Sedation plan confirmed"
-                  },
-                  "."
-                ],
-                [
-                  {
                     "strong": "Venous access site planned"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Consent completed"
                   },
                   "."
                 ],
@@ -298,21 +283,15 @@
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
+                    "strong": "Confirm consent:"
                   },
-                  " when applicable, confirm the target and planned approach."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " confirm the discussion and consent documentation are complete."
                 ]
               ]
             }
@@ -536,8 +515,14 @@
             "Tylenol 650 mg PRN.",
             "Neurovascular checks q1h x 6 hours, then q2h for up to 24 hours after completion.",
             "Vital signs q15 minutes x 4, q30 minutes x 2, q1h x 2, then q2h until completion of the thrombolytic infusion.",
-            "If femoral access for an arterial case: bedrest for 6 hours, or 2 hours if a closure device was used.",
             "Monitor color of access site."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "If femoral access for an arterial case: bedrest for 6 hours, or 2 hours if a closure device was used."
           ]
         },
         {
@@ -555,7 +540,7 @@
         },
         {
           "type": "checklist",
-          "title": "Follow-up",
+          "title": "Follow up",
           "items": [
             "See pre-procedure orders; update them to reflect the infusion setup at the end of the procedure and laboratory parameters specified by the attending physician.",
             "Sign out to the primary team to place the IR Venous Intervention Order and make the patient NPO at midnight for thrombolysis catheter check/removal the following day."

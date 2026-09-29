@@ -67,6 +67,29 @@
                 "Evidence of infection, sepsis, pyonephrosis, or obstructive AKI that changes urgency.",
                 "Current ureteral stents, urinary diversion anatomy, and relevant prior urologic surgery."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe collecting-system access route.",
+                    "Unmanageable bleeding risk (relative); consider retrograde drainage when feasible.",
+                    "Do not delay urgent decompression of an infected obstructed system solely to achieve ideal laboratory values."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -123,7 +146,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -134,13 +157,16 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
-                "Patient is NPO if moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected."
               ]
             }
           ]
@@ -152,7 +178,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -174,9 +205,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  ", side, and intended nephrostomy tube endpoint."
+                  " side, and intended nephrostomy tube endpoint."
                 ],
                 [
                   {
@@ -186,15 +217,15 @@
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
-                    "strong": "Anticoagulation appropriately held"
+                    "strong": "Review anticoagulation:"
                   },
-                  "."
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -204,23 +235,9 @@
                 ],
                 [
                   {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -483,18 +500,6 @@
           "text": "Diet, vitals, pain control, urine output/drain care, flush orders, anticoagulation restart, AVS, and follow-up."
         },
         {
-          "type": "heading",
-          "text": "Drain care"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Confirm tube is to gravity drainage unless the operator gives a different plan.",
-            "Track output, urine color, fever, flank pain, and ability to flush before discharge.",
-            "Expect transient hematuria; escalate for heavy persistent bleeding, clots with obstruction, hypotension, or falling hemoglobin."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -518,18 +523,34 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient",
+          "title": "Drain care",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSPCN1."
+            "Confirm tube is to gravity drainage unless the operator gives a different plan.",
+            "Track output, urine color, fever, flank pain, and ability to flush before discharge.",
+            "Expect transient hematuria; escalate for heavy persistent bleeding, clots with obstruction, hypotension, or falling hemoglobin."
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " After visit summary: .IRAVSPCN1."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."
           ]

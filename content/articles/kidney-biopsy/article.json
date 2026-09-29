@@ -54,6 +54,30 @@
                 "Suspected systemic renal disease, such as lupus, vasculitis, or amyloidosis.",
                 "Renal mass characterization or transplant dysfunction, including suspected rejection or recurrent disease."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Uncontrolled hypertension or uncorrectable bleeding risk.",
+                    "Active pyelonephritis or infection at the needle-entry site.",
+                    "No safe target/access route or inability to cooperate despite support.",
+                    "Small scarred kidneys or a solitary kidney require individualized risk-benefit review, not automatic exclusion."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -110,7 +134,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -120,8 +144,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -132,7 +165,12 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ]
               ]
             }
           ]
@@ -150,15 +188,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging with appropriate window."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and a safe access window."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -182,25 +232,13 @@
                   {
                     "strong": "Specimen requests confirmed"
                   },
-                  "."
+                  " (histology, immunofluorescence, electron microscopy; cultures if indicated)."
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -473,14 +511,6 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient procedure",
-          "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSKIDNEYBX."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
             "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
@@ -493,11 +523,26 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " After visit summary: .IRAVSKIDNEYBX."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specifics."
           ]

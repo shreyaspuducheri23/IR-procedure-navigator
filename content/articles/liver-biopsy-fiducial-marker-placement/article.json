@@ -62,6 +62,30 @@
                 "Diagnose or stage fibrosis, cirrhosis, steatohepatitis, or hepatitis.",
                 "Evaluate suspected autoimmune, infiltrative, metabolic, or infectious disease."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
+                    "No safe access route or target: reassess the approach or an alternative procedure.",
+                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters).",
+                    "Large-volume ascites or infection along the planned path: consider another route, including transjugular biopsy when appropriate."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -118,7 +142,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -128,8 +152,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -140,8 +173,18 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly.",
-                "Moderate sedation when needed.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -163,21 +206,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  ": target versus non-target."
+                  " target versus non-target."
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
                   " with appropriate window."
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -195,25 +244,13 @@
                   {
                     "strong": "Specimen requests confirmed"
                   },
-                  "."
+                  " (histology, cytopathology, microbiology/cultures as indicated)."
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -477,14 +514,6 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient procedure",
-          "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSLIVERBX."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
             "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
@@ -497,11 +526,26 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " After visit summary: .IRAVSLIVERBX."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specifics."
           ]

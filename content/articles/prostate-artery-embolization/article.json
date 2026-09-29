@@ -57,6 +57,30 @@
                 "Desire to preserve sexual function.",
                 "Refractory hematuria of prostatic origin."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Active urinary infection: treat before elective BPH embolization.",
+                    "Elective BPH: exclude an untreated alternative cause of symptoms, including malignancy, urethral stricture, or neurogenic bladder.",
+                    "No safe selective arterial route or unavoidable nontarget supply.",
+                    "Unmanageable bleeding/contrast risk (relative); urgent hemorrhage requires a separate risk-benefit decision."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -108,9 +132,9 @@
             {
               "type": "list",
               "items": [
-                "Platelets >50,000/uL.",
                 "INR < 1.5-1.8.",
-                "CBC, INR, and BMP within 30 days."
+                "INR, CBC, and BMP within 30 days.",
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -121,19 +145,19 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "If for LUTS from BPH"
+              "text": "LUTS from BPH - routine orders (day of)"
             },
             {
               "type": "list",
               "items": [
-                "NPO for moderate sedation.",
+                "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "Peripheral IV placement, NOT in left arm."
+                "PIV placement (not left arm)."
               ]
             },
             {
               "type": "heading",
-              "text": "If for LUTS from BPH - to be ordered in clinic"
+              "text": "LUTS from BPH - ordered in clinic"
             },
             {
               "type": "list",
@@ -145,12 +169,15 @@
             },
             {
               "type": "heading",
-              "text": "If for refractory hematuria of prostatic origin"
+              "text": "Refractory hematuria - routine orders"
             },
             {
               "type": "list",
               "items": [
-                "NPO for moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
               ]
             }
           ]
@@ -162,7 +189,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -171,7 +203,12 @@
                     }
                   }
                 ],
-                "General anesthesia rarely required."
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia, rarely required."
+                ]
               ]
             }
           ]
@@ -185,15 +222,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  ""
                 ],
                 [
                   {
@@ -203,9 +234,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -222,6 +253,12 @@
             {
               "type": "list",
               "items": [
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
                 [
                   {
                     "strong": "Urology evaluation completed"
@@ -248,12 +285,6 @@
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
-                  },
-                  "."
-                ],
-                [
-                  {
                     "strong": "Treat active UTI"
                   },
                   " before procedure."
@@ -269,27 +300,27 @@
               "items": [
                 [
                   {
-                    "strong": "Review indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Labs are appropriate"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Resuscitation per primary team"
-                  },
-                  "."
+                  ""
                 ],
                 [
                   {
                     "strong": "Review imaging"
                   },
                   " and approach."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Resuscitation per primary team"
+                  },
+                  "."
                 ]
               ]
             }
@@ -607,38 +638,39 @@
             "Regular diet.",
             "Tylenol 650 mg PRN.",
             "Ibuprofen 800 mg Q6 PRN.",
-            "Nursing communication: due to void before discharge."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Femoral access",
-          "items": [
-            "Bedrest 2 hours with closure device; 6 hours with manual compression."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Radial access",
-          "items": [
-            "Remove radial artery compression device within 2 hours post procedure.",
-            "Activity per JH-HLM mobility goal."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Monitoring",
-          "items": [
+            "Nursing communication: due to void before discharge.",
             "Monitor color of access site.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.",
+            [
+              {
+                "strong": "If for refractory hematuria of prostatic origin:"
+              },
+              " Vital signs per routine."
+            ]
           ]
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Access care",
           "items": [
-            "Discharge order with medication reconciliation prior: 2-6 hour.",
-            "After visit summary: .IRAVSPROSTATE."
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest 2 hours with closure device; 6 hours with manual compression."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Remove radial artery compression device within 2 hours post procedure."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Activity per JH-HLM mobility goal."
+            ]
           ]
         },
         {
@@ -646,22 +678,8 @@
           "title": "If for refractory hematuria of prostatic origin",
           "items": [
             "Regular diet.",
-            "Vital signs per routine.",
             "Tylenol 650 mg PRN.",
             "If retention: Foley."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Discharge medications if procedure for LUTS secondary to BPH",
-          "items": [
-            "Continue antibiotic prescribed pre-procedure.",
-            "Ibuprofen 200 mg q6 hrs PRN x 7 days (OTC).",
-            "Oxybutynin PRN for bladder spasm (OTC).",
-            "Omeprazole/esomeprazole 40 mg daily (OTC).",
-            "Docusate 250 mg daily x 7 days (OTC).",
-            "Phenazopyridine 200 mg TID x 3 days (OTC).",
-            "Toradol for pain PRN; not routine."
           ]
         },
         {
@@ -678,11 +696,58 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order with medication reconciliation prior: 2-6 hour.",
+            "After visit summary: .IRAVSPROSTATE.",
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Continue antibiotic prescribed pre-procedure."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Ibuprofen 200 mg q6 hrs PRN x 7 days (OTC)."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Oxybutynin PRN for bladder spasm (OTC)."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Omeprazole/esomeprazole 40 mg daily (OTC)."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Docusate 250 mg daily x 7 days (OTC)."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Phenazopyridine 200 mg TID x 3 days (OTC)."
+            ],
+            [
+              {
+                "strong": "Discharge medications if procedure for LUTS secondary to BPH:"
+              },
+              " Toradol for pain PRN; not routine."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "1 month clinic visit."
           ]

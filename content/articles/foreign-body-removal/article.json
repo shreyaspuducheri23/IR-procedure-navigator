@@ -68,6 +68,29 @@
                 "Particularly important if intracardiac, in the pulmonary arteries, symptomatic, infected, thrombosed, causing arrhythmia, or at risk of migration.",
                 "Usually retrieve when technically feasible, even if incidentally discovered."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Retrieval risk exceeds the expected benefit, especially for a firmly embedded object.",
+                    "No safe retrieval route or inability to capture the object without major injury.",
+                    "Unmanageable bleeding risk or instability requires individualized planning (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -106,7 +129,7 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >20k."
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -116,8 +139,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -128,8 +160,18 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly.",
-                "Moderate sedation in some cases.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -151,21 +193,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
                   " with access."
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -181,21 +229,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -416,18 +452,33 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient procedure",
+          "title": "Access care",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSFOREIGNBODYREMOVAL."
+            "IJ: elevate HOB >45 degrees for 1 hour.",
+            "Femoral venous access: keep the accessed leg flat/extended for 2 hours."
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " After visit summary: .IRAVSFOREIGNBODYREMOVAL."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specifics."
           ]

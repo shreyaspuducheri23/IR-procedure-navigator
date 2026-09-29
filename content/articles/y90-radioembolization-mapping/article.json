@@ -63,6 +63,29 @@
                 "Evaluate non-target embolization.",
                 "Obtain data for Y90 dosimetry."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Pregnancy or inability to follow radiopharmaceutical safety requirements.",
+                    "No safe hepatic arterial catheterization route or unmanageable contrast/bleeding risk.",
+                    "Clinical liver failure or poor overall candidacy for Y90: reassess treatment intent before mapping."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -118,12 +141,12 @@
             {
               "type": "list",
               "items": [
-                "CBC on day of arrival.",
                 "INR on day of arrival.",
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL.",
+                "CBC on day of arrival.",
                 "CMP on day of arrival.",
-                "AFP on day of arrival.",
-                "Platelets >50k.",
-                "INR < 1.5-1.8."
+                "AFP on day of arrival."
               ]
             }
           ]
@@ -133,8 +156,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -145,7 +177,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -167,21 +204,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  " and candidacy."
+                  " candidacy."
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
                   " for hepatic arterial anatomy."
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -197,21 +240,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -495,17 +526,26 @@
         },
         {
           "type": "checklist",
-          "title": "Femoral access",
+          "title": "Access care",
           "items": [
-            "Bedrest for 2 hours with leg flat."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Radial access",
-          "items": [
-            "Activity per JH-HLM mobility goal.",
-            "Remove radial artery compression device."
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest for 2 hours with leg flat."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Activity per JH-HLM mobility goal."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Remove radial artery compression device."
+            ]
           ]
         },
         {
@@ -523,7 +563,7 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge / next step",
+          "title": "Discharge",
           "items": [
             "Discharge order with medication reconciliation prior - 2-6 hours.",
             "After visit summary: .IRAVSY90MAPPING.",
@@ -531,11 +571,8 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             [
               {

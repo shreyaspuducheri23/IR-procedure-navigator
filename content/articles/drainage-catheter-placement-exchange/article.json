@@ -40,6 +40,29 @@
                 "Collection causing obstruction or mass effect.",
                 "Bridge to surgery."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No drainable collection or no safe percutaneous route.",
+                    "Unmanageable bleeding risk (relative; weigh source-control urgency).",
+                    "Lost access or an immature tract: avoid blind exchange and reassess access."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -96,7 +119,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -107,13 +130,16 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Antibiotics with gram negative coverage, if not already ordered.",
-                "Patient is NPO."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Antibiotics with gram negative coverage, if not already ordered."
               ]
             }
           ]
@@ -125,7 +151,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -147,21 +178,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and imaging demonstrates formed collection."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm a formed collection and planned access window."
                 ],
                 [
                   {
-                    "strong": "Anticoagulation appropriately held"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -171,23 +208,9 @@
                 ],
                 [
                   {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -449,18 +472,25 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSPERCDRAINAGE1."
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " After visit summary: .IRAVSPERCDRAINAGE1."
+            ]
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "CT and drain check in 2 weeks."
           ]

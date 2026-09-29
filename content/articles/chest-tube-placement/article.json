@@ -40,6 +40,30 @@
                 "Hemothorax.",
                 "Postoperative/posttraumatic pleural collection."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe access route: consider image-guided or surgical alternatives.",
+                    "Unmanageable bleeding risk (relative; do not delay lifesaving decompression).",
+                    "Infected skin at the planned entry site: choose another site.",
+                    "Hepatic hydrothorax: avoid routine chest drainage unless a compelling indication exists."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -97,7 +121,7 @@
               "type": "list",
               "items": [
                 "INR < 3.",
-                "Platelets >20k."
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -108,12 +132,15 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Patient is NPO if moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
               ]
             }
           ]
@@ -125,8 +152,18 @@
             {
               "type": "list",
               "items": [
-                "Local.",
-                "Can add moderate sedation for tolerance, large tubes, or difficult positioning.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation for tolerance, large tubes, or difficult positioning."
+                ],
                 [
                   {
                     "link": {
@@ -148,27 +185,21 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and planned approach."
                 ],
                 [
                   {
-                    "strong": "Appropriate imaging window"
+                    "strong": "Verify labs:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -178,9 +209,15 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Appropriate imaging window"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -431,11 +468,8 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "+/- CXR."
           ]

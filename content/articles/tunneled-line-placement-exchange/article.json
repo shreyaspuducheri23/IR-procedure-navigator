@@ -69,6 +69,29 @@
               "items": [
                 "DO NOT exchange over wire if bacteremia/line infection."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Active bacteremia: generally defer a new tunneled line; temporary access may be needed.",
+                    "Tunnel infection: do not perform routine over-wire exchange through the infected tract.",
+                    "No safe venous route or unmanageable bleeding risk (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -110,7 +133,7 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >20k.",
+                "Platelets >20,000/µL.",
                 "Potassium if TDC placement."
               ]
             }
@@ -121,8 +144,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -133,8 +165,18 @@
             {
               "type": "list",
               "items": [
-                "Local.",
-                "Moderate sedation for special situations.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -164,15 +206,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  ", expected duration, and required catheter: dialysis versus small-bore; single versus double lumen."
-                ],
-                [
-                  {
-                    "strong": "Determine new placement"
-                  },
-                  "."
+                  " expected duration, and required catheter: dialysis versus small-bore; single versus double lumen."
                 ],
                 [
                   {
@@ -182,21 +218,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm no bacteremia/no active infection"
+                    "strong": "Verify labs:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Labs are appropriate"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " and that patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -206,9 +230,21 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Determine new placement"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm no bacteremia/no active infection"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -225,6 +261,12 @@
             {
               "type": "list",
               "items": [
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
                 [
                   {
                     "strong": "Document the reason for exchange"
@@ -245,15 +287,9 @@
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Confirm sedation plan:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " and that patient can lie flat."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ]
               ]
             }
@@ -530,10 +566,20 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient",
+          "title": "Discharge",
           "items": [
-            "Discharge order - 30 min.",
-            ".IRAVSTUNNELEDCATHPLACEMENT1."
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " Discharge order - 30 min."
+            ],
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " .IRAVSTUNNELEDCATHPLACEMENT1."
+            ]
           ]
         }
       ]

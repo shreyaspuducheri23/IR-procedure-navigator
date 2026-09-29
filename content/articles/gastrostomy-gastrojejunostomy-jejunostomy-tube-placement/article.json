@@ -63,6 +63,30 @@
                 "Gastric outlet obstruction.",
                 "Failed G-tube."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe enteric access window or interposed bowel that cannot be avoided.",
+                    "Peritonitis or unmanageable bleeding risk.",
+                    "Large-volume ascites or severe instability requires individualized planning (relative).",
+                    "Distal obstruction may preclude feeding access, but decompressive access may still be appropriate."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -119,7 +143,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -130,12 +154,15 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Patient is NPO if moderate sedation.",
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
                 "Barium order to be administered ENTIRE bottle the night prior.",
                 "NG tube in place if inpatient.",
                 "Ancef 2 g if <120 kg, 3 g if >120 kg."
@@ -148,14 +175,20 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Moderate or general anesthesia; general is common due to dysphagia indication."
-            },
-            {
               "type": "list",
               "items": [
-                "Moderate or General.",
-                "More often than others, these patients need general due to placement for dysphagia.",
+                [
+                  {
+                    "strong": "Options:"
+                  },
+                  " moderate sedation or general anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Consideration:"
+                  },
+                  " assess airway protection and aspiration risk in patients with dysphagia when selecting the method."
+                ],
                 [
                   {
                     "link": {
@@ -177,15 +210,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -201,29 +246,9 @@
                 ],
                 [
                   {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -503,11 +528,8 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "POD1 check with no signs of peritonitis.",
             "Flushes without resistance or pain.",

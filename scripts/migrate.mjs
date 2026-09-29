@@ -277,6 +277,9 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   function appendDetailEntries(entries) {
     for (const [key, items] of entries) {
       const list = { type: "list", items: items.map((item) => convertItem(item, report)) };
+      const subitems = Object.fromEntries(items.flatMap((item, index) => item?.subitems?.length
+        ? [[index, item.subitems.map(child => convertItem(child, report))]] : []));
+      if (Object.keys(subitems).length) list.subitems = subitems;
       const variant = calloutVariantForKey(key, node.type);
       if (variant) {
         blocks.push({ type: "callout", variant, title: key, blocks: [list] });

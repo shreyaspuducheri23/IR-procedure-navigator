@@ -65,6 +65,30 @@
                 "Above symptoms refractory to conservative therapy.",
                 "Above symptoms and desire to preserve fertility or non-surgical candidate."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Pregnancy.",
+                    "Active pelvic infection.",
+                    "Suspected gynecologic malignancy requires diagnostic evaluation rather than routine fibroid embolization.",
+                    "No safe arterial route or unmanageable bleeding/contrast risk (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -118,20 +142,16 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Needed within 30 days: CBC, creatinine/GFR, INR <1.5-1.8, and platelets >50k."
-            },
-            {
               "type": "heading",
               "text": "Labs within 30 days"
             },
             {
               "type": "list",
               "items": [
-                "CBC.",
-                "Creatinine/GFR.",
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL.",
+                "CBC.",
+                "Creatinine/GFR."
               ]
             }
           ]
@@ -140,6 +160,16 @@
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
           "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs per routine."
+              ]
+            },
             {
               "type": "heading",
               "text": "Pre-procedure meds"
@@ -172,11 +202,11 @@
               "title": "When patient arrives",
               "items": [
                 "SDC/Outpatient with Discharge vs Bedded Outpatient.",
-                "NPO (moderate sedation).",
+                "NPO (if moderate sedation).",
                 "Pulse checks.",
                 "Vital signs - Per unit routine.",
-                "Peripheral Line Placement - No IV in LEFT arm.",
-                "Glucose Point of Care.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
                 "Cefazolin (Ancef) 2g if <120kg, 3g if >120 kg.",
                 "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM).",
                 "Toradol 30 mg once IM.",
@@ -212,7 +242,12 @@
             {
               "type": "list",
               "items": [
-                "Usually moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -229,7 +264,12 @@
                     }
                   }
                 ],
-                "Rarely done general."
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia, rarely required."
+                ]
               ]
             }
           ]
@@ -243,9 +283,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  " and review prior interventions."
+                  " review prior interventions."
                 ],
                 [
                   {
@@ -255,13 +295,19 @@
                 ],
                 [
                   {
-                    "strong": "EXCLUDE pregnancy"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "EXCLUDE pregnancy"
                   },
                   "."
                 ],
@@ -279,27 +325,15 @@
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
-                  },
-                  ", patient can lie flat."
-                ],
-                [
-                  {
                     "strong": "Embolic agent"
                   },
                   "."
                 ],
                 [
                   {
-                    "strong": "Review anticoagulation:"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -582,7 +616,32 @@
             "Tylenol 1000 mg PO (6 hours post 1st dose).",
             "Oxycodone 5 mg tab x 1 PO q4 PRN pain.",
             "Dilaudid 0.5-1 mg IV Q2 hrs PRN pain not responding to oral.",
-            "Antiemetic order set (ondansetron, metoclopramide, and promethazine)."
+            "Antiemetic order set (ondansetron, metoclopramide, and promethazine).",
+            "Monitor color of access site."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest, 2-6 hours with LE extended."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Activity per JH-HLM mobility goal."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              " Remove radial artery compression device."
+            ]
           ]
         },
         {
@@ -600,32 +659,6 @@
         },
         {
           "type": "checklist",
-          "title": "Femoral access",
-          "items": [
-            "Bedrest, 2-6 hours with LE extended."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Radial access",
-          "items": [
-            "Activity per JH-HLM mobility goal.",
-            "Remove radial artery compression device.",
-            "Monitor color of access site."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "If being discharged",
-          "items": [
-            "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
-            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
-            "Discharge order 2-6 hours prior.",
-            "After visit summary: .IRAVSUFE."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "If patient admitted - PCA adult order",
           "items": [
             "Hydromorphone - one hour dose limit: 1.2 mg.",
@@ -636,11 +669,38 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            [
+              {
+                "strong": "If being discharged:"
+              },
+              " Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24)."
+            ],
+            [
+              {
+                "strong": "If being discharged:"
+              },
+              " Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran."
+            ],
+            [
+              {
+                "strong": "If being discharged:"
+              },
+              " Discharge order 2-6 hours prior."
+            ],
+            [
+              {
+                "strong": "If being discharged:"
+              },
+              " After visit summary: .IRAVSUFE."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Clinic visit in 1 month."
           ]

@@ -40,6 +40,29 @@
             {
               "type": "paragraph",
               "text": "Indication guidance has not yet been documented in this guide."
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
+                    "No safe access route or target: reassess the approach or an alternative procedure.",
+                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -68,8 +91,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -101,7 +133,7 @@
                   "items": [
                     [
                       {
-                        "strong": "Add indication-specific pathways before clinical use."
+                        "strong": "Confirm indication."
                       },
                       ""
                     ],
@@ -115,7 +147,7 @@
                       {
                         "strong": "Verify labs:"
                       },
-                      " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
+                      " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                     ],
                     [
                       {
@@ -125,9 +157,15 @@
                     ],
                     [
                       {
-                        "strong": "Confirm NPO status:"
+                        "strong": "Add indication-specific pathways before clinical use."
                       },
-                      " follow fasting requirements if sedation/anesthesia is planned."
+                      ""
+                    ],
+                    [
+                      {
+                        "strong": "Confirm sedation plan:"
+                      },
+                      " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                     ],
                     [
                       {
@@ -137,17 +175,6 @@
                     ]
                   ]
                 }
-              ]
-            },
-            {
-              "type": "checklist",
-              "items": [
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
-                ]
               ]
             }
           ]

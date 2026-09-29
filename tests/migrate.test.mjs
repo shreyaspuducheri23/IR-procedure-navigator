@@ -5,6 +5,41 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('moderate sedation reference links belong in sedation, not checklists', () => {
+  for (const p of captureLegacyState().procedures) {
+    const pre = Object.values(p.nodes).find(n => n.title === 'Pre-procedure');
+    if (!pre) continue;
+    const children = pre.children.map(id => p.nodes[id]);
+    const checklist = children.find(n => n.title === 'Checklist');
+    const inspect = node => {
+      assert.doesNotMatch(JSON.stringify(node), /#moderate-sedation-checklist/, p.title);
+      (node.children || []).forEach(id => inspect(p.nodes[id]));
+    };
+    if (checklist) inspect(checklist);
+    const sedation = children.find(n => n.title === 'Sedation');
+    if (/moderate sedation/i.test(JSON.stringify(sedation))) {
+      assert.match(JSON.stringify(sedation), /#moderate-sedation-checklist/, p.title);
+    }
+  }
+});
+test('cholecystostomy placement and exchange/removal have distinct preparation and follow-up', () => {
+  const all = captureLegacyState().procedures;
+  const placement = all.find(p => p.title === 'Cholecystostomy Tube Placement');
+  const exchange = all.find(p => p.title === 'Cholecystostomy Tube Exchange/Removal');
+  const node = (p, title) => Object.values(p.nodes).find(n => n.title === title);
+  assert.equal(placement.bleedRisk, 'High');
+  assert.equal(exchange.bleedRisk, 'Low');
+  assert.ok(!node(placement, 'Labs').details.Labs.includes('CBC.'));
+  assert.match(JSON.stringify(node(placement, 'Pre-procedure orders')), /CBC and INR within 30 days/);
+  assert.match(JSON.stringify(node(placement, 'Checklist')), /Confirm antibiotics/);
+  assert.doesNotMatch(JSON.stringify(node(placement, 'Checklist')), /#moderate-sedation-checklist/);
+  assert.ok(!node(placement, 'Post-procedure').checklistSections.some(s => s.title === 'Discharge'));
+  assert.match(JSON.stringify(node(exchange, 'Labs')), /No routine pre-procedure labs/);
+  assert.match(JSON.stringify(node(exchange, 'Pre-procedure orders')), /No routine pre-procedure orders/);
+  assert.match(JSON.stringify(node(exchange, 'Indication')), /duodenum/);
+  assert.match(JSON.stringify(node(exchange, 'Indication')), /Mature tract/);
+  assert.ok(articleSchema.safeParse(convert(exchange)).success);
+});
 const fixture = () => ({ id: 'test', title: 'Test', category: 'IR procedure', root: 'root', nodes: {
   root: { title: 'Test', children: ['intra'] },
   intra: { title: 'Intraprocedure', children: ['anatomy', 'steps'] },
@@ -60,7 +95,7 @@ test('real migration is deterministic and agrees with all committed articles', (
     return procedures.map((p) => convertProcedure(p, hiddenProcedureTitles, report()));
   };
   const articles = run();
-  assert.equal(articles.length, 57);
+  assert.equal(articles.length, 58);
   assert.deepEqual(articles, run());
   for (const article of articles) {
     assert.equal(articleSchema.safeParse(article).success, true, article.id);
@@ -110,7 +145,7 @@ test('procedures preserve standard pre-procedure tabs with optional final Consen
     assert.doesNotMatch(JSON.stringify(pre.subsections[3].blocks), /Confirm sedation plan - patient can lie flat/, p.title);
     assert.ok(!pre.blocks?.length, p.title);
   }
-  assert.equal(count, 54);
+  assert.equal(count, 55);
 });
 
 test('post-procedure follow-up is last and drainage flush is BID', () => {
@@ -151,7 +186,7 @@ test('procedure checklists use emphasis and cover shared preprocedure checks', (
       assert.match(text, pattern, procedure.title);
     }
   }
-  assert.equal(count, 54);
+  assert.equal(count, 55);
   const articles = captureLegacyState().procedures.map(convert);
   const exchange = articles.find(a => a.id === 'gastrostomy-gastrojejunostomy-jejunostomy-tube-exchange');
   assert.match(JSON.stringify(exchange), /unless further indicated/);
@@ -160,6 +195,92 @@ test('procedure checklists use emphasis and cover shared preprocedure checks', (
   assert.deepEqual(intra.subsections.map(s => s.title), ['Anatomy', 'Procedural steps', 'Pitfalls and safety']);
   assert.doesNotMatch(JSON.stringify(intra), /To build|Future edit/);
   assert.match(JSON.stringify(intra), /neuraxial/);
+});
+
+test('checklist order and sedation labels are consistent without flattening pathways', () => {
+  const { procedures } = captureLegacyState();
+  const text = item => typeof item === 'string' ? item : `${item.strong || ''}${item.text || ''}`;
+  for (const p of procedures) {
+    const pre = Object.values(p.nodes).find(n => n.title === 'Pre-procedure');
+    const children = pre?.children?.map(id => p.nodes[id]) || [];
+    const checklist = children.find(n => n.title === 'Checklist');
+    if (!checklist) continue;
+    const items = checklist.checklistSections?.[0].items || Object.values(checklist.details)[0];
+    const lines = items.map(text);
+    assert.match(lines[0], /^Confirm indication/, p.title);
+    assert.doesNotMatch(lines[0], /review imaging/i, p.title);
+    const sedation = lines.findIndex(line => line.startsWith('Confirm sedation plan'));
+    const positioning = lines.findIndex(line => line.startsWith('Confirm positioning'));
+    const npo = lines.findIndex(line => line.startsWith('Confirm NPO status'));
+    assert.ok(sedation >= 0 && positioning === -1 && npo === -1, p.title);
+    assert.match(lines[sedation], /lie flat.*positioning.*NPO status/, p.title);
+    assert.equal(lines.filter(line => line.startsWith('Confirm sedation plan')).length, 1, p.title);
+    const guidance = children.find(n => n.title === 'Sedation');
+    if (guidance?.details?.Sedation) {
+      assert.equal(guidance.summary, '');
+      assert.ok(['Preferred:', 'Options:'].includes(guidance.details.Sedation[0].strong), p.title);
+    }
+  }
+  const pae = procedures.find(p => p.title === 'Prostate Artery Embolization');
+  const checklist = Object.values(pae.nodes).find(n => n.title === 'Checklist');
+  assert.ok(checklist.details['If for LUTS from BPH']);
+  assert.ok(checklist.details['If for refractory hematuria of prostatic origin']);
+  const exchange = procedures.find(p => p.title === 'Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange');
+  assert.match(JSON.stringify(exchange), /no labs unless further indicated/);
+});
+
+test('labs and contraindications follow shared formatting with preserved thresholds', () => {
+  for (const p of captureLegacyState().procedures) {
+    const pre = Object.values(p.nodes).find(n => n.title === 'Pre-procedure');
+    if (!pre) continue;
+    const children = pre.children.map(id => p.nodes[id]);
+    const labs = children.find(n => n.title === 'Labs');
+    for (const entries of Object.values(labs?.details || {})) {
+      const text = entries.map(e => typeof e === 'string' ? e : e.text || '');
+      const inr = text.findIndex(t => /^(PT\/)?INR/.test(t));
+      const platelets = text.findIndex(t => /^Platelets/.test(t));
+      if (inr >= 0 && platelets >= 0) assert.ok(inr < platelets, p.title);
+      for (const value of text.filter(t => /^Platelets\s*[<>]/.test(t))) {
+        assert.match(value, /\/µL/, p.title);
+        assert.doesNotMatch(value, /\d+k\b/, p.title);
+      }
+    }
+    const indication = children.find(n => n.title === 'Indication');
+    const contraindication = indication.children.map(id => p.nodes[id]).find(n => n.title === 'Contraindications');
+    assert.ok(contraindication, p.title);
+    assert.ok(contraindication.details.Contraindications.length <= 4, p.title);
+  }
+  const celiac = convert(captureLegacyState().procedures.find(p => p.id === 'celiac-plexus-block-neurolysis'));
+  assert.match(JSON.stringify(celiac), /50,000\/µL/);
+  assert.match(JSON.stringify(celiac), /PIV placement \(not left arm\)/);
+});
+
+test('postprocedure sections group monitoring and place discharge before final follow-up', () => {
+  const { procedures } = captureLegacyState();
+  for (const p of procedures) {
+    const post = Object.values(p.nodes).find(n => n.title === 'Post-procedure');
+    const sections = post?.checklistSections || [];
+    const titles = sections.map(s => s.title);
+    assert.ok(!titles.includes('Monitoring'), p.title);
+    const discharge = titles.indexOf('Discharge');
+    const follow = titles.indexOf('Follow up');
+    if (follow >= 0) assert.equal(follow, titles.length - 1, p.title);
+    if (discharge >= 0) assert.equal(discharge, titles.length - (follow >= 0 ? 2 : 1), p.title);
+    for (const section of sections) {
+      for (const entry of section.items) {
+        const text = typeof entry === 'string' ? entry.text || '' : entry.text || '';
+        const value = typeof entry === 'string' ? entry : text.trim();
+        if (/^Vital signs|^Monitor (?:color of )?access site|^Neurovascular checks/i.test(value)) assert.equal(section.title, p.id === 'adrenal-vein-sampling' ? 'Routine orders - before lab results have returned' : 'Routine orders', p.title);
+      }
+    }
+  }
+  const avs = Object.values(procedures.find(p => p.title === 'Adrenal Vein Sampling').nodes).find(n => n.title === 'Post-procedure');
+  assert.match(JSON.stringify(avs.checklistSections.find(s => s.title === 'Discharge')), /After lab results have returned/);
+  const pae = Object.values(procedures.find(p => p.title === 'Prostate Artery Embolization').nodes).find(n => n.title === 'Post-procedure');
+  assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Routine orders')), /every 15 minutes x 4/);
+  assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Discharge')), /LUTS secondary to BPH/);
+  const renderer = readFileSync(new URL('../src/components/article/BlockRenderer.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(renderer, /type="checkbox"|setChecked|checkedText/);
 });
 
 test('order relocation preserves infusion setups, medication timing and conditional orders', () => {

@@ -1,37 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "port-placement",
-  "title": "Port Placement",
-  "category": "vascular-access",
+  "id": "cholecystostomy-tube-exchange-removal",
+  "title": "Cholecystostomy Tube Exchange/Removal",
+  "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "low",
-  "keywords": [
-    "chest",
-    "port",
-    "mediport",
-    "implanted",
-    "placement",
-    "chemotherapy",
-    "transfusions",
-    "blood",
-    "draws",
-    "antibiotics",
-    "tpn",
-    "central",
-    "access",
-    "outpatient"
-  ],
-  "summary": "Port placement guidance for outpatient long-term chemotherapy, transfusions or blood draws, long-term IV antibiotics, TPN, or intermittent central access.",
+  "keywords": [],
+  "summary": "Existing tube maintenance and assessment for safe removal; routine mature-tract exchange is distinct from new placement.",
   "lastReviewed": null,
   "provenance": [
     "Imported from procedure orders PDF updated 4.15.26"
   ],
   "reviewNotes": [
-    "Confirm port placement is always outpatient in local workflow.",
-    "Confirm low bleeding risk classification with local policy.",
-    "Confirm anticoagulation language with the final table.",
-    "Confirm moderate sedation workflow and discharge timing.",
-    "Confirm AVS wording and follow-up owner."
+    "Confirm high bleeding risk classification with local policy.",
+    "Confirm anticoagulation hold and restart times with the final table.",
+    "Confirm flush order wording.",
+    "Confirm 2-3 month drain check scheduling workflow."
   ],
   "sections": [
     {
@@ -44,30 +28,43 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Outpatient long-term or intermittent central venous access, most commonly for chemotherapy."
-            },
-            {
-              "type": "heading",
-              "text": "Workflow"
-            },
-            {
-              "type": "list",
-              "items": [
-                "ALWAYS DONE AS OUTPATIENT."
-              ]
-            },
-            {
               "type": "heading",
               "text": "Indications"
             },
             {
               "type": "list",
               "items": [
-                "Long term chemotherapy.",
-                "Frequent blood transfusions/draw.",
-                "Long term IV antibiotics or TPN.",
-                "Softer indication for need for intermittent central access."
+                "Exchange for catheter obstruction, leakage, malfunction, or scheduled maintenance when drainage is still required."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Removal after acalculous cholecystitis"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clinical resolution: no recurrent pain, fever, or ongoing cholecystitis.",
+                "Mature tract and no contrast leak at the drain check.",
+                "Patent cystic duct and common bile duct, with contrast reaching the duodenum.",
+                "Tolerated capping trial if used by the treating team; confirm no ongoing need for drainage before removal."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "References"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "link": {
+                      "text": "International consensus: post-cholecystostomy management and removal",
+                      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12165509/"
+                    }
+                  }
+                ]
               ]
             },
             {
@@ -86,9 +83,8 @@
                 {
                   "type": "list",
                   "items": [
-                    "Active bacteremia or infection at the intended pocket/entry site: defer elective implantation.",
-                    "No suitable venous route or unmanageable bleeding risk.",
-                    "Inability to tolerate the procedure safely despite an adjusted anesthesia plan (relative)."
+                    "Do not remove with unresolved infection, obstruction, bile leak, or an immature tract.",
+                    "Lost access or a displaced tube may require new placement rather than routine exchange."
                   ]
                 }
               ]
@@ -106,16 +102,8 @@
                 {
                   "type": "list",
                   "items": [
-                    "Low bleeding risk.",
-                    [
-                      {
-                        "link": {
-                          "text": "Open anticoagulation table",
-                          "articleId": "anticoagulation-table"
-                        }
-                      }
-                    ],
-                    "No requirement to hold anticoagulation."
+                    "Low bleeding risk: no routine anticoagulant holds for uncomplicated mature-tract exchange/removal.",
+                    "Reassess bleeding risk if new access or substantial tract manipulation is needed."
                   ]
                 }
               ]
@@ -129,8 +117,7 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No routine pre-procedure labs required for uncomplicated mature-tract exchange/removal; obtain only if clinically indicated."
               ]
             }
           ]
@@ -146,10 +133,7 @@
             {
               "type": "list",
               "items": [
-                "NPO (if moderate sedation).",
-                "Vital signs per routine.",
-                "PIV placement (not left arm).",
-                "Glucose POC."
+                "No routine pre-procedure orders required for uncomplicated exchange/removal. Individualize if sedation or infection management is needed."
               ]
             }
           ]
@@ -165,7 +149,13 @@
                   {
                     "strong": "Preferred:"
                   },
-                  " moderate sedation."
+                  " local anesthesia as needed; systemic sedation is generally not required."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
                 ],
                 [
                   {
@@ -188,33 +178,33 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication."
+                    "strong": "Confirm indication:"
                   },
-                  ""
+                  " exchange versus removal; establish whether drainage is still needed."
                 ],
                 [
                   {
                     "strong": "Review imaging:"
                   },
-                  " with access."
+                  " prior access route, tube position, tract age, and prior cholangiogram."
                 ],
                 [
                   {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " none routinely required; review if clinically indicated."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                  " no routine holds for uncomplicated mature-tract exchange/removal."
                 ],
                 [
                   {
-                    "strong": "Access approach"
+                    "strong": "Confirm removal readiness:"
                   },
-                  "."
+                  " clinical recovery, tract maturity, duct patency, and capping tolerance when applicable."
                 ],
                 [
                   {
@@ -226,7 +216,7 @@
                   {
                     "strong": "Confirm consent:"
                   },
-                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                  " exchange versus removal and patient-specific risks."
                 ]
               ]
             }
@@ -243,7 +233,7 @@
             {
               "type": "list",
               "items": [
-                "Port Placement"
+                "Cholecystostomy Tube Placement/Exchange"
               ]
             },
             {
@@ -265,8 +255,7 @@
             {
               "type": "list",
               "items": [
-                "Venous thrombosis.",
-                "Pneumothorax or air embolism with chest/neck access."
+                "Bile leak or biloma."
               ]
             },
             {
@@ -297,33 +286,21 @@
               "items": [
                 [
                   {
-                    "strong": "Internal jugular vein:"
+                    "strong": "Existing tract:"
                   },
-                  " commonly used for chest ports; map its relationship to the carotid with ultrasound."
+                  " preserve the established route into the gallbladder; confirm maturity before removal."
                 ],
                 [
                   {
-                    "strong": "Central venous route:"
+                    "strong": "Drainage pathway:"
                   },
-                  " confirm a patent path through the brachiocephalic vein into the SVC."
+                  " cystic duct to common bile duct to duodenum; patency supports removal."
                 ],
                 [
                   {
-                    "strong": "Catheter tip:"
+                    "strong": "Catheter position:"
                   },
-                  " generally targets the lower SVC/cavoatrial junction; avoid deep intracardiac positioning."
-                ],
-                [
-                  {
-                    "strong": "Port pocket:"
-                  },
-                  " place in healthy subcutaneous chest tissue with adequate coverage and an accessible septum."
-                ],
-                [
-                  {
-                    "strong": "Tunnel:"
-                  },
-                  " use a smooth course without sharp bends; a medial subclavian route risks costoclavicular compression."
+                  " the loop and side holes should remain within the gallbladder."
                 ]
               ]
             }
@@ -335,46 +312,34 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Basic steps"
+              "text": "Steps"
             },
             {
               "type": "list",
               "items": [
                 [
                   {
-                    "strong": "1. Plan the vein and pocket"
+                    "strong": "Assess the tube:"
                   },
-                  " considering patency, skin condition, prior devices, and treatment needs."
+                  " inspect the site and gently inject contrast to confirm position, duct patency, and any leak."
                 ],
                 [
                   {
-                    "strong": "2. Prep, anesthetize, and access"
+                    "strong": "Exchange if needed:"
                   },
-                  " the vein under ultrasound with full sterile precautions; confirm venous wire position."
+                  " maintain wire access, unlock/remove the old tube, and place the replacement with all side holes intraluminal."
                 ],
                 [
                   {
-                    "strong": "3. Create the pocket and tunnel"
+                    "strong": "Remove only when ready:"
                   },
-                  " with a smooth catheter course and enough tissue to cover the reservoir."
+                  " confirm removal criteria, release the locking mechanism, and gently withdraw the tube."
                 ],
                 [
                   {
-                    "strong": "4. Position and connect the catheter"
+                    "strong": "Complete care:"
                   },
-                  " using fluoroscopy to set tip depth; trim and assemble per device instructions."
-                ],
-                [
-                  {
-                    "strong": "5. Confirm function"
-                  },
-                  " by aspirating blood and flushing through a noncoring needle; check for kinks, leaks, and tip position."
-                ],
-                [
-                  {
-                    "strong": "6. Secure, close, and document"
-                  },
-                  " hemostasis, final imaging, device details, and readiness for use; lock per local protocol."
+                  " confirm drainage and secure an exchanged tube; dress the site after removal and provide return precautions."
                 ]
               ]
             }
@@ -393,56 +358,27 @@
                   "items": [
                     [
                       {
-                        "strong": "Arterial access:"
+                        "strong": "Premature removal:"
                       },
-                      " confirm vein and wire before dilation; large-bore arterial cannulation needs specialist management before removal."
+                      " an immature tract or persistent obstruction risks bile leak and recurrent cholecystitis."
                     ],
                     [
                       {
-                        "strong": "Air embolism:"
+                        "strong": "Loss of access:"
                       },
-                      " keep hubs occluded and minimize open-sheath time during catheter insertion."
+                      " maintain wire purchase during exchange; do not blindly replace a displaced tube."
                     ],
                     [
                       {
-                        "strong": "Arrhythmia or perforation:"
+                        "strong": "Forceful injection or traction:"
                       },
-                      " avoid excessive intracardiac wire or catheter advancement; reassess new ectopy or instability."
+                      " avoid overdistention; release the locking mechanism before removal."
                     ],
                     [
                       {
-                        "strong": "Pneumothorax:"
+                        "strong": "Clinical deterioration:"
                       },
-                      " keep the access needle visualized; assess new chest pain, hypoxia, or respiratory distress."
-                    ],
-                    [
-                      {
-                        "strong": "Malfunction:"
-                      },
-                      " correct kinking, malposition, or a loose connection before closure; never force a resistant flush."
-                    ],
-                    [
-                      {
-                        "strong": "Pocket complications:"
-                      },
-                      " achieve hemostasis and avoid excessive tension, thin coverage, or infected skin."
-                    ]
-                  ]
-                },
-                {
-                  "type": "heading",
-                  "text": "References"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    [
-                      {
-                        "link": {
-                          "text": "JSIR Guidelines for Central Venous Port Placement and Management",
-                          "href": "https://www.jstage.jst.go.jp/article/interventionalradiology/8/2/8_2022-0015/_article"
-                        }
-                      }
+                      " evaluate new pain, fever, bleeding, or persistent bile leakage promptly."
                     ]
                   ]
                 }
@@ -458,31 +394,36 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Diet, routine vitals, pain control, outpatient discharge instructions, AVS, and follow-up."
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
-            "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN."
+            "Vital signs per routine.",
+            "Monitor the access site for bleeding or bile leakage."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "After exchange: secure the tube, maintain prescribed drainage, and continue the established flush plan.",
+            "After removal: apply a dressing and provide wound-care instructions."
           ]
         },
         {
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSPORTPLACEMENT."
+            "Discharge when clinically appropriate with medication reconciliation.",
+            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.",
+            "Return for fever, increasing abdominal pain, bleeding, or persistent bile leakage."
           ]
         },
         {
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "No specifics."
+            "If the tube remains: arrange the next drain check/exchange per IR plan.",
+            "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."
           ]
         }
       ]

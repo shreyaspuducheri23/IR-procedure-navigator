@@ -54,6 +54,29 @@
                 "PET-avid thyroid nodule.",
                 "Re-biopsy after nondiagnostic or concerning cytology."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No appropriate target or no safe needle path.",
+                    "Infection at the planned entry site.",
+                    "Unmanageable bleeding risk or inability to remain still (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -103,14 +126,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "INR < 2-3 and platelets >20k."
-            },
-            {
               "type": "list",
               "items": [
-                "Platelets >20,000/uL.",
-                "INR < 2-3."
+                "INR < 2-3.",
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -132,8 +151,18 @@
             {
               "type": "list",
               "items": [
-                "Local anesthesia.",
-                "No sedation typically required."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Consideration:"
+                  },
+                  " systemic sedation is generally not required."
+                ]
               ]
             }
           ]
@@ -147,9 +176,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
+                  ""
                 ],
                 [
                   {
@@ -159,33 +188,9 @@
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm cytology/pathology"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm FNA vs core biopsy"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm positioning"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -195,9 +200,21 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Confirm cytology/pathology"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " (cytopathology, histology, molecular testing as indicated)."
+                ],
+                [
+                  {
+                    "strong": "Confirm FNA vs core biopsy"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {

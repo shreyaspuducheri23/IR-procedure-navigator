@@ -49,6 +49,29 @@
                 "Filter-related complication.",
                 "Retrievable filter no longer needed."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Substantial trapped thrombus: defer routine retrieval and reassess.",
+                    "Persistent need for PE protection without an alternative plan.",
+                    "Embedded, fractured, or penetrated filter: may require advanced retrieval rather than routine removal."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -109,14 +132,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "INR < 2-3 and platelets >20k; if complicated removal, CBC and INR within 30 days."
-            },
-            {
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >20k."
+                "Platelets >20,000/µL."
               ]
             },
             {
@@ -126,7 +145,7 @@
             {
               "type": "list",
               "items": [
-                "CBC and INR within 30 days."
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -137,12 +156,15 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "NPO if moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
               ]
             }
           ]
@@ -154,7 +176,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -176,15 +203,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Review type of filter"
-                  },
-                  " and dwell time."
+                  ""
                 ],
                 [
                   {
@@ -194,15 +215,9 @@
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -212,9 +227,15 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Review type of filter"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " and dwell time."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -433,17 +454,20 @@
           "items": [
             "Regular diet.",
             "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN.",
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
             "Discharge order: 30 min.",
             "After visit summary: .IRAVSVENOGRAM."
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specifics."
           ]

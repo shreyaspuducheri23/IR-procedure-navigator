@@ -58,6 +58,30 @@
                 "Evaluate suspected infection or inflammatory disease when noninvasive workup is insufficient.",
                 "Biopsy an accessible pleural, chest-wall, or mediastinal lesion when appropriate."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
+                    "No safe access route or target: reassess the approach or an alternative procedure.",
+                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters).",
+                    "Severe cardiopulmonary limitation or inability to cooperate with positioning/breath-holds (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -114,7 +138,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -124,8 +148,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -136,8 +169,18 @@
             {
               "type": "list",
               "items": [
-                "Local, mostly.",
-                "Moderate sedation typically avoided to allow for breath-holds.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Consideration:"
+                  },
+                  " moderate sedation is generally avoided to preserve breath-hold cooperation."
+                ],
                 [
                   {
                     "link": {
@@ -159,21 +202,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
                   " with appropriate window: no fissures, shortest path to lesion."
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -191,25 +240,13 @@
                   {
                     "strong": "Specimen requests confirmed"
                   },
-                  "."
+                  " (histology, cytopathology, microbiology/cultures as indicated)."
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -497,16 +534,7 @@
           "title": "Diet",
           "items": [
             "NPO until 1st CXR.",
-            "After 1st CXR: clear liquids.",
-            "After 2nd CXR: regular diet and discharge."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "If outpatient procedure",
-          "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSLUNGBX."
+            "After 1st CXR: clear liquids."
           ]
         },
         {
@@ -538,11 +566,27 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "After 2nd CXR: regular diet and discharge.",
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " After visit summary: .IRAVSLUNGBX."
+            ]
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specifics."
           ]

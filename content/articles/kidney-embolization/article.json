@@ -45,6 +45,29 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
+                    "No safe access route or target: reassess the approach or an alternative procedure.",
+                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -83,7 +106,7 @@
             {
               "type": "list",
               "items": [
-                "CBC, INR and BMP within 30 days"
+                "INR, CBC and BMP within 30 days"
               ]
             }
           ]
@@ -94,17 +117,17 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
                 "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation)",
-                "Pulse checks",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement - No IV in LEFT arm",
-                "Glucose Point of Care"
+                "Pulse checks"
               ]
             }
           ]
@@ -136,6 +159,30 @@
               "items": [
                 [
                   {
+                    "strong": "Confirm indication:"
+                  },
+                  " verify the procedure, target, and relevant contraindications."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " use available imaging or ultrasound when relevant to confirm a safe target."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
                     "strong": "Confirm ability to consent"
                   },
                   ", ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns."
@@ -148,44 +195,9 @@
                 ],
                 [
                   {
-                    "strong": "Use ultrasound or imaging review"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " when relevant to confirm a safe target."
-                ],
-                [
-                  {
-                    "strong": "Confirm indication:"
-                  },
-                  " verify the procedure, target, and relevant contraindications."
-                ],
-                [
-                  {
-                    "strong": "Verify labs:"
-                  },
-                  " confirm procedure-specific requirements and review results when indicated; see the Labs tab."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
-                ]
-              ]
-            },
-            {
-              "type": "checklist",
-              "items": [
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ]
               ]
             }
@@ -285,72 +297,53 @@
       "id": "post",
       "kind": "post",
       "title": "Post-procedure",
-      "subsections": [
+      "blocks": [
         {
-          "id": "orders",
-          "title": "Orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Post-procedure orders extracted from the PDF."
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "Notify MD/LIP - IR",
-                "Regular diet",
-                "Activity:",
-                "FEMORAL: Bedrest, 2-6 hours LE extended",
-                "RADIAL: Activity per JH-HLM mobility goal.",
-                "Remove radial artery compression device",
-                "Monitor Color of Access Site",
-                "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
-                "Tylenol 650 mg PRN",
-                "Discharge order (med rec prior) - 2-6 hours",
-                "After visit summary: .IRAVSRENALARTERYANGIO",
-                "Follow up: PPD1 if admitted or outpatient per MD"
-              ]
-            }
+          "type": "paragraph",
+          "text": "Review post-procedure orders, discharge timing, AVS, and follow-up."
+        },
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Notify MD/LIP - IR",
+            "Regular diet",
+            "Monitor Color of Access Site",
+            "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
+            "Tylenol 650 mg PRN"
           ]
         },
         {
-          "id": "restart-meds",
-          "title": "Restart meds",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Assign procedure bleeding risk before using restart guidance."
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs bleeding risk",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "This procedure does not yet have a high/low bleeding-risk override.",
-                    "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
-                  ]
-                }
-              ]
-            }
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "FEMORAL: Bedrest, 2-6 hours LE extended",
+            "RADIAL: Activity per JH-HLM mobility goal.",
+            "Remove radial artery compression device"
           ]
         },
         {
-          "id": "follow-up",
-          "title": "Follow-up",
-          "blocks": [
-            {
-              "type": "heading",
-              "text": "PDF note"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Follow up: communicate with covering PA if follow up needs to be scheduled."
-              ]
-            }
+          "type": "checklist",
+          "title": "Needs bleeding risk",
+          "items": [
+            "This procedure does not yet have a high/low bleeding-risk override.",
+            "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order (med rec prior) - 2-6 hours",
+            "After visit summary: .IRAVSRENALARTERYANGIO"
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow up",
+          "items": [
+            "Follow up: PPD1 if admitted or outpatient per MD",
+            "Follow up: communicate with covering PA if follow up needs to be scheduled."
           ]
         }
       ]

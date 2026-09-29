@@ -70,6 +70,29 @@
                 "When the tube was originally placed and whether the tract is mature.",
                 "Whether the tube is completely out, partially retracted, clogged, leaking, or due for routine exchange."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Immature or uncertain tract: no blind bedside exchange.",
+                    "Suspected intraperitoneal displacement, leak, or peritonitis: reassess before using/replacing the tube.",
+                    "No secure access to the bowel lumen or an incompatible replacement device."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -122,16 +145,15 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "SDC/outpatient with discharge.",
                 "Vital signs per routine.",
-                "Glucose point of care.",
-                "NPO per local-only exchange workflow.",
-                "Glucose point of care ordered."
+                "Glucose POC.",
+                "SDC/outpatient with discharge.",
+                "NPO per local-only exchange workflow."
               ]
             }
           ]
@@ -143,7 +165,12 @@
             {
               "type": "list",
               "items": [
-                "Local only."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia only."
+                ]
               ]
             }
           ]
@@ -157,9 +184,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication:"
                   },
-                  " and current tube type."
+                  " current tube type."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " when applicable, confirm the target and planned approach."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " no labs unless further indicated."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -175,39 +220,15 @@
                 ],
                 [
                   {
-                    "strong": "No labs"
-                  },
-                  " unless further indicated."
-                ],
-                [
-                  {
                     "strong": "Patient is in SDC/outpatient workflow"
                   },
                   " with discharge plan."
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Review imaging:"
-                  },
-                  " when applicable, confirm the target and planned approach."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -482,18 +503,25 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation prior - immediate.",
-            "After visit summary: .IRAVSGASTROSTOMYTUBEEXCHANGE or .IRAVSGJTUBEEXCHANGE or .IRAVSJTUBEEXCHANGE."
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " Discharge order with medication reconciliation prior - immediate."
+            ],
+            [
+              {
+                "strong": "If outpatient:"
+              },
+              " After visit summary: .IRAVSGASTROSTOMYTUBEEXCHANGE or .IRAVSGJTUBEEXCHANGE or .IRAVSJTUBEEXCHANGE."
+            ]
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "6 month routine exchange."
           ]

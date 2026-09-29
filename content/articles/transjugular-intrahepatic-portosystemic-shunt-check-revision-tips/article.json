@@ -61,6 +61,30 @@
                 "Shunt dysfunction on Doppler US.",
                 "Over-correction now causing heart failure, hepatic encephalopathy, or hepatic failure."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Contraindications depend on the goal: encephalopathy/heart failure may indicate shunt reduction rather than prohibit revision.",
+                    "Avoid increasing shunt flow in uncontrolled encephalopathy, decompensated heart failure, or severe pulmonary hypertension.",
+                    "Uncontrolled infection or severe hepatic decompensation requires individualized multidisciplinary review.",
+                    "No safe revision route or unmanageable procedural bleeding risk (relative)."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -112,8 +136,8 @@
             {
               "type": "list",
               "items": [
-                "Platelets >50,000/uL.",
                 "INR < 1.5-1.8.",
+                "Platelets >50,000/µL.",
                 "CBC.",
                 "CMP: bilirubin and creatinine.",
                 "Type & screen."
@@ -126,8 +150,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -138,8 +171,18 @@
             {
               "type": "list",
               "items": [
-                "General anesthesia, preferred.",
-                "Moderate sedation in select patients.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " general anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -157,43 +200,29 @@
           "title": "Checklist",
           "blocks": [
             {
+              "type": "paragraph",
+              "text": "Confirm indication, Doppler/prior TIPS imaging, stent details, labs, contraindications, infection status, and whether upsizing or narrowing changes the plan."
+            },
+            {
               "type": "list",
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
-                  ": Doppler and prior TIPS."
+                  " Doppler and prior TIPS."
                 ],
                 [
                   {
-                    "strong": "Review what size/type stent"
+                    "strong": "Verify labs:"
                   },
-                  " was used."
-                ],
-                [
-                  {
-                    "strong": "Labs are appropriate"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Consider changes"
-                  },
-                  " depending on if upsizing or narrowing."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -203,42 +232,27 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Review what size/type stent"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " was used."
+                ],
+                [
+                  {
+                    "strong": "Consider changes"
+                  },
+                  " depending on if upsizing or narrowing."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
                     "strong": "Confirm consent:"
                   },
                   " discuss the procedure and patient-specific risks; identify a surrogate if needed."
-                ]
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Contraindications"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "Contraindications depend on revision goal."
-                  },
-                  ""
-                ],
-                [
-                  {
-                    "strong": "Right heart failure."
-                  },
-                  ""
-                ],
-                [
-                  {
-                    "strong": "Active infection."
-                  },
-                  ""
                 ]
               ]
             }
@@ -570,24 +584,20 @@
         },
         {
           "type": "checklist",
-          "title": "IJ access",
+          "title": "Access care",
           "items": [
-            "Elevate HOB >45 degrees x 1 hour."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Femoral access",
-          "items": [
-            "Bedrest with leg flat for 2 hours."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Discharge",
-          "items": [
-            "Discharge order: 1 hour.",
-            "After visit summary: .IRAVSTIPS."
+            [
+              {
+                "strong": "IJ access:"
+              },
+              " Elevate HOB >45 degrees x 1 hour."
+            ],
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest with leg flat for 2 hours."
+            ]
           ]
         },
         {
@@ -604,11 +614,16 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order: 1 hour.",
+            "After visit summary: .IRAVSTIPS."
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Clinic visit with TIPS ultrasound per MD."
           ]

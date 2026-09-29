@@ -3,22 +3,16 @@
   "id": "celiac-plexus-block-neurolysis",
   "title": "Celiac Plexus Block/Neurolysis",
   "category": "ir-procedure",
-  "status": "draft",
+  "status": "complete",
   "bleedRisk": "high",
   "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "summary": "Image-guided celiac plexus block or neurolysis for upper-abdominal visceral pain.",
   "lastReviewed": null,
   "provenance": [
     "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
-  "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
-  ],
+  "reviewNotes": [],
   "sections": [
     {
       "id": "pre",
@@ -48,6 +42,30 @@
               "items": [
                 "Chronic pancreatitis-associated pain.",
                 "Diagnostic block before neurolysis."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Uncorrectable coagulopathy or no safe needle path.",
+                    "Local infection or uncontrolled systemic infection.",
+                    "Hemodynamic instability or significant hypotension.",
+                    "Bowel obstruction; pain not mediated by the celiac plexus will not benefit."
+                  ]
+                }
               ]
             }
           ]
@@ -101,7 +119,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50,000/uL."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -112,16 +130,16 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Bedded Outpatient",
-                "NPO (moderate sedation)",
-                "Vital signs: Per routine",
-                "Peripheral Line Placement",
-                "Glucose Point of Care"
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Bedded Outpatient"
               ]
             }
           ]
@@ -133,7 +151,18 @@
             {
               "type": "list",
               "items": [
-                "Usually local anesthesia; moderate sedation in select patients.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -155,27 +184,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication and assess contraindications:"
+                    "strong": "Confirm indication:"
                   },
-                  " block vs neurolysis; pain pattern compatible with celiac plexus-mediated visceral pain."
+                  " block vs neurolysis; assess contraindications and confirm a compatible visceral pain pattern."
                 ],
                 [
                   {
-                    "strong": "Review cross-sectional imaging:"
+                    "strong": "Review imaging:"
                   },
-                  " target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach."
+                  " cross-sectional target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach."
                 ],
                 [
                   {
-                    "strong": "Verify labs/coagulation appropriate:"
+                    "strong": "Verify labs:"
                   },
-                  " CBC, INR, and other labs as indicated; anticoagulant/antiplatelet plan reviewed."
+                  " CBC, INR, and other labs as indicated."
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status and moderate sedation plan"
+                    "strong": "Review anticoagulation:"
                   },
-                  " if sedation is being used."
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -185,15 +214,15 @@
                 ],
                 [
                   {
-                    "strong": "Patient is consented:"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " include hypotension, diarrhea, bleeding, infection, neurologic injury, and pneumothorax/organ injury depending on approach."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Patient is consented:"
                   },
-                  " - patient can lie flat."
+                  " include hypotension, diarrhea, bleeding, infection, neurologic injury, and pneumothorax/organ injury depending on approach."
                 ]
               ]
             }
@@ -455,14 +484,6 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
-          "items": [
-            "Discharge at 3 hours; complete medication reconciliation before discharge.",
-            "After visit summary: IRAVSNEUROLYSIS."
-          ]
-        },
-        {
-          "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
             "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
@@ -475,11 +496,16 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge at 3 hours; complete medication reconciliation before discharge.",
+            "After visit summary: IRAVSNEUROLYSIS."
+          ]
         },
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Clinic visit per MD."
           ]

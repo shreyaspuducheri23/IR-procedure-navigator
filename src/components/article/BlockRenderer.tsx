@@ -1,5 +1,4 @@
 import { AnticoagulationMatrix } from "./AnticoagulationMatrix";
-import { useState } from "react";
 import type {
   Block,
   CalloutVariant,
@@ -55,11 +54,11 @@ function BlockRenderer({
     case "list":
       return block.ordered ? (
         <ol className={styles.orderedList}>
-          <ListItems items={block.items} />
+          <ListItems items={block.items} subitems={block.subitems} />
         </ol>
       ) : (
         <ul className={styles.list}>
-          <ListItems items={block.items} />
+          <ListItems items={block.items} subitems={block.subitems} />
         </ul>
       );
 
@@ -81,22 +80,19 @@ function BlockRenderer({
   }
 }
 
-function ListItems({ items }: { items: RichTextValue[] }) {
+function ListItems({ items, subitems }: { items: RichTextValue[]; subitems?: Record<string, RichTextValue[]> }) {
   return (
     <>
       {items.map((item, index) => (
         <li key={index} className={styles.listItem}>
           <RichText value={item} />
+          {subitems?.[index]?.length ? <ul className={styles.list}><ListItems items={subitems[index]} /></ul> : null}
         </li>
       ))}
     </>
   );
 }
 
-/**
- * Tick state is deliberately component-local and not persisted — these are
- * "did I do this on this patient" checklists, not saved documents.
- */
 function Checklist({
   title,
   items,
@@ -104,50 +100,11 @@ function Checklist({
   title?: string;
   items: RichTextValue[];
 }) {
-  const [checked, setChecked] = useState<Set<number>>(() => new Set());
-
-  function toggle(index: number) {
-    setChecked((previous) => {
-      const next = new Set(previous);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  }
-
   return (
-    <div className={styles.checklist}>
-      {(title || checked.size > 0) && (
-        <div className={styles.checklistHead}>
-          {title && <h4 className={styles.checklistTitle}>{title}</h4>}
-          {checked.size > 0 && (
-            <button
-              type="button"
-              className={styles.reset}
-              onClick={() => setChecked(new Set())}
-            >
-              Reset ({checked.size})
-            </button>
-          )}
-        </div>
-      )}
-      <ul className={styles.checkItems}>
-        {items.map((item, index) => (
-          <li key={index}>
-            <label className={styles.checkItem}>
-              <input
-                type="checkbox"
-                checked={checked.has(index)}
-                onChange={() => toggle(index)}
-              />
-              <span
-                className={checked.has(index) ? styles.checkedText : undefined}
-              >
-                <RichText value={item} />
-              </span>
-            </label>
-          </li>
-        ))}
+    <div>
+      {title && <h4 className={styles.heading}>{title}</h4>}
+      <ul className={styles.list}>
+        <ListItems items={items} />
       </ul>
     </div>
   );

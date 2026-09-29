@@ -722,7 +722,6 @@ const hiddenProcedureTitles = new Set([
   "Bone Biopsy",
   "Botox Injection",
   "Breast Ablation",
-  "Celiac Plexus Block/Neurolysis",
   "Cholangioscopy with Lithotripsy and Biliary Stone Removal",
   "Fallopian Tube Recanalization",
   "Genicular Artery Embolization",
@@ -930,14 +929,14 @@ const anticoagulationProcedureRules = [
     basis: "This SIR low-risk category is limited to nontunneled chest tube placement for pleural effusion.",
   },
   {
-    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    procedureTitle: "Cholecystostomy Tube Placement",
     label: "Cholecystostomy tube placement",
     risk: "High",
     basis: "SIR Table 3 explicitly lists cholecystostomy tube placement as high bleeding risk.",
   },
   {
-    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
-    label: "Cholecystostomy tube exchange",
+    procedureTitle: "Cholecystostomy Tube Exchange/Removal",
+    label: "Cholecystostomy tube exchange/removal",
     risk: "Low",
     basis: "Mapped to SIR catheter-exchange guidance; confirm local policy if new access or tract manipulation is expected.",
   },
@@ -1157,7 +1156,118 @@ installModerateSedationLinks();
 installRestartMedicationGuidance();
 installPreProcedureTabs();
 installChecklistFormatting();
+standardizePreProcedureLanguage();
+standardizeLabsOrdersAndContraindications();
+standardizePostProcedureOrders();
 installConsentSections();
+splitCholecystostomyProcedures();
+standardizeSedationReferenceLinks();
+
+function standardizeSedationReferenceLinks() {
+  installModerateSedationLinks();
+  const href = "#moderate-sedation-checklist";
+  procedures.forEach(procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    const children = pre?.children?.map(id => procedure.nodes[id]) || [];
+    const sedation = children.find(node => node.title === "Sedation");
+    const checklist = children.find(node => node.title === "Checklist");
+    if (!sedation || !checklist) return;
+    const removeLinks = node => {
+      const filter = entries => entries.filter(entry => {
+        if (entry?.href !== href) return true;
+        sedation.details = sedation.details || {};
+        sedation.details.Sedation = sedation.details.Sedation || [];
+        if (!sedation.details.Sedation.some(item => item?.href === href)) sedation.details.Sedation.push(entry);
+        return false;
+      });
+      if (node.details) node.details = Object.fromEntries(Object.entries(node.details).map(([title, entries]) => [title, filter(entries)]));
+      if (node.checklist) node.checklist = filter(node.checklist);
+      if (node.checklistSections) node.checklistSections = node.checklistSections.map(section => ({ ...section, items: filter(section.items) }));
+      (node.children || []).forEach(id => removeLinks(procedure.nodes[id]));
+    };
+    removeLinks(checklist);
+  });
+}
+
+function splitCholecystostomyProcedures() {
+  const placement = procedures.find(p => p.title === "Cholecystostomy Tube Placement/Exchange");
+  if (!placement) return;
+  const find = (p, title) => Object.values(p.nodes).find(n => n.title === title);
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const exchange = JSON.parse(JSON.stringify(placement));
+  exchange.id = "cholecystostomy-tube-exchange-removal";
+  const ids = new Map(Object.keys(exchange.nodes).map(id => [id, id.replace(placement.id, exchange.id)]));
+  exchange.nodes = Object.fromEntries(Object.entries(exchange.nodes).map(([id, node]) => {
+    if (node.children) node.children = node.children.map(child => ids.get(child));
+    return [ids.get(id), node];
+  }));
+  exchange.root = ids.get(exchange.root);
+  exchange.title = "Cholecystostomy Tube Exchange/Removal";
+  exchange.summary = "Existing tube maintenance and assessment for safe removal; routine mature-tract exchange is distinct from new placement.";
+  exchange.bleedRisk = "Low";
+  exchange.nodes[exchange.root].title = exchange.title;
+  const set = (title, details) => {
+    const node = find(exchange, title);
+    node.summary = "";
+    node.details = details;
+    delete node.children;
+    delete node.checklistSections;
+    delete node.checklist;
+  };
+  set("Indication", {
+    Indications: ["Exchange for catheter obstruction, leakage, malfunction, or scheduled maintenance when drainage is still required."],
+    "Removal after acalculous cholecystitis": [
+      "Clinical resolution: no recurrent pain, fever, or ongoing cholecystitis.",
+      "Mature tract and no contrast leak at the drain check.",
+      "Patent cystic duct and common bile duct, with contrast reaching the duodenum.",
+      "Tolerated capping trial if used by the treating team; confirm no ongoing need for drainage before removal.",
+    ],
+    Contraindications: ["Do not remove with unresolved infection, obstruction, bile leak, or an immature tract.", "Lost access or a displaced tube may require new placement rather than routine exchange."],
+    References: [{ text: "International consensus: post-cholecystostomy management and removal", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12165509/" }],
+  });
+  set("Labs", { Labs: ["No routine pre-procedure labs required for uncomplicated mature-tract exchange/removal; obtain only if clinically indicated."] });
+  const exchangeIndication = find(exchange, "Indication");
+  const exchangeContraindications = find(exchange, "Contraindications");
+  exchangeContraindications.details = { Contraindications: exchangeIndication.details.Contraindications };
+  delete exchangeIndication.details.Contraindications;
+  exchangeIndication.children = [Object.keys(exchange.nodes).find(id => exchange.nodes[id] === exchangeContraindications)];
+  set("Pre-procedure orders", { "Routine orders": ["No routine pre-procedure orders required for uncomplicated exchange/removal. Individualize if sedation or infection management is needed."] });
+  set("Anticoagulation", { Anticoagulation: ["Low bleeding risk: no routine anticoagulant holds for uncomplicated mature-tract exchange/removal.", "Reassess bleeding risk if new access or substantial tract manipulation is needed."] });
+  set("Sedation", { Sedation: [point("Preferred", "local anesthesia as needed; systemic sedation is generally not required."), point("Alternative", "moderate sedation in selected patients.")] });
+  set("Checklist", { Checklist: [
+    point("Confirm indication", "exchange versus removal; establish whether drainage is still needed."),
+    point("Review imaging", "prior access route, tube position, tract age, and prior cholangiogram."),
+    point("Verify labs", "none routinely required; review if clinically indicated."),
+    point("Review anticoagulation", "no routine holds for uncomplicated mature-tract exchange/removal."),
+    point("Confirm removal readiness", "clinical recovery, tract maturity, duct patency, and capping tolerance when applicable."),
+    point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."),
+    point("Confirm consent", "exchange versus removal and patient-specific risks."),
+  ] });
+  set("Anatomy", { Anatomy: [point("Existing tract", "preserve the established route into the gallbladder; confirm maturity before removal."), point("Drainage pathway", "cystic duct to common bile duct to duodenum; patency supports removal."), point("Catheter position", "the loop and side holes should remain within the gallbladder.")] });
+  set("Procedural steps", { Steps: [point("Assess the tube", "inspect the site and gently inject contrast to confirm position, duct patency, and any leak."), point("Exchange if needed", "maintain wire access, unlock/remove the old tube, and place the replacement with all side holes intraluminal."), point("Remove only when ready", "confirm removal criteria, release the locking mechanism, and gently withdraw the tube."), point("Complete care", "confirm drainage and secure an exchanged tube; dress the site after removal and provide return precautions.")] });
+  set("Pitfalls and safety", { "Pitfalls and safety": [point("Premature removal", "an immature tract or persistent obstruction risks bile leak and recurrent cholecystitis."), point("Loss of access", "maintain wire purchase during exchange; do not blindly replace a displaced tube."), point("Forceful injection or traction", "avoid overdistention; release the locking mechanism before removal."), point("Clinical deterioration", "evaluate new pain, fever, bleeding, or persistent bile leakage promptly.")] });
+  const post = find(exchange, "Post-procedure");
+  post.summary = "";
+  post.checklistSections = [
+    { title: "Routine orders", items: ["Vital signs per routine.", "Monitor the access site for bleeding or bile leakage."] },
+    { title: "Access care", items: ["After exchange: secure the tube, maintain prescribed drainage, and continue the established flush plan.", "After removal: apply a dressing and provide wound-care instructions."] },
+    { title: "Discharge", items: ["Discharge when clinically appropriate with medication reconciliation.", "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.", "Return for fever, increasing abdominal pain, bleeding, or persistent bile leakage."] },
+    { title: "Follow up", items: ["If the tube remains: arrange the next drain check/exchange per IR plan.", "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."] },
+  ];
+  placement.title = "Cholecystostomy Tube Placement";
+  placement.nodes[placement.root].title = placement.title;
+  find(placement, "Contraindications").details.Contraindications = ["No safe gallbladder access route.", "Unmanageable bleeding risk or significant ascites (relative)."];
+  find(placement, "Labs").details.Labs = find(placement, "Labs").details.Labs.filter(entry => entry !== "CBC.");
+  find(placement, "Pre-procedure orders").details["Routine orders"].push("CBC and INR within 30 days.");
+  const checklist = find(placement, "Checklist");
+  for (const key of Object.keys(checklist.details)) checklist.details[key] = checklist.details[key].filter(entry => entry.href !== "#moderate-sedation-checklist");
+  checklist.details.Checklist.push(point("Confirm antibiotics", "verify antibiotics are being given before placement."));
+  const placementPost = find(placement, "Post-procedure");
+  placementPost.summary = "";
+  placementPost.checklistSections = placementPost.checklistSections.filter(section => section.title !== "Discharge");
+  placementPost.checklistSections.find(section => section.title === "Follow up").items = [point("Calculous cholecystitis", "Surgery manages and tube comes out with cholecystectomy."), point("Acalculous cholecystitis", "Drain check in 2-3 months.")];
+  procedures.splice(procedures.indexOf(placement) + 1, 0, exchange);
+}
 
 const visibleProcedures = procedures.filter((procedure) => !hiddenProcedureTitles.has(procedure.title));
 
@@ -2261,7 +2371,7 @@ function installAdrenalVeinSamplingEdits() {
     type: "reference",
     summary: "Local sedation with +/- fentanyl.",
     details: {
-      Sedation: ["Local sedation with +/- fentanyl."],
+      Sedation: ["Local sedation with +/- fentanyl.", { strong: "Alternative:", text: " moderate sedation in selected patients; not commonly used." }],
     },
   };
 
@@ -2312,8 +2422,19 @@ function installAdrenalVeinSamplingEdits() {
         { strong: "Select the right adrenal vein:", text: " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy." },
         { strong: "Select the left adrenal vein:", text: " enter through the left renal vein and confirm the common adrenal-phrenic trunk." },
         { strong: "Collect matched samples:", text: " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status." },
-        { strong: "Confirm selectivity:", text: " use rapid cortisol when available; adrenal/reference cortisol ratio is commonly >=5 with cosyntropin or >=2 without it. Apply local criteria and resample if inadequate." },
+        { strong: "Confirm selectivity:", text: " use rapid cortisol when available and the index below; apply local criteria and resample if inadequate." },
         { strong: "Complete and hand off:", text: " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation." },
+      ],
+      "Sampling indices": [
+        { strong: "Selectivity index (SI):", text: " adrenal vein cortisol / IVC (or peripheral reference) cortisol. Calculate for each side to confirm successful sampling.", subitems: [
+          { strong: "SI cutoffs:", text: " with cosyntropin, >5; without cosyntropin, commonly >=2 (protocol thresholds vary from >1.4 to 3)." },
+        ] },
+        { strong: "Lateralization index (LI):", text: " higher adrenal (aldosterone / cortisol) ratio / lower adrenal (aldosterone / cortisol) ratio. Interpret only after both sides meet selectivity criteria.", subitems: [
+          { strong: "LI cutoffs:", text: " >4 supports unilateral aldosterone excess; <3 suggests bilateral disease; 3-4 is indeterminate. Use the local endocrine protocol and clinical context." },
+        ] },
+      ],
+      References: [
+        { text: "Endocrine Society primary aldosteronism guideline (2025): AVS interpretation", href: "https://academic.oup.com/jcem/article/110/9/2453/8196671" },
       ],
     },
   };
@@ -4659,7 +4780,7 @@ function installKidneyBiopsyEdits() {
           "Blood pressure is under control.",
           "No active UTI/pyelonephritis or skin infection over site.",
           "Kidneys are at least 9 cm, recommended.",
-          "Specimen requests confirmed.",
+          "Specimen requests confirmed (histology, immunofluorescence, electron microscopy; cultures if indicated).",
         ],
       },
     },
@@ -4870,7 +4991,7 @@ function installLiverBiopsyEdits() {
           "Labs are appropriate.",
           "Blood pressure is under control.",
           "Assess for ascites/infection.",
-          "Specimen requests confirmed.",
+          "Specimen requests confirmed (histology, cytopathology, microbiology/cultures as indicated).",
         ],
       },
     },
@@ -5467,7 +5588,7 @@ function installLungBiopsyEdits() {
           "Labs are appropriate.",
           "Blood pressure is under control.",
           "Assess cardiopulmonary reserve.",
-          "Specimen requests confirmed.",
+          "Specimen requests confirmed (histology, cytopathology, microbiology/cultures as indicated).",
         ],
       },
     },
@@ -5726,6 +5847,13 @@ function installForeignBodyRemovalEdits() {
           ],
         },
         {
+          title: "Access care",
+          items: [
+            "IJ: elevate HOB >45 degrees for 1 hour.",
+            "Femoral venous access: keep the accessed leg flat/extended for 2 hours.",
+          ],
+        },
+        {
           title: "If outpatient procedure",
           items: [
             "Discharge order with medication reconciliation.",
@@ -5832,9 +5960,10 @@ function installHemorrhoidArteryEmbolizationEdits() {
     [`${id}-labs-v2`]: {
       title: "Labs",
       type: "decision",
-      summary: "CBC and INR within 30 days; INR < 2-3 and platelets >20k.",
+      summary: "INR < 2-3 and platelets >20k.",
       details: {
-        Labs: ["CBC and INR within 30 days.", "INR < 2-3.", "Platelets >20k."],
+        Labs: ["INR < 2-3.", "Platelets >20k."],
+        Orders: ["INR and CBC within 30 days."],
       },
     },
     [`${id}-anticoag-v2`]: {
@@ -7278,7 +7407,7 @@ function installThyroidBiopsyEdits() {
           "Confirm indication.",
           "Review imaging and target.",
           "Labs are appropriate.",
-          "Confirm cytology/pathology.",
+          "Confirm cytology/pathology (cytopathology, histology, molecular testing as indicated).",
           "Confirm FNA vs core biopsy.",
           "Confirm positioning.",
         ],
@@ -8378,6 +8507,11 @@ function installCeliacOrders() {
   if (!procedure) return;
   procedure.bleedRisk = "High";
   const id = procedure.id;
+  procedure.summary = "Image-guided celiac plexus block or neurolysis for upper-abdominal visceral pain.";
+  const root = procedure.nodes[procedure.root];
+  root.summary = procedure.summary;
+  root.children = root.children.filter(child => child !== `${id}-review`);
+  delete root.details["Import status"];
   const intra = procedure.nodes[`${id}-intra`];
   intra.children = ["anatomy", "procedural-steps", "pitfalls-safety"].map(part => `${id}-intra-${part}`);
   intra.summary = "";
@@ -8535,6 +8669,338 @@ function installChecklistFormatting() {
       checklist.details = Object.fromEntries(Object.entries(checklist.details).map(([title, entries]) => [title, entries.map(format)]));
     }
     if (checklist.checklist) checklist.checklist = checklist.checklist.map(format);
+  });
+}
+
+function standardizePreProcedureLanguage() {
+  const item = (strong, text = "") => ({ strong, text: text ? ` ${text}` : "" });
+  const sedationCheck = item("Confirm sedation plan:", "review the planned method and patient tolerance.");
+  const positioningCheck = item("Confirm positioning:", "assess whether the patient can lie flat and tolerate the required procedural position.");
+  const npoCheck = item("Confirm NPO status:", "follow fasting requirements if sedation/anesthesia is planned.");
+  const labsCheck = item("Verify labs:", "confirm results meet procedure-specific requirements when indicated; see the Labs tab.");
+  const anticoagCheck = item("Review anticoagulation:", "confirm the procedure-specific hold/continue plan; see the Anticoagulation tab.");
+  const textOf = entry => typeof entry === "string" ? entry : `${entry.strong || ""}${entry.text || ""}`;
+  const exact = new Map([
+    ["Confirm indication.", [item("Confirm indication.")]],
+    ["Use ultrasound or imaging review when relevant to confirm a safe target.", [item("Review imaging:", "use available imaging or ultrasound when relevant to confirm a safe target.")]],
+    ["Confirm indication and assess contraindications: block vs neurolysis; pain pattern compatible with celiac plexus-mediated visceral pain.", [item("Confirm indication:", "block vs neurolysis; assess contraindications and confirm a compatible visceral pain pattern.")]],
+    ["Review cross-sectional imaging: target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach.", [item("Review imaging:", "cross-sectional target anatomy, tumor burden, vessels, bowel, kidneys, and anticipated approach.")]],
+    ["Verify labs/coagulation appropriate: CBC, INR, and other labs as indicated; anticoagulant/antiplatelet plan reviewed.", [item("Verify labs:", "CBC, INR, and other labs as indicated."), anticoagCheck]],
+    ["Confirm indication and review imaging.", [item("Confirm indication."), item("Review imaging:", "confirm the target and planned approach.")]],
+    ["Confirm indication and review imaging with appropriate window.", [item("Confirm indication."), item("Review imaging:", "confirm the target and a safe access window.")]],
+    ["Confirm indication and imaging demonstrates formed collection.", [item("Confirm indication."), item("Review imaging:", "confirm a formed collection and planned access window.")]],
+    ["Indication is appropriate.", [item("Confirm indication.")]],
+    ["Review indication.", [item("Confirm indication.")]],
+    ["Labs are appropriate.", [labsCheck]], ["Confirm labs.", [labsCheck]],
+    ["Verify labs: confirm procedure-specific requirements and review results when indicated; see the Labs tab.", [labsCheck]],
+    ["Imaging is available, if obtained. Imaging is not required.", [item("Review imaging:", "review available studies if obtained; imaging is not required for this procedure.")]],
+    ["Review anatomy from Y90 mapping study.", [item("Review imaging:", "review anatomy from the Y90 mapping study.")]],
+    ["Review thrombus extent and central outflow.", [item("Review imaging:", "assess thrombus extent and central outflow.")]],
+    ["Review port location and prior imaging.", [item("Review imaging:", "confirm port location and review prior studies.")]],
+    ["No labs unless further indicated.", [item("Verify labs:", "no labs unless further indicated.")]],
+    ["Anticoagulation appropriately held.", [anticoagCheck]], ["Anticoagulation plan confirmed.", [anticoagCheck]],
+    ["Confirm sedation plan - patient can lie flat.", [sedationCheck, positioningCheck]],
+    ["Confirm sedation plan and that patient can lie flat.", [sedationCheck, positioningCheck]],
+    ["Confirm sedation plan, patient can lie flat.", [sedationCheck, positioningCheck]],
+    ["Confirm patient can lie flat.", [positioningCheck]], ["Confirm positioning.", [positioningCheck]],
+    ["Sedation plan confirmed.", [sedationCheck]], ["Sedation requirements.", [sedationCheck]],
+    ["Confirm sedation/NPO requirements.", [sedationCheck, npoCheck]],
+    ["Confirm NPO status and moderate sedation plan if sedation is being used.", [sedationCheck, npoCheck]],
+    ["Consent completed.", [item("Confirm consent:", "confirm the discussion and consent documentation are complete.")]],
+  ]);
+  const normalize = entry => {
+    const text = textOf(entry).trim();
+    if (entry.href || entry.procedureId) return [entry];
+    if (exact.has(text)) return exact.get(text);
+    if (/^Confirm indication[.:]/.test(text)) return [item("Confirm indication:", text.replace(/^Confirm indication[.:]\s*/, ""))];
+    if (/^Confirm indication(?: |,)/.test(text)) return [item("Confirm indication:", text.slice("Confirm indication".length).replace(/^\s*(?:and |is |,\s*)/, ""))];
+    if (/^Review imaging[.:]/.test(text)) return [item("Review imaging:", text.replace(/^Review imaging[.:]\s*/, ""))];
+    if (/^Review imaging (with|for)/.test(text)) return [item("Review imaging:", text.slice("Review imaging ".length))];
+    if (text.startsWith("Labs appropriate:")) return [item("Verify labs:", text.slice("Labs appropriate:".length).trim())];
+    return [entry];
+  };
+  const rank = entry => {
+    const text = textOf(entry);
+    if (/^Confirm indication/.test(text)) return 0;
+    if (/^(Review (imaging|cross-sectional imaging|CT|anatomy)|Imaging is available)/.test(text)) return 1;
+    if (/^(Verify labs|Confirm labs)/.test(text)) return 2;
+    if (/^Review anticoagulation/.test(text)) return 3;
+    if (/^Confirm sedation plan/.test(text)) return 5;
+    if (entry.href === "#moderate-sedation-checklist") return 5;
+    if (/^Confirm positioning/.test(text)) return 6;
+    if (/^Confirm NPO status/.test(text)) return 7;
+    if (/^(Confirm consent|Patient is consented|Consent for)/.test(text)) return 8;
+    return 4;
+  };
+  const normalizeList = (entries, core = false) => {
+    const seen = new Set();
+    let normalized = entries.flatMap(normalize);
+    if (core) {
+      if (!normalized.some(entry => /^Confirm indication/.test(textOf(entry)))) normalized.push(item("Confirm indication."));
+      if (!normalized.some(entry => /^Confirm sedation plan/.test(textOf(entry)))) normalized.push(sedationCheck);
+    }
+    const imaging = normalized.filter(entry => /^Review imaging/.test(textOf(entry)));
+    if (imaging.length > 1) normalized = normalized.filter(entry => textOf(entry) !== "Review imaging: when applicable, confirm the target and planned approach.");
+    const isSedationCheck = entry => !entry.href && !entry.procedureId && /^Confirm (sedation plan|positioning|NPO status)\b/.test(textOf(entry));
+    const sedationItems = normalized.filter(isSedationCheck);
+    if (sedationItems.length) {
+      const defaults = new Set([sedationCheck, positioningCheck, npoCheck].map(textOf));
+      const specifics = [...new Set(sedationItems.filter(entry => !defaults.has(textOf(entry)))
+        .map(entry => textOf(entry).replace(/^Confirm (sedation plan|positioning|NPO status)[:.]?\s*/, "").trim()).filter(Boolean))];
+      normalized = normalized.filter(entry => !isSedationCheck(entry));
+      normalized.push(item("Confirm sedation plan:", [
+        "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned.",
+        ...specifics,
+      ].join(" ")));
+    }
+    return normalized.filter(entry => {
+      const key = JSON.stringify(entry);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).sort((a, b) => rank(a) - rank(b));
+  };
+  const sedationLabels = new Map([
+    ["Local.", ["Preferred:", "local anesthesia."]],
+    ["Local, mostly.", ["Preferred:", "local anesthesia."]],
+    ["Local only.", ["Preferred:", "local anesthesia only."]],
+    ["Local anesthesia.", ["Preferred:", "local anesthesia."]],
+    ["Local sedation with +/- fentanyl.", ["Preferred:", "local anesthesia; fentanyl may be added as needed."]],
+    ["Moderate sedation.", ["Preferred:", "moderate sedation."]],
+    ["Mostly moderate sedation.", ["Preferred:", "moderate sedation."]],
+    ["Usually moderate sedation.", ["Preferred:", "moderate sedation."]],
+    ["General anesthesia, preferred.", ["Preferred:", "general anesthesia."]],
+    ["Moderate sedation in some cases.", ["Alternative:", "moderate sedation in selected patients."]],
+    ["Moderate sedation when needed.", ["Alternative:", "moderate sedation in selected patients."]],
+    ["Moderate sedation, optional.", ["Alternative:", "moderate sedation in selected patients."]],
+    ["Moderate sedation for special situations.", ["Alternative:", "moderate sedation in selected patients."]],
+    ["Moderate sedation in select patients.", ["Alternative:", "moderate sedation in selected patients."]],
+    ["Can add moderate sedation for tolerance, large tubes, or difficult positioning.", ["Alternative:", "moderate sedation for tolerance, large tubes, or difficult positioning."]],
+    ["Local if high sedation risk, patient unstable, or intubated.", ["Alternative:", "local anesthesia when sedation risk is high, the patient is unstable, or already intubated; individualize the plan."]],
+    ["General anesthesia for select pediatric or complex removals.", ["Alternative:", "general anesthesia for selected pediatric or complex removals."]],
+    ["General anesthesia rarely required.", ["Alternative:", "general anesthesia, rarely required."]],
+    ["Rarely done general.", ["Alternative:", "general anesthesia, rarely required."]],
+    ["Moderate sedation typically avoided to allow for breath-holds.", ["Consideration:", "moderate sedation is generally avoided to preserve breath-hold cooperation."]],
+    ["No sedation typically required.", ["Consideration:", "systemic sedation is generally not required."]],
+  ]);
+  procedures.forEach(procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    const children = pre?.children?.map(id => procedure.nodes[id]) || [];
+    const checklist = children.find(node => node.title === "Checklist");
+    if (checklist) {
+      // Keep conditional pathways and nested procedure-specific examinations intact.
+      if (checklist.checklistSections) {
+        checklist.checklistSections[0].items.push(...(checklist.checklist || []));
+        delete checklist.checklist;
+        checklist.checklistSections = checklist.checklistSections.map((section, index) => ({ ...section, items: normalizeList(section.items, index === 0) }));
+      } else {
+        const details = checklist.details || {};
+        const key = Object.hasOwn(details, "Checklist") ? "Checklist" : Object.keys(details)[0] || "Checklist";
+        details[key] = [...(details[key] || []), ...(checklist.checklist || [])];
+        delete checklist.checklist;
+        checklist.details = Object.fromEntries(Object.entries(details).map(([title, entries]) => [title, normalizeList(entries, title === key)]));
+      }
+    }
+    const sedation = children.find(node => node.title === "Sedation");
+    if (!sedation?.details?.Sedation) return;
+    const original = sedation.details.Sedation;
+    sedation.summary = "";
+    if (procedure.id === "celiac-plexus-block-neurolysis") {
+      sedation.details.Sedation = [item("Preferred:", "local anesthesia."), item("Alternative:", "moderate sedation in selected patients."), ...original.filter(entry => entry.href)];
+    } else if (procedure.id === "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set") {
+      sedation.details.Sedation = [item("Options:", "moderate sedation or general anesthesia; select according to acuity, airway, and procedural needs."), ...original.filter(entry => entry.href)];
+    } else if (procedure.id === "gastrostomy-gastrojejunostomy-jejunostomy-tube-placement") {
+      sedation.details.Sedation = [item("Options:", "moderate sedation or general anesthesia."), item("Consideration:", "assess airway protection and aspiration risk in patients with dysphagia when selecting the method."), ...original.filter(entry => entry.href)];
+    } else {
+      sedation.details.Sedation = original.map(entry => sedationLabels.has(entry) ? item(...sedationLabels.get(entry)) : entry);
+    }
+  });
+}
+
+function standardizeLabsOrdersAndContraindications() {
+  const general = [
+    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
+    "No safe access route or target: reassess the approach or an alternative procedure.",
+    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters).",
+  ];
+  const contraindications = {
+    "Adrenal Vein Sampling": [...general, "Severe uncontrolled hypertension or uncorrected hypokalemia: optimize before elective sampling."],
+    "Catheter Directed Thrombolysis - DVT Intervention": ["Active bleeding or recent intracranial hemorrhage.", "Recent ischemic stroke or intracranial neoplasm/AVM.", "Recent major intracranial or spinal surgery.", "Severe uncontrolled hypertension."],
+    "Celiac Plexus Block/Neurolysis": ["Uncorrectable coagulopathy or no safe needle path.", "Local infection or uncontrolled systemic infection.", "Hemodynamic instability or significant hypotension.", "Bowel obstruction; pain not mediated by the celiac plexus will not benefit."],
+    "Kidney Biopsy": ["Uncontrolled hypertension or uncorrectable bleeding risk.", "Active pyelonephritis or infection at the needle-entry site.", "No safe target/access route or inability to cooperate despite support.", "Small scarred kidneys or a solitary kidney require individualized risk-benefit review, not automatic exclusion."],
+    "Liver Biopsy/Fiducial Marker Placement": [...general, "Large-volume ascites or infection along the planned path: consider another route, including transjugular biopsy when appropriate."],
+    "Lung Biopsy/Fiducial Marker Placement": [...general, "Severe cardiopulmonary limitation or inability to cooperate with positioning/breath-holds (relative)."],
+    "Thyroid Biopsy": ["No appropriate target or no safe needle path.", "Infection at the planned entry site.", "Unmanageable bleeding risk or inability to remain still (relative)."],
+    "Paracentesis": ["No safe fluid pocket on ultrasound.", "Infected skin at the chosen entry site: use another site.", "Active DIC or clinically significant bleeding requires individualized review; cirrhosis-related INR elevation alone is not an absolute contraindication."],
+    "Thoracentesis": ["No safe ultrasound window for fluid aspiration.", "Skin infection at the selected site: choose another site.", "Inability to cooperate or tolerate positioning (relative).", "Significant bleeding risk or positive-pressure ventilation requires individualized assessment (relative)."],
+    "Chest Tube Placement": ["No safe access route: consider image-guided or surgical alternatives.", "Unmanageable bleeding risk (relative; do not delay lifesaving decompression).", "Infected skin at the planned entry site: choose another site.", "Hepatic hydrothorax: avoid routine chest drainage unless a compelling indication exists."],
+    "Biliary Drain Placement and Internalization/Exchange": ["No safe biliary access route.", "Unmanageable bleeding risk (relative; weigh urgent decompression needs).", "Large-volume ascites increases leakage/infection risk; optimize when feasible.", "Do not internalize across an obstruction that cannot be crossed safely; external drainage may still be appropriate."],
+    "Cholecystostomy Tube Placement/Exchange": ["No safe gallbladder access route.", "Unmanageable bleeding risk or significant ascites (relative).", "For exchange, lost access or an immature tract requires a revised access plan rather than blind replacement."],
+    "Drainage Catheter Placement/Exchange": ["No drainable collection or no safe percutaneous route.", "Unmanageable bleeding risk (relative; weigh source-control urgency).", "Lost access or an immature tract: avoid blind exchange and reassess access."],
+    "Nephrostomy Tube Placement": ["No safe collecting-system access route.", "Unmanageable bleeding risk (relative); consider retrograde drainage when feasible.", "Do not delay urgent decompression of an infected obstructed system solely to achieve ideal laboratory values."],
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement": ["No safe enteric access window or interposed bowel that cannot be avoided.", "Peritonitis or unmanageable bleeding risk.", "Large-volume ascites or severe instability requires individualized planning (relative).", "Distal obstruction may preclude feeding access, but decompressive access may still be appropriate."],
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange": ["Immature or uncertain tract: no blind bedside exchange.", "Suspected intraperitoneal displacement, leak, or peritonitis: reassess before using/replacing the tube.", "No secure access to the bowel lumen or an incompatible replacement device."],
+    "Fistulogram": ["Infected access: avoid routine declot and discuss surgical/source-control management.", "Unmanageable bleeding risk or no safe access route (relative).", "Severe hyperkalemia or instability may require stabilization/temporary dialysis access before elective intervention."],
+    "Inferior Vena Cava Filter Placement": ["No accepted filter indication: avoid routine prophylactic placement.", "No safe deployment zone or caval dimensions outside device specifications.", "Unmanageable access-site bleeding risk (relative)."],
+    "Inferior Vena Cava Filter Removal": ["Substantial trapped thrombus: defer routine retrieval and reassess.", "Persistent need for PE protection without an alternative plan.", "Embedded, fractured, or penetrated filter: may require advanced retrieval rather than routine removal."],
+    "PICC Placement": ["Thrombosed/occluded target vein or infected insertion site.", "Planned/existing dialysis access: avoid the access arm; advanced CKD needs vein-preservation review.", "No suitable venous route or inability to position the catheter safely."],
+    "Port Placement": ["Active bacteremia or infection at the intended pocket/entry site: defer elective implantation.", "No suitable venous route or unmanageable bleeding risk.", "Inability to tolerate the procedure safely despite an adjusted anesthesia plan (relative)."],
+    "Port Removal": ["Unmanageable bleeding risk (relative; weigh infection/source-control urgency).", "Adherent or fractured catheter: stop routine traction and arrange advanced retrieval.", "Ongoing access need requires a replacement plan, not automatic cancellation of removal."],
+    "Tunneled Line Placement/Exchange": ["Active bacteremia: generally defer a new tunneled line; temporary access may be needed.", "Tunnel infection: do not perform routine over-wire exchange through the infected tract.", "No safe venous route or unmanageable bleeding risk (relative)."],
+    "Foreign Body Removal": ["Retrieval risk exceeds the expected benefit, especially for a firmly embedded object.", "No safe retrieval route or inability to capture the object without major injury.", "Unmanageable bleeding risk or instability requires individualized planning (relative)."],
+    "Hemorrhoid Artery Embolization": [...general, "Symptoms not attributable to internal hemorrhoids: reassess the diagnosis and treatment target."],
+    "Prostate Artery Embolization": ["Active urinary infection: treat before elective BPH embolization.", "Elective BPH: exclude an untreated alternative cause of symptoms, including malignancy, urethral stricture, or neurogenic bladder.", "No safe selective arterial route or unavoidable nontarget supply.", "Unmanageable bleeding/contrast risk (relative); urgent hemorrhage requires a separate risk-benefit decision."],
+    "Uterine Fibroid Embolization (UFE)": ["Pregnancy.", "Active pelvic infection.", "Suspected gynecologic malignancy requires diagnostic evaluation rather than routine fibroid embolization.", "No safe arterial route or unmanageable bleeding/contrast risk (relative)."],
+    "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)": ["Severe or refractory overt hepatic encephalopathy: assess carefully, especially outside rescue bleeding indications.", "Decompensated heart failure or severe pulmonary hypertension.", "Acute/severe liver failure or uncontrolled systemic infection: multidisciplinary review before proceeding.", "Anatomic barriers to safe shunt creation or unrelieved biliary obstruction."],
+    "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)": ["Contraindications depend on the goal: encephalopathy/heart failure may indicate shunt reduction rather than prohibit revision.", "Avoid increasing shunt flow in uncontrolled encephalopathy, decompensated heart failure, or severe pulmonary hypertension.", "Uncontrolled infection or severe hepatic decompensation requires individualized multidisciplinary review.", "No safe revision route or unmanageable procedural bleeding risk (relative)."],
+    "Y90 Radioembolization Mapping": ["Pregnancy or inability to follow radiopharmaceutical safety requirements.", "No safe hepatic arterial catheterization route or unmanageable contrast/bleeding risk.", "Clinical liver failure or poor overall candidacy for Y90: reassess treatment intent before mapping."],
+    "Y90 Radioembolization Therapy": ["Pregnancy or breastfeeding.", "Clinical liver failure or inadequate functional liver reserve.", "Uncorrectable gastrointestinal/nontarget deposition on mapping.", "Predicted lung dose exceeds device-specific safety limits, or no safe arterial delivery route."],
+  };
+  const plateletUnits = text => text.replace(/(platelets?\s*[<>≤≥=]*\s*)(\d+)k\b/gi, (_, lead, n) => `${lead}${(Number(n) * 1000).toLocaleString("en-US")}/µL`)
+    .replace(/\/(?:uL|mm3)\b/g, "/µL");
+  const mapItem = entry => typeof entry === "string" ? plateletUnits(entry) : { ...entry, ...(entry.text ? { text: plateletUnits(entry.text) } : {}) };
+  const textOf = entry => typeof entry === "string" ? entry : `${entry.strong || ""}${entry.text || ""}`;
+  const labRank = entry => /^(PT\/)?INR\b/i.test(textOf(entry)) ? 0 : /^Platelets?\b/i.test(textOf(entry)) ? 1 : 2;
+  const routine = ["NPO (if moderate sedation).", "Vital signs per routine.", "PIV placement (not left arm).", "Glucose POC."];
+  const minimal = new Set(["Paracentesis", "Thoracentesis", "Thyroid Biopsy", "PICC Placement", "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange"]);
+  const orderText = entry => {
+    if (typeof entry !== "string") return entry;
+    if (/^(?:Patient is )?NPO/i.test(entry) && !/local-only|anesthesia/i.test(entry)) return routine[0];
+    if (/^Vital signs(?::| )\s*(?:per|Per)/.test(entry)) return routine[1];
+    if (/^(PIV access|Peripheral (?:IV|Line|line)|Peripheral IV placement)/.test(entry)) return routine[2];
+    if (/^Glucose (?:POC|Point of Care|point of care)/.test(entry)) return routine[3];
+    return mapItem(entry);
+  };
+  procedures.forEach(procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    if (!pre) return;
+    const children = pre.children.map(id => procedure.nodes[id]);
+    const labs = children.find(node => node.title === "Labs");
+    if (labs?.details) {
+      labs.summary = "";
+      labs.details = Object.fromEntries(Object.entries(labs.details).map(([key, entries]) => [key, entries.map(mapItem).map(entry => typeof entry === "string" ? entry.replace(/^CBC and INR/, "INR and CBC").replace(/^CBC, INR/, "INR, CBC").replace(/^Platelets\.?$/, "Platelets (/µL).") : entry).sort((a, b) => labRank(a) - labRank(b))]));
+    }
+    const orders = children.find(node => node.title === "Pre-procedure orders");
+    if (orders) {
+      const orderNodes = [];
+      const visitOrders = node => {
+        orderNodes.push(node);
+        if (node.details) node.details = Object.fromEntries(Object.entries(node.details).map(([key, entries]) => [key, [...new Set(entries.map(orderText))]]));
+        if (node.checklistSections) node.checklistSections = node.checklistSections.map(section => ({ ...section, items: section.items.map(orderText) }));
+        (node.children || []).forEach(id => visitOrders(procedure.nodes[id]));
+      };
+      visitOrders(orders);
+      if (!hiddenProcedureTitles.has(procedure.title) && !minimal.has(procedure.title)) {
+        orders.summary = "";
+        const details = orders.details || {};
+        // Routine preparation is shared; retain conditional drugs and infusion setups.
+        const present = orderNodes.flatMap(node => [...Object.values(node.details || {}).flat(), ...(node.checklistSections || []).flatMap(section => section.items)]).map(textOf);
+        const missing = routine.filter(entry => !present.includes(entry));
+        orders.details = missing.length ? { "Routine preparation": missing, ...details } : details;
+      }
+      // Keep shared preparation together instead of splitting newly added orders
+      // from the existing orders. Conditional pathways retain their own headings.
+      for (const node of orderNodes) {
+        if (!node.details) continue;
+        const common = [];
+        const specific = {};
+        for (const [title, entries] of Object.entries(node.details)) {
+          if (["Routine preparation", "Routine orders", "Orders"].includes(title)) common.push(...entries);
+          else specific[title] = entries;
+        }
+        if (common.length) {
+          const unique = [...new Map(common.map(entry => [JSON.stringify(entry), entry])).values()];
+          const rank = entry => { const index = routine.indexOf(entry); return index < 0 ? routine.length : index; };
+          unique.sort((a, b) => rank(a) - rank(b));
+          node.details = { "Routine orders": unique, ...specific };
+        }
+      }
+    }
+    const indication = children.find(node => node.title === "Indication");
+    if (procedure.title === "Prostate Artery Embolization" && orders?.details) {
+      const clinic = orders.details["If for LUTS from BPH - to be ordered in clinic"] || [];
+      orders.details = {
+        "LUTS from BPH - routine orders (day of)": routine.slice(0, 3),
+        "LUTS from BPH - ordered in clinic": clinic,
+        "Refractory hematuria - routine orders": [...routine],
+      };
+    }
+    if (!indication) return;
+    const id = `${procedure.id}-standard-contraindications`;
+    indication.children = (indication.children || []).filter(child => !/contraindications/i.test(procedure.nodes[child]?.title || ""));
+    indication.children.push(id);
+    procedure.nodes[id] = { title: "Contraindications", type: "caution", summary: "Key contraindications and reasons to defer; relative risks require an individualized decision.", details: { Contraindications: contraindications[procedure.title] || general } };
+    if (procedure.title.startsWith("Transjugular Intrahepatic")) {
+      const checklist = children.find(node => node.title === "Checklist");
+      if (checklist?.details) {
+        delete checklist.details["No contraindications"];
+        delete checklist.details.Contraindications;
+      }
+    }
+  });
+}
+
+function standardizePostProcedureOrders() {
+  const textOf = item => typeof item === "string" ? item : `${item.strong || ""}${item.text || ""}`;
+  const follow = title => /^follow[ -]?up/i.test(title);
+  procedures.forEach(procedure => {
+    const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+    if (!post) return;
+    const sections = new Map();
+    const add = (title, item, context = "") => {
+      const entries = sections.get(title) || [];
+      const value = context ? { strong: `${context}:`, text: ` ${textOf(item)}`, ...(item.href ? { href: item.href } : {}) } : item;
+      if (!entries.some(entry => JSON.stringify(entry) === JSON.stringify(value))) entries.push(value);
+      sections.set(title, entries);
+    };
+    const distribute = (title, items) => {
+      let dischargeMeds = false;
+      const conditional = /^(If |Before |After |Once )/i.test(title);
+      for (const item of items) {
+        const text = textOf(item);
+        if (/^Discharge medication:?$/i.test(text)) { dischargeMeds = true; continue; }
+        if (follow(title) || /^Follow[ -]?up:/i.test(text) || /^(Acalculous|Calculous) cholecystitis$/i.test(title)) {
+          add("Follow up", item, /cholecystitis$/i.test(title) ? title : "");
+        } else if (/^Vital signs|^Monitor (?:color of )?access site|^Neurovascular checks/i.test(text) || /^Monitoring$/i.test(title)) {
+          add("Routine orders", item, conditional ? title : "");
+        } else if (/discharg/i.test(title) || /^If outpatient/i.test(title) || /^(Discharge (?:order|at|med)|After visit summary|AVS:|\.IRAVS)/i.test(text) || /^After .*discharge/i.test(text) || dischargeMeds) {
+          add("Discharge", item, conditional || /medications if/i.test(title) ? title : "");
+        } else if (/access$/i.test(title) || /^(?:Activity\s*[-:]\s*)?(?:Femoral|Radial|IJ):|^If femoral access|^Remove radial artery/i.test(text)) {
+          add("Access care", item, /access$/i.test(title) ? title : "");
+        } else if (/^(Routine orders|Orders|PDF orders|Post-procedure)$/i.test(title)) {
+          if (!/^Activity:?$/i.test(text)) add("Routine orders", item);
+        } else {
+          add(title === "Restart meds" ? "Anticoagulation to resume" : title, item);
+        }
+      }
+    };
+    const visit = (node, inherited = "") => {
+      const title = inherited || node.title;
+      if (node.checklist) distribute(title, node.checklist);
+      const groups = Array.isArray(node.checklistSections) ? node.checklistSections : Object.entries(node.checklistSections || {}).map(([title, items]) => ({ title, items }));
+      groups.forEach(section => distribute(section.title, section.items));
+      for (const field of ["details", "afterChecklistDetails"]) {
+        for (const [key, items] of Object.entries(node[field] || {})) distribute(follow(title) ? "Follow up" : key, items);
+      }
+      (node.children || []).forEach(id => visit(procedure.nodes[id]));
+    };
+    visit(post);
+    if (!sections.size) return;
+    const rank = title => title === "Routine orders" ? 0 : title === "Access care" ? 1 : title === "Discharge" ? 3 : title === "Follow up" ? 4 : 2;
+    post.checklistSections = [...sections].sort(([a], [b]) => rank(a) - rank(b)).map(([title, items]) => ({ title, items }));
+    if (procedure.id === "adrenal-vein-sampling") {
+      const beforeTitles = new Set(["Routine orders", "Access care", "Before lab results have returned"]);
+      const items = post.checklistSections.filter(section => beforeTitles.has(section.title)).flatMap(section => section.items)
+        .map(entry => entry.strong === "Before lab results have returned:" ? entry.text.trim() : entry);
+      post.checklistSections = [
+        { title: "Routine orders - before lab results have returned", items },
+        ...post.checklistSections.filter(section => !beforeTitles.has(section.title)),
+      ];
+    }
+    delete post.details;
+    delete post.afterChecklistDetails;
+    delete post.checklist;
+    post.children = [];
   });
 }
 

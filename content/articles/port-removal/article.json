@@ -57,6 +57,29 @@
                 "Malfunction.",
                 "Thrombosis, fracture, or migration."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Unmanageable bleeding risk (relative; weigh infection/source-control urgency).",
+                    "Adherent or fractured catheter: stop routine traction and arrange advanced retrieval.",
+                    "Ongoing access need requires a replacement plan, not automatic cancellation of removal."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -106,14 +129,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "INR < 2-3 and platelets >20k."
-            },
-            {
               "type": "list",
               "items": [
-                "Platelets >20,000/uL.",
-                "INR < 2-3."
+                "INR < 2-3.",
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -123,8 +142,17 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
+              ]
             }
           ]
         },
@@ -135,8 +163,18 @@
             {
               "type": "list",
               "items": [
-                "Local anesthesia.",
-                "Moderate sedation, optional.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " moderate sedation in selected patients."
+                ],
                 [
                   {
                     "link": {
@@ -145,7 +183,12 @@
                     }
                   }
                 ],
-                "General anesthesia for select pediatric or complex removals."
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia for selected pediatric or complex removals."
+                ]
               ]
             }
           ]
@@ -159,39 +202,21 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  "."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Review port location"
+                    "strong": "Review imaging:"
                   },
-                  " and prior imaging."
+                  " confirm port location and review prior studies."
                 ],
                 [
                   {
-                    "strong": "Assess for pocket infection"
+                    "strong": "Verify labs:"
                   },
-                  " or bacteremia."
-                ],
-                [
-                  {
-                    "strong": "Labs are appropriate"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Determine whether catheter-tip culture is needed"
-                  },
-                  "."
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
-                  },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -201,9 +226,21 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Assess for pocket infection"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " or bacteremia."
+                ],
+                [
+                  {
+                    "strong": "Determine whether catheter-tip culture is needed"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -415,11 +452,8 @@
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "No specific follow up."
           ]

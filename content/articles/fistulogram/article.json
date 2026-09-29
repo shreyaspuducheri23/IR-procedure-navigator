@@ -42,6 +42,29 @@
                 "Prolonged bleeding after dialysis.",
                 "Physical exam findings: swelling, absent thrill/pulse."
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Infected access: avoid routine declot and discuss surgical/source-control management.",
+                    "Unmanageable bleeding risk or no safe access route (relative).",
+                    "Severe hyperkalemia or instability may require stabilization/temporary dialysis access before elective intervention."
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -104,7 +127,7 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >20k."
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -115,12 +138,15 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
-                "Patient is NPO if moderate sedation."
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC."
               ]
             }
           ]
@@ -132,7 +158,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -154,29 +185,21 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and planned approach."
                 ],
                 [
                   {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Verify labs:"
                   },
-                  " - patient can lie flat."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {
@@ -186,9 +209,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm NPO status:"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
@@ -492,18 +515,25 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient procedure",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRAVSFISTULOGRAM."
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " Discharge order with medication reconciliation."
+            ],
+            [
+              {
+                "strong": "If outpatient procedure:"
+              },
+              " After visit summary: .IRAVSFISTULOGRAM."
+            ]
           ]
         },
         {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
+          "type": "checklist",
+          "title": "Follow up",
           "items": [
             "Remove suture device on POD1 if inpatient."
           ]

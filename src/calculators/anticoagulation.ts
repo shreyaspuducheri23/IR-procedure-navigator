@@ -205,15 +205,15 @@ export const anticoagulationProcedureRules: ProcedureRule[] = [
       "This SIR low-risk category is limited to nontunneled chest tube placement for pleural effusion.",
   },
   {
-    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
+    procedureTitle: "Cholecystostomy Tube Placement",
     label: "Cholecystostomy tube placement",
     risk: "High",
     basis:
       "SIR Table 3 explicitly lists cholecystostomy tube placement as high bleeding risk.",
   },
   {
-    procedureTitle: "Cholecystostomy Tube Placement/Exchange",
-    label: "Cholecystostomy tube exchange",
+    procedureTitle: "Cholecystostomy Tube Exchange/Removal",
+    label: "Cholecystostomy tube exchange/removal",
     risk: "Low",
     basis:
       "Mapped to SIR catheter-exchange guidance; confirm local policy if new access or tract manipulation is expected.",

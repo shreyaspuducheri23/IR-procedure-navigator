@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "cholecystostomy-tube-placement-exchange",
-  "title": "Cholecystostomy Tube Placement/Exchange",
+  "title": "Cholecystostomy Tube Placement",
   "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "high",
@@ -39,6 +39,28 @@
                 "Failed non-operative management of acute cholecystitis.",
                 "Critically ill/septic patient needing source control.",
                 "Bridge to delayed cholecystectomy for calculous cholecystitis."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "paragraph",
+              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No safe gallbladder access route.",
+                    "Unmanageable bleeding risk or significant ascites (relative)."
+                  ]
+                }
               ]
             }
           ]
@@ -95,9 +117,8 @@
             {
               "type": "list",
               "items": [
-                "CBC.",
                 "INR < 1.5-1.8.",
-                "Platelets >50k."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -108,13 +129,17 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "Orders"
+              "text": "Routine orders"
             },
             {
               "type": "list",
               "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
                 "Antibiotics with gram negative coverage.",
-                "Patient is NPO if moderate sedation."
+                "CBC and INR within 30 days."
               ]
             }
           ]
@@ -126,7 +151,12 @@
             {
               "type": "list",
               "items": [
-                "Moderate sedation.",
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
                 [
                   {
                     "link": {
@@ -135,7 +165,12 @@
                     }
                   }
                 ],
-                "Local if high sedation risk, patient unstable, or intubated."
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " local anesthesia when sedation risk is high, the patient is unstable, or already intubated; individualize the plan."
+                ]
               ]
             }
           ]
@@ -149,21 +184,27 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication"
+                    "strong": "Confirm indication."
                   },
-                  " and review imaging."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Labs are appropriate"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " confirm the target and planned approach."
                 ],
                 [
                   {
-                    "strong": "Anticoagulation appropriately held"
+                    "strong": "Verify labs:"
                   },
-                  "."
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {
@@ -173,29 +214,21 @@
                 ],
                 [
                   {
-                    "link": {
-                      "text": "Can tolerate moderate sedation",
-                      "articleId": "moderate-sedation-checklist"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "strong": "Confirm sedation plan"
+                    "strong": "Confirm sedation plan:"
                   },
-                  " - patient can lie flat."
-                ],
-                [
-                  {
-                    "strong": "Confirm NPO status:"
-                  },
-                  " follow fasting requirements if sedation/anesthesia is planned."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
                 ],
                 [
                   {
                     "strong": "Confirm consent:"
                   },
                   " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ],
+                [
+                  {
+                    "strong": "Confirm antibiotics:"
+                  },
+                  " verify antibiotics are being given before placement."
                 ]
               ]
             }
@@ -435,33 +468,6 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Diet, vitals, drain flush orders, pain control, anticoagulation restart, outpatient exchange discharge, AVS, and follow-up."
-        },
-        {
-          "type": "heading",
-          "text": "Calculous cholecystitis"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Surgery manages and tube comes out with cholecystectomy."
-          ]
-        },
-        {
-          "type": "heading",
-          "text": "Acalculous cholecystitis"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Drain check in 2-3 months.",
-            "Tract is mature.",
-            "Passed capping trial/tube check.",
-            "Clinical improvement."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -485,19 +491,21 @@
         },
         {
           "type": "checklist",
-          "title": "If outpatient exchange",
+          "title": "Follow up",
           "items": [
-            "Discharge order with medication reconciliation.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            [
+              {
+                "strong": "Calculous cholecystitis:"
+              },
+              " Surgery manages and tube comes out with cholecystectomy."
+            ],
+            [
+              {
+                "strong": "Acalculous cholecystitis:"
+              },
+              " Drain check in 2-3 months."
+            ]
           ]
-        },
-        {
-          "type": "heading",
-          "text": "Follow up"
-        },
-        {
-          "type": "list",
-          "items": []
         }
       ]
     }

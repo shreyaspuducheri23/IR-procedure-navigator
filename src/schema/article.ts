@@ -65,6 +65,7 @@ const listBlockSchema = z.object({
   type: z.literal("list"),
   ordered: z.boolean().optional(),
   items: z.array(richTextSchema),
+  subitems: z.record(z.string(), z.array(richTextSchema)).optional(),
 });
 
 /** Rendered as tickable checkboxes; tick state is ephemeral, never persisted. */
