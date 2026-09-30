@@ -74,10 +74,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -104,10 +100,6 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Low bleeding risk; acute hemorrhage should be treated differently from elective indications."
-                },
-                {
                   "type": "list",
                   "items": [
                     "Low bleeding risk.",
@@ -123,22 +115,32 @@
                 },
                 {
                   "type": "heading",
-                  "text": "If indication is acute hemorrhage"
+                  "text": "Hold"
                 },
                 {
                   "type": "list",
                   "items": [
-                    "Patient should be holding all anticoagulation if indication is acute hemorrhage."
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
                   ]
                 },
                 {
                   "type": "heading",
-                  "text": "If for other indication"
+                  "text": "Caveat"
                 },
                 {
                   "type": "list",
                   "items": [
-                    "No need to hold anticoagulation."
+                    [
+                      {
+                        "strong": "If indication is acute hemorrhage:"
+                      },
+                      " Patient should be holding all anticoagulation if indication is acute hemorrhage."
+                    ]
                   ]
                 }
               ]
@@ -395,10 +397,6 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
               "text": "Basic steps"
             },
@@ -541,10 +539,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Diet, routine vitals, access-site care, timed vitals, outpatient discharge instructions, AVS, and clinic follow-up."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

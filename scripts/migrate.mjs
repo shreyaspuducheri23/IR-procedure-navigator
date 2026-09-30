@@ -257,7 +257,9 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   ].join(" ");
 
   if (!skipSummary && summaryAddsInformation(node.summary, allItemsText)) {
-    blocks.push({ type: "paragraph", text: node.summary });
+    blocks.push(node.summaryAsContent
+      ? { type: "list", items: [node.summary] }
+      : { type: "paragraph", text: node.summary });
   }
 
   for (const image of node.images ?? []) {

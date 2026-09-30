@@ -28,8 +28,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Diagnostic or therapeutic thoracentesis indications."
+              "type": "list",
+              "items": [
+                "Diagnostic or therapeutic thoracentesis indications."
+              ]
             },
             {
               "type": "heading",
@@ -57,10 +59,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -99,8 +97,22 @@
                           "articleId": "anticoagulation-table"
                         }
                       }
-                    ],
-                    "No requirement to hold anticoagulation."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
                   ]
                 }
               ]
@@ -115,7 +127,7 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >50,000/µL."
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -123,12 +135,7 @@
         {
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
-            }
-          ]
+          "blocks": []
         },
         {
           "id": "sedation",
@@ -151,10 +158,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, labs, and intended pleural fluid studies."
-            },
             {
               "type": "list",
               "items": [
@@ -460,8 +463,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "CXR, diet, vitals, pain control, and outpatient discharge instructions."
+          "type": "list",
+          "items": [
+            "CXR, diet, vitals, pain control, and outpatient discharge instructions."
+          ]
         },
         {
           "type": "checklist",

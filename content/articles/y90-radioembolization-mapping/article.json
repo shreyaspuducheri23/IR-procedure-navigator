@@ -47,8 +47,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Required planning before Y90 radioembolization."
+              "type": "list",
+              "items": [
+                "Required planning before Y90 radioembolization."
+              ]
             },
             {
               "type": "heading",
@@ -67,10 +69,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -98,8 +96,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -141,12 +141,8 @@
             {
               "type": "list",
               "items": [
-                "INR on day of arrival.",
                 "INR < 1.5-1.8.",
-                "Platelets >50,000/µL.",
-                "CBC on day of arrival.",
-                "CMP on day of arrival.",
-                "AFP on day of arrival."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -165,7 +161,11 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "INR on day of arrival.",
+                "CBC on day of arrival.",
+                "CMP on day of arrival.",
+                "AFP on day of arrival."
               ]
             }
           ]
@@ -406,7 +406,7 @@
                   {
                     "strong": "Lung shunt = escape fraction:"
                   },
-                  " the estimated percentage reaching the lungs. Safety depends on predicted lung dose and product-specific limits, not the percentage alone."
+                  " the estimated percentage reaching the lungs. High shunting risks radiation-induced pneumonitis: limit predicted lung dose to 30 Gy per treatment and 50 Gy cumulative lifetime exposure from Y90; confirm product-specific limits with nuclear medicine/physics."
                 ],
                 [
                   {
@@ -512,8 +512,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Routine orders, access recovery, anticoagulation restart, discharge, SPECT/CT, and Y90 therapy follow-up."
+          "type": "list",
+          "items": [
+            "Routine orders, access recovery, anticoagulation restart, discharge, SPECT/CT, and Y90 therapy follow-up."
+          ]
         },
         {
           "type": "checklist",

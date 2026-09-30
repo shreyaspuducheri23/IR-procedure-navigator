@@ -5,6 +5,42 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('biliary orders distinguish placement from exchange/conversion', () => {
+  const p = captureLegacyState().procedures.find(p => p.title === 'Biliary Drain Placement and Internalization/Exchange');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.deepEqual(find('Pre-procedure orders').details.Placement, ['INR and CBC within 30 days.']);
+  assert.match(JSON.stringify(find('Pre-procedure orders').details['Exchange/conversion']), /No routine/);
+  assert.ok(!find('Pre-procedure orders').details['Routine orders'].includes('CBC.'));
+  const discharge = find('Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient exchange/conversion');
+  assert.deepEqual(discharge.items, ['Discharge order with medication reconciliation - 30 minutes.', 'After visit summary: .IRCHOLETUBEBILIARYDRAIN1.']);
+});
+test('lung biopsy orders and outpatient discharge remain grouped', () => {
+  const p = captureLegacyState().procedures.find(p => p.title === 'Lung Biopsy/Fiducial Marker Placement');
+  const nodes = Object.values(p.nodes);
+  assert.ok(nodes.find(n => n.title === 'Pre-procedure orders').details['Routine orders'].includes('INR and CBC within 30 days.'));
+  const discharge = nodes.find(n => n.title === 'Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient');
+  assert.deepEqual(discharge.items, ['After 2nd CXR: regular diet and discharge.', 'Discharge order with medication reconciliation.', 'After visit summary: .IRAVSLUNGBX.']);
+});
+test('low-risk anticoagulation uses a shared layout and preserves exceptions', () => {
+  const all = captureLegacyState().procedures;
+  const tab = p => Object.values(p.nodes).find(n => n.title === 'Anticoagulation');
+  for (const p of all.filter(p => p.bleedRisk === 'Low')) {
+    const n = tab(p);
+    assert.deepEqual(Object.keys(n.details).slice(0, 2), ['Anticoagulation', 'Hold'], p.title);
+    assert.equal(n.details.Hold.length, 6, p.title);
+    const labs = Object.values(p.nodes).find(node => node.title === 'Labs');
+    for (const entry of labs?.details?.Labs || []) {
+      if (typeof entry !== 'string') continue;
+      if (/^(?:PT\/)?INR\b/.test(entry)) assert.equal(entry, 'INR < 2-3.', p.title);
+      if (/^Platelets\b/.test(entry)) assert.equal(entry, 'Platelets >20,000/µL.', p.title);
+    }
+    assert.ok(n.details.Anticoagulation.some(item => item.href === '#anticoagulation-table'), p.title);
+  }
+  assert.match(JSON.stringify(tab(all.find(p => p.title === 'Chest Tube Placement'))), /Warfarin: hold if INR is not < 3/);
+  assert.match(JSON.stringify(tab(all.find(p => p.title === 'Hemorrhoid Artery Embolization')).details.Caveat), /acute hemorrhage/);
+  assert.match(JSON.stringify(tab(all.find(p => p.title === 'Cholecystostomy Tube Exchange\/Removal')).details.Caveat), /new access/);
+  assert.ok(!tab(all.find(p => p.title === 'PICC Placement')).details.Caveat);
+});
 test('moderate sedation reference links belong in sedation, not checklists', () => {
   for (const p of captureLegacyState().procedures) {
     const pre = Object.values(p.nodes).find(n => n.title === 'Pre-procedure');
@@ -321,12 +357,20 @@ test('order relocation preserves infusion setups, medication timing and conditio
   assert.ok(indication.blocks.some((b) => b.type === 'callout' && b.variant === 'contraindication'));
 
   const ufe = orders('uterine-fibroid-embolization-ufe');
-  assert.ok(ufe.some((b) => b.type === 'paragraph' && b.text === 'Start 1 day prior to procedure; to be ordered in clinic.'));
+  assert.ok(ufe.some((b) => b.type === 'list' && b.items.includes('Start 1 day prior to procedure; to be ordered in clinic.')));
   const surgical = ufe.find((b) => b.type === 'checklist' && b.title === 'If pre-surgical');
   assert.ok(surgical.items.includes('No NSAIDs or dexamethasone.'));
 
   const pae = orders('prostate-artery-embolization');
-  const clinicIndex = pae.findIndex((b) => b.type === 'heading' && b.text === 'If for LUTS from BPH - to be ordered in clinic');
+  assert.deepEqual(pae.filter(b => b.type === 'heading').map(b => b.text), [
+    'LUTS from BPH - routine orders (day of)',
+    'LUTS from BPH - ordered in clinic',
+    'Refractory hematuria - routine orders',
+  ]);
+  const dayOf = ['NPO (if moderate sedation).', 'Vital signs per routine.', 'PIV placement (not left arm).'];
+  assert.deepEqual(pae[1].items, [...dayOf, 'INR, CBC, and BMP within 30 days.']);
+  assert.deepEqual(pae[5].items, [...dayOf, 'Glucose POC.']);
+  const clinicIndex = pae.findIndex((b) => b.type === 'heading' && b.text === 'LUTS from BPH - ordered in clinic');
   assert.ok(clinicIndex >= 0);
   assert.ok(pae[clinicIndex + 1].items.includes('Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.'));
 

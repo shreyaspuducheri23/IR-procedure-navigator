@@ -67,10 +67,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -137,10 +133,7 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50,000/µL.",
-                "CBC.",
-                "CMP: bilirubin and creatinine.",
-                "Type & screen."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -159,7 +152,10 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "CBC.",
+                "CMP: bilirubin and creatinine.",
+                "Type & screen."
               ]
             }
           ]
@@ -199,10 +195,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, Doppler/prior TIPS imaging, stent details, labs, contraindications, infection status, and whether upsizing or narrowing changes the plan."
-            },
             {
               "type": "list",
               "items": [
@@ -570,8 +562,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Regular diet, timed vitals, Tylenol, IJ and femoral access recovery, 1-hour discharge, AVS, and TIPS ultrasound/clinic follow-up."
+          "type": "list",
+          "items": [
+            "Regular diet, timed vitals, Tylenol, IJ and femoral access recovery, 1-hour discharge, AVS, and TIPS ultrasound/clinic follow-up."
+          ]
         },
         {
           "type": "checklist",

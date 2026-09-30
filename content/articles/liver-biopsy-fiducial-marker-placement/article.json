@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "liver-biopsy-fiducial-marker-placement",
-  "title": "Liver Biopsy/Fiducial Marker Placement",
+  "title": "Liver Biopsy/Fiducial Placement (Percutaneous)",
   "category": "biopsy-ablation",
   "status": "complete",
   "bleedRisk": "high",
@@ -47,8 +47,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Targeted lesion biopsy or non-target parenchymal biopsy for diffuse liver disease workup/staging."
+              "type": "list",
+              "items": [
+                "Targeted lesion biopsy or non-target parenchymal biopsy for diffuse liver disease workup/staging."
+              ]
             },
             {
               "type": "heading",
@@ -66,10 +68,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -98,8 +96,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -161,7 +161,8 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -499,10 +500,6 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, bedrest on right side, outpatient discharge instructions, AVS, and follow-up."
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -527,20 +524,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " After visit summary: .IRAVSLIVERBX."
-            ]
+            "Discharge order with medication reconciliation - 1.5 hours.",
+            "After visit summary: .IRAVSLIVERBX."
           ]
         },
         {

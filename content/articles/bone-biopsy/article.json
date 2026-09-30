@@ -30,8 +30,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              "type": "list",
+              "items": [
+                "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
+              ]
             },
             {
               "type": "callout",
@@ -49,10 +51,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -76,8 +74,10 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use the institutional anticoagulation table for hold and restart timing."
+              "type": "list",
+              "items": [
+                "Use the institutional anticoagulation table for hold and restart timing."
+              ]
             },
             {
               "type": "callout",
@@ -100,13 +100,9 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "PDF lab guidance"
-            },
-            {
               "type": "list",
               "items": [
-                "INR and CBC within 30 days"
+                "Thresholds have not yet been documented; verify procedure-specific requirements."
               ]
             }
           ]
@@ -126,7 +122,8 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "SDC/Outpatient with Discharge"
+                "SDC/Outpatient with Discharge",
+                "INR and CBC within 30 days"
               ]
             }
           ]
@@ -136,8 +133,10 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Sedation guidance has not yet been documented in this guide."
+              "type": "list",
+              "items": [
+                "Sedation guidance has not yet been documented in this guide."
+              ]
             }
           ]
         },
@@ -146,8 +145,10 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Check patient-specific factors that affect access, sedation, positioning, or discharge."
+              "type": "list",
+              "items": [
+                "Check patient-specific factors that affect access, sedation, positioning, or discharge."
+              ]
             },
             {
               "type": "heading",
@@ -214,10 +215,6 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Key anatomy and landmarks for this procedure."
-            },
-            {
               "type": "callout",
               "variant": "note",
               "title": "To build out",
@@ -237,16 +234,14 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "heading",
               "text": "To build"
             },
             {
-              "type": "paragraph",
-              "text": "Add equipment, approach, general steps, and troubleshooting later."
+              "type": "list",
+              "items": [
+                "Add equipment, approach, general steps, and troubleshooting later."
+              ]
             },
             {
               "type": "callout",
@@ -272,10 +267,6 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pitfalls, structures at risk, and safety checks."
-            },
-            {
               "type": "callout",
               "variant": "note",
               "title": "To build out",
@@ -297,10 +288,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Review post-procedure orders, discharge timing, AVS, and follow-up."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

@@ -40,8 +40,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Routine exchange or tube problem requiring replacement/repositioning."
+              "type": "list",
+              "items": [
+                "Routine exchange or tube problem requiring replacement/repositioning."
+              ]
             },
             {
               "type": "heading",
@@ -76,10 +78,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -105,14 +103,9 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Low bleeding risk for routine mature-tract exchange; use the anticoagulation table for medication-specific guidance."
-                },
-                {
                   "type": "list",
                   "items": [
-                    "Low bleeding risk for routine exchange through a mature tract.",
-                    "Escalate to high-risk planning if the tract is immature, access may need to be re-established, or a new puncture is possible.",
+                    "Low bleeding risk.",
                     [
                       {
                         "link": {
@@ -121,6 +114,31 @@
                         }
                       }
                     ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Caveat"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Escalate to high-risk planning if the tract is immature, access may need to be re-established, or a new puncture is possible."
                   ]
                 }
               ]
@@ -243,8 +261,10 @@
               "text": "Physical exam"
             },
             {
-              "type": "paragraph",
-              "text": "Inspect tube site and confirm the tube problem before exchange."
+              "type": "list",
+              "items": [
+                "Inspect tube site and confirm the tube problem before exchange."
+              ]
             },
             {
               "type": "heading",
@@ -488,8 +508,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Regular diet/tube feeds, routine vitals, immediate discharge if outpatient, AVS selection, and 6-month routine exchange."
+          "type": "list",
+          "items": [
+            "Regular diet/tube feeds, routine vitals, immediate discharge if outpatient, AVS selection, and 6-month routine exchange."
+          ]
         },
         {
           "type": "checklist",

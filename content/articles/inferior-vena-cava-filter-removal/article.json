@@ -55,10 +55,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -114,13 +110,23 @@
                 },
                 {
                   "type": "heading",
-                  "text": "If complicated removal"
+                  "text": "Caveat"
                 },
                 {
                   "type": "list",
                   "items": [
-                    "Higher bleeding risk procedure.",
-                    "Discuss with attending regarding holding anticoagulation."
+                    [
+                      {
+                        "strong": "If complicated removal:"
+                      },
+                      " Higher bleeding risk procedure."
+                    ],
+                    [
+                      {
+                        "strong": "If complicated removal:"
+                      },
+                      " Discuss with attending regarding holding anticoagulation."
+                    ]
                   ]
                 }
               ]
@@ -136,16 +142,6 @@
               "items": [
                 "INR < 2-3.",
                 "Platelets >20,000/µL."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "If complicated removal"
-            },
-            {
-              "type": "list",
-              "items": [
-                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -165,6 +161,16 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "If complicated removal"
+            },
+            {
+              "type": "list",
+              "items": [
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -445,8 +451,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Regular diet, routine vitals, Tylenol, discharge after 30 minutes, and venogram AVS."
+          "type": "list",
+          "items": [
+            "Regular diet, routine vitals, Tylenol, discharge after 30 minutes, and venogram AVS."
+          ]
         },
         {
           "type": "checklist",

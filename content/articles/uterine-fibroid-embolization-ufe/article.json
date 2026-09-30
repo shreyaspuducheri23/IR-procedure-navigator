@@ -49,8 +49,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Symptomatic uterine fibroids with bleeding, anemia, bulk symptoms, pain, refractory symptoms, fertility-preservation goals, or non-surgical candidacy."
+              "type": "list",
+              "items": [
+                "Symptomatic uterine fibroids with bleeding, anemia, bulk symptoms, pain, refractory symptoms, fertility-preservation goals, or non-surgical candidacy."
+              ]
             },
             {
               "type": "heading",
@@ -69,10 +71,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -101,8 +99,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -142,16 +142,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Labs within 30 days"
-            },
-            {
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50,000/µL.",
-                "CBC.",
-                "Creatinine/GFR."
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -172,11 +166,26 @@
             },
             {
               "type": "heading",
+              "text": "Labs within 30 days"
+            },
+            {
+              "type": "list",
+              "items": [
+                "INR.",
+                "Platelets.",
+                "CBC.",
+                "Creatinine/GFR."
+              ]
+            },
+            {
+              "type": "heading",
               "text": "Pre-procedure meds"
             },
             {
-              "type": "paragraph",
-              "text": "Start 1 day prior to procedure; to be ordered in clinic."
+              "type": "list",
+              "items": [
+                "Start 1 day prior to procedure; to be ordered in clinic."
+              ]
             },
             {
               "type": "checklist",
@@ -194,8 +203,10 @@
               "text": "Arrival orders"
             },
             {
-              "type": "paragraph",
-              "text": "Orders when patient arrives."
+              "type": "list",
+              "items": [
+                "Orders when patient arrives."
+              ]
             },
             {
               "type": "checklist",
@@ -603,8 +614,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Routine orders, access recovery, pain/nausea plan, discharge prescriptions, admission PCA pathway, and follow-up."
+          "type": "list",
+          "items": [
+            "Routine orders, access recovery, pain/nausea plan, discharge prescriptions, admission PCA pathway, and follow-up."
+          ]
         },
         {
           "type": "checklist",

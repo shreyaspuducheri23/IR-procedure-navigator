@@ -63,10 +63,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -133,7 +129,6 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "INR, CBC, and BMP within 30 days.",
                 "Platelets >50,000/µL."
               ]
             }
@@ -152,7 +147,8 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm)."
+                "PIV placement (not left arm).",
+                "INR, CBC, and BMP within 30 days."
               ]
             },
             {
@@ -628,8 +624,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Routine orders, access recovery, monitoring, discharge instructions, discharge medications, and hematuria-specific orders."
+          "type": "list",
+          "items": [
+            "Routine orders, access recovery, monitoring, discharge instructions, discharge medications, and hematuria-specific orders."
+          ]
         },
         {
           "type": "checklist",

@@ -27,8 +27,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Dialysis access dysfunction, cannulation problems, prolonged bleeding, or abnormal exam."
+              "type": "list",
+              "items": [
+                "Dialysis access dysfunction, cannulation problems, prolonged bleeding, or abnormal exam."
+              ]
             },
             {
               "type": "heading",
@@ -46,10 +48,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -226,8 +224,10 @@
               "text": "Physical exam"
             },
             {
-              "type": "paragraph",
-              "text": "Evaluate fistula exam and access patency before the procedure."
+              "type": "list",
+              "items": [
+                "Evaluate fistula exam and access patency before the procedure."
+              ]
             },
             {
               "type": "list",
@@ -500,10 +500,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, outpatient discharge, AVS, and suture device follow-up."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

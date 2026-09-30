@@ -27,8 +27,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Acute DVT/PE with anticoagulation contraindication/failure or high-risk anticoagulation interruption."
+              "type": "list",
+              "items": [
+                "Acute DVT/PE with anticoagulation contraindication/failure or high-risk anticoagulation interruption."
+              ]
             },
             {
               "type": "heading",
@@ -46,10 +48,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -447,10 +445,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, head-of-bed order, outpatient discharge, AVS, and retrieval follow-up."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

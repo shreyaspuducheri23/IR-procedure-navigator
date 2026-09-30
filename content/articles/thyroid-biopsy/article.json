@@ -60,10 +60,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -91,7 +87,7 @@
                 {
                   "type": "list",
                   "items": [
-                    "Low bleeding-risk procedure.",
+                    "Low bleeding risk.",
                     [
                       {
                         "link": {
@@ -139,8 +135,14 @@
           "title": "Pre-procedure orders",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs per routine."
+              ]
             }
           ]
         },
@@ -474,8 +476,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Regular diet, routine vitals, Tylenol, immediate discharge, and superficial biopsy AVS."
+          "type": "list",
+          "items": [
+            "Regular diet, routine vitals, Tylenol, immediate discharge, and superficial biopsy AVS."
+          ]
         },
         {
           "type": "checklist",
@@ -490,7 +494,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order: immediate.",
+            "Discharge order with medication reconciliation: immediate.",
             "After visit summary: .IRAVSBIOPSYSUPERFICIAL."
           ]
         }

@@ -33,8 +33,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Use when thrombus acuity and symptoms justify catheter-directed lysis."
+              "type": "list",
+              "items": [
+                "Use when thrombus acuity and symptoms justify catheter-directed lysis."
+              ]
             },
             {
               "type": "heading",
@@ -52,10 +54,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -233,10 +231,6 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Confirm indication, thrombus anatomy, candidacy for thrombolysis, monitoring, access, and consent."
-            },
-            {
               "type": "list",
               "items": [
                 [
@@ -359,8 +353,10 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy."
+              "type": "list",
+              "items": [
+                "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy."
+              ]
             },
             {
               "type": "image",
@@ -504,8 +500,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Continue thrombolysis monitoring, apply access-specific bedrest, update infusion orders, and arrange the next-day catheter check or removal."
+          "type": "list",
+          "items": [
+            "Continue thrombolysis monitoring, apply access-specific bedrest, update infusion orders, and arrange the next-day catheter check or removal."
+          ]
         },
         {
           "type": "checklist",

@@ -66,10 +66,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -137,7 +133,6 @@
               "items": [
                 "INR < 1.5-1.8.",
                 "Platelets >50,000/µL.",
-                "CBC.",
                 [
                   {
                     "link": {
@@ -145,8 +140,7 @@
                       "articleId": "meld-score-reference"
                     }
                   }
-                ],
-                "Type & screen/crossmatch."
+                ]
               ]
             }
           ]
@@ -165,7 +159,9 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "CBC.",
+                "Type & screen/crossmatch."
               ]
             }
           ]
@@ -205,10 +201,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging, MELD/Child-Pugh, echo, BUN, possible embolization consent, and absence of major contraindications."
-            },
             {
               "type": "list",
               "items": [
@@ -614,8 +606,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Inpatient admission, regular diet, cirrhosis-adjusted Tylenol maximum, IJ access recovery, monitoring, and AVS."
+          "type": "list",
+          "items": [
+            "Inpatient admission, regular diet, cirrhosis-adjusted Tylenol maximum, IJ access recovery, monitoring, and AVS."
+          ]
         },
         {
           "type": "checklist",

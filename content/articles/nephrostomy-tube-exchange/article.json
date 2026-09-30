@@ -44,8 +44,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific indications and booking clarifications."
+              "type": "list",
+              "items": [
+                "Future edit: add procedure-specific indications and booking clarifications."
+              ]
             },
             {
               "type": "callout",
@@ -63,10 +65,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -94,8 +92,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -192,8 +192,10 @@
           "title": "Checklist",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific pre-procedure checklist."
+              "type": "list",
+              "items": [
+                "Future edit: add procedure-specific pre-procedure checklist."
+              ]
             },
             {
               "type": "list",
@@ -244,8 +246,10 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific anatomy and access landmarks."
+              "type": "list",
+              "items": [
+                "Future edit: add procedure-specific anatomy and access landmarks."
+              ]
             },
             {
               "type": "callout",
@@ -267,10 +271,6 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Procedure-specific access, device, imaging, and completion steps."
-            },
-            {
               "type": "callout",
               "variant": "note",
               "title": "Needs procedure-specific edit",
@@ -290,8 +290,10 @@
           "title": "Pitfalls and safety",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Future edit: add procedure-specific pitfalls and escalation criteria."
+              "type": "list",
+              "items": [
+                "Future edit: add procedure-specific pitfalls and escalation criteria."
+              ]
             },
             {
               "type": "callout",

@@ -1133,6 +1133,7 @@ installFistulogramEdits();
 installIvcFilterPlacementEdits();
 installIvcFilterRemovalEdits();
 installKidneyBiopsyEdits();
+updateKidneyBiopsyPreparation();
 installLiverBiopsyEdits();
 installPiccPlacementEdits();
 installTunneledLineEdits();
@@ -1162,6 +1163,156 @@ standardizePostProcedureOrders();
 installConsentSections();
 splitCholecystostomyProcedures();
 standardizeSedationReferenceLinks();
+standardizeLowRiskAnticoagulation();
+moveLabRequestsToOrders();
+removeProcedureIntroductions();
+updatePercutaneousLiverBiopsy();
+updateLungBiopsyOrders();
+updateThyroidBiopsyOrders();
+updateBiliaryDrainOrders();
+
+function updateBiliaryDrainOrders() {
+  const procedure = procedures.find(p => p.title === "Biliary Drain Placement and Internalization/Exchange");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  const orders = find("Pre-procedure orders");
+  orders.details["Routine orders"] = orders.details["Routine orders"].filter(entry => entry !== "CBC.");
+  orders.details.Placement = ["INR and CBC within 30 days."];
+  orders.details["Exchange/conversion"] = ["No routine pre-procedure labs required for exchange/conversion."];
+  const labs = find("Labs");
+  labs.details = {
+    Placement: labs.details.Labs,
+    "Exchange/conversion": ["No routine labs required."],
+  };
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient exchange/conversion";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 30 minutes.",
+    "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.",
+  ];
+  find("Post-procedure").checklistSections.find(section => section.title === "Follow up").items.push("Routine exchange in 2-3 months or per MD.");
+}
+
+function updateThyroidBiopsyOrders() {
+  const procedure = procedures.find(p => p.title === "Thyroid Biopsy");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  const orders = find("Pre-procedure orders");
+  orders.details ||= {};
+  const routine = orders.details["Routine orders"] ||= [];
+  if (!routine.includes("Vital signs per routine.")) routine.push("Vital signs per routine.");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.items = discharge.items.map(entry => entry === "Discharge order: immediate."
+    ? "Discharge order with medication reconciliation: immediate." : entry);
+}
+
+function updateLungBiopsyOrders() {
+  const procedure = procedures.find(p => p.title === "Lung Biopsy/Fiducial Marker Placement");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push("INR and CBC within 30 days.");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = discharge.items.map(entry => entry.strong === "If outpatient procedure:" ? entry.text.trim() : entry);
+}
+
+function updatePercutaneousLiverBiopsy() {
+  const procedure = procedures.find(p => p.title === "Liver Biopsy/Fiducial Marker Placement");
+  procedure.title = "Liver Biopsy/Fiducial Placement (Percutaneous)";
+  procedure.nodes[procedure.root].title = procedure.title;
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  const orders = find("Pre-procedure orders").details["Routine orders"];
+  const standaloneCbc = orders.indexOf("CBC.");
+  if (standaloneCbc >= 0) orders.splice(standaloneCbc, 1);
+  orders.push("INR and CBC within 30 days.");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = ["Discharge order with medication reconciliation - 1.5 hours.", "After visit summary: .IRAVSLIVERBX."];
+}
+
+function removeProcedureIntroductions() {
+  procedures.forEach(procedure => {
+    if (!Object.values(procedure.nodes).some(node => node.title === "Pre-procedure")) return;
+    Object.values(procedure.nodes).forEach(node => {
+      node.summaryAsContent = true;
+      if (/^(Review |Confirm indication,|Diet,|Low bleeding risk; no routine|Key contraindications and reasons to defer|Procedure-specific |Key anatomy and landmarks|Imaging availability,|High-risk acute cholecystitis\/source control indications\.)/.test(node.summary || "")) {
+        node.summary = "";
+      }
+    });
+  });
+}
+
+function moveLabRequestsToOrders() {
+  const textOf = entry => typeof entry === "string" ? entry : `${entry.strong || ""}${entry.text || ""}`;
+  procedures.forEach(procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    const children = pre?.children?.map(id => procedure.nodes[id]) || [];
+    const labs = children.find(node => node.title === "Labs");
+    const orders = children.find(node => node.title === "Pre-procedure orders");
+    if (!labs?.details || !orders) return;
+    const remaining = {};
+    for (const [heading, entries] of Object.entries(labs.details)) {
+      const timed = /within \d+ days/i.test(heading);
+      const target = procedure.title === "Prostate Artery Embolization"
+        ? "LUTS from BPH - routine orders (day of)"
+        : /^If /i.test(heading) ? heading : timed ? heading : "Routine orders";
+      for (const entry of entries) {
+        const text = textOf(entry);
+        const threshold = /[<>≤≥]/.test(text);
+        const noLabs = /^(?:None\b|No (?:routine |pre-procedure |lab guidance))/i.test(text);
+        if (threshold || noLabs) {
+          const key = timed ? "Labs" : heading;
+          (remaining[key] ||= []).push(entry);
+        }
+        if (!threshold && !noLabs || timed && threshold) {
+          orders.details ||= {};
+          const requests = orders.details[target] ||= [];
+          const request = timed && threshold ? text.replace(/\s*[<>≤≥].*$/, ".") : entry;
+          if (!requests.some(existing => JSON.stringify(existing) === JSON.stringify(request))) requests.push(request);
+        }
+      }
+    }
+    labs.details = remaining;
+    if (!Object.keys(remaining).length) labs.summary = "Thresholds have not yet been documented; verify procedure-specific requirements.";
+  });
+}
+
+function standardizeLowRiskAnticoagulation() {
+  const anticoagulation = procedure => {
+    const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+    return pre?.children?.map(id => procedure.nodes[id]).find(node => node.title === "Anticoagulation");
+  };
+  const template = anticoagulation(procedures.find(procedure => procedure.title === "Fistulogram"));
+  const textOf = entry => typeof entry === "string" ? entry : `${entry.strong || ""}${entry.text || ""}`;
+  procedures.filter(procedure => procedure.bleedRisk === "Low").forEach(procedure => {
+    const labs = Object.values(procedure.nodes).find(node => node.title === "Labs");
+    if (labs?.details?.Labs) {
+      labs.details.Labs = labs.details.Labs.map(entry => {
+        if (typeof entry !== "string") return entry;
+        if (/^(?:PT\/)?INR\b/.test(entry)) return "INR < 2-3.";
+        if (/^Platelets\b/i.test(entry)) return "Platelets >20,000/µL.";
+        return entry;
+      });
+    }
+    const node = anticoagulation(procedure);
+    if (!node) return;
+    const original = node.details || {};
+    const caveats = (original.Anticoagulation || []).filter(entry => /^(Consider|Reassess|Escalate)/.test(textOf(entry)));
+    for (const [heading, entries] of Object.entries(original)) {
+      if (["Anticoagulation", "Hold", "If for other indication"].includes(heading)) continue;
+      caveats.push(...entries.map(entry => heading === "Caveat" ? entry : { strong: `${heading}:`, text: ` ${textOf(entry)}` }));
+    }
+    // Preserve existing medication-specific exceptions instead of replacing them
+    // with the default no-hold wording.
+    const holds = template.details.Hold.map(defaultItem => {
+      const drug = defaultItem.split(":")[0];
+      return (original.Hold || []).find(entry => textOf(entry).startsWith(`${drug}:`)) || defaultItem;
+    });
+    node.summary = "Low bleeding risk; no routine anticoagulation holding requirement unless noted below.";
+    node.details = {
+      Anticoagulation: [...template.details.Anticoagulation],
+      Hold: holds,
+      ...(caveats.length ? { Caveat: caveats } : {}),
+    };
+  });
+}
 
 function standardizeSedationReferenceLinks() {
   installModerateSedationLinks();
@@ -4691,6 +4842,24 @@ function installIvcFilterRemovalEdits() {
   };
 }
 
+function updateKidneyBiopsyPreparation() {
+  const procedure = procedures.find(p => p.title === "Kidney Biopsy");
+  const nodes = procedure.nodes;
+  const labs = nodes[`${procedure.id}-labs-v2`];
+  labs.details.Labs.push("Hgb > 9 g/dL.");
+  labs.details.Orders = ["CBC on day of procedure.", "INR and BMP within 30 days."];
+  const checklist = nodes[`${procedure.id}-checklist-v2`].details.Checklist;
+  checklist[checklist.indexOf("Blood pressure is under control.")] = { strong: "Confirm blood pressure control:", text: " BP < 160/90 mmHg." };
+  checklist.push({ strong: "Confirm pathology presence:", text: " arrange pathology attendance for nonfocal biopsy." });
+  nodes[`${procedure.id}-intra-v2-anatomy`].details.Anatomy.splice(2, 0, {
+    strong: "Brodel's plane:", text: " relatively avascular posterolateral zone between anterior and posterior renal arterial territories. For native nonfocal biopsy, plan a posterolateral approach to lower-pole cortex while avoiding visible vessels and the renal sinus.",
+  });
+  nodes[`${procedure.id}-post-v2`].checklistSections.find(s => s.title === "If outpatient procedure").items = [
+    "Discharge order with medication reconciliation - 3 hours or per attending.",
+    "After visit summary: .IRAVSKIDNEYBX.",
+  ];
+}
+
 function installKidneyBiopsyEdits() {
   const procedure = procedures.find((item) => item.title === "Kidney Biopsy");
   if (!procedure) return;
@@ -8040,7 +8209,7 @@ function installY90MappingEdits() {
         ],
         "Nuclear medicine in plain language": [
           { strong: "MAA = test particles:", text: " technetium-labeled albumin helps predict where treatment particles may travel; it is not the Y90 treatment." },
-          { strong: "Lung shunt = escape fraction:", text: " the estimated percentage reaching the lungs. Safety depends on predicted lung dose and product-specific limits, not the percentage alone." },
+          { strong: "Lung shunt = escape fraction:", text: " the estimated percentage reaching the lungs. High shunting risks radiation-induced pneumonitis: limit predicted lung dose to 30 Gy per treatment and 50 Gy cumulative lifetime exposure from Y90; confirm product-specific limits with nuclear medicine/physics." },
           { strong: "Dosimetry = dose planning:", text: " estimate radiation to tumor, normal liver, and lungs to balance treatment with safety." },
         ],
       },
@@ -8243,6 +8412,7 @@ function installY90TherapyEdits() {
             "Confirm indication.",
             "Review anatomy from Y90 mapping study.",
             "Labs are appropriate.",
+            { strong: "Confirm chemotherapy interval:", text: " verify no chemotherapy for at least 2 weeks before treatment; confirm any longer agent-specific hold with oncology." },
             "CT cone beam available.",
             "Nuclear medicine aware and scheduled.",
           ],
@@ -8988,6 +9158,11 @@ function standardizePostProcedureOrders() {
     if (!sections.size) return;
     const rank = title => title === "Routine orders" ? 0 : title === "Access care" ? 1 : title === "Discharge" ? 3 : title === "Follow up" ? 4 : 2;
     post.checklistSections = [...sections].sort(([a], [b]) => rank(a) - rank(b)).map(([title, items]) => ({ title, items }));
+    if (procedure.title === "Kidney Biopsy") {
+      const discharge = post.checklistSections.find(section => section.title === "Discharge");
+      discharge.title = "Discharge - if outpatient";
+      discharge.items = discharge.items.map(entry => entry.strong === "If outpatient procedure:" ? entry.text.trim() : entry);
+    }
     if (procedure.id === "adrenal-vein-sampling") {
       const beforeTitles = new Set(["Routine orders", "Access care", "Before lab results have returned"]);
       const items = post.checklistSections.filter(section => beforeTitles.has(section.title)).flatMap(section => section.items)

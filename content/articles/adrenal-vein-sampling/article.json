@@ -42,10 +42,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -72,13 +68,9 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Low-risk procedure. Use the anticoagulation table for medication-specific hold timing."
-                },
-                {
                   "type": "list",
                   "items": [
-                    "Low-risk procedure.",
+                    "Low bleeding risk.",
                     [
                       {
                         "link": {
@@ -87,6 +79,21 @@
                         }
                       }
                     ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
                   ]
                 }
               ]
@@ -100,9 +107,8 @@
             {
               "type": "list",
               "items": [
-                "PT/INR",
-                "Platelets (/µL).",
-                "Potassium"
+                "INR < 2-3.",
+                "Platelets >20,000/µL."
               ]
             }
           ]
@@ -123,7 +129,8 @@
                 "PIV placement (not left arm).",
                 "Glucose POC.",
                 "250 mcg IV cosyntropin in 250 ml @ 50 mcg/hour to start 30-60 min prior to procedure. Lay flat after start of infusion.",
-                "E-Consult to Endocrinology: Adrenal Disorders - ask patient for consent."
+                "E-Consult to Endocrinology: Adrenal Disorders - ask patient for consent.",
+                "Potassium"
               ]
             }
           ]
@@ -163,10 +170,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Imaging availability, potassium correction, blood pressure control, and cosyntropin plan."
-            },
             {
               "type": "list",
               "items": [
@@ -539,10 +542,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Review orders and follow-up after adrenal vein sampling."
-        },
         {
           "type": "checklist",
           "title": "Routine orders - before lab results have returned",

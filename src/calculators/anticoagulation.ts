@@ -292,7 +292,7 @@ export const anticoagulationProcedureRules: ProcedureRule[] = [
     basis: "SIR Table 3: solid-organ biopsies are high bleeding risk.",
   },
   {
-    procedureTitle: "Liver Biopsy/Fiducial Marker Placement",
+    procedureTitle: "Liver Biopsy/Fiducial Placement (Percutaneous)",
     label: "Percutaneous liver biopsy/fiducial placement",
     risk: "High",
     basis:

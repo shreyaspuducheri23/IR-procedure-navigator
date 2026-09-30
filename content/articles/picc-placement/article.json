@@ -62,10 +62,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -130,7 +126,7 @@
             {
               "type": "list",
               "items": [
-                "INR < 3.0.",
+                "INR < 2-3.",
                 "Platelets >20,000/µL."
               ]
             }
@@ -139,12 +135,7 @@
         {
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Procedure-specific pre-procedure orders have not yet been documented in this guide."
-            }
-          ]
+          "blocks": []
         },
         {
           "id": "sedation",
@@ -480,10 +471,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Diet, routine vitals, no bedrest, outpatient discharge instructions, AVS, and follow-up."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

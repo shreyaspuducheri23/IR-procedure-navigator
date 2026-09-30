@@ -46,10 +46,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -76,14 +72,9 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Low bleeding risk, with case-specific features that may make it high risk."
-                },
-                {
                   "type": "list",
                   "items": [
                     "Low bleeding risk.",
-                    "Consider making this high risk for complexity of collection, difficult access to collection, or large-bore surgical-type tube.",
                     [
                       {
                         "link": {
@@ -108,6 +99,16 @@
                     "Plavix: no holding requirement.",
                     "Aspirin: no holding requirement."
                   ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Caveat"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Consider making this high risk for complexity of collection, difficult access to collection, or large-bore surgical-type tube."
+                  ]
                 }
               ]
             }
@@ -120,7 +121,7 @@
             {
               "type": "list",
               "items": [
-                "INR < 3.",
+                "INR < 2-3.",
                 "Platelets >20,000/µL."
               ]
             }
@@ -454,10 +455,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, and follow-up imaging consideration."
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

@@ -64,10 +64,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -94,8 +90,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -157,7 +155,8 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -516,8 +515,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "CXR sequence, staged diet advancement, vitals, pain control, outpatient discharge, and chest tube escalation plan."
+          "type": "list",
+          "items": [
+            "CXR sequence, staged diet advancement, vitals, pain control, outpatient discharge, and chest tube escalation plan."
+          ]
         },
         {
           "type": "checklist",
@@ -567,21 +568,11 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
             "After 2nd CXR: regular diet and discharge.",
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " After visit summary: .IRAVSLUNGBX."
-            ]
+            "Discharge order with medication reconciliation.",
+            "After visit summary: .IRAVSLUNGBX."
           ]
         },
         {

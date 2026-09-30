@@ -60,10 +60,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -90,8 +86,10 @@
               "variant": "caution",
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  "type": "list",
+                  "items": [
+                    "High bleeding risk; hold anticoagulants/antiplatelets per policy."
+                  ]
                 },
                 {
                   "type": "list",
@@ -134,7 +132,8 @@
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
-                "Platelets >50,000/µL."
+                "Platelets >50,000/µL.",
+                "Hgb > 9 g/dL."
               ]
             }
           ]
@@ -153,7 +152,9 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "CBC on day of procedure.",
+                "INR and BMP within 30 days."
               ]
             }
           ]
@@ -179,10 +180,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Confirm indication, imaging window, labs, blood pressure, infection screen, kidney size, and specimen requests."
-            },
             {
               "type": "list",
               "items": [
@@ -212,9 +209,9 @@
                 ],
                 [
                   {
-                    "strong": "Blood pressure is under control"
+                    "strong": "Confirm blood pressure control:"
                   },
-                  "."
+                  " BP < 160/90 mmHg."
                 ],
                 [
                   {
@@ -233,6 +230,12 @@
                     "strong": "Specimen requests confirmed"
                   },
                   " (histology, immunofluorescence, electron microscopy; cultures if indicated)."
+                ],
+                [
+                  {
+                    "strong": "Confirm pathology presence:"
+                  },
+                  " arrange pathology attendance for nonfocal biopsy."
                 ],
                 [
                   {
@@ -313,6 +316,12 @@
                     "strong": "Native kidney:"
                   },
                   " posterior lower-pole cortex usually offers a practical route away from the hilum."
+                ],
+                [
+                  {
+                    "strong": "Brodel's plane:"
+                  },
+                  " relatively avascular posterolateral zone between anterior and posterior renal arterial territories. For native nonfocal biopsy, plan a posterolateral approach to lower-pole cortex while avoiding visible vessels and the renal sinus."
                 ],
                 [
                   {
@@ -496,10 +505,6 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Diet, vitals, pain control, bedrest, outpatient discharge instructions, AVS, and follow-up."
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -524,20 +529,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " After visit summary: .IRAVSKIDNEYBX."
-            ]
+            "Discharge order with medication reconciliation - 3 hours or per attending.",
+            "After visit summary: .IRAVSKIDNEYBX."
           ]
         },
         {

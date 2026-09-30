@@ -41,8 +41,10 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "paragraph",
-              "text": "Remove when therapy is complete, the port is no longer needed, or there is infection, malfunction, thrombosis, fracture, or migration."
+              "type": "list",
+              "items": [
+                "Remove when therapy is complete, the port is no longer needed, or there is infection, malfunction, thrombosis, fracture, or migration."
+              ]
             },
             {
               "type": "heading",
@@ -61,10 +63,6 @@
             {
               "type": "heading",
               "text": "Contraindications"
-            },
-            {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
             },
             {
               "type": "callout",
@@ -94,7 +92,7 @@
                 {
                   "type": "list",
                   "items": [
-                    "Low bleeding-risk procedure.",
+                    "Low bleeding risk.",
                     [
                       {
                         "link": {
@@ -431,8 +429,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Regular diet, routine vitals, pain control, immediate discharge, AVS, and no specific follow-up."
+          "type": "list",
+          "items": [
+            "Regular diet, routine vitals, pain control, immediate discharge, AVS, and no specific follow-up."
+          ]
         },
         {
           "type": "checklist",

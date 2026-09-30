@@ -72,10 +72,6 @@
               "text": "Contraindications"
             },
             {
-              "type": "paragraph",
-              "text": "Key contraindications and reasons to defer; relative risks require an individualized decision."
-            },
-            {
               "type": "callout",
               "variant": "contraindication",
               "title": "Contraindications",
@@ -102,7 +98,39 @@
                 {
                   "type": "list",
                   "items": [
-                    "Low bleeding risk: no routine anticoagulant holds for uncomplicated mature-tract exchange/removal.",
+                    "Low bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Caveat"
+                },
+                {
+                  "type": "list",
+                  "items": [
                     "Reassess bleeding risk if new access or substantial tract manipulation is needed."
                   ]
                 }
