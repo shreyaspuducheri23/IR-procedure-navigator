@@ -138,7 +138,19 @@
         {
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
-          "blocks": []
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs per routine.",
+                "PIV placement."
+              ]
+            }
+          ]
         },
         {
           "id": "sedation",
@@ -174,7 +186,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " when applicable, confirm the target and planned approach."
+                  " ultrasound fluid pocket, intervening bowel, and abdominal wall vessels."
                 ],
                 [
                   {
@@ -365,9 +377,9 @@
                 ],
                 [
                   {
-                    "strong": "Finish cleanly:"
+                    "strong": "Finish and replace albumin:"
                   },
-                  " remove the catheter, dress the site, document volume and appearance, and follow the albumin plan for large-volume drainage."
+                  " remove the catheter, dress the site, and document volume/appearance. For cirrhotic ascites with >5 L removed, give IV albumin 6-8 g per liter of total fluid removed per local protocol."
                 ]
               ]
             }
@@ -472,7 +484,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Albumin: 6-8 g/L for every liter above 5 L.",
+            "Cirrhotic ascites: if >5 L removed, give IV albumin 6-8 g per liter of total ascites removed; follow local protocol.",
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
@@ -480,20 +492,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " After visit summary: .IRAVSPARACENTESIS."
-            ]
+            "Discharge order with medication reconciliation - immediate.",
+            "After visit summary: .IRAVSPARACENTESIS."
           ]
         }
       ]

@@ -44,10 +44,24 @@
             {
               "type": "list",
               "items": [
-                "Clinical resolution: no recurrent pain, fever, or ongoing cholecystitis.",
-                "Mature tract and no contrast leak at the drain check.",
-                "Patent cystic duct and common bile duct, with contrast reaching the duodenum.",
-                "Tolerated capping trial if used by the treating team; confirm no ongoing need for drainage before removal."
+                [
+                  {
+                    "strong": "Clinical improvement:"
+                  },
+                  " no recurrent pain, fever, or ongoing cholecystitis; no ongoing need for drainage."
+                ],
+                [
+                  {
+                    "strong": "Mature tract:"
+                  },
+                  " confirm tract maturity and no contrast leak at the drain check."
+                ],
+                [
+                  {
+                    "strong": "Passed tube check/capping trial:"
+                  },
+                  " patent cystic duct and common bile duct with contrast reaching the duodenum; tolerate capping if used by the treating team."
+                ]
               ]
             },
             {
@@ -214,7 +228,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " prior access route, tube position, tract age, and prior cholangiogram."
+                  " prior access route, drain position, and cystic duct/CBD patency on prior tube studies; verify tract age from the procedure record."
                 ],
                 [
                   {
@@ -450,7 +464,7 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "If the tube remains: arrange the next drain check/exchange per IR plan.",
+            "If exchanged or not removed: drain check/exchange in 2-3 months.",
             "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."
           ]
         }

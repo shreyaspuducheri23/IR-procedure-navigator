@@ -5,6 +5,28 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('fistulogram potassium threshold, orders, and discharge are separated', () => {
+  const p = captureLegacyState().procedures.find(p => p.title === 'Fistulogram');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.ok(find('Labs').details.Labs.includes('Potassium < 6 mmol/L.'));
+  const orders = find('Pre-procedure orders').details['Routine orders'];
+  assert.ok(orders.includes('Potassium.'));
+  assert.ok(orders.includes('Venous blood gas (VBG).'));
+  assert.deepEqual(find('Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient').items,
+    ['Discharge order with medication reconciliation - 30 minutes.', 'After visit summary: .IRAVSFISTULOGRAM.']);
+});
+test('drainage catheter lab orders and outpatient discharge are updated', () => {
+  const p = captureLegacyState().procedures.find(p => p.title === 'Drainage Catheter Placement/Exchange');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.ok(find('Pre-procedure orders').details['Routine orders'].includes('INR and CBC within 30 days.'));
+  const sections = find('Post-procedure').checklistSections;
+  assert.deepEqual(sections.find(s => s.title === 'Discharge - if outpatient').items, [
+    'Discharge order with medication reconciliation - 30 minutes.',
+    'After visit summary: .IRAVSPERCDRAINAGE1.',
+  ]);
+  assert.equal(sections.at(-1).title, 'Follow up');
+  assert.deepEqual(sections.at(-1).items, ['CT and drain check in 2 weeks.']);
+});
 test('biliary orders distinguish placement from exchange/conversion', () => {
   const p = captureLegacyState().procedures.find(p => p.title === 'Biliary Drain Placement and Internalization/Exchange');
   const find = title => Object.values(p.nodes).find(n => n.title === title);
@@ -74,6 +96,8 @@ test('cholecystostomy placement and exchange/removal have distinct preparation a
   assert.match(JSON.stringify(node(exchange, 'Pre-procedure orders')), /No routine pre-procedure orders/);
   assert.match(JSON.stringify(node(exchange, 'Indication')), /duodenum/);
   assert.match(JSON.stringify(node(exchange, 'Indication')), /Mature tract/);
+  assert.equal(node(exchange, 'Indication').details['Removal after acalculous cholecystitis'].length, 3);
+  assert.match(JSON.stringify(node(exchange, 'Post-procedure').checklistSections.find(s => s.title === 'Follow up')), /If exchanged or not removed: drain check\/exchange in 2-3 months/);
   assert.ok(articleSchema.safeParse(convert(exchange)).success);
 });
 const fixture = () => ({ id: 'test', title: 'Test', category: 'IR procedure', root: 'root', nodes: {

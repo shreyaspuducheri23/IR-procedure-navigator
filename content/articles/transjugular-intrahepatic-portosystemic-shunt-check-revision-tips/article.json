@@ -171,13 +171,13 @@
                   {
                     "strong": "Preferred:"
                   },
-                  " general anesthesia."
+                  " moderate sedation (local practice)."
                 ],
                 [
                   {
                     "strong": "Alternative:"
                   },
-                  " moderate sedation in selected patients."
+                  " general anesthesia in selected patients."
                 ],
                 [
                   {
@@ -208,7 +208,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " Doppler and prior TIPS."
+                  " Doppler flow, shunt position/patency, and portal/hepatic venous outflow."
                 ],
                 [
                   {
@@ -609,9 +609,9 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient or being discharged",
           "items": [
-            "Discharge order: 1 hour.",
+            "Discharge order with medication reconciliation - 1 hour.",
             "After visit summary: .IRAVSTIPS."
           ]
         },

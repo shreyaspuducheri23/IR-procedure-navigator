@@ -161,7 +161,10 @@
                 "PIV placement (not left arm).",
                 "Glucose POC.",
                 "CBC.",
-                "Type & screen/crossmatch."
+                "Type & screen/crossmatch.",
+                "INR.",
+                "CMP.",
+                "Ceftriaxone 2 g IV if no allergy."
               ]
             }
           ]
@@ -177,13 +180,13 @@
                   {
                     "strong": "Preferred:"
                   },
-                  " general anesthesia."
+                  " moderate sedation (local practice)."
                 ],
                 [
                   {
                     "strong": "Alternative:"
                   },
-                  " moderate sedation in selected patients."
+                  " general anesthesia in selected patients."
                 ],
                 [
                   {
@@ -214,7 +217,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " portal/hepatic vein patency, anatomy, and access."
+                  " portal/hepatic vein patency and geometry, target portal branch, and intervening lesions or biliary dilation."
                 ],
                 [
                   {
@@ -231,7 +234,7 @@
                 [
                   {
                     "link": {
-                      "text": "Review MELD score/Child-Pugh class.",
+                      "text": "MELD score is appropriate",
                       "articleId": "meld-score-reference"
                     }
                   }
@@ -333,51 +336,33 @@
               "items": [
                 [
                   {
-                    "strong": "Systemic access route:"
+                    "strong": "Access route:"
                   },
-                  " the right internal jugular vein provides a direct path through the SVC, right atrium, and IVC to the hepatic veins."
-                ],
-                [
-                  {
-                    "strong": "Hepatic veins:"
-                  },
-                  " the right hepatic vein is the usual launch point; the middle or left hepatic vein may be used when patency or puncture geometry is better."
+                  " right IJ to SVC, right atrium, IVC, then hepatic vein; usually the right hepatic vein."
                 ],
                 [
                   {
                     "strong": "Portal target:"
                   },
-                  " a right portal vein branch is commonly selected to create a short, straight, fully intrahepatic tract with reliable inflow."
+                  " usually a right portal branch, anterior and caudal to the right hepatic vein; confirm patient-specific geometry."
                 ],
                 [
                   {
-                    "strong": "Puncture geometry:"
+                    "strong": "Safe tract:"
                   },
-                  " the right portal branch usually lies anterior and caudal to the right hepatic vein, but cirrhosis and anatomic variation can distort this relationship."
+                  " stay intrahepatic and avoid adjacent hepatic arteries/bile ducts; capsular or extrahepatic puncture risks major bleeding."
                 ],
                 [
                   {
-                    "strong": "Portal triad:"
+                    "strong": "Stent endpoints:"
                   },
-                  " portal veins travel with hepatic arteries and bile ducts, which are the key structures at risk during needle passes."
+                  " uncovered end in the portal vein; covered segment spans the liver tract to the hepatic vein-IVC junction."
                 ],
                 [
                   {
-                    "strong": "Liver capsule:"
+                    "strong": "Collaterals:"
                   },
-                  " keep the needle and tract within hepatic parenchyma; extrahepatic portal access or capsular transgression can cause major hemoperitoneum."
-                ],
-                [
-                  {
-                    "strong": "Shunt endpoints:"
-                  },
-                  " with a dedicated partially covered stent, the uncovered portal segment sits in the portal vein, the covered segment begins at the parenchymal entry, and the hepatic end reaches the hepatic vein-IVC junction."
-                ],
-                [
-                  {
-                    "strong": "Portosystemic collaterals:"
-                  },
-                  " coronary, short gastric, paraesophageal, and other varices may persist after decompression and sometimes require embolization."
+                  " gastric/esophageal varices may persist after decompression and require embolization."
                 ]
               ]
             }

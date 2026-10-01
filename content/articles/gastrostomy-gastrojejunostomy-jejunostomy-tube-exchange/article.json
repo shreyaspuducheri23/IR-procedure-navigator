@@ -85,7 +85,7 @@
                 {
                   "type": "list",
                   "items": [
-                    "Immature or uncertain tract: no blind bedside exchange.",
+                    "Immature or uncertain tract: the gastrostomy tract is new or you are not sure it has matured; no blind bedside exchange.",
                     "Suspected intraperitoneal displacement, leak, or peritonitis: reassess before using/replacing the tube.",
                     "No secure access to the bowel lumen or an incompatible replacement device."
                   ]
@@ -202,15 +202,15 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " current tube type."
+                  ""
                 ],
                 [
                   {
                     "strong": "Review imaging:"
                   },
-                  " when applicable, confirm the target and planned approach."
+                  " available prior studies for tube course, tip position, and altered surgical anatomy; imaging is not routinely required beforehand."
                 ],
                 [
                   {
@@ -228,7 +228,7 @@
                   {
                     "strong": "Confirm tube size"
                   },
-                  " and replacement device availability."
+                  ", current tube type, and replacement device availability."
                 ],
                 [
                   {

@@ -194,7 +194,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " confirm the target and planned approach."
+                  " pleural target/loculations, diaphragm position, and a safe window clear of lung and abdominal organs."
                 ],
                 [
                   {
@@ -303,7 +303,7 @@
                   {
                     "strong": "Triangle of safety:"
                   },
-                  " between pectoralis major and latissimus dorsi, above the fifth intercostal space and below the axilla; imaging determines the actual entry site."
+                  " lateral approach near the midaxillary line, between pectoralis major and latissimus dorsi, usually at the fourth-fifth intercostal space; imaging determines the safe entry site."
                 ],
                 [
                   {
@@ -459,6 +459,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
+            "Admit to inpatient if not already admitted.",
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
@@ -468,7 +469,7 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "+/- CXR."
+            "Trend drain output and CXR to assess readiness for removal."
           ]
         }
       ]

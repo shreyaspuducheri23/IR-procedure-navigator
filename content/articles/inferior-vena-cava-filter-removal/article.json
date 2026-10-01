@@ -215,9 +215,9 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
-                  " and procedural planning."
+                  " available studies for filter tilt/hook position, trapped thrombus, and strut penetration or fracture."
                 ],
                 [
                   {
@@ -467,9 +467,9 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            "Discharge order: 30 min.",
+            "Discharge order with medication reconciliation - 30 minutes.",
             "After visit summary: .IRAVSVENOGRAM."
           ]
         },

@@ -137,7 +137,8 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "Antibiotics with gram negative coverage, if not already ordered."
+                "Antibiotics with gram negative coverage, if not already ordered.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -184,7 +185,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " confirm a formed collection and planned access window."
+                  " collection size/loculations, adjacent bowel and vessels, and access window or existing drain position."
                 ],
                 [
                   {
@@ -466,20 +467,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " After visit summary: .IRAVSPERCDRAINAGE1."
-            ]
+            "Discharge order with medication reconciliation - 30 minutes.",
+            "After visit summary: .IRAVSPERCDRAINAGE1."
           ]
         },
         {

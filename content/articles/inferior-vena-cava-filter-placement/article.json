@@ -181,7 +181,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " confirm the target and planned approach."
+                  " IVC patency/caliber, renal vein level, and caval variants."
                 ],
                 [
                   {
@@ -457,20 +457,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " After visit summary: .IRAVSVENOGRAM."
-            ]
+            "Discharge order with medication reconciliation - 30 minutes.",
+            "After visit summary: .IRAVSVENOGRAM."
           ]
         },
         {

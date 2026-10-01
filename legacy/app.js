@@ -1170,6 +1170,247 @@ updatePercutaneousLiverBiopsy();
 updateLungBiopsyOrders();
 updateThyroidBiopsyOrders();
 updateBiliaryDrainOrders();
+updateDrainageCatheterOrders();
+updateEntericPlacementOrders();
+updateNephrostomyOrders();
+updateFistulogramOrders();
+addChecklistImagingPrompts();
+updateIvcFilterDischarge();
+updatePiccPreparation();
+updatePortPlacementOrders();
+updateTipsPreparation();
+updateTipsRevisionDischargeAndSedation();
+updateTunneledLineOrders();
+updateParacentesisOrders();
+updateThoracentesisOrders();
+
+function updateThoracentesisOrders() {
+  const procedure = procedures.find(entry => entry.title === "Thoracentesis");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details = {
+    "Routine orders": ["Vital signs per routine.", "PIV placement."],
+  };
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 30 minutes.",
+    "Discharge only after clearance by MD.",
+    "After visit summary: .IRAVSTHORACENTESIS.",
+  ];
+}
+
+function updateParacentesisOrders() {
+  const procedure = procedures.find(entry => entry.title === "Paracentesis");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details = {
+    "Routine orders": ["Vital signs per routine.", "PIV placement."],
+  };
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - immediate.",
+    "After visit summary: .IRAVSPARACENTESIS.",
+  ];
+}
+
+function updateTunneledLineOrders() {
+  const procedure = procedures.find(entry => entry.title === "Tunneled Line Placement/Exchange");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Labs").details.Labs.push("Potassium < 6 mmol/L.");
+  const orders = find("Pre-procedure orders").details["Routine orders"];
+  find("Pre-procedure orders").details["Routine orders"] = orders.map(entry =>
+    entry === "Potassium if TDC placement." ? "Potassium." : entry);
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 30 minutes.",
+    "After visit summary: .IRAVSTUNNELEDCATHPLACEMENT1.",
+  ];
+}
+
+function updateTipsRevisionDischargeAndSedation() {
+  const procedure = procedures.find(entry => entry.title === "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  for (const entries of Object.values(find("Sedation").details)) {
+    if (!Array.isArray(entries)) continue;
+    for (const entry of entries) {
+      if (entry.strong === "Preferred:") entry.text = " moderate sedation (local practice).";
+      if (entry.strong === "Alternative:") entry.text = " general anesthesia in selected patients.";
+    }
+  }
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient or being discharged";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 1 hour.",
+    "After visit summary: .IRAVSTIPS.",
+  ];
+}
+
+function updateTipsPreparation() {
+  const procedure = procedures.find(entry => entry.title === "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push(
+    "INR.", "CMP.", "Ceftriaxone 2 g IV if no allergy.",
+  );
+  for (const entries of Object.values(find("Sedation").details)) {
+    if (!Array.isArray(entries)) continue;
+    for (const entry of entries) {
+      if (entry.strong === "Preferred:") entry.text = " moderate sedation (local practice).";
+      if (entry.strong === "Alternative:") entry.text = " general anesthesia in selected patients.";
+    }
+  }
+  for (const entries of Object.values(find("Checklist").details)) {
+    if (!Array.isArray(entries)) continue;
+    for (const entry of entries) {
+      if (entry.procedureId === "meld-score-reference") entry.text = "MELD score is appropriate";
+    }
+  }
+}
+
+function updatePortPlacementOrders() {
+  const procedure = procedures.find(entry => entry.title === "Port Placement");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push("INR and CBC within 30 days.");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 30 minutes.",
+    "After visit summary: .IRAVSPORTPLACEMENT.",
+  ];
+}
+
+function updatePiccPreparation() {
+  const procedure = procedures.find(entry => entry.title === "PICC Placement");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - immediate.",
+    "After visit summary: .IRAVSPICC.",
+  ];
+  find("Pre-procedure orders").details = {
+    "Routine orders": ["Vital signs per routine.", "Glucose POC."],
+  };
+  const checklist = find("Checklist");
+  for (const [heading, entries] of Object.entries(checklist.details)) {
+    if (!Array.isArray(entries)) continue;
+    checklist.details[heading] = entries.map(entry => entry.strong === "Confirm indication:"
+      ? { strong: "Confirm indication.", text: "" } : entry);
+  }
+}
+
+function updateIvcFilterDischarge() {
+  for (const title of ["Inferior Vena Cava Filter Placement", "Inferior Vena Cava Filter Removal"]) {
+    const procedure = procedures.find(entry => entry.title === title);
+    const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+    const discharge = post.checklistSections.find(section => section.title === "Discharge");
+    discharge.title = "Discharge - if outpatient";
+    discharge.items = [
+      "Discharge order with medication reconciliation - 30 minutes.",
+      "After visit summary: .IRAVSVENOGRAM.",
+    ];
+  }
+}
+
+function addChecklistImagingPrompts() {
+  const prompts = {
+    "Adrenal Vein Sampling": "adrenal vein anatomy, right-sided drainage into the IVC, and left renal vein anatomy.",
+    "Biliary Drain Placement and Internalization/Exchange": "ductal dilation/anatomy, obstruction level, and safe access or existing drain course.",
+    "Catheter Directed Thrombolysis - DVT Intervention": "thrombus extent, central venous outflow, and access vein patency.",
+    "Celiac Plexus Block/Neurolysis": "celiac axis/tumor anatomy, nearby vessels and organs, and a safe needle path.",
+    "Chest Tube Placement": "pleural target/loculations, diaphragm position, and a safe window clear of lung and abdominal organs.",
+    "Cholecystostomy Tube Placement": "gallbladder distention, intervening bowel, and transhepatic versus transperitoneal access window.",
+    "Cholecystostomy Tube Exchange/Removal": "prior access route, drain position, and cystic duct/CBD patency on prior tube studies; verify tract age from the procedure record.",
+    "Drainage Catheter Placement/Exchange": "collection size/loculations, adjacent bowel and vessels, and access window or existing drain position.",
+    "Fistulogram": "available prior studies for access anatomy, stenosis/thrombus, and central outflow.",
+    "Foreign Body Removal": "foreign body location, shape/orientation, and relationship to nearby vessels or organs.",
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange": "available prior studies for tube course, tip position, and altered surgical anatomy; imaging is not routinely required beforehand.",
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement": "stomach position, intervening colon/liver, and a safe access window.",
+    "Hemorrhoid Artery Embolization": "available studies for IMA/SRA anatomy, pelvic collaterals, and arterial access.",
+    "Inferior Vena Cava Filter Placement": "IVC patency/caliber, renal vein level, and caval variants.",
+    "Inferior Vena Cava Filter Removal": "available studies for filter tilt/hook position, trapped thrombus, and strut penetration or fracture.",
+    "Kidney Biopsy": "target cortex/lesion, nearby vessels and collecting system, and a safe needle path.",
+    "Liver Biopsy/Fiducial Placement (Percutaneous)": "target location, nearby vessels/bile ducts, and a safe path avoiding pleura or bowel.",
+    "Lung Biopsy/Fiducial Marker Placement": "target location, shortest safe path avoiding fissures/bullae, and nearby vessels.",
+    "Nephrostomy Tube Placement": "hydronephrosis/obstruction level, posterior calyceal target, and nearby colon/pleura.",
+    "Paracentesis": "ultrasound fluid pocket, intervening bowel, and abdominal wall vessels.",
+    "PICC Placement": "ultrasound vein size/patency, planned venous route, and known central obstruction or hardware; review prior axillary surgery/lymphedema separately.",
+    "Port Placement": "access vein patency, central venous obstruction, and existing devices.",
+    "Port Removal": "available studies for port location, catheter course, and suspected fracture; routine new imaging is not required.",
+    "Prostate Artery Embolization": "available studies for prostate size/anatomy, prostatic arterial supply, and bladder/rectal collaterals.",
+    "Thoracentesis": "ultrasound fluid pocket, diaphragm position, and adjacent lung/abdominal organs.",
+    "Thyroid Biopsy": "target nodule and suspicious features, nearby vessels, and a safe needle path.",
+    "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)": "Doppler flow, shunt position/patency, and portal/hepatic venous outflow.",
+    "Transjugular Intrahepatic Portosystemic Shunt Creation (TIPS)": "portal/hepatic vein patency and geometry, target portal branch, and intervening lesions or biliary dilation.",
+    "Tunneled Line Placement/Exchange": "access vein patency, central stenosis/thrombosis, and existing catheter or hardware.",
+    "Uterine Fibroid Embolization (UFE)": "fibroid number/size/location, enhancement, and uterine/ovarian arterial supply when available.",
+    "Y90 Radioembolization Mapping": "tumor distribution, hepatic arterial variants, and portal vein patency.",
+    "Y90 Radioembolization Therapy": "mapping catheter position/arterial anatomy, target coverage, and MAA lung shunt or extrahepatic uptake.",
+  };
+  for (const procedure of procedures) {
+    const prompt = prompts[procedure.title];
+    if (!prompt) continue;
+    const checklist = Object.values(procedure.nodes).find(node => node.title === "Checklist");
+    if (!checklist?.details) continue;
+    for (const [heading, entries] of Object.entries(checklist.details)) {
+      if (!Array.isArray(entries)) continue;
+      checklist.details[heading] = entries.map(entry => {
+        const text = typeof entry === "string" ? entry : `${entry.strong || ""}${entry.text || ""}`;
+        return /^Review imaging\b/.test(text) ? { strong: "Review imaging:", text: ` ${prompt}` } : entry;
+      });
+    }
+  }
+}
+
+function updateFistulogramOrders() {
+  const procedure = procedures.find(p => p.title === "Fistulogram");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Labs").details.Labs.push("Potassium < 6 mmol/L.");
+  find("Pre-procedure orders").details["Routine orders"].push("Potassium.", "Venous blood gas (VBG).");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = discharge.items.map(entry => entry.strong === "If outpatient procedure:" ? entry.text.trim() : entry);
+  discharge.items = discharge.items.map(entry => entry === "Discharge order with medication reconciliation."
+    ? "Discharge order with medication reconciliation - 30 minutes." : entry);
+}
+
+function updateNephrostomyOrders() {
+  const procedure = procedures.find(p => p.title === "Nephrostomy Tube Placement");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push("INR and CBC within 30 days.");
+  const sections = find("Post-procedure").checklistSections;
+  sections.find(section => section.title === "Drain care").items = [
+    "Gravity drainage unless otherwise ordered.",
+    "Monitor output, urine color, fever, flank pain, and flush patency.",
+    "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb.",
+  ];
+  const discharge = sections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = discharge.items.map(entry => entry.strong === "If outpatient:" ? entry.text.trim() : entry);
+}
+
+function updateEntericPlacementOrders() {
+  const procedure = procedures.find(p => p.title === "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push("INR and CBC within 30 days.");
+  const contraindications = find("Contraindications").details.Contraindications;
+  contraindications[2] = "Large varices, large-volume ascites, or severe instability require individualized planning (relative).";
+  const checklist = find("Checklist").details.Checklist;
+  find("Checklist").details.Checklist = checklist.filter(entry => `${entry.strong || ""}${entry.text || ""}` !== "Appropriate window on imaging.")
+    .map(entry => entry.strong === "Review imaging:" ? { strong: "Review imaging:", text: " verify an appropriate access window." } : entry);
+}
+
+function updateDrainageCatheterOrders() {
+  const procedure = procedures.find(p => p.title === "Drainage Catheter Placement/Exchange");
+  const find = title => Object.values(procedure.nodes).find(node => node.title === title);
+  find("Pre-procedure orders").details["Routine orders"].push("INR and CBC within 30 days.");
+  const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
+  discharge.title = "Discharge - if outpatient";
+  discharge.items = [
+    "Discharge order with medication reconciliation - 30 minutes.",
+    "After visit summary: .IRAVSPERCDRAINAGE1.",
+  ];
+}
 
 function updateBiliaryDrainOrders() {
   const procedure = procedures.find(p => p.title === "Biliary Drain Placement and Internalization/Exchange");
@@ -1368,10 +1609,9 @@ function splitCholecystostomyProcedures() {
   set("Indication", {
     Indications: ["Exchange for catheter obstruction, leakage, malfunction, or scheduled maintenance when drainage is still required."],
     "Removal after acalculous cholecystitis": [
-      "Clinical resolution: no recurrent pain, fever, or ongoing cholecystitis.",
-      "Mature tract and no contrast leak at the drain check.",
-      "Patent cystic duct and common bile duct, with contrast reaching the duodenum.",
-      "Tolerated capping trial if used by the treating team; confirm no ongoing need for drainage before removal.",
+      point("Clinical improvement", "no recurrent pain, fever, or ongoing cholecystitis; no ongoing need for drainage."),
+      point("Mature tract", "confirm tract maturity and no contrast leak at the drain check."),
+      point("Passed tube check/capping trial", "patent cystic duct and common bile duct with contrast reaching the duodenum; tolerate capping if used by the treating team."),
     ],
     Contraindications: ["Do not remove with unresolved infection, obstruction, bile leak, or an immature tract.", "Lost access or a displaced tube may require new placement rather than routine exchange."],
     References: [{ text: "International consensus: post-cholecystostomy management and removal", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12165509/" }],
@@ -1403,7 +1643,7 @@ function splitCholecystostomyProcedures() {
     { title: "Routine orders", items: ["Vital signs per routine.", "Monitor the access site for bleeding or bile leakage."] },
     { title: "Access care", items: ["After exchange: secure the tube, maintain prescribed drainage, and continue the established flush plan.", "After removal: apply a dressing and provide wound-care instructions."] },
     { title: "Discharge", items: ["Discharge when clinically appropriate with medication reconciliation.", "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.", "Return for fever, increasing abdominal pain, bleeding, or persistent bile leakage."] },
-    { title: "Follow up", items: ["If the tube remains: arrange the next drain check/exchange per IR plan.", "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."] },
+    { title: "Follow up", items: ["If exchanged or not removed: drain check/exchange in 2-3 months.", "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."] },
   ];
   placement.title = "Cholecystostomy Tube Placement";
   placement.nodes[placement.root].title = placement.title;
@@ -1833,7 +2073,7 @@ function installGastrostomyTubeHeaderPrototype() {
       title: "Procedural steps", type: "action", summary: "",
       details: { "G-tube placement - direct radiologic technique": [
         { strong: "1. Map a safe window.", text: " Review imaging and identify the stomach, colon, liver, and access trajectory." },
-        { strong: "2. Prepare and distend.", text: " Confirm antibiotics and airway plan; insufflate through a verified gastric catheter." },
+        { strong: "2. Prepare and distend.", text: " Confirm antibiotics and airway plan; insufflate through a nasogastric or orogastric tube with confirmed gastric position." },
         { strong: "3. Recheck and appose.", text: " Reassess the window after distention; place gastropexy anchors for the selected technique." },
         { strong: "4. Enter the stomach.", text: " Confirm intragastric needle position, then secure a guidewire in the lumen." },
         { strong: "5. Place the tube.", text: " Dilate over the wire; position and deploy the retention device inside the stomach." },
@@ -1863,6 +2103,7 @@ function installGastrostomyTubeHeaderPrototype() {
           title: "Routine orders",
           items: [
             "No diet until cleared by IR on POD1.",
+            "Admit to inpatient if outpatient.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
             "IF PULL TYPE: 500 mg Keflex BID x 5 days.",
@@ -1872,12 +2113,15 @@ function installGastrostomyTubeHeaderPrototype() {
           title: "Once cleared by IR",
           items: ["Feeding tube: PEG and G Tube diet."],
         },
+        {
+          title: "Discharge",
+          items: ["AVS: .IRAVSGASTROSTOMY or .IRAVSGJTUBE or .IRAVSJTUBE."],
+        },
       ],
       details: {
         "Follow up": [
-          "POD1 check with no signs of peritonitis.",
-          "Flushes without resistance or pain.",
-          "Nutrition consult.",
+          "POD1 check: no signs of peritonitis and tube flushes without resistance or pain.",
+          "Remind primary team to place nutrition consult.",
           "6 month routine exchange for balloon retention device.",
         ],
       },
@@ -2032,8 +2276,8 @@ function installGastrostomyTubeExchangeEdits() {
       summary: "Confirm tube details, tract maturity, labs if needed, local-only plan, glucose POC, and discharge plan.",
       details: {
         Checklist: [
-          "Confirm indication and current tube type.",
-          "Confirm tube size and replacement device availability.",
+          "Confirm indication.",
+          "Confirm tube size, current tube type, and replacement device availability.",
           "Confirm tract is mature for routine exchange, or escalate if immature/uncertain.",
           "No labs unless further indicated.",
           "Patient is in SDC/outpatient workflow with discharge plan.",
@@ -2775,7 +3019,7 @@ function installParacentesisEdits() {
         {
           title: "Routine orders",
           items: [
-            "Albumin: 6-8 g/L for every liter above 5 L.",
+            "Cirrhotic ascites: if >5 L removed, give IV albumin 6-8 g per liter of total ascites removed; follow local protocol.",
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
@@ -2816,7 +3060,7 @@ function installParacentesisEdits() {
           { strong: "Prep and anesthetize:", text: " maintain the mapped position and anesthetize through the abdominal wall to the peritoneum." },
           { strong: "Enter the fluid:", text: " use real-time ultrasound for a small or difficult pocket, confirm free return, and advance the catheter without forcing it." },
           { strong: "Collect and drain:", text: " fill the requested specimen tubes first, then drain while monitoring pain, flow, and hemodynamics." },
-          { strong: "Finish cleanly:", text: " remove the catheter, dress the site, document volume and appearance, and follow the albumin plan for large-volume drainage." },
+          { strong: "Finish and replace albumin:", text: " remove the catheter, dress the site, and document volume/appearance. For cirrhotic ascites with >5 L removed, give IV albumin 6-8 g per liter of total fluid removed per local protocol." },
         ],
       },
     },
@@ -4148,7 +4392,7 @@ function installChestTubeEdits() {
       title: "Anatomy", type: "reference", summary: "",
       details: { Anatomy: [
         { strong: "Pleural space:", text: " lies between chest wall and lung; target the air or fluid pocket, not lung parenchyma." },
-        { strong: "Triangle of safety:", text: " between pectoralis major and latissimus dorsi, above the fifth intercostal space and below the axilla; imaging determines the actual entry site." },
+        { strong: "Triangle of safety:", text: " lateral approach near the midaxillary line, between pectoralis major and latissimus dorsi, usually at the fourth-fifth intercostal space; imaging determines the safe entry site." },
         { strong: "Intercostal bundle:", text: " runs beneath each rib; enter just above the rib and assess vessels when needed." },
         { strong: "Diaphragm and upper abdomen:", text: " identify the diaphragm, liver, and spleen throughout respiration before access." },
         { strong: "Air versus fluid:", text: " air tends to rise and fluid layers dependently; loculations may require a targeted route." },
@@ -4185,11 +4429,11 @@ function installChestTubeEdits() {
       checklistSections: [
         {
           title: "Routine orders",
-          items: ["Regular diet.", "Vital signs per unit routine.", "Tylenol 650 mg PRN."],
+          items: ["Admit to inpatient if not already admitted.", "Regular diet.", "Vital signs per unit routine.", "Tylenol 650 mg PRN."],
         },
       ],
       details: {
-        "Follow up": ["+/- CXR."],
+        "Follow up": ["Trend drain output and CXR to assess readiness for removal."],
       },
     },
     [`${id}-troubleshooting-v2`]: {
@@ -7186,14 +7430,11 @@ function installTipsCreationEdits() {
       summary: "",
       details: {
         "TIPS creation": [
-          { strong: "Systemic access route:", text: " the right internal jugular vein provides a direct path through the SVC, right atrium, and IVC to the hepatic veins." },
-          { strong: "Hepatic veins:", text: " the right hepatic vein is the usual launch point; the middle or left hepatic vein may be used when patency or puncture geometry is better." },
-          { strong: "Portal target:", text: " a right portal vein branch is commonly selected to create a short, straight, fully intrahepatic tract with reliable inflow." },
-          { strong: "Puncture geometry:", text: " the right portal branch usually lies anterior and caudal to the right hepatic vein, but cirrhosis and anatomic variation can distort this relationship." },
-          { strong: "Portal triad:", text: " portal veins travel with hepatic arteries and bile ducts, which are the key structures at risk during needle passes." },
-          { strong: "Liver capsule:", text: " keep the needle and tract within hepatic parenchyma; extrahepatic portal access or capsular transgression can cause major hemoperitoneum." },
-          { strong: "Shunt endpoints:", text: " with a dedicated partially covered stent, the uncovered portal segment sits in the portal vein, the covered segment begins at the parenchymal entry, and the hepatic end reaches the hepatic vein-IVC junction." },
-          { strong: "Portosystemic collaterals:", text: " coronary, short gastric, paraesophageal, and other varices may persist after decompression and sometimes require embolization." },
+          { strong: "Access route:", text: " right IJ to SVC, right atrium, IVC, then hepatic vein; usually the right hepatic vein." },
+          { strong: "Portal target:", text: " usually a right portal branch, anterior and caudal to the right hepatic vein; confirm patient-specific geometry." },
+          { strong: "Safe tract:", text: " stay intrahepatic and avoid adjacent hepatic arteries/bile ducts; capsular or extrahepatic puncture risks major bleeding." },
+          { strong: "Stent endpoints:", text: " uncovered end in the portal vein; covered segment spans the liver tract to the hepatic vein-IVC junction." },
+          { strong: "Collaterals:", text: " gastric/esophageal varices may persist after decompression and require embolization." },
         ],
       },
     },
@@ -9009,7 +9250,7 @@ function standardizeLabsOrdersAndContraindications() {
     "Drainage Catheter Placement/Exchange": ["No drainable collection or no safe percutaneous route.", "Unmanageable bleeding risk (relative; weigh source-control urgency).", "Lost access or an immature tract: avoid blind exchange and reassess access."],
     "Nephrostomy Tube Placement": ["No safe collecting-system access route.", "Unmanageable bleeding risk (relative); consider retrograde drainage when feasible.", "Do not delay urgent decompression of an infected obstructed system solely to achieve ideal laboratory values."],
     "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Placement": ["No safe enteric access window or interposed bowel that cannot be avoided.", "Peritonitis or unmanageable bleeding risk.", "Large-volume ascites or severe instability requires individualized planning (relative).", "Distal obstruction may preclude feeding access, but decompressive access may still be appropriate."],
-    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange": ["Immature or uncertain tract: no blind bedside exchange.", "Suspected intraperitoneal displacement, leak, or peritonitis: reassess before using/replacing the tube.", "No secure access to the bowel lumen or an incompatible replacement device."],
+    "Gastrostomy/Gastrojejunostomy/Jejunostomy Tube Exchange": ["Immature or uncertain tract: the gastrostomy tract is new or you are not sure it has matured; no blind bedside exchange.", "Suspected intraperitoneal displacement, leak, or peritonitis: reassess before using/replacing the tube.", "No secure access to the bowel lumen or an incompatible replacement device."],
     "Fistulogram": ["Infected access: avoid routine declot and discuss surgical/source-control management.", "Unmanageable bleeding risk or no safe access route (relative).", "Severe hyperkalemia or instability may require stabilization/temporary dialysis access before elective intervention."],
     "Inferior Vena Cava Filter Placement": ["No accepted filter indication: avoid routine prophylactic placement.", "No safe deployment zone or caval dimensions outside device specifications.", "Unmanageable access-site bleeding risk (relative)."],
     "Inferior Vena Cava Filter Removal": ["Substantial trapped thrombus: defer routine retrieval and reassess.", "Persistent need for PE protection without an alternative plan.", "Embedded, fractured, or penetrated filter: may require advanced retrieval rather than routine removal."],

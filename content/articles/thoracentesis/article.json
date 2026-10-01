@@ -135,7 +135,19 @@
         {
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
-          "blocks": []
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs per routine.",
+                "PIV placement."
+              ]
+            }
+          ]
         },
         {
           "id": "sedation",
@@ -171,7 +183,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " when applicable, confirm the target and planned approach."
+                  " ultrasound fluid pocket, diaphragm position, and adjacent lung/abdominal organs."
                 ],
                 [
                   {
@@ -480,20 +492,11 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " Discharge order with medication reconciliation prior."
-            ],
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " After visit summary: .IRAVSTHORACENTESIS."
-            ]
+            "Discharge order with medication reconciliation - 30 minutes.",
+            "Discharge only after clearance by MD.",
+            "After visit summary: .IRAVSTHORACENTESIS."
           ]
         }
       ]

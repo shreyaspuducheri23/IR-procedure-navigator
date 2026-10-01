@@ -135,7 +135,19 @@
         {
           "id": "pre-procedure-orders",
           "title": "Pre-procedure orders",
-          "blocks": []
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vital signs per routine.",
+                "Glucose POC."
+              ]
+            }
+          ]
         },
         {
           "id": "sedation",
@@ -163,15 +175,15 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
                     "strong": "Review imaging:"
                   },
-                  " with any prior axillary surgery or lymphedema."
+                  " ultrasound vein size/patency, planned venous route, and known central obstruction or hardware; review prior axillary surgery/lymphedema separately."
                 ],
                 [
                   {
@@ -482,20 +494,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient procedure:"
-              },
-              " After visit summary: .IRAVSPICC."
-            ]
+            "Discharge order with medication reconciliation - immediate.",
+            "After visit summary: .IRAVSPICC."
           ]
         },
         {

@@ -140,7 +140,8 @@
               "type": "list",
               "items": [
                 "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "Platelets >20,000/µL.",
+                "Potassium < 6 mmol/L."
               ]
             }
           ]
@@ -160,7 +161,7 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "Potassium if TDC placement."
+                "Potassium."
               ]
             }
           ]
@@ -221,9 +222,9 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Review imaging:"
                   },
-                  "; assess for central venous stenosis/thrombosis and implanted hardware."
+                  " access vein patency, central stenosis/thrombosis, and existing catheter or hardware."
                 ],
                 [
                   {
@@ -577,20 +578,10 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " Discharge order - 30 min."
-            ],
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " .IRAVSTUNNELEDCATHPLACEMENT1."
-            ]
+            "Discharge order with medication reconciliation - 30 minutes.",
+            "After visit summary: .IRAVSTUNNELEDCATHPLACEMENT1."
           ]
         }
       ]

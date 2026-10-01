@@ -80,7 +80,7 @@
                   "items": [
                     "No safe enteric access window or interposed bowel that cannot be avoided.",
                     "Peritonitis or unmanageable bleeding risk.",
-                    "Large-volume ascites or severe instability requires individualized planning (relative).",
+                    "Large varices, large-volume ascites, or severe instability require individualized planning (relative).",
                     "Distal obstruction may preclude feeding access, but decompressive access may still be appropriate."
                   ]
                 }
@@ -165,7 +165,8 @@
                 "Glucose POC.",
                 "Barium order to be administered ENTIRE bottle the night prior.",
                 "NG tube in place if inpatient.",
-                "Ancef 2 g if <120 kg, 3 g if >120 kg."
+                "Ancef 2 g if <120 kg, 3 g if >120 kg.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -218,7 +219,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " confirm the target and planned approach."
+                  " stomach position, intervening colon/liver, and a safe access window."
                 ],
                 [
                   {
@@ -231,12 +232,6 @@
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Appropriate window on imaging"
-                  },
-                  "."
                 ],
                 [
                   {
@@ -382,7 +377,7 @@
                   {
                     "strong": "2. Prepare and distend."
                   },
-                  " Confirm antibiotics and airway plan; insufflate through a verified gastric catheter."
+                  " Confirm antibiotics and airway plan; insufflate through a nasogastric or orogastric tube with confirmed gastric position."
                 ],
                 [
                   {
@@ -504,6 +499,7 @@
           "title": "Routine orders",
           "items": [
             "No diet until cleared by IR on POD1.",
+            "Admit to inpatient if outpatient.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
             "IF PULL TYPE: 500 mg Keflex BID x 5 days."
@@ -531,11 +527,17 @@
         },
         {
           "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "AVS: .IRAVSGASTROSTOMY or .IRAVSGJTUBE or .IRAVSJTUBE."
+          ]
+        },
+        {
+          "type": "checklist",
           "title": "Follow up",
           "items": [
-            "POD1 check with no signs of peritonitis.",
-            "Flushes without resistance or pain.",
-            "Nutrition consult.",
+            "POD1 check: no signs of peritonitis and tube flushes without resistance or pain.",
+            "Remind primary team to place nutrition consult.",
             "6 month routine exchange for balloon retention device."
           ]
         }

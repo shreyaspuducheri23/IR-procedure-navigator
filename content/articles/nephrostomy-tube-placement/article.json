@@ -166,7 +166,8 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected."
+                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -521,27 +522,17 @@
           "type": "checklist",
           "title": "Drain care",
           "items": [
-            "Confirm tube is to gravity drainage unless the operator gives a different plan.",
-            "Track output, urine color, fever, flank pain, and ability to flush before discharge.",
-            "Expect transient hematuria; escalate for heavy persistent bleeding, clots with obstruction, hypotension, or falling hemoglobin."
+            "Gravity drainage unless otherwise ordered.",
+            "Monitor output, urine color, fever, flank pain, and flush patency.",
+            "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb."
           ]
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " Discharge order with medication reconciliation."
-            ],
-            [
-              {
-                "strong": "If outpatient:"
-              },
-              " After visit summary: .IRAVSPCN1."
-            ]
+            "Discharge order with medication reconciliation.",
+            "After visit summary: .IRAVSPCN1."
           ]
         },
         {

@@ -161,7 +161,8 @@
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
-                "Glucose POC."
+                "Glucose POC.",
+                "INR and CBC within 30 days."
               ]
             }
           ]
@@ -208,7 +209,7 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " with access."
+                  " access vein patency, central venous obstruction, and existing devices."
                 ],
                 [
                   {
@@ -480,9 +481,9 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge",
+          "title": "Discharge - if outpatient",
           "items": [
-            "Discharge order with medication reconciliation.",
+            "Discharge order with medication reconciliation - 30 minutes.",
             "After visit summary: .IRAVSPORTPLACEMENT."
           ]
         },
