@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 1,
+  "id": "dvt-thrombectomy",
+  "title": "DVT Thrombectomy",
+  "category": "vascular-intervention",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "dvt",
+    "thrombectomy",
+    "mechanical",
+    "venous",
+    "iliofemoral",
+    "iliocaval",
+    "penumbra",
+    "inari",
+    "clottriever"
+  ],
+  "summary": "Mechanical clot removal for selected symptomatic iliofemoral or iliocaval DVT.",
+  "lastReviewed": null,
+  "provenance": [],
+  "reviewNotes": [],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Selected patients with symptomatic acute iliofemoral/iliocaval DVT, substantial functional limitation, and acceptable procedural risk.",
+                "Limb-threatening venous congestion/phlegmasia: urgent multidisciplinary assessment.",
+                "Persistent or worsening severe symptoms despite anticoagulation; not routine treatment for isolated calf DVT or mild symptoms."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Inability to tolerate therapeutic anticoagulation, including active major bleeding: requires an individualized specialist plan before proceeding.",
+                    "Recent intracranial hemorrhage or intracranial surgery: major anticoagulation risk; require neurosurgical/attending review before proceeding.",
+                    "Uncorrectable coagulopathy or severe thrombocytopenia.",
+                    "No safe device route or cardiopulmonary instability making the procedure unsafe; reassess with the attending."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Anticoagulation plan"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Therapeutic anticoagulation is part of DVT treatment; do not apply routine elective hold instructions automatically.",
+                "Confirm current agent, last dose, and the attending's peri-procedural plan; coordinate any transition to IV heparin.",
+                "Large-bore access increases bleeding risk. Confirm access size, hemostasis plan, and local thresholds.",
+                "Mechanical thrombectomy does not eliminate the need for continued anticoagulation. If lysis is added, use the separate thrombolysis protocol."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL.",
+                "UFH anti-Xa target: 0.3-0.7 IU/mL."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Baseline CBC, PT/INR, aPTT, and BMP/creatinine; document actual body weight."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Therapeutic heparin - adult VTE protocol"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Start UFH:"
+                  },
+                  " 80 units/kg IV bolus, then 18 units/kg/hour; use local dose caps/nomogram."
+                ],
+                [
+                  {
+                    "strong": "Check prior anticoagulation/bleeding risk:"
+                  },
+                  " adjust or omit bolus as directed; do not automatically re-bolus."
+                ],
+                [
+                  {
+                    "strong": "Monitor:"
+                  },
+                  " anti-Xa or aPTT at 6 hours and after dose changes; CBC/platelets and subsequent checks per protocol."
+                ],
+                [
+                  {
+                    "strong": "Safety:"
+                  },
+                  " no heparin with HIT or heparin allergy. Recent Xa inhibitors affect anti-Xa testing; confirm assay with pharmacy."
+                ],
+                [
+                  {
+                    "strong": "During procedure:"
+                  },
+                  " heparin/ACT dosing per attending and device protocol."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Options"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia for selected patients or complex/prolonged cases."
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm indication."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " thrombus extent, central venous outflow, and access vein patency."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm anticoagulation tolerance:"
+                  },
+                  " review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm equipment:"
+                  },
+                  " Penumbra or Inari system, compatible access, and potential venoplasty/stenting plan."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " thrombectomy, possible venoplasty/stenting, and procedure-specific risks."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "DVT thrombectomy, with possible venoplasty/stenting as indicated."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bleeding.",
+                "Infection.",
+                "Damage to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pulmonary embolism, vessel injury/rupture, and significant blood loss with aspiration.",
+                "Incomplete clot removal, recurrent thrombosis, and need for further intervention.",
+                "Contrast reaction or kidney injury; anticoagulation-related bleeding."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "anatomy",
+          "title": "Anatomy",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Deep venous route:"
+                  },
+                  " popliteal to femoral/common femoral veins, iliac veins, then IVC."
+                ],
+                [
+                  {
+                    "strong": "Inflow and outflow:"
+                  },
+                  " profunda/femoral inflow and iliocaval outflow both affect durable patency."
+                ],
+                [
+                  {
+                    "strong": "Iliac compression:"
+                  },
+                  " left common iliac vein compression by the right common iliac artery may underlie left-sided DVT."
+                ],
+                [
+                  {
+                    "strong": "Access anatomy:"
+                  },
+                  " choose a patent segment with a workable route to the clot; protect adjacent arteries and nerves."
+                ],
+                [
+                  {
+                    "strong": "Central extension:"
+                  },
+                  " identify IVC thrombus, filters, or prior stents before advancing devices."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Basic steps"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Plan the route:"
+                  },
+                  " review clot extent and outflow; choose access and confirm anticoagulation."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain venous access:"
+                  },
+                  " use ultrasound and place the initial sheath; document baseline venography."
+                ],
+                [
+                  {
+                    "strong": "3. Cross the thrombus:"
+                  },
+                  " advance wire/catheter gently and confirm intraluminal position in patent central outflow."
+                ],
+                [
+                  {
+                    "strong": "4. Define the treatment segment:"
+                  },
+                  " use venography, with IVUS when needed, to assess clot, narrowing, and device route."
+                ],
+                [
+                  {
+                    "strong": "5. Perform thrombectomy:"
+                  },
+                  " establish compatible sheath/wire access and use the selected Penumbra or Inari system per device instructions and attending guidance."
+                ],
+                [
+                  {
+                    "strong": "6. Reassess and finish:"
+                  },
+                  " confirm inflow/outflow and residual clot; treat significant residual obstruction as indicated, then obtain hemostasis and confirm the anticoagulation plan."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Bleeding/blood loss:"
+                      },
+                      " watch large-bore access and aspiration losses; track hemodynamics and cumulative blood loss."
+                    ],
+                    [
+                      {
+                        "strong": "Pulmonary embolism:"
+                      },
+                      " new hypoxia, chest pain, or instability requires stopping and urgent assessment."
+                    ],
+                    [
+                      {
+                        "strong": "Venous injury:"
+                      },
+                      " avoid force against resistance; confirm wire position before sheath or device advancement."
+                    ],
+                    [
+                      {
+                        "strong": "Residual obstruction:"
+                      },
+                      " missed iliac stenosis or poor inflow can lead to early rethrombosis."
+                    ],
+                    [
+                      {
+                        "strong": "Device limitations:"
+                      },
+                      " respect vessel/sheath compatibility and filters or prior stents; do not force removal of organized clot."
+                    ],
+                    [
+                      {
+                        "strong": "Anticoagulation gaps:"
+                      },
+                      " thrombectomy is not a substitute for anticoagulation; explicitly hand off the postprocedure regimen."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "SIR position statement: acute iliofemoral DVT",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/36375763/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Anticoagulation Forum: practical heparin management in VTE",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4715846/"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet if no further intervention is planned.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN.",
+            "Monitor access-site color, bleeding, and swelling.",
+            "Neurovascular checks per unit routine.",
+            "Therapeutic anticoagulation and monitoring per attending/protocol.",
+            "CBC if significant blood loss or suspected bleeding."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
+            "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Disposition",
+          "items": [
+            "Disposition per attending; confirm anticoagulation regimen and responsible team before discharge."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow up",
+          "items": [
+            "Clinic follow-up interval per MD preference."
+          ]
+        }
+      ]
+    }
+  ]
+}

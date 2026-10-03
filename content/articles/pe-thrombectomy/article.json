@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 1,
+  "id": "pe-thrombectomy",
+  "title": "PE Thrombectomy",
+  "category": "vascular-intervention",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "pe",
+    "pulmonary",
+    "embolism",
+    "thrombectomy",
+    "penumbra",
+    "inari",
+    "flowtriever",
+    "aspiration"
+  ],
+  "summary": "Mechanical clot removal for selected acute pulmonary embolism with clinical deterioration or high-risk features.",
+  "lastReviewed": null,
+  "provenance": [],
+  "reviewNotes": [],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "image",
+              "src": "images/aha-acc-pe-clinical-categories.png",
+              "alt": "2026 AHA/ACC acute PE clinical categories A through E, from subclinical PE to cardiopulmonary failure, with subcategories and respiratory modifiers.",
+              "caption": "AHA/ACC Acute PE Clinical Categories. Copyright 2026 American Heart Association and American College of Cardiology Foundation. Severity categories guide assessment; they do not automatically establish thrombectomy eligibility. See source for definitions and footnotes."
+            },
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "High-risk PE with shock, particularly when thrombolysis is contraindicated or unsuccessful.",
+                "Clinical deterioration despite anticoagulation: consider with PERT/attending.",
+                [
+                  {
+                    "strong": "Risk markers:"
+                  },
+                  " RV strain and elevated troponin/BNP inform risk, not automatic thrombectomy eligibility."
+                ],
+                "Not routine for stable low-risk PE or clot size alone."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Figure source"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "link": {
+                      "text": "ACC: 2026 acute PE guideline and clinical categories",
+                      "href": "https://www.acc.org/latest-in-cardiology/journal-scans/2026/02/17/14/32/acc-aha-release-first-ever-guideline-for-treatment-and-management-of-acute-pe"
+                    }
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Inability to tolerate therapeutic anticoagulation or active major bleeding: individualized PERT/attending decision.",
+                    "Recent intracranial hemorrhage or intracranial surgery: major anticoagulation risk; require neurosurgical/PERT review, not an automatic exclusion from rescue mechanical thrombectomy.",
+                    "Uncorrectable coagulopathy or severe thrombocytopenia.",
+                    "No safe venous/right-heart route or device-incompatible anatomy, including relevant valve prostheses or intracardiac hardware."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Anticoagulation plan"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Continue therapeutic anticoagulation per PERT/attending; confirm current agent and last dose before IV heparin.",
+                "Mechanical thrombectomy does not replace anticoagulation; use the adult VTE protocol in Pre-procedure orders.",
+                "Large-bore access increases bleeding risk. Intracranial bleeding/surgery requires an individualized anticoagulation plan.",
+                "Thrombolysis contraindications are not identical to mechanical thrombectomy contraindications."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL.",
+                "UFH anti-Xa target: 0.3-0.7 IU/mL."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "NPO (if moderate sedation).",
+                "Vital signs per routine.",
+                "PIV placement (not left arm).",
+                "Glucose POC.",
+                "Baseline CBC, PT/INR, aPTT, and BMP/creatinine; document actual body weight.",
+                "Continuous ECG and pulse oximetry; oxygen and hemodynamic support as indicated."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Therapeutic heparin - adult VTE protocol"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Start UFH:"
+                  },
+                  " 80 units/kg IV bolus, then 18 units/kg/hour; use local dose caps/nomogram."
+                ],
+                [
+                  {
+                    "strong": "Check prior anticoagulation/bleeding risk:"
+                  },
+                  " adjust or omit bolus as directed; do not automatically re-bolus."
+                ],
+                [
+                  {
+                    "strong": "Monitor:"
+                  },
+                  " anti-Xa or aPTT at 6 hours and after dose changes; CBC/platelets and subsequent checks per protocol."
+                ],
+                [
+                  {
+                    "strong": "Safety:"
+                  },
+                  " no heparin with HIT or heparin allergy. Recent Xa inhibitors affect anti-Xa testing; confirm assay with pharmacy."
+                ],
+                [
+                  {
+                    "strong": "During procedure:"
+                  },
+                  " heparin/ACT dosing per attending and device protocol."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Options"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia with minimal/moderate sedation as tolerated."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia when necessary; induction/positive-pressure ventilation may worsen RV failure. Coordinate an airway/hemodynamic rescue plan."
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm indication."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " CTA clot location, RV strain on CT/echo, and venous access/right-heart anatomy."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm anticoagulation tolerance:"
+                  },
+                  " active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " ability to lie flat/tolerate procedural positioning and NPO status if sedating; coordinate rescue support with PERT/anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Confirm equipment:"
+                  },
+                  " Penumbra or Inari system, compatible access, and monitored inpatient bed."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " thrombectomy and procedure-specific risks."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pulmonary embolism thrombectomy."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bleeding.",
+                "Infection.",
+                "Damage to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pulmonary artery injury/rupture, hemoptysis, or significant aspiration blood loss.",
+                "Arrhythmia, valve injury, cardiac perforation/tamponade, or hemodynamic collapse/death.",
+                "Incomplete clot removal, recurrent embolism, or need for further intervention.",
+                "Contrast reaction or kidney injury."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "anatomy",
+          "title": "Anatomy",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Venous route:"
+                  },
+                  " femoral vein to IVC and right atrium; jugular access is an alternative."
+                ],
+                [
+                  {
+                    "strong": "Right-heart crossing:"
+                  },
+                  " right atrium through tricuspid valve, RV outflow tract, and pulmonic valve into the main pulmonary artery."
+                ],
+                [
+                  {
+                    "strong": "Pulmonary branches:"
+                  },
+                  " main PA divides into right/left and then lobar/segmental arteries; match the target to CTA."
+                ],
+                [
+                  {
+                    "strong": "Structures at risk:"
+                  },
+                  " tricuspid apparatus, RV wall, and distal pulmonary arteries; avoid force and deep wire advancement."
+                ],
+                [
+                  {
+                    "strong": "RV strain:"
+                  },
+                  " acute obstruction raises RV afterload; sedation or instrumentation can precipitate collapse."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Basic steps"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "1. Plan and stabilize:"
+                  },
+                  " review CTA/echo, confirm target and anticoagulation, and establish a PERT rescue plan."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain venous access:"
+                  },
+                  " use ultrasound; establish access compatible with the selected system."
+                ],
+                [
+                  {
+                    "strong": "3. Cross the right heart:"
+                  },
+                  " under fluoroscopy and ECG monitoring, guide a catheter from RA through tricuspid valve, RV outflow tract, and pulmonic valve into the PA; avoid force or unsupported stiff wire advancement."
+                ],
+                [
+                  {
+                    "strong": "4. Define the target:"
+                  },
+                  " record PA pressure and obtain limited angiography as tolerated; confirm a stable, safe wire position in the intended branch."
+                ],
+                [
+                  {
+                    "strong": "5. Perform thrombectomy:"
+                  },
+                  " advance the selected Penumbra or Inari system per device instructions and attending guidance; monitor blood loss and hemodynamics."
+                ],
+                [
+                  {
+                    "strong": "6. Reassess and finish:"
+                  },
+                  " recheck flow, PA pressure, and clinical response; avoid chasing every distal clot. Remove devices, achieve hemostasis, and hand off anticoagulation."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Arrhythmia/valve injury:"
+                      },
+                      " minimize right-heart manipulation; stop and reposition for sustained ectopy or resistance."
+                    ],
+                    [
+                      {
+                        "strong": "Perforation/PA injury:"
+                      },
+                      " avoid deep or forceful wire advancement; hemoptysis or sudden hypotension needs urgent assessment."
+                    ],
+                    [
+                      {
+                        "strong": "RV collapse:"
+                      },
+                      " avoid excessive sedation; have airway, vasopressor, and rescue support ready."
+                    ],
+                    [
+                      {
+                        "strong": "Blood loss/air entry:"
+                      },
+                      " track aspiration losses, maintain a closed system, and monitor large-bore access."
+                    ],
+                    [
+                      {
+                        "strong": "Distal clot chasing:"
+                      },
+                      " prioritize clinical/hemodynamic improvement over a perfect angiogram."
+                    ],
+                    [
+                      {
+                        "strong": "Recurrent embolism:"
+                      },
+                      " confirm ongoing therapeutic anticoagulation and evaluate the DVT source."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "2026 AHA/ACC multisociety acute PE guideline",
+                          "href": "https://www.jacc.org/doi/10.1016/j.jacc.2025.11.005"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "ESC consensus: percutaneous treatment of acute PE",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10241264/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Anticoagulation Forum: practical heparin management",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4715846/"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Regular diet if no further intervention is planned.",
+            "Vital signs per monitored-unit routine.",
+            "Continuous telemetry and pulse oximetry.",
+            "Tylenol 650 mg PRN.",
+            "Monitor access-site color, bleeding, and swelling.",
+            "Monitor dyspnea, oxygen needs, chest pain, and hemoptysis.",
+            "Therapeutic anticoagulation and monitoring per attending/protocol.",
+            "CBC if significant blood loss or suspected bleeding."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
+            "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Disposition",
+          "items": [
+            "Monitored inpatient bed; ICU for instability or ongoing support needs.",
+            "Confirm anticoagulant regimen and responsible team before discharge."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Follow up",
+          "items": [
+            "Clinic follow-up interval per MD preference.",
+            "Persistent dyspnea or exercise limitation: assess for residual pulmonary vascular disease."
+          ]
+        }
+      ]
+    }
+  ]
+}

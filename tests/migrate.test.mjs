@@ -5,6 +5,40 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('hypogastric block uses deep-block precautions and UFE recovery without separate discharge', () => {
+  const p = captureLegacyState().procedures.find(p => p.id === 'superior-hypogastric-nerve-block');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.deepEqual(convert(p).sections.map(section => section.kind), ['pre', 'intra', 'post']);
+  assert.match(JSON.stringify(find('Anticoagulation')), /deep-plexus\/neuraxial/);
+  assert.equal(find('Procedural steps').details['Basic steps'].length, 5);
+  assert.match(JSON.stringify(find('Procedural steps')), /extravascular prevertebral spread/);
+  assert.ok(!find('Post-procedure').checklistSections.some(section => /Discharge/.test(section.title)));
+  assert.match(JSON.stringify(find('Post-procedure')), /UFE follow-up/);
+});
+test('PE thrombectomy has separate right-heart steps, monitoring, and attributed severity chart', () => {
+  const p = captureLegacyState().procedures.find(p => p.id === 'pe-thrombectomy');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.deepEqual(convert(p).sections.map(section => section.kind), ['pre', 'intra', 'post']);
+  assert.match(JSON.stringify(find('Contraindications')), /intracranial hemorrhage/);
+  assert.match(JSON.stringify(find('Procedural steps')), /tricuspid valve.*RV outflow tract.*pulmonic valve/);
+  assert.match(JSON.stringify(find('Post-procedure')), /Continuous telemetry/);
+  assert.equal(find('Indication').images[0].src, 'images/aha-acc-pe-clinical-categories.png');
+  assert.match(find('Indication').images[0].caption, /Copyright 2026/);
+});
+test('DVT thrombectomy has anticoagulation safeguards and device-neutral steps', () => {
+  const p = captureLegacyState().procedures.find(p => p.id === 'dvt-thrombectomy');
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.equal(convert(p).status, 'complete');
+  assert.deepEqual(convert(p).sections.map(section => section.kind), ['pre', 'intra', 'post']);
+  assert.match(JSON.stringify(find('Contraindications')), /Inability to tolerate therapeutic anticoagulation/);
+  assert.match(JSON.stringify(find('Checklist')), /Confirm anticoagulation tolerance/);
+  const orders = JSON.stringify(find('Pre-procedure orders'));
+  for (const pattern of [/80 units\/kg/, /18 units\/kg\/hour/, /6 hours/, /HIT/, /do not automatically re-bolus/]) assert.match(orders, pattern);
+  assert.equal(find('Procedural steps').details['Basic steps'].length, 6);
+  assert.match(JSON.stringify(find('Procedural steps')), /Penumbra or Inari/);
+  assert.match(JSON.stringify(find('Post-procedure')), /leg straight.*2 hours/);
+  assert.equal(find('Post-procedure').checklistSections.at(-1).title, 'Follow up');
+});
 test('fistulogram potassium threshold, orders, and discharge are separated', () => {
   const p = captureLegacyState().procedures.find(p => p.title === 'Fistulogram');
   const find = title => Object.values(p.nodes).find(n => n.title === title);
@@ -155,7 +189,7 @@ test('real migration is deterministic and agrees with all committed articles', (
     return procedures.map((p) => convertProcedure(p, hiddenProcedureTitles, report()));
   };
   const articles = run();
-  assert.equal(articles.length, 58);
+  assert.equal(articles.length, 61);
   assert.deepEqual(articles, run());
   for (const article of articles) {
     assert.equal(articleSchema.safeParse(article).success, true, article.id);
@@ -205,7 +239,7 @@ test('procedures preserve standard pre-procedure tabs with optional final Consen
     assert.doesNotMatch(JSON.stringify(pre.subsections[3].blocks), /Confirm sedation plan - patient can lie flat/, p.title);
     assert.ok(!pre.blocks?.length, p.title);
   }
-  assert.equal(count, 55);
+  assert.equal(count, 58);
 });
 
 test('post-procedure follow-up is last and drainage flush is BID', () => {
@@ -246,7 +280,7 @@ test('procedure checklists use emphasis and cover shared preprocedure checks', (
       assert.match(text, pattern, procedure.title);
     }
   }
-  assert.equal(count, 55);
+  assert.equal(count, 58);
   const articles = captureLegacyState().procedures.map(convert);
   const exchange = articles.find(a => a.id === 'gastrostomy-gastrojejunostomy-jejunostomy-tube-exchange');
   assert.match(JSON.stringify(exchange), /unless further indicated/);

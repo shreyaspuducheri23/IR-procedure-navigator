@@ -1183,6 +1183,327 @@ updateTipsRevisionDischargeAndSedation();
 updateTunneledLineOrders();
 updateParacentesisOrders();
 updateThoracentesisOrders();
+installDvtThrombectomy();
+installPeThrombectomy();
+installHypogastricNerveBlock();
+
+function installHypogastricNerveBlock() {
+  const id = "superior-hypogastric-nerve-block";
+  const title = "Superior Hypogastric Nerve Block";
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const nodes = {};
+  const add = (key, title, details, type = "reference") => {
+    nodes[`${id}-${key}`] = { title, type, details };
+  };
+  nodes[`${id}-root`] = { title, type: "overview", children: ["pre", "intra", "post"].map(key => `${id}-${key}`) };
+  nodes[`${id}-pre`] = { title: "Pre-procedure", type: "checklist", children:
+    ["indication", "anticoagulation", "labs", "orders", "sedation", "checklist", "consent"].map(key => `${id}-${key}`) };
+  add("indication", "Indication", { Indications: [
+    "Adjunct pain control during UFE to reduce pelvic pain and opioid requirements.",
+    "Selected visceral pelvic pain when directed by the treating team; neurolysis requires a separate plan.",
+  ] });
+  nodes[`${id}-indication`].children = [`${id}-contraindications`];
+  add("contraindications", "Contraindications", { Contraindications: [
+    "Uncorrected coagulopathy or anticoagulant effect incompatible with a deep plexus block.",
+    "Local infection or uncontrolled systemic infection.",
+    "No safe needle path around bowel, vessels, or other organs.",
+    "Local-anesthetic allergy without an alternative, or instability making the block unsafe.",
+  ] }, "caution");
+  add("anticoagulation", "Anticoagulation", { "Bleeding risk": [
+    "High-risk precautions (deep, noncompressible plexus block).",
+    { text: "Open anticoagulation table", href: "#anticoagulation-table" },
+  ], Hold: [
+    "Warfarin: hold 5 days; confirm normalized INR.",
+    "IV heparin: hold 4-6 hours and confirm normal coagulation.",
+    "Enoxaparin: hold at least 12 hours if prophylactic; at least 24 hours if therapeutic.",
+    "DOACs: use deep-plexus drug-, dose-, and renal-function-specific intervals.",
+    "Clopidogrel: hold 5-7 days; ticagrelor: 5 days; prasugrel: 7-10 days.",
+    "Aspirin alone: no hold under ASRA regional guidance; confirm institutional policy and concurrent agents.",
+  ], Caveat: [
+    "Deep-plexus guidance overrides generic IR holds. Confirm local platelet threshold, restart timing, and any heparin used for UFE.",
+    { text: "ASRA antithrombotic guidance", href: "https://rapm.bmj.com/content/early/2025/09/16/rapm-2024-105766" },
+  ] });
+  add("labs", "Labs", { Labs: [
+    "INR: within normal laboratory range.",
+    "Platelets >50,000/µL.",
+  ] });
+  add("orders", "Pre-procedure orders", { "Routine orders": [
+    "NPO (if moderate sedation).", "Vital signs per routine.", "PIV placement (not left arm).", "Glucose POC.",
+    "CBC and INR if not already available for UFE; additional coagulation testing per anticoagulant plan.",
+  ] });
+  add("sedation", "Sedation", { Options: [
+    point("Preferred", "local anesthesia; moderate sedation as part of the UFE plan."),
+    point("Alternative", "additional sedation in selected patients; maintain monitoring and responsiveness when feasible."),
+    { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
+  ] });
+  add("checklist", "Checklist", { Checklist: [
+    { strong: "Confirm indication.", text: "" },
+    point("Review imaging", "L5/sacral promontory, iliac vessels, and bowel-free needle path."),
+    point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
+    point("Review anticoagulation", "confirm deep-plexus hold/restart plan, including any heparin used during UFE."),
+    point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."),
+    point("Confirm anesthetic plan", "allergies, agent/dose, and total local anesthetic from all sites; lipid rescue available."),
+    point("Confirm consent", "include the block and its specific risks with the UFE discussion."),
+  ] });
+  add("consent", "Consent", { Procedure: ["Image-guided superior hypogastric nerve block."], Risks: [
+    "Bleeding.", "Infection.", "Damage to nearby structures.",
+  ], "Procedure-specific risks": [
+    "Incomplete or failed pain relief.", "Local-anesthetic systemic toxicity, including seizure or arrhythmia.",
+    "Hypotension, nerve injury, or retroperitoneal hematoma.", "Bowel, vascular, or disc injury.",
+  ] });
+  nodes[`${id}-intra`] = { title: "Intraprocedure", type: "overview", children: ["anatomy", "steps", "pitfalls"].map(key => `${id}-${key}`) };
+  add("anatomy", "Anatomy", { Anatomy: [
+    point("Target plexus", "retroperitoneal, anterior to L5-S1 near the sacral promontory."),
+    point("Pelvic pain pathway", "carries visceral pain fibers from the uterus and other pelvic organs."),
+    point("Nearby vessels", "aortic bifurcation, iliac arteries, and iliac veins lie close to the target."),
+    point("Needle window", "bowel and an enlarged uterus may obstruct an anterior approach; plan from patient-specific imaging."),
+  ] });
+  add("steps", "Procedural steps", { "Basic steps": [
+    point("1. Plan the window", "position supine and identify the target and safe path with fluoroscopy plus available cross-sectional imaging."),
+    point("2. Prepare and anesthetize", "sterile prep and local anesthesia; account for the cumulative anesthetic dose."),
+    point("3. Advance to the target", "guide the needle to the prevertebral space anterior to L5; confirm depth in orthogonal views or CT guidance."),
+    point("4. Confirm spread", "aspirate and inject a small contrast test dose; require extravascular prevertebral spread before anesthetic."),
+    point("5. Inject and reassess", "give local anesthetic incrementally per attending protocol, monitor for toxicity, then remove the needle and reassess pain/vitals."),
+  ] });
+  add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
+    point("Intravascular injection", "vascular contrast washout means reposition; negative aspiration alone is not enough."),
+    point("Anesthetic toxicity", "published block example: bupivacaine 0.25%, 20 mL (50 mg); confirm attending dose and total anesthetic from all sites. Stop for toxicity symptoms and activate the LAST protocol."),
+    point("Bowel/vessel injury", "do not proceed without a safe window; use CT/CBCT when anatomy is unclear."),
+    point("Disc or neural entry", "confirm depth and contrast pattern; stop for unexpected pain or spread."),
+    point("Incomplete block/hypotension", "reassess vitals and analgesia; do not repeat doses without reviewing the cumulative dose."),
+  ], References: [
+    { text: "SHNB for UFE: technique and troubleshooting", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7474042/" },
+    { text: "Randomized trial: SHNB after uterine artery embolization", href: "https://pubmed.ncbi.nlm.nih.gov/29989515/" },
+    { text: "ASRA deep plexus anticoagulation guidance", href: "https://rapm.bmj.com/content/early/2025/09/16/rapm-2024-105766" },
+  ] }, "caution");
+  nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", checklistSections: [
+    { title: "Routine orders", items: [
+      "Diet per UFE plan; regular diet if no further intervention is planned.", "Vital signs per recovery-unit routine.",
+      "Tylenol 650 mg PRN; continue the UFE analgesia plan.", "Monitor puncture-site color, bleeding, and swelling.",
+      "Assess pain relief, hypotension, neurologic symptoms, and local-anesthetic toxicity.",
+    ] },
+    { title: "Access care", items: ["Small dressing to the needle site.", "Arterial access precautions and activity per UFE orders."] },
+    { title: "Follow up", items: ["Follow the UFE follow-up plan; reassess persistent or unexpected pain."] },
+  ] };
+  procedures.push({ id, title, category: "Pain control", bleedRisk: "High", keywords: "hypogastric superior plexus nerve block shnb ufe pelvic pain", summary: "Image-guided superior hypogastric plexus block for adjunct pain control during UFE.", root: `${id}-root`, nodes });
+}
+
+function installPeThrombectomy() {
+  const source = procedures.find(procedure => procedure.id === "dvt-thrombectomy");
+  const id = "pe-thrombectomy";
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  // Share the preparation structure, then replace venous/limb-specific content.
+  const procedure = JSON.parse(JSON.stringify(source));
+  const nodeId = key => key.replace(/^dvt-thrombectomy-/, `${id}-`);
+  procedure.id = id;
+  procedure.title = "PE Thrombectomy";
+  procedure.root = nodeId(source.root);
+  procedure.summary = "Mechanical clot removal for selected acute pulmonary embolism with clinical deterioration or high-risk features.";
+  procedure.keywords = "pe pulmonary embolism thrombectomy penumbra inari flowtriever aspiration";
+  procedure.nodes = Object.fromEntries(Object.entries(procedure.nodes).map(([key, node]) => {
+    if (node.children) node.children = node.children.map(nodeId);
+    return [nodeId(key), node];
+  }));
+  const get = key => procedure.nodes[`${id}-${key}`];
+  get("root").title = procedure.title;
+  get("indication").images = [{
+    src: "images/aha-acc-pe-clinical-categories.png",
+    alt: "2026 AHA/ACC acute PE clinical categories A through E, from subclinical PE to cardiopulmonary failure, with subcategories and respiratory modifiers.",
+    caption: "AHA/ACC Acute PE Clinical Categories. Copyright 2026 American Heart Association and American College of Cardiology Foundation. Severity categories guide assessment; they do not automatically establish thrombectomy eligibility. See source for definitions and footnotes.",
+  }];
+  get("indication").details = { Indications: [
+    "High-risk PE with shock, particularly when thrombolysis is contraindicated or unsuccessful.",
+    "Clinical deterioration despite anticoagulation: consider with PERT/attending.",
+    point("Risk markers", "RV strain and elevated troponin/BNP inform risk, not automatic thrombectomy eligibility."),
+    "Not routine for stable low-risk PE or clot size alone.",
+  ], "Figure source": [{ text: "ACC: 2026 acute PE guideline and clinical categories", href: "https://www.acc.org/latest-in-cardiology/journal-scans/2026/02/17/14/32/acc-aha-release-first-ever-guideline-for-treatment-and-management-of-acute-pe" }] };
+  get("contraindications").details = { Contraindications: [
+    "Inability to tolerate therapeutic anticoagulation or active major bleeding: individualized PERT/attending decision.",
+    "Recent intracranial hemorrhage or intracranial surgery: major anticoagulation risk; require neurosurgical/PERT review, not an automatic exclusion from rescue mechanical thrombectomy.",
+    "Uncorrectable coagulopathy or severe thrombocytopenia.",
+    "No safe venous/right-heart route or device-incompatible anatomy, including relevant valve prostheses or intracardiac hardware.",
+  ] };
+  get("anticoagulation").details = { "Anticoagulation plan": [
+    "Continue therapeutic anticoagulation per PERT/attending; confirm current agent and last dose before IV heparin.",
+    "Mechanical thrombectomy does not replace anticoagulation; use the adult VTE protocol in Pre-procedure orders.",
+    "Large-bore access increases bleeding risk. Intracranial bleeding/surgery requires an individualized anticoagulation plan.",
+    "Thrombolysis contraindications are not identical to mechanical thrombectomy contraindications.",
+  ] };
+  get("orders").details["Routine orders"].push("Continuous ECG and pulse oximetry; oxygen and hemodynamic support as indicated.");
+  get("sedation").details = { Options: [
+    point("Preferred", "local anesthesia with minimal/moderate sedation as tolerated."),
+    point("Alternative", "general anesthesia when necessary; induction/positive-pressure ventilation may worsen RV failure. Coordinate an airway/hemodynamic rescue plan."),
+    { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
+  ] };
+  get("checklist").details = { Checklist: [
+    { strong: "Confirm indication.", text: "" },
+    point("Review imaging", "CTA clot location, RV strain on CT/echo, and venous access/right-heart anatomy."),
+    point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
+    point("Confirm anticoagulation tolerance", "active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
+    point("Confirm sedation plan", "ability to lie flat/tolerate procedural positioning and NPO status if sedating; coordinate rescue support with PERT/anesthesia."),
+    point("Confirm equipment", "Penumbra or Inari system, compatible access, and monitored inpatient bed."),
+    point("Confirm consent", "thrombectomy and procedure-specific risks."),
+  ] };
+  get("consent").details = { Procedure: ["Pulmonary embolism thrombectomy."], Risks: [
+    "Bleeding.", "Infection.", "Damage to nearby structures.",
+  ], "Procedure-specific risks": [
+    "Pulmonary artery injury/rupture, hemoptysis, or significant aspiration blood loss.",
+    "Arrhythmia, valve injury, cardiac perforation/tamponade, or hemodynamic collapse/death.",
+    "Incomplete clot removal, recurrent embolism, or need for further intervention.",
+    "Contrast reaction or kidney injury.",
+  ] };
+  get("anatomy").details = { Anatomy: [
+    point("Venous route", "femoral vein to IVC and right atrium; jugular access is an alternative."),
+    point("Right-heart crossing", "right atrium through tricuspid valve, RV outflow tract, and pulmonic valve into the main pulmonary artery."),
+    point("Pulmonary branches", "main PA divides into right/left and then lobar/segmental arteries; match the target to CTA."),
+    point("Structures at risk", "tricuspid apparatus, RV wall, and distal pulmonary arteries; avoid force and deep wire advancement."),
+    point("RV strain", "acute obstruction raises RV afterload; sedation or instrumentation can precipitate collapse."),
+  ] };
+  get("steps").details = { "Basic steps": [
+    point("1. Plan and stabilize", "review CTA/echo, confirm target and anticoagulation, and establish a PERT rescue plan."),
+    point("2. Obtain venous access", "use ultrasound; establish access compatible with the selected system."),
+    point("3. Cross the right heart", "under fluoroscopy and ECG monitoring, guide a catheter from RA through tricuspid valve, RV outflow tract, and pulmonic valve into the PA; avoid force or unsupported stiff wire advancement."),
+    point("4. Define the target", "record PA pressure and obtain limited angiography as tolerated; confirm a stable, safe wire position in the intended branch."),
+    point("5. Perform thrombectomy", "advance the selected Penumbra or Inari system per device instructions and attending guidance; monitor blood loss and hemodynamics."),
+    point("6. Reassess and finish", "recheck flow, PA pressure, and clinical response; avoid chasing every distal clot. Remove devices, achieve hemostasis, and hand off anticoagulation."),
+  ] };
+  get("pitfalls").details = { "Pitfalls and safety": [
+    point("Arrhythmia/valve injury", "minimize right-heart manipulation; stop and reposition for sustained ectopy or resistance."),
+    point("Perforation/PA injury", "avoid deep or forceful wire advancement; hemoptysis or sudden hypotension needs urgent assessment."),
+    point("RV collapse", "avoid excessive sedation; have airway, vasopressor, and rescue support ready."),
+    point("Blood loss/air entry", "track aspiration losses, maintain a closed system, and monitor large-bore access."),
+    point("Distal clot chasing", "prioritize clinical/hemodynamic improvement over a perfect angiogram."),
+    point("Recurrent embolism", "confirm ongoing therapeutic anticoagulation and evaluate the DVT source."),
+  ], References: [
+    { text: "2026 AHA/ACC multisociety acute PE guideline", href: "https://www.jacc.org/doi/10.1016/j.jacc.2025.11.005" },
+    { text: "ESC consensus: percutaneous treatment of acute PE", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10241264/" },
+    { text: "Anticoagulation Forum: practical heparin management", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4715846/" },
+  ] };
+  get("post").checklistSections = [
+    { title: "Routine orders", items: [
+      "Regular diet if no further intervention is planned.", "Vital signs per monitored-unit routine.",
+      "Continuous telemetry and pulse oximetry.", "Tylenol 650 mg PRN.",
+      "Monitor access-site color, bleeding, and swelling.", "Monitor dyspnea, oxygen needs, chest pain, and hemoptysis.",
+      "Therapeutic anticoagulation and monitoring per attending/protocol.", "CBC if significant blood loss or suspected bleeding.",
+    ] },
+    JSON.parse(JSON.stringify(source.nodes[`${source.id}-post`].checklistSections.find(section => section.title === "Access care"))),
+    { title: "Disposition", items: ["Monitored inpatient bed; ICU for instability or ongoing support needs.", "Confirm anticoagulant regimen and responsible team before discharge."] },
+    { title: "Follow up", items: ["Clinic follow-up interval per MD preference.", "Persistent dyspnea or exercise limitation: assess for residual pulmonary vascular disease."] },
+  ];
+  procedures.push(procedure);
+}
+
+function installDvtThrombectomy() {
+  const id = "dvt-thrombectomy";
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const nodes = {};
+  const add = (key, title, details, type = "reference") => {
+    nodes[`${id}-${key}`] = { title, type, details };
+  };
+  nodes[`${id}-root`] = { title: "DVT Thrombectomy", type: "overview", children: [`${id}-pre`, `${id}-intra`, `${id}-post`] };
+  nodes[`${id}-pre`] = { title: "Pre-procedure", type: "checklist", children:
+    ["indication", "anticoagulation", "labs", "orders", "sedation", "checklist", "consent"].map(key => `${id}-${key}`) };
+  add("indication", "Indication", { Indications: [
+    "Selected patients with symptomatic acute iliofemoral/iliocaval DVT, substantial functional limitation, and acceptable procedural risk.",
+    "Limb-threatening venous congestion/phlegmasia: urgent multidisciplinary assessment.",
+    "Persistent or worsening severe symptoms despite anticoagulation; not routine treatment for isolated calf DVT or mild symptoms.",
+  ], Contraindications: [
+    "Inability to tolerate therapeutic anticoagulation, including active major bleeding: requires an individualized specialist plan before proceeding.",
+    "Recent intracranial hemorrhage or intracranial surgery: major anticoagulation risk; require neurosurgical/attending review before proceeding.",
+    "Uncorrectable coagulopathy or severe thrombocytopenia.",
+    "No safe device route or cardiopulmonary instability making the procedure unsafe; reassess with the attending.",
+  ] });
+  add("anticoagulation", "Anticoagulation", { "Anticoagulation plan": [
+    "Therapeutic anticoagulation is part of DVT treatment; do not apply routine elective hold instructions automatically.",
+    "Confirm current agent, last dose, and the attending's peri-procedural plan; coordinate any transition to IV heparin.",
+    "Large-bore access increases bleeding risk. Confirm access size, hemostasis plan, and local thresholds.",
+    "Mechanical thrombectomy does not eliminate the need for continued anticoagulation. If lysis is added, use the separate thrombolysis protocol.",
+  ] });
+  add("labs", "Labs", { Labs: [
+    "INR < 1.5-1.8.",
+    "Platelets >50,000/µL.",
+    "UFH anti-Xa target: 0.3-0.7 IU/mL.",
+  ] });
+  add("orders", "Pre-procedure orders", { "Routine orders": [
+    "NPO (if moderate sedation).", "Vital signs per routine.", "PIV placement (not left arm).", "Glucose POC.",
+    "Baseline CBC, PT/INR, aPTT, and BMP/creatinine; document actual body weight.",
+  ], "Therapeutic heparin - adult VTE protocol": [
+    point("Start UFH", "80 units/kg IV bolus, then 18 units/kg/hour; use local dose caps/nomogram."),
+    point("Check prior anticoagulation/bleeding risk", "adjust or omit bolus as directed; do not automatically re-bolus."),
+    point("Monitor", "anti-Xa or aPTT at 6 hours and after dose changes; CBC/platelets and subsequent checks per protocol."),
+    point("Safety", "no heparin with HIT or heparin allergy. Recent Xa inhibitors affect anti-Xa testing; confirm assay with pharmacy."),
+    point("During procedure", "heparin/ACT dosing per attending and device protocol."),
+  ] });
+  add("sedation", "Sedation", { Options: [
+    point("Preferred", "moderate sedation."), point("Alternative", "general anesthesia for selected patients or complex/prolonged cases."),
+    { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
+  ] });
+  add("checklist", "Checklist", { Checklist: [
+    { strong: "Confirm indication.", text: "" },
+    point("Review imaging", "thrombus extent, central venous outflow, and access vein patency."),
+    point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
+    point("Confirm anticoagulation tolerance", "review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
+    point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."),
+    point("Confirm equipment", "Penumbra or Inari system, compatible access, and potential venoplasty/stenting plan."),
+    point("Confirm consent", "thrombectomy, possible venoplasty/stenting, and procedure-specific risks."),
+  ] });
+  add("consent", "Consent", { Procedure: ["DVT thrombectomy, with possible venoplasty/stenting as indicated."], Risks: [
+    "Bleeding.",
+    "Infection.",
+    "Damage to nearby structures.",
+  ], "Procedure-specific risks": [
+    "Pulmonary embolism, vessel injury/rupture, and significant blood loss with aspiration.",
+    "Incomplete clot removal, recurrent thrombosis, and need for further intervention.",
+    "Contrast reaction or kidney injury; anticoagulation-related bleeding.",
+  ] });
+  nodes[`${id}-intra`] = { title: "Intraprocedure", type: "overview", children: ["anatomy", "steps", "pitfalls"].map(key => `${id}-${key}`) };
+  add("anatomy", "Anatomy", { Anatomy: [
+    point("Deep venous route", "popliteal to femoral/common femoral veins, iliac veins, then IVC."),
+    point("Inflow and outflow", "profunda/femoral inflow and iliocaval outflow both affect durable patency."),
+    point("Iliac compression", "left common iliac vein compression by the right common iliac artery may underlie left-sided DVT."),
+    point("Access anatomy", "choose a patent segment with a workable route to the clot; protect adjacent arteries and nerves."),
+    point("Central extension", "identify IVC thrombus, filters, or prior stents before advancing devices."),
+  ] });
+  add("steps", "Procedural steps", { "Basic steps": [
+    point("1. Plan the route", "review clot extent and outflow; choose access and confirm anticoagulation."),
+    point("2. Obtain venous access", "use ultrasound and place the initial sheath; document baseline venography."),
+    point("3. Cross the thrombus", "advance wire/catheter gently and confirm intraluminal position in patent central outflow."),
+    point("4. Define the treatment segment", "use venography, with IVUS when needed, to assess clot, narrowing, and device route."),
+    point("5. Perform thrombectomy", "establish compatible sheath/wire access and use the selected Penumbra or Inari system per device instructions and attending guidance."),
+    point("6. Reassess and finish", "confirm inflow/outflow and residual clot; treat significant residual obstruction as indicated, then obtain hemostasis and confirm the anticoagulation plan."),
+  ] });
+  add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
+    point("Bleeding/blood loss", "watch large-bore access and aspiration losses; track hemodynamics and cumulative blood loss."),
+    point("Pulmonary embolism", "new hypoxia, chest pain, or instability requires stopping and urgent assessment."),
+    point("Venous injury", "avoid force against resistance; confirm wire position before sheath or device advancement."),
+    point("Residual obstruction", "missed iliac stenosis or poor inflow can lead to early rethrombosis."),
+    point("Device limitations", "respect vessel/sheath compatibility and filters or prior stents; do not force removal of organized clot."),
+    point("Anticoagulation gaps", "thrombectomy is not a substitute for anticoagulation; explicitly hand off the postprocedure regimen."),
+  ], References: [
+    { text: "SIR position statement: acute iliofemoral DVT", href: "https://pubmed.ncbi.nlm.nih.gov/36375763/" },
+    { text: "Anticoagulation Forum: practical heparin management in VTE", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4715846/" },
+  ] }, "caution");
+  nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", checklistSections: [
+    { title: "Routine orders", items: [
+      "Regular diet if no further intervention is planned.", "Vital signs per unit routine.", "Tylenol 650 mg PRN.",
+      "Monitor access-site color, bleeding, and swelling.",
+      "Neurovascular checks per unit routine.",
+      "Therapeutic anticoagulation and monitoring per attending/protocol.",
+      "CBC if significant blood loss or suspected bleeding.",
+    ] },
+    { title: "Access care", items: [
+      "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
+      "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes.",
+    ] },
+    { title: "Disposition", items: ["Disposition per attending; confirm anticoagulation regimen and responsible team before discharge."] },
+    { title: "Follow up", items: ["Clinic follow-up interval per MD preference."] },
+  ] };
+  add("contraindications", "Contraindications", { Contraindications: nodes[`${id}-indication`].details.Contraindications }, "caution");
+  delete nodes[`${id}-indication`].details.Contraindications;
+  nodes[`${id}-indication`].children = [`${id}-contraindications`];
+  procedures.push({ id, title: "DVT Thrombectomy", category: "Vascular intervention", bleedRisk: "High",
+    keywords: "dvt thrombectomy mechanical venous iliofemoral iliocaval penumbra inari clottriever", summary: "Mechanical clot removal for selected symptomatic iliofemoral or iliocaval DVT.", root: `${id}-root`, nodes });
+}
 
 function updateThoracentesisOrders() {
   const procedure = procedures.find(entry => entry.title === "Thoracentesis");
