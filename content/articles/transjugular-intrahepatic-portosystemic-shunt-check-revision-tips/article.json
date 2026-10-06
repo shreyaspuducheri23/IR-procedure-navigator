@@ -609,7 +609,7 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge - if outpatient or being discharged",
+          "title": "Discharge - if outpatient",
           "items": [
             "Discharge order with medication reconciliation - 1 hour.",
             "After visit summary: .IRAVSTIPS."

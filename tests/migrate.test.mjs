@@ -9,7 +9,8 @@ test('hypogastric block uses deep-block precautions and UFE recovery without sep
   const p = captureLegacyState().procedures.find(p => p.id === 'superior-hypogastric-nerve-block');
   const find = title => Object.values(p.nodes).find(n => n.title === title);
   assert.deepEqual(convert(p).sections.map(section => section.kind), ['pre', 'intra', 'post']);
-  assert.match(JSON.stringify(find('Anticoagulation')), /deep-plexus\/neuraxial/);
+  assert.match(JSON.stringify(find('Anticoagulation')), /Deep-plexus guidance overrides generic IR holds/);
+  assert.match(JSON.stringify(p.nodes), /bupivacaine 0.25%, 20 mL \(50 mg\)/);
   assert.equal(find('Procedural steps').details['Basic steps'].length, 5);
   assert.match(JSON.stringify(find('Procedural steps')), /extravascular prevertebral spread/);
   assert.ok(!find('Post-procedure').checklistSections.some(section => /Discharge/.test(section.title)));
@@ -31,12 +32,12 @@ test('DVT thrombectomy has anticoagulation safeguards and device-neutral steps',
   assert.equal(convert(p).status, 'complete');
   assert.deepEqual(convert(p).sections.map(section => section.kind), ['pre', 'intra', 'post']);
   assert.match(JSON.stringify(find('Contraindications')), /Inability to tolerate therapeutic anticoagulation/);
-  assert.match(JSON.stringify(find('Checklist')), /Confirm anticoagulation tolerance/);
+  assert.match(JSON.stringify(find('Checklist')), /Review anticoagulation.*confirm tolerance/);
   const orders = JSON.stringify(find('Pre-procedure orders'));
   for (const pattern of [/80 units\/kg/, /18 units\/kg\/hour/, /6 hours/, /HIT/, /do not automatically re-bolus/]) assert.match(orders, pattern);
   assert.equal(find('Procedural steps').details['Basic steps'].length, 6);
   assert.match(JSON.stringify(find('Procedural steps')), /Penumbra or Inari/);
-  assert.match(JSON.stringify(find('Post-procedure')), /leg straight.*2 hours/);
+  assert.match(JSON.stringify(find('Post-procedure')), /leg flat\/extended for 2 hours/);
   assert.equal(find('Post-procedure').checklistSections.at(-1).title, 'Follow up');
 });
 test('fistulogram potassium threshold, orders, and discharge are separated', () => {
@@ -369,7 +370,10 @@ test('postprocedure sections group monitoring and place discharge before final f
     }
   }
   const avs = Object.values(procedures.find(p => p.title === 'Adrenal Vein Sampling').nodes).find(n => n.title === 'Post-procedure');
-  assert.match(JSON.stringify(avs.checklistSections.find(s => s.title === 'Discharge')), /After lab results have returned/);
+  const afterResults = avs.checklistSections.find(s => s.title === 'After lab results have returned');
+  assert.match(JSON.stringify(afterResults), /Discharge order.*2 hours/);
+  assert.match(JSON.stringify(afterResults), /IRAVSVENOGRAM/);
+  assert.ok(!avs.checklistSections.some(s => s.title === 'Discharge'));
   const pae = Object.values(procedures.find(p => p.title === 'Prostate Artery Embolization').nodes).find(n => n.title === 'Post-procedure');
   assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Routine orders')), /every 15 minutes x 4/);
   assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Discharge')), /LUTS secondary to BPH/);

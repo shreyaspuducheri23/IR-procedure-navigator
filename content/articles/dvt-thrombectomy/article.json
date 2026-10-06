@@ -161,10 +161,6 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Options"
-            },
-            {
               "type": "list",
               "items": [
                 [
@@ -218,9 +214,9 @@
                 ],
                 [
                   {
-                    "strong": "Confirm anticoagulation tolerance:"
+                    "strong": "Review anticoagulation:"
                   },
-                  " review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                  " confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
                 ],
                 [
                   {
@@ -296,6 +292,18 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/openstax-lower-limb-veins.png",
+              "alt": "Anterior and posterior views of lower-limb veins, including iliac, femoral, popliteal, tibial, fibular, and saphenous veins.",
+              "caption": "OpenStax College, '2136ab Lower Limb Veins Anterior Posterior,' Anatomy & Physiology, 2013, via Wikimedia Commons. Licensed under CC BY 3.0. Supplied image reproduced without further modification."
+            },
+            {
+              "type": "image",
+              "src": "images/iliac-veins-ar.png",
+              "alt": "Historical illustration of iliac veins and adjacent arteries with Arabic labels.",
+              "caption": "Carter HV. 'Iliac veins-ar.gif.' Wikimedia Commons. Public domain in the United States. Arabic adaptation by نادين, 2019."
+            },
+            {
               "type": "list",
               "items": [
                 [
@@ -327,6 +335,39 @@
                     "strong": "Central extension:"
                   },
                   " identify IVC thrombus, filters, or prior stents before advancing devices."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Image credit"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "link": {
+                      "text": "OpenStax College via Wikimedia Commons",
+                      "href": "https://commons.wikimedia.org/wiki/File:2136ab_Lower_Limb_Veins_Anterior_Posterior.jpg"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "CC BY 3.0 license",
+                      "href": "https://creativecommons.org/licenses/by/3.0/"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Carter: Iliac veins, Arabic adaptation - source and public-domain notice",
+                      "href": "https://commons.wikimedia.org/wiki/File:Iliac_veins-ar.gif"
+                    }
+                  }
                 ]
               ]
             }
@@ -477,23 +518,22 @@
             "Tylenol 650 mg PRN.",
             "Monitor access-site color, bleeding, and swelling.",
             "Neurovascular checks per unit routine.",
-            "Therapeutic anticoagulation and monitoring per attending/protocol.",
-            "CBC if significant blood loss or suspected bleeding."
+            "Continue therapeutic anticoagulation."
           ]
         },
         {
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
-            "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes."
+            "Femoral venous access: keep the accessed leg flat/extended for 2 hours.",
+            "If a retention suture is used, document when it should be removed."
           ]
         },
         {
           "type": "checklist",
           "title": "Disposition",
           "items": [
-            "Disposition per attending; confirm anticoagulation regimen and responsible team before discharge."
+            "No specifics."
           ]
         },
         {

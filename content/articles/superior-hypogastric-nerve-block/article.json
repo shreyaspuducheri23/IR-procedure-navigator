@@ -158,10 +158,6 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Options"
-            },
-            {
               "type": "list",
               "items": [
                 [
@@ -293,6 +289,12 @@
           "id": "anatomy",
           "title": "Anatomy",
           "blocks": [
+            {
+              "type": "image",
+              "src": "images/hypogastric-plexus-anatomy.png",
+              "alt": "Superior hypogastric plexus anatomy illustration labeling the iliac vessels, L5-S1, sacral promontory, ureters, and bilateral hypogastric nerves.",
+              "caption": "Superior hypogastric plexus anatomy. Educational schematic; needle paths are illustrative, not patient-specific access guidance."
+            },
             {
               "type": "list",
               "items": [
@@ -463,8 +465,7 @@
             "Diet per UFE plan; regular diet if no further intervention is planned.",
             "Vital signs per recovery-unit routine.",
             "Tylenol 650 mg PRN; continue the UFE analgesia plan.",
-            "Monitor puncture-site color, bleeding, and swelling.",
-            "Assess pain relief, hypotension, neurologic symptoms, and local-anesthetic toxicity."
+            "Monitor puncture-site color, bleeding, and swelling."
           ]
         },
         {

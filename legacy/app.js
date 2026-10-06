@@ -1231,11 +1231,12 @@ function installHypogastricNerveBlock() {
     "NPO (if moderate sedation).", "Vital signs per routine.", "PIV placement (not left arm).", "Glucose POC.",
     "CBC and INR if not already available for UFE; additional coagulation testing per anticoagulant plan.",
   ] });
-  add("sedation", "Sedation", { Options: [
+  add("sedation", "Sedation", { Sedation: [
     point("Preferred", "local anesthesia; moderate sedation as part of the UFE plan."),
     point("Alternative", "additional sedation in selected patients; maintain monitoring and responsiveness when feasible."),
     { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
   ] });
+  nodes[`${id}-sedation`].summary = "";
   add("checklist", "Checklist", { Checklist: [
     { strong: "Confirm indication.", text: "" },
     point("Review imaging", "L5/sacral promontory, iliac vessels, and bowel-free needle path."),
@@ -1258,6 +1259,11 @@ function installHypogastricNerveBlock() {
     point("Nearby vessels", "aortic bifurcation, iliac arteries, and iliac veins lie close to the target."),
     point("Needle window", "bowel and an enlarged uterus may obstruct an anterior approach; plan from patient-specific imaging."),
   ] });
+  nodes[`${id}-anatomy`].images = [{
+    src: "images/hypogastric-plexus-anatomy.png",
+    alt: "Superior hypogastric plexus anatomy illustration labeling the iliac vessels, L5-S1, sacral promontory, ureters, and bilateral hypogastric nerves.",
+    caption: "Superior hypogastric plexus anatomy. Educational schematic; needle paths are illustrative, not patient-specific access guidance.",
+  }];
   add("steps", "Procedural steps", { "Basic steps": [
     point("1. Plan the window", "position supine and identify the target and safe path with fluoroscopy plus available cross-sectional imaging."),
     point("2. Prepare and anesthetize", "sterile prep and local anesthesia; account for the cumulative anesthetic dose."),
@@ -1280,7 +1286,6 @@ function installHypogastricNerveBlock() {
     { title: "Routine orders", items: [
       "Diet per UFE plan; regular diet if no further intervention is planned.", "Vital signs per recovery-unit routine.",
       "Tylenol 650 mg PRN; continue the UFE analgesia plan.", "Monitor puncture-site color, bleeding, and swelling.",
-      "Assess pain relief, hypotension, neurologic symptoms, and local-anesthetic toxicity.",
     ] },
     { title: "Access care", items: ["Small dressing to the needle site.", "Arterial access precautions and activity per UFE orders."] },
     { title: "Follow up", items: ["Follow the UFE follow-up plan; reassess persistent or unexpected pain."] },
@@ -1330,7 +1335,7 @@ function installPeThrombectomy() {
     "Thrombolysis contraindications are not identical to mechanical thrombectomy contraindications.",
   ] };
   get("orders").details["Routine orders"].push("Continuous ECG and pulse oximetry; oxygen and hemodynamic support as indicated.");
-  get("sedation").details = { Options: [
+  get("sedation").details = { Sedation: [
     point("Preferred", "local anesthesia with minimal/moderate sedation as tolerated."),
     point("Alternative", "general anesthesia when necessary; induction/positive-pressure ventilation may worsen RV failure. Coordinate an airway/hemodynamic rescue plan."),
     { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
@@ -1339,8 +1344,8 @@ function installPeThrombectomy() {
     { strong: "Confirm indication.", text: "" },
     point("Review imaging", "CTA clot location, RV strain on CT/echo, and venous access/right-heart anatomy."),
     point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
-    point("Confirm anticoagulation tolerance", "active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
-    point("Confirm sedation plan", "ability to lie flat/tolerate procedural positioning and NPO status if sedating; coordinate rescue support with PERT/anesthesia."),
+    point("Review anticoagulation", "confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
+    point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned. Coordinate rescue support with PERT/anesthesia."),
     point("Confirm equipment", "Penumbra or Inari system, compatible access, and monitored inpatient bed."),
     point("Confirm consent", "thrombectomy and procedure-specific risks."),
   ] };
@@ -1352,10 +1357,32 @@ function installPeThrombectomy() {
     "Incomplete clot removal, recurrent embolism, or need for further intervention.",
     "Contrast reaction or kidney injury.",
   ] };
-  get("anatomy").details = { Anatomy: [
+  get("anatomy").images = [{
+    src: "images/servier-pulmonary-embolism.png",
+    alt: "Illustration of a venous blood clot traveling through the right heart into the pulmonary circulation.",
+    caption: "Image provided by Servier Medical Art, licensed under CC BY 4.0. User-supplied image reproduced without further modification.",
+  }, {
+    src: "images/servier-pulmonary-circulation-adapted.png",
+    alt: "Adapted pulmonary circulation illustration showing a catheter passing through the right heart toward the pulmonary artery, with pulmonary emboli.",
+    caption: "Image adapted from Servier Medical Art, licensed under CC BY 4.0. Educational schematic; catheter path is illustrative.",
+  }, {
+    src: "images/pe-central-anatomy.png",
+    alt: "Educational illustration of right-heart chambers, pulmonary arteries, and pulmonary emboli with close-up anatomy panels.",
+    caption: "Central pulmonary artery and right-heart anatomy. Simplified illustration; confirm vessel orientation and catheter position on patient-specific imaging.",
+  }, {
+    src: "images/heart-pulmonary-anatomy.png",
+    alt: "Illustration of the heart chambers, venae cavae, pulmonary trunk, and right and left pulmonary arteries.",
+    caption: "Heart and pulmonary artery anatomy. Educational illustration; confirm anatomy on patient-specific imaging.",
+  }];
+  get("anatomy").details = { "Image credit": [
+    { text: "Image 1: Servier Medical Art - Pulmonary embolism", href: "https://smart.servier.com/smart_image/pulmonary-embolism-ov/" },
+    { text: "Image 2: adapted from Servier Medical Art - Pulmonary circulation", href: "https://smart.servier.com/smart_image/pulmonary-circulation/" },
+    { text: "CC BY 4.0 license", href: "https://creativecommons.org/licenses/by/4.0/" },
+  ], Anatomy: [
     point("Venous route", "femoral vein to IVC and right atrium; jugular access is an alternative."),
     point("Right-heart crossing", "right atrium through tricuspid valve, RV outflow tract, and pulmonic valve into the main pulmonary artery."),
     point("Pulmonary branches", "main PA divides into right/left and then lobar/segmental arteries; match the target to CTA."),
+    point("Right vs left PA", "right PA runs more horizontally and generally lower, behind the ascending aorta/SVC and anterior to the right main bronchus. Left PA courses posteriorly and superiorly over the left main bronchus; confirm takeoff angles on CTA/angiography."),
     point("Structures at risk", "tricuspid apparatus, RV wall, and distal pulmonary arteries; avoid force and deep wire advancement."),
     point("RV strain", "acute obstruction raises RV afterload; sedation or instrumentation can precipitate collapse."),
   ] };
@@ -1383,12 +1410,12 @@ function installPeThrombectomy() {
     { title: "Routine orders", items: [
       "Regular diet if no further intervention is planned.", "Vital signs per monitored-unit routine.",
       "Continuous telemetry and pulse oximetry.", "Tylenol 650 mg PRN.",
-      "Monitor access-site color, bleeding, and swelling.", "Monitor dyspnea, oxygen needs, chest pain, and hemoptysis.",
-      "Therapeutic anticoagulation and monitoring per attending/protocol.", "CBC if significant blood loss or suspected bleeding.",
+      "Monitor access-site color, bleeding, and swelling.",
+      "Continue therapeutic anticoagulation.",
     ] },
     JSON.parse(JSON.stringify(source.nodes[`${source.id}-post`].checklistSections.find(section => section.title === "Access care"))),
-    { title: "Disposition", items: ["Monitored inpatient bed; ICU for instability or ongoing support needs.", "Confirm anticoagulant regimen and responsible team before discharge."] },
-    { title: "Follow up", items: ["Clinic follow-up interval per MD preference.", "Persistent dyspnea or exercise limitation: assess for residual pulmonary vascular disease."] },
+    { title: "Disposition", items: ["Monitored inpatient bed; ICU for instability or ongoing support needs."] },
+    { title: "Follow up", items: ["Clinic follow-up interval per MD preference."] },
   ];
   procedures.push(procedure);
 }
@@ -1434,15 +1461,16 @@ function installDvtThrombectomy() {
     point("Safety", "no heparin with HIT or heparin allergy. Recent Xa inhibitors affect anti-Xa testing; confirm assay with pharmacy."),
     point("During procedure", "heparin/ACT dosing per attending and device protocol."),
   ] });
-  add("sedation", "Sedation", { Options: [
+  add("sedation", "Sedation", { Sedation: [
     point("Preferred", "moderate sedation."), point("Alternative", "general anesthesia for selected patients or complex/prolonged cases."),
     { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
   ] });
+  nodes[`${id}-sedation`].summary = "";
   add("checklist", "Checklist", { Checklist: [
     { strong: "Confirm indication.", text: "" },
     point("Review imaging", "thrombus extent, central venous outflow, and access vein patency."),
     point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
-    point("Confirm anticoagulation tolerance", "review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
+    point("Review anticoagulation", "confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."),
     point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."),
     point("Confirm equipment", "Penumbra or Inari system, compatible access, and potential venoplasty/stenting plan."),
     point("Confirm consent", "thrombectomy, possible venoplasty/stenting, and procedure-specific risks."),
@@ -1464,6 +1492,20 @@ function installDvtThrombectomy() {
     point("Access anatomy", "choose a patent segment with a workable route to the clot; protect adjacent arteries and nerves."),
     point("Central extension", "identify IVC thrombus, filters, or prior stents before advancing devices."),
   ] });
+  nodes[`${id}-anatomy`].images = [{
+    src: "images/openstax-lower-limb-veins.png",
+    alt: "Anterior and posterior views of lower-limb veins, including iliac, femoral, popliteal, tibial, fibular, and saphenous veins.",
+    caption: "OpenStax College, '2136ab Lower Limb Veins Anterior Posterior,' Anatomy & Physiology, 2013, via Wikimedia Commons. Licensed under CC BY 3.0. Supplied image reproduced without further modification.",
+  }, {
+    src: "images/iliac-veins-ar.png",
+    alt: "Historical illustration of iliac veins and adjacent arteries with Arabic labels.",
+    caption: "Carter HV. 'Iliac veins-ar.gif.' Wikimedia Commons. Public domain in the United States. Arabic adaptation by نادين, 2019.",
+  }];
+  nodes[`${id}-anatomy`].details["Image credit"] = [
+    { text: "OpenStax College via Wikimedia Commons", href: "https://commons.wikimedia.org/wiki/File:2136ab_Lower_Limb_Veins_Anterior_Posterior.jpg" },
+    { text: "CC BY 3.0 license", href: "https://creativecommons.org/licenses/by/3.0/" },
+    { text: "Carter: Iliac veins, Arabic adaptation - source and public-domain notice", href: "https://commons.wikimedia.org/wiki/File:Iliac_veins-ar.gif" },
+  ];
   add("steps", "Procedural steps", { "Basic steps": [
     point("1. Plan the route", "review clot extent and outflow; choose access and confirm anticoagulation."),
     point("2. Obtain venous access", "use ultrasound and place the initial sheath; document baseline venography."),
@@ -1488,14 +1530,13 @@ function installDvtThrombectomy() {
       "Regular diet if no further intervention is planned.", "Vital signs per unit routine.", "Tylenol 650 mg PRN.",
       "Monitor access-site color, bleeding, and swelling.",
       "Neurovascular checks per unit routine.",
-      "Therapeutic anticoagulation and monitoring per attending/protocol.",
-      "CBC if significant blood loss or suspected bleeding.",
+      "Continue therapeutic anticoagulation.",
     ] },
     { title: "Access care", items: [
-      "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
-      "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes.",
+      "Femoral venous access: keep the accessed leg flat/extended for 2 hours.",
+      "If a retention suture is used, document when it should be removed.",
     ] },
-    { title: "Disposition", items: ["Disposition per attending; confirm anticoagulation regimen and responsible team before discharge."] },
+    { title: "Disposition", items: ["No specifics."] },
     { title: "Follow up", items: ["Clinic follow-up interval per MD preference."] },
   ] };
   add("contraindications", "Contraindications", { Contraindications: nodes[`${id}-indication`].details.Contraindications }, "caution");
@@ -1560,7 +1601,7 @@ function updateTipsRevisionDischargeAndSedation() {
     }
   }
   const discharge = find("Post-procedure").checklistSections.find(section => section.title === "Discharge");
-  discharge.title = "Discharge - if outpatient or being discharged";
+  discharge.title = "Discharge - if outpatient";
   discharge.items = [
     "Discharge order with medication reconciliation - 1 hour.",
     "After visit summary: .IRAVSTIPS.",
@@ -2899,11 +2940,6 @@ function installCatheterDirectedThrombolysisEdits() {
       summary: "Define thrombus extent, venous inflow and outflow, central obstruction, and access anatomy.",
       images: [
         {
-          src: "images/deep-venous-anatomy.png",
-          alt: "Illustrated deep venous anatomy of the lower extremity from the calf veins through the popliteal, femoral, iliac veins, and inferior vena cava.",
-          caption: "Deep venous anatomy relevant to catheter-directed thrombolysis planning. Original educational schematic; not to scale. Confirm anatomy and variants on patient-specific imaging.",
-        },
-        {
           src: "images/popliteal-access-ultrasound.png",
           alt: "Synthetic transverse posterior popliteal-fossa ultrasound labeling the popliteal vein, popliteal artery, tibial nerve, and femur.",
           caption: "Typical transverse popliteal-fossa relationship for posterior venous access. Synthetic educational ultrasound; confirm structures dynamically before access.",
@@ -3117,6 +3153,11 @@ function installAdrenalVeinSamplingEdits() {
     title: "Anatomy",
     type: "reference",
     summary: "",
+    images: [{
+      src: "images/adrenal-venous-anatomy.png",
+      alt: "Adrenal venous anatomy illustration showing right adrenal vein drainage into the IVC and left adrenal vein drainage into the left renal vein, with close-up views of sampling targets.",
+      caption: "Adrenal venous anatomy and sampling targets. Educational illustration; confirm patient-specific anatomy on imaging.",
+    }],
     details: {
       "Adrenal vein sampling": [
         { strong: "Right adrenal vein:", text: " short and small; enters the posterolateral IVC, often near T11-T12 and above the right renal vein." },
@@ -6763,16 +6804,6 @@ function installHemorrhoidArteryEmbolizationEdits() {
           alt: "Anterior pelvic anatomy illustration labeling the inferior mesenteric, superior rectal, middle rectal, internal pudendal, and inferior rectal arteries.",
           caption: "Arterial supply to the rectum. Original AI-generated educational illustration; confirm patient-specific anatomy and variants on procedural imaging.",
         },
-        {
-          src: "images/inferior-mesenteric-superior-rectal-schematic.png",
-          alt: "Simplified angiographic-style illustration labeling the inferior mesenteric artery, superior rectal artery, and right and left terminal branches.",
-          caption: "Simplified IMA and superior rectal artery branching pattern. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail.",
-        },
-        {
-          src: "images/internal-iliac-rectal-supply-schematic.png",
-          alt: "Simplified angiographic-style illustration labeling internal iliac contributions to the middle and inferior rectal arteries.",
-          caption: "Simplified internal iliac contribution to rectal arterial supply. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail.",
-        },
       ],
       details: {
         Anatomy: [
@@ -7421,6 +7452,11 @@ function installProstateArteryEmbolizationEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/prostatic-arterial-anatomy.png",
+        alt: "Illustration of bilateral iliac arteries and pelvic branches supplying the prostate, with bladder and urethra landmarks.",
+        caption: "Prostatic arterial supply. Simplified educational illustration; origins and branching vary. Confirm patient-specific anatomy on imaging.",
+      }],
       details: {
         Anatomy: [
           { strong: "Variable origins:", text: " prostatic arteries commonly arise from the internal pudendal, obturator, or a shared superior vesical trunk." },
@@ -8583,6 +8619,11 @@ function installUfeEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/uterine-ovarian-arterial-anatomy.png",
+        alt: "Illustration of uterine and ovarian arterial supply, including aortic and iliac origins and utero-ovarian arterial connections.",
+        caption: "Uterine and ovarian arterial supply. Simplified educational illustration; confirm patient-specific branching and collateral anatomy on imaging.",
+      }],
       details: {
         "Uterine fibroid embolization": [
           { strong: "Pelvic arterial route:", text: " the uterine artery usually arises from the anterior division of the internal iliac artery, but its origin and branching pattern are highly variable." },
@@ -8750,6 +8791,10 @@ function installY90MappingEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [
+        { src: "images/hepatic-arterial-anatomy.png", alt: "Illustration labeling hepatic arteries and nearby gastric, gastroduodenal, and cystic branches.", caption: "Hepatic arterial anatomy. Simplified illustration; confirm branching on patient-specific imaging." },
+        { src: "images/hepatic-arterial-variants.png", alt: "Four-panel illustration of conventional, replaced right, replaced left, and accessory hepatic arterial anatomy.", caption: "Selected hepatic arterial variants. Simplified illustration; not an exhaustive classification." },
+      ],
       details: { Anatomy: [
           { strong: "Hepatic arteries:", text: " trace the celiac-to-hepatic pathway; variants include a right hepatic artery from the SMA or left hepatic artery from the left gastric." },
           { strong: "Tumor feeders:", text: " identify every artery supplying the target; segmental branches define the liver territory treated." },
@@ -9005,6 +9050,10 @@ function installY90TherapyEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [
+        { src: "images/hepatic-arterial-anatomy.png", alt: "Illustration labeling hepatic arteries and nearby gastric, gastroduodenal, and cystic branches.", caption: "Hepatic arterial anatomy. Simplified illustration; confirm branching on patient-specific imaging." },
+        { src: "images/hepatic-arterial-variants.png", alt: "Four-panel illustration of conventional, replaced right, replaced left, and accessory hepatic arterial anatomy.", caption: "Selected hepatic arterial variants. Simplified illustration; not an exhaustive classification." },
+      ],
       details: { Anatomy: [
           { strong: "Mapped treatment territory:", text: " match the planned segment or lobe and all intended tumor feeders." },
           { strong: "Catheter position:", text: " reproduce the mapping location relative to arterial branches; small shifts can change distribution." },
@@ -9696,7 +9745,7 @@ function standardizePostProcedureOrders() {
         } else if (/^Vital signs|^Monitor (?:color of )?access site|^Neurovascular checks/i.test(text) || /^Monitoring$/i.test(title)) {
           add("Routine orders", item, conditional ? title : "");
         } else if (/discharg/i.test(title) || /^If outpatient/i.test(title) || /^(Discharge (?:order|at|med)|After visit summary|AVS:|\.IRAVS)/i.test(text) || /^After .*discharge/i.test(text) || dischargeMeds) {
-          add("Discharge", item, conditional || /medications if/i.test(title) ? title : "");
+          add("Discharge", item, /^If being discharged$/i.test(title) ? "" : conditional || /medications if/i.test(title) ? title : "");
         } else if (/access$/i.test(title) || /^(?:Activity\s*[-:]\s*)?(?:Femoral|Radial|IJ):|^If femoral access|^Remove radial artery/i.test(text)) {
           add("Access care", item, /access$/i.test(title) ? title : "");
         } else if (/^(Routine orders|Orders|PDF orders|Post-procedure)$/i.test(title)) {
@@ -9726,6 +9775,12 @@ function standardizePostProcedureOrders() {
       discharge.items = discharge.items.map(entry => entry.strong === "If outpatient procedure:" ? entry.text.trim() : entry);
     }
     if (procedure.id === "adrenal-vein-sampling") {
+      const after = post.checklistSections.find(section => section.title === "After lab results have returned");
+      const discharge = post.checklistSections.find(section => section.title === "Discharge");
+      if (after && discharge) {
+        after.items.push(...discharge.items.map(entry => typeof entry === "string" ? entry : entry.text.trim()));
+        post.checklistSections = post.checklistSections.filter(section => section !== discharge);
+      }
       const beforeTitles = new Set(["Routine orders", "Access care", "Before lab results have returned"]);
       const items = post.checklistSections.filter(section => beforeTitles.has(section.title)).flatMap(section => section.items)
         .map(entry => entry.strong === "Before lab results have returned:" ? entry.text.trim() : entry);

@@ -360,12 +360,6 @@
             },
             {
               "type": "image",
-              "src": "images/deep-venous-anatomy.png",
-              "alt": "Illustrated deep venous anatomy of the lower extremity from the calf veins through the popliteal, femoral, iliac veins, and inferior vena cava.",
-              "caption": "Deep venous anatomy relevant to catheter-directed thrombolysis planning. Original educational schematic; not to scale. Confirm anatomy and variants on patient-specific imaging."
-            },
-            {
-              "type": "image",
               "src": "images/popliteal-access-ultrasound.png",
               "alt": "Synthetic transverse posterior popliteal-fossa ultrasound labeling the popliteal vein, popliteal artery, tibial nerve, and femur.",
               "caption": "Typical transverse popliteal-fossa relationship for posterior venous access. Synthetic educational ultrasound; confirm structures dynamically before access."

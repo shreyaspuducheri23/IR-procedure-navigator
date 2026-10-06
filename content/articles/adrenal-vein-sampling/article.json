@@ -292,6 +292,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/adrenal-venous-anatomy.png",
+              "alt": "Adrenal venous anatomy illustration showing right adrenal vein drainage into the IVC and left adrenal vein drainage into the left renal vein, with close-up views of sampling targets.",
+              "caption": "Adrenal venous anatomy and sampling targets. Educational illustration; confirm patient-specific anatomy on imaging."
+            },
+            {
               "type": "heading",
               "text": "Adrenal vein sampling"
             },
@@ -561,25 +567,9 @@
           "items": [
             "Regular diet",
             "Notify RN to turn off cosyntropin",
-            "Restart antihypertensives"
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Discharge",
-          "items": [
-            [
-              {
-                "strong": "After lab results have returned:"
-              },
-              " Discharge order (med rec prior) - 2 hours"
-            ],
-            [
-              {
-                "strong": "After lab results have returned:"
-              },
-              " After visit summary: .IRAVSVENOGRAM"
-            ]
+            "Restart antihypertensives",
+            "Discharge order (med rec prior) - 2 hours",
+            "After visit summary: .IRAVSVENOGRAM"
           ]
         },
         {

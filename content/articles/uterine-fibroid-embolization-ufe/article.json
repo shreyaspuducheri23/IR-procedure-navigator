@@ -419,6 +419,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/uterine-ovarian-arterial-anatomy.png",
+              "alt": "Illustration of uterine and ovarian arterial supply, including aortic and iliac origins and utero-ovarian arterial connections.",
+              "caption": "Uterine and ovarian arterial supply. Simplified educational illustration; confirm patient-specific branching and collateral anatomy on imaging."
+            },
+            {
               "type": "heading",
               "text": "Uterine fibroid embolization"
             },
@@ -685,30 +691,10 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            [
-              {
-                "strong": "If being discharged:"
-              },
-              " Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24)."
-            ],
-            [
-              {
-                "strong": "If being discharged:"
-              },
-              " Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran."
-            ],
-            [
-              {
-                "strong": "If being discharged:"
-              },
-              " Discharge order 2-6 hours prior."
-            ],
-            [
-              {
-                "strong": "If being discharged:"
-              },
-              " After visit summary: .IRAVSUFE."
-            ]
+            "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
+            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
+            "Discharge order 2-6 hours prior.",
+            "After visit summary: .IRAVSUFE."
           ]
         },
         {

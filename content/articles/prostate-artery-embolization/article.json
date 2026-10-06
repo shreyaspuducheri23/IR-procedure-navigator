@@ -383,6 +383,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/prostatic-arterial-anatomy.png",
+              "alt": "Illustration of bilateral iliac arteries and pelvic branches supplying the prostate, with bladder and urethra landmarks.",
+              "caption": "Prostatic arterial supply. Simplified educational illustration; origins and branching vary. Confirm patient-specific anatomy on imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [

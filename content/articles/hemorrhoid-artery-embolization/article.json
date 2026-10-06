@@ -338,18 +338,6 @@
               "caption": "Arterial supply to the rectum. Original AI-generated educational illustration; confirm patient-specific anatomy and variants on procedural imaging."
             },
             {
-              "type": "image",
-              "src": "images/inferior-mesenteric-superior-rectal-schematic.png",
-              "alt": "Simplified angiographic-style illustration labeling the inferior mesenteric artery, superior rectal artery, and right and left terminal branches.",
-              "caption": "Simplified IMA and superior rectal artery branching pattern. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail."
-            },
-            {
-              "type": "image",
-              "src": "images/internal-iliac-rectal-supply-schematic.png",
-              "alt": "Simplified angiographic-style illustration labeling internal iliac contributions to the middle and inferior rectal arteries.",
-              "caption": "Simplified internal iliac contribution to rectal arterial supply. AI-generated teaching illustration, not a patient angiogram; it omits normal variation and fine angiographic detail."
-            },
-            {
               "type": "list",
               "items": [
                 [

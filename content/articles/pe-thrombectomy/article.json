@@ -190,10 +190,6 @@
           "title": "Sedation",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Options"
-            },
-            {
               "type": "list",
               "items": [
                 [
@@ -247,15 +243,15 @@
                 ],
                 [
                   {
-                    "strong": "Confirm anticoagulation tolerance:"
+                    "strong": "Review anticoagulation:"
                   },
-                  " active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                  " confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
                 ],
                 [
                   {
                     "strong": "Confirm sedation plan:"
                   },
-                  " ability to lie flat/tolerate procedural positioning and NPO status if sedating; coordinate rescue support with PERT/anesthesia."
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned. Coordinate rescue support with PERT/anesthesia."
                 ],
                 [
                   {
@@ -326,6 +322,63 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/servier-pulmonary-embolism.png",
+              "alt": "Illustration of a venous blood clot traveling through the right heart into the pulmonary circulation.",
+              "caption": "Image provided by Servier Medical Art, licensed under CC BY 4.0. User-supplied image reproduced without further modification."
+            },
+            {
+              "type": "image",
+              "src": "images/servier-pulmonary-circulation-adapted.png",
+              "alt": "Adapted pulmonary circulation illustration showing a catheter passing through the right heart toward the pulmonary artery, with pulmonary emboli.",
+              "caption": "Image adapted from Servier Medical Art, licensed under CC BY 4.0. Educational schematic; catheter path is illustrative."
+            },
+            {
+              "type": "image",
+              "src": "images/pe-central-anatomy.png",
+              "alt": "Educational illustration of right-heart chambers, pulmonary arteries, and pulmonary emboli with close-up anatomy panels.",
+              "caption": "Central pulmonary artery and right-heart anatomy. Simplified illustration; confirm vessel orientation and catheter position on patient-specific imaging."
+            },
+            {
+              "type": "image",
+              "src": "images/heart-pulmonary-anatomy.png",
+              "alt": "Illustration of the heart chambers, venae cavae, pulmonary trunk, and right and left pulmonary arteries.",
+              "caption": "Heart and pulmonary artery anatomy. Educational illustration; confirm anatomy on patient-specific imaging."
+            },
+            {
+              "type": "heading",
+              "text": "Image credit"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "link": {
+                      "text": "Image 1: Servier Medical Art - Pulmonary embolism",
+                      "href": "https://smart.servier.com/smart_image/pulmonary-embolism-ov/"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Image 2: adapted from Servier Medical Art - Pulmonary circulation",
+                      "href": "https://smart.servier.com/smart_image/pulmonary-circulation/"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "CC BY 4.0 license",
+                      "href": "https://creativecommons.org/licenses/by/4.0/"
+                    }
+                  }
+                ]
+              ]
+            },
+            {
               "type": "list",
               "items": [
                 [
@@ -345,6 +398,12 @@
                     "strong": "Pulmonary branches:"
                   },
                   " main PA divides into right/left and then lobar/segmental arteries; match the target to CTA."
+                ],
+                [
+                  {
+                    "strong": "Right vs left PA:"
+                  },
+                  " right PA runs more horizontally and generally lower, behind the ascending aorta/SVC and anterior to the right main bronchus. Left PA courses posteriorly and superiorly over the left main bronchus; confirm takeoff angles on CTA/angiography."
                 ],
                 [
                   {
@@ -515,33 +574,29 @@
             "Continuous telemetry and pulse oximetry.",
             "Tylenol 650 mg PRN.",
             "Monitor access-site color, bleeding, and swelling.",
-            "Monitor dyspnea, oxygen needs, chest pain, and hemoptysis.",
-            "Therapeutic anticoagulation and monitoring per attending/protocol.",
-            "CBC if significant blood loss or suspected bleeding."
+            "Continue therapeutic anticoagulation."
           ]
         },
         {
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Femoral venous access: keep the accessed leg straight and maintain bedrest for 2 hours, or longer per attending/closure protocol.",
-            "If a retention suture is used, document who will remove it and when; follow site-specific instructions for other access routes."
+            "Femoral venous access: keep the accessed leg flat/extended for 2 hours.",
+            "If a retention suture is used, document when it should be removed."
           ]
         },
         {
           "type": "checklist",
           "title": "Disposition",
           "items": [
-            "Monitored inpatient bed; ICU for instability or ongoing support needs.",
-            "Confirm anticoagulant regimen and responsible team before discharge."
+            "Monitored inpatient bed; ICU for instability or ongoing support needs."
           ]
         },
         {
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Clinic follow-up interval per MD preference.",
-            "Persistent dyspnea or exercise limitation: assess for residual pulmonary vascular disease."
+            "Clinic follow-up interval per MD preference."
           ]
         }
       ]

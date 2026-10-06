@@ -304,6 +304,18 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/hepatic-arterial-anatomy.png",
+              "alt": "Illustration labeling hepatic arteries and nearby gastric, gastroduodenal, and cystic branches.",
+              "caption": "Hepatic arterial anatomy. Simplified illustration; confirm branching on patient-specific imaging."
+            },
+            {
+              "type": "image",
+              "src": "images/hepatic-arterial-variants.png",
+              "alt": "Four-panel illustration of conventional, replaced right, replaced left, and accessory hepatic arterial anatomy.",
+              "caption": "Selected hepatic arterial variants. Simplified illustration; not an exhaustive classification."
+            },
+            {
               "type": "list",
               "items": [
                 [
