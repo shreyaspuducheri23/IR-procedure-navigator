@@ -288,6 +288,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/thyroid-biopsy-anatomy.png",
+              "alt": "Labeled thyroid biopsy anatomy image showing the thyroid lobes, isthmus, trachea, carotid arteries, jugular veins, esophagus, and biopsy needle.",
+              "caption": "Thyroid biopsy anatomy. Educational illustration; confirm the target, vessels, and needle path on patient-specific ultrasound."
+            },
+            {
               "type": "list",
               "items": [
                 [

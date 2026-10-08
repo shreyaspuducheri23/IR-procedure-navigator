@@ -328,6 +328,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/lung-biopsy-anatomy.png",
+              "alt": "Illustration of percutaneous lung biopsy anatomy showing target planning, pleural path, structures to avoid, and intercostal entry.",
+              "caption": "Percutaneous lung biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "Lung biopsy"
             },

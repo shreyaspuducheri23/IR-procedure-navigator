@@ -361,25 +361,25 @@
               "items": [
                 [
                   {
-                    "strong": "Assess the tube:"
+                    "strong": "1. Assess the tube:"
                   },
                   " inspect the site and gently inject contrast to confirm position, duct patency, and any leak."
                 ],
                 [
                   {
-                    "strong": "Exchange if needed:"
+                    "strong": "2. Exchange if needed:"
                   },
                   " maintain wire access, unlock/remove the old tube, and place the replacement with all side holes intraluminal."
                 ],
                 [
                   {
-                    "strong": "Remove only when ready:"
+                    "strong": "3. Remove only when ready:"
                   },
                   " confirm removal criteria, release the locking mechanism, and gently withdraw the tube."
                 ],
                 [
                   {
-                    "strong": "Complete care:"
+                    "strong": "4. Complete care:"
                   },
                   " confirm drainage and secure an exchanged tube; dress the site after removal and provide return precautions."
                 ]
@@ -447,7 +447,7 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "After exchange: secure the tube, maintain prescribed drainage, and continue the established flush plan.",
+            "After exchange: secure the tube, flush with 10 mL daily, and maintain prescribed drainage.",
             "After removal: apply a dressing and provide wound-care instructions."
           ]
         },
@@ -456,8 +456,7 @@
           "title": "Discharge",
           "items": [
             "Discharge when clinically appropriate with medication reconciliation.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.",
-            "Return for fever, increasing abdominal pain, bleeding, or persistent bile leakage."
+            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
           ]
         },
         {

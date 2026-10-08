@@ -292,6 +292,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/cholecystostomy-access-anatomy.png",
+              "alt": "Comparison of transhepatic and transperitoneal cholecystostomy approaches showing the gallbladder, biliary ducts, liver, and adjacent bowel.",
+              "caption": "Cholecystostomy access anatomy. Simplified educational illustration; confirm the access route and adjacent structures on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "Initial tube placement"
             },

@@ -313,6 +313,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/liver-biopsy-anatomy.png",
+              "alt": "Illustration of percutaneous liver biopsy anatomy showing intercostal and subcostal approaches, hepatic parenchyma, and adjacent structures.",
+              "caption": "Percutaneous liver biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "Liver biopsy"
             },

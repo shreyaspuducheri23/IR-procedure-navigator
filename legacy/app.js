@@ -1957,6 +1957,7 @@ function splitCholecystostomyProcedures() {
   }));
   exchange.root = ids.get(exchange.root);
   exchange.title = "Cholecystostomy Tube Exchange/Removal";
+  delete find(exchange, "Anatomy").images;
   exchange.summary = "Existing tube maintenance and assessment for safe removal; routine mature-tract exchange is distinct from new placement.";
   exchange.bleedRisk = "Low";
   exchange.nodes[exchange.root].title = exchange.title;
@@ -1997,14 +1998,14 @@ function splitCholecystostomyProcedures() {
     point("Confirm consent", "exchange versus removal and patient-specific risks."),
   ] });
   set("Anatomy", { Anatomy: [point("Existing tract", "preserve the established route into the gallbladder; confirm maturity before removal."), point("Drainage pathway", "cystic duct to common bile duct to duodenum; patency supports removal."), point("Catheter position", "the loop and side holes should remain within the gallbladder.")] });
-  set("Procedural steps", { Steps: [point("Assess the tube", "inspect the site and gently inject contrast to confirm position, duct patency, and any leak."), point("Exchange if needed", "maintain wire access, unlock/remove the old tube, and place the replacement with all side holes intraluminal."), point("Remove only when ready", "confirm removal criteria, release the locking mechanism, and gently withdraw the tube."), point("Complete care", "confirm drainage and secure an exchanged tube; dress the site after removal and provide return precautions.")] });
+  set("Procedural steps", { Steps: [point("1. Assess the tube", "inspect the site and gently inject contrast to confirm position, duct patency, and any leak."), point("2. Exchange if needed", "maintain wire access, unlock/remove the old tube, and place the replacement with all side holes intraluminal."), point("3. Remove only when ready", "confirm removal criteria, release the locking mechanism, and gently withdraw the tube."), point("4. Complete care", "confirm drainage and secure an exchanged tube; dress the site after removal and provide return precautions.")] });
   set("Pitfalls and safety", { "Pitfalls and safety": [point("Premature removal", "an immature tract or persistent obstruction risks bile leak and recurrent cholecystitis."), point("Loss of access", "maintain wire purchase during exchange; do not blindly replace a displaced tube."), point("Forceful injection or traction", "avoid overdistention; release the locking mechanism before removal."), point("Clinical deterioration", "evaluate new pain, fever, bleeding, or persistent bile leakage promptly.")] });
   const post = find(exchange, "Post-procedure");
   post.summary = "";
   post.checklistSections = [
     { title: "Routine orders", items: ["Vital signs per routine.", "Monitor the access site for bleeding or bile leakage."] },
-    { title: "Access care", items: ["After exchange: secure the tube, maintain prescribed drainage, and continue the established flush plan.", "After removal: apply a dressing and provide wound-care instructions."] },
-    { title: "Discharge", items: ["Discharge when clinically appropriate with medication reconciliation.", "After visit summary: .IRCHOLETUBEBILIARYDRAIN1.", "Return for fever, increasing abdominal pain, bleeding, or persistent bile leakage."] },
+    { title: "Access care", items: ["After exchange: secure the tube, flush with 10 mL daily, and maintain prescribed drainage.", "After removal: apply a dressing and provide wound-care instructions."] },
+    { title: "Discharge", items: ["Discharge when clinically appropriate with medication reconciliation.", "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."] },
     { title: "Follow up", items: ["If exchanged or not removed: drain check/exchange in 2-3 months.", "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."] },
   ];
   placement.title = "Cholecystostomy Tube Placement";
@@ -2423,6 +2424,11 @@ function installGastrostomyTubeHeaderPrototype() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/gastrostomy-access-anatomy.png",
+        alt: "Illustration of gastric access anatomy, adjacent vessels, G-tube positioning, and a transgastric tube course through the pylorus to the distal duodenum.",
+        caption: "Gastric access anatomy. The bottom-right panel illustrates the course to the distal duodenum, not final jejunal tip positioning. Confirm anatomy and tube position on patient-specific imaging.",
+      }],
       details: { "G-tube placement": [
         { strong: "Target:", text: " an accessible anterior gastric body apposed to the abdominal wall." },
         { strong: "Structures to avoid:", text: " transverse colon, small bowel, left hepatic lobe, and abdominal-wall vessels." },
@@ -4272,6 +4278,11 @@ function installCholecystostomyEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/cholecystostomy-access-anatomy.png",
+        alt: "Comparison of transhepatic and transperitoneal cholecystostomy approaches showing the gallbladder, biliary ducts, liver, and adjacent bowel.",
+        caption: "Cholecystostomy access anatomy. Simplified educational illustration; confirm the access route and adjacent structures on patient-specific imaging.",
+      }],
       details: {
         "Initial tube placement": [
           { strong: "Gallbladder:", text: " lies along the inferior liver surface; identify the fundus, body, and neck." },
@@ -4752,6 +4763,11 @@ function installChestTubeEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/chest-tube-anatomy.png",
+        alt: "Illustration of lateral chest tube access showing the midaxillary line, ribs, chest wall muscles, and pleural space.",
+        caption: "Chest tube access anatomy. Simplified educational illustration; confirm the entry site and pleural target on patient-specific imaging.",
+      }],
       details: { Anatomy: [
         { strong: "Pleural space:", text: " lies between chest wall and lung; target the air or fluid pocket, not lung parenchyma." },
         { strong: "Triangle of safety:", text: " lateral approach near the midaxillary line, between pectoralis major and latissimus dorsi, usually at the fourth-fifth intercostal space; imaging determines the safe entry site." },
@@ -5567,6 +5583,11 @@ function installKidneyBiopsyEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/kidney-biopsy-anatomy.png",
+        alt: "Illustration of native kidney biopsy anatomy showing lower-pole cortex, posterolateral approach, renal sinus, and nearby organs.",
+        caption: "Native kidney biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging.",
+      }],
       details: { Anatomy: [
         { strong: "Renal cortex:", text: " contains glomeruli; the target for medical renal biopsy." },
         { strong: "Native kidney:", text: " posterior lower-pole cortex usually offers a practical route away from the hilum." },
@@ -5806,6 +5827,11 @@ function installLiverBiopsyEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/liver-biopsy-anatomy.png",
+        alt: "Illustration of percutaneous liver biopsy anatomy showing intercostal and subcostal approaches, hepatic parenchyma, and adjacent structures.",
+        caption: "Percutaneous liver biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging.",
+      }],
       details: {
         "Liver biopsy": [
           { strong: "Biopsy target:", text: " distinguish a focal-lesion biopsy from a non-targeted parenchymal biopsy before choosing the route and specimen plan." },
@@ -6418,6 +6444,11 @@ function installLungBiopsyEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/lung-biopsy-anatomy.png",
+        alt: "Illustration of percutaneous lung biopsy anatomy showing target planning, pleural path, structures to avoid, and intercostal entry.",
+        caption: "Percutaneous lung biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging.",
+      }],
       details: {
         "Lung biopsy": [
           { strong: "Target:", text: " define the viable solid component and its relationship to the pleura, fissures, bronchi, and pulmonary vessels." },
@@ -8188,6 +8219,11 @@ function installThyroidBiopsyEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/thyroid-biopsy-anatomy.png",
+        alt: "Labeled thyroid biopsy anatomy image showing the thyroid lobes, isthmus, trachea, carotid arteries, jugular veins, esophagus, and biopsy needle.",
+        caption: "Thyroid biopsy anatomy. Educational illustration; confirm the target, vessels, and needle path on patient-specific ultrasound.",
+      }],
       details: { Anatomy: [
         { strong: "Thyroid lobes and isthmus:", text: " sit anterior and lateral to the trachea beneath the strap muscles." },
         { strong: "Carotid and jugular:", text: " lie lateral to the gland; map them before choosing the tract." },

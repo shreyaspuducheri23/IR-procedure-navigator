@@ -291,6 +291,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/chest-tube-anatomy.png",
+              "alt": "Illustration of lateral chest tube access showing the midaxillary line, ribs, chest wall muscles, and pleural space.",
+              "caption": "Chest tube access anatomy. Simplified educational illustration; confirm the entry site and pleural target on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [

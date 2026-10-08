@@ -303,6 +303,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/kidney-biopsy-anatomy.png",
+              "alt": "Illustration of native kidney biopsy anatomy showing lower-pole cortex, posterolateral approach, renal sinus, and nearby organs.",
+              "caption": "Native kidney biopsy anatomy. Simplified educational illustration; confirm the target, vessels, and needle path on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [

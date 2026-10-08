@@ -316,6 +316,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/gastrostomy-access-anatomy.png",
+              "alt": "Illustration of gastric access anatomy, adjacent vessels, G-tube positioning, and a transgastric tube course through the pylorus to the distal duodenum.",
+              "caption": "Gastric access anatomy. The bottom-right panel illustrates the course to the distal duodenum, not final jejunal tip positioning. Confirm anatomy and tube position on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "G-tube placement"
             },
