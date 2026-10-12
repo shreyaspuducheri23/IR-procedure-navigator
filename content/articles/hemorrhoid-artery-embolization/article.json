@@ -539,7 +539,7 @@
           ]
         },
         {
-          "type": "checklist",
+          "type": "list",
           "title": "Access care",
           "items": [
             [
@@ -552,15 +552,15 @@
               {
                 "strong": "Radial access:"
               },
-              " Remove radial artery compression device within 2 hours post procedure."
-            ],
-            [
-              {
-                "strong": "Radial access:"
-              },
-              " Activity per JH-HLM mobility goal."
+              ""
             ]
-          ]
+          ],
+          "subitems": {
+            "1": [
+              "Remove radial artery compression device within 2 hours post procedure.",
+              "Activity per JH-HLM mobility goal."
+            ]
+          }
         },
         {
           "type": "checklist",
@@ -570,7 +570,7 @@
               {
                 "strong": "If outpatient procedure:"
               },
-              " Discharge order with medication reconciliation."
+              " Discharge order with medication reconciliation - 2-6 hours."
             ],
             [
               {

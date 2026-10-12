@@ -301,10 +301,13 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
     blocks.push({ type: "checklist", items: node.checklist.map((i) => convertItem(i, report)) });
   }
   for (const section of checklistSectionsOf(node)) {
+    const subitems = Object.fromEntries(section.items.flatMap((item, index) => item?.subitems?.length
+      ? [[index, item.subitems.map(child => convertItem(child, report))]] : []));
     blocks.push({
-      type: "checklist",
+      type: Object.keys(subitems).length ? "list" : "checklist",
       title: section.title,
       items: section.items.map((item) => convertItem(item, report)),
+      ...(Object.keys(subitems).length ? { subitems } : {}),
     });
   }
   appendDetailEntries(afterChecklistDetailEntries);

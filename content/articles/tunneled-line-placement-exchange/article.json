@@ -366,6 +366,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/tunneled-dialysis-catheter-anatomy.png",
+              "alt": "Illustration of a tunneled dialysis catheter showing the subcutaneous tunnel, internal jugular access, central venous course, and right atrial tip.",
+              "caption": "Tunneled dialysis catheter anatomy schematic. Tip targets depend on catheter type; confirm the course and device-specific tip position on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [
@@ -460,7 +466,7 @@
               "items": [
                 [
                   {
-                    "strong": "Preserve access:"
+                    "strong": "1. Preserve access:"
                   },
                   " secure a wire centrally and free the cuff before removing the old catheter; evaluate the cause of malfunction, then confirm the replacement's position and function."
                 ]

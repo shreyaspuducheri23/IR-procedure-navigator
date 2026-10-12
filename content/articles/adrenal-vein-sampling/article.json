@@ -351,43 +351,43 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm the sampling plan:"
+                    "strong": "1. Confirm the sampling plan:"
                   },
                   " review venous imaging, cosyntropin timing, collection tubes, and the laboratory's labeling and rapid-cortisol workflow."
                 ],
                 [
                   {
-                    "strong": "Obtain venous access:"
+                    "strong": "2. Obtain venous access:"
                   },
                   " use ultrasound-guided femoral access and prepare the IVC/peripheral reference sampling route."
                 ],
                 [
                   {
-                    "strong": "Select the right adrenal vein:"
+                    "strong": "3. Select the right adrenal vein:"
                   },
                   " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy."
                 ],
                 [
                   {
-                    "strong": "Select the left adrenal vein:"
+                    "strong": "4. Select the left adrenal vein:"
                   },
                   " enter through the left renal vein and confirm the common adrenal-phrenic trunk."
                 ],
                 [
                   {
-                    "strong": "Collect matched samples:"
+                    "strong": "5. Collect matched samples:"
                   },
                   " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status."
                 ],
                 [
                   {
-                    "strong": "Confirm selectivity:"
+                    "strong": "6. Confirm selectivity:"
                   },
                   " use rapid cortisol when available and the index below; apply local criteria and resample if inadequate."
                 ],
                 [
                   {
-                    "strong": "Complete and hand off:"
+                    "strong": "7. Complete and hand off:"
                   },
                   " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation."
                 ]

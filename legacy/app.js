@@ -741,13 +741,13 @@ const hiddenProcedureTitles = new Set([
 const anticoagulationTableLink = { text: "Open anticoagulation table", href: "#anticoagulation-table" };
 
 const highRiskAnticoagRestartItems = [
-  "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
-  "IV unfractionated heparin: 6-8 hours after the procedure.",
-  "Enoxaparin: 12 hours after the procedure.",
-  "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
-  "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
-  "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
-  "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review.",
+  "Warfarin: 24 hours.",
+  "IV unfractionated heparin: 6-8 hours.",
+  "Enoxaparin: 12 hours.",
+  "DOACs: Typically 24 hours; confirm agent and renal function.",
+  "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+  "Aspirin: 24 hours.",
+  "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions.",
 ];
 
 const highRiskAnticoagHoldItems = [
@@ -1186,6 +1186,74 @@ updateThoracentesisOrders();
 installDvtThrombectomy();
 installPeThrombectomy();
 installHypogastricNerveBlock();
+standardizeHighRiskRestartGuidance();
+standardizeArterialAccessCare();
+numberProceduralSteps();
+
+function numberProceduralSteps() {
+  const supplementary = new Set([
+    "Sampling indices", "References", "Other locations", "Step 5: embolic selection",
+    "Specimen handling", "If for LUTS from BPH", "If for refractory hematuria of prostatic origin",
+    "If core biopsy is selected", "Match treatment to failure", "Nuclear medicine in plain language",
+    "Needs procedure-specific edit",
+  ]);
+  for (const procedure of procedures) {
+    for (const node of Object.values(procedure.nodes)) {
+      if (node.title !== "Procedural steps") continue;
+      for (const [title, items] of Object.entries(node.details || {})) {
+        if (supplementary.has(title)) continue;
+        node.details[title] = items.map((item, index) => {
+          const label = typeof item === "string" ? item : item.strong || item.text || "";
+          if (/^\d+[.)]\s/.test(label)) return item;
+          if (typeof item === "string") return `${index + 1}. ${item}`;
+          const key = item.strong ? "strong" : "text";
+          return { ...item, [key]: `${index + 1}. ${label}` };
+        });
+      }
+    }
+  }
+}
+
+function standardizeArterialAccessCare() {
+  const arterialIds = new Set([
+    "arteriogram", "genicular-artery-embolization", "hemorrhoid-artery-embolization",
+    "kidney-embolization", "prostate-artery-embolization", "pudendal-angiogram",
+    "transarterial-chemoembolization-tace", "uterine-fibroid-embolization-ufe",
+    "y90-radioembolization-mapping", "y90-radioembolization-therapy",
+    "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set",
+  ]);
+  for (const procedure of procedures) {
+    if (!arterialIds.has(procedure.id)) continue;
+    const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+    const access = post?.checklistSections?.find(section => section.title === "Access care");
+    if (!access) continue;
+    const textOf = item => typeof item === "string" ? item : `${item.strong || ""} ${item.text || ""}`;
+    const existing = access.items.map(textOf).join(" ");
+    const items = [];
+    if (/femoral/i.test(existing)) items.push({
+      strong: procedure.id.startsWith("catheter-directed-thrombolysis") ? "Femoral access (arterial cases):" : "Femoral access:",
+      text: " Bedrest 2 hours with closure device; 6 hours with manual compression.",
+    });
+    if (/radial/i.test(existing)) items.push({
+      strong: "Radial access:", text: "",
+      subitems: ["Remove radial artery compression device within 2 hours post procedure.", "Activity per JH-HLM mobility goal."],
+    });
+    access.items = [...items, ...access.items.filter(item => !/femoral|radial|JH-HLM/i.test(textOf(item)))];
+  }
+}
+
+function standardizeHighRiskRestartGuidance() {
+  procedures.filter(procedure => procedure.bleedRisk === "High").forEach(procedure => {
+    Object.values(procedure.nodes).forEach(node => {
+      if (node.title !== "Post-procedure") return;
+      (node.checklistSections || []).forEach(section => {
+        if (section.title === "Anticoagulation to resume") {
+          section.items = [...highRiskAnticoagRestartItems];
+        }
+      });
+    });
+  });
+}
 
 function installHypogastricNerveBlock() {
   const id = "superior-hypogastric-nerve-block";
@@ -1743,7 +1811,6 @@ function updateNephrostomyOrders() {
   const sections = find("Post-procedure").checklistSections;
   sections.find(section => section.title === "Drain care").items = [
     "Gravity drainage unless otherwise ordered.",
-    "Monitor output, urine color, fever, flank pain, and flush patency.",
     "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb.",
   ];
   const discharge = sections.find(section => section.title === "Discharge");
@@ -3406,6 +3473,15 @@ function installParacentesisEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/paracentesis-anatomy.png",
+        alt: "Abdominal overview showing ascites, bowel, bladder, rectus muscles, inferior epigastric vessels, and an illustrated left lower quadrant entry site.",
+        caption: "Paracentesis anatomy schematic. Select the entry site using patient-specific ultrasound rather than a fixed surface landmark.",
+      }, {
+        src: "images/paracentesis-cross-section.png",
+        alt: "Cross-sectional illustration showing an ultrasound probe and needle entering an ascites pocket through the abdominal wall, with adjacent bowel and bladder.",
+        caption: "Paracentesis cross-section schematic. Confirm the fluid pocket and needle path on patient-specific imaging.",
+      }],
       details: {
         Paracentesis: [
           { strong: "Ascites pocket:", text: " free fluid collects dependently in the lower abdomen and pelvis; choose a pocket with adequate depth and a short abdominal-wall path." },
@@ -3999,7 +4075,7 @@ function installNephrostomyEdits() {
         {
           title: "If outpatient",
           items: [
-            "Discharge order with medication reconciliation.",
+            "Discharge order with medication reconciliation - 30 minutes.",
             "After visit summary: .IRAVSPCN1.",
           ],
         },
@@ -4007,7 +4083,6 @@ function installNephrostomyEdits() {
       details: {
         "Drain care": [
           "Confirm tube is to gravity drainage unless the operator gives a different plan.",
-          "Track output, urine color, fever, flank pain, and ability to flush before discharge.",
           "Expect transient hematuria; escalate for heavy persistent bleeding, clots with obstruction, hypotension, or falling hemoglobin.",
         ],
         "Follow up": ["Routine exchange/check in 3 months unless infection, malfunction, or urology plan requires earlier follow-up."],
@@ -4017,6 +4092,11 @@ function installNephrostomyEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/nephrostomy-anatomy.png",
+        alt: "Illustration of nephrostomy access showing the kidney, collecting system, catheter, and adjacent pleura, liver, and colon.",
+        caption: "Nephrostomy access schematic. The Brodel's line label is misplaced on the body wall; see the anatomy text below. Confirm the tract and catheter position on patient-specific imaging.",
+      }],
       details: {
         "Nephrostomy tube placement": [
           { strong: "Collecting system:", text: " map the posterior calyces, renal pelvis, ureter, and level of obstruction." },
@@ -4969,6 +5049,11 @@ function installFistulogramEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/av-fistula-anatomy.png",
+        alt: "Illustration of a forearm arteriovenous fistula showing the brachial, radial, and ulnar arteries and venous access.",
+        caption: "Forearm AV fistula anatomy schematic, not a dialysis cannulation guide. Confirm access configuration and flow direction on patient-specific imaging.",
+      }],
       details: {
         Anatomy: [
           { strong: "The circuit:", text: " artery > anastomosis > fistula/graft > outflow veins > SVC." },
@@ -5173,6 +5258,11 @@ function installIvcFilterPlacementEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/ivc-filter-anatomy.png",
+        alt: "Illustration of an infrarenal IVC filter showing the renal veins, kidneys, common iliac veins, and a trapped clot.",
+        caption: "IVC filter anatomy schematic. Confirm renal vein entry sites, caval anatomy, and filter position on patient-specific imaging.",
+      }],
       details: { Anatomy: [
         { strong: "Infrarenal IVC:", text: " the usual landing zone lies below the lowest renal vein and above the iliac confluence." },
         { strong: "Renal veins:", text: " identify their actual entry sites, including accessory veins; do not rely on vertebral level alone." },
@@ -6022,6 +6112,11 @@ function installPiccPlacementEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/picc-anatomy.png",
+        alt: "Illustration of a PICC coursing from an arm vein through the central veins into the superior vena cava.",
+        caption: "PICC venous course schematic. Confirm the access vein, central course, and tip position on patient-specific imaging.",
+      }],
       details: {
         "PICC placement": [
           { strong: "Upper-arm veins:", text: " assess the basilic, paired brachial, and cephalic veins; choose a patent vein large enough for the smallest suitable catheter." },
@@ -6195,6 +6290,11 @@ function installTunneledLineEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/tunneled-dialysis-catheter-anatomy.png",
+        alt: "Illustration of a tunneled dialysis catheter showing the subcutaneous tunnel, internal jugular access, central venous course, and right atrial tip.",
+        caption: "Tunneled dialysis catheter anatomy schematic. Tip targets depend on catheter type; confirm the course and device-specific tip position on patient-specific imaging.",
+      }],
       details: { Anatomy: [
         { strong: "Right internal jugular:", text: " often provides the most direct central route; map the vein and adjacent carotid with ultrasound." },
         { strong: "Central veins:", text: " assess brachiocephalic/SVC patency and prior devices; preserve future dialysis access when selecting the site." },
@@ -6424,7 +6524,7 @@ function installLungBiopsyEdits() {
         {
           title: "If outpatient procedure",
           items: [
-            "Discharge order with medication reconciliation.",
+            "Discharge order with medication reconciliation - 3 hours.",
             "After visit summary: .IRAVSLUNGBX.",
           ],
         },
@@ -6662,7 +6762,7 @@ function installForeignBodyRemovalEdits() {
         {
           title: "If outpatient procedure",
           items: [
-            "Discharge order with medication reconciliation.",
+            "Discharge order with medication reconciliation - immediate.",
             "After visit summary: .IRAVSFOREIGNBODYREMOVAL.",
           ],
         },
@@ -6913,7 +7013,7 @@ function installHemorrhoidArteryEmbolizationEdits() {
         {
           title: "If outpatient procedure",
           items: [
-            "Discharge order with medication reconciliation.",
+            "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSHEMORRHOID.",
           ],
         },
@@ -7058,6 +7158,11 @@ function installPortPlacementEdits() {
     },
     [`${id}-intra-v2-anatomy`]: {
       title: "Anatomy", type: "reference", summary: "",
+      images: [{
+        src: "images/port-anatomy.png",
+        alt: "Illustration of a chest port showing the subcutaneous reservoir and tunnel, internal jugular vein, central venous course, and catheter tip.",
+        caption: "Chest port anatomy schematic. Confirm venous anatomy, catheter course, and tip position on patient-specific imaging.",
+      }],
       details: { Anatomy: [
         { strong: "Internal jugular vein:", text: " commonly used for chest ports; map its relationship to the carotid with ultrasound." },
         { strong: "Central venous route:", text: " confirm a patent path through the brachiocephalic vein into the SVC." },
@@ -7816,6 +7921,11 @@ function installTipsCreationEdits() {
       title: "Anatomy",
       type: "reference",
       summary: "",
+      images: [{
+        src: "images/tips-anatomy.png",
+        alt: "TIPS schematic showing hepatic and portal veins, portal confluence, and a stent connecting a right portal branch to the right hepatic vein.",
+        caption: "TIPS anatomy schematic. The access route is simplified and omits the right atrium; see the complete route below. Confirm anatomy and stent position on patient-specific imaging.",
+      }],
       details: {
         "TIPS creation": [
           { strong: "Access route:", text: " right IJ to SVC, right atrium, IVC, then hepatic vein; usually the right hepatic vein." },

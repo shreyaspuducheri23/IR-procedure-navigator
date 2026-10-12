@@ -273,6 +273,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/ivc-filter-anatomy.png",
+              "alt": "Illustration of an infrarenal IVC filter showing the renal veins, kidneys, common iliac veins, and a trapped clot.",
+              "caption": "IVC filter anatomy schematic. Confirm renal vein entry sites, caval anatomy, and filter position on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [

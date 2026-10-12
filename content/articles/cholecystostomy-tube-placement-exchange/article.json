@@ -485,12 +485,13 @@
           "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
-            "Warfarin: resume the day after the procedure.",
-            "IV unfractionated heparin: restart after 6-8 hours.",
-            "Enoxaparin: restart after 12 hours.",
-            "DOACs: Table 6 generally lists 24 hours; confirm agent, renal function, and local policy.",
-            "Clopidogrel: restart after 6 hours at 75 mg or 24 hours if using a 300-600-mg loading dose.",
-            "Aspirin: resume the day after the procedure."
+            "Warfarin: 24 hours.",
+            "IV unfractionated heparin: 6-8 hours.",
+            "Enoxaparin: 12 hours.",
+            "DOACs: Typically 24 hours; confirm agent and renal function.",
+            "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+            "Aspirin: 24 hours.",
+            "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
           ]
         },
         {

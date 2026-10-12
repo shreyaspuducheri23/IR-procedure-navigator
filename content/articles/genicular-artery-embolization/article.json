@@ -304,7 +304,12 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "FEMORAL: bedrest, 2-6 hours LE extended"
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest 2 hours with closure device; 6 hours with manual compression."
+            ]
           ]
         },
         {

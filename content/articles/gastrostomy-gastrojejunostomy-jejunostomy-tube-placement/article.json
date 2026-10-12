@@ -522,13 +522,13 @@
           "type": "checklist",
           "title": "Anticoagulation to resume",
           "items": [
-            "Warfarin: resume the day after the procedure; bridging requires individualized multidisciplinary planning.",
-            "IV unfractionated heparin: 6-8 hours after the procedure.",
-            "Enoxaparin: 12 hours after the procedure.",
-            "Apixaban, rivaroxaban, dabigatran, and edoxaban: Table 6 lists 24 hours; confirm renal function and local policy before restarting.",
-            "Clopidogrel: 6 hours after the procedure for a 75-mg dose or 24 hours for a 300-600-mg loading dose.",
-            "Ticagrelor, prasugrel, and aspirin: resume the day after the procedure.",
-            "Restart only after procedural bleeding risk is controlled; traumatic, neuraxial, multi-agent, and high-thrombosis-risk cases need individualized review."
+            "Warfarin: 24 hours.",
+            "IV unfractionated heparin: 6-8 hours.",
+            "Enoxaparin: 12 hours.",
+            "DOACs: Typically 24 hours; confirm agent and renal function.",
+            "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+            "Aspirin: 24 hours.",
+            "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
           ]
         },
         {

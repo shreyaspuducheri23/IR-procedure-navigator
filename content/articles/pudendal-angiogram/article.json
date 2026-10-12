@@ -302,13 +302,28 @@
           ]
         },
         {
-          "type": "checklist",
+          "type": "list",
           "title": "Access care",
           "items": [
-            "FEMORAL: Bedrest, 2-6 hours LE extended",
-            "RADIAL: Activity per JH-HLM mobility goal.",
-            "Remove radial artery compression device"
-          ]
+            [
+              {
+                "strong": "Femoral access:"
+              },
+              " Bedrest 2 hours with closure device; 6 hours with manual compression."
+            ],
+            [
+              {
+                "strong": "Radial access:"
+              },
+              ""
+            ]
+          ],
+          "subitems": {
+            "1": [
+              "Remove radial artery compression device within 2 hours post procedure.",
+              "Activity per JH-HLM mobility goal."
+            ]
+          }
         },
         {
           "type": "checklist",

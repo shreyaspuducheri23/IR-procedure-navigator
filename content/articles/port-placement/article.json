@@ -306,6 +306,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/port-anatomy.png",
+              "alt": "Illustration of a chest port showing the subcutaneous reservoir and tunnel, internal jugular vein, central venous course, and catheter tip.",
+              "caption": "Chest port anatomy schematic. Confirm venous anatomy, catheter course, and tip position on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [

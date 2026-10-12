@@ -297,6 +297,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/picc-anatomy.png",
+              "alt": "Illustration of a PICC coursing from an arm vein through the central veins into the superior vena cava.",
+              "caption": "PICC venous course schematic. Confirm the access vein, central course, and tip position on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "PICC placement"
             },
@@ -350,43 +356,43 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm the device plan:"
+                    "strong": "1. Confirm the device plan:"
                   },
                   " indication, duration, required lumens, catheter size, and preferred arm."
                 ],
                 [
                   {
-                    "strong": "Survey the veins:"
+                    "strong": "2. Survey the veins:"
                   },
                   " use ultrasound to confirm patency, size, depth, and separation from the artery and nerve."
                 ],
                 [
                   {
-                    "strong": "Prep with full barrier:"
+                    "strong": "3. Prep with full barrier:"
                   },
                   " maintain maximal sterile technique and anesthetize the selected site."
                 ],
                 [
                   {
-                    "strong": "Obtain venous access:"
+                    "strong": "4. Obtain venous access:"
                   },
                   " puncture with real-time ultrasound, pass the wire gently, and confirm its central course."
                 ],
                 [
                   {
-                    "strong": "Advance the catheter:"
+                    "strong": "5. Advance the catheter:"
                   },
                   " measure the required length and guide the catheter centrally with fluoroscopy, ECG, or approved tip-navigation technology."
                 ],
                 [
                   {
-                    "strong": "Confirm function and tip:"
+                    "strong": "6. Confirm function and tip:"
                   },
                   " verify lower-SVC/cavoatrial position, then aspirate and flush every lumen."
                 ],
                 [
                   {
-                    "strong": "Secure and document:"
+                    "strong": "7. Secure and document:"
                   },
                   " apply the stabilization device and sterile dressing; record vein, length, tip position, and readiness for use."
                 ]

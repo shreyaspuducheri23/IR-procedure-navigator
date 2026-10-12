@@ -5,6 +5,54 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('procedural sequences are numbered without numbering supporting reference bullets', () => {
+  const all = captureLegacyState().procedures;
+  for (const p of all) {
+    const node = Object.values(p.nodes).find(n => n.title === 'Procedural steps');
+    if (!node?.details) continue;
+    const [title, items] = Object.entries(node.details)[0];
+    if (title === 'Needs procedure-specific edit') continue;
+    items.forEach((item, i) => assert.match(typeof item === 'string' ? item : item.strong || item.text, new RegExp(`^${i + 1}\\. `), p.id));
+  }
+  const avs = Object.values(all.find(p => p.id === 'adrenal-vein-sampling').nodes).find(n => n.title === 'Procedural steps');
+  assert.equal(avs.details['Sampling indices'][0].strong, 'Selectivity index (SI):');
+});
+test('arterial access care preserves available routes and nests radial instructions', () => {
+  const all = captureLegacyState().procedures;
+  const access = id => Object.values(all.find(p => p.id === id).nodes).find(n => n.title === 'Post-procedure').checklistSections.find(s => s.title === 'Access care');
+  const femoralOnly = access('genicular-artery-embolization');
+  assert.equal(femoralOnly.items.length, 1);
+  assert.equal(femoralOnly.items[0].text, ' Bedrest 2 hours with closure device; 6 hours with manual compression.');
+  const both = access('hemorrhoid-artery-embolization');
+  assert.deepEqual(both.items[1].subitems, ['Remove radial artery compression device within 2 hours post procedure.', 'Activity per JH-HLM mobility goal.']);
+  const article = convert(all.find(p => p.id === 'hemorrhoid-artery-embolization'));
+  assert.ok(articleSchema.safeParse(article).success);
+  assert.match(JSON.stringify(article), /"subitems":/);
+  assert.match(JSON.stringify(access('dvt-thrombectomy')), /flat\/extended for 2 hours/);
+  assert.doesNotMatch(JSON.stringify(access('transjugular-intrahepatic-portosystemic-shunt-creation-tips')), /manual compression|Radial/);
+});
+test('high-risk postprocedure restart lists use consistent medication timing', () => {
+  const expected = [
+    'Warfarin: 24 hours.',
+    'IV unfractionated heparin: 6-8 hours.',
+    'Enoxaparin: 12 hours.',
+    'DOACs: Typically 24 hours; confirm agent and renal function.',
+    'Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.',
+    'Aspirin: 24 hours.',
+    'Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions.',
+  ];
+  let count = 0;
+  for (const p of captureLegacyState().procedures.filter(p => p.bleedRisk === 'High')) {
+    for (const node of Object.values(p.nodes).filter(n => n.title === 'Post-procedure')) {
+      for (const section of node.checklistSections || []) {
+        if (section.title !== 'Anticoagulation to resume') continue;
+        assert.deepEqual(section.items, expected, p.id);
+        count++;
+      }
+    }
+  }
+  assert.ok(count > 10);
+});
 test('hypogastric block uses deep-block precautions and UFE recovery without separate discharge', () => {
   const p = captureLegacyState().procedures.find(p => p.id === 'superior-hypogastric-nerve-block');
   const find = title => Object.values(p.nodes).find(n => n.title === title);
@@ -76,7 +124,7 @@ test('lung biopsy orders and outpatient discharge remain grouped', () => {
   const nodes = Object.values(p.nodes);
   assert.ok(nodes.find(n => n.title === 'Pre-procedure orders').details['Routine orders'].includes('INR and CBC within 30 days.'));
   const discharge = nodes.find(n => n.title === 'Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient');
-  assert.deepEqual(discharge.items, ['After 2nd CXR: regular diet and discharge.', 'Discharge order with medication reconciliation.', 'After visit summary: .IRAVSLUNGBX.']);
+  assert.deepEqual(discharge.items, ['After 2nd CXR: regular diet and discharge.', 'Discharge order with medication reconciliation - 3 hours.', 'After visit summary: .IRAVSLUNGBX.']);
 });
 test('low-risk anticoagulation uses a shared layout and preserves exceptions', () => {
   const all = captureLegacyState().procedures;

@@ -288,6 +288,18 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/paracentesis-anatomy.png",
+              "alt": "Abdominal overview showing ascites, bowel, bladder, rectus muscles, inferior epigastric vessels, and an illustrated left lower quadrant entry site.",
+              "caption": "Paracentesis anatomy schematic. Select the entry site using patient-specific ultrasound rather than a fixed surface landmark."
+            },
+            {
+              "type": "image",
+              "src": "images/paracentesis-cross-section.png",
+              "alt": "Cross-sectional illustration showing an ultrasound probe and needle entering an ascites pocket through the abdominal wall, with adjacent bowel and bladder.",
+              "caption": "Paracentesis cross-section schematic. Confirm the fluid pocket and needle path on patient-specific imaging."
+            },
+            {
               "type": "heading",
               "text": "Paracentesis"
             },
@@ -341,43 +353,43 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm the plan:"
+                    "strong": "1. Confirm the plan:"
                   },
                   " diagnostic versus therapeutic drainage, requested studies, and the intended volume."
                 ],
                 [
                   {
-                    "strong": "Find the pocket:"
+                    "strong": "2. Find the pocket:"
                   },
                   " use ultrasound in multiple planes to assess fluid depth, abdominal-wall thickness, and nearby organs."
                 ],
                 [
                   {
-                    "strong": "Check the tract:"
+                    "strong": "3. Check the tract:"
                   },
                   " apply color Doppler and select a site without abdominal-wall vessels."
                 ],
                 [
                   {
-                    "strong": "Prep and anesthetize:"
+                    "strong": "4. Prep and anesthetize:"
                   },
                   " maintain the mapped position and anesthetize through the abdominal wall to the peritoneum."
                 ],
                 [
                   {
-                    "strong": "Enter the fluid:"
+                    "strong": "5. Enter the fluid:"
                   },
                   " use real-time ultrasound for a small or difficult pocket, confirm free return, and advance the catheter without forcing it."
                 ],
                 [
                   {
-                    "strong": "Collect and drain:"
+                    "strong": "6. Collect and drain:"
                   },
                   " fill the requested specimen tubes first, then drain while monitoring pain, flow, and hemodynamics."
                 ],
                 [
                   {
-                    "strong": "Finish and replace albumin:"
+                    "strong": "7. Finish and replace albumin:"
                   },
                   " remove the catheter, dress the site, and document volume/appearance. For cirrhotic ascites with >5 L removed, give IV albumin 6-8 g per liter of total fluid removed per local protocol."
                 ]

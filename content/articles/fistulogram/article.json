@@ -313,6 +313,12 @@
           "title": "Anatomy",
           "blocks": [
             {
+              "type": "image",
+              "src": "images/av-fistula-anatomy.png",
+              "alt": "Illustration of a forearm arteriovenous fistula showing the brachial, radial, and ulnar arteries and venous access.",
+              "caption": "Forearm AV fistula anatomy schematic, not a dialysis cannulation guide. Confirm access configuration and flow direction on patient-specific imaging."
+            },
+            {
               "type": "list",
               "items": [
                 [
