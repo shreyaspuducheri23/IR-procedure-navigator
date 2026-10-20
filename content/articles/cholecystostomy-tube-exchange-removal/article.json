@@ -159,7 +159,8 @@
             {
               "type": "list",
               "items": [
-                "No routine pre-procedure labs required for uncomplicated mature-tract exchange/removal; obtain only if clinically indicated."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -220,9 +221,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " exchange versus removal; establish whether drainage is still needed."
+                  ""
                 ],
                 [
                   {
@@ -275,7 +276,7 @@
             {
               "type": "list",
               "items": [
-                "Cholecystostomy Tube Placement/Exchange"
+                "Cholecystostomy Tube Exchange/Removal"
               ]
             },
             {
@@ -455,8 +456,8 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge when clinically appropriate with medication reconciliation.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            "Discharge order with medication reconciliation - when clinically appropriate.",
+            "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1."
           ]
         },
         {

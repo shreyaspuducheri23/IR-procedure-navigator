@@ -164,7 +164,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
                 "INR and CBC within 30 days."
@@ -206,15 +206,15 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " side, and intended nephrostomy tube endpoint."
+                  ""
                 ],
                 [
                   {
-                    "strong": "Review CT/US for hydronephrosis, collecting system target, stone/mass level, and safe posterior calyx access."
+                    "strong": "Review imaging:"
                   },
-                  ""
+                  " CT/US for hydronephrosis, collecting-system target, obstruction level, and a safe posterior calyx access window."
                 ],
                 [
                   {
@@ -227,12 +227,6 @@
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
-                ],
-                [
-                  {
-                    "strong": "Appropriate percutaneous access window"
-                  },
-                  "."
                 ],
                 [
                   {
@@ -506,7 +500,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
             "Drain flush: 10 mL BID while admitted, 10 mL daily while outpatient."

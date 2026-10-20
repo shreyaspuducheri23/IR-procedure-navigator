@@ -165,7 +165,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "Antibiotics with gram negative coverage are ordered."
               ]
@@ -667,7 +667,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
             "Pigtail drain - flush orders 10 mL daily."
@@ -691,7 +691,7 @@
           "title": "Discharge - if outpatient exchange/conversion",
           "items": [
             "Discharge order with medication reconciliation - 30 minutes.",
-            "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."
+            "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1."
           ]
         },
         {

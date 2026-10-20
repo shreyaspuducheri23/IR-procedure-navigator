@@ -1186,9 +1186,342 @@ updateThoracentesisOrders();
 installDvtThrombectomy();
 installPeThrombectomy();
 installHypogastricNerveBlock();
+installArteriogramEmbolization();
 standardizeHighRiskRestartGuidance();
 standardizeArterialAccessCare();
 numberProceduralSteps();
+standardizeLowRiskLabs();
+consolidatePaeDischargeMedications();
+finishProcedureFormatting();
+standardizeChecklistIndicationAndNephrostomyImaging();
+applyApprovedOrderDocumentCorrections();
+applyFinalizedNursingOrderCorrections();
+
+function applyFinalizedNursingOrderCorrections() {
+  const find = (procedure, title) => Object.values(procedure.nodes).find(node => node.title === title);
+  const leftArmRestricted = new Set(["arteriogram", "hemorrhoid-artery-embolization", "prostate-artery-embolization", "kidney-embolization", "pudendal-angiogram", "transarterial-chemoembolization-tace", "uterine-fibroid-embolization-ufe", "y90-radioembolization-mapping", "y90-radioembolization-therapy"]);
+  const pulseChecks = new Set(["arteriogram", "hemorrhoid-artery-embolization", "prostate-artery-embolization", "y90-radioembolization-mapping", "y90-radioembolization-therapy"]);
+  const timedAngio = new Set([...pulseChecks, "uterine-fibroid-embolization-ufe"]);
+  const textOf = item => typeof item === "string" ? item : `${item.strong || ""} ${item.text || ""}`;
+  const diet = "Outpatient: order regular diet. Inpatient: notify primary team diet is okay.";
+  const dietItem = item => {
+    if (typeof item !== "string") return item;
+    if (/^Regular diet[.]?$/i.test(item)) return `Diet - ${diet}`;
+    if (/^Regular diet if no further intervention is planned\./i.test(item)) return `Diet - if no further intervention is planned: ${diet}`;
+    if (/^Diet per UFE plan; regular diet/i.test(item)) return `Diet per UFE plan. If no further intervention is planned: ${diet}`;
+    if (/^Regular diet - tube feeds\./i.test(item)) return "Diet - Outpatient: order tube feeds. Inpatient: notify primary team feeds are okay.";
+    if (/^After 2nd CXR: regular diet and discharge\./i.test(item)) return `After 2nd CXR: ${diet} Discharge after clearance.`;
+    if (/^After 1st CXR: clear liquids\./i.test(item)) return "After 1st CXR - Outpatient: order clear liquids. Inpatient: notify primary team clear liquids are okay.";
+    if (/^Feeding tube: PEG and G Tube diet\./i.test(item)) return "After IR clearance - Outpatient: order tube feeds. Inpatient: notify primary team feeds are okay.";
+    return item;
+  };
+  for (const procedure of procedures) {
+    if (/^(PDF-derived|Future edit placeholder)/i.test(procedure.summary || "") || hiddenProcedureTitles.has(procedure.title)) continue;
+    const orders = find(procedure, "Pre-procedure orders");
+    if (!orders) continue;
+    const visitOrders = node => {
+      const map = item => {
+        if (typeof item === "string" && !leftArmRestricted.has(procedure.id)) return item.replace("PIV placement (not left arm).", "PIV placement.");
+        return item;
+      };
+      for (const entries of Object.values(node.details || {})) {
+        for (let i = 0; i < entries.length; i++) entries[i] = map(entries[i]);
+      }
+      for (const section of node.checklistSections || []) section.items = section.items.map(map);
+      for (const id of node.children || []) if (procedure.nodes[id]) visitOrders(procedure.nodes[id]);
+    };
+    visitOrders(orders);
+    if (pulseChecks.has(procedure.id)) {
+      const key = procedure.title === "Prostate Artery Embolization" ? "LUTS from BPH - routine orders (day of)" : "Routine orders";
+      orders.details[key].push("Pulse checks.");
+      if (procedure.title === "Prostate Artery Embolization") orders.details["Refractory hematuria - routine orders"].push("Pulse checks.");
+    }
+    if (procedure.title === "Celiac Plexus Block/Neurolysis") orders.details["Routine orders"].push("CBC and INR within 30 days.");
+    if (procedure.title === "Port Placement") {
+      orders.details["Routine orders"] = orders.details["Routine orders"].map(item => item === "INR and CBC within 30 days."
+        ? "INR and CBC within 30 days; CBC with differential if on active chemotherapy." : item);
+    }
+    const post = find(procedure, "Post-procedure");
+    if (!post) continue;
+    const routine = post.checklistSections.find(section => section.title === "Routine orders");
+    if (["Y90 Radioembolization Mapping", "Transjugular Intrahepatic Portosystemic Shunt Check/Revision (TIPS)"].includes(procedure.title)) routine.items.push("Monitor color of access site.");
+    if (procedure.title === "Inferior Vena Cava Filter Removal") {
+      const beforeDischarge = post.checklistSections.findIndex(section => /^Discharge/.test(section.title));
+      post.checklistSections.splice(beforeDischarge, 0, { title: "Access care", items: ["Elevate HOB >45 degrees for recovery."] });
+    }
+    if (timedAngio.has(procedure.id)) {
+      routine.items = routine.items.filter(item => !/Vital signs/i.test(textOf(item)));
+      routine.items.push("Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.");
+    }
+    if (procedure.title === "Thoracentesis") {
+      routine.items = routine.items.map(item => item === "CXR STAT." ? "CXR STAT if ordered by MD."
+        : item === "NPO until CXR, then regular diet." ? `If CXR is ordered: NPO until CXR is cleared by MD. Once cleared, or if no CXR is ordered: ${diet}` : item);
+    }
+    for (const section of post.checklistSections) section.items = section.items.map(dietItem);
+  }
+}
+
+function applyApprovedOrderDocumentCorrections() {
+  const find = (procedure, title) => Object.values(procedure.nodes).find(node => node.title === title);
+  for (const procedure of procedures) {
+    for (const node of Object.values(procedure.nodes)) {
+      const replaceAvs = item => {
+        if (typeof item === "string") return item.replace(/\.IRCHOLETUBEBILIARYDRAIN1\b/g, ".IRAVSCHOLETUBEORBILIARYDRAIN1").replace(/\.AVSTIPS\b/g, ".IRAVSTIPS");
+        if (!item || typeof item !== "object") return item;
+        return { ...item, ...(item.text ? { text: replaceAvs(item.text) } : {}),
+          ...(item.subitems ? { subitems: item.subitems.map(replaceAvs) } : {}) };
+      };
+      for (const key of ["details", "afterChecklistDetails"]) {
+        if (node[key]) node[key] = Object.fromEntries(Object.entries(node[key]).map(([title, items]) => [title, items.map(replaceAvs)]));
+      }
+      for (const section of node.checklistSections || []) section.items = section.items.map(replaceAvs);
+    }
+    if (procedure.title === "Prostate Artery Embolization") {
+      const discharge = find(procedure, "Post-procedure").checklistSections.find(section => section.title === "Discharge");
+      for (const item of discharge.items) {
+        if (item.subitems) item.subitems = item.subitems.map(text => text.replace("Toradol for pain PRN; not routine.", "Tramadol for pain PRN; not routine."));
+      }
+    }
+    if (procedure.title === "Y90 Radioembolization Therapy") {
+      find(procedure, "Pre-procedure orders").details["Routine orders"].push(
+        "Dexamethasone 8 mg IV.", "Ondansetron (Zofran) 4 mg IV.", "Famotidine (Pepcid) 20 mg PO.",
+        "Cefazolin (Ancef) 2 g if <120 kg, 3 g if >120 kg.", "Metronidazole (Flagyl) 500 mg IV.",
+        "Separate radiation consent completed by attending.",
+      );
+      const checklist = find(procedure, "Checklist");
+      const checks = checklist.details?.Checklist || checklist.checklistSections[0].items;
+      checks.push({ strong: "Confirm radiation consent:", text: " separate consent completed by attending." });
+    }
+    if (procedure.title === "Kidney Biopsy") {
+      find(procedure, "Pre-procedure orders").details["Routine orders"].push("If BUN > 50, give DDAVP per attending/local protocol.");
+    }
+    if (/^Transjugular Intrahepatic Portosystemic Shunt/.test(procedure.title)) {
+      const orders = find(procedure, "Pre-procedure orders").details["Routine orders"];
+      const labs = /^(?:CBC\.|INR\.|CMP\.|CMP: bilirubin and creatinine\.)$/;
+      const first = orders.findIndex(item => typeof item === "string" && labs.test(item));
+      const retained = orders.filter(item => typeof item !== "string" || !labs.test(item));
+      retained.splice(first < 0 ? retained.length : first, 0, "CBC, INR, and CMP on day of procedure.");
+      find(procedure, "Pre-procedure orders").details["Routine orders"] = retained;
+    }
+    if (procedure.title === "Uterine Fibroid Embolization (UFE)") {
+      find(procedure, "Post-procedure").checklistSections.find(section => section.title === "Follow up").items.push("MRI in 3 months.");
+    }
+    if (procedure.title === "Liver Biopsy/Fiducial Placement (Percutaneous)") {
+      const routine = find(procedure, "Post-procedure").checklistSections.find(section => section.title === "Routine orders");
+      routine.items = routine.items.map(item => typeof item === "string" && /^Vital signs/.test(item)
+        ? "Vital signs every 15 minutes x 4, then every 30 minutes x 1." : item);
+    }
+    if (procedure.title === "Lung Biopsy/Fiducial Marker Placement") {
+      const routine = find(procedure, "Post-procedure").checklistSections.find(section => section.title === "Routine orders");
+      routine.items = routine.items.filter(item => item !== "Regular diet.");
+    }
+  }
+}
+
+function installArteriogramEmbolization() {
+  const procedure = procedures.find(p => p.id === "arteriogram");
+  const id = procedure.id;
+  const title = "Arteriogram with Possible Embolization";
+  const nodes = {};
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const add = (key, title, details, type = "reference") => {
+    nodes[`${id}-${key}`] = { title, type, summary: "", details };
+  };
+  nodes[`${id}-root`] = { title, type: "overview", children: ["pre", "intra", "post"].map(key => `${id}-${key}`) };
+  nodes[`${id}-pre`] = { title: "Pre-procedure", type: "reference", children:
+    ["indication", "anticoagulation", "labs", "orders", "sedation", "checklist", "consent"].map(key => `${id}-${key}`) };
+  add("indication", "Indication", { Indications: [
+    "Traumatic arterial bleeding with instability or ongoing transfusion needs.",
+    "Persistent/recurrent GI bleeding after failed or infeasible endoscopy.",
+    "Active arterial bleeding or symptomatic pseudoaneurysm.",
+  ] });
+  add("contraindications", "Contraindications", { Contraindications: [
+    "No safe arterial access or catheter route (relative).",
+    "Uncorrectable coagulopathy or severe contrast reaction requires individualized planning; weigh against hemorrhage urgency.",
+    "No safe embolization target or unacceptable risk to essential organ/bowel perfusion.",
+    "A source requiring immediate surgery or another treatment: coordinate the appropriate pathway.",
+  ] }, "caution");
+  nodes[`${id}-indication`].children = [`${id}-contraindications`];
+  add("anticoagulation", "Anticoagulation", { Anticoagulation: [
+    "High bleeding risk.",
+    "Anticoagulation should already be held for active bleeding; confirm last doses and any reversal given.",
+    anticoagulationTableLink,
+  ], Hold: [...highRiskAnticoagHoldItems], Caveat: [
+    "Active major hemorrhage: review last doses and reversal with the treating team; elective hold intervals must not delay life-saving source control.",
+  ] }, "caution");
+  add("labs", "Labs", { Labs: ["INR < 1.5-1.8.", "Platelets >50,000/µL."] });
+  add("orders", "Pre-procedure orders", { "Routine orders": [
+    "NPO (if moderate sedation).", "Vital signs per routine.", "PIV placement (not left arm).", "Glucose POC.",
+    "Most recent CBC, INR, and CMP.",
+    "Type and screen.",
+  ] });
+  add("sedation", "Sedation", { Sedation: [
+    point("Preferred", "moderate sedation."),
+    point("Alternative", "general anesthesia in selected patients; rarely required."),
+    { text: "Can tolerate moderate sedation", href: "#moderate-sedation-checklist" },
+  ] });
+  add("checklist", "Checklist", { Checklist: [
+    { strong: "Confirm indication.", text: "" },
+    point("Review imaging", "CTA/endoscopic localization, bleeding territory, variant branches, and collateral supply."),
+    point("Verify labs", "confirm results meet procedure-specific requirements when indicated; see the Labs tab."),
+    point("Review anticoagulation", "confirm the hold/reversal plan, last doses, and active bleeding status."),
+    point("Confirm clinical status", "hemodynamics, transfusion needs, resuscitation, and surgical/primary-team coordination."),
+    point("Confirm access plan", "femoral versus radial route, vessel patency, and baseline distal perfusion."),
+    point("Confirm sedation plan", "review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."),
+    point("Confirm contrast and renal plan", "allergies, renal function, and anticipated contrast burden."),
+    point("Confirm consent", "angiography, possible embolization, and procedure-specific risks."),
+  ] });
+  add("consent", "Consent", { Procedure: [title], "Common risks": ["Bleeding.", "Infection.", "Damage to nearby structures."], "Procedure-specific risks": [
+    "Vessel injury, including dissection or rupture.", "Nontarget embolization and organ/tissue ischemia; bowel ischemia in GI cases.",
+    "Persistent or recurrent bleeding requiring repeat embolization or surgery.",
+  ] });
+  nodes[`${id}-intra`] = { title: "Intraprocedure", type: "reference", children: ["anatomy", "steps", "pitfalls"].map(key => `${id}-${key}`) };
+  add("anatomy", "Anatomy", { Anatomy: [
+    point("Celiac trunk", "left gastric, splenic, and common hepatic branches supply the foregut. The gastroduodenal artery (GDA) usually arises from the common hepatic artery."),
+    point("SMA", "inferior pancreaticoduodenal, jejunal/ileal, ileocolic, right colic (variable), and middle colic branches supply distal duodenum through proximal two-thirds of transverse colon."),
+    point("IMA", "left colic, sigmoid, and superior rectal branches supply distal transverse/descending colon, sigmoid, and upper rectum."),
+    point("Collateral pathways", "pancreaticoduodenal arcades connect celiac and SMA territories; marginal colonic arteries connect SMA and IMA. Prior surgery can alter these routes."),
+    point("Variants and other territories", "map replaced/accessory hepatic arteries. Trauma targets may involve splenic, renal, pelvic/internal iliac, or chest-wall branches rather than GI vessels."),
+    point("Access anatomy", "femoral puncture should permit compression over the femoral head; radial access requires an appropriate artery and a patent route to the target."),
+  ] });
+  add("steps", "Procedural steps", { "Basic steps": [
+    point("1. Plan the target", "localize bleeding and review variants/collaterals."),
+    point("2. Obtain arterial access", "use ultrasound-guided femoral or radial access; place the sheath."),
+    point("3. Select the territory", "perform angiography to identify extravasation or pseudoaneurysm."),
+    point("4. Superselect the branch", "advance the microcatheter; confirm the target and branches to preserve."),
+    point("5. Choose the embolic", "coils, gelatin, particles, or liquid agent according to target and flow."),
+    point("6. Embolize", "watch for reflux, catheter movement, and nontarget filling."),
+    point("7. Recheck angiography", "confirm hemostasis, assess collateral filling, and preserve uninvolved perfusion."),
+    point("8. Finish", "obtain access hemostasis and document the treatment and handoff."),
+  ] });
+  add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
+    point("Negative angiogram", "bleeding may be intermittent or obscured by vasospasm; correlate CTA/endoscopy and discuss a targeted plan rather than indiscriminate embolization."),
+    point("Reflux or catheter kickback", "recheck the tip before delivery; stop injection if reflux or nontarget filling appears."),
+    point("Bowel/organ ischemia", "keep treatment selective, preserve collaterals, and account for prior surgery, radiation, or poor baseline perfusion."),
+    point("Backdoor bleeding", "collaterals can refill the lesion; assess relevant inflow/outflow, especially GDA/pancreaticoduodenal pathways."),
+    point("Vessel injury", "avoid forceful wire advancement, wedged injections, and unnecessary manipulation; reassess new dissection or extravasation."),
+    point("Access or recurrent bleeding", "check access-site swelling and distal perfusion; persistent instability needs prompt reassessment even after an angiographic endpoint."),
+  ], References: [
+    { text: "CIRSE Clinical Practice Manual", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8382634/" },
+    { text: "Angiographic evaluation and management of acute GI hemorrhage", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3309908/" },
+    { text: "Upper GI embolization: ischemia and collateral supply", href: "https://pubmed.ncbi.nlm.nih.gov/31123376/" },
+  ] }, "caution");
+  nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", summary: "", checklistSections: [
+    { title: "Routine orders", items: ["Regular diet.", "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours.", "Tylenol 650 mg PRN.", "Monitor color of access site."] },
+    { title: "Access care", items: ["Femoral access.", "Radial access."] },
+    { title: "Anticoagulation to resume", items: [...highRiskAnticoagRestartItems] },
+    { title: "Discharge", items: ["Discharge order with medication reconciliation - 2-6 hours.", "After visit summary: .IRAVSARTERIOGRAM."] },
+    { title: "Follow up", items: ["See patient PPD1 if admitted."] },
+  ] };
+  Object.assign(procedure, { title, bleedRisk: "High", keywords: "arteriogram angiography embolization hemorrhage trauma gastrointestinal gi bleeding celiac sma ima", summary: "Arteriography with possible embolization for arterial hemorrhage, including trauma and GI bleeding.", root: `${id}-root`, nodes });
+}
+
+function standardizeChecklistIndicationAndNephrostomyImaging() {
+  for (const procedure of procedures) {
+    for (const node of Object.values(procedure.nodes)) {
+      if (node.title !== "Checklist") continue;
+      for (const [title, items] of Object.entries(node.details || {})) {
+        node.details[title] = items.map(item => {
+          const text = typeof item === "string" ? item : item.strong || "";
+          return /^Confirm indication\b/.test(text) ? { strong: "Confirm indication.", text: "" } : item;
+        });
+      }
+      if (procedure.title !== "Nephrostomy Tube Placement") continue;
+      for (const [title, items] of Object.entries(node.details || {})) {
+        node.details[title] = items.filter(item => !/^Appropriate percutaneous access window/.test(item.strong || item))
+          .map(item => /^Review CT\/US/.test(item.strong || item)
+            ? { strong: "Review imaging:", text: " CT/US for hydronephrosis, collecting-system target, obstruction level, and a safe posterior calyx access window." }
+            : item);
+      }
+    }
+  }
+}
+
+function finishProcedureFormatting() {
+  const normalizeDischarge = text => {
+    if (!/^\s*Discharge (?:order|at|when)/i.test(text)) return text;
+    const match = text.match(/\b(immediate|\d+(?:\.\d+)?(?:-\d+)?\s*(?:hours?|hrs?|minutes?|min))\b/i);
+    if (!match) return text.replace(/^Discharge when clinically appropriate with medication reconciliation\.?$/i,
+      "Discharge order with medication reconciliation - when clinically appropriate.");
+    let timing = match[1].replace(/\b(?:hrs?|hours?)\b/i, "hours").replace(/\b(?:min|minutes?)\b/i, "minutes");
+    if (/^1 hours$/.test(timing)) timing = "1 hour";
+    if (/or per attending/i.test(text)) timing += " or per attending";
+    return `Discharge order with medication reconciliation - ${timing}.`;
+  };
+  const mapItem = item => {
+    if (typeof item === "string") return normalizeDischarge(item);
+    if (!item || typeof item !== "object") return item;
+    return { ...item, ...(item.text ? { text: normalizeDischarge(item.text) } : {}),
+      ...(item.subitems ? { subitems: item.subitems.map(mapItem) } : {}) };
+  };
+  for (const procedure of procedures) {
+    for (const node of Object.values(procedure.nodes)) {
+      if (node.title === "Post-procedure") node.summary = "";
+      if (node.checklistSections) node.checklistSections = node.checklistSections.map(section => ({
+        ...section, items: section.items.map(mapItem),
+      }));
+      for (const key of ["details", "afterChecklistDetails"]) {
+        if (node[key]) node[key] = Object.fromEntries(Object.entries(node[key]).map(([title, items]) => [title, items.map(mapItem)]));
+      }
+      if (node.checklist) node.checklist = node.checklist.map(mapItem);
+    }
+    if (procedure.id === "cholecystostomy-tube-exchange-removal") {
+      const consent = Object.values(procedure.nodes).find(node => node.title === "Consent");
+      consent.details.Procedure = ["Cholecystostomy Tube Exchange/Removal"];
+    }
+    if (procedure.title === "Paracentesis") {
+      const checklist = Object.values(procedure.nodes).find(node => node.title === "Checklist");
+      checklist.children = (checklist.children || []).filter(id => procedure.nodes[id]?.title !== "Consult Questions");
+      if (checklist.details) {
+        delete checklist.details["Consult Questions"];
+        for (const [title, items] of Object.entries(checklist.details)) {
+          checklist.details[title] = items.filter(item => !/^None if /i.test(typeof item === "string" ? item : item.text || ""));
+        }
+      }
+    }
+    if (procedure.title === "Uterine Fibroid Embolization (UFE)") {
+      for (const orders of Object.values(procedure.nodes)) {
+      for (const section of orders.checklistSections || []) {
+        if (section.title !== "When patient arrives") continue;
+        section.items = section.items.map(item => {
+          if (typeof item !== "string") return item;
+          if (/^Dexamethasone 8 mg/.test(item)) return "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM; do not give if pre-surgical).";
+          if (/^Toradol 30 mg once IM/.test(item)) return "Toradol 30 mg once IM (do not give if pre-surgical; no NSAIDs).";
+          return item;
+        });
+      }
+      }
+    }
+  }
+}
+
+function consolidatePaeDischargeMedications() {
+  const procedure = procedures.find(procedure => procedure.title === "Prostate Artery Embolization");
+  const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+  const discharge = post.checklistSections.find(section => section.title === "Discharge");
+  const isMedication = item => typeof item === "object" && /^Discharge medications if procedure for LUTS secondary to BPH:/i.test(item.strong || "");
+  const medications = discharge.items.filter(isMedication).map(item => item.text.trim());
+  if (!medications.length) return;
+  discharge.items = [
+    ...discharge.items.filter(item => !isMedication(item)),
+    { strong: "Medications for LUTS/BPH:", text: "", subitems: medications },
+  ];
+}
+
+function standardizeLowRiskLabs() {
+  for (const procedure of procedures.filter(procedure => procedure.bleedRisk === "Low")) {
+    const labs = Object.values(procedure.nodes).find(node => node.title === "Labs");
+    if (!labs) continue;
+    const specific = Object.values(labs.details || {}).flat().filter(item =>
+      /potassium/i.test(typeof item === "string" ? item : `${item.strong || ""} ${item.text || ""}`));
+    labs.summary = "";
+    labs.details = { Labs: [
+      "No labs are routinely ordered. No CBC is indicated.",
+      "If the patient is on warfarin, order an INR. INR must be < 3.",
+      ...specific,
+    ] };
+  }
+}
 
 function numberProceduralSteps() {
   const supplementary = new Set([

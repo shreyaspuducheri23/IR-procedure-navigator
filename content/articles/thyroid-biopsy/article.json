@@ -124,8 +124,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -482,16 +482,10 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Regular diet, routine vitals, Tylenol, immediate discharge, and superficial biopsy AVS."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
           ]
@@ -500,7 +494,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation: immediate.",
+            "Discharge order with medication reconciliation - immediate.",
             "After visit summary: .IRAVSBIOPSYSUPERFICIAL."
           ]
         }

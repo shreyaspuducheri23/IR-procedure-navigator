@@ -140,7 +140,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "Anti-Xa q6h x 24 hours.",
                 "aPTT q6h x 24 hours.",
@@ -235,9 +235,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " symptom duration."
+                  ""
                 ],
                 [
                   {
@@ -493,12 +493,6 @@
       "kind": "post",
       "title": "Post-procedure",
       "blocks": [
-        {
-          "type": "list",
-          "items": [
-            "Continue thrombolysis monitoring, apply access-specific bedrest, update infusion orders, and arrange the next-day catheter check or removal."
-          ]
-        },
         {
           "type": "checklist",
           "title": "Routine orders",

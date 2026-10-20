@@ -240,15 +240,7 @@
     {
       "id": "post",
       "kind": "post",
-      "title": "Post-procedure",
-      "blocks": [
-        {
-          "type": "list",
-          "items": [
-            "Future edit: add post-procedure orders, pain/nausea plan, discharge criteria, AVS, and follow-up."
-          ]
-        }
-      ]
+      "title": "Post-procedure"
     }
   ]
 }

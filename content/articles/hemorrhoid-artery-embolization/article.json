@@ -154,8 +154,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -175,7 +175,8 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "INR and CBC within 30 days."
+                "INR and CBC within 30 days.",
+                "Pulse checks."
               ]
             }
           ]
@@ -212,11 +213,17 @@
             {
               "type": "list",
               "items": [
+                "Confirm internal hemorrhoid indication, prior GI/colorectal workup, imaging/CTA, labs, sedation tolerance, access, and embolic choice."
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " INTERNAL hemorrhoids."
+                  ""
                 ],
                 [
                   {
@@ -531,12 +538,15 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
-            "Vital signs per unit routine.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN.",
             "Monitor access site.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
+        },
+        {
+          "type": "heading",
+          "text": "Access care"
         },
         {
           "type": "list",
@@ -570,7 +580,7 @@
               {
                 "strong": "If outpatient procedure:"
               },
-              " Discharge order with medication reconciliation - 2-6 hours."
+              "Discharge order with medication reconciliation - 2-6 hours."
             ],
             [
               {

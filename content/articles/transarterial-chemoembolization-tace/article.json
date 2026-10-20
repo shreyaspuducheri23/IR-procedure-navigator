@@ -165,9 +165,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -306,6 +306,10 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "Access care"
+        },
+        {
           "type": "list",
           "title": "Access care",
           "items": [
@@ -341,7 +345,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order (med rec prior) - 2-6 hours",
+            "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSTACE1",
             "Oxycodone 5mg tablets Q4 hours PRN",
             "Ondansetron (Zofran) 4 mg Q6 hours PRN"

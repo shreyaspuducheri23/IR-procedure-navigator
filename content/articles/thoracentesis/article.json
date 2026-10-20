@@ -126,8 +126,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -475,17 +475,11 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "CXR, diet, vitals, pain control, and outpatient discharge instructions."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "CXR STAT.",
-            "NPO until CXR, then regular diet.",
+            "CXR STAT if ordered by MD.",
+            "If CXR is ordered: NPO until CXR is cleared by MD. Once cleared, or if no CXR is ordered: Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
           ]

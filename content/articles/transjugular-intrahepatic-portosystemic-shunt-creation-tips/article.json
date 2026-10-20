@@ -158,12 +158,10 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
-                "CBC.",
+                "CBC, INR, and CMP on day of procedure.",
                 "Type & screen/crossmatch.",
-                "INR.",
-                "CMP.",
                 "Ceftriaxone 2 g IV if no allergy."
               ]
             }
@@ -597,17 +595,11 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Inpatient admission, regular diet, cirrhosis-adjusted Tylenol maximum, IJ access recovery, monitoring, and AVS."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
             "Admit to inpatient.",
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN; 2 g daily max if patient has cirrhosis.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2.",
             "Monitor color of access site."
@@ -648,7 +640,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "After visit summary: .AVSTIPS."
+            "After visit summary: .IRAVSTIPS."
           ]
         },
         {

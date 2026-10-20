@@ -154,7 +154,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "INR and CBC within 30 days."
               ]
@@ -521,16 +521,9 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "CXR sequence, staged diet advancement, vitals, pain control, outpatient discharge, and chest tube escalation plan."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
             "CXR STAT and 3 hours post; indicate 1 of 2 and 2 of 2 in order comments.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 1.",
             "Tylenol 650 mg PRN."
@@ -541,7 +534,7 @@
           "title": "Diet",
           "items": [
             "NPO until 1st CXR.",
-            "After 1st CXR: clear liquids."
+            "After 1st CXR - Outpatient: order clear liquids. Inpatient: notify primary team clear liquids are okay."
           ]
         },
         {
@@ -576,7 +569,7 @@
           "type": "checklist",
           "title": "Discharge - if outpatient",
           "items": [
-            "After 2nd CXR: regular diet and discharge.",
+            "After 2nd CXR: Outpatient: order regular diet. Inpatient: notify primary team diet is okay. Discharge after clearance.",
             "Discharge order with medication reconciliation - 3 hours.",
             "After visit summary: .IRAVSLUNGBX."
           ]

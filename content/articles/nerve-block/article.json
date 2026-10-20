@@ -128,9 +128,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -221,15 +221,7 @@
     {
       "id": "post",
       "kind": "post",
-      "title": "Post-procedure",
-      "blocks": [
-        {
-          "type": "list",
-          "items": [
-            "Future edit: add monitoring, expected effect, complications, and follow-up."
-          ]
-        }
-      ]
+      "title": "Post-procedure"
     }
   ]
 }

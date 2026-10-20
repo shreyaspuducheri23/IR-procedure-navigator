@@ -133,9 +133,10 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
-                "Bedded Outpatient"
+                "Bedded Outpatient",
+                "CBC and INR within 30 days."
               ]
             }
           ]
@@ -180,9 +181,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " block vs neurolysis; assess contraindications and confirm a compatible visceral pain pattern."
+                  ""
                 ],
                 [
                   {
@@ -471,7 +472,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every hour x 1.",
             "Activity: bedrest with bathroom privileges.",
             "Wound care as needed.",
@@ -495,7 +496,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge at 3 hours; complete medication reconciliation before discharge.",
+            "Discharge order with medication reconciliation - 3 hours.",
             "After visit summary: IRAVSNEUROLYSIS."
           ]
         },

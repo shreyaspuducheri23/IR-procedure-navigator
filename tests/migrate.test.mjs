@@ -5,6 +5,65 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('finalized nursing orders preserve source schedules and conditional recovery', () => {
+  const all = captureLegacyState().procedures;
+  const get = id => all.find(p => p.id === id);
+  const node = (id, title) => Object.values(get(id).nodes).find(n => n.title === title);
+  const routine = id => node(id, 'Post-procedure').checklistSections.find(s => s.title === 'Routine orders');
+  for (const id of ['arteriogram', 'hemorrhoid-artery-embolization', 'prostate-artery-embolization', 'y90-radioembolization-mapping', 'y90-radioembolization-therapy']) {
+    assert.match(JSON.stringify(node(id, 'Pre-procedure orders')), /Pulse checks/);
+    assert.match(JSON.stringify(node(id, 'Pre-procedure orders')), /not left arm/);
+    const vitals = routine(id).items.filter(item => /Vital signs/.test(JSON.stringify(item)));
+    assert.equal(vitals.length, 1, id);
+    assert.match(vitals[0], /15 minutes x 4.*30 minutes x 2.*1 hour x 4.*4 hours/);
+  }
+  assert.match(JSON.stringify(routine('y90-radioembolization-mapping')), /Monitor color of access site/);
+  assert.match(JSON.stringify(node('inferior-vena-cava-filter-removal', 'Post-procedure')), /HOB >45/);
+  const thora = JSON.stringify(routine('thoracentesis'));
+  assert.match(thora, /CXR STAT if ordered by MD/);
+  assert.match(thora, /if no CXR is ordered/);
+  assert.match(JSON.stringify(node('celiac-plexus-block-neurolysis', 'Pre-procedure orders')), /CBC and INR within 30 days/);
+  assert.match(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /differential if on active chemotherapy/);
+  assert.doesNotMatch(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /not left arm/);
+  const gTube = node('gastrostomy-gastrojejunostomy-jejunostomy-tube-placement', 'Post-procedure');
+  assert.match(JSON.stringify(gTube), /No diet until cleared by IR/);
+  assert.match(JSON.stringify(gTube), /primary team feeds are okay/);
+});
+test('arteriogram embolization is complete with standard tabs and arterial recovery', () => {
+  const p = captureLegacyState().procedures.find(p => p.id === 'arteriogram');
+  const article = convert(p);
+  assert.equal(article.status, 'complete');
+  assert.equal(article.title, 'Arteriogram with Possible Embolization');
+  assert.equal(article.bleedRisk, 'high');
+  assert.deepEqual(article.sections.find(s => s.kind === 'pre').subsections.map(s => s.title),
+    ['Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist', 'Consent']);
+  const find = title => Object.values(p.nodes).find(n => n.title === title);
+  assert.equal(find('Procedural steps').details['Basic steps'].length, 8);
+  assert.match(JSON.stringify(find('Anatomy')), /Celiac trunk.*SMA.*IMA/);
+  assert.match(JSON.stringify(find('Consent')), /dissection.*Nontarget.*bowel ischemia/);
+  const post = article.sections.find(s => s.kind === 'post');
+  const accessHeading = post.blocks.findIndex(b => b.type === 'heading' && b.text === 'Access care');
+  assert.ok(accessHeading >= 0);
+  assert.ok(post.blocks[accessHeading + 1].subitems);
+  assert.match(JSON.stringify(post), /2-6 hours.*IRAVSARTERIOGRAM.*PPD1/);
+  assert.equal(post.blocks.at(-1).title, 'Follow up');
+  assert.ok(articleSchema.safeParse(article).success);
+});
+test('low-risk labs use conditional warfarin INR guidance and preserve potassium thresholds', () => {
+  const low = captureLegacyState().procedures.filter(p => p.bleedRisk === 'Low');
+  assert.ok(low.length > 0);
+  for (const p of low) {
+    const labs = Object.values(p.nodes).find(n => n.title === 'Labs');
+    assert.deepEqual(labs.details.Labs.slice(0, 2), [
+      'No labs are routinely ordered. No CBC is indicated.',
+      'If the patient is on warfarin, order an INR. INR must be < 3.',
+    ], p.id);
+    assert.doesNotMatch(JSON.stringify(labs), /Platelets|INR < 2-3/);
+    if (['fistulogram', 'tunneled-line-placement-exchange'].includes(p.id)) {
+      assert.ok(labs.details.Labs.includes('Potassium < 6 mmol/L.'));
+    }
+  }
+});
 test('procedural sequences are numbered without numbering supporting reference bullets', () => {
   const all = captureLegacyState().procedures;
   for (const p of all) {
@@ -117,14 +176,15 @@ test('biliary orders distinguish placement from exchange/conversion', () => {
   assert.match(JSON.stringify(find('Pre-procedure orders').details['Exchange/conversion']), /No routine/);
   assert.ok(!find('Pre-procedure orders').details['Routine orders'].includes('CBC.'));
   const discharge = find('Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient exchange/conversion');
-  assert.deepEqual(discharge.items, ['Discharge order with medication reconciliation - 30 minutes.', 'After visit summary: .IRCHOLETUBEBILIARYDRAIN1.']);
+  assert.deepEqual(discharge.items, ['Discharge order with medication reconciliation - 30 minutes.', 'After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1.']);
 });
 test('lung biopsy orders and outpatient discharge remain grouped', () => {
   const p = captureLegacyState().procedures.find(p => p.title === 'Lung Biopsy/Fiducial Marker Placement');
   const nodes = Object.values(p.nodes);
   assert.ok(nodes.find(n => n.title === 'Pre-procedure orders').details['Routine orders'].includes('INR and CBC within 30 days.'));
   const discharge = nodes.find(n => n.title === 'Post-procedure').checklistSections.find(s => s.title === 'Discharge - if outpatient');
-  assert.deepEqual(discharge.items, ['After 2nd CXR: regular diet and discharge.', 'Discharge order with medication reconciliation - 3 hours.', 'After visit summary: .IRAVSLUNGBX.']);
+  assert.match(discharge.items[0], /^After 2nd CXR: Outpatient: order regular diet\. Inpatient: notify primary team diet is okay\./);
+  assert.deepEqual(discharge.items.slice(1), ['Discharge order with medication reconciliation - 3 hours.', 'After visit summary: .IRAVSLUNGBX.']);
 });
 test('low-risk anticoagulation uses a shared layout and preserves exceptions', () => {
   const all = captureLegacyState().procedures;
@@ -175,7 +235,7 @@ test('cholecystostomy placement and exchange/removal have distinct preparation a
   assert.match(JSON.stringify(node(placement, 'Checklist')), /Confirm antibiotics/);
   assert.doesNotMatch(JSON.stringify(node(placement, 'Checklist')), /#moderate-sedation-checklist/);
   assert.ok(!node(placement, 'Post-procedure').checklistSections.some(s => s.title === 'Discharge'));
-  assert.match(JSON.stringify(node(exchange, 'Labs')), /No routine pre-procedure labs/);
+  assert.match(JSON.stringify(node(exchange, 'Labs')), /No labs are routinely ordered/);
   assert.match(JSON.stringify(node(exchange, 'Pre-procedure orders')), /No routine pre-procedure orders/);
   assert.match(JSON.stringify(node(exchange, 'Indication')), /duodenum/);
   assert.match(JSON.stringify(node(exchange, 'Indication')), /Mature tract/);
@@ -395,7 +455,8 @@ test('labs and contraindications follow shared formatting with preserved thresho
   }
   const celiac = convert(captureLegacyState().procedures.find(p => p.id === 'celiac-plexus-block-neurolysis'));
   assert.match(JSON.stringify(celiac), /50,000\/µL/);
-  assert.match(JSON.stringify(celiac), /PIV placement \(not left arm\)/);
+  assert.match(JSON.stringify(celiac), /PIV placement\./);
+  assert.doesNotMatch(JSON.stringify(celiac), /not left arm/);
 });
 
 test('postprocedure sections group monitoring and place discharge before final follow-up', () => {
@@ -424,7 +485,7 @@ test('postprocedure sections group monitoring and place discharge before final f
   assert.ok(!avs.checklistSections.some(s => s.title === 'Discharge'));
   const pae = Object.values(procedures.find(p => p.title === 'Prostate Artery Embolization').nodes).find(n => n.title === 'Post-procedure');
   assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Routine orders')), /every 15 minutes x 4/);
-  assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Discharge')), /LUTS secondary to BPH/);
+  assert.match(JSON.stringify(pae.checklistSections.find(s => s.title === 'Discharge')), /Medications for LUTS\/BPH/);
   const renderer = readFileSync(new URL('../src/components/article/BlockRenderer.tsx', import.meta.url), 'utf8');
   assert.doesNotMatch(renderer, /type="checkbox"|setChecked|checkedText/);
 });
@@ -478,8 +539,8 @@ test('order relocation preserves infusion setups, medication timing and conditio
     'Refractory hematuria - routine orders',
   ]);
   const dayOf = ['NPO (if moderate sedation).', 'Vital signs per routine.', 'PIV placement (not left arm).'];
-  assert.deepEqual(pae[1].items, [...dayOf, 'INR, CBC, and BMP within 30 days.']);
-  assert.deepEqual(pae[5].items, [...dayOf, 'Glucose POC.']);
+  assert.deepEqual(pae[1].items, [...dayOf, 'INR, CBC, and BMP within 30 days.', 'Pulse checks.']);
+  assert.deepEqual(pae[5].items, [...dayOf, 'Glucose POC.', 'Pulse checks.']);
   const clinicIndex = pae.findIndex((b) => b.type === 'heading' && b.text === 'LUTS from BPH - ordered in clinic');
   assert.ok(clinicIndex >= 0);
   assert.ok(pae[clinicIndex + 1].items.includes('Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.'));

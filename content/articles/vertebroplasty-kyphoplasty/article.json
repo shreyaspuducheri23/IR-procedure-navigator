@@ -160,9 +160,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -312,7 +312,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order (med rec prior) - 3 hours",
+            "Discharge order with medication reconciliation - 3 hours.",
             "AVS: IRAVSVERTKYPHOPLASTY"
           ]
         },

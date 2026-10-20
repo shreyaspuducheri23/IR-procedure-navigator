@@ -140,8 +140,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -159,7 +159,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC."
               ]
             },
@@ -451,18 +451,19 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
+          "type": "checklist",
+          "title": "Routine orders",
           "items": [
-            "Regular diet, routine vitals, Tylenol, discharge after 30 minutes, and venogram AVS."
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
           "type": "checklist",
-          "title": "Routine orders",
+          "title": "Access care",
           "items": [
-            "Regular diet.",
-            "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN."
+            "Elevate HOB >45 degrees for recovery."
           ]
         },
         {

@@ -161,7 +161,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "Barium order to be administered ENTIRE bottle the night prior.",
                 "NG tube in place if inpatient.",
@@ -495,12 +495,6 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Diet hold until IR clearance, vitals, pain control, pull-type antibiotic course, feeding clearance, and follow-up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
@@ -515,7 +509,7 @@
           "type": "checklist",
           "title": "Once cleared by IR",
           "items": [
-            "Feeding tube: PEG and G Tube diet."
+            "After IR clearance - Outpatient: order tube feeds. Inpatient: notify primary team feeds are okay."
           ]
         },
         {

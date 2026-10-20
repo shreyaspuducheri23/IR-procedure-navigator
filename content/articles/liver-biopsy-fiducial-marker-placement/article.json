@@ -160,7 +160,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "INR and CBC within 30 days."
               ]
@@ -205,11 +205,17 @@
             {
               "type": "list",
               "items": [
+                "Confirm target versus non-target indication, imaging window, labs, BP control, ascites/infection screen, and specimen requests."
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " target versus non-target."
+                  ""
                 ],
                 [
                   {
@@ -509,9 +515,9 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 1.",
             "Bedrest order: varies per attending, however typically 2 hours laying on right side."
           ]
         },

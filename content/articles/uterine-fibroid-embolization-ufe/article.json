@@ -219,8 +219,8 @@
                 "PIV placement (not left arm).",
                 "Glucose POC.",
                 "Cefazolin (Ancef) 2g if <120kg, 3g if >120 kg.",
-                "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM).",
-                "Toradol 30 mg once IM.",
+                "Dexamethasone 8 mg IV (HOLD FOR Dr. KIM; do not give if pre-surgical).",
+                "Toradol 30 mg once IM (do not give if pre-surgical; no NSAIDs).",
                 "Ondansetron (Zofran) 4 mg once IV.",
                 "Oxycodone 10 mg once PO.",
                 "Hx severe nausea: Scopolamine patch 1.5 mg apply to skin behind ear prior to procedure and leave in place x 72 hours; may cause anticholinergic side effects including dry mouth; may remove patch if these occur."
@@ -294,9 +294,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " review prior interventions."
+                  ""
                 ],
                 [
                   {
@@ -620,24 +620,22 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Routine orders, access recovery, pain/nausea plan, discharge prescriptions, admission PCA pathway, and follow-up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Toradol 30 mg IM (6 hours post 1st dose).",
             "Tylenol 1000 mg PO (6 hours post 1st dose).",
             "Oxycodone 5 mg tab x 1 PO q4 PRN pain.",
             "Dilaudid 0.5-1 mg IV Q2 hrs PRN pain not responding to oral.",
             "Antiemetic order set (ondansetron, metoclopramide, and promethazine).",
-            "Monitor color of access site."
+            "Monitor color of access site.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
+        },
+        {
+          "type": "heading",
+          "text": "Access care"
         },
         {
           "type": "list",
@@ -693,7 +691,7 @@
           "items": [
             "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
             "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
-            "Discharge order 2-6 hours prior.",
+            "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSUFE."
           ]
         },
@@ -701,7 +699,8 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Clinic visit in 1 month."
+            "Clinic visit in 1 month.",
+            "MRI in 3 months."
           ]
         }
       ]

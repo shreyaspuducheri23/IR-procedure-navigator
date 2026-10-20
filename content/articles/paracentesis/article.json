@@ -129,8 +129,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -218,22 +218,6 @@
                   },
                   " discuss the procedure and patient-specific risks; identify a surrogate if needed."
                 ]
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Consult Questions"
-            },
-            {
-              "type": "list",
-              "items": [
-                "None if the pre-procedure indication, labs, anticoagulation, and fluid-study checklist are answered."
-              ]
-            },
-            {
-              "type": "list",
-              "items": [
-                "None if above are answered."
               ]
             }
           ]
@@ -487,17 +471,11 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Albumin guidance, routine post-procedure care, and outpatient discharge instructions."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
             "Cirrhotic ascites: if >5 L removed, give IV albumin 6-8 g per liter of total ascites removed; follow local protocol.",
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
           ]

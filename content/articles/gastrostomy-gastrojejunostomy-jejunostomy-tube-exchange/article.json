@@ -152,7 +152,8 @@
             {
               "type": "list",
               "items": [
-                "None unless further indicated."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -508,17 +509,11 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Regular diet/tube feeds, routine vitals, immediate discharge if outpatient, AVS selection, and 6-month routine exchange."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
             "Notify MD/LIP - IR.",
-            "Regular diet - tube feeds.",
+            "Diet - Outpatient: order tube feeds. Inpatient: notify primary team feeds are okay.",
             "Feeding tube: PEG and G tube.",
             "Vital signs per unit routine."
           ]
@@ -531,7 +526,7 @@
               {
                 "strong": "If outpatient:"
               },
-              " Discharge order with medication reconciliation prior - immediate."
+              "Discharge order with medication reconciliation - immediate."
             ],
             [
               {

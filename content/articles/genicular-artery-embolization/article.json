@@ -160,9 +160,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -324,7 +324,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order (med rec prior) - 2-6 hours",
+            "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSGAE",
             "Discharge med: Naproxen 500mg BID x 5d PRN"
           ]

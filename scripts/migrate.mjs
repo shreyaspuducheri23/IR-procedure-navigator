@@ -303,6 +303,9 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   for (const section of checklistSectionsOf(node)) {
     const subitems = Object.fromEntries(section.items.flatMap((item, index) => item?.subitems?.length
       ? [[index, item.subitems.map(child => convertItem(child, report))]] : []));
+    if (Object.keys(subitems).length && section.title) {
+      blocks.push({ type: "heading", text: section.title });
+    }
     blocks.push({
       type: Object.keys(subitems).length ? "list" : "checklist",
       title: section.title,

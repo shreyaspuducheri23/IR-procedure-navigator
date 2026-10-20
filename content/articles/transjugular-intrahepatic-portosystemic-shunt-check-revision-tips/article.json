@@ -151,10 +151,9 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
-                "CBC.",
-                "CMP: bilirubin and creatinine.",
+                "CBC, INR, and CMP on day of procedure.",
                 "Type & screen."
               ]
             }
@@ -562,18 +561,13 @@
       "title": "Post-procedure",
       "blocks": [
         {
-          "type": "list",
-          "items": [
-            "Regular diet, timed vitals, Tylenol, IJ and femoral access recovery, 1-hour discharge, AVS, and TIPS ultrasound/clinic follow-up."
-          ]
-        },
-        {
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs every 15 minutes x 4.",
-            "Tylenol 650 mg PRN."
+            "Tylenol 650 mg PRN.",
+            "Monitor color of access site."
           ]
         },
         {

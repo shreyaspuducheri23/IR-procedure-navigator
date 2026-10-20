@@ -163,9 +163,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -314,7 +314,7 @@
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order (med rec prior) - 30 min",
+            "Discharge order with medication reconciliation - 30 minutes.",
             "AVS: .IRAVSFALLOPIANTUBERECAN"
           ]
         },

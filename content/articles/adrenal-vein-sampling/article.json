@@ -107,8 +107,8 @@
             {
               "type": "list",
               "items": [
-                "INR < 2-3.",
-                "Platelets >20,000/µL."
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
               ]
             }
           ]
@@ -126,7 +126,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "250 mcg IV cosyntropin in 250 ml @ 50 mcg/hour to start 30-60 min prior to procedure. Lay flat after start of infusion.",
                 "E-Consult to Endocrinology: Adrenal Disorders - ask patient for consent.",
@@ -175,9 +175,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -565,10 +565,10 @@
           "type": "checklist",
           "title": "After lab results have returned",
           "items": [
-            "Regular diet",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Notify RN to turn off cosyntropin",
             "Restart antihypertensives",
-            "Discharge order (med rec prior) - 2 hours",
+            "Discharge order with medication reconciliation - 2 hours.",
             "After visit summary: .IRAVSVENOGRAM"
           ]
         },

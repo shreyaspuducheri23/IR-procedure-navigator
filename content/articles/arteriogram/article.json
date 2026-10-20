@@ -1,24 +1,29 @@
 {
   "schemaVersion": 1,
   "id": "arteriogram",
-  "title": "Arteriogram",
+  "title": "Arteriogram with Possible Embolization",
   "category": "vascular-intervention",
-  "status": "draft",
-  "bleedRisk": null,
-  "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "status": "complete",
+  "bleedRisk": "high",
+  "keywords": [
+    "arteriogram",
+    "angiography",
+    "embolization",
+    "hemorrhage",
+    "trauma",
+    "gastrointestinal",
+    "gi",
+    "bleeding",
+    "celiac",
+    "sma",
+    "ima"
+  ],
+  "summary": "Arteriography with possible embolization for arterial hemorrhage, including trauma and GI bleeding.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
-  "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
-  ],
+  "reviewNotes": [],
   "sections": [
     {
       "id": "pre",
@@ -30,22 +35,15 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
-              ]
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Traumatic arterial bleeding with instability or ongoing transfusion needs.",
+                "Persistent/recurrent GI bleeding after failed or infeasible endoscopy.",
+                "Active arterial bleeding or symptomatic pseudoaneurysm."
               ]
             },
             {
@@ -60,9 +58,10 @@
                 {
                   "type": "list",
                   "items": [
-                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
-                    "No safe access route or target: reassess the approach or an alternative procedure.",
-                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters)."
+                    "No safe arterial access or catheter route (relative).",
+                    "Uncorrectable coagulopathy or severe contrast reaction requires individualized planning; weigh against hemorrhage urgency.",
+                    "No safe embolization target or unacceptable risk to essential organ/bowel perfusion.",
+                    "A source requiring immediate surgery or another treatment: coordinate the appropriate pathway."
                   ]
                 }
               ]
@@ -74,21 +73,47 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Use the institutional anticoagulation table for hold and restart timing."
-              ]
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    "Anticoagulation should already be held for active bleeding; confirm last doses and any reversal given.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa level.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOAC timing is agent-, dose-, and renal-function-specific; use the anticoagulation table.",
+                    "Clopidogrel and ticagrelor: hold 5 days; prasugrel: hold 7 days.",
+                    "Aspirin: hold 3-5 days."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Caveat"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Active major hemorrhage: review last doses and reversal with the treating team; elective hold intervals must not delay life-saving source control."
                   ]
                 }
               ]
@@ -102,7 +127,8 @@
             {
               "type": "list",
               "items": [
-                "Thresholds have not yet been documented; verify procedure-specific requirements."
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -122,9 +148,9 @@
                 "Vital signs per routine.",
                 "PIV placement (not left arm).",
                 "Glucose POC.",
-                "SDC/Outpatient with Discharge",
-                "Pulse checks",
-                "INR and CBC within 30 days"
+                "Most recent CBC, INR, and CMP.",
+                "Type and screen.",
+                "Pulse checks."
               ]
             }
           ]
@@ -136,7 +162,26 @@
             {
               "type": "list",
               "items": [
-                "Sedation guidance has not yet been documented in this guide."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation."
+                ],
+                [
+                  {
+                    "strong": "Alternative:"
+                  },
+                  " general anesthesia in selected patients; rarely required."
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Can tolerate moderate sedation",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
               ]
             }
           ]
@@ -148,27 +193,17 @@
             {
               "type": "list",
               "items": [
-                "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
-            {
-              "type": "list",
-              "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
                     "strong": "Review imaging:"
                   },
-                  " use available imaging or ultrasound when relevant to confirm a safe target."
+                  " CTA/endoscopic localization, bleeding territory, variant branches, and collateral supply."
                 ],
                 [
                   {
@@ -180,26 +215,78 @@
                   {
                     "strong": "Review anticoagulation:"
                   },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                  " confirm the hold/reversal plan, last doses, and active bleeding status."
                 ],
                 [
                   {
-                    "strong": "Confirm ability to consent"
+                    "strong": "Confirm clinical status:"
                   },
-                  ", ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns."
+                  " hemodynamics, transfusion needs, resuscitation, and surgical/primary-team coordination."
                 ],
                 [
                   {
-                    "strong": "Inspect the planned access or treatment site"
+                    "strong": "Confirm access plan:"
                   },
-                  " for infection, wounds, prior scars, devices, or anatomy that changes the approach."
+                  " femoral versus radial route, vessel patency, and baseline distal perfusion."
                 ],
                 [
                   {
                     "strong": "Confirm sedation plan:"
                   },
                   " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm contrast and renal plan:"
+                  },
+                  " allergies, renal function, and anticipated contrast burden."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " angiography, possible embolization, and procedure-specific risks."
                 ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Arteriogram with Possible Embolization"
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bleeding.",
+                "Infection.",
+                "Damage to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vessel injury, including dissection or rupture.",
+                "Nontarget embolization and organ/tissue ischemia; bowel ischemia in GI cases.",
+                "Persistent or recurrent bleeding requiring repeat embolization or surgery."
               ]
             }
           ]
@@ -216,16 +303,44 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Celiac trunk:"
+                  },
+                  " left gastric, splenic, and common hepatic branches supply the foregut. The gastroduodenal artery (GDA) usually arises from the common hepatic artery."
+                ],
+                [
+                  {
+                    "strong": "SMA:"
+                  },
+                  " inferior pancreaticoduodenal, jejunal/ileal, ileocolic, right colic (variable), and middle colic branches supply distal duodenum through proximal two-thirds of transverse colon."
+                ],
+                [
+                  {
+                    "strong": "IMA:"
+                  },
+                  " left colic, sigmoid, and superior rectal branches supply distal transverse/descending colon, sigmoid, and upper rectum."
+                ],
+                [
+                  {
+                    "strong": "Collateral pathways:"
+                  },
+                  " pancreaticoduodenal arcades connect celiac and SMA territories; marginal colonic arteries connect SMA and IMA. Prior surgery can alter these routes."
+                ],
+                [
+                  {
+                    "strong": "Variants and other territories:"
+                  },
+                  " map replaced/accessory hepatic arteries. Trauma targets may involve splenic, renal, pelvic/internal iliac, or chest-wall branches rather than GI vessels."
+                ],
+                [
+                  {
+                    "strong": "Access anatomy:"
+                  },
+                  " femoral puncture should permit compression over the femoral head; radial access requires an appropriate artery and a patent route to the target."
+                ]
               ]
             }
           ]
@@ -236,29 +351,59 @@
           "blocks": [
             {
               "type": "heading",
-              "text": "To build"
+              "text": "Basic steps"
             },
             {
               "type": "list",
               "items": [
-                "Add equipment, approach, general steps, and troubleshooting later."
-              ]
-            },
-            {
-              "type": "callout",
-              "variant": "note",
-              "title": "Suggested buckets",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
-                  ]
-                }
+                [
+                  {
+                    "strong": "1. Plan the target:"
+                  },
+                  " localize bleeding and review variants/collaterals."
+                ],
+                [
+                  {
+                    "strong": "2. Obtain arterial access:"
+                  },
+                  " use ultrasound-guided femoral or radial access; place the sheath."
+                ],
+                [
+                  {
+                    "strong": "3. Select the territory:"
+                  },
+                  " perform angiography to identify extravasation or pseudoaneurysm."
+                ],
+                [
+                  {
+                    "strong": "4. Superselect the branch:"
+                  },
+                  " advance the microcatheter; confirm the target and branches to preserve."
+                ],
+                [
+                  {
+                    "strong": "5. Choose the embolic:"
+                  },
+                  " coils, gelatin, particles, or liquid agent according to target and flow."
+                ],
+                [
+                  {
+                    "strong": "6. Embolize:"
+                  },
+                  " watch for reflux, catheter movement, and nontarget filling."
+                ],
+                [
+                  {
+                    "strong": "7. Recheck angiography:"
+                  },
+                  " confirm hemostasis, assess collateral filling, and preserve uninvolved perfusion."
+                ],
+                [
+                  {
+                    "strong": "8. Finish:"
+                  },
+                  " obtain access hemostasis and document the treatment and handoff."
+                ]
               ]
             }
           ]
@@ -269,13 +414,80 @@
           "blocks": [
             {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Negative angiogram:"
+                      },
+                      " bleeding may be intermittent or obscured by vasospasm; correlate CTA/endoscopy and discuss a targeted plan rather than indiscriminate embolization."
+                    ],
+                    [
+                      {
+                        "strong": "Reflux or catheter kickback:"
+                      },
+                      " recheck the tip before delivery; stop injection if reflux or nontarget filling appears."
+                    ],
+                    [
+                      {
+                        "strong": "Bowel/organ ischemia:"
+                      },
+                      " keep treatment selective, preserve collaterals, and account for prior surgery, radiation, or poor baseline perfusion."
+                    ],
+                    [
+                      {
+                        "strong": "Backdoor bleeding:"
+                      },
+                      " collaterals can refill the lesion; assess relevant inflow/outflow, especially GDA/pancreaticoduodenal pathways."
+                    ],
+                    [
+                      {
+                        "strong": "Vessel injury:"
+                      },
+                      " avoid forceful wire advancement, wedged injections, and unnecessary manipulation; reassess new dissection or extravasation."
+                    ],
+                    [
+                      {
+                        "strong": "Access or recurrent bleeding:"
+                      },
+                      " check access-site swelling and distal perfusion; persistent instability needs prompt reassessment even after an angiographic endpoint."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "CIRSE Clinical Practice Manual",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8382634/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Angiographic evaluation and management of acute GI hemorrhage",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3309908/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Upper GI embolization: ischemia and collateral supply",
+                          "href": "https://pubmed.ncbi.nlm.nih.gov/31123376/"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
@@ -293,12 +505,15 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Notify MD/LIP - IR",
-            "Regular diet",
-            "Monitor Color of Access Site",
-            "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
-            "Tylenol 650 mg PRN"
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
+            "Tylenol 650 mg PRN.",
+            "Monitor color of access site.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
+        },
+        {
+          "type": "heading",
+          "text": "Access care"
         },
         {
           "type": "list",
@@ -326,26 +541,30 @@
         },
         {
           "type": "checklist",
-          "title": "Needs bleeding risk",
+          "title": "Anticoagulation to resume",
           "items": [
-            "This procedure does not yet have a high/low bleeding-risk override.",
-            "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
+            "Warfarin: 24 hours.",
+            "IV unfractionated heparin: 6-8 hours.",
+            "Enoxaparin: 12 hours.",
+            "DOACs: Typically 24 hours; confirm agent and renal function.",
+            "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+            "Aspirin: 24 hours.",
+            "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
           ]
         },
         {
           "type": "checklist",
           "title": "Discharge",
           "items": [
-            "Discharge order (med rec prior) - 2-6 hours",
-            "After visit summary: .IRAVSARTERIOGRAM"
+            "Discharge order with medication reconciliation - 2-6 hours.",
+            "After visit summary: .IRAVSARTERIOGRAM."
           ]
         },
         {
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Follow up: PPD1 if admitted or outpatient per MD",
-            "Follow up: communicate with covering PA if follow up needs to be scheduled."
+            "See patient PPD1 if admitted."
           ]
         }
       ]

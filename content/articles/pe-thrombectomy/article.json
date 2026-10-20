@@ -138,7 +138,7 @@
               "items": [
                 "NPO (if moderate sedation).",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
+                "PIV placement.",
                 "Glucose POC.",
                 "Baseline CBC, PT/INR, aPTT, and BMP/creatinine; document actual body weight.",
                 "Continuous ECG and pulse oximetry; oxygen and hemodynamic support as indicated."
@@ -569,7 +569,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Regular diet if no further intervention is planned.",
+            "Diet - if no further intervention is planned: Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per monitored-unit routine.",
             "Continuous telemetry and pulse oximetry.",
             "Tylenol 650 mg PRN.",

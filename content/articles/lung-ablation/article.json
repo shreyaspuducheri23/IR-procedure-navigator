@@ -161,9 +161,9 @@
               "items": [
                 [
                   {
-                    "strong": "Confirm indication:"
+                    "strong": "Confirm indication."
                   },
-                  " verify the procedure, target, and relevant contraindications."
+                  ""
                 ],
                 [
                   {
@@ -330,11 +330,11 @@
           "title": "Discharge",
           "items": [
             "After 2nd CXR – Regular diet and discharge",
-            "Discharge order (med rec prior) - 3 hours",
+            "Discharge order with medication reconciliation - 3 hours.",
             "After visit summary: .IRAVSABLATIONLUNG If chest tube placement indicated – place IR Chest",
-            "Discharge order (med rec prior) - 1.5 hours",
+            "Discharge order with medication reconciliation - 1.5 hours.",
             "After visit summary: .IRAVSBIOPSYDEEP Lymph Node Biopsy – SUPERFICIAL Pre-Procedure Post-Procedure",
-            "Discharge order (med rec prior) - immediate",
+            "Discharge order with medication reconciliation - immediate.",
             "After visit summary: .IRAVSBIOPSYSUPERFICIAL"
           ]
         },
