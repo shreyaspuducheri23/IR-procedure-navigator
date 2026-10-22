@@ -1196,6 +1196,29 @@ finishProcedureFormatting();
 standardizeChecklistIndicationAndNephrostomyImaging();
 applyApprovedOrderDocumentCorrections();
 applyFinalizedNursingOrderCorrections();
+updateConditionalPortLabsAndCultureOrders();
+
+function updateConditionalPortLabsAndCultureOrders() {
+  for (const procedure of procedures) {
+    const nodes = Object.values(procedure.nodes);
+    const orders = nodes.find(node => node.title === "Pre-procedure orders");
+    if (!orders?.details?.["Routine orders"]) continue;
+    if (procedure.title === "Port Placement") {
+      const labs = nodes.find(node => node.title === "Labs");
+      labs.details.Labs = ["No routine labs unless on active chemotherapy or warfarin.", "If on warfarin: INR < 3."];
+      orders.details["Routine orders"] = orders.details["Routine orders"].filter(item =>
+        typeof item !== "string" || !/^INR and CBC within 30 days/.test(item));
+      orders.details["Routine orders"].push("If on active chemotherapy: CBC with differential.", "If on warfarin: INR within 30 days.");
+    }
+    if (["Biliary Drain Placement and Internalization/Exchange", "Cholecystostomy Tube Placement", "Nephrostomy Tube Placement"].includes(procedure.title)) {
+      const culture = procedure.title === "Nephrostomy Tube Placement" ? "urine" : "biliary";
+      orders.details["Routine orders"] = orders.details["Routine orders"].map(item =>
+        typeof item === "string" && /^Antibiotics/.test(item)
+          ? `Antibiotics per most recent ${culture} culture; if none, per protocol (typically gram-negative coverage).`
+          : item);
+    }
+  }
+}
 
 function applyFinalizedNursingOrderCorrections() {
   const find = (procedure, title) => Object.values(procedure.nodes).find(node => node.title === title);
@@ -1294,6 +1317,9 @@ function applyApprovedOrderDocumentCorrections() {
     }
     if (procedure.title === "Kidney Biopsy") {
       find(procedure, "Pre-procedure orders").details["Routine orders"].push("If BUN > 50, give DDAVP per attending/local protocol.");
+    }
+    if (["Kidney Biopsy", "Liver Biopsy/Fiducial Placement (Percutaneous)", "Lung Biopsy/Fiducial Marker Placement"].includes(procedure.title)) {
+      find(procedure, "Post-procedure").checklistSections.find(section => section.title === "Routine orders").items.push("Wound care/treatment.");
     }
     if (/^Transjugular Intrahepatic Portosystemic Shunt/.test(procedure.title)) {
       const orders = find(procedure, "Pre-procedure orders").details["Routine orders"];
@@ -5452,7 +5478,7 @@ function installFistulogramEdits() {
         },
       ],
       details: {
-        "Follow up": ["Remove suture device on POD1 if inpatient."],
+        "Follow up": ["If used, remove suture device (e.g., woggle), then return to HD."],
       },
     },
     [`${id}-troubleshooting-v2`]: {
@@ -9012,7 +9038,7 @@ function installUfeEdits() {
           items: [
             "Place Foley.",
             "No NSAIDs or dexamethasone.",
-            "Page GYN at #3030 when patient is in pre-op for consent.",
+            "Page GYN (#3030) and anesthesia when patient is in pre-op for consent.",
           ],
         },
       ],
@@ -9024,7 +9050,7 @@ function installUfeEdits() {
       checklist: [
         "Place Foley.",
         "No NSAIDs or dexamethasone.",
-        "Page GYN at #3030 when patient is in pre-op for consent.",
+        "Page GYN (#3030) and anesthesia when patient is in pre-op for consent.",
       ],
     },
     [`${id}-intra-v2`]: {
@@ -9074,7 +9100,7 @@ function installUfeEdits() {
           title: "If being discharged",
           items: [
             "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
-            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
+            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran (Disp 8).",
             "Discharge order 2-6 hours prior.",
             "After visit summary: .IRAVSUFE.",
           ],

@@ -166,7 +166,7 @@
                 "Vital signs per routine.",
                 "PIV placement.",
                 "Glucose POC.",
-                "Antibiotics are ordered when infected/obstructed system, pyonephrosis, or sepsis is suspected.",
+                "Antibiotics per most recent urine culture; if none, per protocol (typically gram-negative coverage).",
                 "INR and CBC within 30 days."
               ]
             }

@@ -23,7 +23,8 @@ test('finalized nursing orders preserve source schedules and conditional recover
   assert.match(thora, /CXR STAT if ordered by MD/);
   assert.match(thora, /if no CXR is ordered/);
   assert.match(JSON.stringify(node('celiac-plexus-block-neurolysis', 'Pre-procedure orders')), /CBC and INR within 30 days/);
-  assert.match(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /differential if on active chemotherapy/);
+  assert.match(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /If on active chemotherapy: CBC with differential/);
+  assert.match(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /If on warfarin: INR within 30 days/);
   assert.doesNotMatch(JSON.stringify(node('port-placement', 'Pre-procedure orders')), /not left arm/);
   const gTube = node('gastrostomy-gastrojejunostomy-jejunostomy-tube-placement', 'Post-procedure');
   assert.match(JSON.stringify(gTube), /No diet until cleared by IR/);
@@ -54,6 +55,10 @@ test('low-risk labs use conditional warfarin INR guidance and preserve potassium
   assert.ok(low.length > 0);
   for (const p of low) {
     const labs = Object.values(p.nodes).find(n => n.title === 'Labs');
+    if (p.id === 'port-placement') {
+      assert.deepEqual(labs.details.Labs, ['No routine labs unless on active chemotherapy or warfarin.', 'If on warfarin: INR < 3.']);
+      continue;
+    }
     assert.deepEqual(labs.details.Labs.slice(0, 2), [
       'No labs are routinely ordered. No CBC is indicated.',
       'If the patient is on warfarin, order an INR. INR must be < 3.',

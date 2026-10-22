@@ -136,7 +136,7 @@
                 "Vital signs per routine.",
                 "PIV placement.",
                 "Glucose POC.",
-                "Antibiotics with gram negative coverage.",
+                "Antibiotics per most recent biliary culture; if none, per protocol (typically gram-negative coverage).",
                 "CBC and INR within 30 days."
               ]
             }

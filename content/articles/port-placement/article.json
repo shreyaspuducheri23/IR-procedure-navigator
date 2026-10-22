@@ -141,8 +141,8 @@
             {
               "type": "list",
               "items": [
-                "No labs are routinely ordered. No CBC is indicated.",
-                "If the patient is on warfarin, order an INR. INR must be < 3."
+                "No routine labs unless on active chemotherapy or warfarin.",
+                "If on warfarin: INR < 3."
               ]
             }
           ]
@@ -162,7 +162,8 @@
                 "Vital signs per routine.",
                 "PIV placement.",
                 "Glucose POC.",
-                "INR and CBC within 30 days; CBC with differential if on active chemotherapy."
+                "If on active chemotherapy: CBC with differential.",
+                "If on warfarin: INR within 30 days."
               ]
             }
           ]

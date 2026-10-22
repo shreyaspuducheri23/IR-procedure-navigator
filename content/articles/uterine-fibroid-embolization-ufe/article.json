@@ -241,7 +241,7 @@
               "items": [
                 "Place Foley.",
                 "No NSAIDs or dexamethasone.",
-                "Page GYN at #3030 when patient is in pre-op for consent."
+                "Page GYN (#3030) and anesthesia when patient is in pre-op for consent."
               ]
             }
           ]
@@ -690,7 +690,7 @@
           "title": "Discharge",
           "items": [
             "Oxycodone 5 mg PO Q6 hours x 2 days scheduled then Q6 hrs PRN (Disp 24).",
-            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran.",
+            "Optional: promethazine 25 mg Q4 hours PRN if nausea not responding to Zofran (Disp 8).",
             "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSUFE."
           ]

@@ -530,7 +530,7 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Remove suture device on POD1 if inpatient."
+            "If used, remove suture device (e.g., woggle), then return to HD."
           ]
         }
       ]
