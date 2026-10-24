@@ -581,8 +581,13 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Femoral venous access: keep the accessed leg flat/extended for 2 hours.",
-            "If a retention suture is used, document when it should be removed."
+            [
+              {
+                "strong": "Femoral venous access:"
+              },
+              " Bedrest 2 hours with leg flat."
+            ],
+            "If a suture device (e.g., woggle) is placed, remove on PPD1."
           ]
         },
         {

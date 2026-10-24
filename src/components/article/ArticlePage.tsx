@@ -50,6 +50,7 @@ function ArticleView({
 }) {
   const category = getCategory(article.category);
   const location = useLocation();
+  const returnToOnCall = location.state?.returnToOnCall === true;
   // Hash routing puts the deep-link fragment after the route: #/article/x#pre,
   // or #/article/x#pre/labs to open a specific topic.
   const target = location.hash.replace(/^#/, "");
@@ -129,6 +130,7 @@ function ArticleView({
 
   return (
     <article className={styles.page}>
+      {returnToOnCall && <Link className={styles.workflowReturn} to="/on-call">← Return to on-call workflow</Link>}
       {!supplementary && (
         <>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb">
@@ -219,6 +221,7 @@ function ArticleView({
         </footer>
       )}
 
+      {returnToOnCall && <Link className={styles.workflowReturn} to="/on-call">← Return to on-call workflow</Link>}
       <div className={styles.feedbackRow}>
         <p>Something here wrong, unclear, or out of date?</p>
         <FeedbackButton

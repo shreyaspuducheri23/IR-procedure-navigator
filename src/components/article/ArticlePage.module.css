@@ -4,6 +4,16 @@
   gap: var(--sp-4);
 }
 
+.workflowReturn {
+  align-self: flex-start;
+  color: var(--c-brand);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding-block: var(--sp-2);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;

@@ -92,7 +92,7 @@ test('arterial access care preserves available routes and nests radial instructi
   const article = convert(all.find(p => p.id === 'hemorrhoid-artery-embolization'));
   assert.ok(articleSchema.safeParse(article).success);
   assert.match(JSON.stringify(article), /"subitems":/);
-  assert.match(JSON.stringify(access('dvt-thrombectomy')), /flat\/extended for 2 hours/);
+  assert.match(JSON.stringify(access('dvt-thrombectomy')), /Bedrest 2 hours with leg flat/);
   assert.doesNotMatch(JSON.stringify(access('transjugular-intrahepatic-portosystemic-shunt-creation-tips')), /manual compression|Radial/);
 });
 test('high-risk postprocedure restart lists use consistent medication timing', () => {
@@ -149,7 +149,7 @@ test('DVT thrombectomy has anticoagulation safeguards and device-neutral steps',
   for (const pattern of [/80 units\/kg/, /18 units\/kg\/hour/, /6 hours/, /HIT/, /do not automatically re-bolus/]) assert.match(orders, pattern);
   assert.equal(find('Procedural steps').details['Basic steps'].length, 6);
   assert.match(JSON.stringify(find('Procedural steps')), /Penumbra or Inari/);
-  assert.match(JSON.stringify(find('Post-procedure')), /leg flat\/extended for 2 hours/);
+  assert.match(JSON.stringify(find('Post-procedure')), /Bedrest 2 hours with leg flat/);
   assert.equal(find('Post-procedure').checklistSections.at(-1).title, 'Follow up');
 });
 test('fistulogram potassium threshold, orders, and discharge are separated', () => {

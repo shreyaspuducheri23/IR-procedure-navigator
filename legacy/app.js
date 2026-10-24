@@ -1197,6 +1197,28 @@ standardizeChecklistIndicationAndNephrostomyImaging();
 applyApprovedOrderDocumentCorrections();
 applyFinalizedNursingOrderCorrections();
 updateConditionalPortLabsAndCultureOrders();
+standardizeFemoralVenousAccessCare();
+
+function standardizeFemoralVenousAccessCare() {
+  const ids = new Set(["adrenal-vein-sampling", "dvt-thrombectomy", "pe-thrombectomy", "foreign-body-removal",
+    "transjugular-intrahepatic-portosystemic-shunt-creation-tips", "transjugular-intrahepatic-portosystemic-shunt-check-revision-tips"]);
+  for (const procedure of procedures) {
+    if (!ids.has(procedure.id)) continue;
+    const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+    for (const section of post?.checklistSections || []) {
+      section.items = section.items.map(item => {
+        const text = typeof item === "string" ? item : `${item.strong || ""} ${item.text || ""}`;
+        if (/femoral/i.test(text) && /2 hours/i.test(text)) {
+          return { strong: "Femoral venous access:", text: " Bedrest 2 hours with leg flat." };
+        }
+        if (/If a retention suture is used/i.test(text)) {
+          return "If a suture device (e.g., woggle) is placed, remove on PPD1.";
+        }
+        return item;
+      });
+    }
+  }
+}
 
 function updateConditionalPortLabsAndCultureOrders() {
   for (const procedure of procedures) {
@@ -5478,7 +5500,7 @@ function installFistulogramEdits() {
         },
       ],
       details: {
-        "Follow up": ["If used, remove suture device (e.g., woggle), then return to HD."],
+        "Follow up": ["If a suture device (e.g., woggle) is placed, remove on PPD1.", "Return to HD per access plan."],
       },
     },
     [`${id}-troubleshooting-v2`]: {
@@ -5786,8 +5808,8 @@ function installIvcFilterRemovalEdits() {
           "Aspirin: no holding requirement.",
         ],
         "If complicated removal": [
-          "Higher bleeding risk procedure.",
-          "Discuss with attending regarding holding anticoagulation.",
+          "High bleeding risk for complex retrieval (e.g., embedded or tilted filter, penetration, fracture, or planned advanced retrieval techniques).",
+          "Confirm anticoagulation holds and lab thresholds with the attending before retrieval.",
         ],
       },
     },

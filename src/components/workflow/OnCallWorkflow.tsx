@@ -13,11 +13,15 @@ type Answer = { step: string; label: string; next: string };
 type Choice = { label: string; next: string };
 const key = "ir-on-call-v1";
 
-function stepFor(id: string, history: Answer[]): { title: string; lines: string[]; choices: Choice[] } {
+function stepFor(id: string, history: Answer[]): ReturnTypeShape {
   const moderate = history.some(a => a.label === "Moderate sedation");
   const anesthesia = history.some(a => a.label === "Anesthesia support");
   const steps: Record<string, ReturnTypeShape> = {
-    consult: { title: "New consult", lines: ["Patient name and reason for consult", "Clinical appearance, exam findings, and vitals", "Pertinent labs and available imaging", "Any blood thinners? Which agents and when was the last dose?", "Any prior relevant interventions?", "Can the patient lie flat? On oxygen or limited cardiopulmonary reserve?", "Any airway concerns: obstruction, head/neck cancer, altered anatomy, or altered mental status?", "Opioid tolerance or regular opioid use?", "NPO status: when were the last solids and liquids?", "How urgent does the consulting team feel this is?", "Admission plan and assigned bed", "Can the patient consent? If not, identify the appropriate surrogate."], choices: [{ label: "Consult reviewed", next: "decision" }] },
+    consult: { title: "New consult", lines: [], groups: [
+      { title: "Patient condition", lines: ["Patient name and reason for consult", "Clinical appearance, exam findings, and vitals", "Pertinent labs and available imaging", "Any prior relevant interventions?"] },
+      { title: "Procedural readiness", lines: ["Any blood thinners? Which agents and when was the last dose?", "Can the patient lie flat? On oxygen or limited cardiopulmonary reserve?", "Any airway concerns: obstruction, head/neck cancer, altered anatomy, or altered mental status?", "Opioid tolerance or regular opioid use?", "NPO status: when were the last solids and liquids?"] },
+      { title: "Logistics", lines: ["How urgent does the consulting team feel this is?", "Admission plan and assigned bed", "Can the patient consent? If not, identify the appropriate surrogate."] },
+    ], choices: [{ label: "Consult reviewed", next: "decision" }] },
     decision: { title: "Discuss with attending", lines: ["Select the agreed plan."], choices: [{ label: "Proceed now", next: "request" }, { label: "Defer / reassess", next: "defer" }, { label: "No procedure", next: "no-procedure" }] },
     request: { title: "Update the consulting team", lines: ["Communicate the plan to proceed now.", "Ask the consulting team to place an IR Procedure Request order for the planned procedure."], choices: [{ label: "Team updated and request placed", next: "sedation" }] },
     sedation: { title: "Choose the sedation plan", lines: [], choices: [{ label: "Local anesthesia only", next: "consent" }, { label: "Moderate sedation", next: "consent" }, { label: "Anesthesia support", next: "consent" }] },
@@ -34,7 +38,7 @@ function stepFor(id: string, history: Answer[]): { title: string; lines: string[
   };
   return steps[id] || steps.consult;
 }
-type ReturnTypeShape = { title: string; lines: string[]; choices: Choice[] };
+type ReturnTypeShape = { title: string; lines: string[]; groups?: { title: string; lines: string[] }[]; choices: Choice[] };
 
 function restore(): Answer[] {
   try {
@@ -66,6 +70,14 @@ export function OnCallWorkflow() {
     try { sessionStorage.setItem(`${key}-procedure`, procedureId); } catch { /* Keep selection in memory. */ }
   }, [procedureId]);
   const heading = useRef<HTMLHeadingElement>(null);
+  const title = useRef<HTMLHeadingElement>(null);
+  function returnToTop() {
+    title.current?.focus({ preventScroll: true });
+    title.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+  useEffect(() => {
+    if (resetting) returnToTop();
+  }, [resetting]);
   const current = history.at(-1)?.next || "consult";
   const step = stepFor(current, history);
   useEffect(() => {
@@ -86,7 +98,7 @@ export function OnCallWorkflow() {
   }, [history]);
 
   return <section className={styles.workflow}>
-    <div className={styles.titleRow}><div><p className={styles.eyebrow}>Resident workflow</p><h1>On call</h1></div>
+    <div className={styles.titleRow}><div><p className={styles.eyebrow}>Resident workflow</p><h1 ref={title} tabIndex={-1}>On call</h1></div>
       {history.length > 0 && <button className={styles.reset} onClick={() => setResetting(true)}>New consult</button>}
     </div>
     {resetting && <div className={styles.resetPrompt} role="alert">
@@ -104,6 +116,10 @@ export function OnCallWorkflow() {
         <div className={styles.step}>
           <p className={styles.eyebrow}>{current === "done" ? "Complete" : "Current step"}</p>
           <h2 ref={heading} tabIndex={-1}>{step.title}</h2>
+          {step.groups?.map(group => <section key={group.title}>
+            <h3>{group.title}</h3>
+            <ul>{group.lines.map(line => <li key={line}>{line}</li>)}</ul>
+          </section>)}
           {["consent", "defer"].includes(current) && <div className={styles.procedurePicker}>
             <label htmlFor="consent-procedure-search">{current === "consent" ? "Procedure for consent" : "Planned procedure"}</label>
             <input id="consent-procedure-search" type="search" placeholder="Search procedures" value={query} onChange={event => setQuery(event.target.value)} />
@@ -115,23 +131,24 @@ export function OnCallWorkflow() {
             {matches.length === 0 && <p role="status">No matching procedures.</p>}
             {selected && current === "consent" && <div className={styles.consentInfo}>
               <h3>{selected.title}</h3>
-              <Link to={`/article/${selected.id}#pre/consent`}>Review consent information →</Link>
+              <Link to={`/article/${selected.id}#pre/consent`} state={{ returnToOnCall: true }}>Review consent information →</Link>
             </div>}
           </div>}
           {selected && ["page", "protocol", "snapboard"].includes(current) && <p><strong>Procedure:</strong> {selected.title}</p>}
           {step.lines.length > 0 && <ul>{step.lines.map(line => <li key={line} className={line === "7878787" ? styles.pager : undefined}>{line}</li>)}</ul>}
           {current === "defer" && <div className={styles.consentInfo}>
-            <p><Link to="/article/anticoagulation-table">Review anticoagulation table →</Link></p>
+            <p><Link to="/article/anticoagulation-table" state={{ returnToOnCall: true }}>Review anticoagulation table →</Link></p>
             <h3>Morning labs</h3>
             {!selected ? <p>Select the planned procedure to review its lab requirements.</p> : <>
               {labStatus === "loading" && <p role="status">Loading lab requirements…</p>}
               {labArticle?.id === selected.id && <Blocks articleId={selected.id} blocks={labArticle.sections.find(section => section.kind === "pre")?.subsections?.find(section => section.title === "Labs")?.blocks || []} />}
               {labStatus === "error" && <p role="alert">Unable to load lab requirements. Open the procedure guide to review them.</p>}
-              <p><Link to={`/article/${selected.id}#pre/labs`}>Open {selected.title} labs →</Link></p>
+              <p><Link to={`/article/${selected.id}#pre/labs`} state={{ returnToOnCall: true }}>Open {selected.title} labs →</Link></p>
             </>}
           </div>}
           <div className={styles.choices}>{step.choices.map(choice => <button key={choice.label} onClick={() => setHistory([...history, { step: current, ...choice }])}>{choice.label}<span aria-hidden="true">→</span></button>)}</div>
           {current === "done" && <button className={styles.nextConsult} onClick={() => setResetting(true)}>Start new consult</button>}
+          {history.length > 0 && <button className={styles.back} onClick={returnToTop}>↑ Back to top</button>}
           {history.length > 0 && <button className={styles.back} onClick={() => setHistory(history.slice(0, -1))}>← Back</button>}
         </div>
       </li>

@@ -530,7 +530,8 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "If used, remove suture device (e.g., woggle), then return to HD."
+            "If a suture device (e.g., woggle) is placed, remove on PPD1.",
+            "Return to HD per access plan."
           ]
         }
       ]
