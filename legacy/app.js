@@ -1442,6 +1442,30 @@ function installArteriogramEmbolization() {
     point("7. Recheck angiography", "confirm hemostasis, assess collateral filling, and preserve uninvolved perfusion."),
     point("8. Finish", "obtain access hemostasis and document the treatment and handoff."),
   ] });
+  nodes[`${id}-steps`].afterTables = [{
+    caption: "Contrast injection settings",
+    collapsible: true,
+    note: "Adult iodinated-contrast reference only. Confirm tip position, test injection, flow, catheter/pressure limits, and attending settings; never power inject a wedged catheter. Portal 7/21 is a local example pending confirmation.",
+    header: ["Vessel", "Rate (mL/s)", "Total (mL)"],
+    rows: [
+      ["Aorta (flush pigtail)", "15-20", "30-40"],
+      ["Celiac", "4-6", "12-15"],
+      ["SMA", "5-6", "25-30"],
+      ["IMA", "3", "12-15"],
+      ["Right hepatic", "1-4", "4-16"],
+      ["Left hepatic", "1-3", "4-12"],
+      ["GDA", "2-4", "6-12"],
+      ["Main portal vein (direct)", "7", "21"],
+      ["Renal artery", "4", "10"],
+    ],
+  }];
+  nodes[`${id}-steps`].afterChecklistDetails = {
+    "Injection references": [
+      { text: "[1] ECR: GI hemorrhage angiography protocol", href: "https://epos.myesr.org/poster/esr/ecr2014/C-1221/findings%20and%20procedure%20details" },
+      { text: "[2] Adult mapping power-injector settings, Table 2", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8497078/" },
+      { text: "Renal arteriography injection protocol", href: "https://www.jacc.org/doi/full/10.1016/S0735-1097%2802%2902408-7" },
+    ],
+  };
   add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
     point("Negative angiogram", "bleeding may be intermittent or obscured by vasospasm; correlate CTA/endoscopy and discuss a targeted plan rather than indiscriminate embolization."),
     point("Reflux or catheter kickback", "recheck the tip before delivery; stop injection if reflux or nontarget filling appears."),

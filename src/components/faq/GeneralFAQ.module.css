@@ -1,4 +1,12 @@
 .page { max-width: 720px; margin: 32px auto 64px; }
+.guideLink { display: block; padding: 20px 0; color: var(--c-brand); font-weight: 600; }
+.page .guideTitle { margin-top: 24px; }
+.steps { padding-left: 24px; }
+.steps > li { padding: 0 0 28px 8px; }
+.steps h2 { font-size: 18px; margin: 0 0 12px; }
+.steps p { line-height: 1.6; margin: 0 0 12px; }
+.screenshotScroll { max-width: 100%; overflow-x: auto; }
+.screenshot { display: block; width: 100%; min-width: 680px; height: auto; object-position: center; }
 .page h1 { font-size: 28px; letter-spacing: 0; margin: 0 0 24px; }
 .entries { margin: 0; }
 .entries > div { padding: 20px 0; border-block: 1px solid var(--c-border); }

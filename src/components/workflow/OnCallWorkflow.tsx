@@ -12,13 +12,27 @@ const procedures = staticContentSource.listArticles()
 type Answer = { step: string; label: string; next: string };
 type Choice = { label: string; next: string };
 const key = "ir-on-call-v1";
+const protocolScreenshots = [
+  ["ir-procedure-review-highlighted.png", "IR Procedure Review outlined in yellow.", "23 / 1"],
+  ["procedures-to-review.png", "IR Procedures to Review outlined in gold.", "40 / 1"],
+  ["clinic-approval.png", "No for IR clinic visit and Yes for Approved outlined in gold.", "4.8 / 1"],
+  ["change-order.png", "Change Order outlined in gold.", "21 / 1"],
+];
+
+function ProtocolScreenshot({ index }: { index: number }) {
+  const [file, alt, aspectRatio] = protocolScreenshots[index];
+  const src = `${import.meta.env.BASE_URL}images/on-call/${file}`;
+  return <div className={styles.screenshotScroll}><a href={src} target="_blank" rel="noreferrer" aria-label={`Open screenshot: ${alt}`}>
+    <img className={styles.protocolScreenshot} style={{ aspectRatio, minWidth: index === 2 ? 600 : 1100 }} src={src} alt={alt} />
+  </a></div>;
+}
 
 function stepFor(id: string, history: Answer[]): ReturnTypeShape {
   const moderate = history.some(a => a.label === "Moderate sedation");
   const anesthesia = history.some(a => a.label === "Anesthesia support");
   const steps: Record<string, ReturnTypeShape> = {
     consult: { title: "New consult", lines: [], groups: [
-      { title: "Patient condition", lines: ["Patient name and reason for consult", "Clinical appearance, exam findings, and vitals", "Pertinent labs and available imaging", "Any prior relevant interventions?"] },
+      { title: "Patient condition", lines: ["Patient name and reason for consult", "Clinical appearance, exam findings, and vitals", { text: "Pertinent labs and available imaging", items: ["INR and platelet count, when relevant to the planned procedure."] }, "Any prior relevant interventions?"] },
       { title: "Procedural readiness", lines: ["Any blood thinners? Which agents and when was the last dose?", "Can the patient lie flat? On oxygen or limited cardiopulmonary reserve?", "Any airway concerns: obstruction, head/neck cancer, altered anatomy, or altered mental status?", "Opioid tolerance or regular opioid use?", "NPO status: when were the last solids and liquids?"] },
       { title: "Logistics", lines: ["How urgent does the consulting team feel this is?", "Admission plan and assigned bed", "Can the patient consent? If not, identify the appropriate surrogate."] },
     ], choices: [{ label: "Consult reviewed", next: "decision" }] },
@@ -29,7 +43,7 @@ function stepFor(id: string, history: Answer[]): ReturnTypeShape {
     anesthesia: { title: "Coordinate anesthesia support", lines: ["Contact anesthesia when proceeding with the case.", "Phone / pager: to be added.", "If already intubated and sedated, confirm the team responsible for sedation and airway management."], choices: [{ label: "Support confirmed", next: "page" }] },
     page: { title: "Page the IR team", lines: ["7878787", "If the first-call team is already in use, page the second-call team at #2832.", "Include patient name and MRN, procedure name, your first name, and callback number."], choices: [{ label: "Team paged", next: "protocol" }] },
     protocol: { title: "Protocol the order and complete the consult note", lines: ["Open the IR Procedure Protocol List and select the case of interest.", "At the bottom, select No for IR clinic visit and Yes for Approved.", "Select Change Order above, choose the procedure you will perform, then select Accept.", "Back on the protocol screen, select Finalize in the bottom right.", "Complete the IR consult note."], choices: [{ label: "Order protocoled and consult note completed", next: "snapboard" }] },
-    snapboard: { title: "Add the case to Snapboard", lines: ["Open Snapboard and select RAD VIR Inpatient at the bottom to find the case.", "Click and drag the case onto the Snapboard at the agreed room number and time."], choices: [{ label: "Case added", next: "done" }] },
+    snapboard: { title: "Add the case to Snapboard", lines: ["Go to Snapboard and drag the procedure from the list onto the Snapboard under the agreed room and time.", "Click through the steps to accept."], choices: [{ label: "Case added", next: "done" }] },
     defer: { title: "Call back the consulting team", lines: ["Communicate the plan to defer or reassess.", "If proceeding later, ask the team to submit an IR Procedure Request for the planned procedure.", "Arrange NPO timing if sedation is planned, per the anticipated procedure time and local policy.", "Review anticoagulation holds for the procedure and the patient's medications.", "Arrange relevant morning labs using the procedure's lab requirements below; confirm any additional patient-specific testing."], choices: [{ label: "Team updated", next: "defer-note" }] },
     "defer-note": { title: "Write an event note", lines: ["Document the discussion and agreed plan."], choices: [{ label: "Note completed", next: "signout" }] },
     signout: { title: "Add to sign-out", lines: ["Include the case for tomorrow's discussion."], choices: [{ label: "Added to sign-out", next: "done" }] },
@@ -38,7 +52,7 @@ function stepFor(id: string, history: Answer[]): ReturnTypeShape {
   };
   return steps[id] || steps.consult;
 }
-type ReturnTypeShape = { title: string; lines: string[]; groups?: { title: string; lines: string[] }[]; choices: Choice[] };
+type ReturnTypeShape = { title: string; lines: string[]; groups?: { title: string; lines: (string | { text: string; items: string[] })[] }[]; choices: Choice[] };
 
 function restore(): Answer[] {
   try {
@@ -118,7 +132,9 @@ export function OnCallWorkflow() {
           <h2 ref={heading} tabIndex={-1}>{step.title}</h2>
           {step.groups?.map(group => <section key={group.title}>
             <h3>{group.title}</h3>
-            <ul>{group.lines.map(line => <li key={line}>{line}</li>)}</ul>
+            <ul>{group.lines.map(line => typeof line === "string"
+              ? <li key={line}>{line}</li>
+              : <li key={line.text}>{line.text}<ul>{line.items.map(item => <li key={item}>{item}</li>)}</ul></li>)}</ul>
           </section>)}
           {["consent", "defer"].includes(current) && <div className={styles.procedurePicker}>
             <label htmlFor="consent-procedure-search">{current === "consent" ? "Procedure for consent" : "Planned procedure"}</label>
@@ -135,7 +151,11 @@ export function OnCallWorkflow() {
             </div>}
           </div>}
           {selected && ["page", "protocol", "snapboard"].includes(current) && <p><strong>Procedure:</strong> {selected.title}</p>}
-          {step.lines.length > 0 && <ul>{step.lines.map(line => <li key={line} className={line === "7878787" ? styles.pager : undefined}>{line}</li>)}</ul>}
+          {step.lines.length > 0 && <ul>{step.lines.map((line, index) => <li key={line} className={line === "7878787" ? styles.pager : undefined}>{line}
+            {current === "protocol" && index === 0 && <><ProtocolScreenshot index={0} /><ProtocolScreenshot index={1} /></>}
+            {current === "protocol" && index === 1 && <ProtocolScreenshot index={2} />}
+            {current === "protocol" && index === 2 && <ProtocolScreenshot index={3} />}
+          </li>)}</ul>}
           {current === "defer" && <div className={styles.consentInfo}>
             <p><Link to="/article/anticoagulation-table" state={{ returnToOnCall: true }}>Review anticoagulation table →</Link></p>
             <h3>Morning labs</h3>

@@ -207,6 +207,7 @@ function ArticleImage({
 }
 
 function ArticleTable({ block }: { block: Extract<Block, { type: "table" }> }) {
+  if (block.collapsible) return <details><summary>{block.caption || "Injection settings"}</summary><ArticleTable block={{ ...block, collapsible: false }} /></details>;
   return (
     <figure className={styles.tableWrap}>
       <div className={styles.tableScroll}>
@@ -242,6 +243,7 @@ function ArticleTable({ block }: { block: Extract<Block, { type: "table" }> }) {
       {block.caption && (
         <figcaption className={styles.caption}>{block.caption}</figcaption>
       )}
+      {block.note && <p className={styles.caption}>{block.note}</p>}
     </figure>
   );
 }

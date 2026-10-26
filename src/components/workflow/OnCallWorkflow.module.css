@@ -1,4 +1,6 @@
 .workflow { max-width: 720px; margin: 32px auto 64px; letter-spacing: 0; }
+.screenshotScroll { max-width: 100%; overflow-x: auto; margin-top: 12px; }
+.protocolScreenshot { display: block; width: 100%; min-width: 1100px; aspect-ratio: 23 / 1; object-fit: cover; object-position: center; }
 .procedurePicker { margin-bottom: 24px; display: grid; gap: 10px; }
 .procedurePicker label { font-weight: 600; }
 .procedurePicker input, .procedurePicker select { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid var(--c-border-strong); border-radius: 6px; background: var(--c-surface); color: var(--c-ink); font: inherit; }

@@ -238,6 +238,9 @@ function calloutVariantForKey(key, nodeType) {
 
 function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   const blocks = [];
+  for (const table of node.tables ?? []) {
+    blocks.push({ type: "table", ...table });
+  }
   if (node.calculator) {
     if (node.calculator === "meld" || node.calculator === "anticoagulation") {
       blocks.push({ type: "calculator", calculator: node.calculator });
@@ -321,6 +324,7 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   if (node.type === "caution" && calloutCount === 0 && blocks.length > 0) {
     return [{ type: "callout", variant: "caution", blocks }];
   }
+  for (const table of node.afterTables ?? []) blocks.push({ type: "table", ...table });
   return blocks;
 }
 

@@ -85,6 +85,8 @@ const imageBlockSchema = z.object({
 
 const tableBlockSchema = z.object({
   type: z.literal("table"),
+  collapsible: z.boolean().optional(),
+  note: z.string().optional(),
   caption: z.string().optional(),
   header: z.array(richTextSchema),
   rows: z.array(z.array(richTextSchema)),

@@ -405,6 +405,97 @@
                   " obtain access hemostasis and document the treatment and handoff."
                 ]
               ]
+            },
+            {
+              "type": "heading",
+              "text": "Injection references"
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "link": {
+                      "text": "[1] ECR: GI hemorrhage angiography protocol",
+                      "href": "https://epos.myesr.org/poster/esr/ecr2014/C-1221/findings%20and%20procedure%20details"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "[2] Adult mapping power-injector settings, Table 2",
+                      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8497078/"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Renal arteriography injection protocol",
+                      "href": "https://www.jacc.org/doi/full/10.1016/S0735-1097%2802%2902408-7"
+                    }
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "caption": "Contrast injection settings",
+              "collapsible": true,
+              "note": "Adult iodinated-contrast reference only. Confirm tip position, test injection, flow, catheter/pressure limits, and attending settings; never power inject a wedged catheter. Portal 7/21 is a local example pending confirmation.",
+              "header": [
+                "Vessel",
+                "Rate (mL/s)",
+                "Total (mL)"
+              ],
+              "rows": [
+                [
+                  "Aorta (flush pigtail)",
+                  "15-20",
+                  "30-40"
+                ],
+                [
+                  "Celiac",
+                  "4-6",
+                  "12-15"
+                ],
+                [
+                  "SMA",
+                  "5-6",
+                  "25-30"
+                ],
+                [
+                  "IMA",
+                  "3",
+                  "12-15"
+                ],
+                [
+                  "Right hepatic",
+                  "1-4",
+                  "4-16"
+                ],
+                [
+                  "Left hepatic",
+                  "1-3",
+                  "4-12"
+                ],
+                [
+                  "GDA",
+                  "2-4",
+                  "6-12"
+                ],
+                [
+                  "Main portal vein (direct)",
+                  "7",
+                  "21"
+                ],
+                [
+                  "Renal artery",
+                  "4",
+                  "10"
+                ]
+              ]
             }
           ]
         },

@@ -5,6 +5,7 @@ import { ArticlePage } from "@/components/article/ArticlePage";
 import { NotFound } from "@/components/NotFound";
 import { OnCallWorkflow } from "@/components/workflow/OnCallWorkflow";
 import { GeneralFAQ } from "@/components/faq/GeneralFAQ";
+import { PagerGuide } from "@/components/faq/PagerGuide";
 
 /**
  * Hash routing keeps deep links working on GitHub Pages project sites without a
@@ -18,6 +19,7 @@ const router = createHashRouter([
       { path: "/", element: <HomePage /> },
       { path: "/on-call", element: <OnCallWorkflow /> },
       { path: "/faq", element: <GeneralFAQ /> },
+      { path: "/faq/pager", element: <PagerGuide /> },
       { path: "/article/:id", element: <ArticlePage /> },
       { path: "*", element: <NotFound /> },
     ],
