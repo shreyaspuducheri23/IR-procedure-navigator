@@ -795,7 +795,7 @@ const anticoagulationAgents = [
     label: "Apixaban",
     high: ({ crclBand }) => {
       if (crclBand === "ge50") {
-        return { hold: "Hold 4 doses", restart: "Restart after 24 hours", note: "CrCl >=50 mL/min selected." };
+        return { hold: "Hold 4 doses (approximately 2 days with twice-daily dosing)", restart: "Restart after 24 hours", note: "CrCl >=50 mL/min selected." };
       }
       if (crclBand === "30to49") {
         return {
@@ -817,7 +817,7 @@ const anticoagulationAgents = [
     high: ({ crclBand }) => {
       if (crclBand === "ge50" || crclBand === "30to49") {
         return {
-          hold: "Hold 2 doses",
+          hold: "Hold 2 doses (approximately 2 days with once-daily dosing)",
           restart: "Restart after 24 hours",
           note: `${crclBand === "ge50" ? "CrCl >=50" : "CrCl 30-49"} mL/min selected.`,
         };
@@ -1198,6 +1198,56 @@ applyApprovedOrderDocumentCorrections();
 applyFinalizedNursingOrderCorrections();
 updateConditionalPortLabsAndCultureOrders();
 standardizeFemoralVenousAccessCare();
+updateGastrostomyPreparation();
+installAvsProcedureImages();
+separatePostprocedureAccessCare();
+
+function separatePostprocedureAccessCare() {
+  const textOf = item => typeof item === "string" ? item : `${item.strong || ""}${item.text || ""}`;
+  const isAccessCare = item => /access[ -]?site|puncture[ -]?site|femoral|radial|\bIJ(?: access)?:|\bHOB\b|^(?:No )?bedrest|wound care|dressing|^Flush with|suture device|^Neurovascular checks|^Activity:/i.test(textOf(item));
+  for (const procedure of procedures) {
+    const post = Object.values(procedure.nodes).find(node => node.title === "Post-procedure");
+    if (!Array.isArray(post?.checklistSections)) continue;
+    const sections = post.checklistSections;
+    const accessItems = sections.filter(section => /^(Access care|Drain care)$/i.test(section.title)).flatMap(section => section.items);
+    for (const section of sections) {
+      if (/^(Access care|Drain care)$/i.test(section.title)) {
+        section.items = [];
+      } else if (/^Routine orders|^Before lab results|^Follow up$/i.test(section.title)) {
+        section.items = section.items.filter(item => {
+          if (!isAccessCare(item)) return true;
+          accessItems.push(item);
+          return false;
+        });
+      }
+    }
+    if (!accessItems.length) continue;
+    post.checklistSections = sections.filter(section => !/^(Access care|Drain care)$/i.test(section.title) && section.items.length);
+    const routineIndex = post.checklistSections.findIndex(section => /^Routine orders|^Before lab results/i.test(section.title));
+    post.checklistSections.splice(routineIndex + 1, 0, { title: "Access care", items: accessItems });
+  }
+}
+
+function installAvsProcedureImages() {
+  const procedure = procedures.find(p => p.id === "adrenal-vein-sampling");
+  const steps = Object.values(procedure.nodes).find(node => node.title === "Procedural steps");
+  steps.afterImageGallery = [
+    { src: "images/right-adrenal-venogram.png", alt: "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.", caption: "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles." },
+    { src: "images/left-renal-vein-selection.png", alt: "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.", caption: "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein." },
+    { src: "images/left-adrenal-venogram.png", alt: "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.", caption: "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein." },
+  ];
+}
+
+function updateGastrostomyPreparation() {
+  const procedure = procedures.find(p => p.id === "gastrostomy-gastrojejunostomy-jejunostomy-tube-placement");
+  const orders = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure orders");
+  for (const [title, items] of Object.entries(orders.details || {})) {
+    orders.details[title] = items.flatMap(item => typeof item === "string" && /^Barium order/.test(item) ? [
+      "Barium sulfate 60% (w/v) oral suspension, 355 mL.",
+      "Nursing order: administer the entire bottle via NG/OG/DHT at 2330 the night before the scheduled procedure.",
+    ] : [item]);
+  }
+}
 
 function standardizeFemoralVenousAccessCare() {
   const ids = new Set(["adrenal-vein-sampling", "dvt-thrombectomy", "pe-thrombectomy", "foreign-body-removal",
@@ -2476,7 +2526,7 @@ function splitCholecystostomyProcedures() {
   post.summary = "";
   post.checklistSections = [
     { title: "Routine orders", items: ["Vital signs per routine.", "Monitor the access site for bleeding or bile leakage."] },
-    { title: "Access care", items: ["After exchange: secure the tube, flush with 10 mL daily, and maintain prescribed drainage.", "After removal: apply a dressing and provide wound-care instructions."] },
+    { title: "Access care", items: ["After exchange: secure the tube and maintain prescribed drainage.", "After exchange: flush with 10 mL sterile saline once daily.", "After removal: apply a dressing and provide wound-care instructions."] },
     { title: "Discharge", items: ["Discharge when clinically appropriate with medication reconciliation.", "After visit summary: .IRCHOLETUBEBILIARYDRAIN1."] },
     { title: "Follow up", items: ["If exchanged or not removed: drain check/exchange in 2-3 months.", "Calculous cholecystitis: surgery manages and tube comes out with cholecystectomy."] },
   ];
@@ -4268,7 +4318,7 @@ function installDrainageCatheterEdits() {
           items: [
             "Regular diet.",
             "Vital signs per unit routine.",
-            "Pigtail drain flush orders: 10 mL twice daily (BID).",
+            "Flush with 10 mL sterile saline twice daily.",
             "Tylenol 650 mg PRN.",
           ],
         },
@@ -4463,7 +4513,7 @@ function installNephrostomyEdits() {
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
-            "Drain flush: 10 mL BID while admitted, 10 mL daily while outpatient.",
+            "Flush with 10 mL sterile saline twice daily while admitted; once daily after discharge.",
           ],
         },
         {
@@ -4822,7 +4872,7 @@ function installCholecystostomyEdits() {
             "Regular diet.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN.",
-            "Pigtail drain - flush orders 10 mL daily.",
+            "Flush with 10 mL sterile saline once daily.",
           ],
         },
         {
@@ -5099,7 +5149,7 @@ function installBiliaryDrainEdits() {
               "Regular diet.",
               "Vital signs per unit routine.",
               "Tylenol 650 mg PRN.",
-              "Pigtail drain - flush orders 10 mL daily.",
+              "Flush with 10 mL sterile saline once daily.",
             ],
           },
           {
@@ -10142,7 +10192,7 @@ function standardizePreProcedureLanguage() {
     } else if (procedure.id === "catheter-directed-thrombolysis-pe-dvt-frostbite-see-order-set") {
       sedation.details.Sedation = [item("Options:", "moderate sedation or general anesthesia; select according to acuity, airway, and procedural needs."), ...original.filter(entry => entry.href)];
     } else if (procedure.id === "gastrostomy-gastrojejunostomy-jejunostomy-tube-placement") {
-      sedation.details.Sedation = [item("Options:", "moderate sedation or general anesthesia."), item("Consideration:", "assess airway protection and aspiration risk in patients with dysphagia when selecting the method."), ...original.filter(entry => entry.href)];
+      sedation.details.Sedation = [item("Options:", "moderate sedation or general anesthesia."), item("Moderate sedation caution:", "head/neck cancer, dysphagia, or dementia: assess airway, aspiration risk, and cooperation; consider anesthesia support."), ...original.filter(entry => entry.href)];
     } else {
       sedation.details.Sedation = original.map(entry => sedationLabels.has(entry) ? item(...sedationLabels.get(entry)) : entry);
     }

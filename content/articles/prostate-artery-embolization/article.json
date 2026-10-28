@@ -639,7 +639,6 @@
             "Tylenol 650 mg PRN.",
             "Ibuprofen 800 mg Q6 PRN.",
             "Nursing communication: due to void before discharge.",
-            "Monitor color of access site.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
         },
@@ -662,7 +661,8 @@
                 "strong": "Radial access:"
               },
               ""
-            ]
+            ],
+            "Monitor color of access site."
           ],
           "subitems": {
             "1": [

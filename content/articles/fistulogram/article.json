@@ -520,6 +520,13 @@
         },
         {
           "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "If a suture device (e.g., woggle) is placed, remove on PPD1."
+          ]
+        },
+        {
+          "type": "checklist",
           "title": "Discharge - if outpatient",
           "items": [
             "Discharge order with medication reconciliation - 30 minutes.",
@@ -530,7 +537,6 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "If a suture device (e.g., woggle) is placed, remove on PPD1.",
             "Return to HD per access plan."
           ]
         }

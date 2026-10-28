@@ -566,8 +566,7 @@
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs every 15 minutes x 4.",
-            "Tylenol 650 mg PRN.",
-            "Monitor color of access site."
+            "Tylenol 650 mg PRN."
           ]
         },
         {
@@ -585,7 +584,8 @@
                 "strong": "Femoral venous access:"
               },
               " Bedrest 2 hours with leg flat."
-            ]
+            ],
+            "Monitor color of access site."
           ]
         },
         {

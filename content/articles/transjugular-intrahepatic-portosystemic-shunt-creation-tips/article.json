@@ -601,8 +601,7 @@
             "Admit to inpatient.",
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN; 2 g daily max if patient has cirrhosis.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2.",
-            "Monitor color of access site."
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2."
           ]
         },
         {
@@ -620,7 +619,8 @@
                 "strong": "Femoral venous access:"
               },
               " Bedrest 2 hours with leg flat."
-            ]
+            ],
+            "Monitor color of access site."
           ]
         },
         {

@@ -1,5 +1,8 @@
 .page { max-width: 720px; margin: 32px auto 64px; }
 .guideLink { display: block; padding: 20px 0; color: var(--c-brand); font-weight: 600; }
+.instructions h2 { font-size: 18px; }
+.instructions p, .instructions li { line-height: 1.6; margin: 12px 0; }
+.instructions ul { padding-left: 24px; }
 .page .guideTitle { margin-top: 24px; }
 .steps { padding-left: 24px; }
 .steps > li { padding: 0 0 28px 8px; }

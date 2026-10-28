@@ -295,7 +295,6 @@
           "items": [
             "Notify MD/LIP - IR",
             "Regular diet",
-            "Monitor Color of Access Site",
             "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours (edit to match bedrest)",
             "Tylenol 650 mg PRN"
           ]
@@ -319,7 +318,8 @@
                 "strong": "Radial access:"
               },
               ""
-            ]
+            ],
+            "Monitor Color of Access Site"
           ],
           "subitems": {
             "1": [

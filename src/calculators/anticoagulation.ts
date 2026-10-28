@@ -62,7 +62,7 @@ export const anticoagulationAgents: Agent[] = [
     high: ({ crclBand }) => {
       if (crclBand === "ge50") {
         return {
-          hold: "Hold 4 doses",
+          hold: "Hold 4 doses (approximately 2 days with twice-daily dosing)",
           restart: "Restart after 24 hours",
           note: "CrCl >=50 mL/min selected.",
         };
@@ -87,7 +87,7 @@ export const anticoagulationAgents: Agent[] = [
     high: ({ crclBand }) => {
       if (crclBand === "ge50" || crclBand === "30to49") {
         return {
-          hold: "Hold 2 doses",
+          hold: "Hold 2 doses (approximately 2 days with once-daily dosing)",
           restart: "Restart after 24 hours",
           note: `${crclBand === "ge50" ? "CrCl >=50" : "CrCl 30-49"} mL/min selected.`,
         };

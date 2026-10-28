@@ -298,8 +298,14 @@
             "Notify MD/LIP - IR",
             "Regular diet",
             "Vital signs – Every 15 minutes x 4",
-            "Wound care/treatment",
             "Tylenol 650 mg PRN"
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Wound care/treatment"
           ]
         },
         {

@@ -517,7 +517,13 @@
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN.",
-            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every hour x 1.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every hour x 1."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
             "Bedrest order: varies per attending, however typically 1-2 hours.",
             "Wound care/treatment."
           ]

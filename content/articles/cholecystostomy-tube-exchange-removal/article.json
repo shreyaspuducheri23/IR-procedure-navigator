@@ -440,16 +440,17 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Vital signs per routine.",
-            "Monitor the access site for bleeding or bile leakage."
+            "Vital signs per routine."
           ]
         },
         {
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "After exchange: secure the tube, flush with 10 mL daily, and maintain prescribed drainage.",
-            "After removal: apply a dressing and provide wound-care instructions."
+            "After exchange: secure the tube and maintain prescribed drainage.",
+            "After exchange: flush with 10 mL sterile saline once daily.",
+            "After removal: apply a dressing and provide wound-care instructions.",
+            "Monitor the access site for bleeding or bile leakage."
           ]
         },
         {

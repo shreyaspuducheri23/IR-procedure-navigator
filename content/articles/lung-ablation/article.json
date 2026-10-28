@@ -303,7 +303,6 @@
             "Vital signs – Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 1",
             "Tylenol 650 mg PRN",
             "Toradol 15-30 mg IV x 1",
-            "Wound care/treatment",
             "Tube order and admit to inpatient",
             "SDC/Outpatient with Discharge",
             "NPO (moderate sedation)",
@@ -315,6 +314,13 @@
             "Vital signs – Every 15 minutes x 4, then every 30 minutes x 1",
             "Labs: None unless further indicated Cytology present if requested by MD",
             "Vital signs – per unit routine"
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Wound care/treatment"
           ]
         },
         {

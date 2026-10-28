@@ -573,7 +573,6 @@
             "Vital signs per monitored-unit routine.",
             "Continuous telemetry and pulse oximetry.",
             "Tylenol 650 mg PRN.",
-            "Monitor access-site color, bleeding, and swelling.",
             "Continue therapeutic anticoagulation."
           ]
         },
@@ -587,7 +586,8 @@
               },
               " Bedrest 2 hours with leg flat."
             ],
-            "If a suture device (e.g., woggle) is placed, remove on PPD1."
+            "If a suture device (e.g., woggle) is placed, remove on PPD1.",
+            "Monitor access-site color, bleeding, and swelling."
           ]
         },
         {

@@ -325,6 +325,9 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
     return [{ type: "callout", variant: "caution", blocks }];
   }
   for (const table of node.afterTables ?? []) blocks.push({ type: "table", ...table });
+  if (node.afterImageGallery) blocks.push({ type: "callout", variant: "note", title: "Procedure images", collapsible: true,
+    blocks: node.afterImageGallery.map(image => ({ type: "image", ...image })),
+  });
   return blocks;
 }
 

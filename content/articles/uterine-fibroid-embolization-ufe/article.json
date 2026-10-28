@@ -629,7 +629,6 @@
             "Oxycodone 5 mg tab x 1 PO q4 PRN pain.",
             "Dilaudid 0.5-1 mg IV Q2 hrs PRN pain not responding to oral.",
             "Antiemetic order set (ondansetron, metoclopramide, and promethazine).",
-            "Monitor color of access site.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
         },
@@ -652,7 +651,8 @@
                 "strong": "Radial access:"
               },
               ""
-            ]
+            ],
+            "Monitor color of access site."
           ],
           "subitems": {
             "1": [

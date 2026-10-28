@@ -494,7 +494,13 @@
           "title": "Routine orders",
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
-            "Vital signs per unit routine.",
+            "Vital signs per unit routine."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
             "No bedrest time needed."
           ]
         },

@@ -5,6 +5,19 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('access care sits immediately below routine orders', () => {
+  for (const procedure of captureLegacyState().procedures) {
+    const sections = Object.values(procedure.nodes).find(node => node.title === 'Post-procedure')?.checklistSections;
+    if (!Array.isArray(sections)) continue;
+    const access = sections.findIndex(section => section.title === 'Access care');
+    if (access < 0) continue;
+    const routine = sections.findIndex(section => /^Routine orders|^Before lab results/i.test(section.title));
+    assert.equal(access, routine + 1, procedure.id);
+    for (const section of sections.filter(section => /^Routine orders|^Before lab results/i.test(section.title))) {
+      assert.doesNotMatch(JSON.stringify(section.items), /Monitor (?:color of )?access.site|Flush with|suture device|Femoral venous access:/i, procedure.id);
+    }
+  }
+});
 test('finalized nursing orders preserve source schedules and conditional recovery', () => {
   const all = captureLegacyState().procedures;
   const get = id => all.find(p => p.id === id);
@@ -17,7 +30,7 @@ test('finalized nursing orders preserve source schedules and conditional recover
     assert.equal(vitals.length, 1, id);
     assert.match(vitals[0], /15 minutes x 4.*30 minutes x 2.*1 hour x 4.*4 hours/);
   }
-  assert.match(JSON.stringify(routine('y90-radioembolization-mapping')), /Monitor color of access site/);
+  assert.match(JSON.stringify(node('y90-radioembolization-mapping', 'Post-procedure').checklistSections.find(s => s.title === 'Access care')), /Monitor color of access site/);
   assert.match(JSON.stringify(node('inferior-vena-cava-filter-removal', 'Post-procedure')), /HOB >45/);
   const thora = JSON.stringify(routine('thoracentesis'));
   assert.match(thora, /CXR STAT if ordered by MD/);
@@ -85,7 +98,7 @@ test('arterial access care preserves available routes and nests radial instructi
   const all = captureLegacyState().procedures;
   const access = id => Object.values(all.find(p => p.id === id).nodes).find(n => n.title === 'Post-procedure').checklistSections.find(s => s.title === 'Access care');
   const femoralOnly = access('genicular-artery-embolization');
-  assert.equal(femoralOnly.items.length, 1);
+  assert.equal(femoralOnly.items.filter(item => item.strong === 'Femoral access:').length, 1);
   assert.equal(femoralOnly.items[0].text, ' Bedrest 2 hours with closure device; 6 hours with manual compression.');
   const both = access('hemorrhoid-artery-embolization');
   assert.deepEqual(both.items[1].subitems, ['Remove radial artery compression device within 2 hours post procedure.', 'Activity per JH-HLM mobility goal.']);
@@ -356,7 +369,7 @@ test('procedures preserve standard pre-procedure tabs with optional final Consen
   assert.equal(count, 58);
 });
 
-test('post-procedure follow-up is last and drainage flush is BID', () => {
+test('post-procedure follow-up is last and drainage flush wording is standardized', () => {
   const { procedures } = captureLegacyState();
   const articles = procedures.map(convert);
   for (const article of articles) {
@@ -375,7 +388,7 @@ test('post-procedure follow-up is last and drainage flush is BID', () => {
     if (followIndex >= 0) assert.equal(followIndex, post.subsections.length - 1, article.id);
   }
   const drainage = articles.find(a => a.id === 'drainage-catheter-placement-exchange');
-  assert.match(JSON.stringify(drainage), /10 mL twice daily \(BID\)/);
+  assert.match(JSON.stringify(drainage), /Flush with 10 mL sterile saline twice daily\./);
   assert.match(JSON.stringify(drainage.sections.find(s => s.kind === 'post').blocks.at(-1)), /CT and drain check in 2 weeks/);
 });
 
@@ -479,7 +492,8 @@ test('postprocedure sections group monitoring and place discharge before final f
       for (const entry of section.items) {
         const text = typeof entry === 'string' ? entry.text || '' : entry.text || '';
         const value = typeof entry === 'string' ? entry : text.trim();
-        if (/^Vital signs|^Monitor (?:color of )?access site|^Neurovascular checks/i.test(value)) assert.equal(section.title, p.id === 'adrenal-vein-sampling' ? 'Routine orders - before lab results have returned' : 'Routine orders', p.title);
+        if (/^Vital signs/i.test(value)) assert.equal(section.title, p.id === 'adrenal-vein-sampling' ? 'Routine orders - before lab results have returned' : 'Routine orders', p.title);
+        if (/^Monitor (?:color of )?access site|^Neurovascular checks/i.test(value)) assert.equal(section.title, 'Access care', p.title);
       }
     }
   }
@@ -551,6 +565,8 @@ test('order relocation preserves infusion setups, medication timing and conditio
   assert.ok(pae[clinicIndex + 1].items.includes('Bactrim 800-160 mg BID x 10 days total starting 2 days prior to procedure.'));
 
   const gTube = 'gastrostomy-gastrojejunostomy-jejunostomy-tube-placement';
-  assert.match(JSON.stringify(orders(gTube)), /Barium order to be administered ENTIRE bottle the night prior/);
+  assert.match(JSON.stringify(orders(gTube)), /Barium sulfate 60% \(w\/v\) oral suspension, 355 mL/);
+  assert.match(JSON.stringify(orders(gTube)), /entire bottle via NG\/OG\/DHT at 2330 the night before the scheduled procedure/);
+  assert.match(JSON.stringify(topic(gTube, 'Sedation')), /head\/neck cancer, dysphagia, or dementia/);
   assert.doesNotMatch(JSON.stringify(topic(gTube, 'Checklist')), /Barium order to be administered|Ancef 2 g/);
 });

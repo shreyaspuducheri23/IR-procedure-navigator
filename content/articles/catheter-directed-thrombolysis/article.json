@@ -499,9 +499,7 @@
           "items": [
             "No diet.",
             "Tylenol 650 mg PRN.",
-            "Neurovascular checks q1h x 6 hours, then q2h for up to 24 hours after completion.",
-            "Vital signs q15 minutes x 4, q30 minutes x 2, q1h x 2, then q2h until completion of the thrombolytic infusion.",
-            "Monitor color of access site."
+            "Vital signs q15 minutes x 4, q30 minutes x 2, q1h x 2, then q2h until completion of the thrombolytic infusion."
           ]
         },
         {
@@ -513,7 +511,9 @@
                 "strong": "Femoral access (arterial cases):"
               },
               " Bedrest 2 hours with closure device; 6 hours with manual compression."
-            ]
+            ],
+            "Neurovascular checks q1h x 6 hours, then q2h for up to 24 hours after completion.",
+            "Monitor color of access site."
           ]
         },
         {

@@ -163,7 +163,8 @@
                 "Vital signs per routine.",
                 "PIV placement.",
                 "Glucose POC.",
-                "Barium order to be administered ENTIRE bottle the night prior.",
+                "Barium sulfate 60% (w/v) oral suspension, 355 mL.",
+                "Nursing order: administer the entire bottle via NG/OG/DHT at 2330 the night before the scheduled procedure.",
                 "NG tube in place if inpatient.",
                 "Ancef 2 g if <120 kg, 3 g if >120 kg.",
                 "INR and CBC within 30 days."
@@ -186,9 +187,9 @@
                 ],
                 [
                   {
-                    "strong": "Consideration:"
+                    "strong": "Moderate sedation caution:"
                   },
-                  " assess airway protection and aspiration risk in patients with dysphagia when selecting the method."
+                  " head/neck cancer, dysphagia, or dementia: assess airway, aspiration risk, and cooperation; consider anesthesia support."
                 ],
                 [
                   {

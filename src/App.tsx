@@ -4,7 +4,9 @@ import { HomePage } from "@/components/home/HomePage";
 import { ArticlePage } from "@/components/article/ArticlePage";
 import { NotFound } from "@/components/NotFound";
 import { OnCallWorkflow } from "@/components/workflow/OnCallWorkflow";
+import { TdcRemoval } from "@/components/workflow/TdcRemoval";
 import { GeneralFAQ } from "@/components/faq/GeneralFAQ";
+import { ClinicalFAQ } from "@/components/faq/ClinicalFAQ";
 import { PagerGuide } from "@/components/faq/PagerGuide";
 
 /**
@@ -18,7 +20,10 @@ const router = createHashRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/on-call", element: <OnCallWorkflow /> },
+      { path: "/tdc-removal", element: <TdcRemoval /> },
       { path: "/faq", element: <GeneralFAQ /> },
+      { path: "/faq/anesthesia", element: <ClinicalFAQ topic="anesthesia" /> },
+      { path: "/faq/drain-flushing", element: <ClinicalFAQ topic="drain-flushing" /> },
       { path: "/faq/pager", element: <PagerGuide /> },
       { path: "/article/:id", element: <ArticlePage /> },
       { path: "*", element: <NotFound /> },

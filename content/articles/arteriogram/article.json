@@ -598,7 +598,6 @@
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Tylenol 650 mg PRN.",
-            "Monitor color of access site.",
             "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 4, then every 4 hours; edit to match bedrest."
           ]
         },
@@ -621,7 +620,8 @@
                 "strong": "Radial access:"
               },
               ""
-            ]
+            ],
+            "Monitor color of access site."
           ],
           "subitems": {
             "1": [

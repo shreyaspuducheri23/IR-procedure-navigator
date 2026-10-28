@@ -464,8 +464,7 @@
           "items": [
             "Diet per UFE plan. If no further intervention is planned: Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per recovery-unit routine.",
-            "Tylenol 650 mg PRN; continue the UFE analgesia plan.",
-            "Monitor puncture-site color, bleeding, and swelling."
+            "Tylenol 650 mg PRN; continue the UFE analgesia plan."
           ]
         },
         {
@@ -473,7 +472,8 @@
           "title": "Access care",
           "items": [
             "Small dressing to the needle site.",
-            "Arterial access precautions and activity per UFE orders."
+            "Arterial access precautions and activity per UFE orders.",
+            "Monitor puncture-site color, bleeding, and swelling."
           ]
         },
         {

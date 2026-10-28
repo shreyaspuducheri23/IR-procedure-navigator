@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useArticleIndex } from "@/hooks/useArticle";
-import { CATEGORIES, getCategory } from "@/content/categories";
+import { CATEGORIES } from "@/content/categories";
 import { ArticleCard } from "./ArticleCard";
 import styles from "./HomePage.module.css";
+import cardStyles from "./ArticleCard.module.css";
 
 const ALL = "all";
 
@@ -21,22 +22,9 @@ export function HomePage() {
         (article) =>
           (showDrafts || article.status !== "draft") &&
           (activeCategory === ALL || article.category === activeCategory),
-      ),
+      ).sort((a, b) => a.title.localeCompare(b.title)),
     [articles, activeCategory, showDrafts],
   );
-
-  const grouped = useMemo(() => {
-    const byCategory = new Map<string, typeof visible>();
-    for (const article of visible) {
-      const list = byCategory.get(article.category) ?? [];
-      list.push(article);
-      byCategory.set(article.category, list);
-    }
-    return CATEGORIES.filter((category) => byCategory.has(category.id)).map((category) => ({
-      category,
-      articles: byCategory.get(category.id)!,
-    }));
-  }, [visible]);
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();
@@ -44,11 +32,25 @@ export function HomePage() {
       if (!showDrafts && article.status === "draft") continue;
       map.set(article.category, (map.get(article.category) ?? 0) + 1);
     }
+    map.set("vascular-access", (map.get("vascular-access") ?? 0) + 1);
     return map;
   }, [articles, showDrafts]);
 
-  const totalVisible = articles.filter((a) => showDrafts || a.status !== "draft").length;
-  const draftCount = articles.filter((a) => a.status === "draft").length;
+  const totalVisible = articles.filter((a) => showDrafts || a.status !== "draft").length + 1;
+  const draftCount = articles.filter((a) => a.status === "draft").length + 1;
+  const references = visible.filter(article => article.category === "reference");
+  const procedureCards = visible.filter(article => article.category !== "reference").map(article => ({
+    id: article.id, title: article.title, content: <ArticleCard key={article.id} article={article} />,
+  }));
+  if (activeCategory === ALL || activeCategory === "vascular-access") {
+    procedureCards.push({ id: "tdc-removal", title: "TDC Removal", content:
+      <Link key="tdc-removal" to="/tdc-removal" className={cardStyles.card}>
+        <div className={cardStyles.head}><h3 className={cardStyles.title}>TDC Removal</h3><span className={cardStyles.draft}>Draft</span></div>
+        <p className={cardStyles.summary}>Tunneled dialysis catheter removal. Tools and stepwise workflow pending.</p>
+      </Link>,
+    });
+  }
+  procedureCards.sort((a, b) => a.title.localeCompare(b.title));
 
   function update(next: Record<string, string | null>) {
     const merged = new URLSearchParams(params);
@@ -109,23 +111,17 @@ export function HomePage() {
         </label>
       </div>
 
-      {grouped.length === 0 ? (
+      {procedureCards.length === 0 && references.length === 0 ? (
         <p className={styles.empty}>Nothing matches these filters.</p>
       ) : (
-        grouped.map(({ category, articles: list }) => (
-          <section key={category.id} className={styles.group}>
-            <div className={styles.groupHeader} data-accent={category.accent}>
-              <h2 className={styles.groupTitle}>{getCategory(category.id).label}</h2>
-              <p className={styles.groupBlurb}>{category.blurb}</p>
-            </div>
             <div className={styles.grid}>
-              {list.map((article) => (
-                <ArticleCard key={article.id} article={article} />
-              ))}
+              {procedureCards.map(item => item.content)}
             </div>
-          </section>
-        ))
       )}
+      {references.length > 0 && <section className={`${styles.group} ${styles.references}`}>
+        <h2 className={styles.groupTitle}>Reference Tools</h2>
+        <div className={styles.grid}>{references.map(article => <ArticleCard key={article.id} article={article} />)}</div>
+      </section>}
     </div>
   );
 }

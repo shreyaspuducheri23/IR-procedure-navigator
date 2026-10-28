@@ -477,8 +477,14 @@
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN.",
-            "Pigtail drain - flush orders 10 mL daily."
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Flush with 10 mL sterile saline once daily."
           ]
         },
         {

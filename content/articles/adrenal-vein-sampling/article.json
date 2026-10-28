@@ -448,6 +448,32 @@
                   }
                 ]
               ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Procedure images",
+              "collapsible": true,
+              "blocks": [
+                {
+                  "type": "image",
+                  "src": "images/right-adrenal-venogram.png",
+                  "alt": "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.",
+                  "caption": "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles."
+                },
+                {
+                  "type": "image",
+                  "src": "images/left-renal-vein-selection.png",
+                  "alt": "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.",
+                  "caption": "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein."
+                },
+                {
+                  "type": "image",
+                  "src": "images/left-adrenal-venogram.png",
+                  "alt": "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.",
+                  "caption": "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein."
+                }
+              ]
             }
           ]
         },
@@ -552,18 +578,24 @@
           "type": "checklist",
           "title": "Routine orders - before lab results have returned",
           "items": [
-            "Monitor Color of Access Site",
             "Vital signs - Every 15 minutes x 4, then every 30 minutes x 2",
+            "Notify MD/LIP - IR",
+            "No diet until lab results are back",
+            "Tylenol 650 mg PRN",
+            "Continue cosyntropin and do not order diet until lab results are back and cleared by attending"
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Monitor Color of Access Site",
             [
               {
                 "strong": "Femoral venous access:"
               },
               " Bedrest 2 hours with leg flat."
-            ],
-            "Notify MD/LIP - IR",
-            "No diet until lab results are back",
-            "Tylenol 650 mg PRN",
-            "Continue cosyntropin and do not order diet until lab results are back and cleared by attending"
+            ]
           ]
         },
         {

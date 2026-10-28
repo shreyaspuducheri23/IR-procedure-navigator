@@ -502,8 +502,16 @@
           "items": [
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
-            "Tylenol 650 mg PRN.",
-            "Drain flush: 10 mL BID while admitted, 10 mL daily while outpatient."
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Access care",
+          "items": [
+            "Gravity drainage unless otherwise ordered.",
+            "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb.",
+            "Flush with 10 mL sterile saline twice daily while admitted; once daily after discharge."
           ]
         },
         {
@@ -517,14 +525,6 @@
             "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
             "Aspirin: 24 hours.",
             "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Drain care",
-          "items": [
-            "Gravity drainage unless otherwise ordered.",
-            "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb."
           ]
         },
         {
