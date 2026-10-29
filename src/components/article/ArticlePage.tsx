@@ -200,16 +200,6 @@ function ArticleView({
         ))}
       </div>
 
-      {article.reviewNotes.length > 0 && (
-        <Callout variant="note" title="Still to confirm">
-          <ul className={styles.noteList}>
-            {article.reviewNotes.map((note, index) => (
-              <li key={index}>{note}</li>
-            ))}
-          </ul>
-        </Callout>
-      )}
-
       {article.provenance.length > 0 && (
         <footer className={styles.provenance}>
           <h2 className={styles.provenanceTitle}>Source</h2>
