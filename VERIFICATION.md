@@ -20,7 +20,7 @@ Verified locally on September 15, 2026. Nothing was pushed or published.
 
 ## Automated checks
 
-- `npm test`: 26 passed, including pinned parent parity and migration regression.
+- `npm test`: 41 passed, including migration regression.
 - `npm run validate:content`: all 57 articles valid.
 - `npm run typecheck`: passed.
 - `npm run build`: passed; production output served under `/IR-procedure-navigator/`.
