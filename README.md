@@ -132,10 +132,11 @@ it does not constitute a new guideline review.
   their stylesheet is scoped to `.anticoagulation-page`.
 - The article schema supports `{ "type": "calculator", "calculator": "anticoagulation" }`.
   Migration now retains that marker instead of silently dropping it.
-- The frozen regression fixture in `tests/fixtures/anticoagulation-parent.js.txt`
-  comes from upstream commit `3832590521d3faa400fc5a781f7477ed82d886e9`.
-  Tests compare all 3,168 recommendations (including notes) with that baseline.
-  Deliberate future clinical changes require reviewed updates to those expectations.
+- `tests/fixtures/anticoagulation-parent.js.txt` is a frozen copy of the upstream
+  calculator from commit `3832590521d3faa400fc5a781f7477ed82d886e9`, kept for
+  reference only; no tests use it. Its wording is not kept in sync with
+  `src/calculators/anticoagulation.ts` and may be outdated, so do not treat it as
+  current clinical guidance.
 
 For a production preview, run `npm run build` then
 `npm run preview -- --host 127.0.0.1 --port 4173` and open
