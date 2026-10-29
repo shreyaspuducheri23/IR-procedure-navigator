@@ -6,6 +6,7 @@ import { NotFound } from "@/components/NotFound";
 import { OnCallWorkflow } from "@/components/workflow/OnCallWorkflow";
 import { TdcRemoval } from "@/components/workflow/TdcRemoval";
 import { GeneralFAQ } from "@/components/faq/GeneralFAQ";
+import { EConsultGuide } from "@/components/faq/EConsultGuide";
 import { ClinicalFAQ } from "@/components/faq/ClinicalFAQ";
 import { PagerGuide } from "@/components/faq/PagerGuide";
 
@@ -22,6 +23,7 @@ const router = createHashRouter([
       { path: "/on-call", element: <OnCallWorkflow /> },
       { path: "/tdc-removal", element: <TdcRemoval /> },
       { path: "/faq", element: <GeneralFAQ /> },
+      { path: "/faq/e-consult", element: <EConsultGuide /> },
       { path: "/faq/anesthesia", element: <ClinicalFAQ topic="anesthesia" /> },
       { path: "/faq/drain-flushing", element: <ClinicalFAQ topic="drain-flushing" /> },
       { path: "/faq/pager", element: <PagerGuide /> },

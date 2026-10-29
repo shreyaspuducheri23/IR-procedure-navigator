@@ -4,14 +4,14 @@
   scroll-margin-top: calc(var(--header-height) + var(--sp-4));
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .section[data-kind="pre"] {
-  --phase-accent: var(--accent-blue);
-  --phase-soft: var(--accent-blue-soft);
+  --phase-accent: var(--accent-cyan);
+  --phase-soft: var(--accent-cyan-soft);
 }
 
 .section[data-kind="intra"] {
@@ -63,7 +63,7 @@
 .barTitle {
   font-size: var(--text-lg);
   font-weight: 640;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   color: var(--c-ink);
 }
 

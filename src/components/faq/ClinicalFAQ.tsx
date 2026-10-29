@@ -7,7 +7,7 @@ export function ClinicalFAQ({ topic }: { topic: "anesthesia" | "drain-flushing" 
   const anesthesia = topic === "anesthesia";
   return <section className={styles.page}>
     <Link to="/faq">Back to General FAQ</Link>
-    <h1 className={styles.guideTitle}>{anesthesia ? "Involving Anesthesia in a procedure" : "General drain flushing instructions"}</h1>
+    <h1 className={styles.guideTitle}>{anesthesia ? "Coordinating Anesthesia" : "General drain flushing instructions"}</h1>
     <div className={styles.instructions}>
       {anesthesia ? <>
         <h2>More emergent procedures</h2>

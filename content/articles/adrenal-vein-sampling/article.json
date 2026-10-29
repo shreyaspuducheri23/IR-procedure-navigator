@@ -589,7 +589,7 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Monitor Color of Access Site",
+            "Monitor color of access site.",
             [
               {
                 "strong": "Femoral venous access:"

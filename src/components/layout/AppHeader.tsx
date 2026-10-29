@@ -11,7 +11,7 @@ export function AppHeader() {
             IR
           </span>
           <span className={styles.brandText}>
-            <span className={styles.brandName}>Procedure Navigator</span>
+            <span className={styles.brandName}>IR Reference Guide</span>
             <span className={styles.brandSub}>Resident reference</span>
           </span>
         </Link>

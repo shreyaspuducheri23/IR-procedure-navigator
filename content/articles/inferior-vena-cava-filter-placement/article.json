@@ -464,7 +464,8 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Elevate HOB >45 degrees."
+            "Elevate HOB >45 degrees.",
+            "Monitor color of access site."
           ]
         },
         {

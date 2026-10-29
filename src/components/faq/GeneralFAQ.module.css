@@ -1,5 +1,6 @@
 .page { max-width: 720px; margin: 32px auto 64px; }
-.guideLink { display: block; padding: 20px 0; color: var(--c-brand); font-weight: 600; }
+.guideLink { display: block; padding: 20px 12px; color: var(--c-brand-strong); font-weight: 600; border-bottom: 1px solid var(--c-border); border-left: 3px solid transparent; transition: background 120ms ease; }
+.guideLink:hover { background: var(--c-brand-soft); border-left-color: var(--c-brand); text-decoration: none; }
 .instructions h2 { font-size: 18px; }
 .instructions p, .instructions li { line-height: 1.6; margin: 12px 0; }
 .instructions ul { padding-left: 24px; }
@@ -10,6 +11,7 @@
 .steps p { line-height: 1.6; margin: 0 0 12px; }
 .screenshotScroll { max-width: 100%; overflow-x: auto; }
 .screenshot { display: block; width: 100%; min-width: 680px; height: auto; object-position: center; }
+.menuScreenshot { display: block; width: 246px; max-width: 100%; height: auto; }
 .page h1 { font-size: 28px; letter-spacing: 0; margin: 0 0 24px; }
 .entries { margin: 0; }
 .entries > div { padding: 20px 0; border-block: 1px solid var(--c-border); }

@@ -1,7 +1,12 @@
 .shell {
+  padding-left: 252px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 860px) {
+  .shell { padding-left: 0; }
 }
 
 .main {
@@ -33,6 +38,7 @@
 }
 
 @media print {
+  .shell { padding-left: 0; }
   .footer {
     display: none;
   }

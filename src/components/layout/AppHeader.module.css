@@ -1,22 +1,28 @@
 .header {
-  position: sticky;
+  border-top: 3px solid var(--c-brand);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 252px;
   top: 0;
   z-index: 30;
-  background: var(--c-surface);
-  border-bottom: 1px solid var(--c-border);
+  background: #242a2d;
+  color: #f3f6f6;
+  border-right: 1px solid #384346;
 }
 
-.navigation { display: flex; flex-wrap: wrap; column-gap: 24px; max-width: 84rem; margin: auto; padding: 0 24px; }
-.navigation a { padding: 12px 0; font-size: 14px; color: var(--c-ink-muted); text-decoration: none; border-bottom: 3px solid transparent; }
-.navigation a[aria-current="page"] { color: var(--c-brand); border-color: var(--c-brand); font-weight: 650; }
+.navigation { display: flex; flex-direction: column; gap: 6px; padding: 12px 16px; }
+.navigation a { padding: 13px 12px; font-size: 14px; color: #c8d3d4; text-decoration: none; border-left: 3px solid transparent; border-radius: 4px; }
+.navigation a:hover { background: #303b3e; color: white; }
+.navigation a[aria-current="page"] { background: #174744; color: #a9f0df; border-color: #55cbb3; font-weight: 650; }
 
 .inner {
-  height: var(--header-height);
+  height: auto;
   max-width: 84rem;
   margin: 0 auto;
-  padding: 0 var(--sp-5);
+  padding: 28px 16px 16px;
   display: grid;
-  grid-template-columns: 1fr minmax(0, 30rem) 1fr;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: var(--sp-4);
 }
@@ -58,12 +64,12 @@
 .brandName {
   font-size: var(--text-base);
   font-weight: 650;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .brandSub {
   font-size: var(--text-xs);
-  color: var(--c-ink-faint);
+  color: #aebfc1;
 }
 
 .searchSlot {
@@ -71,7 +77,7 @@
 }
 
 .actions {
-  justify-self: end;
+  display: none;
 }
 
 .homeButton {
@@ -94,7 +100,11 @@
 }
 
 @media (max-width: 860px) {
+  .header { position: sticky; width: 100%; bottom: auto; border-right: 0; }
+  .navigation { flex-direction: row; gap: 4px; padding: 0 12px 8px; }
+  .navigation a { font-size: 12px; padding: 10px 8px; border-left: 0; border-bottom: 2px solid transparent; }
   .inner {
+    padding: 12px 16px;
     grid-template-columns: auto 1fr;
     grid-template-areas: "brand search";
     padding: 0 var(--sp-4);
@@ -109,8 +119,11 @@
   }
 
   .brandText {
-    display: none;
+    display: flex;
   }
+  .brandName { font-size: 13px; }
+  .brandSub { display: none; }
+  .mark { display: none; }
 
   /* The brand mark is the home button on narrow screens. */
   .actions {

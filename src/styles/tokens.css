@@ -2,28 +2,28 @@
 
 :root {
   /* Neutrals: a cool slate ramp. */
-  --c-canvas: #f5f7fa;
+  --c-canvas: #eceff0;
   --c-surface: #ffffff;
-  --c-surface-sunken: #f8fafc;
-  --c-surface-hover: #f1f5f9;
-  --c-border: #e2e8f0;
-  --c-border-strong: #cbd5e1;
-  --c-ink: #0f172a;
-  --c-ink-muted: #475569;
-  --c-ink-subtle: #64748b;
-  --c-ink-faint: #94a3b8;
+  --c-surface-sunken: #f6f8f8;
+  --c-surface-hover: #edf5f4;
+  --c-border: #dce5e4;
+  --c-border-strong: #b4c7c5;
+  --c-ink: #202a2d;
+  --c-ink-muted: #45575b;
+  --c-ink-subtle: #586c70;
+  --c-ink-faint: #667c80;
 
   /* Brand */
-  --c-brand: #1d4ed8;
-  --c-brand-strong: #1e40af;
-  --c-brand-soft: #eff6ff;
-  --c-focus: #2563eb;
+  --c-brand: #007f79;
+  --c-brand-strong: #005f5b;
+  --c-brand-soft: #e9f7f4;
+  --c-focus: #008c9e;
 
   /* Accents, used for categories and phase bars. */
   --accent-blue: #2563eb;
   --accent-blue-soft: #eff6ff;
-  --accent-violet: #7c3aed;
-  --accent-violet-soft: #f5f3ff;
+  --accent-violet: #b94c67;
+  --accent-violet-soft: #fff1f4;
   --accent-teal: #0d9488;
   --accent-teal-soft: #f0fdfa;
   --accent-amber: #b45309;
@@ -64,8 +64,8 @@
   /* Radii */
   --r-sm: 4px;
   --r-md: 8px;
-  --r-lg: 12px;
-  --r-pill: 999px;
+  --r-lg: 8px;
+  --r-pill: 6px;
 
   /* Elevation — kept restrained; borders do most of the separating. */
   --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.04);

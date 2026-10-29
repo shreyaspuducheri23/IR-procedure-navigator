@@ -1201,6 +1201,28 @@ standardizeFemoralVenousAccessCare();
 updateGastrostomyPreparation();
 installAvsProcedureImages();
 separatePostprocedureAccessCare();
+ensureAccessSiteColorMonitoring();
+
+function ensureAccessSiteColorMonitoring() {
+  for (const procedure of procedures) {
+    const nodes = Object.values(procedure.nodes);
+    const accessOptions = nodes.filter(node => ["Anatomy", "Procedural steps", "Checklist", "Post-procedure"].includes(node.title));
+    if (!/\bfemoral\b|\bradial access\b/i.test(JSON.stringify(accessOptions))) continue;
+    const post = nodes.find(node => node.title === "Post-procedure");
+    if (!Array.isArray(post?.checklistSections)) continue;
+    let access = post.checklistSections.find(section => section.title === "Access care");
+    if (!access) {
+      access = { title: "Access care", items: [] };
+      const routine = post.checklistSections.findIndex(section => /^Routine orders|^Before lab results/i.test(section.title));
+      post.checklistSections.splice(routine + 1, 0, access);
+    }
+    access.items = access.items.map(item => typeof item === "string" && /^Monitor (?:color of )?access site\.?$/i.test(item)
+      ? "Monitor color of access site." : item);
+    if (!access.items.some(item => /monitor.*(?:access.site|puncture.site).*color|monitor.*color.*access.site/i.test(JSON.stringify(item)))) {
+      access.items.push("Monitor color of access site.");
+    }
+  }
+}
 
 function separatePostprocedureAccessCare() {
   const textOf = item => typeof item === "string" ? item : `${item.strong || ""}${item.text || ""}`;
