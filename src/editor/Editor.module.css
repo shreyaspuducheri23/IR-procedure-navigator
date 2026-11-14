@@ -1,0 +1,857 @@
+/*
+ * The in-site editor. Content blocks borrow the reader's own CSS modules so the
+ * page being edited looks like the page that will be published; this file adds
+ * only what editing needs on top: editable fields, menus, and the publish bar.
+ */
+
+.page {
+  padding-bottom: var(--sp-2);
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.modeChip,
+.badge {
+  flex: none;
+  font-size: var(--text-xs);
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-brand-strong);
+  background: var(--c-brand-soft);
+  border-radius: var(--r-pill);
+  padding: 1px var(--sp-2);
+  white-space: nowrap;
+}
+
+.badge {
+  color: var(--c-ink-subtle);
+  background: var(--c-surface-sunken);
+  border: 1px solid var(--c-border);
+  font-weight: 600;
+}
+
+.address {
+  font-size: var(--text-sm);
+  color: var(--c-ink-faint);
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--c-ink-subtle);
+}
+
+.notice {
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--c-note-border);
+  border-left-width: 3px;
+  border-radius: var(--r-md);
+  background: var(--c-note-bg);
+  color: var(--c-ink);
+  font-size: var(--text-sm);
+}
+
+.notice[data-tone="success"] {
+  border-color: var(--c-success-border);
+  background: var(--c-success-bg);
+}
+
+.notice[data-tone="warning"] {
+  border-color: var(--c-caution-border);
+  background: var(--c-caution-bg);
+}
+
+.linkButton {
+  color: var(--c-brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-block: var(--sp-6);
+}
+
+.message h1 {
+  font-size: var(--text-xl);
+}
+
+.message p {
+  color: var(--c-ink-muted);
+}
+
+/* Editable text ------------------------------------------------------------ */
+
+.inlineWrap {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.inline {
+  display: block;
+  min-height: 1.6em;
+  margin: -1px calc(-1 * var(--sp-1));
+  padding: 1px var(--sp-1);
+  border-radius: var(--r-sm);
+  outline: none;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  transition: background 100ms ease;
+  /* Keep a field that scrolls into view clear of the header and the publish bar. */
+  scroll-margin-block: calc(var(--header-height) + var(--sp-4)) 7rem;
+}
+
+.inline:hover {
+  background: rgb(0 127 121 / 0.06);
+}
+
+.inline:focus {
+  background: var(--c-surface);
+  box-shadow: 0 0 0 2px var(--c-focus);
+}
+
+.inline:empty::before {
+  content: attr(data-placeholder);
+  color: var(--c-ink-faint);
+  font-weight: 400;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.inline a {
+  color: var(--c-brand);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: text;
+}
+
+.inlineTools {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  gap: 1px;
+  padding: 2px;
+  border-radius: var(--r-md);
+  background: var(--c-ink);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.inlineTools button {
+  min-width: 2rem;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-sm);
+  color: #fff;
+}
+
+.inlineTools button:hover {
+  background: rgb(255 255 255 / 0.18);
+}
+
+.linkForm {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: min(22rem, calc(100vw - 2.5rem));
+  padding: var(--sp-3);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-lg);
+  color: var(--c-ink);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: normal;
+  cursor: default;
+}
+
+.linkModes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.linkModes label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  cursor: pointer;
+}
+
+.linkActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* Form fields -------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.field > span:first-child,
+.field > label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--c-ink-subtle);
+}
+
+.field input[type="text"],
+.field input[type="url"],
+.field input[type="date"],
+.field input[type="password"],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: var(--sp-2);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--c-danger);
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* Buttons ------------------------------------------------------------------ */
+
+.primary,
+.primarySmall {
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--c-brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+.primarySmall {
+  padding: var(--sp-1) var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.primary:hover:not(:disabled),
+.primarySmall:hover:not(:disabled) {
+  background: var(--c-brand-strong);
+}
+
+.secondary {
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  color: var(--c-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--c-surface-hover);
+  color: var(--c-ink);
+}
+
+.quiet {
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-sm);
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+}
+
+.quiet:hover {
+  background: var(--c-surface-hover);
+  color: var(--c-ink);
+}
+
+.primary:disabled,
+.primarySmall:disabled,
+.secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Blocks ------------------------------------------------------------------- */
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.block {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-1);
+  min-width: 0;
+}
+
+.blockBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.addLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.addButton,
+.addRow,
+.addTopic {
+  padding: 2px var(--sp-2);
+  border: 1px dashed var(--c-border-strong);
+  border-radius: var(--r-sm);
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.addButton:hover,
+.addRow:hover,
+.addTopic:hover {
+  border-style: solid;
+  border-color: var(--c-brand);
+  background: var(--c-brand-soft);
+  color: var(--c-brand-strong);
+}
+
+/* Enter already adds bullets, so this stays out of the way until the list is in use. */
+.addRow {
+  align-self: flex-start;
+  margin-left: var(--sp-4);
+  border-color: transparent;
+  color: var(--c-ink-faint);
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.listBlock:hover > .addRow,
+.listBlock:focus-within > .addRow {
+  opacity: 1;
+}
+
+.addTopic {
+  align-self: flex-start;
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.inlineError {
+  color: var(--c-danger);
+  font-size: var(--text-sm);
+}
+
+.locked {
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px dashed var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface-sunken);
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+}
+
+/* Lists -------------------------------------------------------------------- */
+
+.listBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.rows {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  counter-reset: row;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-1);
+  padding-left: var(--sp-4);
+  line-height: 1.6;
+  color: var(--c-ink);
+}
+
+.row > .inlineWrap {
+  flex: 1;
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-border-strong);
+}
+
+.row[data-level="1"] {
+  margin-left: var(--sp-5);
+}
+
+.row[data-level="1"]::before {
+  background: none;
+  border: 1px solid var(--c-border-strong);
+}
+
+.rows[data-ordered] > .row[data-level="0"] {
+  counter-increment: row;
+  padding-left: var(--sp-5);
+}
+
+.rows[data-ordered] > .row[data-level="0"]::before {
+  content: counter(row) ".";
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: var(--c-ink-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.rowTools {
+  flex: none;
+  display: flex;
+  gap: 1px;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.row:hover > .rowTools,
+.row:focus-within > .rowTools {
+  opacity: 1;
+}
+
+.rowTools button,
+.cellTool {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--r-sm);
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1;
+}
+
+.rowTools button:hover:not(:disabled),
+.cellTool:hover {
+  background: var(--c-surface-hover);
+  color: var(--c-ink);
+}
+
+.rowTools button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Menus -------------------------------------------------------------------- */
+
+.menu {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+}
+
+.menuButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--r-sm);
+  color: var(--c-ink-subtle);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 100ms ease;
+}
+
+.block:hover > .menu > .menuButton,
+.block:focus-within > .menu > .menuButton,
+.barEdit .menuButton,
+.menu[data-open] > .menuButton {
+  opacity: 1;
+}
+
+.menuButton:hover,
+.menu[data-open] > .menuButton {
+  background: var(--c-surface-hover);
+  color: var(--c-ink);
+}
+
+.menuList {
+  position: absolute;
+  top: calc(100% + 2px);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  min-width: 12rem;
+  max-width: calc(100vw - 2rem);
+  padding: var(--sp-1);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-lg);
+  color: var(--c-ink);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.menuList[data-align="end"] {
+  right: 0;
+}
+
+.menuList[data-align="start"] {
+  left: 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-3);
+  border-radius: var(--r-sm);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.menuItem:hover:not(:disabled) {
+  background: var(--c-surface-hover);
+}
+
+.menuItem:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.menuItem[data-danger] {
+  color: var(--c-danger);
+}
+
+.menuTick {
+  width: 1em;
+  color: var(--c-brand);
+  font-weight: 700;
+}
+
+.menuHint {
+  margin-left: auto;
+  padding-left: var(--sp-4);
+  color: var(--c-ink-faint);
+  font-size: var(--text-xs);
+}
+
+.menuDivider {
+  height: 1px;
+  margin: var(--sp-1) 0;
+  background: var(--c-border);
+}
+
+/* Sections and topics ------------------------------------------------------ */
+
+/* The reader clips these boxes; here menus and popovers must escape them. */
+.sectionEdit,
+.topicEdit {
+  overflow: visible;
+}
+
+.barEdit {
+  cursor: default;
+}
+
+.barEdit:hover {
+  filter: none;
+}
+
+.collapse {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--r-sm);
+}
+
+.collapse:hover {
+  background: var(--c-surface-hover);
+}
+
+/* Tables ------------------------------------------------------------------- */
+
+.tableEdit th,
+.tableEdit td {
+  position: relative;
+  min-width: 7rem;
+}
+
+.tableEdit thead th {
+  white-space: normal;
+  padding-right: 2rem;
+}
+
+.tableEdit thead th .cellTool {
+  position: absolute;
+  top: var(--sp-1);
+  right: var(--sp-1);
+}
+
+.tableEdit .toolCell {
+  width: 2rem;
+  min-width: 2rem;
+  padding: var(--sp-1);
+}
+
+/* Details panel ------------------------------------------------------------ */
+
+.meta {
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.meta > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.metaSummary {
+  color: var(--c-ink-subtle);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+/* Publish bar -------------------------------------------------------------- */
+
+.bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--c-border-strong);
+  border-bottom: none;
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--c-surface);
+  box-shadow: 0 -6px 18px rgb(15 23 42 / 0.1);
+}
+
+.barStatus {
+  flex: 1;
+  min-width: 12rem;
+  font-size: var(--text-sm);
+}
+
+.barDetail {
+  color: var(--c-ink-subtle);
+}
+
+.barActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.problems > summary {
+  color: var(--c-danger);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.problems ul {
+  margin-top: var(--sp-2);
+  padding-left: var(--sp-5);
+  color: var(--c-ink);
+}
+
+/* Publish dialog ----------------------------------------------------------- */
+
+.dialog {
+  width: min(30rem, calc(100vw - 2rem));
+  padding: 0;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  box-shadow: var(--shadow-lg);
+}
+
+.dialog::backdrop {
+  background: rgb(15 23 42 / 0.45);
+}
+
+.dialogBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+}
+
+.dialogBody h2 {
+  font-size: var(--text-lg);
+}
+
+.dialogLede {
+  color: var(--c-ink-muted);
+  font-size: var(--text-sm);
+}
+
+.changes {
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--c-surface-sunken);
+  font-size: var(--text-sm);
+}
+
+.changes > span {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--c-ink-subtle);
+}
+
+.changes ul {
+  padding-left: var(--sp-5);
+}
+
+.dialogError {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  font-size: var(--text-sm);
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+}
+
+/* Small screens and touch -------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .metaGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .menuHint,
+  .barDetail {
+    display: none;
+  }
+
+  .bar {
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .barActions {
+    width: 100%;
+  }
+
+  .barActions > * {
+    flex: 1;
+    padding-inline: var(--sp-2);
+  }
+
+  .row[data-level="1"] {
+    margin-left: var(--sp-4);
+  }
+
+  /* Give the text the full width; the row's controls drop underneath it. */
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .row > .inlineWrap {
+    flex-basis: 100%;
+  }
+
+  .rowTools {
+    margin-left: auto;
+  }
+
+  /* The site header is taller and sticky at this width. */
+  .inline {
+    scroll-margin-block: 11rem 9rem;
+  }
+}
+
+/* No hover on touch screens: keep controls for the row being edited visible. */
+@media (hover: none) {
+  .menuButton {
+    opacity: 0.75;
+  }
+
+  .row:not(:focus-within) > .rowTools {
+    display: none;
+  }
+
+  .addRow {
+    opacity: 1;
+  }
+}

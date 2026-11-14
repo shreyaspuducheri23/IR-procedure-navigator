@@ -90,6 +90,22 @@
   height: 15px;
 }
 
+.newButton {
+  font-size: var(--text-sm);
+  font-weight: 550;
+  color: var(--c-ink-muted);
+  padding: var(--sp-1) var(--sp-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.newButton:hover {
+  background: var(--c-surface-hover);
+  color: var(--c-ink);
+  text-decoration: none;
+}
+
 .group {
   display: flex;
   flex-direction: column;

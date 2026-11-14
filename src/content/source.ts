@@ -1,10 +1,11 @@
 import { articleSchema, type Article, type ArticleMeta } from "@/schema/article";
 import { articleIndex } from "virtual:article-index";
+import { publishedArticle } from "./published";
 
 /**
- * Everything the app needs from the content layer. Today it is backed by JSON
- * files in content/articles; a future editor build can swap in a source backed
- * by an API without any component changing.
+ * Everything the reader needs from the content layer, backed by the JSON files
+ * in content/articles as they were at build time. The in-site editor does not
+ * go through this: it reads and writes the repository directly (src/editor).
  */
 export interface ContentSource {
   listArticles(): ArticleMeta[];
@@ -29,6 +30,11 @@ export const staticContentSource: ContentSource = {
   },
 
   async getArticle(id) {
+    // Someone who just published from the editor sees their version until the
+    // rebuilt site (which contains it) is the one loaded. See ./published.ts.
+    const published = publishedArticle(id);
+    if (published) return published;
+
     const cached = cache.get(id);
     if (cached) return cached;
 

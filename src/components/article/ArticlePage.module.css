@@ -85,6 +85,11 @@
 .toolbar {
   display: flex;
   justify-content: flex-end;
+  gap: var(--sp-2);
+}
+
+a.toolButton:hover {
+  text-decoration: none;
 }
 
 .toolButton {

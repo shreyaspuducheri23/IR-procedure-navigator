@@ -10,9 +10,14 @@ content/articles/<article-id>/
 
 The folder name **is** the article id and the URL (`/#/article/<article-id>`).
 
+**Most edits should be made on the site**, with a procedure's Edit button — see
+[Editing content](../README.md#editing-content). This page describes the file format for when
+a file is edited by hand. These files are the source of truth; nothing regenerates them.
+
 The shape is defined once, in [`src/schema/article.ts`](../src/schema/article.ts). Run
 `npm run validate:content` after editing — it checks the schema plus the things the
-schema can't see (folder name matches `id`, internal links resolve, image files exist).
+schema can't see (folder name matches `id`, internal links resolve, image files exist, no
+fields the schema does not know).
 
 ## Skeleton
 
@@ -115,23 +120,14 @@ fails if the file is missing.
 
 ## Where this content came from
 
-The 57 articles were migrated from the legacy vanilla-JS app by
-[`scripts/migrate.mjs`](../scripts/migrate.mjs), which reads `legacy/` and rebuilds this
-folder. The importer remains the upstream synchronization path. Before re-running it,
-compare existing articles against output from the current legacy source and
-importer; preserve any authored differences first. It replaces the article folder
-wholesale, including any added assets. The September 2026 baseline matched exactly.
+The articles were first generated from the legacy vanilla-JS app by
+[`scripts/migrate.mjs`](../scripts/migrate.mjs). That importer is retired: the files here are
+now edited directly, and re-running it would overwrite those edits (it refuses to run without
+`--force`). Do not edit `legacy/` to change content.
 
-For an upstream update, merge changes into `legacy/`, update the importer for any
-new structures, then run `npm run migrate`, `npm run validate:content`, `npm test`,
-and `npm run build` with Node 24. Commit the generated JSON alongside importer
-changes. Tests compare fresh conversion with checked-in JSON to catch stale output.
-
-The importer preserves deeper legacy descendants as ordered headings and blocks
-inside a subsection. For the upstream intraprocedure split, Anatomy and Procedural
-steps remain subsection bars. Missing nodes, cycles, and unsupported calculator
-identifiers abort conversion. The Anatomy placeholder is a note, not completed
-procedure-specific guidance.
+Image paths must be flat files in the article's own folder (`images/<name>.png|jpg|jpeg|webp|gif`,
+lowercase letters, digits, dots, dashes and underscores). External links must be `http(s)`,
+`mailto:` or `tel:` addresses.
 
 ### MELD calculator block
 
@@ -139,8 +135,7 @@ procedure-specific guidance.
 { "type": "calculator", "calculator": "meld" }
 ```
 
-This renders the adult React calculator. The importer emits it in the dedicated
-MELD section, not again for the legacy root marker. The article ID remains
+This renders the adult React calculator. The article ID remains
 `meld-score-reference` so existing article links work. This additive block retains
 schema version 1; content and its renderer must be released together.
 

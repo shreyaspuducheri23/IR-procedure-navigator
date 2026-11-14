@@ -10,6 +10,7 @@
     // The deployed site, plus the Vite dev server for local testing.
     "ALLOWED_ORIGINS": "https://shreyaspuducheri23.github.io,http://localhost:5173"
   }
-  // Secret, set out of band and never stored here:
-  //   npx wrangler secret put github_pat
+  // Secrets, set out of band and never stored here:
+  //   npx wrangler secret put github_pat   fine-grained PAT: Issues + Contents, read and write
+  //   npx wrangler secret put edit_key     optional: shared passcode for publishing from the editor
 }
