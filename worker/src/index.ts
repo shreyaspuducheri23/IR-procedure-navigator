@@ -10,8 +10,8 @@
  * It never lists, never echoes the token, and can only write inside
  * content/articles/ — see content.ts for the rules.
  *
- * Deploy:  npx wrangler deploy
- * Secret:  npx wrangler secret put github_pat
+ * Deploy:  npm run worker:deploy            (config: wrangler.jsonc at the repo root)
+ * Secret:  npx wrangler secret put github_pat   (run from the repo root)
  *          (fine-grained PAT on this repo: Issues + Contents, read and write)
  */
 import type { Env } from "./http.ts";

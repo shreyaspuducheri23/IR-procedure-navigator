@@ -103,7 +103,7 @@ history is on GitHub and any change can be reverted there.
 passcode — no code change needed:
 
 ```bash
-cd worker && npx wrangler secret put edit_key
+npx wrangler secret put edit_key
 ```
 
 From then on Publish asks each person for that passcode once per device.
@@ -171,6 +171,16 @@ if you clear it, and what keeps the button working if the Worker is ever down.
 npm run worker:deploy
 ```
 
+The Worker's code is in `worker/`, but its deploy settings are in `wrangler.jsonc` at the
+repository root, and the `wrangler secret` commands below are run from the root too. That
+placement is deliberate. Cloudflare is connected to this repository and runs `wrangler deploy`
+in the root on every push. When the root had no config, wrangler guessed "Vite project",
+built the website, and published it under the Worker's name — replacing the Worker and
+deleting its stored token, so feedback (and later the editor) broke after every push. With
+the config in the root, that automatic deploy publishes the Worker itself and keeps its
+secrets. If the Worker's address ever serves the website's HTML again, this is what happened:
+redeploy and re-store the token.
+
 Run `npm install` in the repository root first: the Worker imports the article schema from
 `src/schema/`, so the root dependencies must be present when it is bundled.
 
@@ -180,7 +190,7 @@ fine-grained PAT on this repo alone with **Issues: read and write** (feedback) a
 expires, feedback and publishing both start failing and the fix is:
 
 ```bash
-cd worker && npx wrangler secret put github_pat
+npx wrangler secret put github_pat
 ```
 
 Abuse protection for feedback is deliberately minimal: the Worker only accepts posts from the

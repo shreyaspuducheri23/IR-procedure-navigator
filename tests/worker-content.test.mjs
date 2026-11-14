@@ -307,9 +307,23 @@ test('a token without write access produces an actionable error, and leaks nothi
     assert.equal(status, 502);
     assert.match(data.error, /Contents: read and write/);
     assert.doesNotMatch(JSON.stringify(data), /personal access token|token"/);
+
+    github.failWrites = 401;
+    const expired = await save('paracentesis', { article, baseSha: sha });
+    assert.equal(expired.status, 502);
+    assert.match(expired.data.error, /expired or is not valid/);
   } finally {
     console.error = original;
   }
+});
+
+test('a Worker with no token stored says so, instead of blaming the token\'s permissions', async () => {
+  const { github, call } = setup({ github_pat: undefined });
+  const requests = github.log.length;
+  const { status, data } = await call('GET', '/content/articles/paracentesis');
+  assert.equal(status, 503);
+  assert.match(data.error, /no GitHub token stored/);
+  assert.equal(github.log.length, requests);
 });
 
 test('the feedback route is unchanged', async () => {

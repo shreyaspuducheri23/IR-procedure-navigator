@@ -399,6 +399,15 @@ export async function handleContent(request: Request, env: Env, cors: Cors, path
     return fail("Not allowed from this origin.", 403, cors);
   }
 
+  if (!env.github_pat) {
+    return fail(
+      "The publishing service has no GitHub token stored. The site owner needs to set it " +
+        "(npx wrangler secret put github_pat).",
+      503,
+      cors,
+    );
+  }
+
   // `path` is everything after /content/articles/. A single slug, nothing else:
   // this is the one place a client-chosen string becomes part of a repo path.
   if (!SLUG.test(path)) return fail("Not found.", 404, cors);
@@ -411,10 +420,18 @@ export async function handleContent(request: Request, env: Env, cors: Cors, path
     if (error instanceof GitHubError) {
       // Log the detail for us; GitHub's text can name the token's owner.
       console.error(error.message, error.detail);
-      if (error.status === 401 || error.status === 403 || error.status === 404) {
+      if (error.status === 401) {
         return fail(
-          "The editor could not write to the site's repository. " +
-            "The site owner needs to check the Worker's GitHub token (it needs Contents: read and write).",
+          "The publishing service's GitHub token has expired or is not valid. " +
+            "The site owner needs to store a new one (npx wrangler secret put github_pat).",
+          502,
+          cors,
+        );
+      }
+      if (error.status === 403 || error.status === 404) {
+        return fail(
+          "The publishing service's GitHub token cannot reach the site's repository. " +
+            "The site owner needs to give it Contents: read and write on this repository.",
           502,
           cors,
         );
