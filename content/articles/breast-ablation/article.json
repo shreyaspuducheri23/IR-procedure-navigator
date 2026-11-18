@@ -205,6 +205,25 @@
               ]
             }
           ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures.",
+                "Need for repeat treatment."
+              ]
+            }
+          ]
         }
       ]
     },

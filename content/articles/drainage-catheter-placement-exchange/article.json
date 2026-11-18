@@ -312,48 +312,174 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Basic steps"
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Basic steps"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Review the target"
+                      },
+                      " and choose catheter size and access using US or CT."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prep and anesthetize"
+                      },
+                      " the planned tract; confirm antibiotic coverage for an infected collection."
+                    ],
+                    [
+                      {
+                        "strong": "3. Establish access"
+                      },
+                      " for placement, puncture and aspirate the collection; for exchange, gently inject the existing catheter to define the cavity."
+                    ],
+                    [
+                      {
+                        "strong": "4. Secure a wire in the cavity"
+                      },
+                      " before tract dilation or removal of the old catheter; release its locking mechanism first."
+                    ],
+                    [
+                      {
+                        "strong": "5. Place the new catheter"
+                      },
+                      " with the loop and all drainage side holes inside the collection; confirm by imaging."
+                    ],
+                    [
+                      {
+                        "strong": "6. Aspirate, secure, and connect"
+                      },
+                      " to drainage; send fresh aspirate for requested studies and specify flushing and follow-up."
+                    ]
+                  ]
+                }
+              ]
             },
             {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "1. Review the target"
-                  },
-                  " and choose catheter size and access using US or CT."
-                ],
-                [
-                  {
-                    "strong": "2. Prep and anesthetize"
-                  },
-                  " the planned tract; confirm antibiotic coverage for an infected collection."
-                ],
-                [
-                  {
-                    "strong": "3. Establish access"
-                  },
-                  " for placement, puncture and aspirate the collection; for exchange, gently inject the existing catheter to define the cavity."
-                ],
-                [
-                  {
-                    "strong": "4. Secure a wire in the cavity"
-                  },
-                  " before tract dilation or removal of the old catheter; release its locking mechanism first."
-                ],
-                [
-                  {
-                    "strong": "5. Place the new catheter"
-                  },
-                  " with the loop and all drainage side holes inside the collection; confirm by imaging."
-                ],
-                [
-                  {
-                    "strong": "6. Aspirate, secure, and connect"
-                  },
-                  " to drainage; send fresh aspirate for requested studies and specify flushing and follow-up."
-                ]
+              "type": "callout",
+              "variant": "note",
+              "title": "Detailed steps",
+              "collapsible": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Tools needed"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Multipurpose drain, e.g., 10.2 Fr; other common options include 8.5, 12, and 14 Fr. Select for the collection and contents.",
+                    "Access needle/coaxial introducer, commonly 18G; choose length for target depth and confirm wire compatibility.",
+                    "Short Amplatz wire, typically 0.035 inch; compatible dilator and drain stiffener.",
+                    "Lidocaine, syringe, and local-anesthetic needle.",
+                    "Sterile gloves and gown; skin prep, sterile drapes and towels.",
+                    "CT grid if used; scalpel, specimen container, suture, dressing, and drainage bag."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "CT-guided placement"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Scout and plan:"
+                      },
+                      " obtain a scout CT. If using a physical grid, place it before scanning; otherwise use the virtual grid. Select a safe trajectory avoiding bowel, vessels, and other structures. Mark the skin entry site."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prep and anesthetize:"
+                      },
+                      " prep and drape the field. Create a lidocaine skin wheal and anesthetize along the planned tract."
+                    ],
+                    [
+                      {
+                        "strong": "3. Check the trajectory:"
+                      },
+                      " a local-anesthetic needle may serve as a temporary marker. Obtain a CT check and adjust the entry angle as needed."
+                    ],
+                    [
+                      {
+                        "strong": "4. Access the collection:"
+                      },
+                      " remove the marker needle and advance the access needle/coaxial introducer under intermittent CT or CT-fluoroscopy guidance. Confirm the tip within the collection, remove the stylet, and aspirate for confirmation and ordered studies."
+                    ],
+                    [
+                      {
+                        "strong": "5. Place the wire:"
+                      },
+                      " gently advance the compatible short Amplatz wire into the collection. Stop if resistance occurs; reassess with imaging rather than forcing the wire. Confirm wire position before exchanging the needle."
+                    ],
+                    [
+                      {
+                        "strong": "6. Prepare the drain:"
+                      },
+                      " flush the catheter and straighten it with the compatible stiffening cannula per the device instructions. Prepare the matched dilator. Measure skin-to-target depth to guide dilation and catheter advancement."
+                    ],
+                    [
+                      {
+                        "strong": "7. Dilate the tract:"
+                      },
+                      " maintain wire access, remove the introducer, and make a skin nick as needed. Advance the dilator over the wire only to the planned depth, then remove it while holding the wire."
+                    ],
+                    [
+                      {
+                        "strong": "8. Advance the drain:"
+                      },
+                      " load the drain and stiffener over the wire. Advance under imaging to the planned depth. If using a tee-off technique, hold the stiffener stationary while advancing the catheter off it; do not advance the rigid tip beyond the collection."
+                    ],
+                    [
+                      {
+                        "strong": "9. Form and lock the pigtail:"
+                      },
+                      " remove the wire and stiffener, allowing the pigtail to form within the collection. Gently tension and lock the retention suture per the device instructions; confirm the loop and sideholes are within the collection."
+                    ],
+                    [
+                      {
+                        "strong": "10. Secure and image:"
+                      },
+                      " suture the drain, connect the drainage bag, and apply a dressing. Obtain a final CT to document position and assess for complications."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Device references"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Cook Medical: multipurpose drainage catheter sizes and instructions",
+                          "href": "https://www.cookmedical.com/products/ir_ultclm_webds/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Cook Medical: Chiba access needle sizes",
+                          "href": "https://www.cookmedical.com/products/ir_dchn_webds/"
+                        }
+                      }
+                    ]
+                  ]
+                }
               ]
             }
           ]

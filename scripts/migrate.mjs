@@ -328,6 +328,14 @@ function nodeToBlocks(node, ownTitle, report, { skipSummary = false } = {}) {
   if (node.afterImageGallery) blocks.push({ type: "callout", variant: "note", title: "Procedure images", collapsible: true,
     blocks: node.afterImageGallery.map(image => ({ type: "image", ...image })),
   });
+  if (node.quickSteps) return [
+    { type: "callout", variant: "note", title: "Quick steps", collapsible: true, defaultOpen: true,
+      blocks },
+    { type: "callout", variant: "note", title: "Detailed steps", collapsible: true,
+      blocks: node.detailedDetails
+        ? nodeToBlocks({ details: node.detailedDetails }, "Detailed steps", report)
+        : [{ type: "paragraph", text: "Content pending." }] },
+  ];
   return blocks;
 }
 

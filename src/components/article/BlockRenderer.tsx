@@ -66,7 +66,7 @@ function BlockRenderer({
       return <Checklist title={block.title} items={block.items} />;
 
     case "callout":
-      if (block.collapsible) return <details><summary>{block.title}</summary><Blocks blocks={block.blocks} articleId={articleId} /></details>;
+      if (block.collapsible) return <details className={styles.disclosure} open={block.defaultOpen || undefined}><summary>{block.title}</summary><Blocks blocks={block.blocks} articleId={articleId} /></details>;
       return (
         <Callout variant={block.variant} title={block.title}>
           <Blocks blocks={block.blocks} articleId={articleId} />

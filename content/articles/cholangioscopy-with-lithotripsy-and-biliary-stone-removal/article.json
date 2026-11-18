@@ -3,22 +3,15 @@
   "id": "cholangioscopy-with-lithotripsy-and-biliary-stone-removal",
   "title": "Cholangioscopy with Lithotripsy and Biliary Stone Removal",
   "category": "drain-tube",
-  "status": "draft",
-  "bleedRisk": null,
+  "status": "complete",
+  "bleedRisk": "high",
   "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "summary": "Percutaneous cholangioscopy with lithotripsy and biliary stone removal.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
-  "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
-  ],
+  "reviewNotes": [],
   "sections": [
     {
       "id": "pre",
@@ -30,22 +23,14 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
-              ]
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Biliary stones not amenable to ERCP or standard extraction.",
+                "Retained or recurrent stones with altered anatomy or failed ERCP."
               ]
             },
             {
@@ -60,9 +45,8 @@
                 {
                   "type": "list",
                   "items": [
-                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
-                    "No safe access route or target: reassess the approach or an alternative procedure.",
-                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters)."
+                    "Uncorrectable coagulopathy or no safe access.",
+                    "Uncontrolled cholangitis/sepsis: prioritize antibiotics and drainage before definitive stone treatment."
                   ]
                 }
               ]
@@ -74,21 +58,36 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Use the institutional anticoagulation table for hold and restart timing."
-              ]
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+                    "Clopidogrel: hold 5 days.",
+                    "Aspirin: hold 3-5 days."
                   ]
                 }
               ]
@@ -102,7 +101,8 @@
             {
               "type": "list",
               "items": [
-                "Thresholds have not yet been documented; verify procedure-specific requirements."
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -118,13 +118,13 @@
             {
               "type": "list",
               "items": [
+                "SDC/Outpatient with Discharge.",
+                "NPO if moderate sedation or anesthesia.",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
-                "Glucose POC.",
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation or anesthesia)",
-                "Antibiotics per most recent biliary culture, if no recent culture, then per protocol",
-                "INR and CBC within 30 days"
+                "Peripheral line placement.",
+                "Glucose point of care.",
+                "Antibiotics per most recent biliary culture; if none, per protocol.",
+                "CBC and INR within 30 days."
               ]
             }
           ]
@@ -136,7 +136,20 @@
             {
               "type": "list",
               "items": [
-                "Sedation guidance has not yet been documented in this guide."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " moderate sedation or general anesthesia, depending on tolerance and anticipated complexity."
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Open moderate sedation checklist",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
               ]
             }
           ]
@@ -145,16 +158,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
@@ -168,7 +171,13 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " use available imaging or ultrasound when relevant to confirm a safe target."
+                  " stone burden, ductal anatomy/strictures, and existing access tract."
+                ],
+                [
+                  {
+                    "strong": "Confirm equipment and access:"
+                  },
+                  " scope, lithotripsy system, extraction devices, and suitable tract/sheath; confirm antibiotics given."
                 ],
                 [
                   {
@@ -184,22 +193,66 @@
                 ],
                 [
                   {
-                    "strong": "Confirm ability to consent"
-                  },
-                  ", ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns."
-                ],
-                [
-                  {
-                    "strong": "Inspect the planned access or treatment site"
-                  },
-                  " for infection, wounds, prior scars, devices, or anatomy that changes the approach."
-                ],
-                [
-                  {
                     "strong": "Confirm sedation plan:"
                   },
                   " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
                 ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cholangioscopy with Lithotripsy and Biliary Stone Removal"
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cholangitis or sepsis.",
+                "Bile duct injury, perforation, or bile leak.",
+                "Retained stones, drain dependence, or repeat intervention."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Consent discussion"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."
               ]
             }
           ]
@@ -216,16 +269,26 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Biliary tree:"
+                  },
+                  " right and left hepatic ducts join the common hepatic duct; the cystic duct joins to form the common bile duct."
+                ],
+                [
+                  {
+                    "strong": "Outflow:"
+                  },
+                  " identify the ampulla or biliary-enteric anastomosis, strictures, and isolated ducts."
+                ],
+                [
+                  {
+                    "strong": "Access:"
+                  },
+                  " review the existing biliary drain course and its relationship to the target stones."
+                ]
               ]
             }
           ]
@@ -235,29 +298,68 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "To build"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Add equipment, approach, general steps, and troubleshooting later."
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Basic steps"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Define the target:"
+                      },
+                      " perform cholangiography to assess stones, strictures, and outflow."
+                    ],
+                    [
+                      {
+                        "strong": "2. Establish access:"
+                      },
+                      " maintain wire access and place a compatible sheath through the planned tract."
+                    ],
+                    [
+                      {
+                        "strong": "3. Inspect:"
+                      },
+                      " advance the cholangioscope under imaging and direct vision; irrigate enough to maintain visibility."
+                    ],
+                    [
+                      {
+                        "strong": "4. Fragment stones:"
+                      },
+                      " use lithotripsy under direct visualization, keeping the probe directed at the stone and away from the duct wall."
+                    ],
+                    [
+                      {
+                        "strong": "5. Clear fragments:"
+                      },
+                      " use a basket or balloon as appropriate; avoid forcing stones through a narrowed outlet."
+                    ],
+                    [
+                      {
+                        "strong": "6. Confirm and drain:"
+                      },
+                      " reassess clearance and outflow with cholangioscopy/cholangiography; replace the drain as indicated and secure it."
+                    ]
+                  ]
+                }
               ]
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "Detailed steps",
+              "collapsible": true,
               "blocks": [
                 {
-                  "type": "list",
-                  "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
-                  ]
+                  "type": "paragraph",
+                  "text": "Content pending."
                 }
               ]
             }
@@ -269,13 +371,52 @@
           "blocks": [
             {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Access loss:"
+                      },
+                      " confirm tract suitability before dilation and maintain wire access during exchanges."
+                    ],
+                    [
+                      {
+                        "strong": "Sepsis:"
+                      },
+                      " confirm antibiotic coverage; avoid excessive irrigation pressure and maintain drainage."
+                    ],
+                    [
+                      {
+                        "strong": "Duct injury:"
+                      },
+                      " do not activate lithotripsy without a clear view of the stone; follow device instructions."
+                    ],
+                    [
+                      {
+                        "strong": "Residual stones:"
+                      },
+                      " check upstream ducts and outflow; stage treatment if clearance is incomplete."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "ESGE: biliopancreatic endoscopy technologies, including percutaneous cholangioscopy",
+                          "href": "https://www.esge.com/assets/downloads/pdfs/guidelines/2025_a-2619-8434.pdf"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
@@ -293,19 +434,30 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Notify MD/LIP - IR",
-            "Regular diet",
-            "Vital signs – per unit routine",
-            "Pigtail drain – flush orders",
-            "Tylenol 650 mg PRN"
+            "Notify MD/LIP - IR.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
           ]
         },
         {
           "type": "checklist",
-          "title": "Needs bleeding risk",
+          "title": "Access care",
           "items": [
-            "This procedure does not yet have a high/low bleeding-risk override.",
-            "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
+            "Pigtail drain - flush orders per MD."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Anticoagulation to resume",
+          "items": [
+            "Warfarin: 24 hours.",
+            "IV unfractionated heparin: 6-8 hours.",
+            "Enoxaparin: 12 hours.",
+            "DOACs: Typically 24 hours; confirm agent and renal function.",
+            "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+            "Aspirin: 24 hours.",
+            "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
           ]
         },
         {
@@ -313,15 +465,14 @@
           "title": "Discharge",
           "items": [
             "Discharge order with medication reconciliation - 30 minutes.",
-            "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1"
+            "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1."
           ]
         },
         {
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Follow up: Repeat intervention per MD or drain check/clinic for drain removal",
-            "Follow up: communicate with covering PA if follow up needs to be scheduled."
+            "Repeat intervention per MD or drain check/clinic for drain removal."
           ]
         }
       ]

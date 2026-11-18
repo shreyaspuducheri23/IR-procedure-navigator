@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "id": "superficial-lymph-node-biopsy",
+  "title": "Superficial Lymph Node Biopsy",
+  "category": "biopsy-ablation",
+  "status": "complete",
+  "bleedRisk": "low",
+  "keywords": [
+    "superficial",
+    "lymph",
+    "node",
+    "biopsy",
+    "cervical",
+    "supraclavicular",
+    "axillary",
+    "inguinal",
+    "lymphadenopathy",
+    "lymphoma",
+    "core",
+    "fna",
+    "flow",
+    "cytometry"
+  ],
+  "summary": "Ultrasound-guided sampling of superficial lymph nodes for tissue diagnosis.",
+  "lastReviewed": null,
+  "provenance": [],
+  "reviewNotes": [],
+  "sections": [
+    {
+      "id": "pre",
+      "kind": "pre",
+      "title": "Pre-procedure",
+      "subsections": [
+        {
+          "id": "indication",
+          "title": "Indication",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Indications"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Persistent or unexplained superficial lymphadenopathy.",
+                "Suspected lymphoma or metastatic disease.",
+                "Tissue diagnosis for suspected infection or inflammatory disease."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Contraindications"
+            },
+            {
+              "type": "callout",
+              "variant": "contraindication",
+              "title": "Contraindications",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "No appropriate target or no safe needle path.",
+                    "Infection at the planned entry site.",
+                    "Unmanageable bleeding risk or inability to remain still (relative)."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anticoagulation",
+          "title": "Anticoagulation",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Low bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: no holding requirement.",
+                    "Heparin: no holding requirement.",
+                    "Lovenox: no holding requirement.",
+                    "DOACs: no holding requirement.",
+                    "Plavix: no holding requirement.",
+                    "Aspirin: no holding requirement."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "labs",
+          "title": "Labs",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "No labs are routinely ordered. No CBC is indicated.",
+                "If the patient is on warfarin, order an INR. INR must be < 3."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pre-procedure-orders",
+          "title": "Pre-procedure orders",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Routine orders"
+            },
+            {
+              "type": "list",
+              "items": [
+                "SDC/Outpatient with Discharge.",
+                "Vital signs per routine.",
+                "Cytology present if requested by MD."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sedation",
+          "title": "Sedation",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " local anesthesia."
+                ],
+                [
+                  {
+                    "strong": "Consideration:"
+                  },
+                  " systemic sedation is generally not required."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "Checklist",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Confirm indication."
+                  },
+                  ""
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " target node, nearby vessels, and a safe needle path."
+                ],
+                [
+                  {
+                    "strong": "Verify labs:"
+                  },
+                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Confirm cytology/pathology:"
+                  },
+                  " histology, flow cytometry if lymphoma suspected, and cultures if indicated."
+                ],
+                [
+                  {
+                    "strong": "Confirm FNA vs core biopsy"
+                  },
+                  "."
+                ],
+                [
+                  {
+                    "strong": "Confirm sedation plan:"
+                  },
+                  " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Superficial Lymph Node Biopsy"
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures.",
+                "Need for resampling."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Neck hematoma with airway compromise if cervical target."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Consent discussion"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intra",
+      "kind": "intra",
+      "title": "Intra-procedure",
+      "subsections": [
+        {
+          "id": "anatomy",
+          "title": "Anatomy",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Superficial nodes:"
+                  },
+                  " cervical, supraclavicular, axillary, and inguinal targets; confirm side and level."
+                ],
+                [
+                  {
+                    "strong": "Nearby structures:"
+                  },
+                  " map vessels with Doppler; avoid nerves, salivary glands, and pleura near supraclavicular targets."
+                ],
+                [
+                  {
+                    "strong": "Sampling target:"
+                  },
+                  " choose viable solid tissue and avoid necrotic areas and hilar vessels."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "procedural-steps",
+          "title": "Procedural steps",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Basic steps"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Confirm the target:"
+                      },
+                      " match the node and side to imaging and the request."
+                    ],
+                    [
+                      {
+                        "strong": "2. Position and scan:"
+                      },
+                      " map vessels with Doppler and choose a safe, visible needle path."
+                    ],
+                    [
+                      {
+                        "strong": "3. Prep and anesthetize:"
+                      },
+                      " use sterile technique and local anesthesia."
+                    ],
+                    [
+                      {
+                        "strong": "4. Sample under ultrasound:"
+                      },
+                      " keep the needle tip visible; confirm a safe throw if using core biopsy."
+                    ],
+                    [
+                      {
+                        "strong": "5. Handle specimens:"
+                      },
+                      " send for requested studies; confirm adequacy with cytology when available."
+                    ],
+                    [
+                      {
+                        "strong": "6. Apply pressure and reassess:"
+                      },
+                      " confirm hemostasis and place a dressing."
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Detailed steps",
+              "collapsible": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Tools needed"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Small-gauge needles, typically 25G.",
+                    "Lidocaine.",
+                    "Sterile drapes and towels.",
+                    "Specimen cups.",
+                    "Ultrasound probe and sterile cover.",
+                    "Sterile gloves and gown."
+                  ]
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Image and plan:"
+                      },
+                      " before sterile prep, scan with ultrasound and gel. Plan a trajectory avoiding major structures and vessels, then mark the skin entry site."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prep and drape:"
+                      },
+                      " remove the gel, clean and prep the site, then place sterile blue drapes."
+                    ],
+                    [
+                      {
+                        "strong": "3. Anesthetize:"
+                      },
+                      " infiltrate lidocaine along the planned needle tract to the target."
+                    ],
+                    [
+                      {
+                        "strong": "4. Position the FNA needle:"
+                      },
+                      " under ultrasound guidance, advance a typically 25G needle into the lymph node, keeping the tip visible."
+                    ],
+                    [
+                      {
+                        "strong": "5. Obtain samples:"
+                      },
+                      " make short, controlled back-and-forth motions within the node, up to 15-20 motions per needle. Gentle rotation while advancing and retracting may help. Repeat with additional needles and submit specimens per the planned studies."
+                    ],
+                    [
+                      {
+                        "strong": "6. Finish:"
+                      },
+                      " remove the needle, apply pressure, clean the site, and place a bandage. Save a post-procedure ultrasound image."
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pitfalls-and-safety",
+          "title": "Pitfalls and safety",
+          "blocks": [
+            {
+              "type": "callout",
+              "variant": "caution",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Wrong node:"
+                      },
+                      " confirm the requested target and laterality before sampling."
+                    ],
+                    [
+                      {
+                        "strong": "Nondiagnostic tissue:"
+                      },
+                      " avoid necrosis; coordinate core versus FNA and specimen handling with pathology."
+                    ],
+                    [
+                      {
+                        "strong": "Suspected lymphoma:"
+                      },
+                      " arrange fresh tissue for flow cytometry per lab protocol; do not place all tissue in formalin. Excision may be needed if needle biopsy is insufficient."
+                    ],
+                    [
+                      {
+                        "strong": "Lost needle tip:"
+                      },
+                      " stop and regain visualization before advancing or sampling."
+                    ],
+                    [
+                      {
+                        "strong": "Bleeding or neck swelling:"
+                      },
+                      " apply pressure; expanding hematoma, dysphagia, or dyspnea requires urgent assessment."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "AIUM practice parameter: selected ultrasound-guided procedures",
+                          "href": "https://onlinelibrary.wiley.com/doi/10.7863/jum.2016.35.9.5"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "NHS: superficial lymph node biopsy",
+                          "href": "https://www.asph.nhs.uk/leaflets/3792-interventional-radiology-leaflet-superficial-lymph-node-biopsy"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post",
+      "kind": "post",
+      "title": "Post-procedure",
+      "blocks": [
+        {
+          "type": "checklist",
+          "title": "Routine orders",
+          "items": [
+            "Notify MD/LIP - IR.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
+            "Vital signs per unit routine.",
+            "Tylenol 650 mg PRN."
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Discharge",
+          "items": [
+            "Discharge order with medication reconciliation - immediate.",
+            "After visit summary: .IRAVSBIOPSYSUPERFICIAL."
+          ]
+        }
+      ]
+    }
+  ]
+}

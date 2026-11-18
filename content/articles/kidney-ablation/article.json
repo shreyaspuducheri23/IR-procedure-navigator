@@ -3,22 +3,15 @@
   "id": "kidney-ablation",
   "title": "Kidney Ablation",
   "category": "biopsy-ablation",
-  "status": "draft",
-  "bleedRisk": null,
+  "status": "complete",
+  "bleedRisk": "high",
   "keywords": [],
-  "summary": "PDF-derived pre-procedure and post-procedure order draft. Fill indication, focused exam, and anticoagulation details during clinical review.",
+  "summary": "Image-guided kidney tumor ablation.",
   "lastReviewed": null,
   "provenance": [
-    "Interventional Radiology Procedure Orders updated 4.15.26.pdf",
-    "Pre-procedure orders, labs, and post-procedure orders were extracted from the PDF.",
-    "Indication, anticoagulation hold timing, and focused exam are intentionally marked for clinical review when the PDF did not specify them.",
     "Imported from procedure orders PDF updated 4.15.26"
   ],
-  "reviewNotes": [
-    "Confirm that wrapped lines from the PDF were imported correctly.",
-    "Add missing indication, contraindications, focused exam, and anticoagulation details.",
-    "Confirm order names match current EHR order set names."
-  ],
+  "reviewNotes": [],
   "sections": [
     {
       "id": "pre",
@@ -30,22 +23,14 @@
           "title": "Indication",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Confirm the clinical reason for the procedure and whether the requested procedure matches the problem."
-              ]
+              "type": "heading",
+              "text": "Indications"
             },
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "Needs completion",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "The imported PDF does not list indications. Add common indications, contraindications, and escalation triggers during faculty review."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                "Selected small renal masses for local treatment after multidisciplinary review.",
+                "Patients unsuitable for surgery or choosing ablation after discussion of alternatives."
               ]
             },
             {
@@ -60,9 +45,9 @@
                 {
                   "type": "list",
                   "items": [
-                    "Patient refusal or no valid consent pathway, except a documented emergency exception.",
-                    "No safe access route or target: reassess the approach or an alternative procedure.",
-                    "Bleeding risk that cannot be acceptably managed for the planned procedure (relative; urgency matters)."
+                    "Uncorrectable coagulopathy or uncontrolled infection.",
+                    "No safe probe path or inability to protect adjacent structures.",
+                    "Insufficient renal reserve or inability to tolerate the planned procedure (relative)."
                   ]
                 }
               ]
@@ -74,21 +59,36 @@
           "title": "Anticoagulation",
           "blocks": [
             {
-              "type": "list",
-              "items": [
-                "Use the institutional anticoagulation table for hold and restart timing."
-              ]
-            },
-            {
               "type": "callout",
-              "variant": "note",
-              "title": "Needs structured table",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add hold timing by medication, renal function, and procedure bleeding risk.",
-                    "Document last dose, indication for anticoagulation, and restart owner."
+                    "High bleeding risk.",
+                    [
+                      {
+                        "link": {
+                          "text": "Open anticoagulation table",
+                          "articleId": "anticoagulation-table"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Hold"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Warfarin: hold 5 days and confirm INR <= 1.8.",
+                    "IV unfractionated heparin: hold 4-6 hours and check aPTT or anti-Xa.",
+                    "Enoxaparin: hold 1 dose if prophylactic; hold 2 doses or 24 hours if therapeutic.",
+                    "DOACs: use agent- and CrCl-specific timing in the anticoagulation table.",
+                    "Clopidogrel: hold 5 days.",
+                    "Aspirin: hold 3-5 days."
                   ]
                 }
               ]
@@ -102,7 +102,8 @@
             {
               "type": "list",
               "items": [
-                "Thresholds have not yet been documented; verify procedure-specific requirements."
+                "INR < 1.5-1.8.",
+                "Platelets >50,000/µL."
               ]
             }
           ]
@@ -118,12 +119,13 @@
             {
               "type": "list",
               "items": [
+                "SDC/Outpatient with Discharge.",
+                "NPO if moderate sedation or anesthesia.",
+                "Peripheral line placement.",
                 "Vital signs per routine.",
-                "PIV placement (not left arm).",
-                "Glucose POC.",
-                "SDC/Outpatient with Discharge",
-                "NPO (moderate sedation vs anesthesia)",
-                "CBC day of always, INR and BMP within 30 days"
+                "Glucose point of care.",
+                "CBC day of procedure.",
+                "INR and BMP within 30 days."
               ]
             }
           ]
@@ -135,7 +137,20 @@
             {
               "type": "list",
               "items": [
-                "Sedation guidance has not yet been documented in this guide."
+                [
+                  {
+                    "strong": "Preferred:"
+                  },
+                  " Moderate sedation or general anesthesia, depending on positioning, tolerance, and complexity."
+                ],
+                [
+                  {
+                    "link": {
+                      "text": "Open moderate sedation checklist",
+                      "articleId": "moderate-sedation-checklist"
+                    }
+                  }
+                ]
               ]
             }
           ]
@@ -144,16 +159,6 @@
           "id": "checklist",
           "title": "Checklist",
           "blocks": [
-            {
-              "type": "list",
-              "items": [
-                "Check patient-specific factors that affect access, sedation, positioning, or discharge."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "General checks"
-            },
             {
               "type": "list",
               "items": [
@@ -167,7 +172,19 @@
                   {
                     "strong": "Review imaging:"
                   },
-                  " use available imaging or ultrasound when relevant to confirm a safe target."
+                  " target size/location, collecting system, bowel, and safe probe paths."
+                ],
+                [
+                  {
+                    "strong": "Confirm pathology:"
+                  },
+                  " renal mass biopsy before (preferred) or at ablation; review renal function and solitary-kidney status."
+                ],
+                [
+                  {
+                    "strong": "Confirm ablation plan:"
+                  },
+                  " modality, probe configuration, treatment margin, and protection of nearby structures."
                 ],
                 [
                   {
@@ -183,22 +200,66 @@
                 ],
                 [
                   {
-                    "strong": "Confirm ability to consent"
-                  },
-                  ", ability to tolerate positioning, baseline pain, oxygen requirement, and sedation concerns."
-                ],
-                [
-                  {
-                    "strong": "Inspect the planned access or treatment site"
-                  },
-                  " for infection, wounds, prior scars, devices, or anatomy that changes the approach."
-                ],
-                [
-                  {
                     "strong": "Confirm sedation plan:"
                   },
                   " review the planned method, ability to lie flat/tolerate procedural positioning, and NPO status if sedation/anesthesia is planned."
+                ],
+                [
+                  {
+                    "strong": "Confirm consent:"
+                  },
+                  " discuss the procedure and patient-specific risks; identify a surrogate if needed."
                 ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "consent",
+          "title": "Consent",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Procedure"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Kidney Ablation"
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Common risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Infection.",
+                "Bleeding.",
+                "Injury to nearby structures.",
+                "Need for repeat treatment."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Procedure-specific risks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Collecting-system injury or urine leak.",
+                "Reduced renal function."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Consent discussion"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Discuss the expected benefit, alternatives, and patient-specific risks. This risk summary supports the discussion and institutional consent form; it is not an exhaustive consent document."
               ]
             }
           ]
@@ -215,16 +276,20 @@
           "title": "Anatomy",
           "blocks": [
             {
-              "type": "callout",
-              "variant": "note",
-              "title": "To build out",
-              "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Add procedure-specific target anatomy, access route anatomy, structures to avoid, and important imaging landmarks."
-                  ]
-                }
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "strong": "Target:"
+                  },
+                  " cortical versus central/hilar location; relationship to the renal sinus and collecting system."
+                ],
+                [
+                  {
+                    "strong": "Nearby structures:"
+                  },
+                  " bowel, ureter, renal vessels, psoas/genitofemoral nerve, and pleura for upper-pole targets."
+                ]
               ]
             }
           ]
@@ -234,29 +299,68 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "To build"
-            },
-            {
-              "type": "list",
-              "items": [
-                "Add equipment, approach, general steps, and troubleshooting later."
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Basic steps"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Position and plan:"
+                      },
+                      " confirm the target on CT/US and select safe probe paths."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prep and protect:"
+                      },
+                      " prep, drape, and anesthetize; protect bowel and ureter/collecting system; use displacement or cooling when indicated."
+                    ],
+                    [
+                      {
+                        "strong": "3. Place probes:"
+                      },
+                      " advance under imaging and confirm configuration across the target and planned margin."
+                    ],
+                    [
+                      {
+                        "strong": "4. Ablate:"
+                      },
+                      " use the selected device protocol; monitor probe position and treatment coverage; for cryoablation, follow ice-ball growth and complete the planned thaw before probe removal."
+                    ],
+                    [
+                      {
+                        "strong": "5. Reassess:"
+                      },
+                      " confirm target coverage and assess for bleeding or adjacent-organ injury; treat residual target if safe."
+                    ],
+                    [
+                      {
+                        "strong": "6. Finish:"
+                      },
+                      " remove probes per device protocol, confirm hemostasis, and save final imaging."
+                    ]
+                  ]
+                }
               ]
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Suggested buckets",
+              "title": "Detailed steps",
+              "collapsible": true,
               "blocks": [
                 {
-                  "type": "list",
-                  "items": [
-                    "Equipment",
-                    "Approach",
-                    "General steps",
-                    "Troubleshooting",
-                    "Stop or escalate if"
-                  ]
+                  "type": "paragraph",
+                  "text": "Content pending."
                 }
               ]
             }
@@ -268,13 +372,46 @@
           "blocks": [
             {
               "type": "callout",
-              "variant": "note",
-              "title": "To build out",
+              "variant": "caution",
               "blocks": [
                 {
                   "type": "list",
                   "items": [
-                    "Add common technical pitfalls, prevention strategies, danger signs, and escalation or abort criteria."
+                    [
+                      {
+                        "strong": "Central targets:"
+                      },
+                      " review collecting-system and ureter proximity; arrange protection when needed."
+                    ],
+                    [
+                      {
+                        "strong": "Cryoablation:"
+                      },
+                      " the visible ice-ball edge is not the lethal margin; reassess coverage and nearby structures."
+                    ],
+                    [
+                      {
+                        "strong": "Renal injury:"
+                      },
+                      " watch for hematuria, bleeding, and reduced renal function."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "AUA renal mass guideline",
+                          "href": "https://www.auanet.org/documents/Guidelines/PDF/Renal-Mass-Guideline.pdf"
+                        }
+                      }
+                    ]
                   ]
                 }
               ]
@@ -292,27 +429,32 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
-            "Notify MD/LIP - IR",
-            "Regular diet",
-            "Vital signs – Every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 1",
-            "Tylenol 650 mg PRN",
-            "Oxycodone PRN pain scale",
-            "Zofran 4mg IV PRN"
+            "Notify MD/LIP - IR.",
+            "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
+            "Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 1.",
+            "Tylenol 650 mg PRN.",
+            "Oxycodone PRN per pain scale.",
+            "Zofran 4 mg IV PRN."
           ]
         },
         {
           "type": "checklist",
           "title": "Access care",
           "items": [
-            "Wound care/treatment"
+            "Wound care/treatment."
           ]
         },
         {
           "type": "checklist",
-          "title": "Needs bleeding risk",
+          "title": "Anticoagulation to resume",
           "items": [
-            "This procedure does not yet have a high/low bleeding-risk override.",
-            "Use the anticoagulation table and local policy until the procedure-specific content is reviewed."
+            "Warfarin: 24 hours.",
+            "IV unfractionated heparin: 6-8 hours.",
+            "Enoxaparin: 12 hours.",
+            "DOACs: Typically 24 hours; confirm agent and renal function.",
+            "Clopidogrel: 75 mg dose - 6 hours; 300-600 mg loading dose - 24 hours.",
+            "Aspirin: 24 hours.",
+            "Restart after hemostasis is confirmed; individualize timing for procedure-specific or patient-specific exceptions."
           ]
         },
         {
@@ -320,15 +462,14 @@
           "title": "Discharge",
           "items": [
             "Discharge order with medication reconciliation - 3 hours.",
-            "After visit summary: .IRAVSRENALABLATION"
+            "After visit summary: .IRAVSRENALABLATION."
           ]
         },
         {
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Follow up: Clinic in 1 month with CT/MRI renal mass",
-            "Follow up: communicate with covering PA if follow up needs to be scheduled."
+            "Clinic in 1 month with CT/MRI renal mass."
           ]
         }
       ]

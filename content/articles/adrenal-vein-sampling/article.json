@@ -343,135 +343,156 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Adrenal vein sampling"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "1. Confirm the sampling plan:"
-                  },
-                  " review venous imaging, cosyntropin timing, collection tubes, and the laboratory's labeling and rapid-cortisol workflow."
-                ],
-                [
-                  {
-                    "strong": "2. Obtain venous access:"
-                  },
-                  " use ultrasound-guided femoral access and prepare the IVC/peripheral reference sampling route."
-                ],
-                [
-                  {
-                    "strong": "3. Select the right adrenal vein:"
-                  },
-                  " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy."
-                ],
-                [
-                  {
-                    "strong": "4. Select the left adrenal vein:"
-                  },
-                  " enter through the left renal vein and confirm the common adrenal-phrenic trunk."
-                ],
-                [
-                  {
-                    "strong": "5. Collect matched samples:"
-                  },
-                  " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status."
-                ],
-                [
-                  {
-                    "strong": "6. Confirm selectivity:"
-                  },
-                  " use rapid cortisol when available and the index below; apply local criteria and resample if inadequate."
-                ],
-                [
-                  {
-                    "strong": "7. Complete and hand off:"
-                  },
-                  " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation."
-                ]
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Sampling indices"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "Selectivity index (SI):"
-                  },
-                  " adrenal vein cortisol / IVC (or peripheral reference) cortisol. Calculate for each side to confirm successful sampling."
-                ],
-                [
-                  {
-                    "strong": "Lateralization index (LI):"
-                  },
-                  " higher adrenal (aldosterone / cortisol) ratio / lower adrenal (aldosterone / cortisol) ratio. Interpret only after both sides meet selectivity criteria."
-                ]
-              ],
-              "subitems": {
-                "0": [
-                  [
-                    {
-                      "strong": "SI cutoffs:"
-                    },
-                    " with cosyntropin, >5; without cosyntropin, commonly >=2 (protocol thresholds vary from >1.4 to 3)."
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Adrenal vein sampling"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Confirm the sampling plan:"
+                      },
+                      " review venous imaging, cosyntropin timing, collection tubes, and the laboratory's labeling and rapid-cortisol workflow."
+                    ],
+                    [
+                      {
+                        "strong": "2. Obtain venous access:"
+                      },
+                      " use ultrasound-guided femoral access and prepare the IVC/peripheral reference sampling route."
+                    ],
+                    [
+                      {
+                        "strong": "3. Select the right adrenal vein:"
+                      },
+                      " use gentle, low-volume venography to confirm the ostium; avoid deep wedging. Cone-beam CT can clarify uncertain anatomy."
+                    ],
+                    [
+                      {
+                        "strong": "4. Select the left adrenal vein:"
+                      },
+                      " enter through the left renal vein and confirm the common adrenal-phrenic trunk."
+                    ],
+                    [
+                      {
+                        "strong": "5. Collect matched samples:"
+                      },
+                      " clear catheter dead space per protocol, then gently sample both adrenal veins and the reference site for aldosterone and cortisol; record site, time, and stimulation status."
+                    ],
+                    [
+                      {
+                        "strong": "6. Confirm selectivity:"
+                      },
+                      " use rapid cortisol when available and the index below; apply local criteria and resample if inadequate."
+                    ],
+                    [
+                      {
+                        "strong": "7. Complete and hand off:"
+                      },
+                      " verify specimens before sheath removal, obtain hemostasis, and send results for cortisol-corrected aldosterone comparison and endocrine interpretation."
+                    ]
                   ]
-                ],
-                "1": [
-                  [
-                    {
-                      "strong": "LI cutoffs:"
-                    },
-                    " >4 supports unilateral aldosterone excess; <3 suggests bilateral disease; 3-4 is indeterminate. Use the local endocrine protocol and clinical context."
-                  ]
-                ]
-              }
-            },
-            {
-              "type": "heading",
-              "text": "References"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "link": {
-                      "text": "Endocrine Society primary aldosteronism guideline (2025): AVS interpretation",
-                      "href": "https://academic.oup.com/jcem/article/110/9/2453/8196671"
-                    }
+                },
+                {
+                  "type": "heading",
+                  "text": "Sampling indices"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "Selectivity index (SI):"
+                      },
+                      " adrenal vein cortisol / IVC (or peripheral reference) cortisol. Calculate for each side to confirm successful sampling."
+                    ],
+                    [
+                      {
+                        "strong": "Lateralization index (LI):"
+                      },
+                      " higher adrenal (aldosterone / cortisol) ratio / lower adrenal (aldosterone / cortisol) ratio. Interpret only after both sides meet selectivity criteria."
+                    ]
+                  ],
+                  "subitems": {
+                    "0": [
+                      [
+                        {
+                          "strong": "SI cutoffs:"
+                        },
+                        " with cosyntropin, >5; without cosyntropin, commonly >=2 (protocol thresholds vary from >1.4 to 3)."
+                      ]
+                    ],
+                    "1": [
+                      [
+                        {
+                          "strong": "LI cutoffs:"
+                        },
+                        " >4 supports unilateral aldosterone excess; <3 suggests bilateral disease; 3-4 is indeterminate. Use the local endocrine protocol and clinical context."
+                      ]
+                    ]
                   }
-                ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Endocrine Society primary aldosteronism guideline (2025): AVS interpretation",
+                          "href": "https://academic.oup.com/jcem/article/110/9/2453/8196671"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "variant": "note",
+                  "title": "Procedure images",
+                  "collapsible": true,
+                  "blocks": [
+                    {
+                      "type": "image",
+                      "src": "images/right-adrenal-venogram.png",
+                      "alt": "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.",
+                      "caption": "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles."
+                    },
+                    {
+                      "type": "image",
+                      "src": "images/left-renal-vein-selection.png",
+                      "alt": "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.",
+                      "caption": "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein."
+                    },
+                    {
+                      "type": "image",
+                      "src": "images/left-adrenal-venogram.png",
+                      "alt": "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.",
+                      "caption": "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein."
+                    }
+                  ]
+                }
               ]
             },
             {
               "type": "callout",
               "variant": "note",
-              "title": "Procedure images",
+              "title": "Detailed steps",
               "collapsible": true,
               "blocks": [
                 {
-                  "type": "image",
-                  "src": "images/right-adrenal-venogram.png",
-                  "alt": "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.",
-                  "caption": "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles."
-                },
-                {
-                  "type": "image",
-                  "src": "images/left-renal-vein-selection.png",
-                  "alt": "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.",
-                  "caption": "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein."
-                },
-                {
-                  "type": "image",
-                  "src": "images/left-adrenal-venogram.png",
-                  "alt": "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.",
-                  "caption": "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein."
+                  "type": "paragraph",
+                  "text": "Content pending."
                 }
               ]
             }

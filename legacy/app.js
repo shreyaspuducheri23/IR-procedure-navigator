@@ -1200,8 +1200,354 @@ updateConditionalPortLabsAndCultureOrders();
 standardizeFemoralVenousAccessCare();
 updateGastrostomyPreparation();
 installAvsProcedureImages();
+installSuperficialLymphNodeBiopsy();
+installDrainageDetailedSteps();
+installCholangioscopy();
+installOrganAblationGuides();
+standardizeBiopsyResamplingRisk();
+standardizeAblationRepeatTreatmentRisk();
 separatePostprocedureAccessCare();
 ensureAccessSiteColorMonitoring();
+
+function standardizeAblationRepeatTreatmentRisk() {
+  for (const procedure of procedures.filter(p => /ablation/i.test(p.title))) {
+    let consent = Object.values(procedure.nodes).find(node => node.title === "Consent");
+    if (!consent) {
+      const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+      if (!pre) continue;
+      const id = `${procedure.id}-consent`;
+      consent = { title: "Consent", type: "reference", summary: "", details: { "Common risks": ["Infection.", "Bleeding.", "Injury to nearby structures."] } };
+      procedure.nodes[id] = consent;
+      pre.children.push(id);
+    }
+    const common = consent.details["Common risks"] ||= [];
+    if (!common.includes("Need for repeat treatment.")) common.push("Need for repeat treatment.");
+    if (consent.details["Procedure-specific risks"]) {
+      consent.details["Procedure-specific risks"] = consent.details["Procedure-specific risks"].filter(item => !/residual|recurren|incomplete ablation/i.test(item));
+    }
+  }
+}
+
+function standardizeBiopsyResamplingRisk() {
+  for (const procedure of procedures.filter(p => /biopsy/i.test(p.title))) {
+    let consent = Object.values(procedure.nodes).find(node => node.title === "Consent");
+    if (!consent) {
+      const pre = Object.values(procedure.nodes).find(node => node.title === "Pre-procedure");
+      if (!pre) continue;
+      const id = `${procedure.id}-consent`;
+      consent = { title: "Consent", type: "reference", summary: "", details: { "Common risks": ["Infection.", "Bleeding.", "Injury to nearby structures."] } };
+      procedure.nodes[id] = consent;
+      pre.children.push(id);
+    }
+    const common = consent.details["Common risks"] ||= [];
+    if (!common.includes("Need for resampling.")) common.push("Need for resampling.");
+    if (procedure.id === "superficial-lymph-node-biopsy") {
+      consent.details["Procedure-specific risks"] = consent.details["Procedure-specific risks"].filter(item => !/^Nondiagnostic sample/.test(item));
+    }
+  }
+}
+
+function installOrganAblationGuides() {
+  const source = procedures.find(p => p.id === "biliary-drain-placement-internalization-exchange");
+  const copyDetails = title => JSON.parse(JSON.stringify(Object.values(source.nodes).find(n => n.title === title).details));
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const cefazolin = "Cefazolin (Ancef) 2 g if <120 kg; 3 g if >120 kg. Confirm dose at 120 kg per protocol.";
+  const configs = [
+    {
+      id: "kidney-ablation", organ: "Kidney",
+      indications: ["Selected small renal masses for local treatment after multidisciplinary review.", "Patients unsuitable for surgery or choosing ablation after discussion of alternatives."],
+      labs: ["CBC day of procedure.", "INR and BMP within 30 days."], antibiotics: [],
+      sedation: "Moderate sedation or general anesthesia, depending on positioning, tolerance, and complexity.",
+      imaging: "target size/location, collecting system, bowel, and safe probe paths.",
+      extraCheck: point("Confirm pathology", "renal mass biopsy before (preferred) or at ablation; review renal function and solitary-kidney status."),
+      anatomy: [point("Target", "cortical versus central/hilar location; relationship to the renal sinus and collecting system."), point("Nearby structures", "bowel, ureter, renal vessels, psoas/genitofemoral nerve, and pleura for upper-pole targets.")],
+      risks: ["Collecting-system injury or urine leak.", "Reduced renal function.", "Incomplete ablation or recurrence."],
+      protection: "protect bowel and ureter/collecting system; use displacement or cooling when indicated.",
+      treatment: "monitor probe position and treatment coverage; for cryoablation, follow ice-ball growth and complete the planned thaw before probe removal.",
+      safety: [point("Central targets", "review collecting-system and ureter proximity; arrange protection when needed."), point("Cryoablation", "the visible ice-ball edge is not the lethal margin; reassess coverage and nearby structures."), point("Renal injury", "watch for hematuria, bleeding, and reduced renal function.")],
+      meds: ["Oxycodone PRN per pain scale.", "Zofran 4 mg IV PRN."],
+      avs: ".IRAVSRENALABLATION", follow: ["Clinic in 1 month with CT/MRI renal mass."],
+      reference: { text: "AUA renal mass guideline", href: "https://www.auanet.org/documents/Guidelines/PDF/Renal-Mass-Guideline.pdf" },
+    },
+    {
+      id: "liver-ablation", organ: "Liver",
+      indications: ["Selected HCC or liver metastases for local treatment after multidisciplinary review.", "Residual or recurrent focal tumor suitable for ablation."],
+      labs: ["CBC, INR, CMP, and AFP if HCC - day of procedure."], antibiotics: [cefazolin, "Metronidazole (Flagyl) 500 mg IV."],
+      sedation: "Moderate sedation or general anesthesia, depending on target location, breath-hold needs, and complexity.",
+      imaging: "target visibility, bile ducts/vessels, adjacent bowel, and safe probe paths.",
+      extraCheck: point("Review liver reserve", "bilirubin, liver function, prior biliary intervention/anastomosis, and infection risk."),
+      anatomy: [point("Target", "confirm segment and relationship to portal/hepatic veins and major bile ducts."), point("Nearby structures", "gallbladder, bowel, stomach, diaphragm, and pleura; plan protection when needed.")],
+      risks: ["Bile duct injury or bile leak.", "Liver abscess or decompensation.", "Incomplete ablation or recurrence."],
+      protection: "protect bowel, gallbladder, diaphragm, and central bile ducts; use displacement when indicated.",
+      treatment: "monitor treatment coverage and nearby structures; account for vessel-related heat sink with heat-based ablation.",
+      safety: [point("Biliary infection risk", "prior biliary-enteric anastomosis or instrumentation warrants an individualized antibiotic plan."), point("Central bile ducts", "avoid unprotected thermal injury; reconsider modality or treatment plan if unsafe."), point("Incomplete coverage", "account for heat sink and confirm the planned margin.")],
+      meds: ["Oxycodone PRN per pain scale.", "Zofran 4 mg IV PRN."],
+      avs: ".IRAVSABLATIONLIVER1", follow: ["Clinic in 1 month with MRI liver mass and CBC, INR, CMP, and AFP if HCC."],
+      reference: { text: "CIRSE standards: thermal ablation of liver tumours", href: "https://pubmed.ncbi.nlm.nih.gov/32382856/" },
+    },
+    {
+      id: "lung-ablation", organ: "Lung",
+      indications: ["Selected primary lung tumors or pulmonary metastases for local treatment after multidisciplinary review.", "Patients unsuitable for surgery or other local therapy."],
+      labs: ["CBC and INR within 30 days."], antibiotics: [cefazolin],
+      sedation: "General anesthesia; coordinate ventilation and breath holds with anesthesia.",
+      imaging: "target size/location, fissures, bullae, vessels, and safe pleural entry.",
+      extraCheck: point("Confirm recovery plan", "pulmonary reserve, oxygen needs, and chest-tube equipment/admission availability."),
+      anatomy: [point("Target", "relationship to pleura, fissures, bronchi, and pulmonary vessels."), point("Nearby structures", "diaphragm, mediastinum, chest wall, and intercostal neurovascular bundle.")],
+      risks: ["Pneumothorax requiring chest tube.", "Hemoptysis or air embolism.", "Incomplete ablation or recurrence."],
+      protection: "minimize pleural punctures and avoid fissures, bullae, major vessels, and central airways.",
+      treatment: "coordinate ventilation; monitor the ablation zone, pleura, and nearby structures on CT.",
+      safety: [point("Pneumothorax", "reassess during and after treatment; drain if clinically indicated."), point("Hemorrhage or air embolism", "stop and assess new hemoptysis, hypoxia, neurologic change, or instability immediately."), point("Airway injury", "avoid unprotected central bronchi and reassess proximity during treatment.")],
+      meds: ["Toradol 15-30 mg IV x 1."], avs: ".IRAVSABLATIONLUNG",
+      follow: ["CT chest without contrast at 1 and 3 months; PET/CT at 6 months."],
+      reference: { text: "SIR quality improvement standards: lung tumor ablation", href: "https://www.cirse.org/wp-content/uploads/2021/09/PIIS1051044321010861.pdf" },
+    },
+  ];
+  for (const config of configs) {
+    const { id } = config;
+    const procedure = procedures.find(p => p.id === id);
+    const nodes = {};
+    const add = (key, title, details, type = "reference") => { nodes[`${id}-${key}`] = { title, type, summary: "", details }; };
+    nodes[`${id}-root`] = { title: procedure.title, type: "reference", summary: "", children: ["pre", "intra", "post"].map(k => `${id}-${k}`) };
+    nodes[`${id}-pre`] = { title: "Pre-procedure", type: "reference", summary: "", children: ["indication", "anticoag", "labs", "orders", "sedation", "checklist", "consent"].map(k => `${id}-${k}`) };
+    add("indication", "Indication", { Indications: config.indications });
+    nodes[`${id}-indication`].children = [`${id}-contraindications`];
+    add("contraindications", "Contraindications", { Contraindications: ["Uncorrectable coagulopathy or uncontrolled infection.", "No safe probe path or inability to protect adjacent structures.", `Insufficient ${config.organ.toLowerCase() === "kidney" ? "renal" : config.organ.toLowerCase()} reserve or inability to tolerate the planned procedure (relative).`] }, "caution");
+    add("anticoag", "Anticoagulation", copyDetails("Anticoagulation"), "caution");
+    add("labs", "Labs", { Labs: ["INR < 1.5-1.8.", "Platelets >50,000/µL."] });
+    add("orders", "Pre-procedure orders", { "Routine orders": [
+      id === "lung-ablation" ? "SDC/Outpatient with Discharge OR bedded outpatient; no discharge order if admitting." : "SDC/Outpatient with Discharge.",
+      id === "lung-ablation" ? "NPO for anesthesia." : "NPO if moderate sedation or anesthesia.",
+      "Peripheral line placement.", "Vital signs per routine.", "Glucose point of care.", ...config.antibiotics, ...config.labs,
+    ] });
+    add("sedation", "Sedation", { Sedation: [point("Preferred", config.sedation), ...(id === "lung-ablation" ? [] : [{ text: "Open moderate sedation checklist", href: "#moderate-sedation-checklist" }])] });
+    const checklist = copyDetails("Checklist");
+    checklist.Checklist = checklist.Checklist.filter(item => !/^Review biliary anatomy/.test(item.strong || "")).map(item => /^Review imaging/.test(item.strong || "") ? point("Review imaging", config.imaging) : item);
+    checklist.Checklist.splice(2, 0, config.extraCheck, point("Confirm ablation plan", "modality, probe configuration, treatment margin, and protection of nearby structures."));
+    add("checklist", "Checklist", checklist, "decision");
+    const consent = copyDetails("Consent");
+    consent.Procedure = [procedure.title];
+    consent["Procedure-specific risks"] = config.risks;
+    add("consent", "Consent", consent);
+    nodes[`${id}-intra`] = { title: "Intraprocedure", type: "reference", summary: "", children: ["anatomy", "steps", "pitfalls"].map(k => `${id}-${k}`) };
+    add("anatomy", "Anatomy", { Anatomy: config.anatomy });
+    add("steps", "Procedural steps", { "Basic steps": [
+      point("1. Position and plan", "confirm the target on CT/US and select safe probe paths."),
+      point("2. Prep and protect", `prep, drape, and anesthetize; ${config.protection}`),
+      point("3. Place probes", "advance under imaging and confirm configuration across the target and planned margin."),
+      point("4. Ablate", `use the selected device protocol; ${config.treatment}`),
+      point("5. Reassess", "confirm target coverage and assess for bleeding or adjacent-organ injury; treat residual target if safe."),
+      point("6. Finish", `remove probes per device protocol, confirm hemostasis, and save final imaging${id === "lung-ablation" ? "; assess for pneumothorax and hemorrhage" : ""}.`),
+    ] });
+    nodes[`${id}-steps`].quickSteps = true;
+    add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": config.safety, References: [config.reference] }, "caution");
+    const routine = ["Notify MD/LIP - IR."];
+    if (id === "lung-ablation") routine.push("CXR STAT and 3 hours post-procedure; order comments: 1 of 2 and 2 of 2.", "NPO until first CXR; clear liquids after first CXR if cleared by IR. After second CXR and IR clearance: outpatient, order regular diet and discharge if appropriate; inpatient, notify primary team diet is okay.");
+    else routine.push("Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.");
+    routine.push("Vital signs every 15 minutes x 4, then every 30 minutes x 2, then every 1 hour x 1.", "Tylenol 650 mg PRN.", ...config.meds);
+    if (id === "lung-ablation") routine.push("If chest tube placement is indicated: place IR Chest Tube order and admit to inpatient.");
+    nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", summary: "", checklistSections: [
+      { title: "Routine orders", items: routine },
+      { title: "Access care", items: ["Wound care/treatment."] },
+      { title: "Anticoagulation to resume", items: [...highRiskAnticoagRestartItems] },
+      { title: "Discharge", items: [`Discharge order with medication reconciliation - 3 hours${id === "lung-ablation" ? "; no discharge order if admitting" : ""}.`, `After visit summary: ${config.avs}.`] },
+      { title: "Follow up", items: config.follow },
+    ] };
+    Object.assign(procedure, { category: "Biopsy / ablation", bleedRisk: "High", summary: `Image-guided ${config.organ.toLowerCase()} tumor ablation.`, root: `${id}-root`, nodes });
+    hiddenProcedureTitles.delete(procedure.title);
+  }
+}
+
+function installCholangioscopy() {
+  const id = "cholangioscopy-with-lithotripsy-and-biliary-stone-removal";
+  const procedure = procedures.find(p => p.id === id);
+  const source = procedures.find(p => p.id === "biliary-drain-placement-internalization-exchange");
+  const nodes = {};
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const add = (key, title, details, type = "reference") => {
+    nodes[`${id}-${key}`] = { title, type, summary: "", details };
+  };
+  const copyDetails = title => JSON.parse(JSON.stringify(Object.values(source.nodes).find(n => n.title === title).details));
+  nodes[`${id}-root`] = { title: procedure.title, type: "reference", summary: "", children: ["pre", "intra", "post"].map(k => `${id}-${k}`) };
+  nodes[`${id}-pre`] = { title: "Pre-procedure", type: "reference", summary: "", children: ["indication", "anticoag", "labs", "orders", "sedation", "checklist", "consent"].map(k => `${id}-${k}`) };
+  add("indication", "Indication", { Indications: ["Biliary stones not amenable to ERCP or standard extraction.", "Retained or recurrent stones with altered anatomy or failed ERCP."] });
+  nodes[`${id}-indication`].children = [`${id}-contraindications`];
+  add("contraindications", "Contraindications", { Contraindications: ["Uncorrectable coagulopathy or no safe access.", "Uncontrolled cholangitis/sepsis: prioritize antibiotics and drainage before definitive stone treatment."] }, "caution");
+  add("anticoag", "Anticoagulation", copyDetails("Anticoagulation"), "caution");
+  add("labs", "Labs", { Labs: ["INR < 1.5-1.8.", "Platelets >50,000/µL."] });
+  add("orders", "Pre-procedure orders", { "Routine orders": [
+    "SDC/Outpatient with Discharge.",
+    "NPO if moderate sedation or anesthesia.",
+    "Vital signs per routine.",
+    "Peripheral line placement.",
+    "Glucose point of care.",
+    "Antibiotics per most recent biliary culture; if none, per protocol.",
+    "CBC and INR within 30 days.",
+  ] });
+  add("sedation", "Sedation", { Sedation: [point("Preferred", "moderate sedation or general anesthesia, depending on tolerance and anticipated complexity."), { text: "Open moderate sedation checklist", href: "#moderate-sedation-checklist" }] });
+  const checklist = copyDetails("Checklist");
+  checklist.Checklist = checklist.Checklist.filter(item => !/^Review biliary anatomy/.test(item.strong || "")).map(item => /^Review imaging/.test(item.strong || "")
+    ? point("Review imaging", "stone burden, ductal anatomy/strictures, and existing access tract.") : item);
+  checklist.Checklist.splice(2, 0, point("Confirm equipment and access", "scope, lithotripsy system, extraction devices, and suitable tract/sheath; confirm antibiotics given."));
+  add("checklist", "Checklist", checklist, "decision");
+  const consent = copyDetails("Consent");
+  consent.Procedure = [procedure.title];
+  consent["Procedure-specific risks"] = ["Cholangitis or sepsis.", "Bile duct injury, perforation, or bile leak.", "Retained stones, drain dependence, or repeat intervention."];
+  add("consent", "Consent", consent);
+  nodes[`${id}-intra`] = { title: "Intraprocedure", type: "reference", summary: "", children: ["anatomy", "steps", "pitfalls"].map(k => `${id}-${k}`) };
+  add("anatomy", "Anatomy", { Anatomy: [
+    point("Biliary tree", "right and left hepatic ducts join the common hepatic duct; the cystic duct joins to form the common bile duct."),
+    point("Outflow", "identify the ampulla or biliary-enteric anastomosis, strictures, and isolated ducts."),
+    point("Access", "review the existing biliary drain course and its relationship to the target stones."),
+  ] });
+  add("steps", "Procedural steps", { "Basic steps": [
+    point("1. Define the target", "perform cholangiography to assess stones, strictures, and outflow."),
+    point("2. Establish access", "maintain wire access and place a compatible sheath through the planned tract."),
+    point("3. Inspect", "advance the cholangioscope under imaging and direct vision; irrigate enough to maintain visibility."),
+    point("4. Fragment stones", "use lithotripsy under direct visualization, keeping the probe directed at the stone and away from the duct wall."),
+    point("5. Clear fragments", "use a basket or balloon as appropriate; avoid forcing stones through a narrowed outlet."),
+    point("6. Confirm and drain", "reassess clearance and outflow with cholangioscopy/cholangiography; replace the drain as indicated and secure it."),
+  ] });
+  nodes[`${id}-steps`].quickSteps = true;
+  add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
+    point("Access loss", "confirm tract suitability before dilation and maintain wire access during exchanges."),
+    point("Sepsis", "confirm antibiotic coverage; avoid excessive irrigation pressure and maintain drainage."),
+    point("Duct injury", "do not activate lithotripsy without a clear view of the stone; follow device instructions."),
+    point("Residual stones", "check upstream ducts and outflow; stage treatment if clearance is incomplete."),
+  ], References: [{ text: "ESGE: biliopancreatic endoscopy technologies, including percutaneous cholangioscopy", href: "https://www.esge.com/assets/downloads/pdfs/guidelines/2025_a-2619-8434.pdf" }] }, "caution");
+  nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", summary: "", checklistSections: [
+    { title: "Routine orders", items: ["Notify MD/LIP - IR.", "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.", "Vital signs per unit routine.", "Tylenol 650 mg PRN."] },
+    { title: "Access care", items: ["Pigtail drain - flush orders per MD."] },
+    { title: "Anticoagulation to resume", items: [...highRiskAnticoagRestartItems] },
+    { title: "Discharge", items: ["Discharge order with medication reconciliation - 30 minutes.", "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1."] },
+    { title: "Follow up", items: ["Repeat intervention per MD or drain check/clinic for drain removal."] },
+  ] };
+  Object.assign(procedure, { category: source.category, bleedRisk: "High", summary: "Percutaneous cholangioscopy with lithotripsy and biliary stone removal.", root: `${id}-root`, nodes });
+  hiddenProcedureTitles.delete(procedure.title);
+}
+
+function installDrainageDetailedSteps() {
+  const procedure = procedures.find(p => p.title === "Drainage Catheter Placement/Exchange");
+  const steps = Object.values(procedure.nodes).find(node => node.title === "Procedural steps");
+  steps.quickSteps = true;
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  steps.detailedDetails = {
+    "Tools needed": [
+      "Multipurpose drain, e.g., 10.2 Fr; other common options include 8.5, 12, and 14 Fr. Select for the collection and contents.",
+      "Access needle/coaxial introducer, commonly 18G; choose length for target depth and confirm wire compatibility.",
+      "Short Amplatz wire, typically 0.035 inch; compatible dilator and drain stiffener.",
+      "Lidocaine, syringe, and local-anesthetic needle.",
+      "Sterile gloves and gown; skin prep, sterile drapes and towels.",
+      "CT grid if used; scalpel, specimen container, suture, dressing, and drainage bag.",
+    ],
+    "CT-guided placement": [
+      point("1. Scout and plan", "obtain a scout CT. If using a physical grid, place it before scanning; otherwise use the virtual grid. Select a safe trajectory avoiding bowel, vessels, and other structures. Mark the skin entry site."),
+      point("2. Prep and anesthetize", "prep and drape the field. Create a lidocaine skin wheal and anesthetize along the planned tract."),
+      point("3. Check the trajectory", "a local-anesthetic needle may serve as a temporary marker. Obtain a CT check and adjust the entry angle as needed."),
+      point("4. Access the collection", "remove the marker needle and advance the access needle/coaxial introducer under intermittent CT or CT-fluoroscopy guidance. Confirm the tip within the collection, remove the stylet, and aspirate for confirmation and ordered studies."),
+      point("5. Place the wire", "gently advance the compatible short Amplatz wire into the collection. Stop if resistance occurs; reassess with imaging rather than forcing the wire. Confirm wire position before exchanging the needle."),
+      point("6. Prepare the drain", "flush the catheter and straighten it with the compatible stiffening cannula per the device instructions. Prepare the matched dilator. Measure skin-to-target depth to guide dilation and catheter advancement."),
+      point("7. Dilate the tract", "maintain wire access, remove the introducer, and make a skin nick as needed. Advance the dilator over the wire only to the planned depth, then remove it while holding the wire."),
+      point("8. Advance the drain", "load the drain and stiffener over the wire. Advance under imaging to the planned depth. If using a tee-off technique, hold the stiffener stationary while advancing the catheter off it; do not advance the rigid tip beyond the collection."),
+      point("9. Form and lock the pigtail", "remove the wire and stiffener, allowing the pigtail to form within the collection. Gently tension and lock the retention suture per the device instructions; confirm the loop and sideholes are within the collection."),
+      point("10. Secure and image", "suture the drain, connect the drainage bag, and apply a dressing. Obtain a final CT to document position and assess for complications."),
+    ],
+    "Device references": [
+      { text: "Cook Medical: multipurpose drainage catheter sizes and instructions", href: "https://www.cookmedical.com/products/ir_ultclm_webds/" },
+      { text: "Cook Medical: Chiba access needle sizes", href: "https://www.cookmedical.com/products/ir_dchn_webds/" },
+    ],
+  };
+}
+
+function installSuperficialLymphNodeBiopsy() {
+  const source = procedures.find(p => p.id === "thyroid-biopsy");
+  const id = "superficial-lymph-node-biopsy";
+  const title = "Superficial Lymph Node Biopsy";
+  const nodes = {};
+  const add = (key, heading, details, type = "reference") => {
+    nodes[`${id}-${key}`] = { title: heading, type, summary: "", details };
+  };
+  const point = (strong, text) => ({ strong: `${strong}:`, text: ` ${text}` });
+  const copyDetails = heading => JSON.parse(JSON.stringify(Object.values(source.nodes).find(node => node.title === heading).details));
+  nodes[`${id}-root`] = { title, type: "reference", summary: "", children: ["pre", "intra", "post"].map(key => `${id}-${key}`) };
+  nodes[`${id}-pre`] = { title: "Pre-procedure", type: "reference", summary: "", children: ["indication", "anticoag", "labs", "orders", "sedation", "checklist", "consent"].map(key => `${id}-${key}`) };
+  add("indication", "Indication", { Indications: [
+    "Persistent or unexplained superficial lymphadenopathy.",
+    "Suspected lymphoma or metastatic disease.",
+    "Tissue diagnosis for suspected infection or inflammatory disease.",
+  ] });
+  nodes[`${id}-indication`].children = [`${id}-contraindications`];
+  add("contraindications", "Contraindications", copyDetails("Contraindications"), "caution");
+  add("anticoag", "Anticoagulation", copyDetails("Anticoagulation"), "caution");
+  add("labs", "Labs", copyDetails("Labs"));
+  add("orders", "Pre-procedure orders", { "Routine orders": [
+    "SDC/Outpatient with Discharge.",
+    "Vital signs per routine.",
+    "Cytology present if requested by MD.",
+  ] });
+  add("sedation", "Sedation", { Sedation: [
+    point("Preferred", "local anesthesia."),
+    point("Consideration", "systemic sedation is generally not required."),
+  ] });
+  const checklist = copyDetails("Checklist");
+  checklist.Checklist = checklist.Checklist.map(item => {
+    if (/^Review imaging/.test(item.strong || "")) return point("Review imaging", "target node, nearby vessels, and a safe needle path.");
+    if (/^Confirm cytology/.test(item.strong || "")) return point("Confirm cytology/pathology", "histology, flow cytometry if lymphoma suspected, and cultures if indicated.");
+    return item;
+  });
+  add("checklist", "Checklist", checklist, "decision");
+  const consent = copyDetails("Consent");
+  consent.Procedure = [title];
+  consent["Procedure-specific risks"] = ["Nondiagnostic sample or need for repeat/excisional biopsy.", "Neck hematoma with airway compromise if cervical target."];
+  add("consent", "Consent", consent);
+  nodes[`${id}-intra`] = { title: "Intraprocedure", type: "reference", summary: "", children: ["anatomy", "steps", "pitfalls"].map(key => `${id}-${key}`) };
+  add("anatomy", "Anatomy", { Anatomy: [
+    point("Superficial nodes", "cervical, supraclavicular, axillary, and inguinal targets; confirm side and level."),
+    point("Nearby structures", "map vessels with Doppler; avoid nerves, salivary glands, and pleura near supraclavicular targets."),
+    point("Sampling target", "choose viable solid tissue and avoid necrotic areas and hilar vessels."),
+  ] });
+  add("steps", "Procedural steps", { "Basic steps": [
+    point("1. Confirm the target", "match the node and side to imaging and the request."),
+    point("2. Position and scan", "map vessels with Doppler and choose a safe, visible needle path."),
+    point("3. Prep and anesthetize", "use sterile technique and local anesthesia."),
+    point("4. Sample under ultrasound", "keep the needle tip visible; confirm a safe throw if using core biopsy."),
+    point("5. Handle specimens", "send for requested studies; confirm adequacy with cytology when available."),
+    point("6. Apply pressure and reassess", "confirm hemostasis and place a dressing."),
+  ] });
+  nodes[`${id}-steps`].quickSteps = true;
+  nodes[`${id}-steps`].detailedDetails = {
+    "Tools needed": [
+      "Small-gauge needles, typically 25G.",
+      "Lidocaine.",
+      "Sterile drapes and towels.",
+      "Specimen cups.",
+      "Ultrasound probe and sterile cover.",
+      "Sterile gloves and gown.",
+    ],
+    "Detailed steps": [
+      point("1. Image and plan", "before sterile prep, scan with ultrasound and gel. Plan a trajectory avoiding major structures and vessels, then mark the skin entry site."),
+      point("2. Prep and drape", "remove the gel, clean and prep the site, then place sterile blue drapes."),
+      point("3. Anesthetize", "infiltrate lidocaine along the planned needle tract to the target."),
+      point("4. Position the FNA needle", "under ultrasound guidance, advance a typically 25G needle into the lymph node, keeping the tip visible."),
+      point("5. Obtain samples", "make short, controlled back-and-forth motions within the node, up to 15-20 motions per needle. Gentle rotation while advancing and retracting may help. Repeat with additional needles and submit specimens per the planned studies."),
+      point("6. Finish", "remove the needle, apply pressure, clean the site, and place a bandage. Save a post-procedure ultrasound image."),
+    ],
+  };
+  add("pitfalls", "Pitfalls and safety", { "Pitfalls and safety": [
+    point("Wrong node", "confirm the requested target and laterality before sampling."),
+    point("Nondiagnostic tissue", "avoid necrosis; coordinate core versus FNA and specimen handling with pathology."),
+    point("Suspected lymphoma", "arrange fresh tissue for flow cytometry per lab protocol; do not place all tissue in formalin. Excision may be needed if needle biopsy is insufficient."),
+    point("Lost needle tip", "stop and regain visualization before advancing or sampling."),
+    point("Bleeding or neck swelling", "apply pressure; expanding hematoma, dysphagia, or dyspnea requires urgent assessment."),
+  ], References: [
+    { text: "AIUM practice parameter: selected ultrasound-guided procedures", href: "https://onlinelibrary.wiley.com/doi/10.7863/jum.2016.35.9.5" },
+    { text: "NHS: superficial lymph node biopsy", href: "https://www.asph.nhs.uk/leaflets/3792-interventional-radiology-leaflet-superficial-lymph-node-biopsy" },
+  ] }, "caution");
+  nodes[`${id}-post`] = { title: "Post-procedure", type: "orders", summary: "", checklistSections: [
+    { title: "Routine orders", items: ["Notify MD/LIP - IR.", "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.", "Vital signs per unit routine.", "Tylenol 650 mg PRN."] },
+    { title: "Discharge", items: ["Discharge order with medication reconciliation - immediate.", "After visit summary: .IRAVSBIOPSYSUPERFICIAL."] },
+  ] };
+  procedures.push({ id, title, category: "Biopsy / ablation", bleedRisk: "Low", keywords: "superficial lymph node biopsy cervical supraclavicular axillary inguinal lymphadenopathy lymphoma core fna flow cytometry", summary: "Ultrasound-guided sampling of superficial lymph nodes for tissue diagnosis.", root: `${id}-root`, nodes });
+}
 
 function ensureAccessSiteColorMonitoring() {
   for (const procedure of procedures) {
@@ -1253,6 +1599,7 @@ function separatePostprocedureAccessCare() {
 function installAvsProcedureImages() {
   const procedure = procedures.find(p => p.id === "adrenal-vein-sampling");
   const steps = Object.values(procedure.nodes).find(node => node.title === "Procedural steps");
+  steps.quickSteps = true;
   steps.afterImageGallery = [
     { src: "images/right-adrenal-venogram.png", alt: "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.", caption: "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles." },
     { src: "images/left-renal-vein-selection.png", alt: "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.", caption: "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein." },

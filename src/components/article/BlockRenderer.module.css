@@ -255,3 +255,6 @@
 .table tbody tr:last-child td {
   border-bottom: none;
 }
+.disclosure { border-top: 1px solid var(--c-border); padding: 12px 0; }
+.disclosure > summary { cursor: pointer; font-weight: 650; color: var(--c-brand-strong); padding: 4px 0; }
+.disclosure[open] > summary { margin-bottom: 16px; }

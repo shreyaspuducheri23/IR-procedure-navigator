@@ -5,6 +5,86 @@ import { captureLegacyState, convertProcedure } from '../scripts/migrate.mjs';
 import { articleSchema } from '../src/schema/article.ts';
 const report = () => ({ problems: [], orphans: [], rewrittenLinks: {}, internalLinks: 0, externalLinks: 0 });
 const convert = (p) => convertProcedure(p, [], report());
+test('all ablation consent common risks include repeat treatment without recurrence wording', () => {
+  for (const p of captureLegacyState().procedures.filter(p => /ablation/i.test(p.title))) {
+    const consent = Object.values(p.nodes).find(n => n.title === 'Consent');
+    assert.equal(consent.details['Common risks'].filter(risk => risk === 'Need for repeat treatment.').length, 1, p.id);
+    assert.doesNotMatch(JSON.stringify(consent.details['Procedure-specific risks'] || []), /residual|recurren|incomplete ablation/i);
+  }
+});
+test('all biopsy consent common risks include resampling exactly once', () => {
+  for (const p of captureLegacyState().procedures.filter(p => /biopsy/i.test(p.title))) {
+    const consent = Object.values(p.nodes).find(n => n.title === 'Consent');
+    assert.equal(consent.details['Common risks'].filter(risk => risk === 'Need for resampling.').length, 1, p.id);
+    assert.match(JSON.stringify(convert(p).sections.find(s => s.kind === 'pre')), /Need for resampling/);
+  }
+});
+test('organ ablation guides preserve distinct source orders and standard tabs', () => {
+  const all = captureLegacyState().procedures;
+  for (const id of ['kidney-ablation', 'liver-ablation', 'lung-ablation']) {
+    const article = convert(all.find(p => p.id === id));
+    assert.equal(article.status, 'complete', id);
+    assert.equal(article.bleedRisk, 'high', id);
+    const pre = article.sections.find(s => s.kind === 'pre');
+    assert.deepEqual(pre.subsections.map(s => s.title), ['Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist', 'Consent']);
+    const orders = JSON.stringify(pre.subsections.find(s => s.title === 'Pre-procedure orders'));
+    const post = JSON.stringify(article.sections.find(s => s.kind === 'post'));
+    assert.match(post, /15 minutes x 4.*30 minutes x 2.*1 hour x 1/);
+    assert.match(post, /medication reconciliation - 3 hours/);
+    assert.match(post, /Wound care\/treatment/);
+    assert.ok(articleSchema.safeParse(article).success, id);
+    if (id === 'kidney-ablation') {
+      assert.match(orders, /CBC day of procedure/);
+      assert.match(orders, /INR and BMP within 30 days/);
+      assert.doesNotMatch(orders, /Cefazolin|Metronidazole/);
+      assert.match(post, /IRAVSRENALABLATION/);
+      assert.match(post, /CT\/MRI renal mass/);
+    } else if (id === 'liver-ablation') {
+      assert.match(orders, /CBC, INR, CMP, and AFP if HCC - day of procedure/);
+      assert.match(orders, /Metronidazole \(Flagyl\) 500 mg IV/);
+      assert.match(post, /IRAVSABLATIONLIVER1/);
+      assert.match(post, /MRI liver mass and CBC, INR, CMP, and AFP if HCC/);
+    } else {
+      assert.match(orders, /NPO for anesthesia/);
+      assert.match(orders, /CBC and INR within 30 days/);
+      assert.match(post, /CXR STAT and 3 hours post-procedure/);
+      assert.match(post, /NPO until first CXR.*clear liquids after first CXR.*After second CXR/);
+      assert.match(post, /Toradol 15-30 mg IV x 1/);
+      assert.match(post, /IR Chest Tube order and admit to inpatient/);
+      assert.match(post, /IRAVSABLATIONLUNG/);
+      assert.match(post, /CT chest without contrast at 1 and 3 months; PET\/CT at 6 months/);
+    }
+  }
+});
+test('cholangioscopy uses standard tabs and source document orders', () => {
+  const article = convert(captureLegacyState().procedures.find(p => p.id === 'cholangioscopy-with-lithotripsy-and-biliary-stone-removal'));
+  assert.equal(article.status, 'complete');
+  assert.equal(article.bleedRisk, 'high');
+  const pre = article.sections.find(s => s.kind === 'pre');
+  assert.deepEqual(pre.subsections.map(s => s.title), ['Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist', 'Consent']);
+  const orders = JSON.stringify(pre.subsections.find(s => s.title === 'Pre-procedure orders'));
+  for (const phrase of ['CBC and INR within 30 days', 'most recent biliary culture', 'Glucose point of care', 'Peripheral line placement', 'NPO if moderate sedation or anesthesia']) assert.ok(orders.includes(phrase), phrase);
+  const post = JSON.stringify(article.sections.find(s => s.kind === 'post'));
+  for (const phrase of ['Vital signs per unit routine', 'Pigtail drain - flush orders per MD', 'Tylenol 650 mg PRN', 'medication reconciliation - 30 minutes', '.IRAVSCHOLETUBEORBILIARYDRAIN1', 'Repeat intervention per MD']) assert.ok(post.includes(phrase), phrase);
+  assert.ok(articleSchema.safeParse(article).success);
+});
+test('superficial lymph node biopsy uses standard tabs and source orders', () => {
+  const article = convert(captureLegacyState().procedures.find(p => p.id === 'superficial-lymph-node-biopsy'));
+  assert.equal(article.status, 'complete');
+  assert.equal(article.bleedRisk, 'low');
+  const pre = article.sections.find(s => s.kind === 'pre');
+  assert.deepEqual(pre.subsections.map(s => s.title), ['Indication', 'Anticoagulation', 'Labs', 'Pre-procedure orders', 'Sedation', 'Checklist', 'Consent']);
+  const orders = JSON.stringify(pre.subsections.find(s => s.title === 'Pre-procedure orders'));
+  assert.match(orders, /Cytology present if requested by MD/);
+  assert.doesNotMatch(orders, /Peripheral|Glucose|NPO/);
+  const post = JSON.stringify(article.sections.find(s => s.kind === 'post'));
+  assert.match(post, /Notify MD\/LIP - IR/);
+  assert.match(post, /Vital signs per unit routine/);
+  assert.match(post, /Tylenol 650 mg PRN/);
+  assert.match(post, /medication reconciliation - immediate/);
+  assert.match(post, /IRAVSBIOPSYSUPERFICIAL/);
+  assert.ok(articleSchema.safeParse(article).success);
+});
 test('access care sits immediately below routine orders', () => {
   for (const procedure of captureLegacyState().procedures) {
     const sections = Object.values(procedure.nodes).find(node => node.title === 'Post-procedure')?.checklistSections;
@@ -316,7 +396,7 @@ test('real migration is deterministic and agrees with all committed articles', (
     return procedures.map((p) => convertProcedure(p, hiddenProcedureTitles, report()));
   };
   const articles = run();
-  assert.equal(articles.length, 61);
+  assert.equal(articles.length, 62);
   assert.deepEqual(articles, run());
   for (const article of articles) {
     assert.equal(articleSchema.safeParse(article).success, true, article.id);
@@ -366,7 +446,7 @@ test('procedures preserve standard pre-procedure tabs with optional final Consen
     assert.doesNotMatch(JSON.stringify(pre.subsections[3].blocks), /Confirm sedation plan - patient can lie flat/, p.title);
     assert.ok(!pre.blocks?.length, p.title);
   }
-  assert.equal(count, 58);
+  assert.equal(count, 59);
 });
 
 test('post-procedure follow-up is last and drainage flush wording is standardized', () => {
@@ -407,7 +487,7 @@ test('procedure checklists use emphasis and cover shared preprocedure checks', (
       assert.match(text, pattern, procedure.title);
     }
   }
-  assert.equal(count, 58);
+  assert.equal(count, 59);
   const articles = captureLegacyState().procedures.map(convert);
   const exchange = articles.find(a => a.id === 'gastrostomy-gastrojejunostomy-jejunostomy-tube-exchange');
   assert.match(JSON.stringify(exchange), /unless further indicated/);

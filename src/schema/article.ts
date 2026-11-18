@@ -114,6 +114,7 @@ export type CalloutBlock = {
   title?: string;
   blocks: Block[];
   collapsible?: boolean;
+  defaultOpen?: boolean;
 };
 
 // Callouts nest blocks, so the inner array defers to `blockSchema` via z.lazy.
@@ -124,6 +125,7 @@ const calloutBlockSchema = z.object({
   variant: calloutVariantSchema,
   title: z.string().optional(),
   collapsible: z.boolean().optional(),
+  defaultOpen: z.boolean().optional(),
   blocks: z.array(z.lazy((): z.ZodType<Block> => blockSchema)),
 });
 
