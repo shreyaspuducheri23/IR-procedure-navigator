@@ -12,9 +12,11 @@
  * access up to `const els = {`, which is where the render layer begins, so we cut
  * the source there and let the data + enrichment half execute on its own.
  *
- * Still the importer, not a one-shot: the upstream repo this was forked from keeps
- * editing legacy/app.js, so merging upstream content means re-running this. It
- * rewrites each article.json while preserving adjacent article assets.
+ * RETIRED as a workflow. This was the importer while content was still authored
+ * in legacy/app.js. Content is now edited directly in content/articles (see the
+ * README's "Editing content"), so running this would overwrite those edits; it
+ * refuses to run without --force. The conversion functions are still exported
+ * for the regression tests in tests/migrate.test.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync } from "node:fs";
 import path from "node:path";
@@ -548,6 +550,29 @@ export function convertProcedure(procedure, hiddenTitles, report) {
 // ---------------------------------------------------------------------------
 
 function main() {
+  // Retired. content/articles is now edited directly (through the in-site
+  // editor, or by hand), so regenerating it from legacy/ would silently throw
+  // away every change made since. Kept only for the rare deliberate re-import.
+  if (!process.argv.includes("--force")) {
+    console.error(
+      [
+        "",
+        "npm run migrate is retired and did nothing.",
+        "",
+        "content/articles/ is now the source of truth: it is edited directly, usually",
+        "through the Edit button on the site. Running this importer rewrites every",
+        "article.json from legacy/ and would discard all of those edits.",
+        "",
+        "To change a procedure, use the site's editor or edit its article.json.",
+        "If you really mean to overwrite content/articles/ from legacy/, run:",
+        "",
+        "  npm run migrate -- --force",
+        "",
+      ].join("\n"),
+    );
+    process.exit(1);
+  }
+
   const { procedures, hiddenProcedureTitles } = captureLegacyState();
   const report = {
     problems: [],

@@ -172,8 +172,11 @@ function ArticleView({
         </Callout>
       )}
 
-      {allSubsectionKeys.length > 0 && (
-        <div className={styles.toolbar}>
+      <div className={styles.toolbar}>
+        <Link className={styles.toolButton} to={`/article/${article.id}/edit`}>
+          Edit
+        </Link>
+        {allSubsectionKeys.length > 0 && (
           <button
             type="button"
             className={styles.toolButton}
@@ -181,8 +184,8 @@ function ArticleView({
           >
             {allExpanded ? "Collapse all topics" : "Expand all topics"}
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className={styles.sections}>
         {sections.map((section) => (

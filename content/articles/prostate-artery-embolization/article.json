@@ -648,7 +648,6 @@
         },
         {
           "type": "list",
-          "title": "Access care",
           "items": [
             [
               {
@@ -699,7 +698,6 @@
         },
         {
           "type": "list",
-          "title": "Discharge",
           "items": [
             "Discharge order with medication reconciliation - 2-6 hours.",
             "After visit summary: .IRAVSPROSTATE.",

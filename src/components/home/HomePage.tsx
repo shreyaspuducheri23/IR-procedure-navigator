@@ -109,6 +109,10 @@ export function HomePage() {
           />
           <span>Show drafts ({draftCount})</span>
         </label>
+
+        <Link className={styles.newButton} to="/new">
+          + New procedure
+        </Link>
       </div>
 
       {procedureCards.length === 0 && references.length === 0 ? (

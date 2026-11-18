@@ -2,10 +2,11 @@
   "name": "ir-procedure-navigator-feedback-worker",
   "private": true,
   "version": "0.1.0",
-  "description": "Files in-app feedback as GitHub issues. Deployed separately from the site.",
+  "type": "module",
+  "description": "Files in-app feedback as GitHub issues and commits in-site edits. Deployed separately from the site.",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --config ../wrangler.jsonc",
+    "deploy": "wrangler deploy --config ../wrangler.jsonc",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

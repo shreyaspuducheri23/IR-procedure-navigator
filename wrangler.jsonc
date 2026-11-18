@@ -1,0 +1,25 @@
+// The Cloudflare Worker's deploy settings (the code is in worker/).
+//
+// This file is at the repository root on purpose. Cloudflare is connected to
+// this repository and runs `wrangler deploy` here on every push. With no config
+// in this folder, wrangler guesses: it sees a Vite project, builds the website
+// and publishes THAT under the Worker's name, replacing the Worker and deleting
+// its stored secrets. That silently broke feedback (and later the editor) each
+// time anyone pushed. With this file here, a deploy from the root can only
+// publish the Worker.
+{
+  "$schema": "worker/node_modules/wrangler/config-schema.json",
+  "name": "ir-procedure-navigator",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2026-08-01",
+  "observability": { "enabled": true },
+  "vars": {
+    "GITHUB_OWNER": "shreyaspuducheri23",
+    "GITHUB_REPO": "IR-procedure-navigator",
+    // The deployed site, plus the Vite dev server for local testing.
+    "ALLOWED_ORIGINS": "https://shreyaspuducheri23.github.io,http://localhost:5173"
+  }
+  // Secrets, set out of band and never stored here (run from this folder):
+  //   npx wrangler secret put github_pat   fine-grained PAT: Issues + Contents, read and write
+  //   npx wrangler secret put edit_key     optional: shared passcode for publishing from the editor
+}

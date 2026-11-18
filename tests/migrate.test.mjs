@@ -390,7 +390,10 @@ test('missing nodes, cycles and unsupported calculators abort conversion', () =>
   const convertedAnticoagulation = convert(anticoagulation);
   assert.deepEqual(convertedAnticoagulation.sections[0].blocks, [{ type: "calculator", calculator: "anticoagulation" }]);
 });
-test('real migration is deterministic and agrees with all committed articles', () => {
+// The committed articles are no longer compared with this output: since the
+// in-site editor arrived, content/articles is the source of truth and is edited
+// directly. These tests only keep the frozen importer honest about legacy/.
+test('real migration is deterministic and produces schema-valid articles', () => {
   const run = () => {
     const { procedures, hiddenProcedureTitles } = captureLegacyState();
     return procedures.map((p) => convertProcedure(p, hiddenProcedureTitles, report()));
@@ -400,7 +403,6 @@ test('real migration is deterministic and agrees with all committed articles', (
   assert.deepEqual(articles, run());
   for (const article of articles) {
     assert.equal(articleSchema.safeParse(article).success, true, article.id);
-    assert.equal(JSON.stringify(article, null, 2) + '\n', readFileSync(new URL(`../content/articles/${article.id}/article.json`, import.meta.url), 'utf8'));
   }
   const meld = articles.find((a) => a.id === 'meld-score-reference');
   assert.equal(meld.title, 'MELD Calculator');
