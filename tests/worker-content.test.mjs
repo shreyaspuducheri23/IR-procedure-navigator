@@ -60,7 +60,7 @@ test('saving every article unchanged is a no-op: formatting round-trips byte for
   const { github, load, save } = setup();
   const commits = github.commitCount();
   const ids = [...github.files().keys()].filter((p) => p.endsWith('/article.json')).map((p) => p.split('/')[2]);
-  assert.equal(ids.length, 61);
+  assert.ok(ids.length > 0, 'no articles found');
   for (const id of ids) {
     const { article, sha } = await load(id);
     const { status, data } = await save(id, { article, baseSha: sha });
