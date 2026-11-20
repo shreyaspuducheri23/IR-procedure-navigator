@@ -218,6 +218,12 @@
                 ],
                 [
                   {
+                    "strong": "Confirm antibiotics:"
+                  },
+                  " review the current agent, last dose, culture coverage, and whether additional pre-procedure coverage is needed."
+                ],
+                [
+                  {
                     "strong": "Verify labs:"
                   },
                   " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
@@ -511,7 +517,9 @@
           "items": [
             "Gravity drainage unless otherwise ordered.",
             "Transient hematuria is expected; escalate persistent heavy bleeding, obstructing clots, hypotension, or falling Hgb.",
-            "Flush with 10 mL sterile saline twice daily while admitted; once daily after discharge."
+            "Flush with 10 mL sterile saline twice daily while admitted; once daily after discharge.",
+            "Alternative per attending: flush with 10 mL sterile saline once daily until drainage is clear urine.",
+            "Confirm one flush plan with the attending; some do not routinely flush nephrostomy tubes."
           ]
         },
         {

@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useArticleIndex } from "@/hooks/useArticle";
 import { CATEGORIES } from "@/content/categories";
 import { ArticleCard } from "./ArticleCard";
+import { BleedRiskChip } from "@/components/article/BleedRiskChip";
 import styles from "./HomePage.module.css";
 import cardStyles from "./ArticleCard.module.css";
 
@@ -32,17 +33,23 @@ export function HomePage() {
       if (!showDrafts && article.status === "draft") continue;
       map.set(article.category, (map.get(article.category) ?? 0) + 1);
     }
-    map.set("vascular-access", (map.get("vascular-access") ?? 0) + 1);
+    map.set("vascular-access", (map.get("vascular-access") ?? 0) + 2);
     return map;
   }, [articles, showDrafts]);
 
-  const totalVisible = articles.filter((a) => showDrafts || a.status !== "draft").length + 1;
+  const totalVisible = articles.filter((a) => showDrafts || a.status !== "draft").length + 2;
   const draftCount = articles.filter((a) => a.status === "draft").length + 1;
   const references = visible.filter(article => article.category === "reference");
   const procedureCards = visible.filter(article => article.category !== "reference").map(article => ({
     id: article.id, title: article.title, content: <ArticleCard key={article.id} article={article} />,
   }));
   if (activeCategory === ALL || activeCategory === "vascular-access") {
+    procedureCards.push({ id: "port-removal", title: "Port Removal", content:
+      <Link key="port-removal" to="/port-removal" className={cardStyles.card}>
+        <div className={cardStyles.head}><h3 className={cardStyles.title}>Port Removal</h3></div>
+        <div className={cardStyles.foot}><BleedRiskChip risk="low" /></div>
+      </Link>,
+    });
     procedureCards.push({ id: "tdc-removal", title: "TDC Removal", content:
       <Link key="tdc-removal" to="/tdc-removal" className={cardStyles.card}>
         <div className={cardStyles.head}><h3 className={cardStyles.title}>TDC Removal</h3><span className={cardStyles.draft}>Draft</span></div>
