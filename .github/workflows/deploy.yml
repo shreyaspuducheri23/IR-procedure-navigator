@@ -6,7 +6,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # write: the format step below may commit layout fixes back to the branch.
+  contents: write
   pages: write
   id-token: write
 
@@ -24,6 +25,22 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Hand-edited article.json files are rewritten in the web editor's layout
+      # and the fix is committed back, so a layout slip never blocks a deploy.
+      # This run then carries on and deploys the formatted files; a push made
+      # with GITHUB_TOKEN does not start another workflow run.
+      - name: Format content
+        run: |
+          npm run format:content
+          if git diff --quiet -- content/articles; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898583+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Format article JSON in web editor layout" -- content/articles
+          # If someone pushed meanwhile, their push starts a newer run that
+          # cancels this one (concurrency above), so one rebase retry is enough.
+          git push origin "HEAD:${GITHUB_REF_NAME}" || {
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
+          }
       - name: Validate content
         run: npm run validate:content
       - name: Test scoring and migration
