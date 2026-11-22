@@ -373,21 +373,6 @@
               "blocks": [
                 {
                   "type": "heading",
-                  "text": "Tools needed"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    "Multipurpose drain, e.g., 10.2 Fr; other common options include 8.5, 12, and 14 Fr. Select for the collection and contents.",
-                    "Access needle/coaxial introducer, commonly 18G; choose length for target depth and confirm wire compatibility.",
-                    "Short Amplatz wire, typically 0.035 inch; compatible dilator and drain stiffener.",
-                    "Lidocaine, syringe, and local-anesthetic needle.",
-                    "Sterile gloves and gown; skin prep, sterile drapes and towels.",
-                    "CT grid if used; scalpel, specimen container, suture, dressing, and drainage bag."
-                  ]
-                },
-                {
-                  "type": "heading",
                   "text": "CT-guided placement"
                 },
                 {
@@ -397,61 +382,61 @@
                       {
                         "strong": "1. Scout and plan:"
                       },
-                      " obtain a scout CT. If using a physical grid, place it before scanning; otherwise use the virtual grid. Select a safe trajectory avoiding bowel, vessels, and other structures. Mark the skin entry site."
+                      " place the CT grid before the scout, or use the virtual grid. Select a path avoiding bowel, vessels, and pleura; mark the skin entry."
                     ],
                     [
                       {
                         "strong": "2. Prep and anesthetize:"
                       },
-                      " prep and drape the field. Create a lidocaine skin wheal and anesthetize along the planned tract."
+                      " use sterile gloves/gown, skin prep, drapes, and towels. With lidocaine, syringe, and injection needle, raise a skin wheal and anesthetize the tract."
                     ],
                     [
                       {
                         "strong": "3. Check the trajectory:"
                       },
-                      " a local-anesthetic needle may serve as a temporary marker. Obtain a CT check and adjust the entry angle as needed."
+                      " leave the anesthetic needle as a marker; check its angle on CT before exchanging it."
                     ],
                     [
                       {
                         "strong": "4. Access the collection:"
                       },
-                      " remove the marker needle and advance the access needle/coaxial introducer under intermittent CT or CT-fluoroscopy guidance. Confirm the tip within the collection, remove the stylet, and aspirate for confirmation and ordered studies."
+                      " replace the marker with an 18G access needle/coaxial introducer; choose length for measured depth. Advance under CT guidance. Confirm the tip in fluid, remove the stylet, and aspirate into a specimen container for ordered studies."
                     ],
                     [
                       {
                         "strong": "5. Place the wire:"
                       },
-                      " gently advance the compatible short Amplatz wire into the collection. Stop if resistance occurs; reassess with imaging rather than forcing the wire. Confirm wire position before exchanging the needle."
+                      " advance a compatible 0.035-inch short Amplatz into the collection. Stop for resistance; confirm wire position on CT before removing the needle."
                     ],
                     [
                       {
                         "strong": "6. Prepare the drain:"
                       },
-                      " flush the catheter and straighten it with the compatible stiffening cannula per the device instructions. Prepare the matched dilator. Measure skin-to-target depth to guide dilation and catheter advancement."
+                      " flush the MPD (commonly 10.2 Fr; alternatives 8.5, 12, 14 Fr) and insert its metal stiffener. Prepare the matched dilator. Measure needle depth from skin to collection and mark the planned dilator/drain depth."
                     ],
                     [
                       {
                         "strong": "7. Dilate the tract:"
                       },
-                      " maintain wire access, remove the introducer, and make a skin nick as needed. Advance the dilator over the wire only to the planned depth, then remove it while holding the wire."
+                      " hold the wire, remove the introducer, and make a scalpel skin nick. Advance the dilator over the wire to the marked depth; remove it without losing wire access."
                     ],
                     [
                       {
                         "strong": "8. Advance the drain:"
                       },
-                      " load the drain and stiffener over the wire. Advance under imaging to the planned depth. If using a tee-off technique, hold the stiffener stationary while advancing the catheter off it; do not advance the rigid tip beyond the collection."
+                      " advance drain/stiffener over the wire to the marked depth under CT. Tee off: hold the stiffener stationary and advance the drain off it. Keep the rigid tip within the collection."
                     ],
                     [
                       {
                         "strong": "9. Form and lock the pigtail:"
                       },
-                      " remove the wire and stiffener, allowing the pigtail to form within the collection. Gently tension and lock the retention suture per the device instructions; confirm the loop and sideholes are within the collection."
+                      " remove wire and stiffener; form and lock the pigtail. Confirm the loop and all sideholes are inside the collection."
                     ],
                     [
                       {
                         "strong": "10. Secure and image:"
                       },
-                      " suture the drain, connect the drainage bag, and apply a dressing. Obtain a final CT to document position and assess for complications."
+                      " suture to skin without constricting the drain; connect the drainage bag and apply a dressing. Save a final CT for position and complications."
                     ]
                   ]
                 },

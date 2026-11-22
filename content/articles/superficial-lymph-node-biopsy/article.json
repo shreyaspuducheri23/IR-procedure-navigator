@@ -378,12 +378,11 @@
                 {
                   "type": "list",
                   "items": [
-                    "Small-gauge needles, typically 25G.",
-                    "Lidocaine.",
-                    "Sterile drapes and towels.",
-                    "Specimen cups.",
-                    "Ultrasound probe and sterile cover.",
-                    "Sterile gloves and gown."
+                    "FNA needles: typically 25G.",
+                    "Local anesthetic: lidocaine.",
+                    "Sterile supplies: drapes, towels, gloves, gown.",
+                    "Specimen containers: cups.",
+                    "Ultrasound: probe and sterile cover."
                   ]
                 },
                 {
