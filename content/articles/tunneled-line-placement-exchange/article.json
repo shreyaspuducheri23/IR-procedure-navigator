@@ -498,12 +498,20 @@
                 {
                   "type": "list",
                   "items": [
-                    "Adult TDC, commonly 14.5 Fr; select length by measured course and device-specific tip-to-cuff length.",
-                    "Micropuncture set: 21G needle, 0.018-inch wire, and 4-5 Fr introducer. Working wire: compatible 0.035-inch Bentson or kit-specified wire.",
-                    "Matched dilators, peel-away sheath, and tunneler. Sheath size and valve vary by kit; do not choose by catheter French size alone.",
-                    "Ultrasound with sterile cover, fluoroscopy, maximal sterile barriers, skin prep, lidocaine, and #11 blade.",
-                    "Saline, 10 mL or larger syringes, lumen caps, prescribed lock solution, and dressing.",
-                    "Absorbable neck-closure and nonabsorbable securement sutures; 3-0 Vicryl/Prolene are local options to confirm with the attending, not universal requirements."
+                    "TDC: GlidePath 14.5 Fr; 19, 23, 27 cm tip-to-cuff lengths.",
+                    "Micropuncture set: 21G needle, 0.018-inch wire, 4-5 Fr introducer.",
+                    "Working wire: 0.035-inch Bentson or kit-specified wire.",
+                    "Dilators (GlidePath): 8 Fr, then 10-12 Fr Dualator.",
+                    "Peel-away sheath (GlidePath): 15 Fr, valved, with dilator.",
+                    "Tunneler: catheter kit.",
+                    "Imaging: ultrasound with sterile cover; fluoroscopy.",
+                    "Sterile supplies: gloves, gown, drapes, skin prep, dressing.",
+                    "Local anesthetic: lidocaine.",
+                    "Scalpel: #11 blade.",
+                    "Syringes: 10 mL or larger.",
+                    "Lumen supplies: saline, caps, prescribed lock solution.",
+                    "Neck suture: absorbable Vicryl, 3-0.",
+                    "Catheter suture: nonabsorbable Prolene, 2-0."
                   ]
                 },
                 {
@@ -513,7 +521,7 @@
                       {
                         "strong": "1. Map and mark:"
                       },
-                      " confirm right IJ patency and carotid position with ultrasound. Mark venotomy and chest exit; roughly two fingerbreadths below the clavicle is a planning landmark, not a fixed rule. Adjust for catheter length, cuff position, and a smooth tunnel."
+                      " map right IJ and carotid with ultrasound. Mark the chest exit about two fingerbreadths below the clavicle, midway between sternum and lateral clavicle; adjust to the measured catheter course and attending preference."
                     ],
                     [
                       {
@@ -525,7 +533,7 @@
                       {
                         "strong": "3. Open the neck site:"
                       },
-                      " make a controlled #11 skin nick sized for the introducer; bluntly free superficial tissue as needed. Keep the blade away from the wire, vein, and catheter; do not dissect blindly toward the vein."
+                      " use a #11 blade for an approximately 1 cm incision, noting attending preference. Bluntly free superficial tissue; protect the wire, vein, and catheter."
                     ],
                     [
                       {
@@ -543,25 +551,25 @@
                       {
                         "strong": "6. Open the chest exit:"
                       },
-                      " make an incision just large enough to pass the catheter cuff, rather than using blade widths as a fixed measurement. Confirm adequate tunnel length and room for the external hub."
+                      " make an approximately 1 cm incision with the #11 blade. Leave the hub external; confirm cuff position before tunneling."
                     ],
                     [
                       {
                         "strong": "7. Tunnel:"
                       },
-                      " flush and prepare the catheter per its instructions, then attach the tunneler securely. Pass subcutaneously from chest exit toward venotomy, tenting the skin near the neck exit. Avoid deep passage, sharp turns, and wire damage."
+                      " flush and prepare the catheter per its instructions, then attach the tunneler securely. Pass subcutaneously from chest exit toward venotomy, tenting the skin near the neck exit. Once the tip exits the neck skin, bend the exposed tunneler away from the head to ease catheter pull-through, only if the device permits bending. Avoid deep passage, sharp turns, and wire damage."
                     ],
                     [
                       {
                         "strong": "8. Seat the cuff:"
                       },
-                      " draw the catheter through without twisting or stretching it. Bury the cuff fully at the device-specified distance from the exit; confirm a gentle neck curve with no kink or hub buried in the wound."
+                      " pull through without twisting. Position the GlidePath cuff midway along the tunnel, at least 3 cm from the venous entry. Keep a smooth neck curve and the hub outside the wound."
                     ],
                     [
                       {
                         "strong": "9. Dilate and place the peel-away:"
                       },
-                      " remove the small introducer while holding the wire. Dilate over the confirmed central wire, then advance the matched sheath/dilator under fluoroscopy only as far as needed. Never force or blindly hub a rigid dilator."
+                      " hold the central wire and remove the micropuncture introducer. Dilate with 8 Fr, then 10-12 Fr Dualator, then place the 15 Fr valved sheath/dilator under fluoroscopy. Stop for resistance; do not blindly hub the dilator."
                     ],
                     [
                       {
@@ -579,19 +587,19 @@
                       {
                         "strong": "12. Test both lumens:"
                       },
-                      " aspirate for brisk blood return and flush each lumen easily with saline using a 10 mL or larger syringe. Keep hubs closed when disconnected. Poor return or resistance requires reassessment of tip position, twist, or kink; a three-second fill test is not a universal acceptance criterion."
+                      " use a 10-20 mL syringe: confirm brisk blood return and easy saline flushing from each lumen. Keep hubs closed when disconnected. Poor flow: check tip position, twist, or kink."
                     ],
                     [
                       {
                         "strong": "13. Close the neck:"
                       },
-                      " obtain hemostasis and approximate the incision with the chosen absorbable closure. If using a buried interrupted stitch, invert the knot and avoid capturing or compressing the catheter."
+                      " obtain hemostasis and close the skin incision over the venotomy with 3-0 absorbable Vicryl. Take a deep-to-superficial bite, then superficial-to-deep on the opposite edge, burying the knot. Do not capture or compress the catheter."
                     ],
                     [
                       {
                         "strong": "14. Secure the catheter:"
                       },
-                      " anchor to skin using the designated suture wings/device. If an attending uses crossed securement ties, follow the device instructions; never puncture, strangulate, or narrow the catheter. Knot/throw counts depend on material and technique, not a fixed 4/4/4/7 sequence."
+                      " use 2-0 nonabsorbable Prolene. Local crossed-tie technique: take an outside-to-inside skin bite superomedially, then inside-to-out inferolaterally; approximate without blanching and secure with 4 throws. Cross the tails beneath the catheter to opposite sides and tie with 4 throws; repeat the cross-and-tie with 4 throws, then a final cross-and-tie with 7 throws (4/4/4/7). Use only where compatible with the device and attending technique; otherwise use the designated suture wings. Never puncture or constrict the tubing. Recheck both lumens for easy aspiration and flushing after securement."
                     ],
                     [
                       {
@@ -619,8 +627,8 @@
                     [
                       {
                         "link": {
-                          "text": "Palindrome Precision insertion guide",
-                          "href": "https://mozarcmedical.com/wp-content/uploads/2024/01/weu-palindrome-precision-insertion-guide.pdf"
+                          "text": "GlidePath instructions for use",
+                          "href": "https://mydevicemd.com/assets/uploads/device/1631174177450BDPI_GlidePath_IFU.pdf"
                         }
                       }
                     ],

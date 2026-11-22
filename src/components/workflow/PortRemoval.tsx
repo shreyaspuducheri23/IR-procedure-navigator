@@ -8,11 +8,14 @@ import styles from "./OnCallWorkflow.module.css";
 const step = (strong: string, text: string) => [{ strong: `${strong}:` }, ` ${text}`];
 const topics: { id: string; title: string; blocks: Block[] }[] = [
   { id: "tools", title: "Tools you need", blocks: [{ type: "list", items: [
-    "Sterile gloves/gown, skin prep, drapes, gauze, and dressing.",
-    "Lidocaine, syringe, and local-anesthetic needle.",
-    "#10 blade, forceps, Kelly/hemostat, scissors, and needle driver.",
-    "Absorbable deep dermal suture; finer absorbable subcuticular suture or skin glue.",
-    "Specimen container if cultures are indicated.",
+    "Sterile supplies: gloves, gown, skin prep, drapes, gauze, dressing.",
+    "Local anesthetic: lidocaine; syringe and injection needle.",
+    "Scalpel: #10 blade.",
+    "Dissection: forceps, Kelly/hemostat, scissors.",
+    "Suturing: needle driver.",
+    "Deep dermal suture: absorbable Vicryl, 2-0 option.",
+    "Skin closure: absorbable subcuticular suture, 4-0 option; or skin glue.",
+    "Specimen container: if culturing.",
   ] }] },
   { id: "prep", title: "Prep", blocks: [{ type: "list", items: [
     "Confirm removal indication, side, consent, allergies, anticoagulation plan, and whether replacement access is needed.",
