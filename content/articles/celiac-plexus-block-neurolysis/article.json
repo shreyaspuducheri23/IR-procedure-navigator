@@ -187,21 +187,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " celiac axis/tumor anatomy, nearby vessels and organs, and a safe needle path."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " CBC, INR, and other labs as indicated."
+                  " See the Labs tab. CBC, INR, and other labs as indicated."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " celiac axis/tumor anatomy, nearby vessels and organs, and a safe needle path."
                 ],
                 [
                   {

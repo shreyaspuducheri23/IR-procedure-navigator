@@ -226,9 +226,21 @@
                 ],
                 [
                   {
+                    "strong": "Verify labs:"
+                  },
+                  " See the Labs tab."
+                ],
+                [
+                  {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " available studies for prostate size/anatomy, prostatic arterial supply, and bladder/rectal collaterals."
                 ],
                 [
                   {
@@ -251,12 +263,6 @@
             {
               "type": "list",
               "items": [
-                [
-                  {
-                    "strong": "Verify labs:"
-                  },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
-                ],
                 [
                   {
                     "strong": "Urology evaluation completed"
@@ -301,18 +307,6 @@
                     "strong": "Confirm indication."
                   },
                   ""
-                ],
-                [
-                  {
-                    "strong": "Review imaging:"
-                  },
-                  " available studies for prostate size/anatomy, prostatic arterial supply, and bladder/rectal collaterals."
-                ],
-                [
-                  {
-                    "strong": "Verify labs:"
-                  },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
                 ],
                 [
                   {

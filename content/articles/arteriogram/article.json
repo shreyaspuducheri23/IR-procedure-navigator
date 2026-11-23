@@ -201,21 +201,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " CTA/endoscopic localization, bleeding territory, variant branches, and collateral supply."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the hold/reversal plan, last doses, and active bleeding status."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " CTA/endoscopic localization, bleeding territory, variant branches, and collateral supply."
                 ],
                 [
                   {
@@ -350,93 +350,271 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Basic steps"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "1. Plan the target:"
-                  },
-                  " localize bleeding and review variants/collaterals."
-                ],
-                [
-                  {
-                    "strong": "2. Obtain arterial access:"
-                  },
-                  " use ultrasound-guided femoral or radial access; place the sheath."
-                ],
-                [
-                  {
-                    "strong": "3. Select the territory:"
-                  },
-                  " perform angiography to identify extravasation or pseudoaneurysm."
-                ],
-                [
-                  {
-                    "strong": "4. Superselect the branch:"
-                  },
-                  " advance the microcatheter; confirm the target and branches to preserve."
-                ],
-                [
-                  {
-                    "strong": "5. Choose the embolic:"
-                  },
-                  " coils, gelatin, particles, or liquid agent according to target and flow."
-                ],
-                [
-                  {
-                    "strong": "6. Embolize:"
-                  },
-                  " watch for reflux, catheter movement, and nontarget filling."
-                ],
-                [
-                  {
-                    "strong": "7. Recheck angiography:"
-                  },
-                  " confirm hemostasis, assess collateral filling, and preserve uninvolved perfusion."
-                ],
-                [
-                  {
-                    "strong": "8. Finish:"
-                  },
-                  " obtain access hemostasis and document the treatment and handoff."
-                ]
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Basic steps"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Plan the target:"
+                      },
+                      " localize bleeding and review variants/collaterals."
+                    ],
+                    [
+                      {
+                        "strong": "2. Obtain arterial access:"
+                      },
+                      " use ultrasound-guided femoral or radial access; place the sheath."
+                    ],
+                    [
+                      {
+                        "strong": "3. Select the territory:"
+                      },
+                      " perform angiography to identify extravasation or pseudoaneurysm."
+                    ],
+                    [
+                      {
+                        "strong": "4. Superselect the branch:"
+                      },
+                      " advance the microcatheter; confirm the target and branches to preserve."
+                    ],
+                    [
+                      {
+                        "strong": "5. Choose the embolic:"
+                      },
+                      " coils, gelatin, particles, or liquid agent according to target and flow."
+                    ],
+                    [
+                      {
+                        "strong": "6. Embolize:"
+                      },
+                      " watch for reflux, catheter movement, and nontarget filling."
+                    ],
+                    [
+                      {
+                        "strong": "7. Recheck angiography:"
+                      },
+                      " confirm hemostasis, assess collateral filling, and preserve uninvolved perfusion."
+                    ],
+                    [
+                      {
+                        "strong": "8. Finish:"
+                      },
+                      " obtain access hemostasis and document the treatment and handoff."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "Injection references"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "[1] ECR: GI hemorrhage angiography protocol",
+                          "href": "https://epos.myesr.org/poster/esr/ecr2014/C-1221/findings%20and%20procedure%20details"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "[2] Adult mapping power-injector settings, Table 2",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8497078/"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Renal arteriography injection protocol",
+                          "href": "https://www.jacc.org/doi/full/10.1016/S0735-1097%2802%2902408-7"
+                        }
+                      }
+                    ]
+                  ]
+                }
               ]
             },
             {
-              "type": "heading",
-              "text": "Injection references"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "link": {
-                      "text": "[1] ECR: GI hemorrhage angiography protocol",
-                      "href": "https://epos.myesr.org/poster/esr/ecr2014/C-1221/findings%20and%20procedure%20details"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "link": {
-                      "text": "[2] Adult mapping power-injector settings, Table 2",
-                      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8497078/"
-                    }
-                  }
-                ],
-                [
-                  {
-                    "link": {
-                      "text": "Renal arteriography injection protocol",
-                      "href": "https://www.jacc.org/doi/full/10.1016/S0735-1097%2802%2902408-7"
-                    }
-                  }
-                ]
+              "type": "callout",
+              "variant": "note",
+              "title": "Detailed steps",
+              "collapsible": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Femoral access and mesenteric bleeding"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Mark the access window:"
+                      },
+                      " use ultrasound to mark the CFA bifurcation into SFA/profunda and avoid anterior-wall plaque. Use a radiopaque marker and AP fluoroscopy to locate the femoral head. The arteriotomy should overlie the head, above the bifurcation and below the inguinal ligament (ASIS to pubic tubercle). Skin entry is caudal to the intended arterial puncture; the crease alone is unreliable."
+                    ],
+                    [
+                      {
+                        "strong": "2. Obtain CFA access:"
+                      },
+                      " prep, drape, and infiltrate lidocaine. Under ultrasound, enter the anterior wall with a 21G needle. Advance the 0.018-inch microwire into the iliac artery under fluoroscopy; stop for resistance or a subintimal course."
+                    ],
+                    [
+                      {
+                        "strong": "3. Place the sheath:"
+                      },
+                      " advance the 4 Fr transitional introducer, remove its inner dilator/microwire, and insert a 0.035-inch Bentson. Exchange the introducer for a 5 Fr arterial sheath over the wire; aspirate and flush the sidearm."
+                    ],
+                    [
+                      {
+                        "strong": "4. Check the arteriotomy:"
+                      },
+                      " perform sidearm angiography at about 30 degrees ipsilateral oblique: RAO for right CFA, LAO for left. Gently retract the sheath externally enough to display entry without dislodging it. Confirm CFA entry over the head, below the ligament and above bifurcation; check for extravasation, dissection, stenosis, or pseudoaneurysm."
+                    ],
+                    [
+                      {
+                        "strong": "5. Select the target territory:"
+                      },
+                      " use CTA/endoscopy to choose celiac, SMA, or IMA rather than searching blindly. Advance the Bentson into the upper abdominal aorta under fluoroscopy. Typical diagnostic catheters: 5 Fr Cobra C2, Simmons 1/2, or SOS Omni; choose the curve for the ostium."
+                    ],
+                    [
+                      {
+                        "strong": "6. Engage the visceral origin:"
+                      },
+                      " celiac usually arises near T12-L1; SMA near L1. Withdraw the wire, connect a contrast syringe, and gently withdraw/rotate the catheter with small hand puffs until the origin engages. Confirm free flow and no wedging before DSA."
+                    ],
+                    [
+                      {
+                        "strong": "7. Perform the diagnostic run:"
+                      },
+                      " prime and de-air injector tubing; confirm catheter rating and test injection. SMA example: 5 mL/s, 25 mL total (5 seconds). Celiac commonly 4-6 mL/s, 12-15 mL total; use the table below. Review through the delayed phase for extravasation, pseudoaneurysm, or collateral filling."
+                    ],
+                    [
+                      {
+                        "strong": "8. Select the bleeding branch:"
+                      },
+                      " use a 0.035-inch angled Glidewire through the 5 Fr catheter for larger branches; advance the catheter over the wire, never against resistance. Identify the source and branches to preserve before advancing distally."
+                    ],
+                    [
+                      {
+                        "strong": "9. Introduce the microcatheter system:"
+                      },
+                      " example: Progreat 2.4 Fr, 110/130 cm, with a 0.016-inch Fathom-16 wire (often 180 cm). Progreat 2.4 accepts wires up to 0.018 inch. Flush/de-air both devices, wet the hydrophilic wire, and use a saline-filled hemostatic valve. Advance the microcatheter through the base catheter with the microwire leading under fluoroscopy."
+                    ],
+                    [
+                      {
+                        "strong": "10. Superselect and reimage:"
+                      },
+                      " advance to the culprit branch while preserving uninvolved supply. Withdraw the microwire for a gentle test injection and DSA. Do not default to 3 mL/s through a 2.4 Fr Progreat: its flow depends on length, contrast, and pressure limits. Reduce injection for small or wedged branches; never force a high-pressure run."
+                    ],
+                    [
+                      {
+                        "strong": "11. Plan the embolization:"
+                      },
+                      " choose coils, gelatin sponge, liquid embolic/glue, or a plug for target, flow, and coagulation status. For a GDA/pseudoaneurysm with back-door flow, assess distal and proximal feeders; distal-then-proximal exclusion may be needed. Do not occlude the GDA before checking whether it supplies the liver via SMA collaterals in celiac stenosis."
+                    ],
+                    [
+                      {
+                        "strong": "12. Size and deploy coils:"
+                      },
+                      " measure the landing-zone lumen on calibrated angiography. For coils that require oversizing, about 20% is a common reference: a 5 mm vessel suggests a 6 mm coil. Coil design changes sizing; follow the selected coil instructions. Confirm microcatheter inner-diameter/delivery compatibility and a stable landing zone. Deploy under fluoroscopy; stop for kickback or migration."
+                    ],
+                    [
+                      {
+                        "strong": "13. Preserve bowel perfusion:"
+                      },
+                      " for small-bowel/colonic bleeding, embolize the shortest feasible culprit territory, ideally a superselected bleeding vasa recta. Preserve the marginal artery and adjacent branches. The splenic flexure/middle-colic-left-colic watershed can have weak collaterals; distal to the middle colic is not a universal boundary. Avoid broad or multibranch embolization."
+                    ],
+                    [
+                      {
+                        "strong": "14. Check both inflow and collaterals:"
+                      },
+                      " repeat DSA from the parent vessel to confirm hemostasis and preserved uninvolved flow. After celiac/GDA treatment, obtain an SMA run when pancreaticoduodenal back-door filling is relevant; check other feeders according to the bleeding territory. Persistent instability with a negative run may reflect intermittent bleeding, not technical success."
+                    ],
+                    [
+                      {
+                        "strong": "15. Finish:"
+                      },
+                      " remove catheters over a wire and achieve access hemostasis by the chosen closure device or manual compression. Document treated branches/embolics, residual collateral flow, and distal pulses; use the existing Access care orders."
+                    ]
+                  ]
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Embolics",
+                          "href": "https://shreyaspuducheri23.github.io/IR-procedure-navigator/#/tools/embolics"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Systems",
+                          "href": "https://shreyaspuducheri23.github.io/IR-procedure-navigator/#/tools/systems"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "BMC2: arterial access best practices",
+                          "href": "https://www.bmc2.org/sites/default/files/2021-04/Access-Best-Practice-Protocol-2-21.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Terumo Progreat specifications and flow data",
+                          "href": "https://www.terumois.com/en-us/product/progreat/documents/progreat-family-brochure.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Boston Scientific Fathom wire sizes",
+                          "href": "https://www.bostonscientific.com/content/dam/bsc/us/pi/ir/ioe/fathom/Fathom_Brochure.pdf"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "ACG/SAR consensus: imaging and embolization for GI bleeding",
+                          "href": "https://pubs.rsna.org/doi/10.1148/radiol.232298"
+                        }
+                      }
+                    ]
+                  ]
+                }
               ]
             },
             {

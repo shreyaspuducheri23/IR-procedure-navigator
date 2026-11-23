@@ -208,21 +208,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " access vein patency, central venous obstruction, and existing devices."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " on active chemotherapy: obtain and review CBC with differential before starting, including platelets, WBC, and ANC. If on warfarin, confirm INR within 30 days."
+                  " See the Labs tab. on active chemotherapy: obtain and review CBC with differential before starting, including platelets, WBC, and ANC. If on warfarin, confirm INR within 30 days."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " access vein patency, central venous obstruction, and existing devices."
                 ],
                 [
                   {

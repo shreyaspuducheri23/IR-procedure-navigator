@@ -209,21 +209,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " available prior studies for tube course, tip position, and altered surgical anatomy; imaging is not routinely required beforehand."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " no labs unless further indicated."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " available prior studies for tube course, tip position, and altered surgical anatomy; imaging is not routinely required beforehand."
                 ],
                 [
                   {

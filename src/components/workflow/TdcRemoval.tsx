@@ -24,7 +24,7 @@ export function TdcRemoval() {
   ];
   return <section className={styles.workflow}>
     <Link to="/">All procedures</Link>
-    <h1>TDC Removal</h1>
+    <h1>Tunneled Dialysis Catheter</h1>
     <div style={{ display: "grid", gap: 12, marginTop: 24 }}>
       {topics.map(topic => <Subsection key={topic.id}
         subsection={topic}

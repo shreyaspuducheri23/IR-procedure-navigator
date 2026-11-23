@@ -211,15 +211,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging"
+                    "strong": "Verify labs:"
                   },
-                  " and current tube/stent details."
+                  " See the Labs tab."
                 ],
                 [
                   {
-                    "strong": "Confirm labs"
+                    "strong": "Review anticoagulation:"
                   },
-                  " and anticoagulation plan with local policy."
+                  " confirm the anticoagulation plan with local policy."
+                ],
+                [
+                  {
+                    "strong": "Review imaging"
+                  },
+                  " and current tube/stent details."
                 ],
                 [
                   {

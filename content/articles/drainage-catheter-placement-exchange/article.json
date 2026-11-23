@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "drainage-catheter-placement-exchange",
-  "title": "Drainage Catheter Placement/Exchange",
+  "title": "Drainage Catheter Placement",
   "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "high",
   "keywords": [],
-  "summary": "Drainage catheter placement or exchange guidance for abscess/fluid collection source control, with high-risk anticoagulation holds and drain follow-up.",
+  "summary": "Drainage catheter placement guidance for abscess/fluid collection source control, with high-risk anticoagulation holds and drain follow-up.",
   "lastReviewed": null,
   "provenance": [
     "Imported from procedure orders PDF updated 4.15.26"
@@ -183,21 +183,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " collection size/loculations, adjacent bowel and vessels, and access window or existing drain position."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " collection size/loculations, adjacent bowel and vessels, and access window or existing drain position."
                 ],
                 [
                   {
@@ -232,7 +232,7 @@
             {
               "type": "list",
               "items": [
-                "Drainage Catheter Placement/Exchange"
+                "Drainage Catheter Placement"
               ]
             },
             {

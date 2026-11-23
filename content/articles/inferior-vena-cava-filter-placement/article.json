@@ -179,21 +179,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " IVC patency/caliber, renal vein level, and caval variants."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " IVC patency/caliber, renal vein level, and caval variants."
                 ],
                 [
                   {

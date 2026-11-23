@@ -171,6 +171,18 @@
                 ],
                 [
                   {
+                    "strong": "Verify labs:"
+                  },
+                  " See the Labs tab."
+                ],
+                [
+                  {
+                    "strong": "Review anticoagulation:"
+                  },
+                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
                     "strong": "Review imaging:"
                   },
                   " target visibility, bile ducts/vessels, adjacent bowel, and safe probe paths."
@@ -186,18 +198,6 @@
                     "strong": "Confirm ablation plan:"
                   },
                   " modality, probe configuration, treatment margin, and protection of nearby structures."
-                ],
-                [
-                  {
-                    "strong": "Verify labs:"
-                  },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
-                ],
-                [
-                  {
-                    "strong": "Review anticoagulation:"
-                  },
-                  " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
                 ],
                 [
                   {

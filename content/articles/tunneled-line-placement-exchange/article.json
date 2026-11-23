@@ -222,21 +222,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " access vein patency, central stenosis/thrombosis, and existing catheter or hardware."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " access vein patency, central stenosis/thrombosis, and existing catheter or hardware."
                 ],
                 [
                   {

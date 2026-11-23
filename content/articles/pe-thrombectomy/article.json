@@ -231,21 +231,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " CTA clot location, RV strain on CT/echo, and venous access/right-heart anatomy."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " CTA clot location, RV strain on CT/echo, and venous access/right-heart anatomy."
                 ],
                 [
                   {

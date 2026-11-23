@@ -241,21 +241,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " thrombus extent, central venous outflow, and access vein patency."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen."
+                  " See the Labs tab. Hgb, platelets, INR/PTT, creatinine, +/- fibrinogen."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " thrombus extent, central venous outflow, and access vein patency."
                 ],
                 [
                   {

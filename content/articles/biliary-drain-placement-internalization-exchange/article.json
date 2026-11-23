@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "biliary-drain-placement-internalization-exchange",
-  "title": "Biliary Drain Placement and Internalization/Exchange",
+  "title": "Biliary Drain Placement",
   "category": "drain-tube",
   "status": "complete",
   "bleedRisk": "high",
@@ -9,18 +9,11 @@
     "biliary",
     "drain",
     "placement",
-    "exchange",
-    "internalization",
-    "cholangitis",
+    "PTBD",
     "obstruction",
-    "jaundice",
-    "tube",
-    "pbd",
-    "ptbd",
-    "internal",
-    "external"
+    "cholangitis"
   ],
-  "summary": "Biliary drain placement, exchange, and internalization guidance for biliary obstruction, cholangitis/source control, jaundice, and drain dysfunction.",
+  "summary": "Percutaneous transhepatic biliary drain placement for obstruction or source control.",
   "lastReviewed": null,
   "provenance": [
     "Draft procedure-specific override, July 2026"
@@ -50,10 +43,8 @@
               "type": "list",
               "items": [
                 "Biliary obstruction requiring decompression.",
-                "Cholangitis or sepsis requiring source control.",
-                "Obstructive jaundice requiring biliary drainage.",
-                "Existing biliary drain dysfunction, exchange, or internalization.",
-                "Need for internal/external biliary drainage or conversion/internalization when clinically appropriate."
+                "Cholangitis requiring source control.",
+                "Bile leak or diversion when endoscopic drainage is unsuitable."
               ]
             },
             {
@@ -130,24 +121,10 @@
           "title": "Labs",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Placement"
-            },
-            {
               "type": "list",
               "items": [
                 "INR < 1.5-1.8.",
                 "Platelets >50,000/µL."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Exchange/conversion"
-            },
-            {
-              "type": "list",
-              "items": [
-                "No routine labs required."
               ]
             }
           ]
@@ -163,31 +140,13 @@
             {
               "type": "list",
               "items": [
-                "NPO (if moderate sedation).",
+                "SDC/Outpatient with Discharge.",
+                "NPO if moderate sedation or anesthesia.",
                 "Vital signs per routine.",
                 "PIV placement.",
                 "Glucose POC.",
-                "Antibiotics per most recent biliary culture; if none, per protocol (typically gram-negative coverage)."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Placement"
-            },
-            {
-              "type": "list",
-              "items": [
-                "INR and CBC within 30 days."
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Exchange/conversion"
-            },
-            {
-              "type": "list",
-              "items": [
-                "No routine pre-procedure labs required for exchange/conversion."
+                "Antibiotics per most recent biliary culture; if none, per protocol (typically gram-negative coverage).",
+                "CBC and INR within 30 days."
               ]
             }
           ]
@@ -238,15 +197,9 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " ductal dilation/anatomy, obstruction level, and safe access or existing drain course."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
@@ -256,9 +209,21 @@
                 ],
                 [
                   {
-                    "strong": "Review biliary anatomy and access plan."
+                    "strong": "Review imaging:"
                   },
-                  ""
+                  " ducts requiring drainage, obstruction level, portal/hepatic vessels, ascites, and right/left access window."
+                ],
+                [
+                  {
+                    "strong": "Confirm access plan:"
+                  },
+                  " Confirm correction plan for new transhepatic access."
+                ],
+                [
+                  {
+                    "strong": "Confirm antibiotics:"
+                  },
+                  " review current agent, culture coverage, and dose timing before manipulation."
                 ],
                 [
                   {
@@ -287,7 +252,7 @@
             {
               "type": "list",
               "items": [
-                "Biliary Drain Placement and Internalization/Exchange"
+                "Biliary Drain Placement"
               ]
             },
             {
@@ -343,10 +308,6 @@
               "caption": "Biliary anatomy relevant to percutaneous drain placement. AI-generated educational schematic; simplified and not to scale. Confirm ductal anatomy and variants on patient-specific imaging."
             },
             {
-              "type": "heading",
-              "text": "Initial biliary drain placement"
-            },
-            {
               "type": "list",
               "items": [
                 [
@@ -398,45 +359,6 @@
                   " both approaches are transhepatic. Hilar obstruction may isolate the right and left systems, requiring separate drainage."
                 ]
               ]
-            },
-            {
-              "type": "heading",
-              "text": "Biliary drain internalization or exchange"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "Existing transhepatic tract:"
-                  },
-                  " is the access route and should be preserved."
-                ],
-                [
-                  {
-                    "strong": "Obstruction level:"
-                  },
-                  " determines whether the drain can be internalized."
-                ],
-                [
-                  {
-                    "strong": "CBD and duodenum:"
-                  },
-                  " are the distal targets for internal-external drainage."
-                ],
-                [
-                  {
-                    "strong": "Side-hole position:"
-                  },
-                  " must span the obstructed segment without draining into the peritoneal tract."
-                ],
-                [
-                  {
-                    "strong": "Portal and hepatic arterial branches:"
-                  },
-                  " remain adjacent to the biliary tract."
-                ]
-              ]
             }
           ]
         },
@@ -444,10 +366,6 @@
           "id": "procedural-steps",
           "title": "Procedural steps",
           "blocks": [
-            {
-              "type": "heading",
-              "text": "Initial biliary drain placement"
-            },
             {
               "type": "list",
               "items": [
@@ -494,57 +412,6 @@
                   ""
                 ]
               ]
-            },
-            {
-              "type": "heading",
-              "text": "Biliary drain internalization or exchange"
-            },
-            {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "1. Inject the existing drain gently"
-                  },
-                  " to confirm its position and the biliary anatomy."
-                ],
-                [
-                  {
-                    "strong": "2. Advance a wire through the drain"
-                  },
-                  " and secure intrabiliary access."
-                ],
-                [
-                  {
-                    "strong": "3. Remove the old catheter over the wire."
-                  },
-                  ""
-                ],
-                [
-                  {
-                    "strong": "4. Cross the obstruction into the bowel"
-                  },
-                  " if internalization is needed."
-                ],
-                [
-                  {
-                    "strong": "5. Advance the new drain"
-                  },
-                  " over the wire."
-                ],
-                [
-                  {
-                    "strong": "6. Position the side holes across the obstruction"
-                  },
-                  " with the distal loop in the duodenum."
-                ],
-                [
-                  {
-                    "strong": "7. Confirm drainage and secure the catheter"
-                  },
-                  "; then determine external versus capped drainage."
-                ]
-              ]
             }
           ]
         },
@@ -556,16 +423,6 @@
               "type": "callout",
               "variant": "caution",
               "blocks": [
-                {
-                  "type": "list",
-                  "items": [
-                    "Protect ductal access, avoid vascular or pleural injury and high-pressure injection, and verify effective catheter positioning and decompression."
-                  ]
-                },
-                {
-                  "type": "heading",
-                  "text": "Initial biliary drain placement"
-                },
                 {
                   "type": "list",
                   "items": [
@@ -606,51 +463,6 @@
                       " check catheter position, kinking, occlusion, and side-hole location."
                     ]
                   ]
-                },
-                {
-                  "type": "heading",
-                  "text": "Biliary drain internalization or exchange"
-                },
-                {
-                  "type": "list",
-                  "items": [
-                    [
-                      {
-                        "strong": "Loss of access:"
-                      },
-                      " maintain stable wire position before removing the old catheter."
-                    ],
-                    [
-                      {
-                        "strong": "Wire dislodgement:"
-                      },
-                      " regain biliary access before proceeding with the exchange."
-                    ],
-                    [
-                      {
-                        "strong": "Cannot cross the obstruction:"
-                      },
-                      " avoid forceful manipulation and leave external drainage if needed."
-                    ],
-                    [
-                      {
-                        "strong": "Incorrect side-hole position:"
-                      },
-                      " reposition if holes lie outside the ducts or fail to span the obstruction."
-                    ],
-                    [
-                      {
-                        "strong": "Catheter kinking or occlusion:"
-                      },
-                      " assess with gentle injection and exchange if needed."
-                    ],
-                    [
-                      {
-                        "strong": "Post-exchange cholangitis or sepsis:"
-                      },
-                      " minimize high-pressure injection and ensure adequate decompression."
-                    ]
-                  ]
                 }
               ]
             }
@@ -667,6 +479,7 @@
           "type": "checklist",
           "title": "Routine orders",
           "items": [
+            "Notify MD/LIP - IR.",
             "Diet - Outpatient: order regular diet. Inpatient: notify primary team diet is okay.",
             "Vital signs per unit routine.",
             "Tylenol 650 mg PRN."
@@ -676,6 +489,7 @@
           "type": "checklist",
           "title": "Access care",
           "items": [
+            "Pigtail drain - flush orders.",
             "Flush with 10 mL sterile saline once daily."
           ]
         },
@@ -694,9 +508,9 @@
         },
         {
           "type": "checklist",
-          "title": "Discharge - if outpatient exchange/conversion",
+          "title": "Discharge",
           "items": [
-            "Discharge order with medication reconciliation - 30 minutes.",
+            "Discharge order with medication reconciliation - 30 minutes if outpatient; admit/observe if clinically indicated.",
             "After visit summary: .IRAVSCHOLETUBEORBILIARYDRAIN1."
           ]
         },
@@ -704,7 +518,6 @@
           "type": "checklist",
           "title": "Follow up",
           "items": [
-            "Confirm exchange/internalization follow-up plan with attending.",
             "Routine exchange in 2-3 months or per MD."
           ]
         }

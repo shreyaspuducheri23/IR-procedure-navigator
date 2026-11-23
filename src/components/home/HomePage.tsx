@@ -50,9 +50,9 @@ export function HomePage() {
         <div className={cardStyles.foot}><BleedRiskChip risk="low" /></div>
       </Link>,
     });
-    procedureCards.push({ id: "tdc-removal", title: "TDC Removal", content:
+    procedureCards.push({ id: "tdc-removal", title: "Tunneled Dialysis Catheter", content:
       <Link key="tdc-removal" to="/tdc-removal" className={cardStyles.card}>
-        <div className={cardStyles.head}><h3 className={cardStyles.title}>TDC Removal</h3><span className={cardStyles.draft}>Draft</span></div>
+        <div className={cardStyles.head}><h3 className={cardStyles.title}>Tunneled Dialysis Catheter</h3><span className={cardStyles.draft}>Draft</span></div>
         <p className={cardStyles.summary}>Tunneled dialysis catheter removal. Tools and stepwise workflow pending.</p>
       </Link>,
     });

@@ -1,8 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { toolFolders, nestedToolFolders } from "@/components/workflow/ToolsAndSystems";
 import { SearchBar } from "./SearchBar";
 import styles from "./AppHeader.module.css";
 
 export function AppHeader() {
+  const { pathname } = useLocation();
+  const toolsOpen = pathname === "/tools" || pathname.startsWith("/tools/");
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -31,6 +34,15 @@ export function AppHeader() {
         <NavLink to="/" end>Procedure guides</NavLink>
         <NavLink to="/on-call">On-Call Workflow</NavLink>
         <NavLink to="/faq">General FAQ</NavLink>
+        <NavLink to="/tools">Tools and Systems</NavLink>
+        {toolsOpen && <div className={styles.folders}>
+          {toolFolders.map(folder => <div key={folder.id}>
+            <NavLink to={`/tools/${folder.id}`} end>{folder.title}</NavLink>
+            {nestedToolFolders[folder.id] && pathname.startsWith(`/tools/${folder.id}`) && <div className={styles.wireFolders}>
+              {nestedToolFolders[folder.id].map(child => <NavLink key={child.id} to={`/tools/${folder.id}/${child.id}`}>{child.title}</NavLink>)}
+            </div>}
+          </div>)}
+        </div>}
       </nav>
     </header>
   );

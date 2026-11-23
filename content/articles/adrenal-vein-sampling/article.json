@@ -181,15 +181,9 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " adrenal vein course, left renal vein anatomy, and accessory hepatic veins/common drainage with the right adrenal vein; avoid hepatic-vein sampling or dilution."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab. Potassium corrected."
                 ],
                 [
                   {
@@ -199,9 +193,9 @@
                 ],
                 [
                   {
-                    "strong": "Potassium corrected"
+                    "strong": "Review imaging:"
                   },
-                  "."
+                  " adrenal vein course, left renal vein anatomy, and accessory hepatic veins/common drainage with the right adrenal vein; avoid hepatic-vein sampling or dilution."
                 ],
                 [
                   {
@@ -455,32 +449,6 @@
                       }
                     ]
                   ]
-                },
-                {
-                  "type": "callout",
-                  "variant": "note",
-                  "title": "Procedure images",
-                  "collapsible": true,
-                  "blocks": [
-                    {
-                      "type": "image",
-                      "src": "images/right-adrenal-venogram.png",
-                      "alt": "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.",
-                      "caption": "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles."
-                    },
-                    {
-                      "type": "image",
-                      "src": "images/left-renal-vein-selection.png",
-                      "alt": "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.",
-                      "caption": "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein."
-                    },
-                    {
-                      "type": "image",
-                      "src": "images/left-adrenal-venogram.png",
-                      "alt": "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.",
-                      "caption": "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein."
-                    }
-                  ]
                 }
               ]
             },
@@ -491,8 +459,144 @@
               "collapsible": true,
               "blocks": [
                 {
-                  "type": "paragraph",
-                  "text": "Content pending."
+                  "type": "heading",
+                  "text": "Tools and sizes"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Micropuncture set: 21G needle, 0.018-inch microwire, 4 Fr transitional introducer.",
+                    "Working wire: 0.035-inch Bentson.",
+                    "Venous sheath: commonly 5 Fr; 6 Fr for the selected catheter setup.",
+                    "Catheters: commonly 5 Fr Cobra, Simmons 2 (Sim2), or Mikaelsson; attending preference.",
+                    "Imaging: ultrasound probe with sterile cover; fluoroscopy.",
+                    "Local anesthetic: lidocaine, syringe, injection needle.",
+                    "Sampling: 5 mL syringes, labeled lab tubes, saline, contrast, stopcock.",
+                    "Sterile supplies: skin prep, gloves, gown, drapes, gauze, dressing."
+                  ]
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Confirm the sampling plan:"
+                      },
+                      " review CT for adrenal-vein origins and accessory hepatic veins. Confirm cosyntropin use/timing, sample volume/count, tube type, labels, and rapid-cortisol availability with the team."
+                    ],
+                    [
+                      {
+                        "strong": "2. Access the right femoral vein:"
+                      },
+                      " prep, drape, and infiltrate lidocaine. Under ultrasound, enter the common femoral vein with the 21G needle; advance the 0.018-inch wire and confirm venous course with fluoroscopy."
+                    ],
+                    [
+                      {
+                        "strong": "3. Place the sheath:"
+                      },
+                      " advance the 4 Fr transitional introducer over the microwire. Exchange to the 0.035-inch Bentson and advance centrally under fluoroscopy; place the 5 Fr sheath over it. Retain wire control during exchanges."
+                    ],
+                    [
+                      {
+                        "strong": "4. Select the right adrenal vein:"
+                      },
+                      " advance a Cobra over the Bentson to the IVC near L1-L2. Use the CT roadmap to engage the posterior/posterolateral ostium; vertebral level varies. Do not advance the wire deeply into the adrenal vein."
+                    ],
+                    [
+                      {
+                        "strong": "5. Confirm right-sided position:"
+                      },
+                      " remove the wire and hand-inject a small, gentle contrast puff. Look for fine glandular branching, often an inverted triangle or Y pattern. Avoid deep wedging or forceful injection: adrenal vein rupture can cause hemorrhage. Exclude an accessory hepatic vein/common trunk; use cone-beam CT if uncertain."
+                    ]
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "images/right-adrenal-venogram.png",
+                  "alt": "AP right adrenal venogram with a reverse-curve catheter and fine spider-web venous radicles.",
+                  "caption": "Right adrenal venogram, AP: reverse-curve catheter in the right adrenal vein with fine spider-web venous radicles."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "6. Sample the right side:"
+                      },
+                      " use a 5 mL syringe to gently clear contrast/dead space into a separate waste syringe, then collect aldosterone/cortisol samples. Discard volume and sample count follow the lab/attending protocol. Label site, time, and stimulation status immediately. If aspiration stops, ease suction and reassess catheter position."
+                    ],
+                    [
+                      {
+                        "strong": "7. Select the left side:"
+                      },
+                      " withdraw into the IVC. If exchanging, reinsert the Bentson centrally and exchange to a Sim2. Engage the left renal vein near L1, then select the superiorly arising adrenophrenic trunk using the CT roadmap. The left adrenal and inferior phrenic veins usually share this trunk."
+                    ]
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "images/left-renal-vein-selection.png",
+                  "alt": "AP left renal venogram with reverse-curve catheter; 1 IVC, 2 left renal vein.",
+                  "caption": "Left-sided sampling approach, AP: reverse-curve catheter in the left renal vein. 1: IVC; 2: left renal vein."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "8. Confirm and sample the left side:"
+                      },
+                      " confirm with gentle venography. Avoid sampling the renal vein or advancing into the inferior phrenic branch alone. Clear dead space with a separate waste syringe, then collect and label samples as on the right; avoid deep superselective wedging."
+                    ]
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "images/left-adrenal-venogram.png",
+                  "alt": "Left adrenal venogram identifying the IVC, left renal vein, adrenophrenic trunk, left adrenal vein, and left inferior phrenic vein.",
+                  "caption": "Left adrenal venogram. 1: IVC; 2: left renal vein; 3: adrenophrenic trunk; 4: left adrenal vein; 5: left inferior phrenic vein."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "9. Obtain the reference and check adequacy:"
+                      },
+                      " collect the matched IVC/peripheral aldosterone/cortisol sample at protocol-defined times. Verify all labels and both sides' selectivity using rapid cortisol when available; resample before removing access if needed. See Sampling indices in Quick steps."
+                    ],
+                    [
+                      {
+                        "strong": "10. Finish:"
+                      },
+                      " withdraw the catheter over a centrally positioned wire. Remove wire and sheath, hold pressure to hemostasis, and apply a dressing. New flank/back pain or instability warrants assessment for adrenal hemorrhage."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Radiographics: Adrenal Vein Sampling - Tips and Tricks",
+                          "href": "https://pubs.rsna.org/doi/10.1148/rg.230115"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "Japan Endocrine Society: AVS technique and safeguards",
+                          "href": "https://www.jstage.jst.go.jp/article/endocrj/69/4/69_EJ21-0508/_html/-char/ja"
+                        }
+                      }
+                    ]
+                  ]
                 }
               ]
             }

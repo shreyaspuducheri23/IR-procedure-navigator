@@ -8,6 +8,7 @@
   z-index: 30;
   background: #242a2d;
   color: #f3f6f6;
+  overflow-y: auto;
   border-right: 1px solid #384346;
 }
 
@@ -15,6 +16,9 @@
 .navigation a { padding: 13px 12px; font-size: 14px; color: #c8d3d4; text-decoration: none; border-left: 3px solid transparent; border-radius: 4px; }
 .navigation a:hover { background: #303b3e; color: white; }
 .navigation a[aria-current="page"] { background: #174744; color: #a9f0df; border-color: #55cbb3; font-weight: 650; }
+.folders { padding-left: 12px; }
+.folders a { display: block; padding: 9px 12px; font-size: 13px; overflow-wrap: anywhere; }
+.wireFolders { padding-left: 12px; }
 
 .inner {
   height: auto;
@@ -101,7 +105,8 @@
 
 @media (max-width: 860px) {
   .header { position: sticky; width: 100%; bottom: auto; border-right: 0; }
-  .navigation { flex-direction: row; gap: 4px; padding: 0 12px 8px; }
+  .navigation { flex-direction: row; flex-wrap: wrap; gap: 4px; padding: 0 12px 8px; }
+  .folders { display: none; }
   .navigation a { font-size: 12px; padding: 10px 8px; border-left: 0; border-bottom: 2px solid transparent; }
   .inner {
     padding: 12px 16px;

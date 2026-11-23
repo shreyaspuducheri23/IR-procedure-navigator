@@ -202,21 +202,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " thrombus extent, central venous outflow, and access vein patency."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm tolerance; review active bleeding, recent intracranial hemorrhage/surgery, HIT/allergies, and last anticoagulant dose."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " thrombus extent, central venous outflow, and access vein patency."
                 ],
                 [
                   {

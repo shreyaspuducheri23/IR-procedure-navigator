@@ -188,21 +188,21 @@
                 ],
                 [
                   {
-                    "strong": "Review imaging:"
-                  },
-                  " gallbladder distention, intervening bowel, and transhepatic versus transperitoneal access window."
-                ],
-                [
-                  {
                     "strong": "Verify labs:"
                   },
-                  " confirm results meet procedure-specific requirements when indicated; see the Labs tab."
+                  " See the Labs tab."
                 ],
                 [
                   {
                     "strong": "Review anticoagulation:"
                   },
                   " confirm the procedure-specific hold/continue plan; see the Anticoagulation tab."
+                ],
+                [
+                  {
+                    "strong": "Review imaging:"
+                  },
+                  " gallbladder distention, intervening bowel, and transhepatic versus transperitoneal access window."
                 ],
                 [
                   {
@@ -355,54 +355,204 @@
           "title": "Procedural steps",
           "blocks": [
             {
-              "type": "heading",
-              "text": "Initial tube placement - Seldinger technique"
+              "type": "callout",
+              "variant": "note",
+              "title": "Quick steps",
+              "collapsible": true,
+              "defaultOpen": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Initial tube placement - Seldinger technique"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Plan the access route"
+                      },
+                      " using ultrasound and prior imaging; choose a safe transhepatic or transperitoneal window."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prepare and anesthetize"
+                      },
+                      " the access site using sterile technique; confirm antibiotic coverage."
+                    ],
+                    [
+                      {
+                        "strong": "3. Access the gallbladder"
+                      },
+                      " under ultrasound guidance, using CT when ultrasound does not provide a safe window."
+                    ],
+                    [
+                      {
+                        "strong": "4. Confirm intraluminal access"
+                      },
+                      " by imaging and bile aspiration; send bile for culture."
+                    ],
+                    [
+                      {
+                        "strong": "5. Coil a guidewire"
+                      },
+                      " within the gallbladder and dilate the tract while maintaining access."
+                    ],
+                    [
+                      {
+                        "strong": "6. Place a locking pigtail drain"
+                      },
+                      " with the loop and all drainage side holes inside the gallbladder."
+                    ],
+                    [
+                      {
+                        "strong": "7. Confirm position and drainage"
+                      },
+                      " with imaging and gentle contrast injection if needed; lock, secure, and connect to gravity drainage."
+                    ]
+                  ]
+                }
+              ]
             },
             {
-              "type": "list",
-              "items": [
-                [
-                  {
-                    "strong": "1. Plan the access route"
-                  },
-                  " using ultrasound and prior imaging; choose a safe transhepatic or transperitoneal window."
-                ],
-                [
-                  {
-                    "strong": "2. Prepare and anesthetize"
-                  },
-                  " the access site using sterile technique; confirm antibiotic coverage."
-                ],
-                [
-                  {
-                    "strong": "3. Access the gallbladder"
-                  },
-                  " under ultrasound guidance, using CT when ultrasound does not provide a safe window."
-                ],
-                [
-                  {
-                    "strong": "4. Confirm intraluminal access"
-                  },
-                  " by imaging and bile aspiration; send bile for culture."
-                ],
-                [
-                  {
-                    "strong": "5. Coil a guidewire"
-                  },
-                  " within the gallbladder and dilate the tract while maintaining access."
-                ],
-                [
-                  {
-                    "strong": "6. Place a locking pigtail drain"
-                  },
-                  " with the loop and all drainage side holes inside the gallbladder."
-                ],
-                [
-                  {
-                    "strong": "7. Confirm position and drainage"
-                  },
-                  " with imaging and gentle contrast injection if needed; lock, secure, and connect to gravity drainage."
-                ]
+              "type": "callout",
+              "variant": "note",
+              "title": "Detailed steps",
+              "collapsible": true,
+              "blocks": [
+                {
+                  "type": "heading",
+                  "text": "Tools and sizes"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Access needle: 18G Chiba/Seldinger needle with removable stylet; commonly 10-20 cm, chosen for depth. Confirm 0.035-inch wire compatibility.",
+                    "Alternative access: AccuStick II - 21G needle, 0.018-inch wire, 4 Fr dilator/6 Fr sheath; then exchange to the working wire.",
+                    "Working wire: 0.035-inch Amplatz, soft tip.",
+                    "Drain: 8.5 or 10.2 Fr locking pigtail (MPD/Dawson-Mueller).",
+                    "Dilator: matched to drain size; blunt metal catheter stiffener.",
+                    "Imaging: ultrasound probe/sterile cover; fluoroscopy.",
+                    "Local anesthetic: lidocaine, syringe, injection needle.",
+                    "Sterile supplies: gloves, gown, skin prep, drapes, towels, gauze.",
+                    "Scalpel: #11 blade.",
+                    "Injection/sampling: saline, contrast, syringes, specimen container.",
+                    "Securement: 2-0 nonabsorbable Prolene, needle driver, forceps/Kelly, scissors.",
+                    "Drainage: gravity bag, connector/stopcock, dressing."
+                  ]
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "1. Plan the route:"
+                      },
+                      " review CT/US for gallbladder distention, wall, bowel, liver, and pleura. Prefer a transhepatic route when safe: better anchoring and less bile leakage, but liver traversal adds bleeding risk. If coagulopathic, discuss correction and transperitoneal access; it avoids liver traversal but may leak/dislodge more readily."
+                    ],
+                    [
+                      {
+                        "strong": "2. Prep and anesthetize:"
+                      },
+                      " confirm antibiotic coverage. Use sterile gloves/gown, skin prep, drapes, and towels. Visualize the gallbladder with ultrasound; infiltrate lidocaine along the tract and hepatic capsule."
+                    ],
+                    [
+                      {
+                        "strong": "3. Access the lumen:"
+                      },
+                      " advance the 18G Chiba/Seldinger needle under ultrasound, avoiding vessels and the far wall. Remove the needle stylet, aspirate bile, and collect ordered cultures. The outer needle cannula stays for wire passage; it is not the drain stiffener."
+                    ]
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "images/transhepatic-gallbladder-access-ultrasound.png",
+                  "alt": "Ultrasound showing a needle along a transhepatic course into the gallbladder lumen.",
+                  "caption": "Ultrasound: transhepatic needle access into the gallbladder."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "4. Place the wire:"
+                      },
+                      " pass a compatible 0.035-inch Amplatz through the cannula under fluoroscopy; coil its soft tip within the gallbladder. Stop for resistance or extra-luminal course. Remove the cannula while holding wire access."
+                    ],
+                    [
+                      {
+                        "strong": "5. Prepare and dilate:"
+                      },
+                      " flush an 8.5 or 10.2 Fr locking pigtail drain and insert its blunt metal stiffening cannula. Make a skin nick and dilate over the wire with the kit dilator for the chosen drain; avoid advancing beyond the measured lumen depth."
+                    ],
+                    [
+                      {
+                        "strong": "6. Advance and tee off:"
+                      },
+                      " advance drain/stiffener over the wire under fluoroscopy. Once the rigid tip is inside the lumen, hold it stationary, loosen the hub, and advance the catheter off it. Do not tee off with the rigid tip still in the gallbladder wall; never advance a sharp trocar over the wire."
+                    ],
+                    [
+                      {
+                        "strong": "7. Form the pigtail:"
+                      },
+                      " remove wire and stiffener. Gently pull the retention string to form the loop; confirm the loop and all sideholes lie in the gallbladder. Use a small gentle contrast injection to confirm position without overdistending an infected gallbladder."
+                    ]
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "images/gallbladder-pigtail-drain-fluoroscopy.png",
+                  "alt": "Fluoroscopic image of a pigtail drainage catheter within the gallbladder.",
+                  "caption": "Fluoroscopy: pigtail drain within the gallbladder."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "strong": "8. Lock the drain:"
+                      },
+                      " use the actual hub mechanism: for Mac-Loc, hold the hub, tension the string, and close the cam lever until it clicks. Do not over-tighten the loop or assume every drain uses the same colored locking piece."
+                    ],
+                    [
+                      {
+                        "strong": "9. Secure to skin:"
+                      },
+                      " use 2-0 nonabsorbable Prolene with needle driver/forceps. Place a skin anchor without blanching. Local Roman-sandal technique: cross tails around the tube and tie 4/4/4/7 throws, noting attending/device preference. Keep the tube lumen round; do not puncture or cinch the tubing."
+                    ],
+                    [
+                      {
+                        "strong": "10. Connect and dress:"
+                      },
+                      " attach to gravity drainage, check free bile return, and dress the site. Save final imaging; document drain size, route, locking, and flush plan."
+                    ]
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "References"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "link": {
+                          "text": "Cook multipurpose drain instructions and Mac-Loc locking",
+                          "href": "https://ifu.cookmedical.com/data/IFU_PDF/T_MULTI2-M_REV1.PDF"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "link": {
+                          "text": "ICRI guideline: percutaneous biliary procedures and cholecystostomy",
+                          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8448229/"
+                        }
+                      }
+                    ]
+                  ]
+                }
               ]
             }
           ]

@@ -6,6 +6,7 @@ import { ArticlePage } from "@/components/article/ArticlePage";
 import { NotFound } from "@/components/NotFound";
 import { OnCallWorkflow } from "@/components/workflow/OnCallWorkflow";
 import { TdcRemoval } from "@/components/workflow/TdcRemoval";
+import { ToolsAndSystems } from "@/components/workflow/ToolsAndSystems";
 import { PortRemoval } from "@/components/workflow/PortRemoval";
 import { GeneralFAQ } from "@/components/faq/GeneralFAQ";
 import { EConsultGuide } from "@/components/faq/EConsultGuide";
@@ -36,6 +37,9 @@ const router = createHashRouter([
       { path: "/", element: <HomePage /> },
       { path: "/on-call", element: <OnCallWorkflow /> },
       { path: "/tdc-removal", element: <TdcRemoval /> },
+      { path: "/tools", element: <ToolsAndSystems /> },
+      { path: "/tools/:category", element: <ToolsAndSystems /> },
+      { path: "/tools/:category/:subcategory", element: <ToolsAndSystems /> },
       { path: "/port-removal", element: <PortRemoval /> },
       { path: "/faq", element: <GeneralFAQ /> },
       { path: "/faq/e-consult", element: <EConsultGuide /> },
